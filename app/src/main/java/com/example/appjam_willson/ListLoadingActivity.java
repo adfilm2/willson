@@ -19,6 +19,7 @@ public class ListLoadingActivity extends AppCompatActivity {
     private int count = 300;
     private TextView countTxt ;
     private CountDownTimer countDownTimer;
+    private TextView min, sec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ListLoadingActivity extends AppCompatActivity {
 
         //타이머
         countTxt = (TextView)findViewById(R.id.count_txt);
+        min = (TextView)findViewById(R.id.min_txt);
         countDownTimer();
         countDownTimer.start();
 
@@ -43,7 +45,9 @@ public class ListLoadingActivity extends AppCompatActivity {
 
         countDownTimer = new CountDownTimer(MILLISINFUTURE, COUNT_DOWN_INTERVAL) {
             public void onTick(long millisUntilFinished) {
-                countTxt.setText(String.valueOf(count));
+                int mins = count/60;
+                min.setText(String.format("%02d",mins));
+                countTxt.setText(String.format("%2d",count-(mins*60)));
                 count --;
             }
             public void onFinish() {
