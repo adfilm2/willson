@@ -136,10 +136,18 @@
         android:layout_marginHorizontal="31.7dp"
         android:layout_marginBottom="32.6dp"
         android:background="@drawable/next_btn_darkpurple"
-        android:elevation="10dp"
         android:enabled="true"
         android:text="작성완료하기"
         android:textColor="#FFFFFF" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="32.6dp"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/list_progress_shadow"/>
+
 
 
 </RelativeLayout>
