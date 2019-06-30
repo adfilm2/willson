@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">APPJAM_WILLSON</string>
+    <string name="agreement">상담 신청자(혹은 \'본인\')는 윌슨 서비스를 이용함에 있어 아래의 내용을 확인하고 준수할 것을 소정의 절차에 따라 동의합니다.</string>
 </resources>
