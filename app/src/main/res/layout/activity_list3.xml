@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/activity_list1_toolbar"
+            layout="@layout/toolbar_list"/>
+
+        <ProgressBar
+            android:id="@+id/toolbar_list_progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="10"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/darkPurple"
+            android:lineSpacingExtra="21sp"
+            android:gravity="center_horizontal"
+            tools:text="21%" />
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="21.1dp">
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="19sp"
+                android:textColor="#2c2c4d"
+                android:lineSpacingExtra="11sp"
+                android:layout_marginTop="54.9dp"
+
+                android:text="당신의 고민은 얼마나 중요한가요?"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#616161"
+                android:lineSpacingExtra="15sp"
+                android:layout_marginTop="6.4dp"
+                android:text="중요할수록 큰 숫자를 골라주세요"
+                />
+
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+                android:layout_marginTop="70.4dp"
+                >
+
+                <RadioButton
+                    android:layout_weight="1"
+                    android:text="1"
+                    android:id="@+id/rg_btn1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:layout_weight="1"
+                    android:text="2"
+                    android:id="@+id/rg_btn2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:layout_weight="1"
+                    android:text="3"
+                    android:id="@+id/rg_btn3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:layout_weight="1"
+                    android:text="4"
+                    android:id="@+id/rg_btn4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:layout_weight="1"
+                    android:text="5"
+                    android:id="@+id/rg_btn5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="296.6dp"
+            android:layout_height="46.1dp"
+            android:id="@+id/button1"
+            android:text="다음"
+            android:textColor="#ffff"
+            android:background="#6262ac"
+            android:layout_marginTop="342.1dp"
+            android:layout_marginBottom="32.6dp"
+            />
+
+    </LinearLayout>
+
+
