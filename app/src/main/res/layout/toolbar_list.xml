@@ -16,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_backbtn"
+            android:layout_marginLeft="20.2dp"
             android:id="@+id/toolbar_list_btn_backbtn"
             android:layout_weight="0"/>
 

@@ -16,11 +16,31 @@
             android:id="@+id/toolbar_list_progressbar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="6.7dp"
             android:layout_marginTop="85.4dp"
+            android:progressDrawable="@drawable/list_progressbar"
             android:max="100"
             android:progress="88"
             android:progressTint="@color/lightPurple" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="92.1dp"
+            android:layout_height="5dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/list_progress_shadow">
+        </View>
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="103.7dp"
+            android:textSize="15dp"
+            android:textColor="@color/darkPurple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="88%" />
     </RelativeLayout>
 
 
@@ -47,9 +67,12 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:text="@string/agreement" />
-
+            android:paddingLeft="19.2dp"
+            android:paddingTop="21.1dp"
+            android:paddingRight="30dp"
+            android:text="@string/agreement"
+            android:textColor="@color/black"
+            android:textSize="19sp" />
     </ScrollView>
 
 </RelativeLayout>
