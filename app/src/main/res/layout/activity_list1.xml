@@ -22,9 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_gravity="bottom"
-        android:background="@drawable/list_progress_shadow" >
+        android:background="@drawable/list_progress_shadow">
     </View>
-
 
     <TextView
         android:layout_width="match_parent"
@@ -156,5 +155,4 @@
         android:textColor = "@color/lightPurple"/>
 
     </RelativeLayout>
-
 </LinearLayout>
