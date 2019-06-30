@@ -21,8 +21,8 @@
         <activity android:name=".List3Activity"></activity>
         <activity android:name=".List4Activity"></activity>
         <activity
-            android:name=".List1Activity"
-            android:theme="@style/AppTheme">
+            android:name=".List1Activity">
+            <!--android:theme="@style/Theme.AppCompat.Light.NoActionBar">-->
 
         </activity>
         <activity android:name=".MainActivity"></activity>

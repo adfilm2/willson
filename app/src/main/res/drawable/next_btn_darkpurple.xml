@@ -53,7 +53,7 @@
 
                 <shape android:shape="rectangle">
                     <solid
-                        android:color="@color/ggrey"/>
+                        android:color="@color/grey"/>
                     <corners
                         android:radius="5dp"
                         />
