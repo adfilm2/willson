@@ -9,21 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ListLoadingActivity">
+        <activity android:name=".List5Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AgreementActivity">
+        <activity android:name=".ListLoadingActivity">
 
         </activity>
+        <activity android:name=".AgreementActivity"></activity>
         <activity android:name=".List3Activity" />
         <activity android:name=".List4Activity" />
         <activity
             android:name=".List1Activity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity android:name=".MainActivity" />
     </application>
 
