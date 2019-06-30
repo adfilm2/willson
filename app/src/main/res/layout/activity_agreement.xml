@@ -93,6 +93,7 @@
             android:checked="false"
             android:button="@drawable/register_checkbox_btn"
             android:layout_gravity="center"
+            android:onClick="btn_check"
             android:layout_marginLeft="35.5dp"
             android:id="@+id/check1"/>
         <TextView
@@ -115,6 +116,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:checked="false"
+            android:onClick="btn_check"
             android:button="@drawable/register_checkbox_btn"
             android:layout_marginLeft="35.5dp"
             android:id="@+id/check2"/>
@@ -130,13 +132,14 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="31.7dp"
         android:layout_marginBottom="32.6dp"
         android:background="@drawable/next_btn_darkpurple"
-        android:enabled="true"
+        android:enabled="false"
         android:text="작성완료하기"
         android:textColor="#FFFFFF" />
     <View
