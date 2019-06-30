@@ -1,8 +1,8 @@
 package com.example.appjam_willson;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class List1Activity extends AppCompatActivity {
 

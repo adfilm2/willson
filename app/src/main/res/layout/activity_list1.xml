@@ -32,7 +32,7 @@
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="21sp"
         android:gravity="center_horizontal"
-        tools:text="0%" />
+        android:text="0%" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="10sp"
         android:layout_marginBottom="18.9dp"
-        tools:text="당신의 연애 고민은\n어디에 해당하나요?"
+        android:text="당신의 연애 고민은\n어디에 해당하나요?"
         />
 
     <LinearLayout
@@ -59,7 +59,9 @@
             android:layout_marginLeft="24.8dp"
             android:text = "짝사랑"
             android:id="@+id/list1_btn_onsidelove"
-            android:textColor="@color/lightPurple"
+            android:textColor="@color/list_btns_text_selector"
+            android:textColorHighlight="@color/list_btns_text_selector"
+            android:textColorLink="@color/list_btns_text_selector"
             />
 
         <View
@@ -76,7 +78,9 @@
             android:layout_marginRight="27dp"
             android:text = "썸"
             android:id="@+id/list1_btn_somthing"
-            android:textColor="@color/lightPurple"
+            android:textColor="@color/list_btns_text_selector"
+            android:textColorHighlight="@color/list_btns_text_selector"
+            android:textColorLink="@color/list_btns_text_selector"
             />
     </LinearLayout>
 
@@ -93,7 +97,9 @@
             android:layout_marginLeft="24.8dp"
             android:text = "갈등"
             android:id="@+id/list1_btn_conflict"
-            android:textColor="@color/lightPurple"
+            android:textColor="@color/list_btns_text_selector"
+            android:textColorHighlight="@color/list_btns_text_selector"
+            android:textColorLink="@color/list_btns_text_selector"
             />
 
         <View
@@ -110,7 +116,9 @@
             android:layout_marginRight="27dp"
             android:text = "이별"
             android:id="@+id/list1_btn_saygoodbye"
-            android:textColor="@color/lightPurple"
+            android:textColor="@color/list_btns_text_selector"
+            android:textColorHighlight="@color/list_btns_text_selector"
+            android:textColorLink="@color/list_btns_text_selector"
             />
     </LinearLayout>
 
@@ -152,7 +160,9 @@
         android:background="@drawable/listnext_btn_selector"
         android:id="@+id/listnext_btn"
         android:text="다음"
-        android:textColor = "@color/lightPurple"/>
+        android:textColor="@color/list_btns_text_selector"
+        android:textColorHighlight="@color/list_btns_text_selector"
+        android:textColorLink="@color/list_btns_text_selector"/>
 
     </RelativeLayout>
 </LinearLayout>
