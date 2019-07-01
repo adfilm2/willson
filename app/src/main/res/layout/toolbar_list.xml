@@ -19,9 +19,6 @@
             android:layout_marginLeft="20.2dp"
             android:id="@+id/toolbar_list_btn_backbtn"
             android:background="@android:color/transparent"
-            android:onClick="clickBackbtn" />
-
-
             android:layout_weight="0"/>
 
         <View

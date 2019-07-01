@@ -3,33 +3,21 @@ package com.example.appjam_willson;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.Editable;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-public class List1Activity extends AppCompatActivity implements OnClickListener {
+public class List1LoveActivity extends AppCompatActivity implements OnClickListener {
 
     RadioGroup list1_radioGroup1;
     RadioGroup list1_radioGroup2;
@@ -43,7 +31,7 @@ public class List1Activity extends AppCompatActivity implements OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list1);
+        setContentView(R.layout.activity_list1_love);
 
         list1_radioGroup1 = (RadioGroup) findViewById(R.id.list1_radioGroup1);
         list1_radioGroup1.clearCheck();
@@ -164,7 +152,6 @@ public class List1Activity extends AppCompatActivity implements OnClickListener 
             list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
             custom_text.setVisibility(View.INVISIBLE);
             custom_edit_text.setVisibility(View.VISIBLE);
-            usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
             int backcolor = getResources().getColor(R.color.white);
             usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             custom_edit_text.setTextColor(backcolor);
@@ -190,7 +177,5 @@ public class List1Activity extends AppCompatActivity implements OnClickListener 
         InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
-
-
 
 }
