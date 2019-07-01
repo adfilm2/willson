@@ -113,10 +113,9 @@
     android:layout_height="46.1dp"
     android:id="@+id/list3_btn1"
     android:text="다음"
-
+    android:enabled="false"
     android:textColor="#ffff"
-    android:background="#6262ac"
-
+    android:background="@drawable/listnext_btn_selector"
     android:layout_marginBottom="32.6dp"
     />
 
