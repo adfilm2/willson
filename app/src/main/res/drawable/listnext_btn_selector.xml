@@ -49,7 +49,7 @@
                 android:bottom="2.5dp">
                 <shape android:shape="rectangle"
                     >
-                    <solid android:color="@color/grey"/>
+                    <solid android:color="@color/ggrey"/>
                     <corners
                         android:radius="5dp"
                         />
