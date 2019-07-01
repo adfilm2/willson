@@ -1,8 +1,12 @@
 package com.example.appjam_willson;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class List1Activity extends AppCompatActivity {
 
@@ -10,5 +14,11 @@ public class List1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1);
+
+
+
+
+
     }
+
 }
