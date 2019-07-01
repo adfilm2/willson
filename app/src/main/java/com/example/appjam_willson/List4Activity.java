@@ -18,12 +18,12 @@ public class List4Activity extends AppCompatActivity {
 
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list4);
 
         textViewCount = (TextView) findViewById(R.id.textViewCount);
-
         editTextSMS = (EditText) findViewById(R.id.list4_edittext);
 
         editTextSMS.addTextChangedListener(new TextWatcher() {

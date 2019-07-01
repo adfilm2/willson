@@ -99,7 +99,6 @@
 
                     android:lineSpacingExtra="11sp"
                     android:text="0"
-
                     android:id="@+id/textViewCount"
                     android:layout_toLeftOf ="@id/list4_totalbyte"
 
@@ -108,9 +107,7 @@
                 <TextView
 
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
-
                     android:text="/300자"
                     android:layout_alignParentRight="true"
                     android:id="@+id/list4_totalbyte"
@@ -139,7 +136,8 @@
             android:id="@+id/list4_btn1"
             android:text="다음"
             android:textColor="#ffff"
-            android:background="#6262ac"
+            android:enabled="false"
+            android:background="@drawable/listnext_btn_selector"
             android:textSize="14sp"
 
             android:layout_marginBottom="32.6dp"
