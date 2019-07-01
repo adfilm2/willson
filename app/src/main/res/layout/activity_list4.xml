@@ -24,10 +24,6 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-
-
-
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -111,37 +107,12 @@
                                     android:text="/300자"
                                     android:id="@+id/list4_totalbyte"
                                     android:layout_marginRight="21dp"
-                                    android:layout_alignParentRight="true"
-
-
-                                    />
+                                    android:layout_alignParentRight="true" />
                         </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
 
                 </RelativeLayout>
 
-
-
-
-
-
-
-
-
-
         </LinearLayout>
-
-
-
 
         <Button
             android:layout_gravity="center"
@@ -155,12 +126,5 @@
 
             android:layout_marginBottom="32.6dp"
             />
-
-
-
-
-
-
-
 
 </LinearLayout>
