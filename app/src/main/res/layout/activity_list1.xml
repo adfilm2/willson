@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="6.7dp"
         android:progressDrawable="@drawable/list_progressbar"
-        android:max="100"
-        android:progress="12"/>
+        android:max="100" />
 
     <View
         android:layout_width="match_parent"
@@ -38,45 +37,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
+        android:lineHeight="30sp"
         android:layout_marginTop="53.3dp"
         android:layout_marginLeft="21dp"
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="10sp"
-        android:layout_marginBottom="18.9dp"
+        android:layout_marginBottom="7dp"
         android:text="당신의 연애 고민은\n어디에 해당하나요?"
         />
 
-    <LinearLayout
+    <TextView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="21.1dp"
+        android:text="1개만 선택해주세요"
+        android:layout_marginBottom="28.9dp"
+        android:textColor="@color/brownishGrey"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="9.2dp">
 
         <Button
-            android:layout_width="147.8dp"
-            android:layout_height="49dp"
+            android:layout_width="1dp"
+            android:layout_height="52dp"
             android:enabled="false"
             android:background="@drawable/list_btns_selector"
-            android:layout_marginLeft="24.8dp"
+            android:layout_marginLeft="24.6dp"
+            android:layout_weight="1"
             android:text = "짝사랑"
+            android:textSize="16sp"
+            android:layout_marginRight="12.5dp"
             android:id="@+id/list1_btn_onsidelove"
             android:textColor="@color/list_btns_text_selector"
             android:textColorHighlight="@color/list_btns_text_selector"
             android:textColorLink="@color/list_btns_text_selector"
             />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
         <Button
-            android:layout_width="147.8dp"
-            android:layout_height="49dp"
+            android:layout_width="1dp"
+            android:layout_height="52dp"
             android:enabled="false"
             android:background="@drawable/list_btns_selector"
             android:layout_gravity="right"
             android:layout_marginRight="27dp"
+            android:layout_weight="1"
             android:text = "썸"
+            android:textSize="16sp"
             android:id="@+id/list1_btn_somthing"
             android:textColor="@color/list_btns_text_selector"
             android:textColorHighlight="@color/list_btns_text_selector"
@@ -85,36 +95,36 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="13.7dp">
+        android:layout_marginBottom="9.1dp">
 
         <Button
-            android:layout_width="147.8dp"
+            android:layout_width="1dp"
             android:layout_height="49dp"
             android:enabled="false"
             android:background="@drawable/list_btns_selector"
-            android:layout_marginLeft="24.8dp"
+            android:layout_marginLeft="24.6dp"
             android:text = "갈등"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:layout_marginRight="12.5dp"
             android:id="@+id/list1_btn_conflict"
             android:textColor="@color/list_btns_text_selector"
             android:textColorHighlight="@color/list_btns_text_selector"
             android:textColorLink="@color/list_btns_text_selector"
             />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
         <Button
-            android:layout_width="147.8dp"
+            android:layout_width="1dp"
             android:layout_height="49dp"
             android:enabled="false"
             android:background="@drawable/list_btns_selector"
             android:layout_gravity="right"
             android:layout_marginRight="27dp"
             android:text = "이별"
+            android:layout_weight="1"
+            android:textSize="16sp"
             android:id="@+id/list1_btn_saygoodbye"
             android:textColor="@color/list_btns_text_selector"
             android:textColorHighlight="@color/list_btns_text_selector"
@@ -123,46 +133,63 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginRight="30.6dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12.8sp"
-            android:layout_marginRight="6.1dp"
-            android:textColor="@color/lightPurple"
-            android:text = "+"/>
+        <Button
+            android:layout_width="1dp"
+            android:layout_height="49dp"
+            android:layout_marginLeft="24.8dp"
+            android:layout_marginRight="12.8dp"
+            android:enabled="false"
+            android:text = "직접입력"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:id="@+id/list1_btn_usercustom"
+            android:background="@drawable/list_btns_selector"
+            android:textColor="@color/list_btns_text_selector"
+            android:textColorHighlight="@color/list_btns_text_selector"
+            android:textColorLink="@color/list_btns_text_selector"
+            android:drawableLeft="@drawable/btn_plus"
+            android:paddingLeft="40dp"
+            android:gravity="left|center_vertical"
+            />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="직접입력"
-            android:textColor="@color/lightPurple"
-            android:textSize="15sp" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="26.8dp"/>
     </LinearLayout>
 
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32.6dp">
+        android:gravity="bottom"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="296.6dp"
-        android:layout_height="46.1dp"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"
-        android:enabled="false"
-        android:background="@drawable/listnext_btn_selector"
-        android:id="@+id/listnext_btn"
-        android:text="다음"
-        android:textColor="@color/list_btns_text_selector"
-        android:textColorHighlight="@color/list_btns_text_selector"
-        android:textColorLink="@color/list_btns_text_selector"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32.6dp">
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/listnext_btn"
+                android:layout_width="296.6dp"
+                android:layout_height="46.1dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="@drawable/listnext_btn_selector"
+                android:enabled="false"
+                android:text="다음"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
 </LinearLayout>

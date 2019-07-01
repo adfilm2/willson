@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7.5dp"
             android:layout_marginBottom="20dp"
-            android:textColor="@color/brownish_grey"
+            android:textColor="@color/brownishGrey"
             android:textSize="15dp"
             android:text="3개를 선택해주세요."/>
 
