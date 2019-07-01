@@ -11,7 +11,11 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".List7Activity" />
         <activity android:name=".List6Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <!--<activity android:name=".ListPopupActivity" />-->
         <activity
@@ -21,11 +25,7 @@
         <activity android:name=".AgreementActivity">
         </activity>
         <activity android:name=".List4Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".List1Activity" />
 
