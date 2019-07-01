@@ -12,13 +12,18 @@
         <activity android:name=".List7Activity" />
         <activity android:name=".List6Activity" />
         <activity android:name=".ListPopupActivity" />
-        <activity android:name=".List3Activity">
+        <activity
+            android:name=".List3Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
+        </activity>
+
+        <activity android:name=".AgreementActivity"
+            >
         </activity>
         <activity android:name=".List4Activity" />
         <activity android:name=".List1Activity" />

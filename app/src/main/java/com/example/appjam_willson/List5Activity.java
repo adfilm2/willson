@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class List5Activity extends AppCompatActivity {
 
@@ -40,6 +41,7 @@ public class List5Activity extends AppCompatActivity {
                 } else {
                     if (checkBox.isChecked()) {
                         checkBox.setChecked(false);
+                        Toast.makeText(getApplicationContext(), "성격은 최대 세 개까지 고를 수 있습니다.", Toast.LENGTH_SHORT).show();
 
                     }
                     else{
