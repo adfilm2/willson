@@ -19,7 +19,9 @@
             android:layout_marginLeft="20.2dp"
             android:id="@+id/toolbar_list_btn_backbtn"
             android:background="@android:color/transparent"
+
             android:layout_weight="0"/>
+
 
         <View
             android:layout_width="0dp"
