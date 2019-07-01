@@ -10,19 +10,23 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class List5Activity extends AppCompatActivity {
 
     public int check_num = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list5);
 
+
     }
 
     public void char_check(View view){
+        Button nextbtn = (Button)findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;
 
                 if (check_num < 3) {
@@ -40,6 +44,7 @@ public class List5Activity extends AppCompatActivity {
                 } else {
                     if (checkBox.isChecked()) {
                         checkBox.setChecked(false);
+                        Toast.makeText(getApplicationContext(), "성격은 최대 세 개까지 고를 수 있습니다.", Toast.LENGTH_SHORT).show();
 
                     }
                     else{
@@ -49,6 +54,8 @@ public class List5Activity extends AppCompatActivity {
                     }
                 }
 
+                if(check_num == 3) nextbtn.setEnabled(true);
+                else nextbtn.setEnabled(false);
 
 
 

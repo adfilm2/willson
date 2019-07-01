@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/activity_list1_toolbar"
+        layout="@layout/toolbar_list"/>
+
+    <ProgressBar
+        android:id="@+id/toolbar_list_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6.7dp"
+        android:progressDrawable="@drawable/list_progressbar"
+        android:max="100"
+        android:progress="62"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/list_progress_shadow">
+    </View>
+        
+        
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/darkPurple"
+        android:lineSpacingExtra="21sp"
+        android:gravity="center_horizontal"
+        android:text="62%" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="19sp"
+        android:textColor="@color/dark_purple"
+        android:lineSpacingExtra="11sp"
+        android:text="원하는 헬퍼는 어떤 분인가요? (2/2)"
+        android:layout_marginLeft="21dp"
+        android:layout_marginTop="54.9dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textColor="@color/dark_purple"
+        android:lineSpacingExtra="13sp"
+        android:text="이런 경험을 가진 헬퍼를 원해요"
+        android:layout_marginTop="37.3dp"
+        android:layout_marginLeft="21dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/brownish_grey"
+        android:lineSpacingExtra="15sp"
+        android:text="ex) #이별, #다툼, #화해"
+        android:layout_marginLeft="21dp"
+        />
+
+        
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="30.7dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:id="@+id/linear1"
+            android:text="#"
+            android:background="@drawable/rounded_corner_radius5"
+            android:layout_marginTop="40dp"
+            >
+            
+            <TextView
+                android:layout_width="28.8dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/lightPurple"
+                android:layout_marginLeft="10dp"
+                android:text="#"
+                android:textSize="20sp"
+                />
+
+            <EditText
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="30.7dp"
+                android:id="@+id/editText1"
+                android:background="@color/trans"
+                android:onClick="thicker"
+                android:textSize="15sp"
+                android:hint="태그 입력" />
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="30.7dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:text="#"
+            android:background="@drawable/rounded_corner_radius5"
+            android:layout_marginTop="8.4dp"
+            >
+
+            <TextView
+                android:layout_width="28.8dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/lightPurple"
+                android:layout_marginLeft="10dp"
+                android:text="#"
+                android:textSize="20sp"
+                />
+
+            <EditText
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="30.7dp"
+                android:id="@+id/editText2"
+                android:background="@color/trans"
+                android:textSize="15sp"
+                android:hint="태그 입력" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="30.7dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:text="#"
+            android:background="@drawable/rounded_corner_radius5"
+            android:layout_marginTop="8.4dp"
+            >
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="28.8dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/lightPurple"
+                android:layout_marginLeft="10dp"
+                android:text="#"
+                android:textSize="20sp"
+                />
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="30.7dp"
+                android:id="@+id/editText3"
+                android:background="@color/trans"
+                android:textSize="15sp"
+                android:hint="태그 입력" />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="46.1dp"
+            android:id="@+id/button1"
+            android:text="다음"
+            android:textColor="#ffff"
+            android:layout_marginHorizontal="31.7dp"
+            android:background="@drawable/next_btn_darkpurple"
+            android:textSize="14sp"
+            android:layout_marginBottom="32.6dp"
+
+            />
+
+
+
+
+</LinearLayout>
+    

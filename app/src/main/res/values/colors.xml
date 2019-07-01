@@ -8,6 +8,8 @@
     <color name="darkPurple">#2c2c4d</color>
     <color name="lightPurple">#5252a1</color>
     <color name="black">#2f2f2f</color>
+    <color name="dark_purple">#2c2c4d</color>
+
     <color name="trans">#00ff0000</color>
     <color name="buttonLeft">#6262ac</color>
     <color name="buttonRignt">#49499d</color>
@@ -15,6 +17,9 @@
     <color name="middlepurple">#37376d</color>
     <color name="yellow">#ffc326</color>
     <color name="bgcolor">#f8f8f8</color>
-    <color name="white">#ffffff</color>
+
     <color name="brownishGrey">#616161</color>
+    <color name="brownish_grey">#616161</color>
+<color name="white">#ffffff</color>
+
 </resources>

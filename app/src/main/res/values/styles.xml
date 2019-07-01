@@ -7,12 +7,18 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:colorControlNormal">#B4B4B4</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
 
     </style>
 
     <style name="RatingBarColor" parent="Theme.AppCompat" >
         <item name="colorAccent">#FFE641</item>
         <item name="android:colorControlNormal">#C8C8C8</item>
+    </style>
+
+    <style name="list1_edit_color" parent="Theme.AppCompat" >
+        <item name="colorPrimary">@color/white</item>
     </style>
 
 </resources>
