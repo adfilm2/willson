@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListPopupActivity">
+
+
+        <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+
+
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView1"
+                android:layout_gravity="center"
+                android:src="@drawable/list_img_alert_willson"/>
+
+
+
+            <TextView
+                android:layout_width="350dp"
+                android:layout_height="100dp"
+                android:textSize="18sp"
+                android:textColor="@color/dark_purple"
+                android:lineSpacingExtra="10sp"
+                android:gravity="center_horizontal"
+                android:text="정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!"
+                android:layout_gravity="center"
+                android:padding="14.5dp"
+                />
+
+            <Button
+                android:layout_gravity="center"
+                android:layout_width="159.5dp"
+                android:layout_height="39.2dp"
+                android:id="@+id/button1"
+                android:text="계속 작성하기"
+                android:textColor="#ffff"
+                android:background="@drawable/rounded_corner_darkblue"
+                android:textSize="18dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="@color/brownish_grey"
+                android:lineSpacingExtra="15dp"
+                android:layout_gravity="center"
+                tools:text="그만하기"
+                android:layout_marginTop="15dp"
+                />
+
+
+
+
+
+
+
+        </LinearLayout>
+</LinearLayout>

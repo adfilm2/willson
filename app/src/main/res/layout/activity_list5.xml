@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/activity_list1_toolbar"
+        layout="@layout/toolbar_list"/>
+
+    <ProgressBar
+        android:id="@+id/toolbar_list_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6.7dp"
+        android:progressDrawable="@drawable/list_progressbar"
+        android:max="100"
+        android:progress="50"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/list_progress_shadow">
+    </View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/darkPurple"
+        android:lineSpacingExtra="21sp"
+        android:gravity="center_horizontal"
+        android:text="50%" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="34.5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="원하는 헬퍼는 어떤 분인가요? (1/2)"
+            android:textColor="@color/darkPurple"
+            android:textSize="19sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/darkPurple"
+            android:textSize="17dp"
+            android:text="성별"/>
+
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="fill_horizontal">
+                <RadioButton
+                    android:id="@+id/man_btn"
+                    android:layout_width="96dp"
+                    android:layout_height="34.6dp"
+                    android:button="@color/trans"
+                    android:textAlignment="center"
+                    android:text="남자"
+                    android:textColor="@color/text_color_selector"
+                    android:checked="true"
+                    android:background="@drawable/btn_selector"/>
+
+                <RadioButton
+                    android:id="@+id/woman_btn"
+                    android:layout_width="96dp"
+                    android:layout_height="34.6dp"
+                    android:button="@color/trans"
+                    android:textAlignment="center"
+                    android:text="여자"
+                    android:textColor="@color/text_color_selector"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="32dp"
+                    android:checked="false"
+                    android:background="@drawable/btn_selector"/>
+
+                <RadioButton
+                    android:id="@+id/all_btn"
+                    android:layout_width="96dp"
+                    android:layout_height="34.6dp"
+                    android:button="@color/trans"
+                    android:textAlignment="center"
+                    android:text="모두"
+                    android:textColor="@color/text_color_selector"
+                    android:checked="false"
+                    android:background="@drawable/btn_selector"/>
+
+            </RadioGroup>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textColor="@color/darkPurple"
+            android:textSize="17dp"
+            android:text="성격"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7.5dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/brownishGrey"
+            android:textSize="15dp"
+            android:text="3개를 선택해주세요."/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp">
+            
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#긍정적인"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#낙천적인"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#노력하는"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#상냥한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#논리적인"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#감성적인"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#활발한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#유머스러운"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#이성적인"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#활발한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#밝은"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#유머스러운"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#수다스러운"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#조용한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#용감한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#끈기있는"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#겸손한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#진지한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#신중한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="#완고한"
+                android:layout_marginRight="9dp"
+                android:button="@color/trans"
+                android:onClick="char_check"
+                android:checked="false"
+                android:textColor="@color/text_color_selector"
+                android:background="@drawable/character_btn_selector"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="31.7dp"
+        android:layout_marginBottom="32.6dp"
+        android:background="@drawable/next_btn_darkpurple"
+        android:text="다음"
+        android:textColor="#FFFFFF" />
+</RelativeLayout>
+
+</LinearLayout>
