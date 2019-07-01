@@ -29,7 +29,8 @@
         android:layout_gravity="bottom"
         android:background="@drawable/list_progress_shadow">
     </View>
-
+        
+        
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,44 +72,99 @@
         android:layout_marginLeft="21dp"
         />
 
+        
 
-    <EditText
-        android:layout_width="315.8dp"
-        android:layout_height="30.7dp"
-        android:id="@+id/editText1"
-        android:layout_marginLeft="21dp"
-        android:layout_marginRight="21dp"
-        android:text="#"
-        android:background="@drawable/rounded_corner_radius5"
-        android:layout_marginTop="40dp"
-        android:hint="태그 입력"
 
-        />
-    <EditText
-        android:layout_width="315.8dp"
-        android:layout_height="30.7dp"
-        android:id="@+id/editText2"
-        android:layout_marginLeft="21dp"
-        android:layout_marginRight="21dp"
-        android:text="#"
-        android:background="@drawable/rounded_corner_radius5"
-        android:layout_marginTop="8.4dp"
-        android:hint="태그 입력"
 
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="30.7dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:text="#"
+            android:background="@drawable/rounded_corner_radius5"
+            android:layout_marginTop="40dp"
+            >
+            
+            <TextView
+                android:layout_width="28.8dp"
+                android:layout_height="match_parent"
+                android:text="#"
+                android:textSize="20dp"
+                />
 
-    <EditText
-        android:layout_width="315.8dp"
-        android:layout_height="30.7dp"
-        android:id="@+id/editText3"
-        android:layout_marginLeft="21dp"
-        android:layout_marginRight="21dp"
+            <EditText
 
-        android:background="@drawable/rounded_corner_radius5"
-        android:layout_marginTop="8.4dp"
+                android:layout_width="match_parent"
+                android:layout_height="30.7dp"
+                android:id="@+id/editText1"
+                android:background="@color/trans"
+                android:hint="태그 입력" />
+            
+        </LinearLayout>
 
-        android:hint="태그 입력"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="30.7dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:text="#"
+            android:background="@drawable/rounded_corner_radius5"
+            android:layout_marginTop="8.4dp"
+            >
+
+            <TextView
+                android:layout_width="28.8dp"
+                android:layout_height="match_parent"
+                android:text="#"
+                android:textSize="20dp"
+                />
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="30.7dp"
+                android:id="@+id/editText2"
+                android:background="@color/trans"
+                android:hint="태그 입력" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="30.7dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:text="#"
+            android:background="@drawable/rounded_corner_radius5"
+            android:layout_marginTop="8.4dp"
+            >
+
+            <TextView
+                android:layout_width="28.8dp"
+                android:layout_height="match_parent"
+                android:text="#"
+                android:textSize="20dp"
+                />
+
+            <EditText
+
+                android:layout_width="match_parent"
+                android:layout_height="30.7dp"
+                android:id="@+id/editText3"
+                android:background="@color/trans"
+                android:hint="태그 입력" />
+
+        </LinearLayout>
+
+
+
+
+
+
 
     </LinearLayout>
 
@@ -130,8 +186,4 @@
 
 
 </LinearLayout>
-
-
-
-
-
+    
