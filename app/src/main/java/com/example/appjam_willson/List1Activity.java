@@ -69,6 +69,7 @@ public class List1Activity extends AppCompatActivity implements OnClickListener 
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != -1) {
+                list1_nextbtn.setEnabled(true);
                 hidekeyboard(custom_edit_text);
                 list1_radioGroup2.setOnCheckedChangeListener(null);
                 list1_radioGroup2.clearCheck();
@@ -90,6 +91,7 @@ public class List1Activity extends AppCompatActivity implements OnClickListener 
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if(checkedId != -1) {
+                list1_nextbtn.setEnabled(true);
                 hidekeyboard(custom_edit_text);
                 list1_radioGroup1.setOnCheckedChangeListener(null);
                 list1_radioGroup1.clearCheck();
@@ -111,11 +113,22 @@ public class List1Activity extends AppCompatActivity implements OnClickListener 
     @Override
     public void onClick(View v) {
 
+
+
+
+
     }
 
     class custom_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
+            String title;
+            title = custom_edit_text.getText().toString();
+            if(title.getBytes().length <= 0) {
+                list1_nextbtn.setEnabled(false);
+                custom_text.setVisibility(View.VISIBLE);
+                custom_edit_text.setVisibility(View.INVISIBLE);
+            }
             list1_radioGroup1.setOnCheckedChangeListener(null);
             list1_radioGroup1.clearCheck();
             list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
@@ -133,6 +146,16 @@ public class List1Activity extends AppCompatActivity implements OnClickListener 
     class custom_edit_Clicklistener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            String title;
+            title = custom_edit_text.getText().toString();
+            if(title.getBytes().length <= 0) {
+                list1_nextbtn.setEnabled(false);
+                custom_text.setVisibility(View.VISIBLE);
+                custom_edit_text.setVisibility(View.INVISIBLE);
+            }
+            else{
+                list1_nextbtn.setEnabled(true);
+            }
             list1_radioGroup1.setOnCheckedChangeListener(null);
             list1_radioGroup1.clearCheck();
             list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
