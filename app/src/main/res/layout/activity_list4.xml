@@ -1,58 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:id="@+id/relative">
 
-        <include
-            android:id="@+id/activity_list1_toolbar"
-            layout="@layout/toolbar_list"/>
-
-        <ProgressBar
-            android:id="@+id/toolbar_list_progressbar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="6.7dp"
-            android:progressDrawable="@drawable/list_progressbar"
-            android:max="100"
-            android:progress="37"/>
+            android:layout_height="141.1dp"
+            android:background="@color/white">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="340dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+                <include
+                    android:id="@+id/activity_list1_toolbar"
+                    layout="@layout/toolbar_list" />
 
 
+                <ProgressBar
+                    android:id="@+id/toolbar_list_progressbar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6.7dp"
+                    android:layout_marginTop="85.4dp"
+                    android:progressDrawable="@drawable/list_progressbar"
+                    android:max="100"
+                    android:progress="37"
+                    android:progressTint="@color/lightPurple" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="@color/darkPurple"
-            android:lineSpacingExtra="21sp"
-            android:gravity="center_horizontal"
-            android:text="37%" />
-<!--
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="92.1dp"
+                    android:layout_height="5dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/list_progress_shadow">
+                </View>
+
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="103.7dp"
+                    android:textSize="15dp"
+                    android:textColor="@color/darkPurple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="37%" />
+        </RelativeLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_marginTop="54.3dp"
+            android:layout_marginTop="175dp"
             android:layout_marginLeft="21dp"
             android:textColor="#2c2c4d"
             android:lineSpacingExtra="10sp"
             android:layout_marginBottom="18.9dp"
-            android:text="구체적으로 어떤 내용인가요??"
-            android:padding="11.4dp"
+            android:text="구체적으로 어떤 내용인가요?"
+
             />
-            -->
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_gravity="center"
-
+                    android:layout_marginTop="213.6dp"
                     android:layout_height="244.8dp"
                     android:layout_marginLeft="21dp"
                     android:layout_marginRight="21dp"
@@ -74,15 +86,7 @@
                     android:id="@+id/list4_edittext"
                     android:gravity="right"
                     android:background="@null"
-                    >
-
-                </EditText>
-
-
-
-
-
-
+                    />
 
 
 
@@ -117,31 +121,25 @@
                     />
                 </RelativeLayout>
 
-
-
-
-
-
-
-
-
-
-        </LinearLayout>
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
         <Button
-            android:layout_gravity="center"
-            android:layout_width="296.6dp"
-            android:layout_height="46.1dp"
             android:id="@+id/list4_btn1"
-            android:text="다음"
-            android:textColor="#ffff"
-            android:enabled="false"
-            android:background="@drawable/listnext_btn_selector"
-            android:textSize="14sp"
-
+            android:layout_width="match_parent"
+            android:layout_height="46.1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="31.7dp"
             android:layout_marginBottom="32.6dp"
-            />
+            android:background="@drawable/next_btn_darkpurple"
+            android:enabled="false"
+            android:text="다음"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF" />
+
+
+</RelativeLayout>
 
 
 
@@ -150,4 +148,6 @@
 
 
 
-</LinearLayout>
+
+
+</RelativeLayout>
