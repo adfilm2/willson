@@ -26,6 +26,8 @@
 
 
 
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,10 +51,10 @@
             />
             -->
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_gravity="center"
-
+                    android:id="@+id/list4_linear"
                     android:layout_height="244.8dp"
                     android:layout_marginLeft="21dp"
                     android:layout_marginRight="21dp"
@@ -60,67 +62,71 @@
                     android:orientation="vertical"
                     android:background="@drawable/rounded_corner_radius5">
 
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/list4_relative"
+                            android:layout_marginLeft="10.5dp"
+                            android:layout_marginTop="14.5dp"
+                            android:layout_marginRight="10.5dp"
+                            >
+                                <EditText
+                                    android:id="@+id/list4_edittext"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@null"
+                                    android:gravity="left"
+                                    android:hint="ex) 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. ">
+                                </EditText>
+                        </ScrollView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/list4_relative"
+                            >
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:lineSpacingExtra="11sp"
+                                    android:text="0"
+
+                                    android:id="@+id/textViewCount"
+                                    android:layout_toLeftOf ="@id/list4_totalbyte"
 
 
-                <EditText
+                                    />
 
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                                <TextView
 
-                    android:layout_marginLeft="10.5dp"
-                    android:layout_marginRight="10.5dp"
-                    android:layout_marginTop="14.5dp"
-                    android:layout_marginBottom="80dp"
-                    android:id="@+id/list4_edittext"
-                    android:gravity="left"
-                    android:background="@null"
-                    android:hint="ex) 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. "
-                    >
+                                    android:layout_width="wrap_content"
 
-                </EditText>
+                                    android:layout_height="wrap_content"
+
+                                    android:text="/300자"
+                                    android:id="@+id/list4_totalbyte"
+                                    android:layout_marginRight="21dp"
+                                    android:layout_alignParentRight="true"
 
 
-
-
-
-
-
-
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:lineSpacingExtra="11sp"
-                    android:text="0"
-
-                    android:id="@+id/textViewCount"
-                    android:layout_toLeftOf ="@id/list4_totalbyte"
-
-                    android:layout_alignBottom="@id/list4_totalbyte"/>
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-
-                    android:text="/300자"
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/list4_totalbyte"
-                    android:layout_marginRight="21dp"
+                                    />
+                        </RelativeLayout>
 
 
 
-                    />
+
+
+
+
+
+
+
+
                 </RelativeLayout>
 
 
@@ -133,6 +139,8 @@
 
 
         </LinearLayout>
+
+
 
 
         <Button
