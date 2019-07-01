@@ -15,4 +15,8 @@
         <item name="android:colorControlNormal">#C8C8C8</item>
     </style>
 
+    <style name="list1_edit_color" parent="Theme.AppCompat" >
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
 </resources>
