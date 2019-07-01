@@ -56,6 +56,7 @@
                     android:layout_height="244.8dp"
                     android:layout_marginLeft="21dp"
                     android:layout_marginRight="21dp"
+                    android:layout_marginTop="54.3dp"
                     android:orientation="vertical"
                     android:background="@drawable/rounded_corner_radius5">
 
@@ -72,8 +73,9 @@
                     android:layout_marginTop="14.5dp"
                     android:layout_marginBottom="80dp"
                     android:id="@+id/list4_edittext"
-                    android:gravity="right"
+                    android:gravity="left"
                     android:background="@null"
+                    android:hint="ex) 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. "
                     >
 
                 </EditText>
@@ -114,6 +116,7 @@
                     android:text="/300자"
                     android:layout_alignParentRight="true"
                     android:id="@+id/list4_totalbyte"
+                    android:layout_marginRight="21dp"
 
 
 

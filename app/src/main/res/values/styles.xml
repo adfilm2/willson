@@ -17,6 +17,12 @@
         <item name="android:colorControlNormal">#C8C8C8</item>
     </style>
 
+    <style name="CustomRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#4f4f9f</item>
+        <item name="colorControlNormal">#4f4f9f</item>
+    </style>
+
+
 
 
 

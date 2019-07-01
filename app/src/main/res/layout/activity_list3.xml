@@ -66,7 +66,8 @@
             android:layout_gravity="center"
 
             android:layout_marginTop="70.4dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:theme="@style/CustomRadioButton">
 
             <RadioButton
                 android:id="@+id/rg_btn1"
