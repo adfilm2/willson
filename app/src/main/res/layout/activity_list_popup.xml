@@ -51,13 +51,14 @@
                 android:textSize="18dp"
                 />
 
-            <TextView
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
                 android:textColor="@color/brownish_grey"
                 android:layout_gravity="center"
                 android:text="그만하기"
+                android:background="#ffff"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20.7dp"
                 android:id="@+id/list_pop_exitbtn"
