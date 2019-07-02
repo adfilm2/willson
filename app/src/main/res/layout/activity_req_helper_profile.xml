@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+        <include
+            android:id="@+id/toolbar_asker"
+            layout="@layout/toolbar_helper_profile"/>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--<ImageView-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:id="@+id/profile_asker_img"-->
+            <!--android:src="@drawable/round_tag_faces_black_48dp"/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="리트리버 님"
+            android:textColor="#b4b4b4"
+            android:id="@+id/profile_asker_id"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="여성 / 20대 후반"
+            android:id="@+id/profile_asker_detail"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="연애"
+            android:id="@+id/profile_asker_cate"
+            android:textSize="20dp"/>
+
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:text='" 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. "'
+            android:id="@+id/profile_asker_info"
+            android:textSize="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:text="#긍정적인"
+                android:id="@+id/profile_asker_feel1"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:text="#낙천적인"
+                android:id="@+id/profile_asker_feel2"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:layout_weight="1"
+                android:layout_marginBottom="10dp"
+                android:text="#노력하는"
+                android:id="@+id/profile_asker_feel3"
+                android:textSize="16dp"/>
+
+        </LinearLayout>
+
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="5dp"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:background="@drawable/shadow" >-->
+
+        <!--</View>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id = "@+id/profile_asker_recyclerview">
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+
+    </LinearLayout>
+</ScrollView>
+
+
+
+
+
+
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+android:layout_width="50dp"
+android:layout_height="50dp"
+android:id="@+id/profile_asker_fbtn"
+android:layout_gravity="bottom|center"
+android:layout_marginBottom="30dp"
+android:background="#3232FF" />
+
+
+
+</LinearLayout>
