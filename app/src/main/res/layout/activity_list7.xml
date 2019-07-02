@@ -31,12 +31,8 @@
 
         <LinearLayout
 
-            android:layout_marginLeft="21dp"
-
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-
             android:orientation="vertical" >
 
 
@@ -44,6 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="19sp"
+                android:layout_marginLeft="21dp"
                 android:textColor="@color/dark_purple"
                 android:lineSpacingExtra="11sp"
                 android:text="원하는 대화 방향은 무엇인가요?"
@@ -54,68 +51,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
                 android:textSize="15sp"
                 android:textColor="@color/brownish_grey"
                 android:lineSpacingExtra="15sp"
                 android:text="중요할수록 큰 숫자를 골라주세요"
                 />
 
-            <RadioGroup
-                android:id="@+id/list7_radioGroup"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-
-                android:layout_marginTop="70.4dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/list7_btn11"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1"
-
-                    />
-
-                <RadioButton
-                    android:id="@+id/list7_btn12"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn13"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="3" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn14"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn15"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="5" />
-
-            </RadioGroup>
-
-
-
-
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
+                android:layout_marginLeft="21dp"
                 android:textColor="@color/dark_purple"
                 android:lineSpacingExtra="13sp"
                 android:text="정서적 지지"
@@ -125,63 +73,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
+                android:layout_marginTop="7.9dp"
                 android:textSize="16sp"
                 android:textColor="@color/middlepurple"
                 android:lineSpacingExtra="9sp"
                 android:text="제 얘기에 대한 공감과 위로로 감정을 해소하고 싶습니다."
                 />
 
-            <RadioGroup
-                android:id="@+id/list7_radioGroup2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+            <include android:id="@+id/list7_radioGroup1" layout="@layout/radio_btn"/>
 
-                android:layout_marginTop="40.4dp"
-                android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/list7_btn21"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1" />
 
-                <RadioButton
-                    android:id="@+id/list7_btn22"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn23"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="3" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn24"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn25"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="5" />
-
-            </RadioGroup>
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
+                android:layout_marginLeft="21dp"
                 android:textColor="@color/dark_purple"
                 android:lineSpacingExtra="13sp"
                 android:text="문제 해결 조력"
@@ -191,63 +101,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
                 android:textSize="16sp"
                 android:textColor="@color/middlepurple"
                 android:lineSpacingExtra="9sp"
                 android:text="저의 고민에 대한 현실적인 조언이 필요합니다."
                 />
 
-            <RadioGroup
-                android:id="@+id/list7_radioGroup3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+            <include android:id="@+id/list7_radioGroup2" layout="@layout/radio_btn"/>
 
-                android:layout_marginTop="40.4dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/list7_btn31"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn32"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn33"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="3" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn34"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn35"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="5" />
-
-            </RadioGroup>
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
+                android:layout_marginLeft="21dp"
                 android:textColor="@color/dark_purple"
                 android:lineSpacingExtra="13sp"
                 android:text="경험 제공"
@@ -257,6 +126,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="21dp"
                 android:textSize="16sp"
                 android:textColor="@color/middlepurple"
                 android:lineSpacingExtra="9sp"
@@ -264,52 +134,11 @@
 듣고 싶습니다"
                 />
 
-            <RadioGroup
-                android:id="@+id/list7_radioGroup4"
+            <include android:id="@+id/list7_radioGroup3" layout="@layout/radio_btn"/>
+
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-
-                android:layout_marginTop="40.4dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/list7_btn41"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="1" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn1142"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn1143"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="3" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn44"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="4" />
-
-                <RadioButton
-                    android:id="@+id/list7_btn1145"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="5" />
-
-            </RadioGroup>
-
+                android:layout_height="50dp"/>
 
 
 
