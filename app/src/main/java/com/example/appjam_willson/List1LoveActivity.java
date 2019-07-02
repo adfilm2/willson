@@ -3,7 +3,9 @@ package com.example.appjam_willson;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,11 +32,16 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     LinearLayout list1_love_backbtn;
     LinearLayout list1_love_cancelbtn;
 
+    private CustomDialog dialog;
+    Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_love);
+
+        context = this;
 
         list1_love_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_love_cancelbtn.setOnClickListener(new list1_love_cancelbtn_listener());
@@ -109,18 +116,14 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
-
-
-
-
-
+        Intent intent = new Intent(context, List2Activity.class);
+        startActivity(intent);
     }
 
     class list1_love_cancelbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            ListPopupActivity customDialog = new ListPopupActivity(List1LoveActivity.this);
-            customDialog.callFunction();
+            Dialog();
         }
     }
 
@@ -201,5 +204,28 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
+
+    public void Dialog() {
+        dialog = new CustomDialog(List1LoveActivity.this,
+                "정말 그만두시겠어요?\\n아직 하나도 작성하시지 않으셨어요!", keepListener, exitListener);
+
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener keepListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
+
+    private View.OnClickListener exitListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
 
 }

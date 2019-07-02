@@ -2,7 +2,9 @@ package com.example.appjam_willson;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
@@ -31,10 +34,15 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     LinearLayout list1_course_backbtn;
     LinearLayout list1_course_cancelbtn;
 
+    Context context;
+    private CustomDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_course);
+
+        context=this;
 
         list1_course_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_course_cancelbtn.setOnClickListener(new list1_course_cancelbtn_listener());
@@ -108,15 +116,14 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
 
     @SuppressLint("ResourceType")
     public void onClick(View v) {
-
-
+        Intent intent = new Intent(context, List2Activity.class);
+        startActivity(intent);
     }
 
     class list1_course_cancelbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            ListPopupActivity customDialog = new ListPopupActivity(List1CourseActivity.this);
-            customDialog.callFunction();
+            Dialog();
         }
     }
 
@@ -126,8 +133,6 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             finish();
         }
     }
-
-
 
     class course_custom_btn_listener implements View.OnClickListener {
         @Override
@@ -198,5 +203,27 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
+
+    public void Dialog() {
+        dialog = new CustomDialog(List1CourseActivity.this, "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", keepListener, exitListener);
+
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener keepListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
+
+    private View.OnClickListener exitListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
 }
 

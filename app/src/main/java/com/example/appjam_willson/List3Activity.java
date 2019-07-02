@@ -4,8 +4,12 @@ package com.example.appjam_willson;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -20,16 +24,28 @@ public class List3Activity extends AppCompatActivity {
 
     Button btnNext;     // 버튼
     Context context;    // Intent 객체 생성 시 넘길 프로퍼티( 현재객체 맥락 )
-
+    LinearLayout list3_cancelbtn;
+    LinearLayout list3_backbtn;
 
     private RadioButton r_btn1, r_btn2, r_btn3, r_btn4 ,r_btn5;
     private RadioGroup radioGroup;
 
+    private CustomDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list3);
+
+        list3_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list3_cancelbtn.setOnClickListener(new list3_cancelbtn_listener());
+
+        list3_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list3_backbtn.setOnClickListener(new list3_backbtn_listener());
+
+        radioGroup = (RadioGroup) findViewById(R.id.list3_radiogroup);
+        radioGroup.clearCheck();
+        radioGroup.setOnCheckedChangeListener(radioGroup_listener);
 
         context = this;
         btnNext = findViewById(R.id.list3_btn1);
@@ -60,20 +76,65 @@ public class List3Activity extends AppCompatActivity {
 //        radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
     }
 
+    private RadioGroup.OnCheckedChangeListener radioGroup_listener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
+                btnNext.setEnabled(true);
+            }
 
-//
-//    //라디오 그룹 클릭 리스너
-//    RadioGroup.OnCheckedChangeListener radioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
-//
-//        @Override
-//        public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-//            btnNext.setEnabled(true);
-//
-//            if (i == R.id.rg_btn1) {
-//                Toast.makeText(List3Activity.this, "라디오 그룹 버튼1 눌렸습니다.", Toast.LENGTH_SHORT).show();
-//            } else if (i == R.id.rg_btn2) {
-//                Toast.makeText(List3Activity.this, "라디오 그룹 버튼2 눌렸습니다.", Toast.LENGTH_SHORT).show();
-//            }
-//        }
-//    };
+        }
+    };
+
+    class list3_cancelbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Dialog();
+        }
+    }
+
+    class list3_backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
+    public void Dialog() {
+        dialog = new CustomDialog(List3Activity.this,
+                "벌써 21%나 진행했어요!\n그래도 그만 작성하시겠어요?", keepListener, exitListener);
+
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener keepListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
+
+    private View.OnClickListener exitListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
+
+
+
+/*    //라디오 그룹 클릭 리스너
+   RadioGroup.OnCheckedChangeListener radioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
+
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+            btnNext.setEnabled(true);
+
+          if (i != -1) {
+              btnNext.setEnabled(true);
+          }
+        }
+   };*/
 }

@@ -18,7 +18,12 @@
         <activity android:name=".List1DailyActivity" />
         <activity android:name=".List1RelationshipsActivity" />
         <activity android:name=".List1MentalityActivity" />
-        <activity android:name=".List1CourseActivity" />
+        <activity android:name=".List1CourseActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
         <activity android:name=".List1LoveActivity"/>
         <activity android:name=".List1EtcActivity"></activity>
 
@@ -31,11 +36,7 @@
         <activity android:name=".List1EtcStartActivity" ></activity>
 
 <!-- list 2 ~ loading -->
-        <activity android:name=".List2Activity"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        <activity android:name=".List2Activity"/>
         <activity android:name=".List3Activity"></activity>
         <activity android:name=".List4Activity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".List5Activity"></activity>
@@ -43,10 +44,6 @@
         <activity android:name=".List7Activity" ></activity>
         <activity android:name=".AgreementActivity"></activity>
         <activity android:name=".ListLoadingActivity"></activity>
-
-<!-- popup -->
-        <activity android:name=".ListPopupActivity" />
-
 
     </application>
 

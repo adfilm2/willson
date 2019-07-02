@@ -2,25 +2,46 @@ package com.example.appjam_willson;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
 public class List5Activity extends AppCompatActivity {
 
     public int check_num = 0;
-
+    LinearLayout list5_cancelbtn;
+    LinearLayout list5_backbtn;
+    private CustomDialog dialog;
+    Button list5_nextbtn;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list5);
+
+        context = this;
+
+        list5_nextbtn = (Button) findViewById(R.id.submit) ;
+        list5_nextbtn.setOnClickListener(new list5_nextbtn_listener());
+
+        list5_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list5_cancelbtn.setOnClickListener(new list5_cancelbtn_listener());
+
+        list5_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list5_backbtn.setOnClickListener(new list5_backbtn_listener());
 
 
     }
@@ -56,11 +77,51 @@ public class List5Activity extends AppCompatActivity {
 
                 if(check_num == 3) nextbtn.setEnabled(true);
                 else nextbtn.setEnabled(false);
-
-
-
     }
 
+    class list5_cancelbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Dialog();
+        }
+    }
+
+    class list5_backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
+    class list5_nextbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context, List6Activity.class);
+            startActivity(intent);
+        }
+    }
+    public void Dialog() {
+        dialog = new CustomDialog(List5Activity.this,
+                "벌써 50%나 진행했어요!\n그래도 그만 작성하시겠어요?", keepListener, exitListener);
+
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener keepListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
+
+    private View.OnClickListener exitListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
 
 }
 

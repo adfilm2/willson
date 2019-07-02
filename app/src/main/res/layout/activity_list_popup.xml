@@ -37,6 +37,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="13.9dp"
+                android:id="@+id/list_pop_textview"
                 />
 
             <Button
