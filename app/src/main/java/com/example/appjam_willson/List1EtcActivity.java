@@ -23,27 +23,24 @@ import android.widget.TextView;
 public class List1EtcActivity extends AppCompatActivity implements View.OnClickListener {
 
     RadioButton list1_etc_radiobtn;
-    Context context;
 
     Button list1_etc_nextbtn;
     TextView etc_custom_text;
     EditText etc_custom_edit_text;
     LinearLayout etc_usercustom_layout;
 
-    ImageButton list1_etc_backbtn;
-    ImageButton list1_etc_cancelbtn;
+    LinearLayout list1_etc_backbtn;
+    LinearLayout list1_etc_cancelbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_etc);
 
-        context = this;
-
-        list1_etc_cancelbtn = (ImageButton) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_etc_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_etc_cancelbtn.setOnClickListener(new list1_etc_cancelbtn_listener());
 
-        list1_etc_backbtn = (ImageButton) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_etc_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
         list1_etc_backbtn.setOnClickListener(new list1_etc_backbtn_listener());
 
         list1_etc_radiobtn = (RadioButton) findViewById(R.id.list1_etc_btn_visual);

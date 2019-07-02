@@ -8,12 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 public class List1EtcStartActivity extends AppCompatActivity {
 
-    ImageButton toolbar_backbtn;
+    LinearLayout toolbar_backbtn;
     Button etc_start_btn;
-    ImageButton etc_cancel_btn;
+    LinearLayout etc_cancel_btn;
     Context context;
 
     @Override
@@ -23,13 +24,13 @@ public class List1EtcStartActivity extends AppCompatActivity {
 
         context = this;
 
-        toolbar_backbtn = (ImageButton)findViewById(R.id.toolbar_list_btn_backbtn);
+        toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
 
         etc_start_btn = (Button)findViewById(R.id.list1_etc_start_btn);
         etc_start_btn.setOnClickListener(new etc_start_btn_listener());
 
-        etc_cancel_btn = (ImageButton)findViewById(R.id.toolbar_list_btn_cancel);
+        etc_cancel_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_cancel);
         etc_cancel_btn.setOnClickListener(new etc_cancel_btn_listener());
     }
 

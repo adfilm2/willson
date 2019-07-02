@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
@@ -26,10 +27,19 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     EditText daily_custom_edit_text;
     LinearLayout daily_usercustom_layout;
 
+    LinearLayout list1_daily_backbtn;
+    LinearLayout list1_daily_cancelbtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_daily);
+
+        list1_daily_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_daily_cancelbtn.setOnClickListener(new list1_daily_cancelbtn_listener());
+
+        list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
 
         list1_daily_radioGroup1 = (RadioGroup) findViewById(R.id.list1_daily_radioGroup1);
         list1_daily_radioGroup1.clearCheck();
@@ -105,6 +115,23 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
 
 
     }
+
+    class list1_daily_cancelbtn_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            ListPopupActivity customDialog = new ListPopupActivity(List1DailyActivity.this);
+            customDialog.callFunction();
+        }
+    }
+
+    class list1_daily_backbtn_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
+
     class daily_custom_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View v) {

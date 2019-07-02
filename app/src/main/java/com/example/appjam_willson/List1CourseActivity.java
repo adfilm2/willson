@@ -26,11 +26,20 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     EditText course_custom_edit_text;
     LinearLayout course_usercustom_layout;
 
+    LinearLayout list1_course_backbtn;
+    LinearLayout list1_course_cancelbtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_course);
+
+        list1_course_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_course_cancelbtn.setOnClickListener(new list1_course_cancelbtn_listener());
+
+        list1_course_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_course_backbtn.setOnClickListener(new list1_course_backbtn_listener());
 
         list1_course_radioGroup1 = (RadioGroup) findViewById(R.id.list1_course_radioGroup1);
         list1_course_radioGroup1.clearCheck();
@@ -101,6 +110,23 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
 
 
     }
+
+    class list1_course_cancelbtn_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            ListPopupActivity customDialog = new ListPopupActivity(List1CourseActivity.this);
+            customDialog.callFunction();
+        }
+    }
+
+    class list1_course_backbtn_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
+
 
     class course_custom_btn_listener implements View.OnClickListener {
         @Override

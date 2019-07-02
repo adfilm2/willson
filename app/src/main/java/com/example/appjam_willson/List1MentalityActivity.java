@@ -26,10 +26,20 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     EditText mentality_custom_edit_text;
     LinearLayout mentality_usercustom_layout;
 
+    LinearLayout list1_mentality_backbtn;
+    LinearLayout list1_mentality_cancelbtn;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_mentality);
+
+        list1_mentality_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_mentality_cancelbtn.setOnClickListener(new list1_mentality_cancelbtn_listener());
+
+        list1_mentality_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_mentality_backbtn.setOnClickListener(new list1_mentality_backbtn_listener());
 
         list1_mentality_radioGroup1 = (RadioGroup)findViewById(R.id.list1_mentality_radioGroup1);
         list1_mentality_radioGroup1.clearCheck();
@@ -138,6 +148,22 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
 
 
     }
+
+    class list1_mentality_cancelbtn_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            ListPopupActivity customDialog = new ListPopupActivity(List1MentalityActivity.this);
+            customDialog.callFunction();
+        }
+    }
+
+    class list1_mentality_backbtn_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
     class mentality_custom_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View v) {

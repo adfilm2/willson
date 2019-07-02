@@ -26,10 +26,21 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     EditText relationships_custom_edit_text;
     LinearLayout relationships_usercustom_layout;
 
+    LinearLayout list1_relationships_backbtn;
+    LinearLayout list1_relationships_cancelbtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_relationships);
+
+
+        list1_relationships_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_relationships_cancelbtn.setOnClickListener(new list1_relationships_cancelbtn_listener());
+
+        list1_relationships_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_relationships_backbtn.setOnClickListener(new list1_relationships_backbtn_listener());
+
 
         list1_relationships_radioGroup1 = (RadioGroup) findViewById(R.id.list1_relationships_radioGroup1);
         list1_relationships_radioGroup1.clearCheck();
@@ -103,6 +114,21 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
 
 
 
+    }
+
+    class list1_relationships_cancelbtn_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            ListPopupActivity customDialog = new ListPopupActivity(List1RelationshipsActivity.this);
+            customDialog.callFunction();
+        }
+    }
+
+    class list1_relationships_backbtn_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
     }
 
     class relationships_custom_btn_listener implements View.OnClickListener {

@@ -9,12 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 public class List1RelationshipsStartActivity extends AppCompatActivity {
 
-    ImageButton toolbar_backbtn;
+    LinearLayout toolbar_backbtn;
     Button relationships_start_btn;
-    ImageButton Relationships_cancel_btn;
+    LinearLayout Relationships_cancel_btn;
     Context context;
 
     @Override
@@ -24,13 +25,13 @@ public class List1RelationshipsStartActivity extends AppCompatActivity {
 
         context = this;
 
-        toolbar_backbtn = (ImageButton)findViewById(R.id.toolbar_list_btn_backbtn);
+        toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
 
         relationships_start_btn = (Button)findViewById(R.id.list1_relationships_start_btn);
         relationships_start_btn.setOnClickListener(new relationships_start_btn_listener());
 
-        Relationships_cancel_btn = (ImageButton)findViewById(R.id.toolbar_list_btn_cancel);
+        Relationships_cancel_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_cancel);
         Relationships_cancel_btn.setOnClickListener(new relationships_cancel_btn_listener());
     }
 
