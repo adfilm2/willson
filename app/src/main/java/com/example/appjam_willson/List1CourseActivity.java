@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static java.security.AccessController.getContext;
+
 public class List1CourseActivity extends AppCompatActivity implements OnClickListener {
 
     RadioGroup list1_course_radioGroup1;
@@ -28,7 +30,6 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
 
     LinearLayout list1_course_backbtn;
     LinearLayout list1_course_cancelbtn;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,5 +198,5 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
-
 }
+

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appjam_willson">
 
     <application
@@ -8,32 +9,45 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".List1EtcActivity"></activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".MainActivity" />
+
+<!-- list 1 -->
         <activity android:name=".List1DailyActivity" />
         <activity android:name=".List1RelationshipsActivity" />
         <activity android:name=".List1MentalityActivity" />
-        <activity android:name=".List1CourseActivity" />
-        <activity android:name=".List1EtcStartActivity" />
-        <activity android:name=".List1DailyStartActivity" />
-        <activity android:name=".List1RelationshipsStartActivity" />
-        <activity android:name=".List1MentalityStartActivity" />
-        <activity android:name=".List1CourseStartActivity" >
+        <activity android:name=".List1CourseActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".List1LoveStartActivity" />
-        <activity android:name=".List7Activity" />
-        <activity android:name=".List6Activity" />
-        <activity android:name=".ListPopupActivity" />
-        <activity android:name=".List3Activity"/>
-        <activity android:name=".AgreementActivity" />
-        <activity android:name=".List4Activity" />
+            </intent-filter></activity>
         <activity android:name=".List1LoveActivity"/>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".List1EtcActivity"></activity>
+
+<!-- list 1 start -->
+        <activity android:name=".List1DailyStartActivity" />
+        <activity android:name=".List1RelationshipsStartActivity" />
+        <activity android:name=".List1MentalityStartActivity" />
+        <activity android:name=".List1CourseStartActivity" />
+        <activity android:name=".List1LoveStartActivity" />
+        <activity android:name=".List1EtcStartActivity" ></activity>
+
+<!-- list 2 ~ loading -->
+        <activity android:name=".List2Activity"/>
+        <activity android:name=".List3Activity"></activity>
+        <activity android:name=".List4Activity" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".List5Activity"></activity>
+        <activity android:name=".List6Activity"></activity>
+        <activity android:name=".List7Activity" ></activity>
+        <activity android:name=".AgreementActivity"></activity>
+        <activity android:name=".ListLoadingActivity"></activity>
+
+<!-- popup -->
+        <activity android:name=".ListPopupActivity" />
+
 
     </application>
 

@@ -22,14 +22,12 @@
     <ScrollView
 
         xmlns:android="http://schemas.android.com/apk/res/android"
-
+        android:layout_weight="1"
         xmlns:tools="http://schemas.android.com/tools"
+        android:layout_marginBottom="12.5dp"
+        android:id="@+id/ScrollView1" android:layout_width="match_parent"
 
-        android:id="@+id/ScrollView1"
-
-        android:layout_width="match_parent"
-
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
 
@@ -37,7 +35,7 @@
 
             android:layout_width="match_parent"
 
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
 
             android:orientation="vertical" >
 
@@ -320,6 +318,18 @@
     </ScrollView>
 
 
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="31.7dp"
+            android:layout_marginBottom="32.6dp"
+            android:enabled="false"
+            android:background="@drawable/listnext_btn_selector"
+            android:text="다음"
+            android:textColor="#FFFFFF" />
 
 
 </LinearLayout>

@@ -16,7 +16,7 @@
         android:layout_height="6.7dp"
         android:progressDrawable="@drawable/list_progressbar"
         android:max="100"
-        android:progress="12"/>
+        android:progress="21"/>
 
 
 
