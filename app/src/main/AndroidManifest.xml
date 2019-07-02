@@ -12,6 +12,10 @@
         <activity android:name=".List2Activity">
         </activity>
         <activity android:name=".List7Activity" >
+
+
+        </activity>
+        <activity android:name=".ListLoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
