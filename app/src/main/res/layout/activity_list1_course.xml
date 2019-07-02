@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <include
         android:id="@+id/activity_list1_course_toolbar"
@@ -15,14 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="6.7dp"
         android:progressDrawable="@drawable/list_progressbar"
-        android:max="100" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/list_progress_shadow">
-    </View>
+        android:max="100"
+        android:background="#ffffff"
+        android:elevation="5dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -43,7 +39,7 @@
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="10sp"
         android:layout_marginBottom="7dp"
-        android:text="당신의 연애 고민은\n어디에 해당하나요?"
+        android:text="당신의 진로 고민은\n어디에 해당하나요?"
         />
 
     <TextView
@@ -59,8 +55,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="9.2dp">
+        android:orientation="vertical">
 
         <RadioGroup
             android:id="@+id/list1_course_radioGroup1"
@@ -82,7 +77,9 @@
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
                 android:textColorLink="@color/list_btns_text_selector"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
 
             <RadioButton
                 android:id="@+id/list1_course_btn_employment"
@@ -97,14 +94,17 @@
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
                 android:textColorLink="@color/list_btns_text_selector"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
         </RadioGroup>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <RadioGroup
             android:id="@+id/list1_course_radioGroup2"
@@ -125,7 +125,9 @@
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
                 android:textColorLink="@color/list_btns_text_selector"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginBottom="20dp"
+                android:elevation="9dp"/>
 
             <LinearLayout
                 android:layout_width="1dp"
@@ -134,27 +136,34 @@
                 android:layout_marginRight="27dp"
                 android:background="@drawable/list_btns_selector"
                 android:id="@+id/list1_course_btn_usercustom_layout"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"
+                android:elevation="9dp">
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="직접입력"
-                        android:textColor="@color/lightPurple"
-                        android:textSize="16sp"
-                        android:drawableLeft="@drawable/btn_plus"
-                        android:gravity="left|center"
-                        android:layout_gravity="center"
                         android:id="@+id/list1_course_btn_usercustom"
-                        android:visibility="visible"
-                        android:clickable="true"
-                        android:onClick="list1_course_usercustom_listener"
-                        />
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="직접입력"
+                            android:textColor="@color/lightPurple"
+                            android:textSize="16sp"
+                            android:drawableLeft="@drawable/btn_plus"
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:visibility="visible"
+                            />
+
+                    </LinearLayout>
 
                     <EditText
                         android:layout_width="match_parent"
@@ -184,25 +193,30 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="32.6dp">
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <Button
                 android:id="@+id/list1_course_btn_next"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
+                android:layout_height="46.1dp"
                 android:layout_marginLeft="31.7dp"
                 android:layout_marginRight="31.7dp"
-                android:layout_marginBottom="-93dp"
+                android:layout_marginBottom="32.6dp"
                 android:background="@drawable/listnext_btn_selector"
                 android:enabled="false"
                 android:text="다음"
-                android:textColor="@color/white" />
-        </RelativeLayout>
+                android:textColor="@color/white"
+                android:elevation="9dp"
+                />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

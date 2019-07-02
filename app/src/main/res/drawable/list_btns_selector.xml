@@ -6,7 +6,7 @@
                 android:radius="5dp"
                 />
             <solid
-                android:color="@color/lightPurple"/>
+                android:color="@color/lightPurple" />
         </shape>
     </item>
     <item android:state_checked="false">

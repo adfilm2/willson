@@ -22,7 +22,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     RadioGroup list1_mentality_radioGroup3;
 
     Button list1_mentality_nextbtn;
-    TextView mentality_custom_text;
+    LinearLayout mentality_custom_text;
     EditText mentality_custom_edit_text;
     LinearLayout mentality_usercustom_layout;
 
@@ -54,7 +54,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         list1_mentality_nextbtn = (Button) findViewById(R.id.list1_mentality_btn_next);
         list1_mentality_nextbtn.setOnClickListener(this);
 
-        mentality_custom_text = (TextView)findViewById(R.id.list1_mentality_btn_usercustom);
+        mentality_custom_text = (LinearLayout)findViewById(R.id.list1_mentality_btn_usercustom);
         mentality_custom_text.setOnClickListener(new mentality_custom_btn_listener());
 
         mentality_custom_edit_text = (EditText)findViewById(R.id.list1_mentality_usercustom_edittext);

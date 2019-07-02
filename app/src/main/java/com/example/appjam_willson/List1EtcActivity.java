@@ -25,7 +25,7 @@ public class List1EtcActivity extends AppCompatActivity implements View.OnClickL
     RadioButton list1_etc_radiobtn;
 
     Button list1_etc_nextbtn;
-    TextView etc_custom_text;
+    LinearLayout etc_custom_text;
     EditText etc_custom_edit_text;
     LinearLayout etc_usercustom_layout;
 
@@ -49,7 +49,7 @@ public class List1EtcActivity extends AppCompatActivity implements View.OnClickL
         list1_etc_nextbtn = (Button) findViewById(R.id.list1_etc_btn_next);
         list1_etc_nextbtn.setOnClickListener(this);
 
-        etc_custom_text = (TextView)findViewById(R.id.list1_etc_btn_usercustom);
+        etc_custom_text = (LinearLayout)findViewById(R.id.list1_etc_btn_usercustom);
         etc_custom_text.setOnClickListener(new etc_custom_btn_listener());
 
         etc_custom_edit_text = (EditText)findViewById(R.id.list1_etc_usercustom_edittext);

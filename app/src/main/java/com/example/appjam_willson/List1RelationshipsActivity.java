@@ -22,7 +22,7 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     RadioGroup list1_relationships_radioGroup2;
 
     Button list1_relationships_nextbtn;
-    TextView relationships_custom_text;
+    LinearLayout relationships_custom_text;
     EditText relationships_custom_edit_text;
     LinearLayout relationships_usercustom_layout;
 
@@ -52,7 +52,7 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         list1_relationships_nextbtn = (Button) findViewById(R.id.list1_relationships_btn_next);
         list1_relationships_nextbtn.setOnClickListener(this);
 
-        relationships_custom_text = (TextView)findViewById(R.id.list1_relationships_btn_usercustom);
+        relationships_custom_text = (LinearLayout)findViewById(R.id.list1_relationships_btn_usercustom);
         relationships_custom_text.setOnClickListener(new relationships_custom_btn_listener());
 
         relationships_custom_edit_text = (EditText)findViewById(R.id.list1_relationships_usercustom_edittext);

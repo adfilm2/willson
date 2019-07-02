@@ -23,7 +23,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     RadioGroup list1_radioGroup2;
 
     Button list1_nextbtn;
-    TextView custom_text;
+    LinearLayout custom_text;
     EditText custom_edit_text;
     LinearLayout usercustom_layout;
 
@@ -52,7 +52,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         list1_nextbtn = (Button) findViewById(R.id.list1_btn_next);
         list1_nextbtn.setOnClickListener(this);
 
-        custom_text = (TextView)findViewById(R.id.list1_btn_usercustom);
+        custom_text = (LinearLayout)findViewById(R.id.list1_btn_usercustom);
         custom_text.setOnClickListener(new custom_btn_listener());
 
         custom_edit_text = (EditText)findViewById(R.id.list1_usercustom_edittext);

@@ -22,7 +22,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     RadioGroup list1_course_radioGroup2;
 
     Button list1_course_nextbtn;
-    TextView course_custom_text;
+    LinearLayout course_custom_text;
     EditText course_custom_edit_text;
     LinearLayout course_usercustom_layout;
 
@@ -51,7 +51,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         list1_course_nextbtn = (Button) findViewById(R.id.list1_course_btn_next);
         list1_course_nextbtn.setOnClickListener(this);
 
-        course_custom_text = (TextView)findViewById(R.id.list1_course_btn_usercustom);
+        course_custom_text = (LinearLayout) findViewById(R.id.list1_course_btn_usercustom);
         course_custom_text.setOnClickListener(new course_custom_btn_listener());
 
         course_custom_edit_text = (EditText)findViewById(R.id.list1_course_usercustom_edittext);

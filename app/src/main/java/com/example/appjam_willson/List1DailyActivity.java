@@ -23,7 +23,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     RadioGroup list1_daily_radioGroup2;
 
     Button list1_daily_nextbtn;
-    TextView daily_custom_text;
+    LinearLayout daily_custom_text;
     EditText daily_custom_edit_text;
     LinearLayout daily_usercustom_layout;
 
@@ -51,7 +51,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         list1_daily_nextbtn = (Button) findViewById(R.id.list1_daily_btn_next);
         list1_daily_nextbtn.setOnClickListener(this);
 
-        daily_custom_text = (TextView)findViewById(R.id.list1_daily_btn_usercustom);
+        daily_custom_text = (LinearLayout)findViewById(R.id.list1_daily_btn_usercustom);
         daily_custom_text.setOnClickListener(new daily_custom_btn_listener());
 
         daily_custom_edit_text = (EditText)findViewById(R.id.list1_daily_usercustom_edittext);
