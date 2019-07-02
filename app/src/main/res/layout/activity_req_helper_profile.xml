@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@color/white">
 
         <include
             android:id="@+id/toolbar_asker"
@@ -21,7 +22,7 @@
             android:orientation="vertical"
             android:background="@color/white"
             android:layout_marginBottom="15dp"
-            android:elevation="10dp">
+            android:elevation="7dp">
             //프로필 이미지
             <ImageView
                 android:layout_width="60dp"
@@ -204,6 +205,7 @@
                     android:background="@drawable/rounded_corner_grey"
                     android:layout_marginHorizontal="15.4dp"
                     android:textSize="14sp"
+                    android:layout_marginTop="12.8dp"
                     android:layout_marginBottom="9.4dp"
                     android:text="gkr학창시절 어저구저WJrn sjansk저는 부모님의 반ㅇ대에 붖딪셯.....\n\n\n\n아이이아그랫다\n\n\nrmfoTek그랬답니다."
                     android:padding="14.4dp"/>
