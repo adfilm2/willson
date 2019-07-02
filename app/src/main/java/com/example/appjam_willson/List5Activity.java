@@ -16,14 +16,17 @@ public class List5Activity extends AppCompatActivity {
 
     public int check_num = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list5);
 
+
     }
 
     public void char_check(View view){
+        Button nextbtn = (Button)findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;
 
                 if (check_num < 3) {
@@ -51,6 +54,8 @@ public class List5Activity extends AppCompatActivity {
                     }
                 }
 
+                if(check_num == 3) nextbtn.setEnabled(true);
+                else nextbtn.setEnabled(false);
 
 
 

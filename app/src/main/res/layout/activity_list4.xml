@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:id="@+id/relative">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="141.1dp"
+            android:background="@color/white">
 
         <include
             android:id="@+id/activity_list1_toolbar"
             layout="@layout/toolbar_list"/>
 
-        <ProgressBar
-            android:id="@+id/toolbar_list_progressbar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="6.7dp"
-            android:progressDrawable="@drawable/list_progressbar"
-            android:max="100"
-            android:progress="37"/>
+
+                <ProgressBar
+                    android:id="@+id/toolbar_list_progressbar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6.7dp"
+                    android:layout_marginTop="85.4dp"
+                    android:progressDrawable="@drawable/list_progressbar"
+                    android:max="100"
+                    android:progress="37"
+                    android:progressTint="@color/lightPurple" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,42 +98,46 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
-                                    android:lineSpacingExtra="11sp"
-                                    android:text="0"
+                    android:lineSpacingExtra="11sp"
+                    android:text="0"
+                    android:id="@+id/textViewCount"
+                    android:layout_toLeftOf ="@id/list4_totalbyte"
 
-                                    android:id="@+id/textViewCount"
-                                    android:layout_toLeftOf ="@id/list4_totalbyte"
-
-
-                                    />
+                    android:layout_alignBottom="@id/list4_totalbyte"/>
 
                                 <TextView
 
-                                    android:layout_width="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/300자"
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/list4_totalbyte"
 
-                                    android:layout_height="wrap_content"
 
-                                    android:text="/300자"
-                                    android:id="@+id/list4_totalbyte"
-                                    android:layout_marginRight="21dp"
-                                    android:layout_alignParentRight="true" />
-                        </RelativeLayout>
 
+                    />
                 </RelativeLayout>
 
-        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:layout_gravity="center"
-            android:layout_width="296.6dp"
-            android:layout_height="46.1dp"
-            android:id="@+id/list4_btn1"
-            android:text="다음"
-            android:textColor="#ffff"
-            android:background="#6262ac"
-            android:textSize="14sp"
+                <Button
+                    android:id="@+id/list4_btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="31.7dp"
+                    android:layout_marginBottom="32.6dp"
+                    android:background="@drawable/next_btn_darkpurple"
+                    android:enabled="false"
+                    android:text="다음"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF" />
 
-            android:layout_marginBottom="32.6dp"
-            />
 
-</LinearLayout>
+                                </RelativeLayout>
+                        </RelativeLayout>
+                </LinearLayout>
+        </RelativeLayout>
+</RelativeLayout>

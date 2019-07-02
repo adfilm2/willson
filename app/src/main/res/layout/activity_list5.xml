@@ -93,7 +93,7 @@
                     android:textAlignment="center"
                     android:text="모두"
                     android:textColor="@color/text_color_selector"
-                    android:checked="false"
+                    android:checked="true"
                     android:background="@drawable/btn_selector"/>
 
             </RadioGroup>
@@ -352,6 +352,7 @@
 
 
     </LinearLayout>
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -360,10 +361,11 @@
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_height="60dp"
+        android:layout_height="46.1dp"
         android:layout_marginHorizontal="31.7dp"
         android:layout_marginBottom="32.6dp"
-        android:background="@drawable/next_btn_darkpurple"
+        android:enabled="false"
+        android:background="@drawable/listnext_btn_selector"
         android:text="다음"
         android:textColor="#FFFFFF" />
 </RelativeLayout>
