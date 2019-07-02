@@ -19,9 +19,9 @@
             </LinearLayout>
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView1"
+                android:layout_width="91dp"
+                android:layout_height="80dp"
+                android:id="@+id/list_pop_image"
                 android:layout_gravity="center"
                 android:src="@drawable/list_img_alert_willson"/>
 
@@ -44,7 +44,7 @@
                 android:layout_gravity="center"
                 android:layout_width="159.5dp"
                 android:layout_height="39.2dp"
-                android:id="@+id/button1"
+                android:id="@+id/list_pop_keepbtn"
                 android:text="계속 작성하기"
                 android:textColor="#ffff"
                 android:background="@drawable/rounded_corner_darkblue"
@@ -60,13 +60,8 @@
                 android:text="그만하기"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20.7dp"
+                android:id="@+id/list_pop_exitbtn"
                 />
-
-
-
-
-
-
 
         </LinearLayout>
 </LinearLayout>
