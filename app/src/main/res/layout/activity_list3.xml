@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="340dp"
         android:layout_marginLeft="21.1dp"
+        android:layout_marginRight="21.1dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
@@ -58,6 +59,48 @@
             android:textColor="#616161"
             android:textSize="15sp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -66,7 +109,10 @@
             android:layout_gravity="center"
 
             android:layout_marginTop="70.4dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:theme="@style/CustomRadioButton">
+
+
 
             <RadioButton
                 android:id="@+id/rg_btn1"

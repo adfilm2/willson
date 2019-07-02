@@ -11,9 +11,9 @@
             android:layout_height="141.1dp"
             android:background="@color/white">
 
-                <include
-                    android:id="@+id/activity_list1_toolbar"
-                    layout="@layout/toolbar_list" />
+        <include
+            android:id="@+id/activity_list1_toolbar"
+            layout="@layout/toolbar_list"/>
 
 
                 <ProgressBar
@@ -27,79 +27,76 @@
                     android:progress="37"
                     android:progressTint="@color/lightPurple" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="92.1dp"
-                    android:layout_height="5dp"
-                    android:layout_gravity="bottom"
-                    android:background="@drawable/list_progress_shadow">
-                </View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="340dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="103.7dp"
-                    android:textSize="15dp"
-                    android:textColor="@color/darkPurple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="37%" />
-        </RelativeLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/darkPurple"
+            android:lineSpacingExtra="21sp"
+            android:gravity="center_horizontal"
+            android:text="37%" />
+<!--
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:layout_marginTop="175dp"
+            android:layout_marginTop="54.3dp"
             android:layout_marginLeft="21dp"
             android:textColor="#2c2c4d"
             android:lineSpacingExtra="10sp"
             android:layout_marginBottom="18.9dp"
-            android:text="구체적으로 어떤 내용인가요?"
-
+            android:text="구체적으로 어떤 내용인가요??"
+            android:padding="11.4dp"
             />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="213.6dp"
-                    android:layout_height="244.8dp"
-                    android:layout_marginLeft="21dp"
-                    android:layout_marginRight="21dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/rounded_corner_radius5">
-
-
-
-                <EditText
-
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:layout_marginLeft="10.5dp"
-                    android:layout_marginRight="10.5dp"
-                    android:layout_marginTop="14.5dp"
-                    android:layout_marginBottom="80dp"
-                    android:id="@+id/list4_edittext"
-                    android:gravity="right"
-                    android:background="@null"
-                    />
-
-
-
-                </LinearLayout>
+            -->
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_gravity="center"
+                    android:id="@+id/list4_linear"
+                    android:layout_height="244.8dp"
+                    android:layout_marginLeft="21dp"
+                    android:layout_marginRight="21dp"
+                    android:layout_marginTop="54.3dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_corner_radius5">
 
-                <TextView
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_above="@+id/list4_relative"
+                            android:layout_marginLeft="10.5dp"
+                            android:layout_marginTop="14.5dp"
+                            android:layout_marginRight="10.5dp"
+                            >
+                                <EditText
+                                    android:id="@+id/list4_edittext"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@null"
+                                    android:gravity="left"
+                                    android:hint="ex) 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. ">
+                                </EditText>
+                        </ScrollView>
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="10dp"
+                            android:id="@+id/list4_relative"
+                            >
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
 
                     android:lineSpacingExtra="11sp"
                     android:text="0"
@@ -108,7 +105,7 @@
 
                     android:layout_alignBottom="@id/list4_totalbyte"/>
 
-                <TextView
+                                <TextView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -121,33 +118,26 @@
                     />
                 </RelativeLayout>
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/list4_btn1"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="46.1dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginHorizontal="31.7dp"
-            android:layout_marginBottom="32.6dp"
-            android:background="@drawable/next_btn_darkpurple"
-            android:enabled="false"
-            android:text="다음"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF" />
+            android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/list4_btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="46.1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginHorizontal="31.7dp"
+                    android:layout_marginBottom="32.6dp"
+                    android:background="@drawable/next_btn_darkpurple"
+                    android:enabled="false"
+                    android:text="다음"
+                    android:textSize="14sp"
+                    android:textColor="#FFFFFF" />
 
 
-</RelativeLayout>
-
-
-
-
-
-
-
-
-
-
+                                </RelativeLayout>
+                        </RelativeLayout>
+                </LinearLayout>
+        </RelativeLayout>
 </RelativeLayout>
