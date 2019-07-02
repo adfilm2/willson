@@ -43,7 +43,12 @@
         <activity android:name=".List4Activity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".List5Activity"></activity>
         <activity android:name=".List6Activity"></activity>
-        <activity android:name=".List7Activity" ></activity>
+        <activity android:name=".List7Activity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AgreementActivity"></activity>
         <activity android:name=".ListLoadingActivity"></activity>
 
