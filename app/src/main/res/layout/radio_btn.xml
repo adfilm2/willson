@@ -54,6 +54,7 @@
         >
 
         <RadioGroup
+            android:id="@+id/list3_radiogroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="fill_horizontal"

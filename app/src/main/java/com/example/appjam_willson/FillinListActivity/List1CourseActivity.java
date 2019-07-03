@@ -1,8 +1,10 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.FillinListActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,9 +14,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.R;
 
 public class List1CourseActivity extends AppCompatActivity implements OnClickListener {
 
@@ -22,18 +26,22 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     RadioGroup list1_course_radioGroup2;
 
     Button list1_course_nextbtn;
-    TextView course_custom_text;
+    LinearLayout course_custom_text;
     EditText course_custom_edit_text;
     LinearLayout course_usercustom_layout;
 
     LinearLayout list1_course_backbtn;
     LinearLayout list1_course_cancelbtn;
 
+    Context context;
+    private CustomDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_course);
+
+        context=this;
 
         list1_course_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_course_cancelbtn.setOnClickListener(new list1_course_cancelbtn_listener());
@@ -51,7 +59,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         list1_course_nextbtn = (Button) findViewById(R.id.list1_course_btn_next);
         list1_course_nextbtn.setOnClickListener(this);
 
-        course_custom_text = (TextView)findViewById(R.id.list1_course_btn_usercustom);
+        course_custom_text = (LinearLayout) findViewById(R.id.list1_course_btn_usercustom);
         course_custom_text.setOnClickListener(new course_custom_btn_listener());
 
         course_custom_edit_text = (EditText)findViewById(R.id.list1_course_usercustom_edittext);
@@ -107,15 +115,14 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
 
     @SuppressLint("ResourceType")
     public void onClick(View v) {
-
-
+        Intent intent = new Intent(context, List2Activity.class);
+        startActivity(intent);
     }
 
     class list1_course_cancelbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            ListPopupActivity customDialog = new ListPopupActivity(List1CourseActivity.this);
-            customDialog.callFunction();
+            Dialog();
         }
     }
 
@@ -126,9 +133,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         }
     }
 
-
-
-    class course_custom_btn_listener implements View.OnClickListener {
+    class course_custom_btn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
             String title;
@@ -152,7 +157,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         }
     }
 
-    class course_custom_edit_Clicklistener implements View.OnClickListener {
+    class course_custom_edit_Clicklistener implements OnClickListener {
         @Override
         public void onClick(View view) {
             String title;
@@ -198,4 +203,26 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
 
+    public void Dialog() {
+        dialog = new CustomDialog(List1CourseActivity.this, "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", keepListener, exitListener);
+
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private OnClickListener keepListener = new OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
+
+    private OnClickListener exitListener = new OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
 }
+

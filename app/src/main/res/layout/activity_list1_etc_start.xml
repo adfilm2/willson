@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <include
         android:id="@+id/activity_list1_etc_start_toolbar"
@@ -45,24 +46,28 @@
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom">
+            android:layout_height="6dp"
+            android:background="@drawable/its_shadow"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="71dp"
-                android:background="@drawable/gradient_btn_color"
-                android:layout_alignParentBottom="true"
-                android:text="시작하기"
-                android:paddingTop="14.6dp"
-                android:gravity="center_horizontal"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:id="@+id/list1_etc_start_btn"
-                />
-        </RelativeLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:background="@drawable/gradient_btn_color"
+            android:text="시작하기"
+            android:paddingTop="14.6dp"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:id="@+id/list1_etc_start_btn"
+            android:elevation="9dp"
+            />
+
 
     </LinearLayout>
 

@@ -1,15 +1,15 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.FillinListActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appjam_willson.R;
 
 public class ListLoadingActivity extends AppCompatActivity {
 

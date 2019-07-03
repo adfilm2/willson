@@ -1,14 +1,15 @@
-package com.example.appjam_willson;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appjam_willson.R;
 
 public class List1CourseStartActivity extends AppCompatActivity {
 
