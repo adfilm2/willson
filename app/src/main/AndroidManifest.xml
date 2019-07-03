@@ -14,7 +14,8 @@
         <activity android:name=".FillinHelperSignUpActivity.HelperSignUp3">
 
         </activity>
-        <activity android:name=".FillinHelperSignUpActivity.HelperSignUp2" > <intent-filter>
+        <activity android:name=".FillinHelperSignUpActivity.HelperSignUp2" >
+            <intent-filter>
             <action android:name="android.intent.action.SEND"/>
             <category android:name="android.intent.category.DEFAULT"/>
             <data android:mimeType="text/plain"/>
