@@ -3,6 +3,7 @@ package com.example.appjam_willson.FillinListActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -38,12 +39,23 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     String packName;
     int resid;
 
+    RadioButton visual;
+
+    Typeface typebold;
+    Typeface typereg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_etc);
 
         context = this;
+
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
+        visual = (RadioButton) findViewById(R.id.list1_etc_btn_visual);
+        visual.setTypeface(typereg);
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();

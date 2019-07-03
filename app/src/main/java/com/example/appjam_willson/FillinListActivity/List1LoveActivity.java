@@ -62,10 +62,6 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        resName = "@drawable/list_img_alert_willson";
-        packName = this.getPackageName();
-        resid = getResources().getIdentifier(resName, "drawable", packName);
-
         onesidelove = (RadioButton) findViewById(R.id.list1_btn_onesidelove);
         somthing = (RadioButton) findViewById(R.id.list1_btn_somthing);
         conflict = (RadioButton) findViewById(R.id.list1_btn_conflict);
@@ -75,6 +71,10 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         saygoodbye.setTypeface(typereg);
         onesidelove.setTypeface(typereg);
         somthing.setTypeface(typereg);
+
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
 
         list1_love_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_love_cancelbtn.setOnClickListener(new list1_love_cancelbtn_listener());

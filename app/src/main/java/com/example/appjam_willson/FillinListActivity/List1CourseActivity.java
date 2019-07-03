@@ -3,6 +3,7 @@ package com.example.appjam_willson.FillinListActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -12,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -40,6 +42,14 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     String packName;
     int resid;
 
+    RadioButton study;
+    RadioButton employment;
+    RadioButton transfer;
+
+    Typeface typebold;
+    Typeface typereg;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,10 +57,20 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
 
         context=this;
 
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
+        study = (RadioButton) findViewById(R.id.list1_course_btn_study);
+        employment = (RadioButton) findViewById(R.id.list1_course_btn_employment);
+        transfer = (RadioButton) findViewById(R.id.list1_course_btn_transfer);
+
+        study.setTypeface(typereg);
+        employment.setTypeface(typereg);
+        transfer.setTypeface(typereg);
+
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
-
 
         list1_course_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_course_cancelbtn.setOnClickListener(new list1_course_cancelbtn_listener());
@@ -82,6 +102,17 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != -1) {
+
+                if(checkedId == R.id.list1_course_btn_study){
+                    study.setTypeface(typebold);
+                    employment.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_course_btn_employment){
+                    employment.setTypeface(typebold);
+                    study.setTypeface(typereg);
+                }
+                transfer.setTypeface(typereg);
+
                 list1_course_nextbtn.setEnabled(true);
                 hidekeyboard(course_custom_edit_text);
                 list1_course_radioGroup2.setOnCheckedChangeListener(null);
@@ -104,6 +135,16 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if(checkedId != -1) {
+
+                if(checkedId == R.id.list1_course_btn_transfer){
+                    transfer.setTypeface(typebold);
+                }
+                else {
+                    transfer.setTypeface(typereg);
+                }
+                study.setTypeface(typereg);
+                employment.setTypeface(typereg);
+
                 list1_course_nextbtn.setEnabled(true);
                 hidekeyboard(course_custom_edit_text);
                 list1_course_radioGroup1.setOnCheckedChangeListener(null);
@@ -152,6 +193,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
                 course_custom_text.setVisibility(View.VISIBLE);
                 course_custom_edit_text.setVisibility(View.INVISIBLE);
             }
+            study.setTypeface(typereg);
+            employment.setTypeface(typereg);
+            transfer.setTypeface(typereg);
             list1_course_radioGroup1.setOnCheckedChangeListener(null);
             list1_course_radioGroup1.clearCheck();
             list1_course_radioGroup1.setOnCheckedChangeListener(radioGroup_course_listener1);
@@ -179,6 +223,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             else {
                 list1_course_nextbtn.setEnabled(true);
             }
+            study.setTypeface(typereg);
+            employment.setTypeface(typereg);
+            transfer.setTypeface(typereg);
             list1_course_radioGroup1.setOnCheckedChangeListener(null);
             list1_course_radioGroup1.clearCheck();
             list1_course_radioGroup1.setOnCheckedChangeListener(radioGroup_course_listener1);

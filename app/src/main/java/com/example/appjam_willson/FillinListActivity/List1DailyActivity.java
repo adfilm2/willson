@@ -3,6 +3,7 @@ package com.example.appjam_willson.FillinListActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -12,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -40,12 +42,33 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     String packName;
     int resid;
 
+    RadioButton habit;
+    RadioButton alba;
+    RadioButton economy;
+    RadioButton trip;
+
+    Typeface typebold;
+    Typeface typereg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_daily);
 
         context=this;
+
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
+        habit = (RadioButton) findViewById(R.id.list1_daily_btn_habit);
+        alba = (RadioButton) findViewById(R.id.list1_daily_btn_alba);
+        economy = (RadioButton) findViewById(R.id.list1_daily_btn_economy);
+        trip = (RadioButton) findViewById(R.id.list1_daily_btn_trip);
+
+        habit.setTypeface(typereg);
+        alba.setTypeface(typereg);
+        economy.setTypeface(typereg);
+        trip.setTypeface(typereg);
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -83,6 +106,18 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != -1) {
+
+                if(checkedId == R.id.list1_daily_btn_habit){
+                    habit.setTypeface(typebold);
+                    alba.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_daily_btn_alba){
+                    alba.setTypeface(typebold);
+                    habit.setTypeface(typereg);
+                }
+                economy.setTypeface(typereg);
+                trip.setTypeface(typereg);
+
                 list1_daily_nextbtn.setEnabled(true);
                 hidekeyboard(daily_custom_edit_text);
                 list1_daily_radioGroup2.setOnCheckedChangeListener(null);
@@ -105,6 +140,18 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if(checkedId != -1) {
+
+                if(checkedId == R.id.list1_daily_btn_economy){
+                    economy.setTypeface(typebold);
+                    trip.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_daily_btn_trip){
+                    trip.setTypeface(typebold);
+                    economy.setTypeface(typereg);
+                }
+                habit.setTypeface(typereg);
+                alba.setTypeface(typereg);
+
                 list1_daily_nextbtn.setEnabled(true);
                 hidekeyboard(daily_custom_edit_text);
                 list1_daily_radioGroup1.setOnCheckedChangeListener(null);
@@ -155,6 +202,10 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
                 daily_custom_text.setVisibility(View.VISIBLE);
                 daily_custom_edit_text.setVisibility(View.INVISIBLE);
             }
+            habit.setTypeface(typereg);
+            alba.setTypeface(typereg);
+            economy.setTypeface(typereg);
+            trip.setTypeface(typereg);
             list1_daily_radioGroup1.setOnCheckedChangeListener(null);
             list1_daily_radioGroup1.clearCheck();
             list1_daily_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
@@ -182,6 +233,10 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
             else{
                 list1_daily_nextbtn.setEnabled(true);
             }
+            habit.setTypeface(typereg);
+            alba.setTypeface(typereg);
+            economy.setTypeface(typereg);
+            trip.setTypeface(typereg);
             list1_daily_radioGroup1.setOnCheckedChangeListener(null);
             list1_daily_radioGroup1.clearCheck();
             list1_daily_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
