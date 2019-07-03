@@ -102,6 +102,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="21dp"
+                android:layout_marginTop="7.9dp"
+
                 android:textSize="16sp"
                 android:textColor="@color/middlepurple"
                 android:lineSpacingExtra="9sp"
@@ -126,6 +128,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="7.9dp"
                 android:layout_marginLeft="21dp"
                 android:textSize="16sp"
                 android:textColor="@color/middlepurple"
