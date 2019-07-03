@@ -23,7 +23,13 @@
 
         <!--list 1-->
 
-        <activity android:name=".FillinListActivity.List1LoveActivity" />
+        <activity android:name=".FillinListActivity.List1LoveActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".FillinListActivity.List1CourseActivity" />
         <activity android:name=".FillinListActivity.List1MentalityActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
@@ -34,13 +40,7 @@
 
         <activity android:name=".FillinListActivity.List2Activity" />
         <activity android:name=".FillinListActivity.List3Activity" />
-        <activity android:name=".FillinListActivity.List4Activity" android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".FillinListActivity.List4Activity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".FillinListActivity.List5Activity" />
         <activity android:name=".FillinListActivity.List6Activity" />
         <activity android:name=".FillinListActivity.List7Activity" />

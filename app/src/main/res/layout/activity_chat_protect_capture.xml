@@ -44,7 +44,6 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRignt="8dp"
             android:gravity="right"
             android:layout_gravity="right"
             android:orientation="horizontal"
@@ -55,7 +54,6 @@
                 android:layout_height="36dp"
                 android:layout_gravity="right"
                 android:layout_marginBottom="8dp"
-                android:paddingRignt="8dp"
                 android:id="@+id/chat_protect_okbtn"
                 android:text="OK"
                 android:textColor="#673ab7"

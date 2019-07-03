@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -40,7 +42,6 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     String resName;
     String packName;
     int resid;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             if (checkedId != -1) {
                 list1_nextbtn.setEnabled(true);
                 hidekeyboard(custom_edit_text);
+
                 list1_radioGroup2.setOnCheckedChangeListener(null);
                 list1_radioGroup2.clearCheck();
                 list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
