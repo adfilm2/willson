@@ -21,7 +21,7 @@
         android:layout_height="5dp"
         android:layout_gravity="bottom"
         android:background="@drawable/list_progress_shadow"
-        android:layout_marginBottom="11.5dp">
+        android:layout_marginBottom="6.5dp">
     </View>
 
     <TextView
