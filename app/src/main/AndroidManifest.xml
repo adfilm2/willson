@@ -12,38 +12,43 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity" />
+        <!--list 1 start-->
 
-<!-- list 1 -->
-        <activity android:name=".List1DailyActivity" />
-        <activity android:name=".List1RelationshipsActivity" />
-        <activity android:name=".List1MentalityActivity" />
-        <activity android:name=".List1CourseActivity" >
+        <activity android:name=".FillinListActivity.List1LoveStartActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
-        <activity android:name=".List1LoveActivity"/>
-        <activity android:name=".List1EtcActivity"></activity>
+            </intent-filter>
+        </activity>
+        <activity android:name=".FillinListActivity.List1CourseStartActivity" />
+        <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
+        <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
+        <activity android:name=".FillinListActivity.List1DailyStartActivity" />
+        <activity android:name=".FillinListActivity.List1EtcStartActivity" />
 
-<!-- list 1 start -->
-        <activity android:name=".List1DailyStartActivity" />
-        <activity android:name=".List1RelationshipsStartActivity" />
-        <activity android:name=".List1MentalityStartActivity" />
-        <activity android:name=".List1CourseStartActivity" />
-        <activity android:name=".List1LoveStartActivity" />
-        <activity android:name=".List1EtcStartActivity" ></activity>
+        <!--list 1-->
 
-<!-- list 2 ~ loading -->
-        <activity android:name=".List2Activity"/>
-        <activity android:name=".List3Activity"></activity>
-        <activity android:name=".List4Activity" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".List5Activity"></activity>
-        <activity android:name=".List6Activity"></activity>
-        <activity android:name=".List7Activity" ></activity>
-        <activity android:name=".AgreementActivity"></activity>
-        <activity android:name=".ListLoadingActivity"></activity>
+        <activity android:name=".FillinListActivity.List1LoveActivity" />
+        <activity android:name=".FillinListActivity.List1CourseActivity" />
+        <activity android:name=".FillinListActivity.List1MentalityActivity" />
+        <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
+        <activity android:name=".FillinListActivity.List1DailyActivity" />
+        <activity android:name=".FillinListActivity.List1EtcActivity" />
+
+        <!--lists-->
+
+        <activity android:name=".FillinListActivity.List2Activity" />
+        <activity android:name=".FillinListActivity.List3Activity" />
+        <activity android:name=".FillinListActivity.List4Activity" />
+        <activity android:name=".FillinListActivity.List5Activity" />
+        <activity android:name=".FillinListActivity.List6Activity" />
+        <activity android:name=".FillinListActivity.List7Activity" />
+        <activity android:name=".FillinListActivity.ListAgreementActivity" />
+        <activity android:name=".FillinListActivity.ListLoadingActivity" />
+
+        <activity android:name=".MainActivity" />
+
 
     </application>
 
