@@ -16,14 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="6.7dp"
         android:progressDrawable="@drawable/list_progressbar"
-        android:max="100" />
+        android:max="100"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_gravity="bottom"
         android:background="@drawable/list_progress_shadow"
-        android:layout_marginBottom="11.5dp"
+        android:layout_marginBottom="6.5dp"
         >
     </View>
 
@@ -47,6 +49,8 @@
         android:lineSpacingExtra="10sp"
         android:layout_marginBottom="7dp"
         android:text="당신의 연애 고민은\n어디에 해당하나요?"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"
         />
 
     <TextView
@@ -57,6 +61,8 @@
         android:text="1개만 선택해주세요"
         android:layout_marginBottom="28.9dp"
         android:textColor="@color/brownishGrey"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_r"
         />
 
     <LinearLayout
@@ -71,7 +77,7 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/list1_btn_onsidelove"
+                android:id="@+id/list1_btn_onesidelove"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
@@ -86,7 +92,8 @@
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
-                android:elevation="9dp" />
+                android:elevation="9dp"
+                />
 
             <RadioButton
                 android:id="@+id/list1_btn_somthing"
@@ -103,7 +110,8 @@
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
-                android:elevation="9dp" />
+                android:elevation="9dp"
+               />
         </RadioGroup>
     </LinearLayout>
 
@@ -134,7 +142,8 @@
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
-                android:elevation="9dp" />
+                android:elevation="9dp"
+              />
 
             <RadioButton
                 android:id="@+id/list1_btn_saygoodbye"
@@ -151,7 +160,8 @@
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
-                android:elevation="9dp" />
+                android:elevation="9dp"
+                />
 
         </RadioGroup>
     </LinearLayout>
@@ -193,6 +203,8 @@
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:visibility="visible"
+                        android:textStyle="normal"
+                        android:fontFamily="@font/nanum_square_r"
                         />
 
                 </LinearLayout>
@@ -213,6 +225,8 @@
                     android:maxLength="8"
                     android:textColor="@color/lightPurple"
                     android:id="@+id/list1_usercustom_edittext"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_b"
                     />
             </FrameLayout>
         </LinearLayout>
@@ -254,6 +268,8 @@
                 android:text="다음"
                 android:textColor="@color/white"
                 android:elevation="9dp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
                 />
         </LinearLayout>
     </LinearLayout>

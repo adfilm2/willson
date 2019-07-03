@@ -47,6 +47,8 @@
                 android:layout_gravity="center_horizontal"
                 android:adjustViewBounds="true"
                 android:text="리스트 작성"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_r"
                 />
 
         </LinearLayout>

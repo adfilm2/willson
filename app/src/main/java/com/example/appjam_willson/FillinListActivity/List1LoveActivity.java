@@ -4,8 +4,8 @@ package com.example.appjam_willson.FillinListActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -43,6 +43,15 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     String packName;
     int resid;
 
+    RadioButton onesidelove;
+    RadioButton somthing;
+    RadioButton conflict;
+    RadioButton saygoodbye;
+
+    Typeface typebold;
+    Typeface typereg;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +59,22 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
 
         context = this;
 
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
+
+        onesidelove = (RadioButton) findViewById(R.id.list1_btn_onesidelove);
+        somthing = (RadioButton) findViewById(R.id.list1_btn_somthing);
+        conflict = (RadioButton) findViewById(R.id.list1_btn_conflict);
+        saygoodbye = (RadioButton) findViewById(R.id.list1_btn_saygoodbye);
+
+        conflict.setTypeface(typereg);
+        saygoodbye.setTypeface(typereg);
+        onesidelove.setTypeface(typereg);
+        somthing.setTypeface(typereg);
 
         list1_love_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_love_cancelbtn.setOnClickListener(new list1_love_cancelbtn_listener());
@@ -84,9 +106,20 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != -1) {
+
+                if(checkedId == R.id.list1_btn_onesidelove){
+                    onesidelove.setTypeface(typebold);
+                    somthing.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_btn_somthing){
+                    somthing.setTypeface(typebold);
+                    onesidelove.setTypeface(typereg);
+                }
+                conflict.setTypeface(typereg);
+                saygoodbye.setTypeface(typereg);
+
                 list1_nextbtn.setEnabled(true);
                 hidekeyboard(custom_edit_text);
-
                 list1_radioGroup2.setOnCheckedChangeListener(null);
                 list1_radioGroup2.clearCheck();
                 list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
@@ -109,6 +142,18 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             if(checkedId != -1) {
                 list1_nextbtn.setEnabled(true);
                 hidekeyboard(custom_edit_text);
+
+                if(checkedId == R.id.list1_btn_conflict){
+                    conflict.setTypeface(typebold);
+                    saygoodbye.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_btn_saygoodbye){
+                    saygoodbye.setTypeface(typebold);
+                    conflict.setTypeface(typereg);
+                }
+                onesidelove.setTypeface(typereg);
+                somthing.setTypeface(typereg);
+
                 list1_radioGroup1.setOnCheckedChangeListener(null);
                 list1_radioGroup1.clearCheck();
                 list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
@@ -156,6 +201,10 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
                 custom_text.setVisibility(View.VISIBLE);
                 custom_edit_text.setVisibility(View.INVISIBLE);
             }
+            conflict.setTypeface(typereg);
+            saygoodbye.setTypeface(typereg);
+            onesidelove.setTypeface(typereg);
+            somthing.setTypeface(typereg);
             list1_radioGroup1.setOnCheckedChangeListener(null);
             list1_radioGroup1.clearCheck();
             list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
@@ -183,6 +232,10 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             else{
                 list1_nextbtn.setEnabled(true);
             }
+            conflict.setTypeface(typereg);
+            saygoodbye.setTypeface(typereg);
+            onesidelove.setTypeface(typereg);
+            somthing.setTypeface(typereg);
             list1_radioGroup1.setOnCheckedChangeListener(null);
             list1_radioGroup1.clearCheck();
             list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
