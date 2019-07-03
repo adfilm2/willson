@@ -18,11 +18,18 @@ public class ListAgreementActivity extends AppCompatActivity {
     LinearLayout agree_cancelbtn;
     LinearLayout agree_backbtn;
 
+    String resName;
+    String packName;
+    int resid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agreement);
 
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
 
         agree_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         agree_cancelbtn.setOnClickListener(new agree_cancelbtn_listener());
@@ -58,8 +65,8 @@ public class ListAgreementActivity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(ListAgreementActivity.this,
-                "이제 거의 다왔어요!\n그래도 그만 작성하시겠어요?", keepListener, exitListener);
+        dialog = new CustomDialog(ListAgreementActivity.this, resid,
+                "이제 거의 다왔어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

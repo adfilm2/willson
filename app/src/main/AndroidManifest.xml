@@ -40,7 +40,7 @@
 
         <activity android:name=".FillinListActivity.List2Activity" />
         <activity android:name=".FillinListActivity.List3Activity" />
-        <activity android:name=".FillinListActivity.List4Activity" />
+        <activity android:name=".FillinListActivity.List4Activity" android:windowSoftInputMode = "adjustPan" />
         <activity android:name=".FillinListActivity.List5Activity" />
         <activity android:name=".FillinListActivity.List6Activity" />
         <activity android:name=".FillinListActivity.List7Activity" />

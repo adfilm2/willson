@@ -24,12 +24,21 @@ public class List6Activity extends AppCompatActivity {
     Button list6_nextbtn;
     Context context;
 
+    String resName;
+    String packName;
+    int resid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list6);
 
         context =this;
+
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
+
 
         list6_nextbtn = (Button) findViewById(R.id.button1);
         list6_nextbtn.setOnClickListener(new list6_nextbtn_listener());
@@ -89,8 +98,8 @@ public class List6Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List6Activity.this,
-                "벌써 62%나 진행했어요!\n그래도 그만 작성하시겠어요?", keepListener, exitListener);
+        dialog = new CustomDialog(List6Activity.this, resid,
+                "벌써 62%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
