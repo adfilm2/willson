@@ -38,6 +38,9 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
 
     Context context;
 
+    String resName;
+    String packName;
+    int resid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,11 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         setContentView(R.layout.activity_list1_mentality);
 
         context = this;
+
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
+
 
         list1_mentality_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_mentality_cancelbtn.setOnClickListener(new list1_mentality_cancelbtn_listener());
@@ -248,8 +256,8 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List1MentalityActivity.this,
-                "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", keepListener, exitListener);
+        dialog = new CustomDialog(List1MentalityActivity.this, resid,
+                "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

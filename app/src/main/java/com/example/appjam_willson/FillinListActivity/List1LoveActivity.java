@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -37,6 +39,9 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     private CustomDialog dialog;
     Context context;
 
+    String resName;
+    String packName;
+    int resid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,10 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         setContentView(R.layout.activity_list1_love);
 
         context = this;
+
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
 
         list1_love_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_love_cancelbtn.setOnClickListener(new list1_love_cancelbtn_listener());
@@ -77,6 +86,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             if (checkedId != -1) {
                 list1_nextbtn.setEnabled(true);
                 hidekeyboard(custom_edit_text);
+
                 list1_radioGroup2.setOnCheckedChangeListener(null);
                 list1_radioGroup2.clearCheck();
                 list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
@@ -208,8 +218,8 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List1LoveActivity.this,
-                "정말 그만두시겠어요?\\n아직 하나도 작성하시지 않으셨어요!", keepListener, exitListener);
+        dialog = new CustomDialog(List1LoveActivity.this, resid,
+                "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

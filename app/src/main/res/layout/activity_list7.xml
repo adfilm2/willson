@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <include
         android:id="@+id/activity_list1_toolbar"
@@ -16,8 +17,25 @@
         android:layout_height="6.7dp"
         android:progressDrawable="@drawable/list_progressbar"
         android:max="100"
-        android:progress="62"/>
+        android:progress="62"
+        />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/list_progress_shadow"
+        android:layout_marginBottom="11.5dp">
+    </View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/darkPurple"
+        android:lineSpacingExtra="21sp"
+        android:gravity="center_horizontal"
+        android:text="75%" />
 
     <ScrollView
 

@@ -16,9 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="6.7dp"
         android:progressDrawable="@drawable/list_progressbar"
-        android:max="100"
-        android:background="#ffffff"
-        android:elevation="5dp"/>
+        android:max="100" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/list_progress_shadow"
+        android:layout_marginBottom="11.5dp"
+        >
+    </View>
 
     <TextView
         android:layout_width="match_parent"
@@ -79,7 +86,7 @@
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"/>
+                android:elevation="9dp" />
 
             <RadioButton
                 android:id="@+id/list1_btn_somthing"
@@ -96,7 +103,7 @@
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"/>
+                android:elevation="9dp" />
         </RadioGroup>
     </LinearLayout>
 
@@ -127,7 +134,7 @@
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"/>
+                android:elevation="9dp" />
 
             <RadioButton
                 android:id="@+id/list1_btn_saygoodbye"
@@ -144,7 +151,7 @@
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"/>
+                android:elevation="9dp" />
 
         </RadioGroup>
     </LinearLayout>
