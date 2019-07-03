@@ -4,8 +4,7 @@
     android:background="@drawable/rounded_corner"
     android:orientation="vertical"
     android:layout_width="310.1dp"
-    android:layout_height="wrap_content"
-    tools:context=".ListPopupActivity">
+    android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="vertical"
