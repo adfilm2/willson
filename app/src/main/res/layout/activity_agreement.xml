@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#f5f5f5"
-    tools:context=".FillinListActivity.AgreementActivity">
+    tools:context=".FillinListActivity.ListAgreementActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
