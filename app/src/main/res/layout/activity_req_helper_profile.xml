@@ -161,8 +161,6 @@
                 android:textColor="@color/lightPurple"
                 android:gravity="center"
                 android:layout_marginTop="20.2dp"
-                android:paddingHorizontal="11dp"
-                android:paddingVertical="5.8dp"
                 android:elevation="5dp"
                 android:background="@drawable/round_view"
                 android:layout_gravity="center"/>
@@ -173,6 +171,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_horizontal"
                 android:layout_marginTop="14.4dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -231,7 +230,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id = "@+id/profile_asker_recyclerview">
+                android:id = "@+id/helper_profile_recyclerview">
             </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
