@@ -23,7 +23,7 @@
             android:layout_height="106.1dp"
             android:id="@+id/request_pop_image_hand"
             android:layout_gravity="center"
-            android:src="@drawable/request_img_alert_willson2"/>
+            android:src="@drawable/request_img_alert_willson_2"/>
 
         <TextView
             android:layout_width="match_parent"
