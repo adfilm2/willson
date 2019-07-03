@@ -33,7 +33,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="9.9dp"
             android:textSize="14sp"
             android:textColor="#8a000000"
             android:paddingLeft="24dp"
@@ -42,17 +41,35 @@
 
             />
 
-        <Button
-            android:layout_gravity="center"
-            android:layout_width="177.5dp"
-            android:layout_height="39.2dp"
-            android:layout_marginBottom="31.7dp"
-            android:id="@+id/chat_protect_okbtn"
-            android:text="OK"
-            android:textColor="#673ab7"
-            android:background="@drawable/rounded_corner_darkblue"
-            android:textSize="14sp"
-            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRignt="8dp"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            >
 
+            <Button
+                android:layout_width="74dp"
+                android:layout_height="36dp"
+                android:layout_gravity="right"
+                android:layout_marginBottom="8dp"
+                android:paddingRignt="8dp"
+                android:id="@+id/chat_protect_okbtn"
+                android:text="OK"
+                android:textColor="#673ab7"
+                android:background="@color/trans"
+                android:textSize="14sp"
+                />
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                >
+
+            </View>
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

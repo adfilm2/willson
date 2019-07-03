@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -76,6 +77,11 @@ public class List4Activity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                 textViewCount.setText(Integer.toString(s.toString().length()));
+
+                if (s.length() == 0 ) {
+                    list4_nextbtn.setEnabled(false);
+                }
+                else list4_nextbtn.setEnabled(true);
 
             }
 
