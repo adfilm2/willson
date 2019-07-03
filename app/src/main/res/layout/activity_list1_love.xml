@@ -16,9 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="6.7dp"
         android:progressDrawable="@drawable/list_progressbar"
-        android:max="100"
-        android:textStyle="normal"
-        android:fontFamily="@font/nanum_square_b"/>
+        android:max="100" />
 
     <View
         android:layout_width="match_parent"
@@ -36,7 +34,9 @@
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="21sp"
         android:gravity="center_horizontal"
-        android:text="0%" />
+        android:text="0%"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -225,8 +225,6 @@
                     android:maxLength="8"
                     android:textColor="@color/lightPurple"
                     android:id="@+id/list1_usercustom_edittext"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/nanum_square_b"
                     />
             </FrameLayout>
         </LinearLayout>

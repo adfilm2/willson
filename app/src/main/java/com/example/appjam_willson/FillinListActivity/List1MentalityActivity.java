@@ -3,6 +3,7 @@ package com.example.appjam_willson.FillinListActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -12,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -42,6 +44,16 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     String packName;
     int resid;
 
+    RadioButton selfesteem;
+    RadioButton unrest;
+    RadioButton depressed;
+    RadioButton torpor;
+    RadioButton ego;
+    RadioButton exist;
+
+    Typeface typebold;
+    Typeface typereg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +61,26 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
 
         context = this;
 
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
+        selfesteem = (RadioButton) findViewById(R.id.list1_mentality_btn_selfesteem);
+        unrest = (RadioButton) findViewById(R.id.list1_mentality_btn_unrest);
+        depressed = (RadioButton) findViewById(R.id.list1_mentality_btn_depressed);
+        torpor = (RadioButton) findViewById(R.id.list1_mentality_btn_torpor);
+        ego = (RadioButton) findViewById(R.id.list1_mentality_btn_ego);
+        exist = (RadioButton) findViewById(R.id.list1_mentality_btn_exist);
+
+        selfesteem.setTypeface(typereg);
+        unrest.setTypeface(typereg);
+        depressed.setTypeface(typereg);
+        torpor.setTypeface(typereg);
+        ego.setTypeface(typereg);
+        exist.setTypeface(typereg);
+
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
-
 
         list1_mentality_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_mentality_cancelbtn.setOnClickListener(new list1_mentality_cancelbtn_listener());
@@ -79,6 +107,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         mentality_custom_edit_text = (EditText)findViewById(R.id.list1_mentality_usercustom_edittext);
         mentality_custom_edit_text.setOnClickListener(new mentality_custom_edit_Clicklistener());
         mentality_custom_edit_text.setOnKeyListener(new mentality_custom_edit_listener());
+        mentality_custom_edit_text.setTypeface(typebold);
 
         mentality_usercustom_layout = (LinearLayout)findViewById(R.id.list1_mentality_btn_usercustom_layout);
     }
@@ -87,6 +116,21 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != -1) {
+
+                if(checkedId == R.id.list1_mentality_btn_selfesteem){
+                    selfesteem.setTypeface(typebold);
+                    unrest.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_mentality_btn_unrest){
+                    unrest.setTypeface(typebold);
+                    selfesteem.setTypeface(typereg);
+                }
+                depressed.setTypeface(typereg);
+                torpor.setTypeface(typereg);
+                ego.setTypeface(typereg);
+                exist.setTypeface(typereg);
+                mentality_custom_edit_text.setTypeface(typereg);
+
                 list1_mentality_nextbtn.setEnabled(true);
                 hidekeyboard(mentality_custom_edit_text);
                 list1_mentality_radioGroup2.setOnCheckedChangeListener(null);
@@ -112,6 +156,21 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if(checkedId != -1) {
+
+                if(checkedId == R.id.list1_mentality_btn_depressed){
+                    depressed.setTypeface(typebold);
+                    torpor.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_mentality_btn_torpor){
+                    torpor.setTypeface(typebold);
+                    depressed.setTypeface(typereg);
+                }
+                selfesteem.setTypeface(typereg);
+                unrest.setTypeface(typereg);
+                ego.setTypeface(typereg);
+                exist.setTypeface(typereg);
+                mentality_custom_edit_text.setTypeface(typereg);
+
                 list1_mentality_nextbtn.setEnabled(true);
                 hidekeyboard(mentality_custom_edit_text);
                 list1_mentality_radioGroup1.setOnCheckedChangeListener(null);
@@ -137,6 +196,21 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if(checkedId != -1) {
+
+                if(checkedId == R.id.list1_mentality_btn_ego){
+                    ego.setTypeface(typebold);
+                    exist.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_mentality_btn_exist){
+                    exist.setTypeface(typebold);
+                    ego.setTypeface(typereg);
+                }
+                selfesteem.setTypeface(typereg);
+                unrest.setTypeface(typereg);
+                depressed.setTypeface(typereg);
+                torpor.setTypeface(typereg);
+                mentality_custom_edit_text.setTypeface(typereg);
+
                 list1_mentality_nextbtn.setEnabled(true);
                 hidekeyboard(mentality_custom_edit_text);
                 list1_mentality_radioGroup1.setOnCheckedChangeListener(null);
@@ -189,6 +263,13 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 mentality_custom_text.setVisibility(View.VISIBLE);
                 mentality_custom_edit_text.setVisibility(View.INVISIBLE);
             }
+            selfesteem.setTypeface(typereg);
+            unrest.setTypeface(typereg);
+            depressed.setTypeface(typereg);
+            torpor.setTypeface(typereg);
+            ego.setTypeface(typereg);
+            exist.setTypeface(typereg);
+            mentality_custom_edit_text.setTypeface(typebold);
             list1_mentality_radioGroup1.setOnCheckedChangeListener(null);
             list1_mentality_radioGroup1.clearCheck();
             list1_mentality_radioGroup1.setOnCheckedChangeListener(radioGroup_mentality_listener1);
@@ -218,6 +299,13 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
             else{
                 list1_mentality_nextbtn.setEnabled(true);
             }
+            selfesteem.setTypeface(typereg);
+            unrest.setTypeface(typereg);
+            depressed.setTypeface(typereg);
+            torpor.setTypeface(typereg);
+            ego.setTypeface(typereg);
+            exist.setTypeface(typereg);
+            mentality_custom_edit_text.setTypeface(typebold);
             list1_mentality_radioGroup1.setOnCheckedChangeListener(null);
             list1_mentality_radioGroup1.clearCheck();
             list1_mentality_radioGroup1.setOnCheckedChangeListener(radioGroup_mentality_listener1);

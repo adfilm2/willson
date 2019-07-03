@@ -12,25 +12,13 @@
 
     </style>
 
-    <style name="RatingBarColor" parent="Theme.AppCompat" >
-        <item name="colorAccent">#FFE641</item>
-        <item name="android:colorControlNormal">#C8C8C8</item>
-    </style>
-
-
     <style name="CustomRadioButton" parent="Theme.AppCompat.Light">
         <item name="colorAccent">#4f4f9f</item>
         <item name="colorControlNormal">#4f4f9f</item>
     </style>
 
-
-
-
-
-
     <style name="list1_edit_color" parent="Theme.AppCompat" >
         <item name="colorPrimary">@color/white</item>
     </style>
-
 
 </resources>

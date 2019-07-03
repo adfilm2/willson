@@ -16,11 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.PopUp.CustomDialog;
 import com.example.appjam_willson.R;
+
+import org.w3c.dom.Text;
 
 public class List1CourseActivity extends AppCompatActivity implements OnClickListener {
 
@@ -94,6 +97,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         course_custom_edit_text = (EditText)findViewById(R.id.list1_course_usercustom_edittext);
         course_custom_edit_text.setOnClickListener(new course_custom_edit_Clicklistener());
         course_custom_edit_text.setOnKeyListener(new course_custom_edit_listener());
+        course_custom_edit_text.setTypeface(typebold);
 
         course_usercustom_layout = (LinearLayout)findViewById(R.id.list1_course_btn_usercustom_layout);
     }
@@ -112,6 +116,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
                     study.setTypeface(typereg);
                 }
                 transfer.setTypeface(typereg);
+                course_custom_edit_text.setTypeface(typereg);
 
                 list1_course_nextbtn.setEnabled(true);
                 hidekeyboard(course_custom_edit_text);
@@ -144,6 +149,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
                 }
                 study.setTypeface(typereg);
                 employment.setTypeface(typereg);
+                course_custom_edit_text.setTypeface(typereg);
 
                 list1_course_nextbtn.setEnabled(true);
                 hidekeyboard(course_custom_edit_text);
@@ -196,6 +202,8 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             study.setTypeface(typereg);
             employment.setTypeface(typereg);
             transfer.setTypeface(typereg);
+            course_custom_edit_text.setTypeface(typebold);
+
             list1_course_radioGroup1.setOnCheckedChangeListener(null);
             list1_course_radioGroup1.clearCheck();
             list1_course_radioGroup1.setOnCheckedChangeListener(radioGroup_course_listener1);
@@ -226,6 +234,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             study.setTypeface(typereg);
             employment.setTypeface(typereg);
             transfer.setTypeface(typereg);
+            course_custom_edit_text.setTypeface(typebold);
             list1_course_radioGroup1.setOnCheckedChangeListener(null);
             list1_course_radioGroup1.clearCheck();
             list1_course_radioGroup1.setOnCheckedChangeListener(radioGroup_course_listener1);

@@ -97,6 +97,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         daily_custom_edit_text = (EditText)findViewById(R.id.list1_daily_usercustom_edittext);
         daily_custom_edit_text.setOnClickListener(new daily_custom_edit_Clicklistener());
         daily_custom_edit_text.setOnKeyListener(new daily_custom_edit_listener());
+        daily_custom_edit_text.setTypeface(typebold);
 
         daily_usercustom_layout = (LinearLayout)findViewById(R.id.list1_daily_btn_usercustom_layout);
 
@@ -117,6 +118,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
                 }
                 economy.setTypeface(typereg);
                 trip.setTypeface(typereg);
+                daily_custom_edit_text.setTypeface(typereg);
 
                 list1_daily_nextbtn.setEnabled(true);
                 hidekeyboard(daily_custom_edit_text);
@@ -151,6 +153,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
                 }
                 habit.setTypeface(typereg);
                 alba.setTypeface(typereg);
+                daily_custom_edit_text.setTypeface(typereg);
 
                 list1_daily_nextbtn.setEnabled(true);
                 hidekeyboard(daily_custom_edit_text);
@@ -206,6 +209,8 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
             alba.setTypeface(typereg);
             economy.setTypeface(typereg);
             trip.setTypeface(typereg);
+            daily_custom_edit_text.setTypeface(typebold);
+
             list1_daily_radioGroup1.setOnCheckedChangeListener(null);
             list1_daily_radioGroup1.clearCheck();
             list1_daily_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
@@ -237,6 +242,8 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
             alba.setTypeface(typereg);
             economy.setTypeface(typereg);
             trip.setTypeface(typereg);
+            daily_custom_edit_text.setTypeface(typebold);
+
             list1_daily_radioGroup1.setOnCheckedChangeListener(null);
             list1_daily_radioGroup1.clearCheck();
             list1_daily_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);

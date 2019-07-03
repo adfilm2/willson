@@ -14,24 +14,29 @@
         <activity android:name=".FillinHelperSignUpActivity.HelperSignUp3">
 
         </activity>
-        <activity android:name=".FillinHelperSignUpActivity.HelperSignUp2" >
-            <intent-filter>
-            <action android:name="android.intent.action.SEND"/>
-            <category android:name="android.intent.category.DEFAULT"/>
-            <data android:mimeType="text/plain"/>
-        </intent-filter></activity> <!-- list 1 start -->
+        <activity android:name=".FillinHelperSignUpActivity.HelperSignUp2" />
+        <!-- list 1 start -->
         <activity android:name=".FillinListActivity.List1LoveStartActivity" />
-        <activity android:name=".FillinListActivity.List1CourseStartActivity" />
+        <activity android:name=".FillinListActivity.List1CourseStartActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
         <activity android:name=".FillinListActivity.List1DailyStartActivity" />
-        <activity android:name=".FillinListActivity.List1EtcStartActivity" /> <!-- list 1 -->
+        <activity android:name=".FillinListActivity.List1EtcStartActivity" />
+
+        <!-- list 1 -->
         <activity android:name=".FillinListActivity.List1LoveActivity" />
         <activity android:name=".FillinListActivity.List1CourseActivity" />
         <activity android:name=".FillinListActivity.List1MentalityActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
         <activity android:name=".FillinListActivity.List1DailyActivity" />
-        <activity android:name=".FillinListActivity.List1EtcActivity" /> <!-- lists -->
+        <activity android:name=".FillinListActivity.List1EtcActivity" />
+
+        <!-- lists -->
         <activity android:name=".FillinListActivity.List2Activity" />
         <activity android:name=".FillinListActivity.List3Activity" />
         <activity
