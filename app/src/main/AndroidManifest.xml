@@ -15,12 +15,6 @@
         <!--list 1 start-->
 
         <activity android:name=".FillinListActivity.List1LoveStartActivity" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
 
@@ -43,7 +37,13 @@
 
         <activity android:name=".FillinListActivity.List2Activity" />
         <activity android:name=".FillinListActivity.List3Activity" />
-        <activity android:name=".FillinListActivity.List4Activity" android:windowSoftInputMode="adjustPan />
+        <activity android:name=".FillinListActivity.List4Activity" android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".FillinListActivity.List5Activity" />
         <activity android:name=".FillinListActivity.List6Activity" />
         <activity android:name=".FillinListActivity.List7Activity" />
