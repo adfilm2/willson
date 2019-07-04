@@ -1,5 +1,7 @@
 package com.example.appjam_willson.FillinListActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -17,6 +19,8 @@ public class ListAgreementActivity extends AppCompatActivity {
     private CustomDialog dialog;
     LinearLayout agree_cancelbtn;
     LinearLayout agree_backbtn;
+    Button submit_btn;
+    Context context;
 
     String resName;
     String packName;
@@ -27,15 +31,23 @@ public class ListAgreementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agreement);
 
+
+        context = this;
+
+
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
+
 
         agree_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         agree_cancelbtn.setOnClickListener(new agree_cancelbtn_listener());
 
         agree_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
         agree_backbtn.setOnClickListener(new agree_backbtn_listener());
+
+        submit_btn = (Button)findViewById(R.id.submit);
+        submit_btn.setOnClickListener((new submitbtn_listener()));
     }
 
     public void btn_check(View view) {
@@ -61,6 +73,15 @@ public class ListAgreementActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             finish();
+        }
+    }
+
+    class submitbtn_listener implements View.OnClickListener{
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent( context, ListLoadingActivity.class);
+            startActivity(intent);
+
         }
     }
 

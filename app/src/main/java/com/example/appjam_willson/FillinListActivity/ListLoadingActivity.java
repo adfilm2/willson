@@ -47,7 +47,7 @@ public class ListLoadingActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 int mins = count/60;
                 min.setText(String.format("%02d",mins));
-                countTxt.setText(String.format("%2d",count-(mins*60)));
+                countTxt.setText(String.format("%02d",count-(mins*60)));
                 count --;
             }
             public void onFinish() {
