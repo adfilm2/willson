@@ -40,7 +40,8 @@ public class List1LoveStartActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(context, List1LoveActivity.class);
-            startActivity(intent);
+            /*startActivity(intent);*/
+            startActivityForResult(intent,1000);
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.appjam_willson.FillinListActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -12,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
@@ -40,12 +42,33 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     String packName;
     int resid;
 
+    RadioButton family;
+    RadioButton friend;
+    RadioButton companion;
+    RadioButton junior;
+
+    Typeface typebold;
+    Typeface typereg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_relationships);
 
         context = this;
+
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
+        family = (RadioButton) findViewById(R.id.list1_btn_onesidelove);
+        friend = (RadioButton) findViewById(R.id.list1_btn_somthing);
+        companion = (RadioButton) findViewById(R.id.list1_btn_conflict);
+        junior = (RadioButton) findViewById(R.id.list1_btn_saygoodbye);
+
+        family.setTypeface(typereg);
+        friend.setTypeface(typereg);
+        companion.setTypeface(typereg);
+        junior.setTypeface(typereg);
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -75,6 +98,7 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         relationships_custom_edit_text = (EditText)findViewById(R.id.list1_relationships_usercustom_edittext);
         relationships_custom_edit_text.setOnClickListener(new relationships_custom_edit_Clicklistener());
         relationships_custom_edit_text.setOnKeyListener(new relationships_custom_edit_listener());
+        relationships_custom_edit_text.setTypeface(typebold);
 
         relationships_usercustom_layout = (LinearLayout)findViewById(R.id.list1_relationships_btn_usercustom_layout);
     }
@@ -83,6 +107,19 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != -1) {
+
+                if(checkedId == R.id.list1_relationships_btn_family){
+                    family.setTypeface(typebold);
+                    friend.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_relationships_btn_friends){
+                    friend.setTypeface(typebold);
+                    family.setTypeface(typereg);
+                }
+                companion.setTypeface(typereg);
+                junior.setTypeface(typereg);
+                relationships_custom_edit_text.setTypeface(typereg);
+
                 list1_relationships_nextbtn.setEnabled(true);
                 hidekeyboard(relationships_custom_edit_text);
                 list1_relationships_radioGroup2.setOnCheckedChangeListener(null);
@@ -105,6 +142,19 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if(checkedId != -1) {
+
+                if(checkedId == R.id.list1_relationships_btn_companion){
+                    companion.setTypeface(typebold);
+                    junior.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.list1_relationships_btn_junior){
+                    friend.setTypeface(typebold);
+                    junior.setTypeface(typereg);
+                }
+                family.setTypeface(typereg);
+                friend.setTypeface(typereg);
+                relationships_custom_edit_text.setTypeface(typereg);
+
                 list1_relationships_nextbtn.setEnabled(true);
                 hidekeyboard(relationships_custom_edit_text);
                 list1_relationships_radioGroup1.setOnCheckedChangeListener(null);
@@ -154,6 +204,12 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
                 relationships_custom_text.setVisibility(View.VISIBLE);
                 relationships_custom_edit_text.setVisibility(View.INVISIBLE);
             }
+            family.setTypeface(typereg);
+            friend.setTypeface(typereg);
+            companion.setTypeface(typereg);
+            junior.setTypeface(typereg);
+            relationships_custom_edit_text.setTypeface(typebold);
+
             list1_relationships_radioGroup1.setOnCheckedChangeListener(null);
             list1_relationships_radioGroup1.clearCheck();
             list1_relationships_radioGroup1.setOnCheckedChangeListener(radioGroup_relationships_listener1);
@@ -181,6 +237,12 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
             else{
                 list1_relationships_nextbtn.setEnabled(true);
             }
+            family.setTypeface(typereg);
+            friend.setTypeface(typereg);
+            companion.setTypeface(typereg);
+            junior.setTypeface(typereg);
+            relationships_custom_edit_text.setTypeface(typebold);
+
             list1_relationships_radioGroup1.setOnCheckedChangeListener(null);
             list1_relationships_radioGroup1.clearCheck();
             list1_relationships_radioGroup1.setOnCheckedChangeListener(radioGroup_relationships_listener1);

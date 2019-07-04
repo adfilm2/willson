@@ -17,11 +17,11 @@
             android:paddingTop="7dp"
             android:paddingBottom ="7dp"
             android:orientation="horizontal"
-            android:id="@+id/toolbar_list_btn_backbtn"
             android:layout_weight="0.5">
 
             <ImageView
                 android:paddingLeft="20.2dp"
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/btn_backbtn"
@@ -41,13 +41,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:textColor="@color/black"
-                android:lineSpacingExtra="19sp"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="16sp"
                 android:layout_gravity="center_horizontal"
                 android:adjustViewBounds="true"
-                android:layout_marginRight="20dp"
-                android:text="헬퍼 가입"
+                android:text="신분증 확인"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
                 />
@@ -63,9 +62,15 @@
             android:paddingTop="5dp"
             android:paddingBottom ="5dp"
             android:layout_weight="0.5"
-            android:id="@+id/toolbar_list_btn_cancel">
+            android:id="@+id/toolbar_helper_signup_confirm_btn_cancel">
 
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_cancel"
+                android:layout_gravity="right"
+                android:paddingRight="15.4dp"
+                />
 
         </LinearLayout>
 

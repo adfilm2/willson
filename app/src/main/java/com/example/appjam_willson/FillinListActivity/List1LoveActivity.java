@@ -62,10 +62,6 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        resName = "@drawable/list_img_alert_willson";
-        packName = this.getPackageName();
-        resid = getResources().getIdentifier(resName, "drawable", packName);
-
         onesidelove = (RadioButton) findViewById(R.id.list1_btn_onesidelove);
         somthing = (RadioButton) findViewById(R.id.list1_btn_somthing);
         conflict = (RadioButton) findViewById(R.id.list1_btn_conflict);
@@ -75,6 +71,10 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         saygoodbye.setTypeface(typereg);
         onesidelove.setTypeface(typereg);
         somthing.setTypeface(typereg);
+
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
 
         list1_love_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_love_cancelbtn.setOnClickListener(new list1_love_cancelbtn_listener());
@@ -98,6 +98,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         custom_edit_text = (EditText)findViewById(R.id.list1_usercustom_edittext);
         custom_edit_text.setOnClickListener(new custom_edit_Clicklistener());
         custom_edit_text.setOnKeyListener(new custom_edit_listener());
+        custom_edit_text.setTypeface(typebold);
 
         usercustom_layout = (LinearLayout)findViewById(R.id.list1_btn_usercustom_layout);
     }
@@ -117,6 +118,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
                 }
                 conflict.setTypeface(typereg);
                 saygoodbye.setTypeface(typereg);
+                custom_edit_text.setTypeface(typereg);
 
                 list1_nextbtn.setEnabled(true);
                 hidekeyboard(custom_edit_text);
@@ -153,6 +155,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
                 }
                 onesidelove.setTypeface(typereg);
                 somthing.setTypeface(typereg);
+                custom_edit_text.setTypeface(typereg);
 
                 list1_radioGroup1.setOnCheckedChangeListener(null);
                 list1_radioGroup1.clearCheck();
@@ -205,6 +208,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             saygoodbye.setTypeface(typereg);
             onesidelove.setTypeface(typereg);
             somthing.setTypeface(typereg);
+            custom_edit_text.setTypeface(typebold);
             list1_radioGroup1.setOnCheckedChangeListener(null);
             list1_radioGroup1.clearCheck();
             list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
@@ -236,6 +240,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             saygoodbye.setTypeface(typereg);
             onesidelove.setTypeface(typereg);
             somthing.setTypeface(typereg);
+            custom_edit_text.setTypeface(typebold);
             list1_radioGroup1.setOnCheckedChangeListener(null);
             list1_radioGroup1.clearCheck();
             list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);

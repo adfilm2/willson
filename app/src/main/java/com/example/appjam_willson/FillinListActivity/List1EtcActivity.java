@@ -3,6 +3,7 @@ package com.example.appjam_willson.FillinListActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -38,12 +39,23 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     String packName;
     int resid;
 
+    RadioButton visual;
+
+    Typeface typebold;
+    Typeface typereg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_etc);
 
         context = this;
+
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
+        visual = (RadioButton) findViewById(R.id.list1_etc_btn_visual);
+        visual.setTypeface(typereg);
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -68,6 +80,7 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         etc_custom_edit_text = (EditText)findViewById(R.id.list1_etc_usercustom_edittext);
         etc_custom_edit_text.setOnClickListener(new etc_custom_edit_Clicklistener());
         etc_custom_edit_text.setOnKeyListener(new etc_custom_edit_listener());
+        etc_custom_edit_text.setTypeface(typebold);
 
         etc_usercustom_layout = (LinearLayout)findViewById(R.id.list1_etc_btn_usercustom_layout);
     }
@@ -96,6 +109,8 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     class list1_etc_radiobtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            visual.setTypeface(typebold);
+            etc_custom_edit_text.setTypeface(typereg);
             list1_etc_radiobtn.setChecked(true);
             list1_etc_nextbtn.setEnabled(true);
             hidekeyboard(etc_custom_edit_text);
@@ -121,6 +136,8 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
                 etc_custom_text.setVisibility(View.VISIBLE);
                 etc_custom_edit_text.setVisibility(View.INVISIBLE);
             }
+            visual.setTypeface(typereg);
+            etc_custom_edit_text.setTypeface(typebold);
             list1_etc_radiobtn.setChecked(false);
             etc_custom_text.setVisibility(View.INVISIBLE);
             etc_custom_edit_text.setVisibility(View.VISIBLE);
@@ -143,6 +160,8 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
             else{
                 list1_etc_nextbtn.setEnabled(true);
             }
+            visual.setTypeface(typereg);
+            etc_custom_edit_text.setTypeface(typebold);
             list1_etc_radiobtn.setChecked(false);
             etc_custom_text.setVisibility(View.INVISIBLE);
             etc_custom_edit_text.setVisibility(View.VISIBLE);
