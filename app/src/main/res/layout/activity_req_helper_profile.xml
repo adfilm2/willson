@@ -304,25 +304,11 @@
             </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
-
-
-
-
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id = "@+id/profile_asker_recyclerview">
                 </androidx.recyclerview.widget.RecyclerView>
-
-            </LinearLayout>
-
-
-
-
-
-
-        </LinearLayout>
-    </ScrollView>
+=    </ScrollView>
 
 </LinearLayout>

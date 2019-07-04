@@ -173,7 +173,7 @@
                     android:layout_marginBottom="3.3dp"
                     android:layout_marginLeft="8.6dp"
                     android:layout_marginRight="8.6dp"
-                    android:lgravity="center_horizontal"
+                    android:gravity="center_horizontal"
                     android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_eb"
 

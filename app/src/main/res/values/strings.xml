@@ -1,6 +1,42 @@
 <resources>
+    <string name="facebook_app_id">356292024967997</string>
+    <string name="fb_login_protocol_scheme">fb356292024967997</string>
+
+       <string-array name="Age_group">
+
+        <item>나이를 선택해주세요.</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+
+    </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
     <string name="app_name">APPJAM_WILLSON</string>
     <string name="agreement">상담 신청자(혹은 \'본인\')는 윌슨 서비스를 이용함에 있어 아래의 내용을 확인하고 준수할 것을 소정의 절차에 따라 동의합니다.</string>
     <string name="check1">상담 동의서의 내용을 충분히 확인하였으며, 모든 항목에 동의합니다.</string>
     <string name="check2">상담 내용은 제 3자에게 공개가 불가하며, 상담 내용 유출시 법적 제재를 받을 수 있음을 이해하였습니다.</string>
+
 </resources>
