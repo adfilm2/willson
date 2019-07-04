@@ -29,10 +29,19 @@ public class List3Activity extends AppCompatActivity {
 
     private CustomDialog dialog;
 
+    String resName;
+    String packName;
+    int resid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list3);
+
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
+
 
         list3_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list3_cancelbtn.setOnClickListener(new list3_cancelbtn_listener());
@@ -98,8 +107,8 @@ public class List3Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List3Activity.this,
-                "벌써 21%나 진행했어요!\n그래도 그만 작성하시겠어요?", keepListener, exitListener);
+        dialog = new CustomDialog(List3Activity.this, resid,
+                "벌써 21%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

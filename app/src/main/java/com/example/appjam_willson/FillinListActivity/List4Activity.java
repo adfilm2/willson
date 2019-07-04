@@ -32,6 +32,10 @@ public class List4Activity extends AppCompatActivity {
 
     Context context;
 
+    String resName;
+    String packName;
+    int resid;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,11 @@ public class List4Activity extends AppCompatActivity {
         setContentView(R.layout.activity_list4);
 
         context = this;
+
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
+
 
         list4_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list4_cancelbtn.setOnClickListener(new list4_cancelbtn_listener());
@@ -121,8 +130,8 @@ public class List4Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List4Activity.this,
-                "벌써 37%나 진행했어요!\n그래도 그만 작성하시겠어요?", keepListener, exitListener);
+        dialog = new CustomDialog(List4Activity.this, resid,
+                "벌써 37%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

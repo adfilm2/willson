@@ -34,12 +34,21 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     private CustomDialog dialog;
     Context context;
 
+    String resName;
+    String packName;
+    int resid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_etc);
 
         context = this;
+
+        resName = "@drawable/list_img_alert_willson";
+        packName = this.getPackageName();
+        resid = getResources().getIdentifier(resName, "drawable", packName);
+
 
         list1_etc_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list1_etc_cancelbtn.setOnClickListener(new list1_etc_cancelbtn_listener());
@@ -164,8 +173,8 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List1EtcActivity.this,
-                "정말 그만두시겠어요?\\n아직 하나도 작성하시지 않으셨어요!", keepListener, exitListener);
+        dialog = new CustomDialog(List1EtcActivity.this, resid,
+                "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

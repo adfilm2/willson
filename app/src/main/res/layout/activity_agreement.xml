@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:background="#f5f5f5"
+
     tools:context=".FillinListActivity.ListAgreementActivity">
 
     <RelativeLayout
@@ -14,7 +16,6 @@
         <include
             android:id="@+id/activity_list1_toolbar"
             layout="@layout/toolbar_list" />
-
 
         <ProgressBar
             android:id="@+id/toolbar_list_progressbar"
