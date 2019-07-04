@@ -58,7 +58,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
         list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
 
-        list1_daily_radioGroup1 = (RadioGroup) findViewById(R.id.list1_daily_radioGroup1);
+        list1_daily_radioGroup1 = (RadioGroup) findViewById(R.id.helperSU_radioGroup1);
         list1_daily_radioGroup1.clearCheck();
         list1_daily_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
         list1_daily_radioGroup2 = (RadioGroup) findViewById(R.id.list1_daily_radioGroup2);

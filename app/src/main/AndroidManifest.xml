@@ -11,19 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FillinHelperSignUpActivity.HelperSignUp3">
-
-
-        <!--list 1 start-->
-        <activity android:name=".FillinListActivity.List1LoveStartActivity" >
+        <!-- list 1 start -->
+        <activity android:name=".FillinListActivity.List1LoveStartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".FillinHelperSignUpActivity.HelperSignUp2" ></activity> <!-- list 1 start -->
-        <activity android:name=".FillinListActivity.List1LoveStartActivity" />
+        </activity> <!-- list 1 start -->
         <activity android:name=".FillinListActivity.List1CourseStartActivity" />
         <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
@@ -37,10 +32,9 @@
         <activity android:name=".FillinListActivity.List1EtcActivity" /> <!-- lists -->
         <activity android:name=".FillinListActivity.List2Activity" />
         <activity android:name=".FillinListActivity.List3Activity" />
-
-        <activity android:name=".FillinListActivity.List4Activity" android:windowSoftInputMode="adjustPan">
-        </activity>
-
+        <activity
+            android:name=".FillinListActivity.List4Activity"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".FillinListActivity.List5Activity" />
         <activity android:name=".FillinListActivity.List6Activity" />
         <activity android:name=".FillinListActivity.List7Activity" />
