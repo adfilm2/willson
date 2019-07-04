@@ -19,7 +19,7 @@
         android:textSize="21sp"
         android:textColor="@color/dark_purple"
         android:lineSpacingExtra="11sp"
-        android:text="도움을 줄 카테고리를 선택해주세요."
+        android:text="세부 카테고리를 선택해주세요."
         />
 
 
@@ -32,38 +32,38 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/list1_daily_radioGroup1"
+            android:id="@+id/helperSU_love_radioGroup1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/list1_daily_btn_habit"
+                android:id="@+id/helperSU_btn_love1"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
                 android:layout_marginRight="12.5dp"
+                android:layout_marginBottom="9.2dp"
                 android:layout_weight="1"
-                android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
-                android:text="연애"
+                android:button="@color/trans"
+                android:elevation="9dp"
                 android:gravity="center"
+                android:text="짝사랑"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
                 android:textColorLink="@color/list_btns_text_selector"
-                android:textSize="16sp"
-                android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"/>
+                android:textSize="16sp" />
 
             <RadioButton
-                android:id="@+id/list1_daily_btn_alba"
+                android:id="@+id/helperSU_btn_love2"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
-                android:text="진로"
+                android:text="썸"
                 android:gravity="center"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
@@ -80,13 +80,13 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/list1_daily_radioGroup2"
+            android:id="@+id/helperSU_love_radioGroup2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/list1_daily_btn_economy"
+                android:id="@+id/helperSU_btn_love3"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
@@ -94,7 +94,7 @@
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
-                android:text="심리"
+                android:text="갈등"
                 android:gravity="center"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
@@ -104,14 +104,14 @@
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/list1_daily_btn_trip"
+                android:id="@+id/helperSU_btn_love4"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
-                android:text="인간관계"
+                android:text="이별"
                 android:gravity="center"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
@@ -179,7 +179,7 @@
                     android:singleLine="true"
                     android:maxLength="8"
                     android:textColor="@color/lightPurple"
-                    android:id="@+id/list1_daily_usercustom_edittext"
+                    android:id="@+id/helperSU_love_edittext"
                     />
             </FrameLayout>
         </LinearLayout>
@@ -225,5 +225,3 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
-
-
