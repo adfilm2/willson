@@ -37,8 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginHorizontal="21.1dp"
         android:layout_marginTop="34.5dp">
 
         <TextView
@@ -62,7 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center_horizontal"
                 android:layout_gravity="fill_horizontal">
                 <RadioButton
                     android:id="@+id/man_btn"
@@ -126,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:text="#긍정적인"
-                android:layout_marginRight="9dp"
+                android:layout_marginRight="8.4dp"
                 android:button="@color/trans"
                 android:onClick="char_check"
                 android:checked="false"
@@ -156,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:text="#상냥한"
-                android:layout_marginRight="8.4dp"
+
                 android:button="@color/trans"
                 android:onClick="char_check"
                 android:checked="false"
@@ -203,7 +201,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:text="#유머스러운"
-                android:layout_marginRight="8.4dp"
+
                 android:button="@color/trans"
                 android:onClick="char_check"
                 android:checked="false"
@@ -250,7 +248,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:text="#유머스러운"
-                android:layout_marginRight="8.4dp"
                 android:button="@color/trans"
                 android:onClick="char_check"
                 android:checked="false"
@@ -344,7 +341,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 android:text="#완고한"
-                android:layout_marginRight="8.4dp"
                 android:button="@color/trans"
                 android:onClick="char_check"
                 android:checked="false"
