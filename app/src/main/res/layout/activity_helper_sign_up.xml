@@ -32,17 +32,17 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/list1_daily_radioGroup1"
+            android:id="@+id/helperSU_radioGroup1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/list1_daily_btn_habit"
+                android:id="@+id/helperSU_btn_love"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
-                android:layout_marginRight="12.5dp"
+                android:layout_marginRight="22dp"
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
@@ -56,7 +56,7 @@
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/list1_daily_btn_alba"
+                android:id="@+id/helperSU_btn_dream"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
@@ -80,17 +80,17 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/list1_daily_radioGroup2"
+            android:id="@+id/helperSU_radioGroup2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/list1_daily_btn_economy"
+                android:id="@+id/helperSU_btn_mind"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
-                android:layout_marginRight="12.5dp"
+                android:layout_marginRight="22dp"
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
@@ -104,7 +104,7 @@
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/list1_daily_btn_trip"
+                android:id="@+id/helperSU_btn_relationship"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
@@ -126,70 +126,51 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="1dp"
-            android:layout_height="49dp"
-            android:layout_marginLeft="24.8dp"
-            android:layout_marginRight="12.5dp"
-            android:background="@drawable/list_btns_selector"
-            android:id="@+id/list1_daily_btn_usercustom_layout"
-            android:layout_weight="1"
-            android:layout_marginBottom="20dp"
-            android:elevation="9dp">
+        <RadioGroup
+            android:id="@+id/helperSU_radioGroup3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center">
+            <RadioButton
+                android:id="@+id/helperSU_btn_life"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="24.8dp"
+                android:layout_marginRight="22dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="일상"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/list1_daily_btn_usercustom"
-                    android:gravity="center">
+            <RadioButton
+                android:id="@+id/helperSU_btn_etc"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginRight="27dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="기타"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="직접입력"
-                        android:textColor="@color/lightPurple"
-                        android:textSize="16sp"
-                        android:drawableLeft="@drawable/btn_plus"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:visibility="visible"
-                        />
-
-                </LinearLayout>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="직접입력"
-                    style="@style/list1_edit_color"
-                    android:textSize="16sp"
-                    android:textColorHint="@color/white"
-                    android:gravity="center"
-                    android:freezesText="true"
-                    android:cursorVisible="false"
-                    android:visibility="invisible"
-                    android:background="@null"
-                    android:singleLine="true"
-                    android:maxLength="8"
-                    android:textColor="@color/lightPurple"
-                    android:id="@+id/list1_daily_usercustom_edittext"
-                    />
-            </FrameLayout>
-        </LinearLayout>
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginRight="27dp"/>
-
+        </RadioGroup>
     </LinearLayout>
 
 

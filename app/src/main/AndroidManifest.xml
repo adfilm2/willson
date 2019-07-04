@@ -11,15 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FillinHelperSignUpActivity.HelperSignUp3">
-
-        </activity>
-        <activity android:name=".FillinHelperSignUpActivity.HelperSignUp2" />
-        <!-- list 1 start -->
-
         <!--list 1 start-->
-        <activity android:name=".FillinListActivity.List1LoveStartActivity" />
-        <activity android:name=".FillinListActivity.List1CourseStartActivity" >
+        <activity android:name=".FillinListActivity.List1LoveStartActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
