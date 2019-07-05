@@ -1,57 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-package="com.example.appjam_willson">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.appjam_willson">
 
-<application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="@string/app_name"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-    tools:ignore="GoogleAppIndexingWarning">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ConvConfirmActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" /> <!-- list 1 start -->
+        <activity android:name=".FillinListActivity.List1LoveStartActivity" />
+        <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
+        <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
+        <activity android:name=".FillinListActivity.List1DailyStartActivity" />
+        <activity android:name=".FillinListActivity.List1EtcStartActivity" /> <!-- list 1 -->
+        <activity android:name=".FillinListActivity.List1LoveActivity" />
+        <activity android:name=".FillinListActivity.List1CourseActivity" />
+        <activity android:name=".FillinListActivity.List1MentalityActivity" />
+        <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
+        <activity android:name=".FillinListActivity.List1DailyActivity" />
+        <activity android:name=".FillinListActivity.List1EtcActivity" /> <!-- lists -->
+        <activity android:name=".FillinListActivity.List2Activity" />
+        <activity android:name=".FillinListActivity.List3Activity" />
+        <activity
+            android:name=".FillinListActivity.List4Activity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".FillinListActivity.List5Activity" />
+        <activity
+            android:name=".FillinListActivity.List6Activity"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".FillinListActivity.List7Activity" />
+        <activity android:name=".FillinListActivity.ListAgreementActivity" />
+        <activity android:name=".FillinListActivity.ListLoadingActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ReqHelperProfileActivity">
 
-    <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0"></activity>
-    <!-- list 1 start -->
-    <activity android:name=".FillinListActivity.List1LoveStartActivity"></activity>
-    <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
-    <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
-    <activity android:name=".FillinListActivity.List1DailyStartActivity" />
-    <activity android:name=".FillinListActivity.List1EtcStartActivity" />
-    <!-- list 1 -->
-    <activity android:name=".FillinListActivity.List1LoveActivity" />
-    <activity android:name=".FillinListActivity.List1CourseActivity" />
-    <activity android:name=".FillinListActivity.List1MentalityActivity" />
-    <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
-    <activity android:name=".FillinListActivity.List1DailyActivity" />
-    <activity android:name=".FillinListActivity.List1EtcActivity" />
-    <!-- lists -->
-    <activity android:name=".FillinListActivity.List2Activity" />
-    <activity android:name=".FillinListActivity.List3Activity" />
-    <activity
-        android:name=".FillinListActivity.List4Activity"
-        android:windowSoftInputMode="adjustPan"></activity>
-    <activity android:name=".FillinListActivity.List5Activity" />
-    <activity android:name=".FillinListActivity.List6Activity"
-        android:windowSoftInputMode="adjustResize">
-
-    </activity>
-    <activity android:name=".FillinListActivity.List7Activity" />
-    <activity android:name=".FillinListActivity.ListAgreementActivity" />
-    <activity android:name=".FillinListActivity.ListLoadingActivity" />
-    <activity android:name=".MainActivity" />
-    <activity android:name=".ReqHelperProfileActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-    <activity android:name=".AskerProfileActivity">
-
-    </activity>
-</application>
+        </activity>
+        <activity android:name=".AskerProfileActivity"></activity>
+    </application>
 
 </manifest>
