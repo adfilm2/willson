@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">APPJAM_WILLSON</string>
-    <string name="agreement">상담 신청자(혹은 \'본인\')는 윌슨 서비스를 이용함에 있어 아래의 내용을 확인하고 준수할 것을 소정의 절차에 따라 동의합니다.</string>
-    <string name="check1">상담 동의서의 내용을 충분히 확인하였으며, 모든 항목에 동의합니다.</string>
-    <string name="check2">상담 내용은 제 3자에게 공개가 불가하며, 상담 내용 유출시 법적 제재를 받을 수 있음을 이해하였습니다.</string>
+    <string name="agreement">상담 신청자(혹은 \'본인\')는\n윌슨 서비스를 이용함에 있어 아래의 내용을\n확인하고 준수할 것을 소정의 절차에 따라\n동의합니다.</string>
+    <string name="check1">상담 동의서의 내용을 충분히 확인하였으며, 모든 항목에\n동의합니다.</string>
+    <string name="check2">상담 내용은 제 3자에게 공개가 불가하며, 상담 내용\n유출시 법적 제재를 받을 수 있음을 이해하였습니다.</string>
 </resources>

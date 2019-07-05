@@ -36,6 +36,8 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     LinearLayout list1_mentality_backbtn;
     LinearLayout list1_mentality_cancelbtn;
 
+    LinearLayout background;
+
     private CustomDialog dialog;
 
     Context context;
@@ -64,7 +66,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        selfesteem = (RadioButton) findViewById(R.id.list1_mentality_btn_selfesteem);
+        selfesteem = (RadioButton) findViewById(R.id.list1_mentality_btn_hurt);
         unrest = (RadioButton) findViewById(R.id.list1_mentality_btn_unrest);
         depressed = (RadioButton) findViewById(R.id.list1_mentality_btn_depressed);
         torpor = (RadioButton) findViewById(R.id.list1_mentality_btn_torpor);
@@ -110,6 +112,9 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         mentality_custom_edit_text.setTypeface(typebold);
 
         mentality_usercustom_layout = (LinearLayout)findViewById(R.id.list1_mentality_btn_usercustom_layout);
+
+        background = (LinearLayout)findViewById(R.id.list_background);
+        background.setOnClickListener(new list_background_listener());
     }
 
     private OnCheckedChangeListener radioGroup_mentality_listener1 = new OnCheckedChangeListener() {
@@ -117,7 +122,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != -1) {
 
-                if(checkedId == R.id.list1_mentality_btn_selfesteem){
+                if(checkedId == R.id.list1_mentality_btn_hurt){
                     selfesteem.setTypeface(typebold);
                     unrest.setTypeface(typereg);
                 }
@@ -130,7 +135,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 ego.setTypeface(typereg);
                 exist.setTypeface(typereg);
                 mentality_custom_edit_text.setTypeface(typereg);
-
+                mentality_custom_edit_text.setCursorVisible(false);
                 list1_mentality_nextbtn.setEnabled(true);
                 hidekeyboard(mentality_custom_edit_text);
                 list1_mentality_radioGroup2.setOnCheckedChangeListener(null);
@@ -170,7 +175,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 ego.setTypeface(typereg);
                 exist.setTypeface(typereg);
                 mentality_custom_edit_text.setTypeface(typereg);
-
+                mentality_custom_edit_text.setCursorVisible(false);
                 list1_mentality_nextbtn.setEnabled(true);
                 hidekeyboard(mentality_custom_edit_text);
                 list1_mentality_radioGroup1.setOnCheckedChangeListener(null);
@@ -210,7 +215,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 depressed.setTypeface(typereg);
                 torpor.setTypeface(typereg);
                 mentality_custom_edit_text.setTypeface(typereg);
-
+                mentality_custom_edit_text.setCursorVisible(false);
                 list1_mentality_nextbtn.setEnabled(true);
                 hidekeyboard(mentality_custom_edit_text);
                 list1_mentality_radioGroup1.setOnCheckedChangeListener(null);
@@ -253,6 +258,13 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         }
     }
 
+    class list_background_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(mentality_custom_edit_text);
+        }
+    }
+
     class mentality_custom_btn_listener implements OnClickListener {
         @Override
         public void onClick(View v) {
@@ -281,6 +293,9 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
             list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
             mentality_custom_text.setVisibility(View.INVISIBLE);
             mentality_custom_edit_text.setVisibility(View.VISIBLE);
+            mentality_custom_edit_text.setCursorVisible(true);
+            mentality_custom_edit_text.requestFocus();
+            showkeyboard(mentality_custom_edit_text);
             int backcolor = getResources().getColor(R.color.white);
             mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             mentality_custom_edit_text.setTextColor(backcolor);
@@ -317,6 +332,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
             list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
             mentality_custom_text.setVisibility(View.INVISIBLE);
             mentality_custom_edit_text.setVisibility(View.VISIBLE);
+            mentality_custom_edit_text.setCursorVisible(false);
             int backcolor = getResources().getColor(R.color.white);
             mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             mentality_custom_edit_text.setTextColor(backcolor);
@@ -341,6 +357,11 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     private void hidekeyboard(EditText edit) {
         InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+    }
+
+    private void showkeyboard(EditText edit){
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
     public void Dialog() {

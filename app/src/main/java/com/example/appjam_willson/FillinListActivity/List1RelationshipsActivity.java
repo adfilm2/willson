@@ -35,6 +35,8 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     LinearLayout list1_relationships_backbtn;
     LinearLayout list1_relationships_cancelbtn;
 
+    LinearLayout background;
+
     private CustomDialog dialog;
     Context context;
 
@@ -101,6 +103,9 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         relationships_custom_edit_text.setTypeface(typebold);
 
         relationships_usercustom_layout = (LinearLayout)findViewById(R.id.list1_relationships_btn_usercustom_layout);
+
+        background = (LinearLayout)findViewById(R.id.list_background);
+        background.setOnClickListener(new list_background_listener());
     }
 
     private OnCheckedChangeListener radioGroup_relationships_listener1 = new OnCheckedChangeListener() {
@@ -119,7 +124,7 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
                 companion.setTypeface(typereg);
                 junior.setTypeface(typereg);
                 relationships_custom_edit_text.setTypeface(typereg);
-
+                relationships_custom_edit_text.setCursorVisible(false);
                 list1_relationships_nextbtn.setEnabled(true);
                 hidekeyboard(relationships_custom_edit_text);
                 list1_relationships_radioGroup2.setOnCheckedChangeListener(null);
@@ -154,7 +159,7 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
                 family.setTypeface(typereg);
                 friend.setTypeface(typereg);
                 relationships_custom_edit_text.setTypeface(typereg);
-
+                relationships_custom_edit_text.setCursorVisible(false);
                 list1_relationships_nextbtn.setEnabled(true);
                 hidekeyboard(relationships_custom_edit_text);
                 list1_relationships_radioGroup1.setOnCheckedChangeListener(null);
@@ -194,6 +199,13 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         }
     }
 
+    class list_background_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(relationships_custom_edit_text);
+        }
+    }
+
     class relationships_custom_btn_listener implements OnClickListener {
         @Override
         public void onClick(View v) {
@@ -209,7 +221,6 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
             companion.setTypeface(typereg);
             junior.setTypeface(typereg);
             relationships_custom_edit_text.setTypeface(typebold);
-
             list1_relationships_radioGroup1.setOnCheckedChangeListener(null);
             list1_relationships_radioGroup1.clearCheck();
             list1_relationships_radioGroup1.setOnCheckedChangeListener(radioGroup_relationships_listener1);
@@ -218,6 +229,9 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
             list1_relationships_radioGroup2.setOnCheckedChangeListener(radioGroup_relationships_listener2);
             relationships_custom_text.setVisibility(View.INVISIBLE);
             relationships_custom_edit_text.setVisibility(View.VISIBLE);
+            relationships_custom_edit_text.setCursorVisible(true);
+            relationships_custom_edit_text.requestFocus();
+            showkeyboard(relationships_custom_edit_text);
             int backcolor = getResources().getColor(R.color.white);
             relationships_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             relationships_custom_edit_text.setTextColor(backcolor);
@@ -251,6 +265,7 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
             list1_relationships_radioGroup2.setOnCheckedChangeListener(radioGroup_relationships_listener2);
             relationships_custom_text.setVisibility(View.INVISIBLE);
             relationships_custom_edit_text.setVisibility(View.VISIBLE);
+            relationships_custom_edit_text.setCursorVisible(true);
             int backcolor = getResources().getColor(R.color.white);
             relationships_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             relationships_custom_edit_text.setTextColor(backcolor);
@@ -275,6 +290,11 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     private void hidekeyboard(EditText edit) {
         InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+    }
+
+    private void showkeyboard(EditText edit){
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
     public void Dialog() {

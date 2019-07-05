@@ -15,15 +15,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.appjam_willson.PopUp.CustomDialog;
 import com.example.appjam_willson.R;
 
-public class List2Activity extends AppCompatActivity {
+public class List5_1Activity extends AppCompatActivity {
 
     public int check_num = 0;
-    LinearLayout list2_cancelbtn;
-    LinearLayout list2_backbtn;
-    Button list2_nextbtn;
-    Context context;
+
+    LinearLayout list5_cancelbtn;
+    LinearLayout list5_backbtn;
 
     private CustomDialog dialog;
+
+    Button list5_nextbtn;
+    Context context;
 
     String resName;
     String packName;
@@ -32,7 +34,7 @@ public class List2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list2);
+        setContentView(R.layout.activity_list5_1);
 
         context = this;
 
@@ -40,16 +42,16 @@ public class List2Activity extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list2_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
-        list2_cancelbtn.setOnClickListener(new list2_cancelbtn_listener());
+        list5_nextbtn = (Button) findViewById(R.id.submit) ;
+        list5_nextbtn.setOnClickListener(new list5_1_nextbtn_listener());
 
-        list2_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
-        list2_backbtn.setOnClickListener(new list2_backbtn_listener());
+        list5_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list5_cancelbtn.setOnClickListener(new list5_1_cancelbtn_listener());
 
-        list2_nextbtn = (Button) findViewById(R.id.submit);
-        list2_nextbtn.setOnClickListener(new list2_nextbtn_listener());
-
+        list5_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list5_backbtn.setOnClickListener(new list5_1_backbtn_listener());
     }
+
     public void char_check(View view){
         Button nextbtn = (Button)findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;
@@ -83,31 +85,30 @@ public class List2Activity extends AppCompatActivity {
         else nextbtn.setEnabled(false);
     }
 
-    class list2_cancelbtn_listener implements View.OnClickListener {
+    class list5_1_cancelbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             Dialog();
         }
     }
 
-    class list2_backbtn_listener implements View.OnClickListener {
+    class list5_1_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             finish();
         }
     }
 
-    class list2_nextbtn_listener implements View.OnClickListener {
+    class list5_1_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(context, List3Activity.class);
+            Intent intent = new Intent(context, List6Activity.class);
             startActivity(intent);
         }
     }
-
     public void Dialog() {
-        dialog = new CustomDialog(List2Activity.this, resid,
-                "벌써 20%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+        dialog = new CustomDialog(List5_1Activity.this, resid,
+                "벌써 60%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
@@ -127,5 +128,7 @@ public class List2Activity extends AppCompatActivity {
             dialog.dismiss();
         }
     };
+
+
 
 }

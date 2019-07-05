@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff">
-
-    <include
-        android:id="@+id/activity_list1_mentality_start_toolbar"
-        layout="@layout/toolbar_list"/>
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="88.4dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="125.9dp"
-        android:layout_marginBottom="18dp"
-        android:src="@drawable/list_img_category_03_mind"
+        android:layout_width="58.3dp"
+        android:layout_height="61dp"
+        android:src="@drawable/img_loading"
+        android:layout_marginTop="226.5dp"
+        android:layout_marginBottom="62.6dp"
+        android:layout_gravity="center_horizontal"
         />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:layout_marginBottom="45dp"
-        android:textColor="@color/darkPurple"
-        android:lineSpacingExtra="17sp"
-        android:gravity="center_horizontal"
-        android:text="자존감"
+        android:text="요청이 완료되었습니다!"
+        android:textSize="21sp"
+        android:textColor="@color/dark_purple"
+        android:lineSpacingExtra="11sp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"
         />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:text="15분 내에 응답이 없을 경우,\n자동으로 취소됩니다."
+        android:textSize="16sp"
         android:textColor="@color/darkPurple"
-        android:lineSpacingExtra="13sp"
-        android:gravity="center_horizontal"
-        android:text="알맞는 헬퍼를 찾기 위해 간단한\n고민 리스트를 작성해주세요! "
+        android:lineSpacingExtra="10sp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="46.4dp"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_r"
         />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -64,11 +63,9 @@
             android:gravity="center_horizontal"
             android:textSize="18sp"
             android:textColor="@color/white"
-            android:id="@+id/list1_mentality_start_btn"
+            android:id="@+id/list1_course_start_btn"
             android:elevation="9dp"
             />
-
-
     </LinearLayout>
 
 </LinearLayout>
