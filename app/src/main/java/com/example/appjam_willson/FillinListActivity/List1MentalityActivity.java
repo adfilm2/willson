@@ -150,9 +150,9 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 String title;
                 title = mentality_custom_edit_text.getText().toString();
                 if(title.getBytes().length <= 0) {
-                    mentality_custom_text.setVisibility(View.VISIBLE);
-                    mentality_custom_edit_text.setVisibility(View.INVISIBLE);
-                }
+                mentality_custom_text.setVisibility(View.VISIBLE);
+                mentality_custom_edit_text.setVisibility(View.INVISIBLE);
+            }
             }
         }
     };

@@ -14,13 +14,15 @@
 
         <activity android:name=".MainActivity"/>
 
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1"/>
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0"/>
+
         <activity android:name=".FillinListActivity.List1LoveStartActivity" />
         <activity android:name=".FillinListActivity.List1CourseStartActivity"/>
         <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
         <activity android:name=".FillinListActivity.List1DailyStartActivity" />
         <activity android:name=".FillinListActivity.List1EtcStartActivity" />
-
         <activity android:name=".FillinListActivity.List1LoveActivity" />
         <activity android:name=".FillinListActivity.List1CourseActivity" />
         <activity android:name=".FillinListActivity.List1MentalityActivity" />
