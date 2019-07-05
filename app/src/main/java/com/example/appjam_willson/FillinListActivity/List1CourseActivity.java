@@ -16,14 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.PopUp.CustomDialog;
 import com.example.appjam_willson.R;
-
-import org.w3c.dom.Text;
 
 public class List1CourseActivity extends AppCompatActivity implements OnClickListener {
 
@@ -37,6 +34,8 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
 
     LinearLayout list1_course_backbtn;
     LinearLayout list1_course_cancelbtn;
+
+    LinearLayout background;
 
     Context context;
     private CustomDialog dialog;
@@ -100,6 +99,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         course_custom_edit_text.setTypeface(typebold);
 
         course_usercustom_layout = (LinearLayout)findViewById(R.id.list1_course_btn_usercustom_layout);
+
+        background = (LinearLayout)findViewById(R.id.list_background);
+        background.setOnClickListener(new list_background_listener());
     }
 
     private OnCheckedChangeListener radioGroup_course_listener1 = new OnCheckedChangeListener() {
@@ -117,7 +119,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
                 }
                 transfer.setTypeface(typereg);
                 course_custom_edit_text.setTypeface(typereg);
-
+                course_custom_edit_text.setCursorVisible(false);
                 list1_course_nextbtn.setEnabled(true);
                 hidekeyboard(course_custom_edit_text);
                 list1_course_radioGroup2.setOnCheckedChangeListener(null);
@@ -150,7 +152,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
                 study.setTypeface(typereg);
                 employment.setTypeface(typereg);
                 course_custom_edit_text.setTypeface(typereg);
-
+                course_custom_edit_text.setCursorVisible(false);
                 list1_course_nextbtn.setEnabled(true);
                 hidekeyboard(course_custom_edit_text);
                 list1_course_radioGroup1.setOnCheckedChangeListener(null);
@@ -189,6 +191,13 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         }
     }
 
+    class list_background_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(course_custom_edit_text);
+        }
+    }
+
     class course_custom_btn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
@@ -212,6 +221,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             list1_course_radioGroup2.setOnCheckedChangeListener(radioGroup_course_listener2);
             course_custom_text.setVisibility(View.INVISIBLE);
             course_custom_edit_text.setVisibility(View.VISIBLE);
+            course_custom_edit_text.setCursorVisible(true);
+            course_custom_edit_text.requestFocus();
+            showkeyboard(course_custom_edit_text);
             int backcolor = getResources().getColor(R.color.white);
             course_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             course_custom_edit_text.setTextColor(backcolor);
@@ -243,6 +255,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             list1_course_radioGroup2.setOnCheckedChangeListener(radioGroup_course_listener2);
             course_custom_text.setVisibility(View.INVISIBLE);
             course_custom_edit_text.setVisibility(View.VISIBLE);
+            course_custom_edit_text.setCursorVisible(true);
             int backcolor = getResources().getColor(R.color.white);
             course_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             course_custom_edit_text.setTextColor(backcolor);
@@ -266,6 +279,11 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     private void hidekeyboard(EditText edit) {
         InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+    }
+
+    private void showkeyboard(EditText edit){
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
     public void Dialog() {

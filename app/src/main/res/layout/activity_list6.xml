@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:id="@+id/list_background">
 
     <include
         android:id="@+id/activity_list1_toolbar"
@@ -17,7 +18,7 @@
         android:layout_height="6.7dp"
         android:progressDrawable="@drawable/list_progressbar"
         android:max="100"
-        android:progress="62" />
+        android:progress="70" />
 
     <View
         android:layout_width="match_parent"
@@ -41,7 +42,9 @@
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="21sp"
         android:gravity="center_horizontal"
-        android:text="62%" />
+        android:text="70%"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -49,9 +52,11 @@
         android:textSize="19sp"
         android:textColor="@color/dark_purple"
         android:lineSpacingExtra="11sp"
-        android:text="원하는 헬퍼는 어떤 분인가요? (2/2)"
+        android:text="원하는 헬퍼는 어떤 분인가요? (3/3)"
         android:layout_marginLeft="21dp"
         android:layout_marginTop="54.9dp"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"
         />
 
     <TextView
@@ -62,7 +67,9 @@
         android:lineSpacingExtra="13sp"
         android:text="이런 경험을 가진 헬퍼를 원해요"
         android:layout_marginTop="37.3dp"
-        android:layout_marginLeft="21dp"
+        android:layout_marginLeft="21.1dp"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"
         />
 
     <TextView
@@ -70,9 +77,12 @@
         android:layout_height="wrap_content"
         android:textSize="15sp"
         android:textColor="@color/brownish_grey"
-        android:lineSpacingExtra="15sp"
-        android:text="ex) #이별, #다툼, #화해"
-        android:layout_marginLeft="21dp"
+        android:lineSpacingExtra="11sp"
+        android:text="헬퍼가 경험해봤으면 좋을 만한 키워드를 작성해주시\n면 더 알맞은 헬퍼를 매칭해드릴게요"
+        android:layout_marginLeft="21.1dp"
+        android:layout_marginTop="11.7dp"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_r"
         />
 
         <LinearLayout
@@ -83,17 +93,19 @@
             android:layout_marginRight="21dp"
             android:id="@+id/linear1"
             android:background="@drawable/rounded_corner_radius5"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="55dp"
             >
             
             <TextView
                 android:layout_width="28.8dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:gravity="center"
                 android:textColor="@color/lightPurple"
                 android:layout_marginLeft="10dp"
                 android:text="#"
-                android:textSize="20sp"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
                 />
 
             <EditText
@@ -103,9 +115,13 @@
                 android:id="@+id/editText1"
                 android:background="@color/trans"
                 android:singleLine="true"
-                android:onClick="click_1"
                 android:textSize="15sp"
-                android:hint="태그 입력" />
+                android:textColor="@color/lightPurple"
+                android:textColorHint="@color/grey"
+                android:hint="태그 입력"
+                android:textStyle="normal"
+                android:textCursorDrawable="@null"
+                android:fontFamily="@font/nanum_square_r"/>
             
         </LinearLayout>
 
@@ -125,8 +141,11 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/lightPurple"
                 android:layout_marginLeft="10dp"
+                android:gravity="center"
                 android:text="#"
-                android:textSize="20sp"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
                 />
 
             <EditText
@@ -135,10 +154,14 @@
                 android:layout_height="30.7dp"
                 android:id="@+id/editText2"
                 android:singleLine="true"
-                android:onClick="click_2"
                 android:background="@color/trans"
                 android:textSize="15sp"
-                android:hint="태그 입력" />
+                android:textColor="@color/lightPurple"
+                android:textColorHint="@color/grey"
+                android:hint="태그 입력"
+                android:textStyle="normal"
+                android:textCursorDrawable="@null"
+                android:fontFamily="@font/nanum_square_r"/>
 
         </LinearLayout>
 
@@ -158,8 +181,11 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/lightPurple"
                 android:layout_marginLeft="10dp"
+                android:gravity="center"
                 android:text="#"
-                android:textSize="20sp"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
                 />
 
             <EditText
@@ -168,16 +194,31 @@
                 android:layout_height="30.7dp"
                 android:id="@+id/editText3"
                 android:singleLine="true"
-                android:onClick="click_3"
                 android:background="@color/trans"
                 android:textSize="15sp"
-                android:hint="태그 입력" />
+                android:textColor="@color/lightPurple"
+                android:textColorHint="@color/grey"
+                android:hint="태그 입력"
+                android:textStyle="normal"
+                android:textCursorDrawable="@null"
+                android:fontFamily="@font/nanum_square_r">
+            </EditText>
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/brownish_grey"
+            android:layout_marginLeft="21.1dp"
+            android:layout_marginTop="17dp"
+            android:text="ex) #이별, #다툼, #화해"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
+            />
 
     </LinearLayout>
-
 
         <Button
             android:layout_gravity="center"
@@ -190,11 +231,7 @@
             android:background="@drawable/next_btn_darkpurple"
             android:textSize="14sp"
             android:layout_marginBottom="32.6dp"
-
             />
-
-
-
 
 </LinearLayout>
     

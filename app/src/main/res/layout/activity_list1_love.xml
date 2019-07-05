@@ -4,7 +4,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:id="@+id/list_background"
+    >
 
     <include
         android:id="@+id/activity_list1_love_toolbar"
@@ -111,7 +113,7 @@
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
                 android:elevation="9dp"
-               />
+                />
         </RadioGroup>
     </LinearLayout>
 
@@ -143,7 +145,7 @@
                 android:textSize="16sp"
                 android:layout_marginBottom="9.2dp"
                 android:elevation="9dp"
-              />
+                />
 
             <RadioButton
                 android:id="@+id/list1_btn_saygoodbye"
@@ -212,20 +214,22 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="직접입력"
                     style="@style/list1_edit_color"
                     android:textSize="16sp"
-                    android:textColorHint="@color/white"
                     android:gravity="center"
                     android:freezesText="true"
-                    android:cursorVisible="false"
+                    android:cursorVisible="true"
                     android:visibility="invisible"
                     android:background="@null"
                     android:singleLine="true"
                     android:maxLength="8"
                     android:textColor="@color/lightPurple"
+                    android:textCursorDrawable="@null"
                     android:id="@+id/list1_usercustom_edittext"
-                    />
+                    >
+                    <requestFocus/>
+                </EditText>
+
             </FrameLayout>
         </LinearLayout>
 

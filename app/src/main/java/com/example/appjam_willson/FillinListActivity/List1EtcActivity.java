@@ -32,6 +32,8 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     LinearLayout list1_etc_backbtn;
     LinearLayout list1_etc_cancelbtn;
 
+    LinearLayout background;
+
     private CustomDialog dialog;
     Context context;
 
@@ -83,6 +85,9 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         etc_custom_edit_text.setTypeface(typebold);
 
         etc_usercustom_layout = (LinearLayout)findViewById(R.id.list1_etc_btn_usercustom_layout);
+
+        background = (LinearLayout)findViewById(R.id.list_background);
+        background.setOnClickListener(new list_background_listener());
     }
 
     @SuppressLint("ResourceType")
@@ -111,6 +116,7 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         public void onClick(View view) {
             visual.setTypeface(typebold);
             etc_custom_edit_text.setTypeface(typereg);
+            etc_custom_edit_text.setCursorVisible(false);
             list1_etc_radiobtn.setChecked(true);
             list1_etc_nextbtn.setEnabled(true);
             hidekeyboard(etc_custom_edit_text);
@@ -141,6 +147,9 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
             list1_etc_radiobtn.setChecked(false);
             etc_custom_text.setVisibility(View.INVISIBLE);
             etc_custom_edit_text.setVisibility(View.VISIBLE);
+            etc_custom_edit_text.setCursorVisible(true);
+            etc_custom_edit_text.requestFocus();
+            showkeyboard(etc_custom_edit_text);
             int backcolor = getResources().getColor(R.color.white);
             etc_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             etc_custom_edit_text.setTextColor(backcolor);
@@ -165,6 +174,7 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
             list1_etc_radiobtn.setChecked(false);
             etc_custom_text.setVisibility(View.INVISIBLE);
             etc_custom_edit_text.setVisibility(View.VISIBLE);
+            etc_custom_edit_text.setCursorVisible(true);
             int backcolor = getResources().getColor(R.color.white);
             etc_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             etc_custom_edit_text.setTextColor(backcolor);
@@ -189,6 +199,18 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     private void hidekeyboard(EditText edit) {
         InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+    }
+
+    private void showkeyboard(EditText edit){
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
+    class list_background_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(etc_custom_edit_text);
+        }
     }
 
     public void Dialog() {
