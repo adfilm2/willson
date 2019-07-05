@@ -12,7 +12,11 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity2" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,11 +24,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
         <activity android:name=".FillinListActivity.List1LoveStartActivity" />
-
-        <activity android:name=".FillinListActivity.List1CourseStartActivity" />
+        <activity android:name=".FillinListActivity.List1CourseStartActivity"/>
         <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
         <activity android:name=".FillinListActivity.List1DailyStartActivity" />
@@ -35,17 +36,19 @@
         <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
         <activity android:name=".FillinListActivity.List1DailyActivity" />
         <activity android:name=".FillinListActivity.List1EtcActivity" />
+
         <activity android:name=".FillinListActivity.List2Activity" />
         <activity android:name=".FillinListActivity.List3Activity" />
         <activity
             android:name=".FillinListActivity.List4Activity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".FillinListActivity.List5Activity" />
         <activity android:name=".FillinListActivity.List5_1Activity" />
         <activity android:name=".FillinListActivity.List6Activity" />
         <activity android:name=".FillinListActivity.List7Activity" />
         <activity android:name=".FillinListActivity.ListAgreementActivity" />
         <activity android:name=".FillinListActivity.ListLoadingActivity" />
+
     </application>
 
 </manifest>
