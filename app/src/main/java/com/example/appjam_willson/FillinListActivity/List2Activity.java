@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List2Activity extends AppCompatActivity {
@@ -23,7 +23,7 @@ public class List2Activity extends AppCompatActivity {
     Button list2_nextbtn;
     Context context;
 
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
 
     String resName;
     String packName;
@@ -106,7 +106,7 @@ public class List2Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List2Activity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List2Activity.this, resid,
                 "벌써 20%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);

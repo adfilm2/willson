@@ -19,7 +19,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List1CourseActivity extends AppCompatActivity implements OnClickListener {
@@ -38,7 +38,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     LinearLayout background;
 
     Context context;
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
 
     String resName;
     String packName;
@@ -287,7 +287,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List1CourseActivity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List1CourseActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);

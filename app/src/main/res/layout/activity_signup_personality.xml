@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="20dp"
         >
 
         <CheckBox
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="20dp"
         >
 
         <CheckBox
@@ -171,7 +171,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="20dp"
         >
 
         <CheckBox
@@ -224,7 +224,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="20dp"
         >
 
         <CheckBox
@@ -292,7 +292,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="20dp"
         >
 
         <CheckBox
@@ -360,7 +360,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="20dp"
         >
 
         <CheckBox
@@ -429,7 +429,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="13dp"
+        android:layout_marginLeft="20dp"
         >
 
         <CheckBox

@@ -11,12 +11,12 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class ListAgreementActivity extends AppCompatActivity {
 
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
     LinearLayout agree_cancelbtn;
     LinearLayout agree_backbtn;
     Button submit_btn;
@@ -86,7 +86,7 @@ public class ListAgreementActivity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(ListAgreementActivity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(ListAgreementActivity.this, resid,
                 "이제 거의 다왔어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);

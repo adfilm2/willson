@@ -13,7 +13,7 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List3Activity extends AppCompatActivity {
@@ -27,7 +27,7 @@ public class List3Activity extends AppCompatActivity {
     private RadioButton r_btn1, r_btn2, r_btn3, r_btn4 ,r_btn5;
     private RadioGroup radioGroup;
 
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
 
     String resName;
     String packName;
@@ -107,7 +107,7 @@ public class List3Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List3Activity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List3Activity.this, resid,
                 "벌써 30%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);

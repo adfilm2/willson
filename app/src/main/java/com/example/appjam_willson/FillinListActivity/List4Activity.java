@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List4Activity extends AppCompatActivity {
@@ -24,7 +24,7 @@ public class List4Activity extends AppCompatActivity {
 
     TextView textViewCount;
 
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
     LinearLayout list4_cancelbtn;
     LinearLayout list4_backbtn;
     Button list4_nextbtn;
@@ -129,7 +129,7 @@ public class List4Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List4Activity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List4Activity.this, resid,
                 "벌써 40%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);

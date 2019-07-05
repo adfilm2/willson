@@ -51,13 +51,13 @@
                     android:fontFamily="@font/nanum_square_b"
                     />
 
-                <view
+                <View
                     android:layout_width="10dp"
                     android:layout_height="match_parent"
                     />
             </LinearLayout>
 
-            <view
+            <View
                 android:layout_width="15.8dp"
                 android:layout_height="match_parent"
                 />

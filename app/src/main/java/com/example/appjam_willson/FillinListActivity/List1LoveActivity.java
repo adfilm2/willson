@@ -20,7 +20,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List1LoveActivity extends AppCompatActivity implements OnClickListener {
@@ -38,7 +38,8 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     LinearLayout list1_love_backbtn;
     LinearLayout list1_love_cancelbtn;
 
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
+
     Context context;
 
     String resName;
@@ -297,10 +298,14 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List1LoveActivity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List1LoveActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
+
+        //바깥에 눌러도 안없어지기
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
     }

@@ -2,8 +2,6 @@ package com.example.appjam_willson.PopUp;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.appjam_willson.R;
 
-public class CustomDialog extends Dialog {
+public class OneTextTwoButton_CustomDialog extends Dialog {
 
     private ImageView wilson_image;
     private TextView alart_textview;
@@ -55,7 +53,7 @@ public class CustomDialog extends Dialog {
 
     }
 
-    public CustomDialog(Context context, int image, String text, String keep_text, String exit_text, View.OnClickListener keep_listener, View.OnClickListener exit_listener) {
+    public OneTextTwoButton_CustomDialog(Context context, int image, String text, String keep_text, String exit_text, View.OnClickListener keep_listener, View.OnClickListener exit_listener) {
         super(context);
 
         this.image_id = image;
