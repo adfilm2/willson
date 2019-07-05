@@ -34,20 +34,23 @@ package="com.example.appjam_willson">
         android:name=".FillinListActivity.List4Activity"
         android:windowSoftInputMode="adjustPan"></activity>
     <activity android:name=".FillinListActivity.List5Activity" />
-    <activity android:name=".FillinListActivity.List6Activity" />
+    <activity android:name=".FillinListActivity.List6Activity"
+        android:windowSoftInputMode="adjustResize">
+
+    </activity>
     <activity android:name=".FillinListActivity.List7Activity" />
     <activity android:name=".FillinListActivity.ListAgreementActivity" />
     <activity android:name=".FillinListActivity.ListLoadingActivity" />
     <activity android:name=".MainActivity" />
     <activity android:name=".ReqHelperProfileActivity">
-
-    </activity>
-    <activity android:name=".AskerProfileActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
+    </activity>
+    <activity android:name=".AskerProfileActivity">
+
     </activity>
 </application>
 

@@ -8,29 +8,31 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AskerProfileActivity extends AppCompatActivity {
+public class ReqHelperProfileActivity extends AppCompatActivity {
 
-    Button request_btn;
+    Button start_btn;
     Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_asker_profile);
+        setContentView(R.layout.activity_req_helper_profile);
 
         context = this;
-        request_btn = (Button)findViewById(R.id.floating_btn_request);
 
-        request_btn.setOnClickListener(new request_conversation());
+        start_btn = (Button) findViewById(R.id.floating_btn_start);
+        start_btn.setOnClickListener(new start_conversation());
+
     }
 
-    private class request_conversation implements View.OnClickListener {
+    private class start_conversation implements View.OnClickListener {
+
         @Override
         public void onClick(View view) {
             Intent intent;
-            intent = new Intent(context, MainActivity.class);
+            intent = new Intent(context, AskerProfileActivity.class);
             startActivity(intent);
         }
     }
-
 }
