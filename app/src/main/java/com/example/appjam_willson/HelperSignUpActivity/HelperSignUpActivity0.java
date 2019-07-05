@@ -25,7 +25,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
     Button helperSU_0_btn_next;
     LinearLayout daily_custom_text;
-    EditText daily_custom_edit_text;
+    EditText helperSU_love_edittext; //daily_custom_edit_text
     LinearLayout daily_usercustom_layout;
 
     LinearLayout list1_daily_backbtn;
@@ -240,11 +240,11 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         @Override
         public void onClick(View v) {
             String title;
-            title = daily_custom_edit_text.getText().toString();
+            title = helperSU_love_edittext.getText().toString();
             if(title.getBytes().length <= 0) {
                 helperSU_0_btn_next.setEnabled(false);
                 daily_custom_text.setVisibility(View.VISIBLE);
-                daily_custom_edit_text.setVisibility(View.INVISIBLE);
+                helperSU_love_edittext.setVisibility(View.INVISIBLE);
             }
 
             btn1.setTypeface(typereg);
@@ -253,7 +253,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
             btn4.setTypeface(typereg);
             btn5.setTypeface(typereg);
             btn6.setTypeface(typereg);
-            daily_custom_edit_text.setTypeface(typebold);
+            helperSU_love_edittext.setTypeface(typebold);
 
             helperSU_radioGroup1.setOnCheckedChangeListener(null);
             helperSU_radioGroup1.clearCheck();
