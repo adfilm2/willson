@@ -4,8 +4,7 @@
     android:background="@drawable/rounded_corner"
     android:orientation="vertical"
     android:layout_width="350.9dp"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:orientation="vertical"
