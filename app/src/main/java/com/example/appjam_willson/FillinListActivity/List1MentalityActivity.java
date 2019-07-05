@@ -24,6 +24,8 @@ import com.example.appjam_willson.R;
 
 public class List1MentalityActivity extends AppCompatActivity implements OnClickListener{
 
+    int REQUEST_CODE;
+
     RadioGroup list1_mentality_radioGroup1;
     RadioGroup list1_mentality_radioGroup2;
     RadioGroup list1_mentality_radioGroup3;
@@ -62,6 +64,8 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         setContentView(R.layout.activity_list1_mentality);
 
         context = this;
+
+        REQUEST_CODE = ((List1MentalityActivity) context).getTaskId();
 
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
@@ -241,7 +245,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(context, List2Activity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     class list1_mentality_cancelbtn_listener implements OnClickListener {

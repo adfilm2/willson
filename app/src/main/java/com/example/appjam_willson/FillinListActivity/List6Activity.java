@@ -17,6 +17,8 @@ import com.example.appjam_willson.R;
 
 public class List6Activity extends AppCompatActivity {
 
+    int REQUEST_CODE;
+
     LinearLayout linear1;
     LinearLayout linear2;
     LinearLayout linear3;
@@ -43,6 +45,8 @@ public class List6Activity extends AppCompatActivity {
         setContentView(R.layout.activity_list6);
 
         context =this;
+
+        REQUEST_CODE = ((List6Activity) context).getTaskId();
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -132,7 +136,7 @@ public class List6Activity extends AppCompatActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(context, List7Activity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 

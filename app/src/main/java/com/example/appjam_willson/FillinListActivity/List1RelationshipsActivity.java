@@ -24,6 +24,8 @@ import com.example.appjam_willson.R;
 
 public class List1RelationshipsActivity extends AppCompatActivity implements OnClickListener {
 
+    int REQUEST_CODE;
+
     RadioGroup list1_relationships_radioGroup1;
     RadioGroup list1_relationships_radioGroup2;
 
@@ -58,6 +60,8 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         setContentView(R.layout.activity_list1_relationships);
 
         context = this;
+
+        REQUEST_CODE = ((List1RelationshipsActivity) context).getTaskId();
 
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
@@ -182,7 +186,7 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(context, List2Activity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     class list1_relationships_cancelbtn_listener implements OnClickListener {

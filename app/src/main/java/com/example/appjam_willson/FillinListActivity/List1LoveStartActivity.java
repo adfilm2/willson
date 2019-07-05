@@ -13,6 +13,8 @@ import com.example.appjam_willson.R;
 
 public class List1LoveStartActivity extends AppCompatActivity {
 
+    int REQUEST_CODE;
+
     LinearLayout toolbar_backbtn;
     Button love_start_btn;
     LinearLayout love_cancel_btn;
@@ -24,6 +26,9 @@ public class List1LoveStartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list1_love_start);
 
         context = this;
+
+        REQUEST_CODE = ((List1LoveStartActivity) context).getTaskId();
+        /*Log.d("리퀘스트 아이디 아이디 아이디 아이다 아이디이이", ">>>>" + REQUEST_CODE);*/
 
         toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
@@ -41,7 +46,8 @@ public class List1LoveStartActivity extends AppCompatActivity {
 
             Intent intent = new Intent(context, List1LoveActivity.class);
             /*startActivity(intent);*/
-            startActivityForResult(intent,1000);
+            /*startActivityForResult(intent,1000);*/
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 

@@ -18,6 +18,8 @@ import com.example.appjam_willson.R;
 
 public class List5Activity extends AppCompatActivity {
 
+    int REQUEST_CODE;
+
     LinearLayout list5_cancelbtn;
     LinearLayout list5_backbtn;
 
@@ -45,6 +47,8 @@ public class List5Activity extends AppCompatActivity {
         setContentView(R.layout.activity_list5);
 
         context = this;
+
+        REQUEST_CODE = ((List5Activity) context).getTaskId();
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -118,7 +122,7 @@ public class List5Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(context, List5_1Activity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 

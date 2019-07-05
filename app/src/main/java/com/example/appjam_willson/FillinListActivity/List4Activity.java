@@ -20,6 +20,8 @@ import com.example.appjam_willson.R;
 
 public class List4Activity extends AppCompatActivity {
 
+    int REQUEST_CODE;
+
     EditText editTextSMS;
 
     TextView textViewCount;
@@ -42,6 +44,8 @@ public class List4Activity extends AppCompatActivity {
         setContentView(R.layout.activity_list4);
 
         context = this;
+
+        REQUEST_CODE = ((List4Activity) context).getTaskId();
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -114,7 +118,7 @@ public class List4Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(context, List5Activity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 

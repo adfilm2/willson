@@ -1,40 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:background="@color/white"
+    >
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:text="Custom Dialog 호출"
-        android:textColor="#000000"
-        android:textSize="16dp"/>
+        <FrameLayout
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/main_frame"
+            android:layout_above="@+id/layout_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        </FrameLayout>
+    <LinearLayout
+        android:id="@+id/layout_menu"
+        android:layout_width="match_parent"
+        android:layout_height="87.3dp"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        >
+        <LinearLayout
+            android:id="@+id/layout_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="11.3dp"
+            >
+            <ImageView
+                android:id="@+id/Image_home"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginBottom="8.6dp"
+                android:background="@drawable/tab_01_home_btn"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_home"
+                android:text="홈"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:gravity="center"
+                />
+            </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginTop="100dp">
+        <LinearLayout
 
+            android:id="@+id/layout_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="11.3dp"
+            >
+            <ImageView
+                android:id="@+id/Image_request"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginBottom="8.6dp"
+                android:background="@drawable/tab_02_request_btn"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_request"
+                android:text="보낸 요청"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                android:gravity="center"
+                />
+           </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_course"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="진로"/>
+        <LinearLayout
 
-    <Button
-        android:id="@+id/btn_daily"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="일상"/>
+            android:id="@+id/layout_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="11.3dp"
+            >
+        <ImageView
+            android:id="@+id/Image_chat"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_marginBottom="8.6dp"
+            android:background="@drawable/tab_03_chat_btn"
+            />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_chat"
+                android:gravity="center"
+                android:text="채팅"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                />
 
-</LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="11.3dp"
+            >
+            <ImageView
+                android:id="@+id/Image_mypage"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_marginBottom="8.6dp"
+                android:background="@drawable/tab_04_mypage_btn"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_mypage"
+                android:text="마이페이지"
+                android:textSize="12sp"
+                android:textColor="@color/grey"
+                android:gravity="center"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

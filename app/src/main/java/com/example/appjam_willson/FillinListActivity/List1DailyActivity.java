@@ -24,6 +24,8 @@ import com.example.appjam_willson.R;
 
 public class List1DailyActivity extends AppCompatActivity implements OnClickListener {
 
+    int REQUEST_CODE;
+
     RadioGroup list1_daily_radioGroup1;
     RadioGroup list1_daily_radioGroup2;
 
@@ -57,7 +59,9 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_daily);
 
-        context=this;
+        context = this;
+
+        REQUEST_CODE = ((List1DailyActivity) context).getTaskId();
 
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
@@ -181,7 +185,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(context, List2Activity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     class list1_daily_cancelbtn_listener implements OnClickListener {

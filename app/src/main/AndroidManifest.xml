@@ -12,19 +12,18 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".MainActivity" />
 
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity2" />
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0">
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0"/>
+
+        <activity android:name=".FillinListActivity.List1LoveStartActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".FillinListActivity.List1LoveStartActivity" />
         <activity android:name=".FillinListActivity.List1CourseStartActivity"/>
         <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
@@ -48,6 +47,21 @@
         <activity android:name=".FillinListActivity.List7Activity" />
         <activity android:name=".FillinListActivity.ListAgreementActivity" />
         <activity android:name=".FillinListActivity.ListLoadingActivity" />
+
+
+        <!-- MainView -->
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".WillsonActivity"/>
+        <activity android:name=".ChoiceActivity"/>
+
+        <!-- Login&Register -->
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity_willson"/>
+        <activity android:name=".RegisterActivity_asker"/>
+
+        <!-- Chat -->
+        <activity android:name=".WillsonChatActivity"/>
+        <activity android:name=".ChatActivity"/>
 
     </application>
 

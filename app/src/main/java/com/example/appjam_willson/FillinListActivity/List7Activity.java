@@ -15,6 +15,8 @@ import com.example.appjam_willson.R;
 
 public class List7Activity extends AppCompatActivity {
 
+    int REQUEST_CODE;
+
     private OneTextTwoButton_CustomDialog dialog;
     LinearLayout list7_cancelbtn;
     LinearLayout list7_backbtn;
@@ -31,6 +33,8 @@ public class List7Activity extends AppCompatActivity {
         setContentView(R.layout.activity_list7);
 
         context = this;
+
+        REQUEST_CODE = ((List7Activity) context).getTaskId();
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -66,7 +70,7 @@ public class List7Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(context, ListAgreementActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 
