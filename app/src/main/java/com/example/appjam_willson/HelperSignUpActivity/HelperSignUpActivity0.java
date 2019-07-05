@@ -1,12 +1,11 @@
-        package com.example.appjam_willson.HelperSignUpActivity;
+package com.example.appjam_willson.HelperSignUpActivity;
 
-        import android.annotation.SuppressLint;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -15,7 +14,6 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.FillinListActivity.List2Activity;
 import com.example.appjam_willson.R;
 
 
@@ -25,7 +23,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     RadioGroup helperSU_radioGroup2;
     RadioGroup helperSU_radioGroup3;
 
-    Button list1_daily_nextbtn;
+    Button helperSU_0_btn_next;
     LinearLayout daily_custom_text;
     EditText daily_custom_edit_text;
     LinearLayout daily_usercustom_layout;
@@ -45,6 +43,8 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     RadioButton btn2;
     RadioButton btn3;
     RadioButton btn4;
+    RadioButton btn5;
+    RadioButton btn6;
 
     Typeface typebold;
     Typeface typereg;
@@ -63,11 +63,15 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         btn2 = (RadioButton) findViewById(R.id.helperSU_btn_dream);
         btn3 = (RadioButton) findViewById(R.id.helperSU_btn_mind);
         btn4 = (RadioButton) findViewById(R.id.helperSU_btn_relationship);
+        btn5 = (RadioButton) findViewById(R.id.helperSU_btn_life);
+        btn6 = (RadioButton) findViewById(R.id.helperSU_btn_etc);
 
         btn1.setTypeface(typereg);
         btn2.setTypeface(typereg);
         btn3.setTypeface(typereg);
         btn4.setTypeface(typereg);
+        btn5.setTypeface(typereg);
+        btn6.setTypeface(typereg);
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -77,7 +81,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
 
         list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
-        list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
+      //  list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
 
         helperSU_radioGroup1 = (RadioGroup) findViewById(R.id.helperSU_radioGroup1);
         helperSU_radioGroup1.clearCheck();
@@ -85,9 +89,12 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         helperSU_radioGroup2 = (RadioGroup) findViewById(R.id.helperSU_radioGroup2);
         helperSU_radioGroup2.clearCheck();
         helperSU_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
+        helperSU_radioGroup3 = (RadioGroup) findViewById(R.id.helperSU_radioGroup3);
+        helperSU_radioGroup3.clearCheck();
+        helperSU_radioGroup3.setOnCheckedChangeListener(radioGroup_daily_listener3);
 
-        list1_daily_nextbtn = (Button) findViewById(R.id.list1_daily_btn_next);
-        list1_daily_nextbtn.setOnClickListener(this);
+        helperSU_0_btn_next = (Button) findViewById(R.id.helperSU_0_btn_next);
+        helperSU_0_btn_next.setOnClickListener(this);
 
 
     }
@@ -107,14 +114,34 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
                 }
                 btn3.setTypeface(typereg);
                 btn4.setTypeface(typereg);
+                btn5.setTypeface(typereg);
+                btn6.setTypeface(typereg);
 
 
-                list1_daily_nextbtn.setEnabled(true);
+                helperSU_0_btn_next.setEnabled(true);
 
-                helperSU_radioGroup1.setOnCheckedChangeListener(null);
-                helperSU_radioGroup1.clearCheck();
-                helperSU_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener2);
+                helperSU_radioGroup2.setOnCheckedChangeListener(null);
+                helperSU_radioGroup2.clearCheck();
+                helperSU_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
+                helperSU_radioGroup3.setOnCheckedChangeListener(null);
+                helperSU_radioGroup3.clearCheck();
+                helperSU_radioGroup3.setOnCheckedChangeListener(radioGroup_daily_listener3);
 
+
+                /*
+                 list1_mentality_nextbtn.setEnabled(true);
+                hidekeyboard(mentality_custom_edit_text);
+                list1_mentality_radioGroup2.setOnCheckedChangeListener(null);
+                list1_mentality_radioGroup2.clearCheck();
+                list1_mentality_radioGroup2.setOnCheckedChangeListener(radioGroup_mentality_listener2);
+                list1_mentality_radioGroup3.setOnCheckedChangeListener(null);
+                list1_mentality_radioGroup3.clearCheck();
+                list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
+                mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+
+
+
+                 */
             }
         }
     };
@@ -124,23 +151,60 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId != -1) {
 
-                if(checkedId == R.id.helperSU_btn_love){
-                    btn1.setTypeface(typebold);
-                    btn2.setTypeface(typereg);
+                if(checkedId == R.id.helperSU_btn_mind){
+                    btn3.setTypeface(typebold);
+                    btn4.setTypeface(typereg);
                 }
-                else if(checkedId == R.id.helperSU_btn_dream){
-                    btn2.setTypeface(typebold);
-                    btn1.setTypeface(typereg);
+                else if(checkedId == R.id.helperSU_btn_relationship){
+                    btn4.setTypeface(typebold);
+                    btn3.setTypeface(typereg);
                 }
+                btn1.setTypeface(typereg);
+                btn2.setTypeface(typereg);
+                btn5.setTypeface(typereg);
+                btn6.setTypeface(typereg);
+
+
+                helperSU_0_btn_next.setEnabled(true);
+
+                helperSU_radioGroup1.setOnCheckedChangeListener(null);
+                helperSU_radioGroup1.clearCheck();
+                helperSU_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
+                helperSU_radioGroup3.setOnCheckedChangeListener(null);
+                helperSU_radioGroup3.clearCheck();
+                helperSU_radioGroup3.setOnCheckedChangeListener(radioGroup_daily_listener3);
+
+            }
+        }
+    };
+
+    private RadioGroup.OnCheckedChangeListener radioGroup_daily_listener3 = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
+
+                if(checkedId == R.id.helperSU_btn_life){
+                    btn5.setTypeface(typebold);
+                    btn6.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.helperSU_btn_etc){
+                    btn6.setTypeface(typebold);
+                    btn5.setTypeface(typereg);
+                }
+                btn1.setTypeface(typereg);
+                btn2.setTypeface(typereg);
                 btn3.setTypeface(typereg);
                 btn4.setTypeface(typereg);
 
 
-                list1_daily_nextbtn.setEnabled(true);
+                helperSU_0_btn_next.setEnabled(true);
 
+                helperSU_radioGroup1.setOnCheckedChangeListener(null);
+                helperSU_radioGroup1.clearCheck();
+                helperSU_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
                 helperSU_radioGroup2.setOnCheckedChangeListener(null);
                 helperSU_radioGroup2.clearCheck();
-                helperSU_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener1);
+                helperSU_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
 
             }
         }
@@ -148,12 +212,15 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
 
 
+
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(context, List2Activity.class);
-        startActivity(intent);
-    }
+        if (v.getId() == R.id.helperSU_0_btn_next) {
+            //선택된 View가 R.id.button1와 같은 ID를 가지고 있다면 해당 로직 실행
+            Intent intentSU = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
+            startActivity(intentSU);
+        }
 
     class list1_daily_backbtn_listener implements View.OnClickListener {
         @Override
@@ -163,20 +230,29 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     }
 
 
+
+
+
+
+
+
     class daily_custom_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             String title;
             title = daily_custom_edit_text.getText().toString();
             if(title.getBytes().length <= 0) {
-                list1_daily_nextbtn.setEnabled(false);
+                helperSU_0_btn_next.setEnabled(false);
                 daily_custom_text.setVisibility(View.VISIBLE);
                 daily_custom_edit_text.setVisibility(View.INVISIBLE);
             }
+
             btn1.setTypeface(typereg);
             btn2.setTypeface(typereg);
             btn3.setTypeface(typereg);
             btn4.setTypeface(typereg);
+            btn5.setTypeface(typereg);
+            btn6.setTypeface(typereg);
             daily_custom_edit_text.setTypeface(typebold);
 
             helperSU_radioGroup1.setOnCheckedChangeListener(null);
@@ -185,16 +261,14 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
             helperSU_radioGroup2.setOnCheckedChangeListener(null);
             helperSU_radioGroup2.clearCheck();
             helperSU_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
-
         }
     }
 
 
 
-    private void hidekeyboard(EditText edit) {
-        InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
-    }
 
 
-}
+
+
+
+}}

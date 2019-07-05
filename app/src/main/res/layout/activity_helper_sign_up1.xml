@@ -210,7 +210,7 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/list1_daily_btn_next"
+                android:id="@+id/helperSU_1_btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="46.1dp"
                 android:layout_marginLeft="31.7dp"

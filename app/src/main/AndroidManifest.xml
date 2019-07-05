@@ -12,34 +12,36 @@ package="com.example.appjam_willson">
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:ignore="GoogleAppIndexingWarning">
 
-
-    <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0"></activity>
-    <!-- list 1 start -->
-    <activity android:name=".FillinListActivity.List1LoveStartActivity"></activity>
-    <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
-    <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
-    <activity android:name=".FillinListActivity.List1DailyStartActivity" />
-    <activity android:name=".FillinListActivity.List1EtcStartActivity" />
-    <!-- list 1 -->
-    <activity android:name=".FillinListActivity.List1LoveActivity" />
-    <activity android:name=".FillinListActivity.List1CourseActivity" />
-    <activity android:name=".FillinListActivity.List1MentalityActivity" />
-    <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
-    <activity android:name=".FillinListActivity.List1DailyActivity" />
-    <activity android:name=".FillinListActivity.List1EtcActivity" />
-    <!-- lists -->
-    <activity android:name=".FillinListActivity.List2Activity" />
-    <activity android:name=".FillinListActivity.List3Activity" />
-    <activity
-        android:name=".FillinListActivity.List4Activity"
-        android:windowSoftInputMode="adjustPan"></activity>
-    <activity android:name=".FillinListActivity.List5Activity" />
-    <activity android:name=".FillinListActivity.List6Activity" />
-    <activity android:name=".FillinListActivity.List7Activity" />
-    <activity android:name=".FillinListActivity.ListAgreementActivity" />
-    <activity android:name=".FillinListActivity.ListLoadingActivity" />
-    <activity android:name=".MainActivity" />
     <activity android:name=".ReqHelperProfileActivity">
+   
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1"></activity>
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0">
+            
+        </activity> <!-- list 1 start -->
+        <activity android:name=".FillinListActivity.List1LoveStartActivity" />
+        <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
+        <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
+        <activity android:name=".FillinListActivity.List1DailyStartActivity" />
+        <activity android:name=".FillinListActivity.List1EtcStartActivity" /> <!-- list 1 -->
+        <activity android:name=".FillinListActivity.List1LoveActivity" />
+        <activity android:name=".FillinListActivity.List1CourseActivity" />
+        <activity android:name=".FillinListActivity.List1MentalityActivity" />
+        <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
+        <activity android:name=".FillinListActivity.List1DailyActivity" />
+        <activity android:name=".FillinListActivity.List1EtcActivity" /> <!-- lists -->
+        <activity android:name=".FillinListActivity.List2Activity" />
+        <activity android:name=".FillinListActivity.List3Activity" />
+        <activity
+            android:name=".FillinListActivity.List4Activity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".FillinListActivity.List5Activity" />
+        <activity android:name=".FillinListActivity.List6Activity" />
+        <activity android:name=".FillinListActivity.List7Activity" />
+        <activity android:name=".FillinListActivity.ListAgreementActivity" />
+        <activity android:name=".FillinListActivity.ListLoadingActivity" />
+        <activity android:name=".MainActivity" />
+    </application>
+
 
     </activity>
     <activity android:name=".AskerProfileActivity">
