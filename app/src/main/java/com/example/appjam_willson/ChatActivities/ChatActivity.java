@@ -47,6 +47,8 @@ import java.util.TimerTask;
 
 public class ChatActivity extends AppCompatActivity {
 
+    int one = 1;
+
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager layoutManager;
 
