@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appjam_willson">
 
     <application
@@ -8,12 +9,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".List7Activity" />
-        <activity android:name=".List6Activity" />
-        <activity android:name=".ListPopupActivity" />
-        <activity
-            android:name=".List3Activity">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivity0">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,13 +20,60 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".ConvConfirmActivity" />
 
-        <activity android:name=".AgreementActivity"
-            >
+        <activity android:name=".LoginRegisterActivity.LoginActivity"/>
+
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity2" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
+        <activity android:name=".FillinListActivity.List1LoveStartActivity">
+         <!--시작 -->
+        </activity> <!-- list 1 start -->
+        <activity android:name=".FillinListActivity.List1CourseStartActivity" />
+        <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
+        <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
+        <activity android:name=".FillinListActivity.List1DailyStartActivity" />
+        <activity android:name=".FillinListActivity.List1EtcStartActivity" />
+        <activity android:name=".FillinListActivity.List1LoveActivity" />
+        <activity android:name=".FillinListActivity.List1CourseActivity" />
+        <activity android:name=".FillinListActivity.List1MentalityActivity" />
+        <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
+        <activity android:name=".FillinListActivity.List1DailyActivity" />
+        <activity android:name=".FillinListActivity.List1EtcActivity" />
+        <activity android:name=".FillinListActivity.List2Activity" />
+        <activity android:name=".FillinListActivity.List3Activity" />
+        <activity
+            android:name=".FillinListActivity.List4Activity"
+            android:windowSoftInputMode="adjustPan" />
+
+
+
+        <activity android:name=".FillinListActivity.List5Activity" />
+        <activity android:name=".FillinListActivity.List5_1Activity"/>
+        <activity android:name=".FillinListActivity.List6Activity" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".FillinListActivity.List7Activity" />
+        <activity android:name=".FillinListActivity.ListAgreementActivity" />
+        <activity android:name=".FillinListActivity.ListLoadingActivity" />
+        <activity android:name=".ReqHelperProfileActivity">
+
         </activity>
-        <activity android:name=".List4Activity" />
-        <activity android:name=".List1Activity" />
-        <activity android:name=".MainActivity" >  </activity>
+        <activity android:name=".AskerProfileActivity"></activity>
+
+
+        <!-- MainView -->
+        <activity android:name=".MainActivities.MainActivity"/>
+        <activity android:name=".MainActivities.WillsonActivity"/>
+
+        <!-- Login&Register -->
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"/>
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_willson"/>
+        <activity android:name=".LoginRegisterActivity.ChoiceActivity"/>
+
+        <!-- Chat -->
+        <activity android:name=".ChatActivities.ChatActivity"/>
+        <activity android:name=".ChatActivities.WillsonChatActivity"/>
+
     </application>
 
 </manifest>

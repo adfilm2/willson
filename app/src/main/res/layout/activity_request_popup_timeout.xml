@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rounded_corner"
+    android:orientation="vertical"
+    android:layout_width="310.1dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25.6dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="91dp"
+            android:layout_height="80.5dp"
+            android:id="@+id/request_pop_image"
+            android:layout_gravity="center"
+            android:src="@drawable/request_img_alert_willson"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/dark_purple"
+            android:lineSpacingExtra="10sp"
+            android:gravity="center_horizontal"
+            android:text="주어진 시간이 다 지났어요"
+            android:layout_gravity="center"
+            android:layout_marginTop="21.5dp"
+            android:layout_marginBottom="13dp"
+            android:id="@+id/request_pop_textview_large"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11.9dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="6sp"
+            android:gravity="center_horizontal"
+            android:text="아직 결정 하시지 못했다면\n5분 더 연장해보세요."
+
+            />
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="157dp"
+            android:layout_height="38dp"
+            android:id="@+id/request_pop_keepbtn"
+            android:text="5분 연장하기"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corner_darkblue"
+            android:textSize="18sp"
+            android:elevation="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/brownish_grey"
+            android:layout_gravity="center"
+            android:text="취소하기"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="24.1dp"
+            android:id="@+id/list_pop_exitbtn"
+            />
+
+    </LinearLayout>
+</LinearLayout>

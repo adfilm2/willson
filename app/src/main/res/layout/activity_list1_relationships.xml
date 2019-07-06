@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:id="@+id/list_background">
+
+    <include
+        android:id="@+id/activity_list1_relationships_toolbar"
+        layout="@layout/toolbar_list"/>
+
+    <ProgressBar
+        android:id="@+id/toolbar_list_relationships_progressbar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6.7dp"
+        android:progressDrawable="@drawable/list_progressbar"
+        android:max="100"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/list_progress_shadow"
+        android:layout_marginBottom="6.5dp">
+    </View>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/darkPurple"
+        android:lineSpacingExtra="21sp"
+        android:gravity="center_horizontal"
+        android:text="0%" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:lineHeight="30sp"
+        android:layout_marginTop="53.3dp"
+        android:layout_marginLeft="21dp"
+        android:textColor="@color/darkPurple"
+        android:lineSpacingExtra="10sp"
+        android:layout_marginBottom="7dp"
+        android:text="당신의 인간관계 고민은\n어디에 해당하나요?"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginLeft="21.1dp"
+        android:text="1개만 선택해주세요"
+        android:layout_marginBottom="28.9dp"
+        android:textColor="@color/brownishGrey"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/list1_relationships_radioGroup1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/list1_relationships_btn_family"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="24.8dp"
+                android:layout_marginRight="12.5dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="가족"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+
+            <RadioButton
+                android:id="@+id/list1_relationships_btn_friends"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginRight="27dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="친구"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/list1_relationships_radioGroup2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/list1_relationships_btn_companion"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="24.8dp"
+                android:layout_marginRight="12.5dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="동료"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+
+            <RadioButton
+                android:id="@+id/list1_relationships_btn_junior"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginRight="27dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="선후배"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="49dp"
+            android:layout_marginLeft="24.8dp"
+            android:layout_marginRight="12.5dp"
+            android:background="@drawable/list_btns_selector"
+            android:id="@+id/list1_relationships_btn_usercustom_layout"
+            android:layout_weight="1"
+            android:layout_marginBottom="20dp"
+            android:elevation="9dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/list1_relationships_btn_usercustom"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="직접입력"
+                        android:textColor="@color/lightPurple"
+                        android:textSize="16sp"
+                        android:drawableLeft="@drawable/btn_plus"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="visible"
+                        />
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/list1_edit_color"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:freezesText="true"
+                    android:cursorVisible="true"
+                    android:visibility="invisible"
+                    android:background="@null"
+                    android:singleLine="true"
+                    android:maxLength="8"
+                    android:textColor="@color/lightPurple"
+                    android:textCursorDrawable="@null"
+                    android:id="@+id/list1_relationships_usercustom_edittext"
+                    >
+                    <requestFocus/>
+                </EditText>
+            </FrameLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginRight="27dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/list1_relationships_btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="46.1dp"
+                android:layout_marginLeft="31.7dp"
+                android:layout_marginRight="31.7dp"
+                android:layout_marginBottom="32.6dp"
+                android:background="@drawable/listnext_btn_selector"
+                android:enabled="false"
+                android:text="다음"
+                android:textColor="@color/white"
+                android:elevation="9dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

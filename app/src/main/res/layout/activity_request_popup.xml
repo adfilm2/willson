@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rounded_corner"
+    android:orientation="vertical"
+    android:layout_width="310.1dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25.6dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="91dp"
+            android:layout_height="80.5dp"
+            android:id="@+id/request_pop_image"
+            android:layout_gravity="center"
+            android:src="@drawable/request_img_alert_willson"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/dark_purple"
+            android:lineSpacingExtra="10sp"
+            android:gravity="center_horizontal"
+            android:text="원하는 헬퍼를 찾지 못했어요"
+            android:layout_gravity="center"
+            android:layout_marginTop="21.5dp"
+            android:layout_marginBottom="11dp"
+            android:id="@+id/request_pop_textview_large"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11.9dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="6sp"
+            android:gravity="center_horizontal"
+            android:text="많은 헬퍼들이 활동하는\n저녁 7-8시에 다시 요청해보세요."
+
+            />
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="180dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="31.7dp"
+            android:id="@+id/request_pop_keepbtn"
+            android:text="홈으로 돌아가기"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corner_darkblue"
+            android:textSize="18sp"
+            android:elevation="8dp"/>
+
+    </LinearLayout>
+</LinearLayout>
