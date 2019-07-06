@@ -1,14 +1,10 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.MainActivities;
 
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -20,12 +16,19 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.appjam_willson.FillinListActivity.List1CourseStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1DailyStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1EtcStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
+import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -35,9 +38,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class MainFragment extends Fragment {
 
