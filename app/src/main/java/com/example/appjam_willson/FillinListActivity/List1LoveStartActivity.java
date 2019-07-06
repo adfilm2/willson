@@ -43,9 +43,16 @@ public class List1LoveStartActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_CANCELED){
-            if(requestCode == REQUEST_CODE)
-                this.finish();
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK,intent);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
         }
     }
     class love_start_btn_listener implements View.OnClickListener {

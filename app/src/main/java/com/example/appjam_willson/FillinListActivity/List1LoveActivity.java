@@ -113,6 +113,22 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         background.setOnClickListener(new list_background_listener());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK,intent);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
     private OnCheckedChangeListener radioGroup_listener1 = new OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -325,7 +341,9 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         @Override
         public void onClick(View view) {
             dialog.dismiss();
-        }
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();        }
     };
 
 }

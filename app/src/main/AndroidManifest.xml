@@ -50,9 +50,8 @@
 
 
         <activity android:name=".FillinListActivity.List5Activity" />
-        <activity
-            android:name=".FillinListActivity.List6Activity"
-            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".FillinListActivity.List5_1Activity"/>
+        <activity android:name=".FillinListActivity.List6Activity" android:windowSoftInputMode="adjustResize" />
         <activity android:name=".FillinListActivity.List7Activity" />
         <activity android:name=".FillinListActivity.ListAgreementActivity" />
         <activity android:name=".FillinListActivity.ListLoadingActivity" />
