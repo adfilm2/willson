@@ -16,16 +16,15 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.PopUp.CustomDialog;
 import com.example.appjam_willson.R;
 
-import org.w3c.dom.Text;
-
 public class List1CourseActivity extends AppCompatActivity implements OnClickListener {
+
+    int commit = 100;
 
     RadioGroup list1_course_radioGroup1;
     RadioGroup list1_course_radioGroup2;
