@@ -11,14 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivityStart"></activity>
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivity0">
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivity0"></activity>
         <activity android:name=".ConvConfirmActivity" />
         <activity android:name=".LoginRegisterActivity.LoginActivity" />
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity2" />
@@ -52,7 +52,7 @@
         <activity android:name=".FillinListActivity.List7Activity" />
         <activity android:name=".FillinListActivity.ListAgreementActivity" />
         <activity android:name=".FillinListActivity.ListLoadingActivity" />
-        <activity android:name=".ReqHelperProfileActivity"></activity>
+        <activity android:name=".ReqHelperProfileActivity" />
         <activity android:name=".AskerProfileActivity" /> <!-- MainView -->
         <activity android:name=".MainActivities.MainActivity" />
         <activity android:name=".MainActivities.WillsonActivity" /> <!-- Login&Register -->
