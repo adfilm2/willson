@@ -17,10 +17,12 @@ import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List1EtcActivity extends AppCompatActivity implements OnClickListener {
+
+    int REQUEST_CODE;
 
     RadioButton list1_etc_radiobtn;
 
@@ -32,7 +34,9 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     LinearLayout list1_etc_backbtn;
     LinearLayout list1_etc_cancelbtn;
 
-    private CustomDialog dialog;
+    LinearLayout background;
+
+    private OneTextTwoButton_CustomDialog dialog;
     Context context;
 
     String resName;
@@ -50,6 +54,8 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         setContentView(R.layout.activity_list1_etc);
 
         context = this;
+
+        REQUEST_CODE = ((List1EtcActivity) context).getTaskId();
 
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
@@ -83,13 +89,16 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         etc_custom_edit_text.setTypeface(typebold);
 
         etc_usercustom_layout = (LinearLayout)findViewById(R.id.list1_etc_btn_usercustom_layout);
+
+        background = (LinearLayout)findViewById(R.id.list_background);
+        background.setOnClickListener(new list_background_listener());
     }
 
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(context, List2Activity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     class list1_etc_cancelbtn_listener implements OnClickListener {
@@ -111,6 +120,7 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         public void onClick(View view) {
             visual.setTypeface(typebold);
             etc_custom_edit_text.setTypeface(typereg);
+            etc_custom_edit_text.setCursorVisible(false);
             list1_etc_radiobtn.setChecked(true);
             list1_etc_nextbtn.setEnabled(true);
             hidekeyboard(etc_custom_edit_text);
@@ -141,6 +151,9 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
             list1_etc_radiobtn.setChecked(false);
             etc_custom_text.setVisibility(View.INVISIBLE);
             etc_custom_edit_text.setVisibility(View.VISIBLE);
+            etc_custom_edit_text.setCursorVisible(true);
+            etc_custom_edit_text.requestFocus();
+            showkeyboard(etc_custom_edit_text);
             int backcolor = getResources().getColor(R.color.white);
             etc_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             etc_custom_edit_text.setTextColor(backcolor);
@@ -165,6 +178,7 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
             list1_etc_radiobtn.setChecked(false);
             etc_custom_text.setVisibility(View.INVISIBLE);
             etc_custom_edit_text.setVisibility(View.VISIBLE);
+            etc_custom_edit_text.setCursorVisible(true);
             int backcolor = getResources().getColor(R.color.white);
             etc_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             etc_custom_edit_text.setTextColor(backcolor);
@@ -191,8 +205,20 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
 
+    private void showkeyboard(EditText edit){
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
+    class list_background_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(etc_custom_edit_text);
+        }
+    }
+
     public void Dialog() {
-        dialog = new CustomDialog(List1EtcActivity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List1EtcActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);

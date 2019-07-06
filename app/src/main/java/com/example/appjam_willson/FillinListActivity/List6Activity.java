@@ -12,10 +12,12 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List6Activity extends AppCompatActivity {
+
+    int REQUEST_CODE;
 
     LinearLayout linear1;
     LinearLayout linear2;
@@ -25,7 +27,7 @@ public class List6Activity extends AppCompatActivity {
 
     LinearLayout list6_cancelbtn;
     LinearLayout list6_backbtn;
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
     Button list6_nextbtn;
     Context context;
 
@@ -43,6 +45,8 @@ public class List6Activity extends AppCompatActivity {
         setContentView(R.layout.activity_list6);
 
         context =this;
+
+        REQUEST_CODE = ((List6Activity) context).getTaskId();
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -132,7 +136,7 @@ public class List6Activity extends AppCompatActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(context, List7Activity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 
@@ -157,7 +161,8 @@ public class List6Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List6Activity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List6Activity.this, resid,
+
                 "벌써 70%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);

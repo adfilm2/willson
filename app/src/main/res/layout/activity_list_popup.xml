@@ -3,19 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/rounded_corner"
     android:orientation="vertical"
-    android:layout_width="310.1dp"
-    android:layout_height="wrap_content">
+    android:layout_width="341.11dp"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25.6dp"
+        android:orientation="horizontal">
+    </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="25.6dp"
-                android:orientation="horizontal">
-            </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
 
             <ImageView
                 android:layout_width="91dp"
@@ -36,18 +38,22 @@
                 android:layout_marginTop="22dp"
                 android:layout_marginBottom="13.9dp"
                 android:id="@+id/list_pop_textview"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
                 />
 
             <Button
                 android:layout_gravity="center"
-                android:layout_width="159.5dp"
-                android:layout_height="39.2dp"
+                android:layout_width="183dp"
+                android:layout_height="38dp"
                 android:id="@+id/list_pop_keepbtn"
                 android:text="계속 작성하기"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_corner_darkblue"
-                android:textSize="18sp"
-                android:elevation="8dp"/>
+                android:textSize="16sp"
+                android:elevation="8dp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_eb"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -59,6 +65,8 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20.7dp"
                 android:id="@+id/list_pop_exitbtn"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
                 />
 
         </LinearLayout>

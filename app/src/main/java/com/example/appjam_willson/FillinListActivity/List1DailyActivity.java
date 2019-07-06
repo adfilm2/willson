@@ -19,10 +19,12 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List1DailyActivity extends AppCompatActivity implements OnClickListener {
+
+    int REQUEST_CODE;
 
     RadioGroup list1_daily_radioGroup1;
     RadioGroup list1_daily_radioGroup2;
@@ -35,7 +37,9 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     LinearLayout list1_daily_backbtn;
     LinearLayout list1_daily_cancelbtn;
 
-    private CustomDialog dialog;
+    LinearLayout background;
+
+    private OneTextTwoButton_CustomDialog dialog;
     Context context;
 
     String resName;
@@ -55,7 +59,9 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list1_daily);
 
-        context=this;
+        context = this;
+
+        REQUEST_CODE = ((List1DailyActivity) context).getTaskId();
 
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
@@ -101,6 +107,8 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
 
         daily_usercustom_layout = (LinearLayout)findViewById(R.id.list1_daily_btn_usercustom_layout);
 
+        background = (LinearLayout)findViewById(R.id.list_background);
+        background.setOnClickListener(new list_background_listener());
     }
 
     private OnCheckedChangeListener radioGroup_daily_listener1 = new OnCheckedChangeListener() {
@@ -119,7 +127,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
                 economy.setTypeface(typereg);
                 trip.setTypeface(typereg);
                 daily_custom_edit_text.setTypeface(typereg);
-
+                daily_custom_edit_text.setCursorVisible(false);
                 list1_daily_nextbtn.setEnabled(true);
                 hidekeyboard(daily_custom_edit_text);
                 list1_daily_radioGroup2.setOnCheckedChangeListener(null);
@@ -154,7 +162,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
                 habit.setTypeface(typereg);
                 alba.setTypeface(typereg);
                 daily_custom_edit_text.setTypeface(typereg);
-
+                daily_custom_edit_text.setCursorVisible(false);
                 list1_daily_nextbtn.setEnabled(true);
                 hidekeyboard(daily_custom_edit_text);
                 list1_daily_radioGroup1.setOnCheckedChangeListener(null);
@@ -177,7 +185,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(context, List2Activity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     class list1_daily_cancelbtn_listener implements OnClickListener {
@@ -194,6 +202,12 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         }
     }
 
+    class list_background_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(daily_custom_edit_text);
+        }
+    }
 
     class daily_custom_btn_listener implements OnClickListener {
         @Override
@@ -219,6 +233,9 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
             list1_daily_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
             daily_custom_text.setVisibility(View.INVISIBLE);
             daily_custom_edit_text.setVisibility(View.VISIBLE);
+            daily_custom_edit_text.setCursorVisible(true);
+            daily_custom_edit_text.requestFocus();
+            showkeyboard(daily_custom_edit_text);
             int backcolor = getResources().getColor(R.color.white);
             daily_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             daily_custom_edit_text.setTextColor(backcolor);
@@ -252,6 +269,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
             list1_daily_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
             daily_custom_text.setVisibility(View.INVISIBLE);
             daily_custom_edit_text.setVisibility(View.VISIBLE);
+            daily_custom_edit_text.setCursorVisible(true);
             int backcolor = getResources().getColor(R.color.white);
             daily_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             daily_custom_edit_text.setTextColor(backcolor);
@@ -278,8 +296,13 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
 
+    private void showkeyboard(EditText edit){
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
     public void Dialog() {
-        dialog = new CustomDialog(List1DailyActivity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List1DailyActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);

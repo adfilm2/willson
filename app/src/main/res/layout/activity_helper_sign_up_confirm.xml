@@ -110,7 +110,7 @@
             android:fontFamily="@font/nanum_square_r"
             />
 
-        <view
+        <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/lightPurple"
@@ -136,7 +136,7 @@
             android:fontFamily="@font/nanum_square_r"
             />
 
-        <view
+        <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/lightPurple"
@@ -263,8 +263,4 @@
                 />
         </LinearLayout>
     </LinearLayout>
-
-
-
-
 </LinearLayout>

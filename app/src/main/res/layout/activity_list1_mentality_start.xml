@@ -27,7 +27,7 @@
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="17sp"
         android:gravity="center_horizontal"
-        android:text="심리"
+        android:text="자존감"
         />
 
     <TextView

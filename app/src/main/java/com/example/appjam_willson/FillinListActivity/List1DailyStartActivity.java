@@ -13,6 +13,8 @@ import com.example.appjam_willson.R;
 
 public class List1DailyStartActivity extends AppCompatActivity {
 
+    int REQUEST_CODE;
+
     LinearLayout toolbar_backbtn;
     Button daily_start_btn;
     LinearLayout daily_cancel_btn;
@@ -24,6 +26,8 @@ public class List1DailyStartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list1_daily_start);
 
         context = this;
+
+        REQUEST_CODE = ((List1DailyStartActivity) context).getTaskId();
 
         toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
@@ -40,7 +44,7 @@ public class List1DailyStartActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(context, List1DailyActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 

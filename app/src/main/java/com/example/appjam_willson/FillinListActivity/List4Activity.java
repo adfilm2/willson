@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -16,16 +15,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List4Activity extends AppCompatActivity {
+
+    int REQUEST_CODE;
 
     EditText editTextSMS;
 
     TextView textViewCount;
 
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
     LinearLayout list4_cancelbtn;
     LinearLayout list4_backbtn;
     Button list4_nextbtn;
@@ -43,6 +44,8 @@ public class List4Activity extends AppCompatActivity {
         setContentView(R.layout.activity_list4);
 
         context = this;
+
+        REQUEST_CODE = ((List4Activity) context).getTaskId();
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -115,7 +118,7 @@ public class List4Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(context, List5Activity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 
@@ -130,8 +133,8 @@ public class List4Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List4Activity.this, resid,
-                "벌써 37%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+        dialog = new OneTextTwoButton_CustomDialog(List4Activity.this, resid,
+                "벌써 40%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
