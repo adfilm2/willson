@@ -55,6 +55,21 @@ public class List5_1Activity extends AppCompatActivity {
         list5_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
         list5_backbtn.setOnClickListener(new list5_1_backbtn_listener());
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK,intent);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
 
     public void char_check(View view){
         Button nextbtn = (Button)findViewById(R.id.submit);
@@ -130,6 +145,9 @@ public class List5_1Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

@@ -1,6 +1,7 @@
 package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -50,6 +51,22 @@ public class List7Activity extends AppCompatActivity {
         list7_backbtn.setOnClickListener(new list7_backbtn_listener());
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK,intent);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
 
     class list7_cancelbtn_listener implements View.OnClickListener {
         @Override
@@ -68,8 +85,8 @@ public class List7Activity extends AppCompatActivity {
     class list7_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            /*Intent intent = new Intent(context, ListAgreementActivity.class);
-            startActivityForResult(intent, REQUEST_CODE);*/
+            Intent intent = new Intent(context, ListAgreementActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 
@@ -93,6 +110,9 @@ public class List7Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 
