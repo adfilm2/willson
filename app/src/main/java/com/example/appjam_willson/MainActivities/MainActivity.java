@@ -1,17 +1,18 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.MainActivities;
 
 
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appjam_willson.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +26,6 @@ import com.google.firebase.iid.InstanceIdResult;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         LinearLayout button1=findViewById(R.id.layout_home);
         LinearLayout button2=findViewById(R.id.layout_request);
         LinearLayout button3=findViewById(R.id.layout_chat);
@@ -66,9 +68,12 @@ public class MainActivity extends AppCompatActivity{
         final TextView text_chat=findViewById(R.id.text_chat);
         final TextView text_mypage=findViewById(R.id.text_mypage);
 
+        //MainFragment1을 자동으로 띄워줌줌
+        startMainView();
+        changeImage(image_home,image_chat,image_mypage,image_request);
+        changeTextColor(text_home,text_request,text_chat,text_mypage);
+
         // passPushTokenToServer();
-
-
 
 //        TimerTask timerTask = new TimerTask() {
 //            // 1시간
@@ -95,6 +100,7 @@ public class MainActivity extends AppCompatActivity{
         Map<String, String> startTime;
         startTime = ServerValue.TIMESTAMP;
         Log.d("값ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ", String.valueOf(startTime.values()));
+
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +172,11 @@ public class MainActivity extends AppCompatActivity{
         fourth.setTextColor(Color.parseColor("#9e9e9e"));
     }
 
+    private void startMainView(){
+
+        MainFragment fragment = new MainFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
+    }
     public void checkMatch(){
         FirebaseDatabase.getInstance().getReference().child("testUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

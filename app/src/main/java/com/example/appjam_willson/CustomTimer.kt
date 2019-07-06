@@ -20,7 +20,7 @@ class CustomTimer{
 
             override fun run() {
                 if(listCompleteTimer>0) listCompleteTimer --
-                if(choiceHelperTimer>0) choiceHelperTimer --
+                if(choiceHelperTimer>0          ) choiceHelperTimer --
                 if(chattingTimer>0) chattingTimer --
             }
         }, 1000) // 1 second delay (takes millis)

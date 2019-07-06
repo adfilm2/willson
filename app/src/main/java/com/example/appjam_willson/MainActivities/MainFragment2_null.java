@@ -1,4 +1,4 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.MainActivities;
 
 
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.appjam_willson.R;
 
 public class MainFragment2_null extends Fragment {
 

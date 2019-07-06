@@ -1,4 +1,4 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,12 +7,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
+
+import java.util.List;
 
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> {

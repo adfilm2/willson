@@ -11,18 +11,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".LoginRegisterActivity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".FillinHelperSignUpActivity.HelperSignUp3">
 
         </activity>
         <activity android:name=".FillinHelperSignUpActivity.HelperSignUp2" />
-        <!-- list 1 start -->
-
-        <activity android:name=".LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <!--list 1 start-->
         <activity android:name=".FillinListActivity.List1LoveStartActivity" />
@@ -53,17 +52,17 @@
         <activity android:name=".FillinListActivity.ListLoadingActivity" />
 
         <!-- MainView -->
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".WillsonActivity"/>
-        <activity android:name=".ChoiceActivity"/>
+        <activity android:name=".MainActivities.MainActivity"/>
+        <activity android:name=".MainActivities.WillsonActivity"/>
 
         <!-- Login&Register -->
-        <activity android:name=".RegisterActivity_willson"/>
-        <activity android:name=".RegisterActivity_asker"/>
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"/>
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_willson"/>
+        <activity android:name=".LoginRegisterActivity.ChoiceActivity"/>
 
         <!-- Chat -->
-        <activity android:name=".WillsonChatActivity"/>
-        <activity android:name=".ChatActivity"/>
+        <activity android:name=".ChatActivities.ChatActivity"/>
+        <activity android:name=".ChatActivities.WillsonChatActivity"/>
 
     </application>
 
