@@ -54,6 +54,22 @@ public class List2Activity extends AppCompatActivity {
         list2_nextbtn.setOnClickListener(new list2_nextbtn_listener());
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK,intent);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
     public void char_check(View view){
         Button nextbtn = (Button)findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;

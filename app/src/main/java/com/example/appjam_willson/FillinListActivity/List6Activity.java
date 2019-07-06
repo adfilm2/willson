@@ -81,6 +81,22 @@ public class List6Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    Intent intent = new Intent();
+                    setResult(RESULT_OK,intent);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
     class edit1_focus implements View.OnFocusChangeListener {
         @Override
         public void onFocusChange(View view, boolean hasFocus) {
@@ -181,6 +197,9 @@ public class List6Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

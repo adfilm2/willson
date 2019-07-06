@@ -177,6 +177,7 @@ public class MainActivity extends AppCompatActivity{
         MainFragment fragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
     }
+
     public void checkMatch(){
         FirebaseDatabase.getInstance().getReference().child("testUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

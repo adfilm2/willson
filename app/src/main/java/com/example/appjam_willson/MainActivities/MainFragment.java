@@ -30,7 +30,6 @@ import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -69,14 +68,13 @@ public class MainFragment extends Fragment {
 
         LinearLayout changeMode = view.findViewById(R.id.fragment1_change);
 
-        myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//        myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1LoveStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -85,7 +83,7 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1CourseStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
+
             }
         });
 
@@ -94,7 +92,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1MentalityStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -103,7 +100,7 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1RelationshipsStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
+
             }
         });
 
@@ -112,7 +109,7 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1DailyStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
+
             }
         });
 
@@ -121,7 +118,7 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1EtcStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
+
             }
         });
 
@@ -130,7 +127,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity() , WillsonActivity.class);
                 startActivity(intent);
-                getActivity().finish();
+
             }
         });
 
