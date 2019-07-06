@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1"></activity>
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityExp"></activity>
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC2" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivity0" />
         <activity android:name=".HelperSignUpActivity.helperSignUpActivityStart" />
         <activity android:name=".FillinListActivity.List5_1Activity" />

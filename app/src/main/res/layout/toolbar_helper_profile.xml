@@ -20,6 +20,13 @@
             android:id="@+id/toolbar_list_btn_backbtn"
             android:layout_weight="0.5">
 
+            <TextView
+                android:paddingLeft="20.2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_backbtn"
+                android:layout_gravity="center_horizontal" />
+
             <ImageView
                 android:paddingLeft="20.2dp"
                 android:layout_width="wrap_content"
