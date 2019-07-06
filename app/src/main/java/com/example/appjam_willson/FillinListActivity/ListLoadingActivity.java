@@ -2,13 +2,12 @@ package com.example.appjam_willson.FillinListActivity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.appjam_willson.R;
 
 public class ListLoadingActivity extends AppCompatActivity {
@@ -21,6 +20,8 @@ public class ListLoadingActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private TextView min, sec;
 
+    ImageView loading;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -28,9 +29,9 @@ public class ListLoadingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_helper_loading);
 
         //로딩이미지
-        ImageView loading = (ImageView)findViewById(R.id.helper_loading);
+/*        ImageView loading = (ImageView)findViewById(R.id.);
         Animation animation1 = AnimationUtils.loadAnimation(this,R.anim.rotate);
-        loading.startAnimation(animation1);
+        loading.startAnimation(animation1);*/
 
         //타이머
         countTxt = (TextView)findViewById(R.id.count_txt);
@@ -38,6 +39,9 @@ public class ListLoadingActivity extends AppCompatActivity {
         countDownTimer();
         countDownTimer.start();
 
+        loading = (ImageView)findViewById(R.id.loading_moving_willson);
+
+        Glide.with(this).load(R.drawable.request_searching_wilson_moving).into(loading);
 
     }
 

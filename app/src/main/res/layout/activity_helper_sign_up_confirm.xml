@@ -5,7 +5,8 @@
 
     <include
         android:id="@+id/activity_helper_signup_toolbar"
-        layout="@layout/toolbar_helper_profile"/>
+        layout="@layout/toolbar_helper_profile"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +32,8 @@
         android:orientation="horizontal"
         android:layout_marginLeft="22.1dp"
         android:layout_marginRight="22.1dp"
-        android:background="@drawable/rounded_corner_radius5">
+        android:background="@drawable/rounded_corner_radius5"
+        >
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -110,7 +112,7 @@
             android:fontFamily="@font/nanum_square_r"
             />
 
-        <view
+        <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/lightPurple"
@@ -136,7 +138,7 @@
             android:fontFamily="@font/nanum_square_r"
             />
 
-        <view
+        <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:background="@color/lightPurple"
@@ -263,8 +265,4 @@
                 />
         </LinearLayout>
     </LinearLayout>
-
-
-
-
 </LinearLayout>

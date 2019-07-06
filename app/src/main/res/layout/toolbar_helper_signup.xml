@@ -47,6 +47,8 @@
                 android:layout_gravity="center_horizontal"
                 android:adjustViewBounds="true"
                 android:text="헬퍼 가입"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
                 />
 
         </LinearLayout>

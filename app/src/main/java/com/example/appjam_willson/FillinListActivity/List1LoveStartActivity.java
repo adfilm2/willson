@@ -13,6 +13,8 @@ import com.example.appjam_willson.R;
 
 public class List1LoveStartActivity extends AppCompatActivity {
 
+    int REQUEST_CODE;
+
     LinearLayout toolbar_backbtn;
     Button love_start_btn;
     LinearLayout love_cancel_btn;
@@ -25,6 +27,9 @@ public class List1LoveStartActivity extends AppCompatActivity {
 
         context = this;
 
+        REQUEST_CODE = ((List1LoveStartActivity) context).getTaskId();
+        /*Log.d("리퀘스트 아이디 아이디 아이디 아이다 아이디이이", ">>>>" + REQUEST_CODE);*/
+
         toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
 
@@ -35,13 +40,22 @@ public class List1LoveStartActivity extends AppCompatActivity {
         love_cancel_btn.setOnClickListener(new love_cancel_btn_listener());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_CANCELED){
+            if(requestCode == REQUEST_CODE)
+                finish();
+        }
+    }
     class love_start_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
 
             Intent intent = new Intent(context, List1LoveActivity.class);
             /*startActivity(intent);*/
-            startActivityForResult(intent,1000);
+            /*startActivityForResult(intent,1000);*/
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 

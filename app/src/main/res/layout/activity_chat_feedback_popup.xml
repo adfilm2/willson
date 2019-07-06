@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/rounded_corner"
     android:orientation="vertical"
-    android:layout_width="310.1dp"
+    android:layout_width="350.9dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -17,7 +17,6 @@
             android:orientation="horizontal">
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,6 +27,7 @@
                 android:layout_height="24dp"
                 android:layout_marginLeft="9dp"
                 android:src="@drawable/btn_cancel"
+                android:id="@+id/feedback_cancel"
                 />
 
             <LinearLayout
@@ -42,6 +42,7 @@
                     android:layout_height="24dp"
                     android:gravity="right"
                     android:src="@drawable/chat_btn_check"
+                    android:id="@+id/feedback_commit"
                     />
                 <View
                     android:layout_width="11dp"
@@ -49,12 +50,119 @@
             </LinearLayout>
         </LinearLayout>
 
+        <View
+            android:layout_height="6dp"
+            android:layout_width="0dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="11dp"
+            >
+
             <View
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:id="@+id/feedback_star1"
+                android:src="@drawable/chat_btn_review_star_yellow"
+                android:layout_weight="0.45"
                 />
 
-            <view
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="11dp"
+                android:id="@+id/feedback_star2"
+                android:src="@drawable/chat_btn_review_star_blank"
+                android:layout_weight="0.45"
+                />
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="11dp"
+                android:id="@+id/feedback_star3"
+                android:src="@drawable/chat_btn_review_star_blank"
+                android:layout_weight="0.45"
+                />
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="11dp"
+                android:id="@+id/feedback_star4"
+                android:src="@drawable/chat_btn_review_star_blank"
+                android:layout_weight="0.45"
+                />
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="11dp"
+                android:id="@+id/feedback_star5"
+                android:src="@drawable/chat_btn_review_star_blank"
+                android:layout_weight="0.45"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="12sp"
+                android:textColor="@color/darkPurple"
+                android:id="@+id/star_num"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_r"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/ 5  ⋅ "
+                android:layout_marginLeft="3dp"
+                android:textSize="12sp"
+                android:textColor="@color/grey"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_r"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/star_comment"
+                android:text="별로에요 "
+                android:layout_marginLeft="5.3dp"
+                android:textSize="12sp"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_r"
+                />
+
+        </LinearLayout>
+
+            <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#f8f8f8"
@@ -65,10 +173,19 @@
 
             <EditText
                 android:layout_width="match_parent"
+                android:id="@+id/feedback_comment"
+                android:background="@color/trans"
+                android:gravity="top"
                 android:layout_height="187dp"
                 android:layout_marginLeft="36dp"
                 android:layout_marginRight="36dp"
                 android:layout_marginBottom="58dp"
+                android:textSize="14sp"
+                android:lineSpacingExtra="12sp"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_round_r"
                 />
     </LinearLayout>
 </LinearLayout>

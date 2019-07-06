@@ -20,10 +20,12 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List1LoveActivity extends AppCompatActivity implements OnClickListener {
+
+    int REQUEST_CODE;
 
     RadioGroup list1_radioGroup1;
     RadioGroup list1_radioGroup2;
@@ -33,10 +35,13 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     EditText custom_edit_text;
     LinearLayout usercustom_layout;
 
+    LinearLayout background;
+
     LinearLayout list1_love_backbtn;
     LinearLayout list1_love_cancelbtn;
 
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
+
     Context context;
 
     String resName;
@@ -58,6 +63,8 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         setContentView(R.layout.activity_list1_love);
 
         context = this;
+
+        REQUEST_CODE = ((List1LoveActivity) context).getTaskId();
 
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
@@ -101,6 +108,9 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         custom_edit_text.setTypeface(typebold);
 
         usercustom_layout = (LinearLayout)findViewById(R.id.list1_btn_usercustom_layout);
+
+        background = (LinearLayout)findViewById(R.id.list_background);
+        background.setOnClickListener(new list_background_listener());
     }
 
     private OnCheckedChangeListener radioGroup_listener1 = new OnCheckedChangeListener() {
@@ -119,7 +129,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
                 conflict.setTypeface(typereg);
                 saygoodbye.setTypeface(typereg);
                 custom_edit_text.setTypeface(typereg);
-
+                custom_edit_text.setCursorVisible(false);
                 list1_nextbtn.setEnabled(true);
                 hidekeyboard(custom_edit_text);
                 list1_radioGroup2.setOnCheckedChangeListener(null);
@@ -156,7 +166,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
                 onesidelove.setTypeface(typereg);
                 somthing.setTypeface(typereg);
                 custom_edit_text.setTypeface(typereg);
-
+                custom_edit_text.setCursorVisible(false);
                 list1_radioGroup1.setOnCheckedChangeListener(null);
                 list1_radioGroup1.clearCheck();
                 list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
@@ -177,7 +187,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(context, List2Activity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     class list1_love_cancelbtn_listener implements OnClickListener {
@@ -191,6 +201,13 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         @Override
         public void onClick(View view) {
             finish();
+        }
+    }
+
+    class list_background_listener implements OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(custom_edit_text);
         }
     }
 
@@ -217,6 +234,9 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
             custom_text.setVisibility(View.INVISIBLE);
             custom_edit_text.setVisibility(View.VISIBLE);
+            custom_edit_text.setCursorVisible(true);
+            custom_edit_text.requestFocus();
+            showkeyboard(custom_edit_text);
             int backcolor = getResources().getColor(R.color.white);
             usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             custom_edit_text.setTextColor(backcolor);
@@ -249,6 +269,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
             custom_text.setVisibility(View.INVISIBLE);
             custom_edit_text.setVisibility(View.VISIBLE);
+            custom_edit_text.setCursorVisible(true);
             int backcolor = getResources().getColor(R.color.white);
             usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             custom_edit_text.setTextColor(backcolor);
@@ -275,11 +296,20 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
 
+    private void showkeyboard(EditText edit){
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
     public void Dialog() {
-        dialog = new CustomDialog(List1LoveActivity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List1LoveActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
+
+        //바깥에 눌러도 안없어지기
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
     }
@@ -295,6 +325,9 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

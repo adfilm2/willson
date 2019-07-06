@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:background="@color/white">
+
+            <include
+                android:id="@+id/toolbar_asker"
+                layout="@layout/toolbar_asker_profile"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@color/white"
+                            android:layout_marginBottom="15dp"
+                            android:elevation="7dp">
+
+                            <!--프로필 이미지-->
+                            <ImageView
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_gravity="center"
+                                android:id="@+id/profile_helper_img"
+                                android:src="@drawable/helper_img_profile_man"/>
+
+                            <!--닉네임-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="13.4dp"
+                                android:text="리트리버님"
+                                android:lineSpacingExtra="9sp"
+                                android:textColor="#424242"
+                                android:id="@+id/profile_helper_id"
+                                android:textSize="17sp"/>
+
+                            <!--정보-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="7.9dp"
+                                android:text="여성 / 20대 후반"
+                                android:layout_marginBottom="14.8dp"
+                                android:textColor="#424242"
+                                android:id="@+id/profile_helper_detail"
+                                android:textSize="13sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="심리"
+                                android:textSize="16sp"
+                                android:textColor="@color/lightPurple"
+                                android:gravity="center"
+                                android:paddingHorizontal="11dp"
+                                android:paddingVertical="5.8dp"
+                                android:elevation="5dp"
+                                android:background="@drawable/round_view"
+                                android:layout_gravity="center"/>
+
+
+                            <!--한줄-->
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="15.4dp"
+                                android:textColor="@color/black"
+                                android:letterSpacing="-0.03"
+                                android:lineSpacingExtra="9sp"
+                                android:layout_marginTop="14.4dp"
+                                android:layout_marginBottom="15dp"
+                                android:gravity="center"
+                                android:text='" 20대에 억단위를 벌어본 경험, 3년간 투병생활,\n20년간 어머니를 병간호한 경험이 있어요. "'
+                                android:id="@+id/profile_asker_info"
+                                android:textSize="17dp"/>
+
+                            <!--해시태그-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="40dp"
+                                android:layout_marginRight="40dp"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"
+                                android:layout_marginBottom="28.8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:background="@drawable/character_btn_selector_4and5_letters"
+                                    android:paddingVertical="4.5dp"
+                                    android:layout_marginHorizontal="2.9dp"
+                                    android:textColor="@color/lightPurple"
+                                    android:text="#긍정적인"
+                                    android:id="@+id/profile_helper_tag1"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginHorizontal="2.9dp"
+                                    android:background="@drawable/character_btn_selector_4and5_letters"
+                                    android:paddingVertical="4.5dp"
+                                    android:textColor="@color/lightPurple"
+                                    android:text="#긍정적인"
+                                    android:id="@+id/profile_helper_tag2"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginHorizontal="2.9dp"
+                                    android:background="@drawable/character_btn_selector_4and5_letters"
+                                    android:paddingVertical="4.5dp"
+                                    android:textColor="@color/lightPurple"
+                                    android:text="#긍정적인"
+                                    android:id="@+id/profile_helper_tag3"
+                                    android:textSize="13sp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginHorizontal="15.4dp">
+
+                         <TextView
+                            android:fontFamily="@font/nanum_square_l"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginTop="25.9dp"
+                            android:text="당신의 연애고민은 어디에 해당하나요?" />
+
+                         <TextView
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_corner_grey"
+                            android:textSize="14sp"
+                            android:layout_marginTop="9.6dp"
+                            android:textColor="@color/black"
+                            android:text="#짝사랑"
+                            android:paddingVertical="12.5dp"
+                            android:paddingHorizontal="10.6dp"/>
+
+                         <TextView
+                            android:fontFamily="@font/nanum_square_l"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginTop="20.2dp"
+                            android:text="어떤 감정을 느꼈나요?" />
+
+                         <TextView
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_corner_grey"
+                            android:textSize="14sp"
+                            android:layout_marginTop="9.6dp"
+                            android:textColor="@color/black"
+                            android:text="#어색한 #질투나는 #슬픈 #무기력한"
+                            android:paddingVertical="12.5dp"
+                            android:paddingHorizontal="10.6dp"/>
+
+                         <TextView
+                            android:fontFamily="@font/nanum_square_l"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginTop="20.2dp"
+                            android:text="당신의 고민은 얼마나 중요한가요?" />
+
+                         <TextView
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_corner_grey"
+                            android:textSize="14sp"
+                            android:layout_marginTop="9.6dp"
+                            android:textColor="@color/black"
+                            android:text="일상생활에 지장을 주는 정도"
+                            android:paddingVertical="12.5dp"
+                            android:paddingHorizontal="10.6dp"/>
+
+                        <ProgressBar
+                            android:layout_marginTop="12.4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/asker_profile_progressbar"
+                            android:max="5"
+                            android:progress="3"/>
+
+                         <TextView
+                            android:fontFamily="@font/nanum_square_l"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginTop="20.2dp"
+                            android:text="구체적으로 어떤 고민인가요?" />
+
+                        <TextView
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_corner_grey"
+                            android:textSize="14sp"
+                            android:letterSpacing="-0.02"
+                            android:lineSpacingExtra="12sp"
+                            android:layout_marginTop="9.6dp"
+                            android:textColor="@color/black"
+                            android:text="배고프다... 그치만 벌써 ㅗ토요일인데 언제쯤 앱이 완성될까요 백은 또 언제하지ㅠ 할게 태산인데 "
+                            android:paddingVertical="12.5dp"
+                            android:paddingHorizontal="10.6dp"/>
+                        <TextView
+                            android:fontFamily="@font/nanum_square_l"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginTop="20.2dp"
+                            android:text="원하는 헬퍼는 어떤 분인가요?" />
+
+                        <TextView
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_corner_grey"
+                            android:textSize="14sp"
+                            android:layout_marginTop="9.6dp"
+                            android:textColor="@color/black"
+                            android:text="성별: 여자"
+                            android:paddingVertical="12.5dp"
+                            android:paddingHorizontal="10.6dp"/>
+
+                        <TextView
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_corner_grey"
+                            android:textSize="14sp"
+                            android:layout_marginTop="9.6dp"
+                            android:textColor="@color/black"
+                            android:text="성격: #감성적인 #신중한"
+                            android:paddingVertical="12.5dp"
+                            android:paddingHorizontal="10.6dp"/>
+
+                        <TextView
+                            android:fontFamily="@font/nanum_square_l"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:layout_marginTop="20.2dp"
+                            android:text="원하는 대화 방향은 무엇인가요?" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="19.8dp"
+                            android:textSize="14sp"
+                            android:text="공감"/>
+
+                        <TextView
+                            android:fontFamily="@font/nanum_square_r"
+                            android:layout_marginTop="5.4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/brownishGrey"
+                            android:text="제 얘기에 대한 공감과 위로로 감정을 해소하고 싶어요." />
+
+                        <ProgressBar
+                            android:layout_marginTop="12.4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/asker_profile_progressbar"
+                            android:max="5"
+                            android:progress="3"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="25.2dp"
+                            android:textSize="14sp"
+                            android:text="조언"/>
+
+                        <TextView
+                            android:fontFamily="@font/nanum_square_r"
+                            android:layout_marginTop="5.4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/brownishGrey"
+                            android:text="저의 고민에 대한 현실적인 조언이 필요해요." />
+
+                        <ProgressBar
+                            android:layout_marginTop="12.4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/asker_profile_progressbar"
+                            android:max="5"
+                            android:progress="3"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="25.2dp"
+                            android:textSize="14sp"
+                            android:text="경험"/>
+
+                        <TextView
+                            android:fontFamily="@font/nanum_square_r"
+                            android:layout_marginTop="5.4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/brownishGrey"
+                            android:text="저와 비슷한 상황에서의 답변자분이 겪은 경험을 듣고 싶어요." />
+
+                        <ProgressBar
+                            android:layout_marginTop="12.4dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:progressDrawable="@drawable/asker_profile_progressbar"
+                            android:max="5"
+                            android:progress="5"
+                            android:layout_marginBottom="40dp"/>
+
+
+
+
+                    </LinearLayout>
+
+               </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/floating_btn_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="요청 보내기"
+            android:elevation="15dp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/rounded_corner_darkblue"
+            android:paddingHorizontal="20dp" />
+    </RelativeLayout>
+
+</FrameLayout>

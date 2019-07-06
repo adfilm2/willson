@@ -2,31 +2,44 @@ package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List5Activity extends AppCompatActivity {
 
-    public int check_num = 0;
+    int REQUEST_CODE;
+
     LinearLayout list5_cancelbtn;
     LinearLayout list5_backbtn;
-    private CustomDialog dialog;
+
+    RadioGroup list5_radioGroup;
+
+    private OneTextTwoButton_CustomDialog dialog;
+
     Button list5_nextbtn;
     Context context;
 
     String resName;
     String packName;
     int resid;
+
+    RadioButton man;
+    RadioButton woman;
+    RadioButton all;
+
+    Typeface typebold;
+    Typeface typereg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +48,22 @@ public class List5Activity extends AppCompatActivity {
 
         context = this;
 
+        REQUEST_CODE = ((List5Activity) context).getTaskId();
+
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
+
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
+        man = (RadioButton) findViewById(R.id.man_btn);
+        woman = (RadioButton) findViewById(R.id.woman_btn);
+        all = (RadioButton) findViewById(R.id.all_btn);
+
+        man.setTypeface(typereg);
+        woman.setTypeface(typereg);
+        all.setTypeface(typereg);
 
         list5_nextbtn = (Button) findViewById(R.id.submit) ;
         list5_nextbtn.setOnClickListener(new list5_nextbtn_listener());
@@ -48,41 +74,35 @@ public class List5Activity extends AppCompatActivity {
         list5_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
         list5_backbtn.setOnClickListener(new list5_backbtn_listener());
 
-
+        list5_radioGroup = (RadioGroup) findViewById(R.id.list5_radiogroup);
+        list5_radioGroup.setOnCheckedChangeListener(radioGroup_list5_listener);
     }
 
-    public void char_check(View view){
-        Button nextbtn = (Button)findViewById(R.id.submit);
-        CheckBox checkBox = (CheckBox)view;
+    private RadioGroup.OnCheckedChangeListener radioGroup_list5_listener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
 
-                if (check_num < 3) {
-                    if (!checkBox.isChecked()) {
-                        checkBox.setChecked(false);
-                        check_num -= 1;
-                        if(check_num<=0) check_num=0;
-
-                    } else {
-                        checkBox.setChecked(true);
-                        check_num += 1;
-                        if(check_num>3) check_num =3;
-
-                    }
-                } else {
-                    if (checkBox.isChecked()) {
-                        checkBox.setChecked(false);
-                        Toast.makeText(getApplicationContext(), "성격은 최대 세 개까지 고를 수 있습니다.", Toast.LENGTH_SHORT).show();
-
-                    }
-                    else{
-                        checkBox.setChecked(false);
-                        check_num -= 1;
-
-                    }
+                if(checkedId == R.id.man_btn){
+                    man.setTypeface(typebold);
+                    woman.setTypeface(typereg);
+                    all.setTypeface(typereg);
                 }
+                else if(checkedId == R.id.woman_btn){
+                    woman.setTypeface(typebold);
+                    man.setTypeface(typereg);
+                    all.setTypeface(typereg);
+                }
+                else {
+                    man.setTypeface(typereg);
+                    woman.setTypeface(typereg);
+                    all.setTypeface(typebold);
+                }
+            }
+        }
+    };
 
-                if(check_num == 3) nextbtn.setEnabled(true);
-                else nextbtn.setEnabled(false);
-    }
+
 
     class list5_cancelbtn_listener implements View.OnClickListener {
         @Override
@@ -101,12 +121,13 @@ public class List5Activity extends AppCompatActivity {
     class list5_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(context, List6Activity.class);
-            startActivity(intent);
+            Intent intent = new Intent(context, List5_1Activity.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
+
     public void Dialog() {
-        dialog = new CustomDialog(List5Activity.this, resid,
+        dialog = new OneTextTwoButton_CustomDialog(List5Activity.this, resid,
                 "벌써 50%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
@@ -129,7 +150,3 @@ public class List5Activity extends AppCompatActivity {
     };
 
 }
-
-
-
-

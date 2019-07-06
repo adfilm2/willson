@@ -3,10 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-
-    android:background="#f5f5f5"
-
-    tools:context=".FillinListActivity.ListAgreementActivity">
+    tools:context=".FillinListActivity.ListAgreementActivity"
+    android:background="#f5f5f5">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,8 +23,8 @@
             android:layout_marginTop="85.4dp"
             android:progressDrawable="@drawable/list_progressbar"
             android:max="100"
-            android:progress="88"
-            android:progressTint="@color/lightPurple" />
+            android:progress="90"
+            />
 
         <View
             android:layout_width="match_parent"
@@ -41,11 +39,13 @@
             android:id="@+id/textView2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="103.7dp"
-            android:textSize="15dp"
             android:textColor="@color/darkPurple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="88%" />
+            android:text="90%"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"/>
     </RelativeLayout>
 
 
@@ -57,7 +57,9 @@
         android:lineSpacingExtra="10sp"
         android:textColor="@color/darkPurple"
         android:textSize="20sp"
-        android:text="윌슨 상담 동의서" />
+        android:text="윌슨 상담 동의서"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -66,8 +68,7 @@
         android:layout_marginRight="23dp"
         android:layout_marginTop="216.8dp"
         android:background="@drawable/rounded_corner"
-        android:padding="10dp">
-
+        >
 
         <TextView
             android:id="@+id/textView"
@@ -75,10 +76,12 @@
             android:layout_height="wrap_content"
             android:paddingLeft="19.2dp"
             android:paddingTop="21.1dp"
-            android:paddingRight="30dp"
+            android:paddingRight="30.7dp"
             android:text="@string/agreement"
             android:textColor="@color/black"
-            android:textSize="19sp" />
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"/>
     </ScrollView>
 
     <LinearLayout
@@ -104,7 +107,9 @@
             android:text="@string/check1"
             android:layout_gravity="center"
             android:layout_marginRight="34.6dp"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"/>
     </LinearLayout>
 
     <LinearLayout
@@ -128,30 +133,36 @@
             android:text="@string/check2"
             android:layout_gravity="center"
             android:layout_marginRight="34.6dp"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"/>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/submit"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="31.7dp"
-        android:layout_marginBottom="32.6dp"
-        android:background="@drawable/next_btn_darkpurple"
-        android:enabled="false"
-        android:text="작성완료하기"
-        android:textColor="#FFFFFF" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_height="20dp"
-        android:layout_marginHorizontal="32.6dp"
-        android:layout_marginBottom="15dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/list_progress_shadow"/>
+        android:layout_height="wrap_content"
+        android:paddingBottom="32.6dp"
+        android:clipToPadding="false"
+        >
 
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="31.7dp"
+            android:layout_marginBottom="32.6dp"
+            android:elevation="9dp"
+            android:background="@drawable/listnext_btn_selector"
+            android:enabled="false"
+            android:text="작성완료하기"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"/>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

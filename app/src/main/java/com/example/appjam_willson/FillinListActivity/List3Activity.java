@@ -13,11 +13,12 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List3Activity extends AppCompatActivity {
 
+    int REQUEST_CODE;
 
     Button btnNext;     // 버튼
     Context context;    // Intent 객체 생성 시 넘길 프로퍼티( 현재객체 맥락 )
@@ -27,7 +28,7 @@ public class List3Activity extends AppCompatActivity {
     private RadioButton r_btn1, r_btn2, r_btn3, r_btn4 ,r_btn5;
     private RadioGroup radioGroup;
 
-    private CustomDialog dialog;
+    private OneTextTwoButton_CustomDialog dialog;
 
     String resName;
     String packName;
@@ -42,7 +43,6 @@ public class List3Activity extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-
         list3_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list3_cancelbtn.setOnClickListener(new list3_cancelbtn_listener());
 
@@ -54,6 +54,8 @@ public class List3Activity extends AppCompatActivity {
         radioGroup.setOnCheckedChangeListener(radioGroup_listener);
 
         context = this;
+        REQUEST_CODE = ((List3Activity) context).getTaskId();
+
         btnNext = findViewById(R.id.list3_btn1);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +65,7 @@ public class List3Activity extends AppCompatActivity {
                 //intent 객체생성
                 Intent intent = new Intent(context, List4Activity.class);
                 //Activity 실행메소드
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
 
             }
         });
@@ -107,8 +109,8 @@ public class List3Activity extends AppCompatActivity {
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List3Activity.this, resid,
-                "벌써 21%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+        dialog = new OneTextTwoButton_CustomDialog(List3Activity.this, resid,
+                "벌써 30%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

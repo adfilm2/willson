@@ -2,6 +2,19 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
+
+    <color name="colorYellow"> #fae100</color>
+    <color name="colorWarning">#ED00CB</color>
+    <color name="colorGrey">#8C8C8C</color>
+    <color name="colorBrown">#2c1617</color>
+    <color name="colorRed">#ED2939</color>
+    <color name="willsonColor">#4f4f9f</color>
+
+    <color name="button_left">#6262ac</color>
+    <color name="button_right">#49499d</color>
+    <color name="light_purple">#5252a1</color>
+    <color name="willsoncolor_basic">#4f4f9f</color>
+
     <color name="colorAccent">#2c2c4d</color>
     <color name="starAccent">#FFE650</color>
     <color name="colorNormal">#C8C8C8</color>

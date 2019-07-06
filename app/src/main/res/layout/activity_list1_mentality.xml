@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:id="@+id/list_background">
 
     <include
         android:id="@+id/activity_list1_mentality_toolbar"
@@ -70,7 +71,7 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/list1_mentality_btn_selfesteem"
+                android:id="@+id/list1_mentality_btn_hurt"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
@@ -78,7 +79,7 @@
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
-                android:text="자존감"
+                android:text="상처"
                 android:gravity="center"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
@@ -247,20 +248,21 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="직접입력"
                     style="@style/list1_edit_color"
                     android:textSize="16sp"
-                    android:textColorHint="@color/white"
                     android:gravity="center"
                     android:freezesText="true"
-                    android:cursorVisible="false"
+                    android:cursorVisible="true"
                     android:visibility="invisible"
                     android:background="@null"
                     android:singleLine="true"
                     android:maxLength="8"
                     android:textColor="@color/lightPurple"
+                    android:textCursorDrawable="@null"
                     android:id="@+id/list1_mentality_usercustom_edittext"
-                    />
+                    >
+                    <requestFocus/>
+                </EditText>
             </FrameLayout>
         </LinearLayout>
 

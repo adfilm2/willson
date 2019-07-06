@@ -1,7 +1,6 @@
 package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -10,12 +9,14 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.PopUp.CustomDialog;
+import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
 public class List7Activity extends AppCompatActivity {
 
-    private CustomDialog dialog;
+    int REQUEST_CODE;
+
+    private OneTextTwoButton_CustomDialog dialog;
     LinearLayout list7_cancelbtn;
     LinearLayout list7_backbtn;
     Button list7_nextbtn;
@@ -31,6 +32,8 @@ public class List7Activity extends AppCompatActivity {
         setContentView(R.layout.activity_list7);
 
         context = this;
+
+        REQUEST_CODE = ((List7Activity) context).getTaskId();
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -65,14 +68,15 @@ public class List7Activity extends AppCompatActivity {
     class list7_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(context, ListAgreementActivity.class);
-            startActivity(intent);
+            /*Intent intent = new Intent(context, ListAgreementActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);*/
+
         }
     }
 
     public void Dialog() {
-        dialog = new CustomDialog(List7Activity.this, resid,
-                "벌써 75%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+        dialog = new OneTextTwoButton_CustomDialog(List7Activity.this, resid,
+                "벌써 80%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
