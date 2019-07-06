@@ -2,7 +2,7 @@
     <string name="facebook_app_id">356292024967997</string>
     <string name="fb_login_protocol_scheme">fb356292024967997</string>
 
-       <string-array name="Age_group">
+    <string-array name="Age_group">
 
         <item>나이를 선택해주세요.</item>
         <item>21</item>
