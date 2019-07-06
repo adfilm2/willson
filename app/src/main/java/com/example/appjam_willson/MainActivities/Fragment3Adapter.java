@@ -1,10 +1,7 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +9,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.appjam_willson.ChatActivities.ChatActivity;
+import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
 
 import java.util.List;
@@ -54,7 +56,7 @@ public class Fragment3Adapter extends RecyclerView.Adapter<Fragment3Adapter.View
         viewHolder.chatStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(),ChatActivity.class);
+                Intent intent = new Intent(v.getContext(), ChatActivity.class);
                 intent.putExtra("destinationUid",willsonModels.get(i).getUid());
                 context.startActivity(intent);
             }

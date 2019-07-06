@@ -13,6 +13,9 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivity0"></activity>
         <activity android:name=".ConvConfirmActivity" />
+
+        <activity android:name=".LoginRegisterActivity.LoginActivity"/>
+
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity2" />
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
@@ -39,6 +42,9 @@
         <activity
             android:name=".FillinListActivity.List4Activity"
             android:windowSoftInputMode="adjustPan" />
+
+
+
         <activity android:name=".FillinListActivity.List5Activity" />
         <activity
             android:name=".FillinListActivity.List6Activity"
@@ -46,16 +52,25 @@
         <activity android:name=".FillinListActivity.List7Activity" />
         <activity android:name=".FillinListActivity.ListAgreementActivity" />
         <activity android:name=".FillinListActivity.ListLoadingActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ReqHelperProfileActivity"></activity>
-        <activity android:name=".AskerProfileActivity" /> <!-- MainView -->
-        <activity android:name=".WillsonActivity" />
-        <activity android:name=".ChoiceActivity" /> <!-- Login&Register -->
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity_willson" />
-        <activity android:name=".RegisterActivity_asker" /> <!-- Chat -->
-        <activity android:name=".WillsonChatActivity" />
-        <activity android:name=".ChatActivity" />
+        <activity android:name=".ReqHelperProfileActivity">
+
+        </activity>
+        <activity android:name=".AskerProfileActivity"></activity>
+
+
+        <!-- MainView -->
+        <activity android:name=".MainActivities.MainActivity"/>
+        <activity android:name=".MainActivities.WillsonActivity"/>
+
+        <!-- Login&Register -->
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"/>
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_willson"/>
+        <activity android:name=".LoginRegisterActivity.ChoiceActivity"/>
+
+        <!-- Chat -->
+        <activity android:name=".ChatActivities.ChatActivity"/>
+        <activity android:name=".ChatActivities.WillsonChatActivity"/>
+
     </application>
 
 </manifest>

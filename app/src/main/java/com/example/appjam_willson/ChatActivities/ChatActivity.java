@@ -1,10 +1,6 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.ChatActivities;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +12,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.ChatModel;
 import com.example.appjam_willson.model.WillsonModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,8 +40,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class WillsonChatActivity extends AppCompatActivity {
+
+public class ChatActivity extends AppCompatActivity {
+
+    int one = 1;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -46,16 +54,28 @@ public class WillsonChatActivity extends AppCompatActivity {
     private String destinationUid;
     private String RoomKey;
 
+    private TimerTask timerTask;
+    private Timestamp newTime;
+    private Timer timer = new Timer();
+    private String restTime;
+
     private String uid;
     private EditText editText;
     private Button btnSent;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd H:mm");
+    private long totalTime = 3600000;
 
-    private DatabaseReference databaseReference;
-    private ValueEventListener valueEventListener;
+    private long startTime;
+
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("H:mm");
+    private SimpleDateFormat timerFormat = new SimpleDateFormat("mm:ss");
 
     private LinearLayout linearLayout_startMsg ;
     private RelativeLayout chat_startMsg_time;
+
+    private TextView chat_timer;
+
+    private DatabaseReference databaseReference;
+    private ValueEventListener valueEventListener;
 
     private WillsonModel destinationUserModel;
     private WillsonModel askerUserModel;
@@ -72,15 +92,40 @@ public class WillsonChatActivity extends AppCompatActivity {
             uid = user.getUid();
         }
 
+//        chat_timer = findViewById(R.id.chat_timer);
+//
+//
+//        TimerTask timerTask = new TimerTask() {
+//            // 1시간
+//            @Override
+//            public void run() {
+//                ChatActivity.this.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        long passTime;
+//                        newTime = new Timestamp(System.currentTimeMillis());
+//                        long passedTime = newTime.getTime()-startTime;H
+//                        passTime = totalTime - passedTime;
+//
+//                        Date date = new Date(passTime);
+//                        restTime = timerFormat.format(date);
+//                        chat_timer.setText(restTime);
+//                        Log.d("쓰레드 돌아가나 확인","쓰레드ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+//                    }
+//                });
+//            }
+//        };
+
         linearLayout_startMsg = findViewById(R.id.chat_startMsg);
-        chat_startMsg_time = findViewById(R.id.chat_startMsg_time);
 
         destinationUid = getIntent().getStringExtra("destinationUid");
-
         //채팅방에 참여한 유저들의 uid들을 먼저 가져옴.
         getUserData();
 
-        RoomKey = (uid+destinationUid);
+        RoomKey = (destinationUid+uid);
+
+        //roomKey를 유저들에게 보내줌
+        sendRoomkey( destinationUid , uid , RoomKey);
 
         Button finishButton = findViewById(R.id.chat_btn_back);
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +149,7 @@ public class WillsonChatActivity extends AppCompatActivity {
                 String text = editText.getText().toString();
 
                 if(text.equals("")){
-                    Toast.makeText(WillsonChatActivity.this, "내용을 입력해주세요",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChatActivity.this, "내용을 입력해주세요",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     ChatModel.Comment comment = new ChatModel.Comment();
@@ -123,6 +168,7 @@ public class WillsonChatActivity extends AppCompatActivity {
             }
         });
         checkChatRoom();
+//        timer.schedule(timerTask,0,300);
     }
 
     void checkChatRoom() {
@@ -133,6 +179,7 @@ public class WillsonChatActivity extends AppCompatActivity {
                     ChatModel newRoom = new ChatModel();
                     newRoom.users.put(uid, true);
                     newRoom.users.put(destinationUid, true);
+                    newRoom.chatStart.put("timeStamp",ServerValue.TIMESTAMP);
 
                     FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).setValue(newRoom).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -146,10 +193,13 @@ public class WillsonChatActivity extends AppCompatActivity {
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
                     ChatModel chatModel = item.getValue(ChatModel.class);
                     if (chatModel.users.containsKey(destinationUid)) {
-                        mRecyclerView.setLayoutManager(new LinearLayoutManager(WillsonChatActivity.this));
+                        mRecyclerView.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
                         mRecyclerView.setAdapter(new ChatAdapter());
                     }
                 }
+
+                //Timer를 위해 처음 대화를 시작한 값을 가져옴
+                getChatStart();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -163,11 +213,11 @@ public class WillsonChatActivity extends AppCompatActivity {
         List<ChatModel.Comment> comments;
 
         public ChatAdapter() {
-
             comments = new ArrayList<>();
 
             //UserData를 먼저 생성해준다.
             //destinationUid를 참고하여 users 목록에서 data를 받은 후에 destinationUserModel에 데이터를 넣어준다.
+            makeUserData();
             FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -207,11 +257,10 @@ public class WillsonChatActivity extends AppCompatActivity {
                     //누군가가 대화를 시작하면  사라지게 만듦
                     if(linearLayout_startMsg.getVisibility() != View.GONE && comments.size() !=0){
                         linearLayout_startMsg.setVisibility(View.GONE);
-                        chat_startMsg_time.setVisibility(View.GONE);
+//                        chat_startMsg_time.setVisibility(View.GONE);
                     }
 
                     if(!comments.get(comments.size()-1).readUser.containsKey(uid)){
-
                         FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments")
                                 .updateChildren(readUsersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -256,9 +305,7 @@ public class WillsonChatActivity extends AppCompatActivity {
                 messageViewHolder.textView_my_msg.setText(comments.get(position).message);
                 messageViewHolder.textView_my_msg.setVisibility(View.VISIBLE);
 
-
                 messageViewHolder.imageView_profile.setVisibility(View.INVISIBLE);
-//                messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
 
                 messageViewHolder.textView_readCounter_right.setVisibility(View.INVISIBLE);
                 messageViewHolder.textView_readCounter_left.setVisibility(View.VISIBLE);
@@ -272,23 +319,18 @@ public class WillsonChatActivity extends AppCompatActivity {
 
             //상대방이 보낸거
             else{
-//                Picasso.get().load(destinationUserModel.getPhoto())
-//                        .fit()
-//                        .centerInside()
-//                        .into(messageViewHolder.imageView_profile);
 
                 messageViewHolder.textView_another_msg.setVisibility(View.VISIBLE);
                 messageViewHolder.textView_another_msg.setText(comments.get(position).message);
                 messageViewHolder.textView_my_msg.setVisibility(View.INVISIBLE);
 
                 messageViewHolder.imageView_profile.setVisibility(View.VISIBLE);
-//                messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
 
                 messageViewHolder.textView_readCounter_right.setVisibility(View.VISIBLE);
                 messageViewHolder.textView_readCounter_left.setVisibility(View.INVISIBLE);
 
-                messageViewHolder.textView_timeStamp_left.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_timeStamp_right.setVisibility(View.VISIBLE);
+                messageViewHolder.textView_timeStamp_left.setVisibility(View.VISIBLE);
+                messageViewHolder.textView_timeStamp_right.setVisibility(View.INVISIBLE);
 
                 setReadCounter(position,messageViewHolder.textView_readCounter_right);
                 messageViewHolder.textView_timeStamp_left.setText(time);
@@ -297,7 +339,7 @@ public class WillsonChatActivity extends AppCompatActivity {
         }
 
         void setReadCounter(final int position, final TextView textView) {
-            if (peopleCount == 0) {
+       if (peopleCount == 0) {
                 FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -317,6 +359,7 @@ public class WillsonChatActivity extends AppCompatActivity {
 
                     }
                 });
+
             }else {
                 int count = peopleCount - comments.get(position).readUser.size();
                 if (count > 0) {
@@ -337,9 +380,12 @@ public class WillsonChatActivity extends AppCompatActivity {
 
             public TextView textView_another_msg;
             public TextView textView_my_msg;
+
             public ImageView imageView_profile;
 
             public LinearLayout linearLayout_main;
+
+            public LinearLayout chat_finish_layout;
 
             public TextView textView_timeStamp_left;
             public TextView textView_timeStamp_right;
@@ -356,8 +402,10 @@ public class WillsonChatActivity extends AppCompatActivity {
 
                 linearLayout_main = view.findViewById(R.id.chat_layoutMain);
 
-                textView_timeStamp_left = view.findViewById(R.id.chat_timeStamp_left);
+                chat_finish_layout = view.findViewById(R.id.chat_finish_layout);
+
                 textView_timeStamp_right = view.findViewById(R.id.chat_timeStamp_right);
+                textView_timeStamp_left = view.findViewById(R.id.chat_timeStamp_left);
 
                 textView_readCounter_right = view.findViewById(R.id.chat_chatCount_right);
                 textView_readCounter_left = view.findViewById(R.id.chat_chatCount_left);
@@ -365,7 +413,7 @@ public class WillsonChatActivity extends AppCompatActivity {
         }
     }
     void getUserData(){
-        FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 askerUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -374,7 +422,8 @@ public class WillsonChatActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        FirebaseDatabase.getInstance().getReference().child("willsonUsers").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+
+        FirebaseDatabase.getInstance().getReference().child("willsonUsers").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -385,9 +434,47 @@ public class WillsonChatActivity extends AppCompatActivity {
         });
     }
 
+    void makeUserData(){
+        Map<String, String> willsonProfile = new HashMap<>();
+        willsonProfile.put("photo", "");
+        willsonProfile.put("uid", destinationUid);
+        willsonProfile.put("nickName",destinationUserModel.getNickName());
+
+        Map<String, String> askerProfile = new HashMap<>();
+        askerProfile.put("photo", "");
+        askerProfile.put("uid", uid);
+        askerProfile.put("nickName",askerUserModel.getNickName() );
+
+        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("willsonUser").setValue(willsonProfile);
+        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("askerUser").setValue(askerProfile);
+
+    }
+
+    void sendRoomkey(String willsonUser,String askerUser, String roomKey){
+        Map<String, Object> setRoomKey = new HashMap<>();
+        setRoomKey.put("roomKey", roomKey);
+        FirebaseDatabase.getInstance().getReference("willsonUsers").child(willsonUser).updateChildren(setRoomKey);
+        FirebaseDatabase.getInstance().getReference("users").child(askerUser).updateChildren(setRoomKey);
+    }
+
+    void getChatStart(){
+        FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("chatStart").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Map<String,Object> getTimeStamp = (Map <String,Object>)dataSnapshot.getValue();
+                startTime = (long) getTimeStamp.get("timeStamp");
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        super.onBackPressed();
+//        timerTask.cancel();
         databaseReference.removeEventListener(valueEventListener);
         finish();
     }

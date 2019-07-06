@@ -83,6 +83,7 @@ public class ListAgreementActivity extends AppCompatActivity {
             /*Intent intent = new Intent( context, ListLoadingActivity.class);
             startActivityForResult(intent, REQUEST_CODE);*/
 
+
         }
     }
 

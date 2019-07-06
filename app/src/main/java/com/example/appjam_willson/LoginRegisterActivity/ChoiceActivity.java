@@ -1,11 +1,13 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.LoginRegisterActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appjam_willson.R;
 
 public class ChoiceActivity extends AppCompatActivity {
 

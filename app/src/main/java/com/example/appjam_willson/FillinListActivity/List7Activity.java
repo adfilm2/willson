@@ -1,7 +1,6 @@
 package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -69,8 +68,8 @@ public class List7Activity extends AppCompatActivity {
     class list7_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(context, ListAgreementActivity.class);
-            startActivityForResult(intent, REQUEST_CODE);
+            /*Intent intent = new Intent(context, ListAgreementActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);*/
         }
     }
 
