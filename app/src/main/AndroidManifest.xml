@@ -11,19 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+        <!-- helperProfileEditActivity -->
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity"></activity>
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity"/>
 
         <!--Login && Register -->
         <activity android:name=".LoginRegisterActivity.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".LoginRegisterActivity.ChoiceActivity"/>
