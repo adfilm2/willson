@@ -19,6 +19,7 @@ public class List1MentalityStartActivity extends AppCompatActivity {
     Button mentality_start_btn;
     LinearLayout mentality_cancel_btn;
     Context context;
+    Bundle bundle_mentality;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,24 @@ public class List1MentalityStartActivity extends AppCompatActivity {
 
         mentality_cancel_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_cancel);
         mentality_cancel_btn.setOnClickListener(new mentality_cancel_btn_listener());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle_mentality = data.getExtras();
+                    bundle_mentality.putInt("category",3);
+                    data.putExtras(bundle_mentality);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     class mentality_start_btn_listener implements View.OnClickListener {

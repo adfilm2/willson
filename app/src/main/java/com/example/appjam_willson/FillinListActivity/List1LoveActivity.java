@@ -56,6 +56,10 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     Typeface typebold;
     Typeface typereg;
 
+    Bundle bundle1 = new Bundle();
+    String small_category;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +115,29 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
 
         background = (LinearLayout)findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
+
+
+
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle1 = data.getExtras();
+                    bundle1.putString("small category",small_category);
+                    data.putExtras(bundle1);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
 
     private OnCheckedChangeListener radioGroup_listener1 = new OnCheckedChangeListener() {
         @Override
@@ -186,6 +212,25 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
+
+        if(onesidelove.isChecked()){
+            small_category = onesidelove.getText().toString();
+        }
+        else if (somthing.isChecked()){
+            small_category = somthing.getText().toString();
+        }
+        else if (conflict.isChecked()){
+            small_category = conflict.getText().toString();
+        }
+        else if (saygoodbye.isChecked()){
+            small_category = saygoodbye.getText().toString();
+        }
+        else if (custom_edit_text.isFocused()){
+            small_category = custom_edit_text.getText().toString();
+        }
+        else{}
+
+
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }

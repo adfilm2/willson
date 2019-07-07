@@ -33,6 +33,8 @@ public class List4Activity extends AppCompatActivity {
 
     Context context;
 
+    Bundle bundle4 = new Bundle();
+
     String resName;
     String packName;
     int resid;
@@ -51,6 +53,7 @@ public class List4Activity extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
+
         list4_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         list4_cancelbtn.setOnClickListener(new list4_cancelbtn_listener());
 
@@ -60,29 +63,62 @@ public class List4Activity extends AppCompatActivity {
         list4_nextbtn = (Button) findViewById(R.id.list4_btn1);
         list4_nextbtn.setOnClickListener(new list4_nextbtn_listener());
 
+
         textViewCount = (TextView) findViewById(R.id.textViewCount);
         editTextSMS = (EditText) findViewById(R.id.list4_edittext);
 
         editTextSMS.addTextChangedListener(new TextWatcher() {
 
             @Override
+
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
+
+
             @Override
+
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+
                 textViewCount.setText(Integer.toString(s.toString().length()));
+
                 if (s.length() == 0 ) {
                     list4_nextbtn.setEnabled(false);
                 }
                 else list4_nextbtn.setEnabled(true);
+
             }
+
+
 
             @Override
+
             public void afterTextChanged(Editable s) {
+
             }
+
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle4 = data.getExtras();
+                    bundle4.putString("contents", editTextSMS.getText().toString());
+
+                    data.putExtras(bundle4);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     class list4_cancelbtn_listener implements View.OnClickListener {
@@ -109,8 +145,12 @@ public class List4Activity extends AppCompatActivity {
 
 
     public void onButtonSendClicked(View v) {
+
         Toast toast = Toast.makeText(this, editTextSMS.getText(), Toast.LENGTH_LONG);
+
         toast.show();
+
+
     }
 
     public void Dialog() {
@@ -133,6 +173,9 @@ public class List4Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

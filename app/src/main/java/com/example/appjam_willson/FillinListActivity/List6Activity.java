@@ -2,12 +2,8 @@ package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -39,12 +35,15 @@ public class List6Activity extends AppCompatActivity {
     EditText edit2;
     EditText edit3;
 
+    String helper_key1;
+    String helper_key2;
+    String helper_key3;
+
+    Bundle bundle6 = new Bundle();
+
     String resName;
     String packName;
     int resid;
-
-    Typeface typebold;
-    Typeface typereg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +54,10 @@ public class List6Activity extends AppCompatActivity {
 
         REQUEST_CODE = ((List6Activity) context).getTaskId();
 
-        typebold = getResources().getFont(R.font.nanum_square_b);
-        typereg = getResources().getFont(R.font.nanum_square_r);
-
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
+
 
         list6_nextbtn = (Button) findViewById(R.id.button1);
         list6_nextbtn.setOnClickListener(new list6_nextbtn_listener());
@@ -79,89 +76,47 @@ public class List6Activity extends AppCompatActivity {
         edit2 = (EditText)findViewById(R.id.editText2);
         edit3 = (EditText)findViewById(R.id.editText3);
 
+        edit3.setFocusableInTouchMode(true);
+
         edit1.setOnFocusChangeListener(new edit1_focus());
         edit2.setOnFocusChangeListener(new edit2_focus());
         edit3.setOnFocusChangeListener(new edit3_focus());
-        edit3.setOnKeyListener(new edit3_key());
-
-        edit1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0 ) {
-                    edit1.setTypeface(typereg);
-                }
-                else edit1.setTypeface(typebold);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
-
-        edit2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0 ) {
-                    edit2.setTypeface(typereg);
-                }
-                else edit2.setTypeface(typebold);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
-
-        edit3.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() == 0 ) {
-                    edit3.setTypeface(typereg);
-                }
-                else edit3.setTypeface(typebold);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
 
         background = (LinearLayout)findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
 
     }
 
-    class edit1_focus implements View.OnFocusChangeListener {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
 
+                    bundle6 = data.getExtras();
+                    bundle6.putString("helper_keyword1",helper_key1);
+                    bundle6.putString("helper_keyword2",helper_key2);
+                    bundle6.putString("helper_keyword3",helper_key3);
+
+                    data.putExtras(bundle6);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
+    class edit1_focus implements View.OnFocusChangeListener {
         @Override
         public void onFocusChange(View view, boolean hasFocus) {
             if(hasFocus){
                 linear1.setBackgroundResource(R.drawable.rounded_corner_thick);
                 edit1.setCursorVisible(true);
-                showkeyboard(edit1);
-                if(edit1.length() > 0) {
-                    edit1.setTypeface(typebold);
-                }
-                else {
-                    edit1.setTypeface(typereg);
-                }
-                edit2.setTypeface(typereg);
-                edit3.setTypeface(typereg);
                 linear2.setBackgroundResource(R.drawable.rounded_corner_radius5);
                 linear3.setBackgroundResource(R.drawable.rounded_corner_radius5);
-
             }
         }
     }
@@ -173,15 +128,6 @@ public class List6Activity extends AppCompatActivity {
                 linear1.setBackgroundResource(R.drawable.rounded_corner_radius5);
                 linear2.setBackgroundResource(R.drawable.rounded_corner_thick);
                 edit2.setCursorVisible(true);
-                showkeyboard(edit2);
-                if(edit2.length() > 0) {
-                    edit2.setTypeface(typebold);
-                }
-                else {
-                    edit2.setTypeface(typereg);
-                }
-                edit1.setTypeface(typereg);
-                edit3.setTypeface(typereg);
                 linear3.setBackgroundResource(R.drawable.rounded_corner_radius5);
             }
         }
@@ -195,15 +141,6 @@ public class List6Activity extends AppCompatActivity {
                 linear2.setBackgroundResource(R.drawable.rounded_corner_radius5);
                 linear3.setBackgroundResource(R.drawable.rounded_corner_thick);
                 edit3.setCursorVisible(true);
-                showkeyboard(edit3);
-                if(edit3.length() > 0) {
-                    edit3.setTypeface(typebold);
-                }
-                else {
-                    edit3.setTypeface(typereg);
-                }
-                edit1.setTypeface(typereg);
-                edit2.setTypeface(typereg);
             }
         }
     }
@@ -225,6 +162,10 @@ public class List6Activity extends AppCompatActivity {
     class list6_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            helper_key1 = edit1.getText().toString();
+            helper_key2 = edit2.getText().toString();
+            helper_key3 = edit3.getText().toString();
+
             Intent intent = new Intent(context, List7Activity.class);
             startActivityForResult(intent, REQUEST_CODE);
         }
@@ -236,45 +177,18 @@ public class List6Activity extends AppCompatActivity {
             hidekeyboard(edit1);
             hidekeyboard(edit2);
             hidekeyboard(edit3);
-            edit1.setTypeface(typereg);
-            edit2.setTypeface(typereg);
-            edit3.setTypeface(typereg);
             linear1.setBackgroundResource(R.drawable.rounded_corner_radius5);
             linear2.setBackgroundResource(R.drawable.rounded_corner_radius5);
             linear3.setBackgroundResource(R.drawable.rounded_corner_radius5);
             edit1.setCursorVisible(false);
             edit2.setCursorVisible(false);
             edit3.setCursorVisible(false);
-            edit1.clearFocus();
-            edit2.clearFocus();
-            edit3.clearFocus();
-        }
-    }
-
-    class edit3_key implements View.OnKeyListener {
-        @Override
-        public boolean onKey(View view, int i, KeyEvent keyEvent) {
-
-            switch (i) {
-                case KeyEvent.KEYCODE_ENTER :
-                    hidekeyboard(edit3);
-                    edit3.setCursorVisible(false);
-                    edit3.setTypeface(typereg);
-                    linear3.setBackgroundResource(R.drawable.rounded_corner_radius5);
-                    edit3.clearFocus();
-            }
-            return false;
         }
     }
 
     private void hidekeyboard(EditText edit) {
         InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
-    }
-
-    private void showkeyboard(EditText edit){
-        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
     }
 
     public void Dialog() {
@@ -298,6 +212,9 @@ public class List6Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

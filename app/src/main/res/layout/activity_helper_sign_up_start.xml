@@ -71,7 +71,7 @@
             android:gravity="center_horizontal"
             android:textSize="18sp"
             android:textColor="@color/white"
-            android:id="@+id/list1_course_start_btn"
+            android:id="@+id/h_su_start_btn"
             android:elevation="9dp"
             />
     </LinearLayout>

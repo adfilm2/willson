@@ -1,6 +1,7 @@
 package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -51,6 +52,15 @@ public class ListAgreementActivity extends AppCompatActivity {
         submit_btn.setOnClickListener((new submitbtn_listener()));
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_CANCELED){
+            if(requestCode == REQUEST_CODE)
+                this.finish();
+        }
+    }
+
     public void btn_check(View view) {
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.check1);
         CheckBox checkBox2 = (CheckBox) findViewById(R.id.check2);
@@ -82,7 +92,9 @@ public class ListAgreementActivity extends AppCompatActivity {
         public void onClick(View view) {
             /*Intent intent = new Intent( context, ListLoadingActivity.class);
             startActivityForResult(intent, REQUEST_CODE);*/
-
+            Intent intent = new Intent();
+            setResult(RESULT_OK, intent);
+            finish();
 
         }
     }
@@ -107,6 +119,9 @@ public class ListAgreementActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 
