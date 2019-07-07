@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <include
+        android:id="@+id/activity_list1_daily_toolbar"
+        layout="@layout/toolbar_list_helper"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57.2dp"
+        android:layout_marginLeft="22dp"
+        android:textSize="21sp"
+        android:textColor="@color/dark_purple"
+        android:lineSpacingExtra="11sp"
+        android:text="도움을 줄 카테고리를 선택해주세요."
+        />
+
+
+
+
+    <LinearLayout
+        android:layout_marginTop="29.6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/helperSU_radioGroup1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/helperSU_btn_love"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="24.8dp"
+                android:layout_marginRight="22dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="연애"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+
+            <RadioButton
+                android:id="@+id/helperSU_btn_dream"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginRight="27dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="진로"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/helperSU_radioGroup2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/helperSU_btn_mind"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="24.8dp"
+                android:layout_marginRight="22dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="심리"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+
+            <RadioButton
+                android:id="@+id/helperSU_btn_relationship"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginRight="27dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="인간관계"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/helperSU_radioGroup3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/helperSU_btn_life"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginLeft="24.8dp"
+                android:layout_marginRight="22dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="일상"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+
+            <RadioButton
+                android:id="@+id/helperSU_btn_etc"
+                android:layout_width="1dp"
+                android:layout_height="49dp"
+                android:layout_marginRight="27dp"
+                android:layout_weight="1"
+                android:button="@color/trans"
+                android:background="@drawable/list_btns_selector"
+                android:text="기타"
+                android:gravity="center"
+                android:textColor="@color/list_btns_text_selector"
+                android:textColorHighlight="@color/list_btns_text_selector"
+                android:textColorLink="@color/list_btns_text_selector"
+                android:textSize="16sp"
+                android:layout_marginBottom="9.2dp"
+                android:elevation="9dp"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/list1_daily_btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="46.1dp"
+                android:layout_marginLeft="31.7dp"
+                android:layout_marginRight="31.7dp"
+                android:layout_marginBottom="32.6dp"
+                android:background="@drawable/listnext_btn_selector"
+                android:enabled="false"
+                android:text="다음"
+                android:textColor="@color/white"
+                android:elevation="9dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/rounded_corner"
+    android:orientation="vertical"
+    android:layout_width="310.1dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26.4dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/dark_purple"
+            android:lineSpacingExtra="10sp"
+            android:gravity="center_horizontal"
+            android:text="앗! 이미 매칭된 헬퍼입니다"
+            android:layout_gravity="center"
+            android:layout_marginBottom="13dp"
+            android:id="@+id/request_pop_textview_large"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9.9dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="6sp"
+            android:gravity="center_horizontal"
+            android:text="다른 헬퍼와 만나보시겠어요?"
+
+            />
+
+        <Button
+            android:layout_gravity="center"
+            android:layout_width="177.5dp"
+            android:layout_height="39.2dp"
+            android:layout_marginBottom="31.7dp"
+            android:id="@+id/request_pop_keepbtn"
+            android:text="확인"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corner_darkblue"
+            android:textSize="18sp"
+            android:elevation="8dp"/>
+
+    </LinearLayout>
+</LinearLayout>

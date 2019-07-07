@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="61.3dp"
+        android:layout_marginTop="46.3dp"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_logo"
+            android:layout_centerHorizontal="true"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="24.9dp"
+            android:id="@+id/helper_fragment1_change"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginRight="4.8dp"
+                android:src="@drawable/btn_switch"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/toolbar_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="헬퍼전환"
+                android:textSize="11sp"
+                android:textColor="@color/dark_purple"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/main_textLayout"
+        android:layout_marginLeft="20.1dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="61.6dp"
+            android:id="@+id/main_fragment1_text"
+            android:text="당신의 고민\n매칭해보실래요?"
+            android:textSize="22sp"
+            android:textColor="@color/dark_purple"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="63.2dp"
+        android:layout_marginRight="66.1dp"
+        android:layout_marginBottom="35.7dp"
+        android:id="@+id/main_firstImageLayout"
+        android:orientation="horizontal"
+        android:layout_below="@+id/main_textLayout"
+        android:weightSum="3"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="23.9dp"
+            android:id="@+id/fragment1_firstContent"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="21.1dp"
+                android:src="@drawable/main_img_category_01_love"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="연애"
+                android:textSize="15sp"
+                android:textColor="@color/dark_purple"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="23.9dp"
+
+            android:id="@+id/fragment1_secondContent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="21.1dp"
+                android:src="@drawable/main_img_category_02_job"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="진로"
+                android:textSize="15sp"
+                android:textColor="@color/dark_purple"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fragment1_thirdContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="21.1dp"
+                android:src="@drawable/main_img_category_03_mind"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="자존감"
+                android:textSize="15sp"
+                android:textColor="@color/dark_purple"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="63.2dp"
+        android:layout_marginRight="66.1dp"
+        android:layout_marginBottom="85.4dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/main_firstImageLayout"
+        android:weightSum="3"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="23.9dp"
+            android:id="@+id/fragment1_fourthContent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="21.1dp"
+                android:src="@drawable/main_img_category_04_relationship"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="인간관계"
+                android:textSize="15sp"
+                android:textColor="@color/dark_purple"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="23.9dp"
+            android:id="@+id/fragment1_fifthContent"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="21.1dp"
+                android:src="@drawable/main_img_category_05_daily"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일상"
+                android:textSize="15sp"
+                android:textColor="@color/dark_purple"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/fragment1_sixthContent"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="21.1dp"
+                android:src="@drawable/main_img_category_06_etc"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기타"
+                android:textSize="15sp"
+                android:textColor="@color/dark_purple"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_img_helperstorybg"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.1dp"
+            android:layout_marginTop="30.6dp"
+            android:layout_marginBottom="2.2dp"
+            android:id="@+id/main_fragment1_textSecond"
+            android:text="헬퍼들의\n이야기"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment1_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="36.4dp"
+            android:layout_marginRight="37.3dp"
+            >
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgcolor"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.1dp"
+            android:layout_marginTop="30.6dp"
+            android:layout_marginBottom="33.8dp"
+            android:id="@+id/main_fragment1_textThird"
+            android:text="질문자들의\n후기"
+            android:textColor="@color/dark_purple"
+            android:textSize="22sp"
+            />
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="26.9dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fragment1_profile_img"
+                android:layout_marginBottom="100dp"
+                android:orientation="vertical"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginBottom="17.2dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="5dp"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:id="@+id/fragment1_review_1st_subject"
+                        android:text="진로"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/light_purple"
+                        android:background="@drawable/main_profiletext"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="14dp"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16.8dp"
+                        android:id="@+id/fragment1_profile_1st_property"
+                        android:text="“ 큰 기대하지 않고 진로에 대한 고민을 신청했는데
+\n답변자님이 정말 진지하게 전문적으로 상담해주셔서
+\n너무 도움이 되었습니다. 감사합니다. ”"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="- 기계과 전공으로 진로에 대해 고민 중인 릴라님-"
+                        android:textSize="13sp"
+                        android:textColor="@color/dark_purple"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>

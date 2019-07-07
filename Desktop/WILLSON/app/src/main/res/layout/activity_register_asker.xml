@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="31.7dp"
+    android:layout_marginRight="31.7dp"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:scrollbars="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textSize="24sp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일"
+            android:textSize="15sp"
+            android:textColor="@color/middlepurple"
+            android:layout_marginBottom="2.5dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="38.4dp"
+            android:layout_marginBottom="21dp"
+            android:paddingLeft="10.6dp"
+            android:textSize="13sp"
+            android:background="@drawable/login_edittext_grey"
+            android:hint="example@willson.com"
+            android:id="@+id/registerasker_email"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2.5dp"
+            android:text="비밀번호"
+            android:textSize="15sp"
+            android:textColor="@color/middlepurple"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="38.4dp"
+            android:layout_marginBottom="21dp"
+            android:paddingLeft="10.6dp"
+            android:textSize="13sp"
+            android:background="@drawable/login_edittext_grey"
+            android:hint="6자리 이상 숫자, 문자 조합"
+            android:inputType="textPassword"
+            android:id="@+id/registerasker_password"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 확인"
+            android:textSize="15sp"
+            android:textColor="@color/middlepurple"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="38.4dp"
+            android:paddingLeft="10.6dp"
+            android:textSize="13sp"
+            android:background="@drawable/login_edittext_grey"
+            android:hint="6자리 이상 숫자, 문자 조합"
+            android:inputType="textPassword"
+            android:id="@+id/registerasker_passwordConfirm"
+            />
+        <TextView
+            android:id="@+id/registerasker_passwordConfirm_Msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginBottom="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임"
+            android:textSize="15sp"
+            android:textColor="@color/middlepurple"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="38.4dp"
+            android:layout_marginBottom="21dp"
+            android:paddingLeft="10.6dp"
+            android:textSize="13sp"
+            android:background="@drawable/login_edittext_grey"
+            android:hint="8자이내의 닉네임을 입력해주세요."
+            android:id="@+id/registerasker_nickName"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15.9dp"
+            android:text="성별"
+            android:textSize="15sp"
+            android:textColor="@color/middlepurple"
+            />
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/registerasker_gender"
+            android:orientation="horizontal"
+            >
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:text="여성"
+                android:textColor="@color/light_purple"
+                android:buttonTint="#5252A1"
+                android:checked="true"
+                android:id="@+id/Gender_woman"
+                />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:text="남성"
+                android:textColor="@color/light_purple"
+                android:buttonTint="#5252A1"
+                android:id="@+id/Gender_man"
+                />
+        </RadioGroup>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7.6dp"
+            android:text="나이"
+            android:textSize="15sp"
+            android:textColor="@color/middlepurple"
+            />
+        <Spinner
+            android:id="@+id/registerasker_age"
+            android:layout_width="match_parent"
+            android:layout_height="38.4dp"
+            android:layout_marginBottom="38.8dp"
+            android:textSize="12dp"
+            android:paddingLeft="15dp"
+            android:background="@drawable/register_spinner"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="22.1dp"
+        >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/registerasker_checkBox"
+            android:checked="false"
+            android:layout_marginRight="8.6dp"
+            android:button="@drawable/register_checkbox_btn"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/registerasker_checkBox_text"
+            android:text="윌슨의 이용약관 및 개인정보취급방침에 동의합니다."
+            android:textSize="11sp"
+            android:textColor="@color/grey"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="37.4dp"
+        >
+        <Button
+            android:id="@+id/registerasker_registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/register_button_gradient"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:enabled="true"
+            />
+
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>
