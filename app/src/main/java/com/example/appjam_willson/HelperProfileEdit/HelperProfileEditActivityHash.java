@@ -16,11 +16,13 @@ public class HelperProfileEditActivityHash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_profile_edit_hash);
+
+
         Button nextbtn = (Button) findViewById(R.id.btn_next);
 
 
         ImageView btn_back;
-        btn_back = (ImageView) findViewById(R.id.btn_backbtn);
+        btn_back = (ImageView)findViewById(R.id.btn_backbtn);
         btn_back.setOnClickListener(new HelperProfileEditActivityHash.list1_love_backbtn_listener());
 
         nextbtn.setOnClickListener(new Button.OnClickListener() {
@@ -35,6 +37,7 @@ public class HelperProfileEditActivityHash extends AppCompatActivity {
 
         });
     }
+
 
     class list1_love_backbtn_listener implements View.OnClickListener {
         @Override
