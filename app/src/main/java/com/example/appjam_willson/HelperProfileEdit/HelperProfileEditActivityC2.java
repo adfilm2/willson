@@ -1,12 +1,13 @@
         package com.example.appjam_willson.HelperProfileEdit;
 
-        import androidx.appcompat.app.AppCompatActivity;
+        import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-        import android.os.Bundle;
-        import android.view.View;
-        import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import com.example.appjam_willson.R;
+import com.example.appjam_willson.R;
 
 
 
@@ -98,9 +99,20 @@
                         button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
                         button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
                         button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
+                    }
+                });
+
+
+                nextbtn.setOnClickListener(new Button.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intentProfileEdit = new Intent(HelperProfileEditActivityC2.this, HelperProfileEditActivityC2.class);
+                        startActivity(intentProfileEdit);
 
 
                     }
+
+
                 });
 
 
