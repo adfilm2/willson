@@ -1,12 +1,15 @@
 package com.example.appjam_willson.HelperSignUpActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC1;
+import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC2;
 import com.example.appjam_willson.R;
 // public class HelperSignUpActivity1 extends AppCompatActivity implements View.OnClickListener {
 
@@ -100,6 +103,18 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
 
 
             }
+        });
+
+        nextbtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentProfileEdit = new Intent(HelperSignUpActivity1.this, HelperSignUpActivity2.class);
+                startActivity(intentProfileEdit);
+
+
+            }
+
+
         });
 
 

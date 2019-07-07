@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC1;
 import com.example.appjam_willson.R;
 
 
@@ -54,6 +56,12 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up0);
 
+        ImageView btn_back;
+
+
+        btn_back = (ImageView) findViewById(R.id.h_su_btn_backbtn);
+        btn_back.setOnClickListener(new HelperSignUpActivity0.list1_love_backbtn_listener());
+
         context=this;
 
         typebold = getResources().getFont(R.font.nanum_square_b);
@@ -80,7 +88,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
 
 
-        list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+      //  list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
         //  list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
 
         helperSU_radioGroup1 = (RadioGroup) findViewById(R.id.helperSU_radioGroup1);
@@ -98,6 +106,15 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
 
     }
+
+
+    class list1_love_backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
 
     private RadioGroup.OnCheckedChangeListener radioGroup_daily_listener1 = new RadioGroup.OnCheckedChangeListener() {
         @Override
@@ -222,12 +239,6 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
             startActivity(intentSU);
         }
 
-        class list1_daily_backbtn_listener implements View.OnClickListener {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        }
 
 
 
@@ -263,6 +274,9 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
                 helperSU_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
             }
         }
+
+
+
 
 
 
