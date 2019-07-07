@@ -1,6 +1,7 @@
 package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ConvConfirmActivity;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
@@ -68,8 +70,8 @@ public class List7Activity extends AppCompatActivity {
     class list7_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            /*Intent intent = new Intent(context, ListAgreementActivity.class);
-            startActivityForResult(intent, REQUEST_CODE);*/
+            Intent intent = new Intent(context, ConvConfirmActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);
 
         }
     }
