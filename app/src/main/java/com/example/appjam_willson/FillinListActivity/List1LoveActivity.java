@@ -245,6 +245,9 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     class list1_love_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }

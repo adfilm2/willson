@@ -305,6 +305,9 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     class list1_mentality_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -437,4 +440,12 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
             dialog.dismiss();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
+
 }

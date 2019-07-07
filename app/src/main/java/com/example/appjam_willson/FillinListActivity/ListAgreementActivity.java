@@ -83,6 +83,9 @@ public class ListAgreementActivity extends AppCompatActivity {
     class agree_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -90,8 +93,6 @@ public class ListAgreementActivity extends AppCompatActivity {
     class submitbtn_listener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
-            /*Intent intent = new Intent( context, ListLoadingActivity.class);
-            startActivityForResult(intent, REQUEST_CODE);*/
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
             finish();
@@ -124,5 +125,12 @@ public class ListAgreementActivity extends AppCompatActivity {
             finish();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 }

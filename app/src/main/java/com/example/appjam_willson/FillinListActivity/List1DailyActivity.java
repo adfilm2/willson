@@ -236,6 +236,9 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     class list1_daily_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -361,5 +364,12 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
             dialog.dismiss();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 }

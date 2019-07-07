@@ -227,6 +227,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     class list1_course_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -348,5 +351,13 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             dialog.dismiss();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
+
 }
 

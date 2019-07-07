@@ -141,6 +141,9 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     class list1_etc_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -271,8 +274,11 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     };
 
 
-
-
-
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 }

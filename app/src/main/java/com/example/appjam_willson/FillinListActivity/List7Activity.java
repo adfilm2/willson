@@ -3,7 +3,6 @@ package com.example.appjam_willson.FillinListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -113,6 +112,9 @@ public class List7Activity extends AppCompatActivity {
     class list7_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -120,11 +122,8 @@ public class List7Activity extends AppCompatActivity {
     class list7_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            /*Intent intent = new Intent(context, ListAgreementActivity.class);
-            startActivityForResult(intent, REQUEST_CODE);*/
             Intent intent = new Intent(context, ListAgreementActivity.class);
             startActivityForResult(intent, REQUEST_CODE);
-
         }
     }
 
@@ -250,4 +249,12 @@ public class List7Activity extends AppCompatActivity {
 
         }
     }
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
+
 }

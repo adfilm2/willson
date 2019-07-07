@@ -241,6 +241,9 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     class list1_relationships_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -365,5 +368,12 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
             dialog.dismiss();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 }

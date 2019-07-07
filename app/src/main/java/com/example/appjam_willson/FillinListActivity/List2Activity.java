@@ -146,6 +146,9 @@ public class List2Activity extends AppCompatActivity {
     class list2_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -191,5 +194,12 @@ public class List2Activity extends AppCompatActivity {
             finish();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 }

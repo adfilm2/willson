@@ -72,5 +72,4 @@ public class List1CourseStartActivity extends AppCompatActivity {
             finish();
         }
     }
-
 }
