@@ -84,7 +84,7 @@
                                     android:background="@null"
                                     android:textSize="14sp"
                                     android:gravity="left"
-                                    android:hint="ex) 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. "
+                                    android:hint="ex) 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. \n\n\n\n\n\n"
                                     android:textStyle="normal"
                                     android:fontFamily="@font/nanum_square_round_r"
                                     >
@@ -105,7 +105,7 @@
                                     android:lineSpacingExtra="11sp"
                                     android:text="0"
                                     android:id="@+id/textViewCount"
-                                    android:layout_toLeftOf ="@id/list4_totalbyte"
+                                    android:layout_toLeftOf ="@+id/list4_totalbyte"
                                     android:textStyle="normal"
                                     android:fontFamily="@font/nanum_square_r"/>
 

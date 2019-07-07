@@ -41,7 +41,7 @@ public class ListLoadingActivity extends AppCompatActivity {
 
         loading = (ImageView)findViewById(R.id.loading_moving_willson);
 
-        Glide.with(this).load(R.drawable.request_searching_wilson_moving).into(loading);
+        Glide.with(this).load(R.drawable.request_searching_wilson).into(loading);
 
     }
 

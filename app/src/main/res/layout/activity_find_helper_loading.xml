@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_marginTop="52.8dp"
-        android:layout_marginBottom="28.7dp"
+        android:layout_marginBottom="20.7dp"
         android:orientation="vertical"
         >
 
@@ -46,7 +46,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
-        android:layout_marginBottom="59.2dp">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="58.9dp">
 
             <ImageView
                 android:layout_width="16.4dp"
@@ -87,20 +88,20 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="125.4dp"
-        android:layout_height="110dp"
+        android:layout_width="137.94dp"
+        android:layout_height="121dp"
         android:layout_gravity="center_horizontal"
-        android:background="@color/white"
         android:id="@+id/loading_moving_willson"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:lineSpacingExtra="10sp"
         android:textSize="16sp"
         android:textColor="@color/dark_purple"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="23.5dp"
         android:textAlignment="center"
         android:text="당신에게 도움 줄 헬퍼들을 찾고있어요! \n다 찾고 나면 알림을 보내드릴게요"
         android:textStyle="normal"
