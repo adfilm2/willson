@@ -67,7 +67,7 @@ public class MainFragment extends Fragment {
         TextView main_fragment1_textThird = view.findViewById(R.id.main_fragment1_textThird);
         storyRecyclerView = view.findViewById(R.id.fragment1_recyclerView);
 
-        LinearLayout changeMode = view.findViewById(R.id.fragment1_change);
+        LinearLayout changeMode = view.findViewById(R.id.helper_fragment1_change);
 
         myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -76,7 +76,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1LoveStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -85,7 +84,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1CourseStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -94,7 +92,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1MentalityStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -103,7 +100,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1RelationshipsStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -112,7 +108,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1DailyStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -121,16 +116,14 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1EtcStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
         changeMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity() , WillsonActivity.class);
+                Intent intent = new Intent(getActivity() , HelperActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 

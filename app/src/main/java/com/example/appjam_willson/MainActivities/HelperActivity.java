@@ -1,22 +1,17 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.MainActivities;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.google.android.material.navigation.NavigationView;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appjam_willson.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,13 +23,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class WillsonActivity extends AppCompatActivity{
+public class HelperActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_willson);
-
+        setContentView(R.layout.activity_helper);
 
         LinearLayout button1=findViewById(R.id.willsonLayout_receive);
         LinearLayout button2=findViewById(R.id.willsonLayout_chat);
@@ -51,27 +45,14 @@ public class WillsonActivity extends AppCompatActivity{
         final TextView willsonText_profile=findViewById(R.id.willsonText_profile);
         final TextView willsonText_mypage=findViewById(R.id.willsonText_mypage);
 
-        LinearLayout changeMode = findViewById(R.id.willson_fragment1_change);
-
 //        passPushTokenToServer();
-
-
-        changeMode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WillsonActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeImage(willsonImage_receive,willsonImage_chat,willsonImage_profile,willsonImage_mypage);
                 changeTextColor(willsonText_receive,willsonText_chat,willsonText_profile,willsonText_mypage);
-//                WillsonFragment2 fragment = new WillsonFragment2();
+//                HelperFragment2 fragment = new HelperFragment2();
 //                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
             }
         });
@@ -81,7 +62,7 @@ public class WillsonActivity extends AppCompatActivity{
                 changeImage(willsonImage_chat,willsonImage_receive,willsonImage_profile,willsonImage_mypage);
                 changeTextColor(willsonText_chat,willsonText_receive,willsonText_profile,willsonText_mypage);
 
-                WillsonFragment2 fragment = new WillsonFragment2();
+                HelperFragment2 fragment = new HelperFragment2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
             }
         });

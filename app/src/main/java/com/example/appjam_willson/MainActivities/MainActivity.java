@@ -19,39 +19,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity{
-
-    private TimerTask timerTask;
-    private Timer timer = new Timer();
-    private String restTime;
-
-    private Timestamp startTime = new Timestamp(System.currentTimeMillis());
-    private Timestamp newTime;
-    private long totalTime = 3600000;
-
-    private SimpleDateFormat timerFormat = new SimpleDateFormat("mm:ss");
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         LinearLayout button1=findViewById(R.id.layout_home);
         LinearLayout button2=findViewById(R.id.layout_request);
@@ -74,33 +55,6 @@ public class MainActivity extends AppCompatActivity{
         changeTextColor(text_home,text_request,text_chat,text_mypage);
 
         // passPushTokenToServer();
-
-//        TimerTask timerTask = new TimerTask() {
-//            // 1시간
-//            @Override
-//            public void run() {
-//                long passTime;
-//                newTime = new Timestamp(System.currentTimeMillis());
-//                long passedTime = newTime.getTime()-startTime.getTime();
-//
-//                passTime = totalTime - passedTime;
-//
-//                Date date = new Date(passTime);
-//                restTime = timerFormat.format(date);
-//
-//
-//                Log.d("뺀시간", String.valueOf(passedTime));
-//                Log.d("표시해주는 값", String.valueOf(passTime));
-//                Log.d("남은시간",restTime);
-//            }
-//        };
-//        timer.schedule(timerTask,0,800);
-
-
-        Map<String, String> startTime;
-        startTime = ServerValue.TIMESTAMP;
-        Log.d("값ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ", String.valueOf(startTime.values()));
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
