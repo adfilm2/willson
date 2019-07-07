@@ -97,31 +97,40 @@
             >
 
             <TextView
-                android:layout_width="28.8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:textColor="@color/lightPurple"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="10.4dp"
+                android:layout_marginRight="8.4dp"
                 android:text="#"
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
                 />
 
-            <EditText
-                android:layout_gravity="center"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="30.7dp"
-                android:id="@+id/editText1"
-                android:background="@color/trans"
-                android:singleLine="true"
-                android:textSize="15sp"
-                android:textColor="@color/lightPurple"
-                android:textColorHint="@color/grey"
-                android:hint="태그 입력"
-                android:textStyle="normal"
-                android:textCursorDrawable="@null"
-                android:fontFamily="@font/nanum_square_r"/>
+                android:layout_height="37.7dp"
+                >
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="37.7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_gravity="center"
+                    android:background="@color/trans"
+                    android:fontFamily="@font/nanum_square_r"
+                    android:hint="키워드 입력"
+                    android:singleLine="true"
+                    android:textColor="@color/lightPurple"
+                    android:textColorHint="@color/grey"
+                    android:textCursorDrawable="@null"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -137,31 +146,40 @@
             >
 
             <TextView
-                android:layout_width="28.8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/lightPurple"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
+                android:layout_marginLeft="10.4dp"
+                android:layout_marginRight="8.4dp"
+                android:gravity="center_vertical"
                 android:text="#"
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
                 />
 
-            <EditText
-                android:layout_gravity="center"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="30.7dp"
-                android:id="@+id/editText2"
-                android:singleLine="true"
-                android:background="@color/trans"
-                android:textSize="15sp"
-                android:textColor="@color/lightPurple"
-                android:textColorHint="@color/grey"
-                android:hint="태그 입력"
-                android:textStyle="normal"
-                android:textCursorDrawable="@null"
-                android:fontFamily="@font/nanum_square_r"/>
+                android:layout_height="37.7dp"
+                >
+
+                <EditText
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="37.7dp"
+                    android:paddingBottom="7dp"
+                    android:id="@+id/editText2"
+                    android:singleLine="true"
+                    android:background="@color/trans"
+                    android:textSize="15sp"
+                    android:textColor="@color/lightPurple"
+                    android:textColorHint="@color/grey"
+                    android:hint="키워드 입력"
+                    android:textStyle="normal"
+                    android:textCursorDrawable="@null"
+                    android:fontFamily="@font/nanum_square_r"/>
+
+            </FrameLayout>
 
         </LinearLayout>
 
@@ -177,32 +195,41 @@
 
             <TextView
                 android:layout_gravity="center"
-                android:layout_width="28.8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@color/lightPurple"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
+                android:layout_marginLeft="10.4dp"
+                android:layout_marginRight="8.4dp"
+                android:gravity="center_vertical"
                 android:text="#"
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
                 />
 
-            <EditText
-                android:layout_gravity="center"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="30.7dp"
-                android:id="@+id/editText3"
-                android:singleLine="true"
-                android:background="@color/trans"
-                android:textSize="15sp"
-                android:textColor="@color/lightPurple"
-                android:textColorHint="@color/grey"
-                android:hint="태그 입력"
-                android:textStyle="normal"
-                android:textCursorDrawable="@null"
-                android:fontFamily="@font/nanum_square_r">
-            </EditText>
+                android:layout_height="37.7dp"
+                >
+
+                <EditText
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="37.7dp"
+                    android:paddingBottom="7dp"
+                    android:id="@+id/editText3"
+                    android:singleLine="true"
+                    android:background="@color/trans"
+                    android:textSize="15sp"
+                    android:textColor="@color/lightPurple"
+                    android:textColorHint="@color/grey"
+                    android:hint="키워드 입력"
+                    android:textStyle="normal"
+                    android:textCursorDrawable="@null"
+                    android:fontFamily="@font/nanum_square_r">
+                </EditText>
+
+            </FrameLayout>
 
         </LinearLayout>
 

@@ -3,23 +3,24 @@
     <string name="fb_login_protocol_scheme">fb356292024967997</string>
 
     <string-array name="Age_group">
+
         <item>나이를 선택해주세요.</item>
-        <item>21</item>
-        <item>22</item>
-        <item>23</item>
-        <item>24</item>
-        <item>25</item>
-        <item>26</item>
-        <item>27</item>
-        <item>28</item>
-        <item>29</item>
-        <item>30</item>
-        <item>31</item>
-        <item>32</item>
-        <item>33</item>
-        <item>34</item>
-        <item>35</item>
-        <item>36</item>
+        <item>21세</item>
+        <item>22세</item>
+        <item>23세</item>
+        <item>24세</item>
+        <item>25세</item>
+        <item>26세</item>
+        <item>27세</item>
+        <item>28세</item>
+        <item>29세</item>
+        <item>30세</item>
+        <item>31세</item>
+        <item>32세</item>
+        <item>33세</item>
+        <item>34세</item>
+        <item>35세</item>
+        <item>36세</item>
     </string-array>
 
     <string name="title_activity_main2">Main2Activity</string>

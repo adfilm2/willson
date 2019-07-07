@@ -1,87 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right|bottom"
-        android:layout_marginTop="44.6dp"
-        android:layout_marginBottom="135.4dp"
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_marginTop="51.7dp"
         >
 
-        <LinearLayout
+        <ImageView
+            android:layout_width="17.2dp"
+            android:layout_height="17.2dp"
+            android:src="@drawable/btn_switch" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="right|bottom"
-            android:id="@+id/helper_change_btn">
+            android:textSize="11sp"
+            android:textColor="@color/dark_purple"
+            android:lineSpacingExtra="1sp"
+            android:text="질문자전환"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"
+            />
 
-            <ImageView
-                android:layout_width="17.2dp"
-                android:layout_height="17.2dp"
-                android:src="@drawable/btn_switch"
-                />
+        <View
+            android:layout_width="25.8dp"
+            android:layout_height="0dp"/>
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="11sp"
-                android:textColor="@color/dark_purple"
-                android:lineSpacingExtra="1sp"
-                android:text="질문자전환"
-                android:layout_gravity="center_vertical"
-                android:textStyle="normal"
-                android:fontFamily="@font/nanum_square_b"
-                />
+                android:layout_marginBottom="133dp"
+                android:gravity="center_horizontal">
 
-            <view
-                android:layout_width="10dp"
-                android:layout_height="match_parent"
-                />
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="108dp"
+                    android:layout_height="37dp"
+                    android:gravity="center_horizontal"
+                    android:src="@drawable/img_logo"
+                    />
+            </LinearLayout>
 
-        <view
-            android:layout_width="15.8dp"
-            android:layout_height="match_parent"
+        <ImageView
+            android:layout_width="117.7dp"
+            android:layout_height="124.3dp"
+            android:src="@drawable/helper_signup_img_confirmwillson"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="인증 진행중입니다"
+            android:textColor="@color/dark_purple"
+            android:lineSpacingExtra="11sp"
+            android:textSize="21sp"
+            android:layout_marginTop="30.8dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="인증 완료 후 헬퍼로 활동해보세요!"
+            android:textColor="@color/dark_purple"
+            android:lineSpacingExtra="10sp"
+            android:textSize="16sp"
+            android:layout_marginTop="14.4dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
     </LinearLayout>
-
-    <ImageView
-        android:layout_width="117.7dp"
-        android:layout_height="124.3dp"
-        android:src="@drawable/helper_signup_img_confirmwillson"
-        android:layout_gravity="center_horizontal"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="인증 진행중입니다"
-        android:textColor="@color/dark_purple"
-        android:lineSpacingExtra="11sp"
-        android:textSize="21sp"
-        android:layout_marginTop="30.8dp"
-        android:textStyle="normal"
-        android:fontFamily="@font/nanum_square_b"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="인증 완료 후 헬퍼로 활동해보세요!"
-        android:textColor="@color/dark_purple"
-        android:lineSpacingExtra="10sp"
-        android:textSize="16sp"
-        android:layout_marginTop="14.4dp"
-        android:textStyle="normal"
-        android:fontFamily="@font/nanum_square_r"
-        />
-
-</LinearLayout>
+</FrameLayout>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/signup_background">
 
     <include layout = "@layout/toolbar_helper_signup"/>
-
 
     <TextView
         android:layout_width="match_parent"
@@ -13,7 +13,22 @@
         android:textColor="@color/darkPurple"
         android:textSize="19sp"
         android:layout_marginLeft="22.1dp"
-        android:layout_marginTop="45.6dp"/>
+        android:layout_marginTop="45.6dp"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="해당 경험에 대해 대화를 나눌 때\n어떤 헬퍼가 되고 싶은지 말씀해주세요"
+        android:lineSpacingExtra="6sp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/brownish_grey"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_r"
+        />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_gravity="center"
@@ -23,20 +38,24 @@
         android:orientation="vertical"
         android:background="@drawable/rounded_corner_radius5">
 
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLength="60"
-                android:background="@null"
-                android:gravity="left"
-                android:paddingLeft="10.5dp"
-                android:paddingRight="9.4dp"
-                android:paddingTop="14.5dp"
-                android:textSize="14sp"
-                android:hint="ex) 어려서부터 저는... ">
-            </EditText>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/helper_intro"
+            android:maxLength="50"
+            android:background="@null"
+            android:gravity="left"
+            android:paddingLeft="10.5dp"
+            android:paddingRight="9.4dp"
+            android:paddingTop="14.5dp"
+            android:textSize="14sp"
+            android:hint="ex) 어려서부터 저는... \n\n\n"
+            android:lineSpacingExtra="12sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_round_r"
+            >
+        </EditText>
 
 
 
@@ -45,41 +64,51 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="10dp"
-            android:id="@+id/list4_relative" >
+            android:id="@+id/signup3_relative" >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="11sp"
+                android:textSize="12sp"
                 android:text="0"
                 android:id="@+id/textViewCount"
-                android:layout_toLeftOf ="@id/list4_totalbyte" />
+                android:layout_toLeftOf ="@id/signup3_totalbyte"
+                android:textColor="@color/grey"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_r"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="/60자"
-                android:id="@+id/list4_totalbyte"
+                android:text="/50자"
+                android:id="@+id/signup3_totalbyte"
                 android:layout_marginRight="21dp"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:textSize="12sp"
+                android:textColor="@color/grey"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_r"/>
         </RelativeLayout>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
 
         <Button
             android:id="@+id/next_btn"
             android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
             android:layout_height="46.1dp"
+            android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="31.7dp"
             android:layout_marginBottom="32.6dp"
-            android:enabled="false"
             android:background="@drawable/listnext_btn_selector"
+            android:enabled="false"
+            android:fontFamily="@font/nanum_square_b"
             android:text="다음"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textStyle="normal" />
     </RelativeLayout>
 </LinearLayout>

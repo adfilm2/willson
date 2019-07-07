@@ -11,11 +11,11 @@
         android:id="@+id/main_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/layout_menu"
+        android:layout_above="@id/helper_layout_menu"
         >
     </FrameLayout>
     <LinearLayout
-        android:id="@+id/layout_menu"
+        android:id="@+id/helper_layout_menu"
         android:layout_width="match_parent"
         android:layout_height="87.3dp"
         android:orientation="horizontal"

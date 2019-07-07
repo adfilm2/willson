@@ -33,6 +33,13 @@ public class List5_1Activity extends AppCompatActivity {
     String packName;
     int resid;
 
+    Bundle bundle5_1 = new Bundle();
+
+    String[] strings = new String[3];
+    String helper_keyword1;
+    String helper_keyword2;
+    String helper_keyword3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +63,34 @@ public class List5_1Activity extends AppCompatActivity {
         list5_backbtn.setOnClickListener(new list5_1_backbtn_listener());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+//                    Bundle checkcheck = data.getExtras();
+//                    String checks = data.getStringExtra("keyword1");
+//                    Integer gg = data.getIntExtra("advice",0);
+//                    Log.d(">>>data의 keyword1 >>> ",checks);
+//                    Log.d(">>>data의 advice >>> ","gg"+gg);
+
+                    bundle5_1 = data.getExtras();
+                    bundle5_1.putString("helper_char1",helper_keyword1);
+                    bundle5_1.putString("helper_char2",helper_keyword2);
+                    bundle5_1.putString("helper_char3",helper_keyword3);
+
+                    data.putExtras(bundle5_1);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
     public void char_check(View view){
         Button nextbtn = (Button)findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;
@@ -66,10 +101,20 @@ public class List5_1Activity extends AppCompatActivity {
                 check_num -= 1;
                 if(check_num<=0) check_num=0;
 
+                for(int i = 0 ; i<3 ; i++){
+                    if(checkBox.getText().toString() == strings[i]){
+                        strings[i] = null;
+                    }
+                }
+
             } else {
                 checkBox.setChecked(true);
                 check_num += 1;
                 if(check_num>3) check_num =3;
+
+                for(int i = 0; i<3; i++){
+                    if(strings[i]== null) strings[i] = checkBox.getText().toString();
+                }
 
             }
         } else {
@@ -106,6 +151,10 @@ public class List5_1Activity extends AppCompatActivity {
     class list5_1_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            helper_keyword1 = strings[0];
+            helper_keyword2 = strings[1];
+            helper_keyword3 = strings[2];
+
             Intent intent = new Intent(context, List6Activity.class);
             startActivityForResult(intent, REQUEST_CODE);
         }
@@ -130,6 +179,9 @@ public class List5_1Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

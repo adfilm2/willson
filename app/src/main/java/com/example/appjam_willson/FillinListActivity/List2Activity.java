@@ -31,6 +31,15 @@ public class List2Activity extends AppCompatActivity {
     String packName;
     int resid;
 
+    Bundle bundle2 = new Bundle();
+
+    String[] strings = new String[3];
+
+    String feeling1;
+    String feeling2;
+    String feeling3;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +63,36 @@ public class List2Activity extends AppCompatActivity {
         list2_nextbtn.setOnClickListener(new list2_nextbtn_listener());
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+//                    Bundle checkcheck = data.getExtras();
+//                    String checks = data.getStringExtra("keyword1");
+//                    Integer gg = data.getIntExtra("advice",0);
+//                    Log.d(">>>data의 keyword1 >>> ",checks);
+//                    Log.d(">>>data의 advice >>> ","gg"+gg);
+
+                    bundle2 = data.getExtras();
+                    bundle2.putString("feeling1",feeling1);
+                    bundle2.putString("feeling2",feeling2);
+                    bundle2.putString("feeling3",feeling3);
+
+                    data.putExtras(bundle2);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
+
     public void char_check(View view){
         Button nextbtn = (Button)findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;
@@ -64,16 +103,26 @@ public class List2Activity extends AppCompatActivity {
                 check_num -= 1;
                 if(check_num<=0) check_num=0;
 
+                for(int i = 0 ; i<3 ; i++) {
+                    if (checkBox.getText().toString() == strings[i]) {
+                        strings[i] = null;
+                    }
+                }
+
             } else {
                 checkBox.setChecked(true);
                 check_num += 1;
                 if(check_num>3) check_num =3;
 
+                for(int i = 0; i<3; i++){
+                    if(strings[i]== null) strings[i] = checkBox.getText().toString();
+                }
+
             }
         } else {
             if (checkBox.isChecked()) {
                 checkBox.setChecked(false);
-                Toast.makeText(getApplicationContext(), "성격은 최대 세 개까지 고를 수 있습니다.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "느낀 감정은 최대 세 개까지 고를 수 있습니다.", Toast.LENGTH_SHORT).show();
 
             }
             else{
@@ -104,6 +153,11 @@ public class List2Activity extends AppCompatActivity {
     class list2_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            feeling1 = strings[0];
+            feeling2 = strings[1];
+            feeling3 = strings[2];
+
+
             Intent intent = new Intent(context, List3Activity.class);
             startActivityForResult(intent, REQUEST_CODE);
         }
@@ -122,6 +176,9 @@ public class List2Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

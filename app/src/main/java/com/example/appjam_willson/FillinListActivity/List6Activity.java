@@ -35,6 +35,12 @@ public class List6Activity extends AppCompatActivity {
     EditText edit2;
     EditText edit3;
 
+    String helper_key1;
+    String helper_key2;
+    String helper_key3;
+
+    Bundle bundle6 = new Bundle();
+
     String resName;
     String packName;
     int resid;
@@ -79,6 +85,28 @@ public class List6Activity extends AppCompatActivity {
         background = (LinearLayout)findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+
+                    bundle6 = data.getExtras();
+                    bundle6.putString("helper_keyword1",helper_key1);
+                    bundle6.putString("helper_keyword2",helper_key2);
+                    bundle6.putString("helper_keyword3",helper_key3);
+
+                    data.putExtras(bundle6);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     class edit1_focus implements View.OnFocusChangeListener {
@@ -134,6 +162,9 @@ public class List6Activity extends AppCompatActivity {
     class list6_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            helper_key1 = edit1.getText().toString();
+            helper_key2 = edit2.getText().toString();
+            helper_key3 = edit3.getText().toString();
 
             Intent intent = new Intent(context, List7Activity.class);
             startActivityForResult(intent, REQUEST_CODE);
@@ -181,6 +212,9 @@ public class List6Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

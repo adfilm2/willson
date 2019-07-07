@@ -19,6 +19,7 @@ public class List1LoveStartActivity extends AppCompatActivity {
     Button love_start_btn;
     LinearLayout love_cancel_btn;
     Context context;
+    Bundle bundle_love = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +44,19 @@ public class List1LoveStartActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_CANCELED){
-            if(requestCode == REQUEST_CODE)
-                finish();
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+
+                    bundle_love = data.getExtras();
+                    bundle_love.putInt("category",1);
+                    data.putExtras(bundle_love);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
         }
     }
     class love_start_btn_listener implements View.OnClickListener {
@@ -62,7 +73,10 @@ public class List1LoveStartActivity extends AppCompatActivity {
     class love_cancel_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
             finish();
+
         }
     }
 

@@ -1,189 +1,244 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/signup_background"
+    android:fitsSystemWindows="true">
+
     <include layout="@layout/toolbar_helper_signup"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginHorizontal="22dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="22dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="45.6dp"
+            android:fontFamily="@font/nanum_square_b"
             android:text="구체적으로 경험을 서술해주세요."
             android:textColor="@color/darkPurple"
-            android:textSize="19sp"/>
+            android:textSize="19sp"
+            android:textStyle="normal" />
+
         <RelativeLayout
+            android:id="@+id/signup_linear"
             android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:id="@+id/list4_linear"
             android:layout_height="244.8dp"
+            android:layout_gravity="center"
             android:layout_marginTop="28.6dp"
-            android:orientation="vertical"
-            android:background="@drawable/rounded_corner_radius5">
+            android:background="@drawable/rounded_corner_radius5"
+            android:orientation="vertical">
 
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/list4_relative"
+                android:layout_above="@+id/signup_relative"
                 android:layout_marginLeft="10.5dp"
                 android:layout_marginTop="14.5dp"
                 android:layout_marginRight="10.5dp">
 
                 <EditText
+                    android:id="@+id/helper_signup_edittext"
                     android:layout_width="match_parent"
-                    android:layout_height="244.8dp"
-                    android:maxLength="300"
+                    android:layout_height="wrap_content"
                     android:background="@null"
+                    android:fontFamily="@font/nanum_square_round_r"
                     android:gravity="left"
+                    android:hint="ex) 어려서부터 저는... \n\n\n\n\n\n"
+                    android:lineSpacingExtra="12sp"
+                    android:maxLength="220"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@null"
                     android:textSize="14sp"
-                    android:hint="ex) 어려서부터 저는... ">
+                    android:textStyle="normal">
                 </EditText>
 
             </ScrollView>
 
             <RelativeLayout
+                android:id="@+id/signup_relative"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/list4_relative" >
+                android:layout_marginBottom="10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:lineSpacingExtra="11sp"
-                    android:text="0"
                     android:id="@+id/textViewCount"
-                    android:layout_toLeftOf ="@id/list4_totalbyte" />
-
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/300자"
-                    android:id="@+id/list4_totalbyte"
+                    android:layout_toLeftOf="@+id/signup_totalbyte"
+                    android:lineSpacingExtra="11sp"
+                    android:text="0" />
+
+                <TextView
+                    android:id="@+id/signup_totalbyte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:layout_marginRight="21dp"
-                    android:layout_alignParentRight="true" />
+                    android:text="/220자" />
             </RelativeLayout>
 
         </RelativeLayout>
 
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30.6dp"
+            android:fontFamily="@font/nanum_square_b"
             android:text="자신을 나타내는 해시태그를 추가해보세요."
-            android:textSize="18sp"
             android:textColor="@color/darkPurple"
-            android:layout_marginTop="30.6dp"/>
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanum_square_r"
             android:text="ex) #3년장거리, #카페알바, #경영학과"
             android:textColor="@color/brownishGrey"
             android:textSize="16sp"
-            android:layout_marginTop="8dp"/>
-
+            android:textStyle="normal" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="30.7dp"
             android:id="@+id/linear1"
-            android:background="@drawable/rounded_corner_radius5"
+            android:layout_width="match_parent"
+            android:layout_height="30.7dp"
             android:layout_marginTop="17.6dp"
-            >
+            android:background="@drawable/rounded_corner_radius5"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="28.8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:textColor="@color/lightPurple"
-                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10.4dp"
+                android:layout_marginRight="8.4dp"
                 android:text="#"
-                android:textSize="20sp"
-                />
-
-            <EditText
-                android:layout_gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="30.7dp"
-                android:id="@+id/editText1"
-                android:background="@color/trans"
-                android:singleLine="true"
-                android:onClick="click_1"
-                android:textColorHint="@color/grey"
                 android:textColor="@color/lightPurple"
-                android:textSize="15sp"
-                android:hint="태그 입력" />
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="37.7dp"
+                >
+
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="37.7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_gravity="center"
+                    android:background="@color/trans"
+                    android:hint="태그 입력"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null"
+                    android:textColor="@color/lightPurple"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15sp" />
+
+            </FrameLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="30.7dp"
             android:id="@+id/linear2"
-            android:background="@drawable/rounded_corner_radius5"
+            android:layout_width="match_parent"
+            android:layout_height="30.7dp"
             android:layout_marginTop="8.4dp"
-            >
+            android:background="@drawable/rounded_corner_radius5"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="28.8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/lightPurple"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="10.4dp"
+                android:layout_marginRight="8.4dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
                 android:text="#"
-                android:textSize="20sp"
-                />
+                android:textColor="@color/lightPurple"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"/>
 
-            <EditText
-                android:layout_gravity="center"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="30.7dp"
-                android:id="@+id/editText2"
-                android:singleLine="true"
-                android:onClick="click_2"
-                android:background="@color/trans"
-                android:textSize="15sp"
-                android:hint="태그 입력" />
+                android:layout_height="37.7dp"
+                >
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="37.7dp"
+                    android:layout_gravity="center"
+                    android:background="@color/trans"
+                    android:hint="태그 입력"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null"
+                    android:paddingBottom="7dp"
+                    android:textColor="@color/lightPurple"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15sp" />
+
+             </FrameLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="30.7dp"
             android:id="@+id/linear3"
+            android:layout_width="match_parent"
+            android:layout_height="30.7dp"
+            android:layout_marginTop="8.4dp"
             android:background="@drawable/rounded_corner_radius5"
-            android:layout_marginTop="8.4dp">
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_gravity="center"
-                android:layout_width="28.8dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/lightPurple"
-                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10.4dp"
+                android:layout_marginRight="8.4dp"
                 android:text="#"
-                android:textSize="20sp"
-                />
+                android:textColor="@color/lightPurple"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"/>
 
-            <EditText
-                android:layout_gravity="center"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="30.7dp"
-                android:id="@+id/editText3"
-                android:singleLine="true"
-                android:onClick="click_3"
-                android:background="@color/trans"
-                android:textSize="15sp"
-                android:hint="태그 입력" />
+                android:layout_height="37.7dp"
+                >
+
+                <EditText
+                    android:id="@+id/editText3"
+                    android:layout_width="match_parent"
+                    android:layout_height="37.7dp"
+                    android:layout_gravity="center"
+                    android:background="@color/trans"
+                    android:hint="태그 입력"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null"
+                    android:paddingBottom="7dp"
+                    android:textColor="@color/lightPurple"
+                    android:textColorHint="@color/grey"
+                    android:textSize="15sp" />
+
+            </FrameLayout>
 
         </LinearLayout>
-
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -198,8 +253,10 @@
             android:enabled="false"
             android:background="@drawable/listnext_btn_selector"
             android:text="다음"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"
             android:textColor="#FFFFFF" />
     </RelativeLayout>
-
 
 </LinearLayout>

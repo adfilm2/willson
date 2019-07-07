@@ -34,6 +34,9 @@ public class List3Activity extends AppCompatActivity {
     String packName;
     int resid;
 
+    Bundle bundle3 = new Bundle();
+    int importance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +52,7 @@ public class List3Activity extends AppCompatActivity {
         list3_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
         list3_backbtn.setOnClickListener(new list3_backbtn_listener());
 
-        radioGroup = (RadioGroup) findViewById(R.id.list3_radiogroup);
+        radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
         radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(radioGroup_listener);
 
@@ -62,6 +65,27 @@ public class List3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                RadioButton checkedId = findViewById(radioGroup.getCheckedRadioButtonId());
+
+
+                switch (checkedId.getId()){
+                    case R.id.radio_1:
+                        importance = 1;
+                        break;
+                    case R.id.radio_2:
+                        importance = 2;
+                        break;
+                    case R.id.radio_3:
+                        importance = 3;
+                        break;
+                    case R.id.radio_4:
+                        importance = 4;
+                        break;
+                    case R.id.radio_5:
+                        importance = 5;
+                        break;
+
+                }
                 //intent 객체생성
                 Intent intent = new Intent(context, List4Activity.class);
                 //Activity 실행메소드
@@ -82,6 +106,24 @@ public class List3Activity extends AppCompatActivity {
         //라디오 그룹 설정
 //        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 //        radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle3 = data.getExtras();
+                    bundle3.putInt("importance",importance);
+                    data.putExtras(bundle3);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     private RadioGroup.OnCheckedChangeListener radioGroup_listener = new RadioGroup.OnCheckedChangeListener() {
@@ -128,6 +170,9 @@ public class List3Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

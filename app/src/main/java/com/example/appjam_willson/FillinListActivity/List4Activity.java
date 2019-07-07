@@ -33,6 +33,8 @@ public class List4Activity extends AppCompatActivity {
 
     Context context;
 
+    Bundle bundle4 = new Bundle();
+
     String resName;
     String packName;
     int resid;
@@ -100,6 +102,25 @@ public class List4Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle4 = data.getExtras();
+                    bundle4.putString("contents", editTextSMS.getText().toString());
+
+                    data.putExtras(bundle4);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
     class list4_cancelbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
@@ -152,6 +173,9 @@ public class List4Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 
