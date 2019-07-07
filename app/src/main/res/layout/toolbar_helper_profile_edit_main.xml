@@ -48,7 +48,7 @@
                 android:lineSpacingExtra="19sp"
                 android:layout_gravity="center_horizontal"
                 android:adjustViewBounds="true"
-                android:text="헬퍼 프로필"
+                android:text="프로필  수정"
                 />
 
         </LinearLayout>
