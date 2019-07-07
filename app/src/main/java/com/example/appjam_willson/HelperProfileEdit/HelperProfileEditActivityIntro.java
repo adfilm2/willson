@@ -10,6 +10,7 @@
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.ImageView;
         import android.widget.LinearLayout;
         import android.widget.TextView;
 
@@ -38,12 +39,20 @@
             String packName;
             int resid;
 
+            TextView text;
+            ImageView btn;
+
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_helper_profile_edit_intro);
 
                 context = this;
+
+                btn = (ImageView)findViewById(R.id.back_btn);
+                btn.setVisibility(View.INVISIBLE);
+                text = (TextView)findViewById(R.id.toolbar_text);
+                text.setText("프로필 수정");
 
                 // REQUEST_CODE = ((com.example.appjam_willson.FillinListActivity.List4Activity) context).getTaskId();
 

@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +32,10 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
     int REQUEST_CODE;
 
     EditText editTextSMS;
-
     TextView textViewCount;
+
+    TextView text;
+    ImageView btn;
 
     private OneTextTwoButton_CustomDialog dialog;
     LinearLayout list4_cancelbtn;
@@ -40,6 +43,7 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
     Button list4_nextbtn;
 
     Context context;
+
 
     String resName;
     String packName;
@@ -52,6 +56,10 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
         setContentView(R.layout.activity_helper_profile_edit_exp);
 
         context = this;
+        btn = (ImageView)findViewById(R.id.back_btn);
+        btn.setVisibility(View.INVISIBLE);
+        text = (TextView)findViewById(R.id.toolbar_text);
+        text.setText("프로필 수정");
 
        // REQUEST_CODE = ((com.example.appjam_willson.FillinListActivity.List4Activity) context).getTaskId();
 

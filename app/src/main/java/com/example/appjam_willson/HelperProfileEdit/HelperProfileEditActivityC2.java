@@ -4,8 +4,10 @@
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+        import android.widget.ImageView;
+        import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.R;
 
@@ -16,6 +18,7 @@ import com.example.appjam_willson.R;
         public class HelperProfileEditActivityC2 extends AppCompatActivity {
         //다음버튼에 액티비티 2 와 연결 해야함
 
+            TextView text;
 
             public void onCreate(Bundle savedInstanceState)
             {
@@ -27,6 +30,9 @@ import com.example.appjam_willson.R;
                 Button button4 = (Button) findViewById(R.id.helper_editc2_4) ;
                 Button nextbtn = (Button)findViewById(R.id.btn_next);
 
+
+                text = (TextView)findViewById(R.id.toolbar_text);
+                text.setText("프로필 수정");
 
                 button1.setOnClickListener(new Button.OnClickListener() {
                     @Override

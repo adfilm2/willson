@@ -9,6 +9,8 @@
         import android.os.Bundle;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.ImageView;
+        import android.widget.TextView;
 
         import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +21,9 @@
 
 public class HelperProfileEditActivityC1 extends AppCompatActivity {
 
+
+    ImageView btn;
+    TextView text;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +36,11 @@ public class HelperProfileEditActivityC1 extends AppCompatActivity {
         Button button6 = (Button) findViewById(R.id.helperSU_btn_etc);
         Button nextbtn = (Button) findViewById(R.id.btn_next);
 
+
+        btn = (ImageView)findViewById(R.id.back_btn);
+        btn.setVisibility(View.INVISIBLE);
+        text = (TextView)findViewById(R.id.toolbar_text);
+        text.setText("프로필 수정");
 
         button1.setOnClickListener(new Button.OnClickListener() {
             @Override

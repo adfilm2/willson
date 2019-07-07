@@ -33,7 +33,7 @@ public class HelperSignupConfirm2Activity extends AppCompatActivity {
         next_btn = (Button)findViewById(R.id.signup_info_btn_next);
         next_btn.setOnClickListener(new next_btn_listener());
 
-        view = (View)findViewById(R.id.activity_helper_signup_toolbar);
+        view = (View)findViewById(R.id.activity_helper_signup_confirm_toolbar);
         text = (TextView) findViewById(R.id.toolbar_text);
         text.setText("신분증 확인");
         btn =(ImageView)findViewById(R.id.back_btn);

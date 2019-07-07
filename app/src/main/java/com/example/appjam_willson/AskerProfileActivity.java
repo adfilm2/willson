@@ -28,7 +28,7 @@ public class AskerProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_asker_profile);
         view = (View)findViewById(R.id.toolbar_asker);
         textView = (TextView)findViewById(R.id.toolbar_text);
-        textView.setText("헬퍼 프로필");
+        textView.setText("프로필");
         back = (ImageView)findViewById(R.id.cancel_btn);
         back.setVisibility(View.INVISIBLE);
 
