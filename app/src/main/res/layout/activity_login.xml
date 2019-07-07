@@ -17,75 +17,75 @@
         >
     </LinearLayout>
 
-<LinearLayout
-    android:id="@+id/id_layout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
     <LinearLayout
+        android:id="@+id/id_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_radius20"
+        android:orientation="vertical"
         >
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/login_img_email"
-            android:id="@+id/Login_Image"
-            android:layout_gravity="center"
-            android:layout_marginLeft="19.9dp"
-            />
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="11.4dp"
-            android:hint="E-mail"
-            android:layout_marginRight="20dp"
-            android:textSize="13sp"
-            android:id="@+id/Login_ID"
-            android:layout_gravity="center"
-            android:layout_toRightOf="@+id/Login_Image"
-            />
+            android:background="@drawable/edittext_radius20"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/login_img_email"
+                android:id="@+id/Login_Image"
+                android:layout_gravity="center"
+                android:layout_marginLeft="19.9dp"
+                />
 
-    </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11.4dp"
+                android:hint="E-mail"
+                android:layout_marginRight="20dp"
+                android:textSize="13sp"
+                android:id="@+id/Login_ID"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/Login_Image"
+                />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_radius20"
-        android:layout_marginTop="9.5dp"
-        android:layout_marginBottom="13.2dp"
-        >
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/login_img_password"
-            android:id="@+id/Login_Image_second"
-            android:layout_gravity="center"
-            android:layout_marginLeft="19.9dp"
-            />
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Login_Password"
-            android:layout_marginRight="20dp"
-            android:hint="Password"
-            android:textSize="13sp"
-            android:inputType="textPassword"
-            android:layout_marginLeft="11.4dp"
-            android:layout_gravity="center"
-            android:layout_toRightOf="@+id/Login_Image_second"
-            />
+            android:background="@drawable/edittext_radius20"
+            android:layout_marginTop="9.5dp"
+            android:layout_marginBottom="13.2dp"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/login_img_password"
+                android:id="@+id/Login_Image_second"
+                android:layout_gravity="center"
+                android:layout_marginLeft="19.9dp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Login_Password"
+                android:layout_marginRight="20dp"
+                android:hint="Password"
+                android:textSize="13sp"
+                android:inputType="textPassword"
+                android:layout_marginLeft="11.4dp"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/Login_Image_second"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,7 +96,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:text="아이디 찾기"
             android:textColor="@color/willsoncolor_basic"
             android:textSize="11sp"
@@ -106,11 +105,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="  |  "
+            android:textColor="#4f4f9f"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:text="비밀번호 찾기"
             android:textColor="@color/willsoncolor_basic"
             android:textSize="11sp"

@@ -15,7 +15,10 @@
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart"/>
 
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity"></activity>
-        <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity">
+        <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity"/>
+
+        <!--Login && Register -->
+        <activity android:name=".LoginRegisterActivity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +26,6 @@
             </intent-filter>
         </activity>
 
-        <!--Login && Register -->
-        <activity android:name=".LoginRegisterActivity.LoginActivity"/>
         <activity android:name=".LoginRegisterActivity.ChoiceActivity"/>
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"/>
         <activity android:name=".LoginRegisterActivity.RegisterActivity_helper"/>
