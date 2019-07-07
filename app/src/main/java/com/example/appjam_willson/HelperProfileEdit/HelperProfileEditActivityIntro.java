@@ -10,6 +10,7 @@
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.ImageView;
         import android.widget.LinearLayout;
         import android.widget.TextView;
 
@@ -43,6 +44,10 @@
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_helper_profile_edit_intro);
 
+                ImageView btn_back;
+                btn_back = (ImageView) findViewById(R.id.btn_backbtn);
+                btn_back.setOnClickListener(new HelperProfileEditActivityIntro.list1_love_backbtn_listener());
+
                 context = this;
 
                 // REQUEST_CODE = ((com.example.appjam_willson.FillinListActivity.List4Activity) context).getTaskId();
@@ -50,10 +55,6 @@
                 resName = "@drawable/list_img_alert_willson";
                 packName = this.getPackageName();
                 resid = getResources().getIdentifier(resName, "drawable", packName);
-
-
-                list4_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
-                //list4_backbtn.setOnClickListener(new com.example.appjam_willson.FillinListActivity.List4Activity.list4_backbtn_listener());
 
                 list4_nextbtn = (Button) findViewById(R.id.helper_edit_intro_nextbtn);
                 list4_nextbtn.setOnClickListener(new helper_edit_exp_nextbtn_listener());
@@ -95,7 +96,7 @@
             }
 
 
-            class list4_backbtn_listener implements View.OnClickListener {
+            class list1_love_backbtn_listener implements View.OnClickListener {
                 @Override
                 public void onClick(View view) {
                     finish();
@@ -105,8 +106,8 @@
             class helper_edit_exp_nextbtn_listener  implements View.OnClickListener {
                 @Override
                 public void onClick(View view) {
-//                    Intent intent = new Intent(context, HelperProfileEditActivity0.class);
-//                    startActivityForResult(intent, REQUEST_CODE);
+                    Intent intentProfileEdit = new Intent(HelperProfileEditActivityIntro.this, HelperProfileEditActivityStart.class);
+                    startActivity(intentProfileEdit);
                 }
             }
 

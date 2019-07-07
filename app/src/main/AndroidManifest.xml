@@ -19,6 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityIntro" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityExp" android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC2" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
 
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity"></activity>
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity"/>
@@ -39,11 +44,6 @@
         <activity android:name=".MainActivities.MainActivity"/>
         <activity android:name=".MainActivities.HelperActivity"/>
 
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityExp"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC2" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
 
         <!--HelperSignUpEdit-->
         <activity android:name=".HelperSignUpActivity.helperSignUpActivityStart" />

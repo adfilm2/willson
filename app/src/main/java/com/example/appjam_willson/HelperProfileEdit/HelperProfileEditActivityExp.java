@@ -61,7 +61,6 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
         ImageView btn_back;
-
         btn_back = (ImageView) findViewById(R.id.btn_backbtn);
         btn_back.setOnClickListener(new HelperProfileEditActivityExp.list1_love_backbtn_listener());
 
@@ -105,18 +104,13 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
     }
 
 
-    class list4_backbtn_listener implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            finish();
-        }
-    }
 
     class helper_edit_exp_nextbtn_listener  implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-//            Intent intent = new Intent(context, HelperProfileEditActivity0.class);
-//            startActivityForResult(intent, REQUEST_CODE);
+            Intent intentProfileEdit = new Intent(HelperProfileEditActivityExp.this, HelperProfileEditActivityStart.class);
+            startActivity(intentProfileEdit);
+
         }
     }
 

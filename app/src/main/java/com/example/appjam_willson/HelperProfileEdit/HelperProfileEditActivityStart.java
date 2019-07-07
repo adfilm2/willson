@@ -17,10 +17,10 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
         setContentView(R.layout.activity_helper_profile_edit_start);
 
 
-        Button button1 = (Button) findViewById(R.id.btn1);
-        Button button2 = (Button) findViewById(R.id.btn2);
-        Button button3 = (Button) findViewById(R.id.btn3); //helperSU_btn_life helperSU_btn_etc
-        Button button4 = (Button) findViewById(R.id.btn4);
+        Button button1 = (Button) findViewById(R.id.h_edit_btn1);
+        Button button2 = (Button) findViewById(R.id.h_edit_btn2);
+        Button button3 = (Button) findViewById(R.id.h_edit_btn3); //helperSU_btn_life helperSU_btn_etc
+        Button button4 = (Button) findViewById(R.id.h_edit_btn4);
 
 
         button1.setOnClickListener(new Button.OnClickListener() {
@@ -71,4 +71,7 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
 
 
     }
+
+
+
 }
