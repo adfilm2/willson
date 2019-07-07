@@ -19,6 +19,7 @@ public class List1CourseStartActivity extends AppCompatActivity {
     Button course_start_btn;
     LinearLayout course_cancel_btn;
     Context context;
+    Bundle bundle_course = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,24 @@ public class List1CourseStartActivity extends AppCompatActivity {
 
         course_cancel_btn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
         course_cancel_btn.setOnClickListener(new course_cancel_btn_listener());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle_course = data.getExtras();
+                    bundle_course.putInt("category",2);
+                    data.putExtras(bundle_course);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     class course_start_btn_listener implements View.OnClickListener {

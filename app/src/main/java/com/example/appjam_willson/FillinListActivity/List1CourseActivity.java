@@ -53,6 +53,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     Typeface typebold;
     Typeface typereg;
 
+    String small_category;
+    Bundle bundle1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +109,24 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
 
         background = (LinearLayout)findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle1 = data.getExtras();
+                    bundle1.putString("small category",small_category);
+                    data.putExtras(bundle1);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     private OnCheckedChangeListener radioGroup_course_listener1 = new OnCheckedChangeListener() {
@@ -177,6 +198,21 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
 
     @SuppressLint("ResourceType")
     public void onClick(View v) {
+        if(study.isChecked()){
+            small_category = study.getText().toString();
+        }
+        else if (employment.isChecked()){
+            small_category = employment.getText().toString();
+        }
+        else if (transfer.isChecked()){
+            small_category = transfer.getText().toString();
+        }
+        else if (course_custom_edit_text.isFocused()){
+            small_category = course_custom_edit_text.getText().toString();
+        }
+        else{}
+
+
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }

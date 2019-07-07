@@ -19,7 +19,7 @@ public class List1RelationshipsStartActivity extends AppCompatActivity {
     Button relationships_start_btn;
     LinearLayout Relationships_cancel_btn;
     Context context;
-
+    Bundle bundle_relation = new Bundle();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +39,24 @@ public class List1RelationshipsStartActivity extends AppCompatActivity {
         Relationships_cancel_btn.setOnClickListener(new relationships_cancel_btn_listener());
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle_relation = data.getExtras();
+                    bundle_relation.putInt("category",4);
+                    data.putExtras(bundle_relation);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
     class relationships_start_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
