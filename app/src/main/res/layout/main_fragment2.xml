@@ -31,8 +31,9 @@
                 android:textColor="@color/light_purple"
                 />
             <ImageView
-                android:layout_width="109.4dp"
-                android:layout_height="89.3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:src="@drawable/request_img_willson"
                 />
         </LinearLayout>
@@ -42,7 +43,7 @@
             android:layout_marginLeft="21.1dp"
             android:layout_marginRight="19.2dp"
             android:orientation="horizontal"
-            android:background="@drawable/login_edittext"
+            android:background="@drawable/edittext_radius20"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -62,9 +63,9 @@
                 android:layout_marginRight="22.3dp"
                 >
             <ImageView
-                android:layout_width="17.3dp"
-                android:layout_height="17.3dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:src="@drawable/img_timer_yellow"
                 android:layout_toLeftOf="@+id/fragment2_timer"
                 android:layout_centerVertical="true"

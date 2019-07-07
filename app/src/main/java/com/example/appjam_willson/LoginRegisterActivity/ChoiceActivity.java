@@ -22,7 +22,7 @@ public class ChoiceActivity extends AppCompatActivity {
         choiceWillson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChoiceActivity.this, RegisterActivity_willson.class);
+                Intent intent = new Intent(ChoiceActivity.this, RegisterActivity_helper.class);
                 startActivity(intent);
                 finish();
             }

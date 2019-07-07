@@ -12,36 +12,38 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="23.8dp"
         android:layout_marginBottom="61.3dp"
         android:layout_marginTop="46.3dp"
         >
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="27.8dp"
-            android:layout_alignParentStart="true"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:src="@drawable/img_logo"
+            android:layout_centerHorizontal="true"
             />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="27.8dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginRight="24.9dp"
-            android:id="@+id/fragment1_change"
+            android:id="@+id/helper_fragment1_change"
             android:layout_alignParentEnd="true"
-            android:gravity="center"
+            android:layout_centerVertical="true"
             >
 
             <ImageView
-                android:layout_width="17.2dp"
-                android:layout_height="17.2dp"
-                android:src="@drawable/btn_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginRight="4.8dp"
-                android:layout_toLeftOf="@+id/fragment1_change"
+                android:src="@drawable/btn_switch"
+                android:layout_gravity="center"
                 />
 
             <TextView
+                android:id="@+id/toolbar_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -65,8 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="61.6dp"
             android:id="@+id/main_fragment1_text"
-            android:text="당신의 고민
-\n매칭해보실래요?"
+            android:text="당신의 고민\n매칭해보실래요?"
             android:textSize="22sp"
             android:textColor="@color/dark_purple"
             />
@@ -96,8 +97,9 @@
             >
 
             <ImageView
-                android:layout_width="33.5dp"
-                android:layout_height="33.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="21.1dp"
                 android:src="@drawable/main_img_category_01_love"
                 />
@@ -123,8 +125,9 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="33.5dp"
-                android:layout_height="33.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="21.1dp"
                 android:src="@drawable/main_img_category_02_job"
                 />
@@ -147,15 +150,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="33.5dp"
-                android:layout_height="33.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="21.1dp"
                 android:src="@drawable/main_img_category_03_mind"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="심리"
+                android:text="자존감"
                 android:textSize="15sp"
                 android:textColor="@color/dark_purple"
                 />
@@ -187,8 +191,9 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="33.5dp"
-                android:layout_height="33.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="21.1dp"
                 android:src="@drawable/main_img_category_04_relationship"
                 />
@@ -215,8 +220,9 @@
             >
 
             <ImageView
-                android:layout_width="33.5dp"
-                android:layout_height="33.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="21.1dp"
                 android:src="@drawable/main_img_category_05_daily"
                 />
@@ -241,8 +247,9 @@
             >
 
             <ImageView
-                android:layout_width="33.5dp"
-                android:layout_height="33.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="21.1dp"
                 android:src="@drawable/main_img_category_06_etc"
                 />
@@ -273,8 +280,7 @@
             android:layout_marginTop="30.6dp"
             android:layout_marginBottom="2.2dp"
             android:id="@+id/main_fragment1_textSecond"
-            android:text="헬퍼들의
-\n이야기"
+            android:text="헬퍼들의\n이야기"
             android:textColor="@color/white"
             android:textSize="22sp"
             />
@@ -302,8 +308,7 @@
             android:layout_marginTop="30.6dp"
             android:layout_marginBottom="33.8dp"
             android:id="@+id/main_fragment1_textThird"
-            android:text="질문자들의
-\n후기"
+            android:text="질문자들의\n후기"
             android:textColor="@color/dark_purple"
             android:textSize="22sp"
             />

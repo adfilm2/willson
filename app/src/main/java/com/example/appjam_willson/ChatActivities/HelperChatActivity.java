@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
-public class WillsonChatActivity extends AppCompatActivity {
+public class HelperChatActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -106,7 +106,7 @@ public class WillsonChatActivity extends AppCompatActivity {
                 String text = editText.getText().toString();
 
                 if(text.equals("")){
-                    Toast.makeText(WillsonChatActivity.this, "내용을 입력해주세요",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HelperChatActivity.this, "내용을 입력해주세요",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     ChatModel.Comment comment = new ChatModel.Comment();
@@ -148,7 +148,7 @@ public class WillsonChatActivity extends AppCompatActivity {
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
                     ChatModel chatModel = item.getValue(ChatModel.class);
                     if (chatModel.users.containsKey(destinationUid)) {
-                        mRecyclerView.setLayoutManager(new LinearLayoutManager(WillsonChatActivity.this));
+                        mRecyclerView.setLayoutManager(new LinearLayoutManager(HelperChatActivity.this));
                         mRecyclerView.setAdapter(new ChatAdapter());
                     }
                 }
@@ -173,8 +173,8 @@ public class WillsonChatActivity extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
-                    getMessageList();
+                        destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
+                        getMessageList();
                 }
 
                 @Override

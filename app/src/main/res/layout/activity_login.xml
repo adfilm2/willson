@@ -12,12 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginBottom="78.7dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginBottom="42.8dp"
         >
         <ImageView
-            android:layout_width="81.6dp"
-            android:layout_height="27.5dp"
-            android:src="@drawable/img_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/login_logo"
             android:textSize="24sp"
             />
 
@@ -31,12 +33,13 @@
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45.5dp"
-        android:background="@drawable/login_edittext"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_radius20"
         >
         <ImageView
-            android:layout_width="13dp"
-            android:layout_height="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:src="@drawable/login_img_email"
             android:id="@+id/Login_Image"
             android:layout_gravity="center"
@@ -59,15 +62,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45.5dp"
-        android:background="@drawable/login_edittext"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_radius20"
         android:layout_marginTop="9.5dp"
         android:layout_marginBottom="13.2dp"
         >
 
         <ImageView
-            android:layout_width="13dp"
-            android:layout_height="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:src="@drawable/login_img_password"
             android:id="@+id/Login_Image_second"
             android:layout_gravity="center"
@@ -89,21 +93,6 @@
 
     </LinearLayout>
 
-
-    <!--<Button-->
-        <!--android:id="@+id/Login_button"-->
-        <!--android:layout_width="180dp"-->
-        <!--android:layout_height="25dp"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:clickable="true"-->
-        <!--android:gravity="center"-->
-        <!--android:text="Login"-->
-        <!--android:textSize="10dp"-->
-        <!--android:background="@drawable/btn_willson"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--/>-->
-
-
 </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -119,6 +108,7 @@
             android:text="아이디 찾기"
             android:textColor="@color/willsoncolor_basic"
             android:textSize="11sp"
+            android:fontFamily="@font/nanum_square_r"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -132,36 +122,9 @@
             android:text="비밀번호 찾기"
             android:textColor="@color/willsoncolor_basic"
             android:textSize="11sp"
+            android:fontFamily="@font/nanum_square_r"
             />
     </LinearLayout>
-
-    <!--<LinearLayout-->
-
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="30dp"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:weightSum="10"-->
-        <!--android:layout_marginTop="10dp"-->
-        <!--&gt;-->
-
-        <!--<Button-->
-            <!--android:id="@+id/Sign_Up"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_weight="5"-->
-            <!--android:gravity="center"-->
-            <!--android:text="가입하기"-->
-            <!--android:textColor="@color/willsonColor"-->
-            <!--android:background="@null"-->
-            <!--android:textSize="15sp"-->
-            <!--android:clickable="true"-->
-
-            <!--/>-->
-
-    <!--</LinearLayout>-->
-
-
 
     <LinearLayout
 
@@ -175,13 +138,12 @@
         <Button
             android:id="@+id/Email_login"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="로그인"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:background="@drawable/login_button_gradient"
-
             />
 
     </LinearLayout>
@@ -204,6 +166,7 @@
                 android:textSize="11sp"
                 android:textColor="@color/dark_purple"
                 android:gravity="center"
+                android:fontFamily="@font/nanum_square_b"
                 />
         </LinearLayout>
 
@@ -220,8 +183,9 @@
                 android:layout_marginRight="25.4dp"
                 >
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/login_btn_facebook"
                     />
                 <TextView
@@ -232,6 +196,7 @@
                     android:layout_gravity="center"
                     android:textColor="@color/dark_purple"
                     android:layout_marginTop="9.5dp"
+                    android:fontFamily="@font/nanum_square_b"
                     />
             </LinearLayout>
 
@@ -242,8 +207,9 @@
 
                 >
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/login_btn_kakao"
                     />
                 <TextView
@@ -254,6 +220,7 @@
                     android:layout_gravity="center"
                     android:textColor="@color/dark_purple"
                     android:layout_marginTop="9.5dp"
+                    android:fontFamily="@font/nanum_square_b"
                     />
             </LinearLayout>
 
@@ -266,7 +233,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="53.6dp"
         android:layout_marginLeft="15.2dp"
         android:layout_marginRight="15.2dp"
         >
@@ -280,6 +247,7 @@
             android:gravity="center"
             android:layout_above="@+id/Email_register"
             android:layout_marginBottom="10.8dp"
+            android:fontFamily="@font/nanum_square_r"
             />
         <Button
             android:id="@+id/Email_register"
@@ -288,6 +256,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="윌슨 가입하기"
+            android:fontFamily="@font/nanum_square_b"
             android:background="@drawable/login_button_grey"
             android:textSize="15sp"
             android:textColor="@color/dark_purple"

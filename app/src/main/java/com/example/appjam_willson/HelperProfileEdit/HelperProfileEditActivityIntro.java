@@ -105,8 +105,8 @@
             class helper_edit_exp_nextbtn_listener  implements View.OnClickListener {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, HelperProfileEditActivity0.class);
-                    startActivityForResult(intent, REQUEST_CODE);
+//                    Intent intent = new Intent(context, HelperProfileEditActivity0.class);
+//                    startActivityForResult(intent, REQUEST_CODE);
                 }
             }
 
