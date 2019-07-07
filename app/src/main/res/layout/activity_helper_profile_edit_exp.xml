@@ -103,7 +103,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="46.1dp"
-        android:id="@+id/list4_btn1"
+        android:id="@+id/helper_edit_exp_nextbtn"
         android:text="다음"
         android:enabled="false"
         android:layout_marginHorizontal="31.7dp"

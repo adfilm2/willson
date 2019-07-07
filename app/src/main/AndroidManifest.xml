@@ -11,22 +11,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityIntro"></activity>
+
+        <!--HelperProfileEdit -->
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityIntro" android:windowSoftInputMode="adjustPan" ></activity>
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityExp" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityExp" android:windowSoftInputMode="adjustPan"  >
+        </activity>
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC2" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivity0" />
-        <activity android:name=".HelperSignUpActivity.helperSignUpActivityStart" />
-        <activity android:name=".FillinListActivity.List5_1Activity" />
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1"/>
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0">
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- list 1 start -->
+
+        </activity>
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivity0" />
+
+        <!--HelperSignUpEdit-->
+        <activity android:name=".HelperSignUpActivity.helperSignUpActivityStart" />
+        <activity android:name=".FillinListActivity.List5_1Activity" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1"/>
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0">
+        </activity>
+
+        <!-- list 1 start -->
         <activity android:name=".FillinListActivity.List1LoveStartActivity" />
         <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />

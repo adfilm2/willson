@@ -12,7 +12,7 @@ import com.example.appjam_willson.R;
 
 
 public class HelperSignUpActivity1 extends AppCompatActivity  {
-
+//다음버튼에 액티비티 2 와 연결 해야함
 
 
     public void onCreate(Bundle savedInstanceState)
