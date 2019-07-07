@@ -1,6 +1,7 @@
 package com.example.appjam_willson.HelperSignUpActivity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC1;
+import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC2;
 import com.example.appjam_willson.R;
 // public class HelperSignUpActivity1 extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,6 +35,14 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
         view = (View)findViewById(R.id.activity_list1_daily_toolbar);
         btn =(ImageView)findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
+
+        ImageView btn_back;
+
+
+        btn_back = (ImageView) findViewById(R.id.back_btn);
+        btn_back.setOnClickListener(new HelperSignUpActivity1.list1_love_backbtn_listener());
+
+
 
 
         button1.setOnClickListener(new Button.OnClickListener() {
@@ -110,6 +121,22 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
             }
         });
 
+        nextbtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentProfileEdit = new Intent(HelperSignUpActivity1.this, HelperSignUpActivity2.class);
+                startActivity(intentProfileEdit);
+
+
+            }
+
+
+        });
+
+
+
+
+
 
 
 
@@ -118,6 +145,14 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
 
 
     }
+
+    class list1_love_backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
 
 
 

@@ -37,7 +37,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     EditText edit3;
 
     Button signup_nextbtn;
-    LinearLayout signup_backbtn;
+    ImageView signup_backbtn;
 
     Context context;
 
@@ -71,7 +71,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        signup_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        signup_backbtn = (ImageView) findViewById(R.id.h_su_btn_backbtn);
         signup_backbtn.setOnClickListener(new signup_backbtn_listener());
 
         linear1 = (LinearLayout)findViewById(R.id.linear1);

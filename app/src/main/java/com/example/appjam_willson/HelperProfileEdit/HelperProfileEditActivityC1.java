@@ -1,6 +1,6 @@
 
 
-        package com.example.appjam_willson.HelperProfileEdit;
+package com.example.appjam_willson.HelperProfileEdit;
 
 
 
@@ -35,12 +35,20 @@ public class HelperProfileEditActivityC1 extends AppCompatActivity {
         Button button5 = (Button) findViewById(R.id.helperSU_btn_life);
         Button button6 = (Button) findViewById(R.id.helperSU_btn_etc);
         Button nextbtn = (Button) findViewById(R.id.btn_next);
+        //Button backbtn = (Button) findViewById(R.id.btn_backbtn);
 
+        ImageView btn_back;
 
         btn = (ImageView)findViewById(R.id.back_btn);
         btn.setVisibility(View.INVISIBLE);
         text = (TextView)findViewById(R.id.toolbar_text);
         text.setText("프로필 수정");
+
+        btn_back = (ImageView) findViewById(R.id.back_btn);
+        btn_back.setOnClickListener(new HelperProfileEditActivityC1.list1_love_backbtn_listener());
+
+
+
 
         button1.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -183,15 +191,33 @@ public class HelperProfileEditActivityC1 extends AppCompatActivity {
 
         });
 
+     /*   backbtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+
+
+        });*/
 
     }
 
-
+/*
     Button.OnClickListener mClickListener = new View.OnClickListener() {
         public void onClick(View v) {
             //이곳에 버튼 클릭시 일어날 일을 적습니다.
         }
     };
+
+    */
+
+
+    class list1_love_backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
 
 }
 

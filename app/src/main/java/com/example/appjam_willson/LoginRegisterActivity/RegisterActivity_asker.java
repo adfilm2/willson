@@ -227,12 +227,9 @@ public class RegisterActivity_asker extends AppCompatActivity {
                             String uid = user.getUid();
 
                             Map<String, String> profile = new HashMap<>();
-                            profile.put("email", userEmail);
                             profile.put("photo", "");
                             profile.put("uid",uid);
                             profile.put("nickName",userNickname);
-                            profile.put("age",userAge);
-                            profile.put("gender",userGender);
 
                             myRef.child(uid).setValue(profile);
 
@@ -265,12 +262,9 @@ public class RegisterActivity_asker extends AppCompatActivity {
                             String uid = user.getUid();
 
                             Map<String, String> profile = new HashMap<>();
-                            profile.put("email", userEmail);
                             profile.put("photo", "");
                             profile.put("uid",uid);
                             profile.put("nickName",userNickname);
-                            profile.put("age",userAge);
-                            profile.put("gender",userGender);
 
                             myRef.child(uid).setValue(profile);
 

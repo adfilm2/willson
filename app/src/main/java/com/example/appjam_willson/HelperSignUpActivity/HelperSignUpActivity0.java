@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC1;
 import com.example.appjam_willson.R;
 
 
@@ -65,6 +66,13 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         btn =(ImageView)findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
+        Button nextbtn = (Button)findViewById(R.id.helperSU_0_btn_next);
+        ImageView btn_back;
+
+
+        btn_back = (ImageView) findViewById(R.id.back_btn);
+        btn_back.setOnClickListener(new HelperSignUpActivity0.list1_love_backbtn_listener());
+
         context=this;
 
         typebold = getResources().getFont(R.font.nanum_square_b);
@@ -91,7 +99,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
 
 
-        list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+      //  list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
         //  list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
 
         helperSU_radioGroup1 = (RadioGroup) findViewById(R.id.helperSU_radioGroup1);
@@ -108,7 +116,29 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         helperSU_0_btn_next.setOnClickListener(this);
 
 
+        nextbtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentProfileEdit = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
+                startActivity(intentProfileEdit);
+
+
+            }
+
+
+        });
+
+
     }
+
+
+    class list1_love_backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
 
     private RadioGroup.OnCheckedChangeListener radioGroup_daily_listener1 = new RadioGroup.OnCheckedChangeListener() {
         @Override
@@ -227,18 +257,12 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.helperSU_0_btn_next) {
-            //선택된 View가 R.id.button1와 같은 ID를 가지고 있다면 해당 로직 실행
-            Intent intentSU = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
-            startActivity(intentSU);
+        //if (v.getId() == R.id.helperSU_0_btn_next) {
+   //         //선택된 View가 R.id.button1와 같은 ID를 가지고 있다면 해당 로직 실행
+    //        Intent intentSU = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
+      /*      startActivity(intentSU);
         }
-
-        class list1_daily_backbtn_listener implements View.OnClickListener {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        }
+*/
 
 
 
@@ -274,12 +298,6 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
                 helperSU_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
             }
         }
-
-
-
-
-
-
 
 
     }}

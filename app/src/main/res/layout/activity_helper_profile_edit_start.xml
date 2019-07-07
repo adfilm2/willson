@@ -56,7 +56,7 @@
                     />
 
                 <Button
-                    android:id="@+id/btn1"
+                    android:id="@+id/h_edit_btn1"
                     android:background="#00ff0000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                     />
 
                 <Button
-                    android:id="@+id/btn2"
+                    android:id="@+id/h_edit_btn2"
                     android:background="#00ff0000"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
@@ -194,7 +194,7 @@
                     />
 
                 <Button
-                    android:id="@+id/btn3"
+                    android:id="@+id/h_edit_btn3"
                     android:background="#00ff0000"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
@@ -273,7 +273,7 @@
                     />
 
                 <Button
-                    android:id="@+id/btn4"
+                    android:id="@+id/h_edit_btn4"
                     android:background="#00ff0000"
 
                     android:layout_gravity="center_horizontal"

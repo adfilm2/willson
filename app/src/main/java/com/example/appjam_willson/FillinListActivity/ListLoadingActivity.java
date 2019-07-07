@@ -28,11 +28,6 @@ public class ListLoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_helper_loading);
 
-        //로딩이미지
-/*        ImageView loading = (ImageView)findViewById(R.id.);
-        Animation animation1 = AnimationUtils.loadAnimation(this,R.anim.rotate);
-        loading.startAnimation(animation1);*/
-
         //타이머
         countTxt = (TextView)findViewById(R.id.count_txt);
         min = (TextView)findViewById(R.id.min_txt);

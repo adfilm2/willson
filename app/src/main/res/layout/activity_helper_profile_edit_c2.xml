@@ -8,7 +8,7 @@ android:background="#ffffff">
 
 <include
     android:id="@+id/activity_list1_daily_toolbar"
-    layout="@layout/toolbar_list_helper"/>
+    layout="@layout/toolbar_helper_profile"/>
 
 
 <TextView
@@ -182,35 +182,37 @@ android:background="#ffffff">
 
 </LinearLayout>
 
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="bottom"
-    android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="bottom"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
-        <Button
-            android:id="@+id/btn_next"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="46.1dp"
-            android:layout_marginLeft="31.7dp"
-            android:layout_marginRight="31.7dp"
-            android:layout_marginBottom="32.6dp"
-            android:enabled="false"
-            android:text="완료"
-            android:textColor="@color/white"
-            android:elevation="9dp"
-            />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="46.1dp"
+                android:layout_marginLeft="31.7dp"
+                android:layout_marginRight="31.7dp"
+                android:layout_marginBottom="32.6dp"
+                android:background="@drawable/listnext_btn_selector"
+                android:enabled="false"
+                android:text="완료"
+                android:textColor="@color/white"
+                android:elevation="9dp"
+                />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+
 </LinearLayout>

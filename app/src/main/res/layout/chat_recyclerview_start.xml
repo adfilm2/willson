@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat_startMsg"
+        android:layout_below="@+id/chat_topLayout"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="14dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="19.6dp"
+            android:layout_marginBottom="5.6dp"
+            android:layout_marginRight="19dp"
+            android:id="@+id/first_msg"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_gravity="center"
+                android:src="@drawable/chat_img_announcement"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="상담 대기 안내"
+                android:textColor="@color/dark_purple"
+                android:textSize="14sp"
+                android:layout_marginLeft="6.7dp"
+                android:layout_marginTop="11.5dp"
+                />
+
+        </LinearLayout>
+
+        <View style="@style/Divider2"
+            android:layout_marginLeft="13.8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="19dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginBottom="7.4dp"
+            android:text="10분 이내에 상대방과의 대화가 시작되지 않을 경우, 채팅이"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginBottom="7.4dp"
+            android:text="자동 종료됩니다."
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chat_startMsg_time"
+        android:layout_below="@+id/chat_startMsg"
+        android:layout_marginRight="17.6dp"
+        android:layout_marginTop="6.7dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="PM 3:20"
+            android:textSize="9sp"
+            android:textColor="@color/black"
+            />
+    </RelativeLayout>
+</LinearLayout>
