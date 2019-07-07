@@ -1,6 +1,7 @@
 package com.example.appjam_willson.HelperSignUpActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -73,9 +74,9 @@ public class HelperSignupActivity3 extends AppCompatActivity {
 
     class signup_nextbtn_listener implements View.OnClickListener {
         @Override
-        public void onClick(View view) {/*
-            Intent intent = new Intent(context, HelperSignupActivity4.class);
-            startActivityForResult(intent, REQUEST_CODE);*/
+        public void onClick(View view) {
+            Intent intent = new Intent(context, HelperSignupConfirm1Activity.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
     }
 

@@ -57,8 +57,9 @@
             android:layout_marginRight="19.1dp"
             />
         <ImageView
-            android:layout_width="22.1dp"
-            android:layout_height="22.1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/fragment3_chatLastTime"
             android:src="@drawable/chat_img_alert"

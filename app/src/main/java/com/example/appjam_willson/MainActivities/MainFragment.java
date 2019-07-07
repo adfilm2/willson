@@ -30,7 +30,6 @@ import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -67,16 +66,15 @@ public class MainFragment extends Fragment {
         TextView main_fragment1_textThird = view.findViewById(R.id.main_fragment1_textThird);
         storyRecyclerView = view.findViewById(R.id.fragment1_recyclerView);
 
-        LinearLayout changeMode = view.findViewById(R.id.fragment1_change);
+        LinearLayout changeMode = view.findViewById(R.id.helper_fragment1_change);
 
-        myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+       /* myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
 
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1LoveStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -85,7 +83,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1CourseStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -94,7 +91,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1MentalityStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -103,7 +99,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1RelationshipsStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -112,7 +107,6 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1DailyStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -121,16 +115,14 @@ public class MainFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1EtcStartActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
         changeMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity() , WillsonActivity.class);
+                Intent intent = new Intent(getActivity() , HelperActivity.class);
                 startActivity(intent);
-                getActivity().finish();
             }
         });
 
@@ -147,7 +139,7 @@ public class MainFragment extends Fragment {
         //Text들의 특정 위치 색, 타입을 바꿔주는 메소드
         changeText(main_fragment1_text,8,10,"#5252a1");
         changeText(main_fragment1_textSecond,0,2,"#ffc326");
-        changeText(main_fragment1_textThird,7,9,"#5252a1");
+        changeText(main_fragment1_textThird,6,8,"#5252a1");
 
         return view;
     }

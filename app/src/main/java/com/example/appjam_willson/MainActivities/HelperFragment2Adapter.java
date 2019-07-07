@@ -12,18 +12,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appjam_willson.ChatActivities.WillsonChatActivity;
+import com.example.appjam_willson.ChatActivities.HelperChatActivity;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
 
 import java.util.List;
 
-public class WillsonFragment2Adapter extends RecyclerView.Adapter<WillsonFragment2Adapter.ViewHolder> {
+public class HelperFragment2Adapter extends RecyclerView.Adapter<HelperFragment2Adapter.ViewHolder> {
 
     private List<WillsonModel> willsonModels;
     private Context context;
 
-    public WillsonFragment2Adapter(List<WillsonModel> willsonModels, Context context){
+    public HelperFragment2Adapter(List<WillsonModel> willsonModels, Context context){
         this.willsonModels = willsonModels;
         this.context = context;
     }
@@ -31,7 +31,7 @@ public class WillsonFragment2Adapter extends RecyclerView.Adapter<WillsonFragmen
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.willson_fragment2_rv_item, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.helper_fragment2_rv_item, viewGroup, false);
             ViewHolder vh = new ViewHolder(v);
             return vh;
     }
@@ -56,7 +56,7 @@ public class WillsonFragment2Adapter extends RecyclerView.Adapter<WillsonFragmen
         viewHolder.chatStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), WillsonChatActivity.class);
+                Intent intent = new Intent(v.getContext(), HelperChatActivity.class);
                 intent.putExtra("destinationUid",willsonModels.get(i).getUid());
                 context.startActivity(intent);
             }

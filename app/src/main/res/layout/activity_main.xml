@@ -35,8 +35,9 @@
             >
             <ImageView
                 android:id="@+id/Image_home"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="8.6dp"
                 android:background="@drawable/tab_01_home_btn"
                 />
@@ -63,8 +64,9 @@
             >
             <ImageView
                 android:id="@+id/Image_request"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="8.6dp"
                 android:background="@drawable/tab_02_request_btn"
                 />
@@ -90,8 +92,9 @@
             >
         <ImageView
             android:id="@+id/Image_chat"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:layout_marginBottom="8.6dp"
             android:background="@drawable/tab_03_chat_btn"
             />
@@ -119,8 +122,9 @@
             >
             <ImageView
                 android:id="@+id/Image_mypage"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="8.6dp"
                 android:background="@drawable/tab_04_mypage_btn"
                 />

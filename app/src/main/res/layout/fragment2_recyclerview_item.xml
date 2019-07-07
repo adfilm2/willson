@@ -7,7 +7,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:layout_marginBottom="19.2dp"
-    android:background="@drawable/fragment2_background_white_radius5"
+    android:background="@drawable/background_white_radius5"
     android:elevation="3dp"
     >
     <LinearLayout
@@ -20,16 +20,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="3.8dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
+            android:paddingHorizontal="8.6dp"
+            android:paddingTop="4.8dp"
+            android:paddingBottom="3.8dp"
             android:id="@+id/fragment2_profile_subject"
             android:text="진로"
             android:textSize="13sp"
-            android:textStyle="bold"
             android:textColor="@color/light_purple"
+            android:fontFamily="@font/nanum_square_eb"
             android:background="@drawable/main_profiletext"
             />
     </LinearLayout>

@@ -22,8 +22,9 @@
         android:layout_marginLeft="36.5dp"
         >
         <ImageView
-            android:layout_width="46.1dp"
-            android:layout_height="46.1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:id="@+id/fragment2_userImage"
             android:src="@drawable/mypage_img_profile"
             />
@@ -90,8 +91,9 @@
             android:gravity="center"
             >
             <ImageView
-                android:layout_width="22.1dp"
-                android:layout_height="22.1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="20.2dp"
                 android:src="@drawable/mypage_btn_reviewsetting"
                 />
@@ -112,8 +114,9 @@
             android:gravity="center"
             >
             <ImageView
-                android:layout_width="22.1dp"
-                android:layout_height="22.1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 android:layout_marginBottom="20.2dp"
                 android:src="@drawable/mypage_btn_matchinglist"
                 />

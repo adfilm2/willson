@@ -46,8 +46,6 @@ import java.util.TimerTask;
 
 public class ChatActivity extends AppCompatActivity {
 
-    int one = 1;
-
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager layoutManager;
 
@@ -119,6 +117,7 @@ public class ChatActivity extends AppCompatActivity {
         linearLayout_startMsg = findViewById(R.id.chat_startMsg);
 
         destinationUid = getIntent().getStringExtra("destinationUid");
+
         //채팅방에 참여한 유저들의 uid들을 먼저 가져옴.
         getUserData();
 
@@ -221,8 +220,8 @@ public class ChatActivity extends AppCompatActivity {
             FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
-                    getMessageList();
+                        destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
+                        getMessageList();
                 }
 
                 @Override
@@ -339,7 +338,7 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         void setReadCounter(final int position, final TextView textView) {
-            if (peopleCount == 0) {
+       if (peopleCount == 0) {
                 FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

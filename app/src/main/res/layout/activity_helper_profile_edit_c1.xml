@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/activity_list1_daily_toolbar"
-        layout="@layout/toolbar_list_helper"/>
+        layout="@layout/toolbar_helper_profile"/>
 
 
     <TextView
@@ -174,8 +174,6 @@
     </LinearLayout>
 
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -193,7 +191,7 @@
                 android:layout_weight="1"/>
 
             <Button
-                android:id="@+id/helperSU_0_btn_next"
+                android:id="@+id/btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="46.1dp"
                 android:layout_marginLeft="31.7dp"
@@ -207,8 +205,6 @@
                 />
         </LinearLayout>
     </LinearLayout>
-
-
 </LinearLayout>
 
 

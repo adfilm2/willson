@@ -1,11 +1,8 @@
-package com.example.appjam_willson;
+package com.example.appjam_willson.LoginRegisterActivity;
 
 
 import android.graphics.Color;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -20,6 +17,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.appjam_willson.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,7 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegisterActivity_willson extends AppCompatActivity {
+public class RegisterActivity_helper extends AppCompatActivity {
 
     private String userEmail;
     private String userPassword;
@@ -51,7 +53,7 @@ public class RegisterActivity_willson extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_willson);
+        setContentView(R.layout.activity_register_helper);
         final EditText idText=findViewById(R.id.registerwillson_email);
         final EditText passwordText=findViewById(R.id.registerwillson_password);
         final EditText passwordConfirm = findViewById(R.id.registerwillson_passwordConfirm);
@@ -62,7 +64,7 @@ public class RegisterActivity_willson extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        adapter = ArrayAdapter.createFromResource(this,R.array.Age_group, android.R.layout.simple_spinner_dropdown_item);
+        adapter = ArrayAdapter.createFromResource(this, R.array.Age_group, android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
         ageSpinner.setSelection(0);
 
@@ -189,7 +191,7 @@ public class RegisterActivity_willson extends AppCompatActivity {
     }
 
     protected void showAlert(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity_willson.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity_helper.this);
         dialog = builder.setMessage(message)
                 .setNegativeButton("확인", null).create();
         dialog.show();
@@ -206,7 +208,7 @@ public class RegisterActivity_willson extends AppCompatActivity {
                 else{
                     nickNameCheck = false;
                 }
-                RegisterActivity_willson.this.runOnUiThread(callback);
+                RegisterActivity_helper.this.runOnUiThread(callback);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -217,7 +219,7 @@ public class RegisterActivity_willson extends AppCompatActivity {
 
     public void RegisterUser(String email,String password){
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(RegisterActivity_willson.this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(RegisterActivity_helper.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
@@ -241,12 +243,12 @@ public class RegisterActivity_willson extends AppCompatActivity {
 
                             myRef.child(uid).setValue(profile);
 
-                            Toast.makeText(RegisterActivity_willson.this, "등록ㅊㅋㅊㅋ.",
+                            Toast.makeText(RegisterActivity_helper.this, "등록ㅊㅋㅊㅋ.",
                                     Toast.LENGTH_SHORT).show();
                             finish();
                         }
                         else {
-                            Toast.makeText(RegisterActivity_willson.this, "등록된 이메일이거나 이메일 형식이 아닙니다.",
+                            Toast.makeText(RegisterActivity_helper.this, "등록된 이메일이거나 이메일 형식이 아닙니다.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <include
+        android:id="@+id/activity_list1_toolbar"
+        layout="@layout/toolbar_helper_profile"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="한 줄 소개를 작성해주세요."
+            android:textSize="19sp"
+            android:layout_marginTop="54.3dp"
+            android:layout_marginLeft="21dp"
+            android:textColor="@color/darkPurple"
+            android:lineSpacingExtra="10sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/brownish_grey"
+            android:lineSpacingExtra="6sp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginRight="21dp"
+            android:layout_marginTop="10dp"
+            android:text="해당 경험에 대해 대화를 나눌 때 어떤 헬퍼가 되고 싶은지 말씀해주세요"
+            />
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:id="@+id/list4_linear"
+            android:layout_height="114.9dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="22.2dp"
+            android:layout_marginTop="27.6dp"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_corner_radius5">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/list4_relative"
+                android:layout_marginLeft="10.5dp"
+                android:layout_marginTop="14.5dp"
+                android:layout_marginRight="9.4dp"
+                >
+
+                <EditText
+                    android:id="@+id/list4_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:maxLength="300"
+                    android:lineSpacingExtra="12sp"
+                    android:background="@null"
+                    android:textSize="14sp"
+                    android:gravity="left"
+                    android:hint="진로에 관해서 구체적인 조언을 해줘서 막막한 마음을 풀어줄 수 있는 헬퍼가 되고 싶습니다."
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_round_r"
+                    >
+                </EditText>
+
+            </ScrollView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/list4_relative" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="11sp"
+                    android:text="0"
+                    android:id="@+id/textViewCount"
+                    android:layout_toLeftOf ="@id/list4_totalbyte"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_r"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/50자"
+                    android:id="@+id/list4_totalbyte"
+                    android:layout_marginRight="21dp"
+                    android:layout_alignParentRight="true"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_r"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="46.1dp"
+        android:id="@+id/helper_edit_intro_nextbtn"
+        android:text="완료"
+        android:enabled="false"
+        android:layout_marginHorizontal="31.7dp"
+        android:textColor="#ffff"
+        android:background="@drawable/listnext_btn_selector"
+        android:textSize="14sp"
+        android:layout_marginBottom="32.6dp" />
+
+</LinearLayout>

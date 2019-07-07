@@ -19,32 +19,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class MainActivity extends AppCompatActivity{
-
-    private TimerTask timerTask;
-    private Timer timer = new Timer();
-    private String restTime;
-
-    private Timestamp startTime = new Timestamp(System.currentTimeMillis());
-    private Timestamp newTime;
-    private long totalTime = 3600000;
-
-    private SimpleDateFormat timerFormat = new SimpleDateFormat("mm:ss");
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +55,6 @@ public class MainActivity extends AppCompatActivity{
         changeTextColor(text_home,text_request,text_chat,text_mypage);
 
         // passPushTokenToServer();
-
-
-
-
-        Map<String, String> startTime;
-        startTime = ServerValue.TIMESTAMP;
-        Log.d("값ㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅㅅ", String.valueOf(startTime.values()));
-
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

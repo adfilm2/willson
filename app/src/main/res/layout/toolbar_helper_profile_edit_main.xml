@@ -25,14 +25,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/btn_backbtn"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                />
 
-            <ImageView
-                android:paddingLeft="20.2dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/btn_backbtn"
-                android:layout_gravity="center_horizontal" />
 
         </LinearLayout>
 
@@ -53,7 +48,7 @@
                 android:lineSpacingExtra="19sp"
                 android:layout_gravity="center_horizontal"
                 android:adjustViewBounds="true"
-                android:text="프로필 수정"
+                android:text="프로필  수정"
                 />
 
         </LinearLayout>

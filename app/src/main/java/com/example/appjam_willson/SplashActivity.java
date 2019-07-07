@@ -8,7 +8,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
+import com.example.appjam_willson.MainActivities.MainActivity;
 
 public class SplashActivity extends Activity {
 
@@ -24,15 +24,14 @@ public class SplashActivity extends Activity {
         Glide.with(this).load(R.drawable.willson_splash).into(splash);
 
         Handler hd = new Handler();
-        hd.postDelayed(new splashhandler(), 6000);
+        hd.postDelayed(new splashhandler(), 4150);
     }
 
     private class splashhandler implements Runnable {
         @Override
         public void run() {
-            startActivity(new Intent(getApplication(), List1LoveStartActivity.class));
+            startActivity(new Intent(getApplication(), MainActivity.class));
             SplashActivity.this.finish();
         }
     }
-
 }
