@@ -56,6 +56,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up0);
 
+        Button nextbtn = (Button)findViewById(R.id.helperSU_0_btn_next);
         ImageView btn_back;
 
 
@@ -73,6 +74,9 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         btn4 = (RadioButton) findViewById(R.id.helperSU_btn_relationship);
         btn5 = (RadioButton) findViewById(R.id.helperSU_btn_life);
         btn6 = (RadioButton) findViewById(R.id.helperSU_btn_etc);
+
+
+
 
         btn1.setTypeface(typereg);
         btn2.setTypeface(typereg);
@@ -103,6 +107,19 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
         helperSU_0_btn_next = (Button) findViewById(R.id.helperSU_0_btn_next);
         helperSU_0_btn_next.setOnClickListener(this);
+
+
+        nextbtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentProfileEdit = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
+                startActivity(intentProfileEdit);
+
+
+            }
+
+
+        });
 
 
     }
@@ -230,15 +247,17 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
 
 
+
+
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.helperSU_0_btn_next) {
-            //선택된 View가 R.id.button1와 같은 ID를 가지고 있다면 해당 로직 실행
-            Intent intentSU = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
-            startActivity(intentSU);
+        //if (v.getId() == R.id.helperSU_0_btn_next) {
+   //         //선택된 View가 R.id.button1와 같은 ID를 가지고 있다면 해당 로직 실행
+    //        Intent intentSU = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
+      /*      startActivity(intentSU);
         }
-
+*/
 
 
 

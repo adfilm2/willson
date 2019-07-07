@@ -18,11 +18,11 @@ public class HelperProfileEditActivityHash extends AppCompatActivity {
         setContentView(R.layout.activity_helper_profile_edit_hash);
 
 
-        Button nextbtn = (Button) findViewById(R.id.btn_next);
+        Button nextbtn = (Button) findViewById(R.id.button1);
 
 
         ImageView btn_back;
-        btn_back = (ImageView)findViewById(R.id.btn_backbtn);
+        btn_back = (ImageView)findViewById(R.id.h_pro_btn_backbtn);
         btn_back.setOnClickListener(new HelperProfileEditActivityHash.list1_love_backbtn_listener());
 
         nextbtn.setOnClickListener(new Button.OnClickListener() {

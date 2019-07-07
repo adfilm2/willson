@@ -32,7 +32,7 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
         // Button backbtn = (Button) findViewById(R.id.btn_backbtn);
         ImageView btn_back;
 
-        btn_back = (ImageView) findViewById(R.id.btn_backbtn);
+        btn_back = (ImageView) findViewById(R.id.h_pro_btn_backbtn);
         btn_back.setOnClickListener(new HelperProfileEditActivityC2.list1_love_backbtn_listener());
 
 

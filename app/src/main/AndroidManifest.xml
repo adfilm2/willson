@@ -13,6 +13,12 @@
         tools:ignore="GoogleAppIndexingWarning">
         <!-- helperProfileEditActivity -->
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityIntro" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
@@ -42,15 +48,9 @@
 
         <!--HelperSignUpEdit-->
         <activity android:name=".HelperSignUpActivity.helperSignUpActivityStart" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
         </activity>
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" >
+        </activity>
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" >
 
         </activity>

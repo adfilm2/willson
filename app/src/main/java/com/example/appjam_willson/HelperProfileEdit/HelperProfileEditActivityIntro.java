@@ -45,7 +45,7 @@
                 setContentView(R.layout.activity_helper_profile_edit_intro);
 
                 ImageView btn_back;
-                btn_back = (ImageView) findViewById(R.id.btn_backbtn);
+                btn_back = (ImageView) findViewById(R.id.h_pro_btn_backbtn);
                 btn_back.setOnClickListener(new HelperProfileEditActivityIntro.list1_love_backbtn_listener());
 
                 context = this;

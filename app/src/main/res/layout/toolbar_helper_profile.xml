@@ -28,7 +28,7 @@
                 android:src="@drawable/btn_backbtn" />
 
             <ImageView
-                android:id="@+id/btn_backbtn"
+                android:id="@+id/h_pro_btn_backbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

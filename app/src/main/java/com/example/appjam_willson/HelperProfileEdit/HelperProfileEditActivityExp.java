@@ -61,7 +61,7 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
         ImageView btn_back;
-        btn_back = (ImageView) findViewById(R.id.btn_backbtn);
+        btn_back = (ImageView) findViewById(R.id.h_pro_btn_backbtn);
         btn_back.setOnClickListener(new HelperProfileEditActivityExp.list1_love_backbtn_listener());
 
         list4_nextbtn = (Button) findViewById(R.id.helper_edit_exp_nextbtn);
