@@ -54,6 +54,9 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     Typeface typebold;
     Typeface typereg;
 
+    Bundle bundle1= new Bundle();
+    String small_category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +113,23 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
 
         background = (LinearLayout)findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle1 = data.getExtras();
+                    bundle1.putString("small category",small_category);
+                    data.putExtras(bundle1);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     private OnCheckedChangeListener radioGroup_relationships_listener1 = new OnCheckedChangeListener() {
@@ -185,6 +205,28 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
+        //RadioButton family;
+        //    RadioButton friend;
+        //    RadioButton companion;
+        //    RadioButton junior;
+
+        if(family.isChecked()){
+            small_category = family.getText().toString();
+        }
+        else if (friend.isChecked()){
+            small_category = friend.getText().toString();
+        }
+        else if (companion.isChecked()){
+            small_category = companion.getText().toString();
+        }
+        else if (junior.isChecked()){
+            small_category = junior.getText().toString();
+        }
+        else if (relationships_custom_edit_text.isFocused()){
+            small_category = relationships_custom_edit_text.getText().toString();
+        }
+        else{}
+
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }

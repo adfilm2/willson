@@ -48,6 +48,9 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     Typeface typebold;
     Typeface typereg;
 
+    Bundle bundle1 = new Bundle();
+    String small_category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,9 +97,36 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         background.setOnClickListener(new list_background_listener());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle1 = data.getExtras();
+                    bundle1.putString("small category",small_category);
+                    data.putExtras(bundle1);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
+
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
+        if(visual.isChecked()){
+            small_category = visual.getText().toString();
+        }
+
+        else if (etc_custom_edit_text.isFocused()){
+            small_category = etc_custom_edit_text.getText().toString();
+        }
+        else{}
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }

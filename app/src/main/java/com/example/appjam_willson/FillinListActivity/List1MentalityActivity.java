@@ -58,6 +58,9 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     Typeface typebold;
     Typeface typereg;
 
+    String small_category;
+    Bundle bundle1= new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +122,24 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
 
         background = (LinearLayout)findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle1 = data.getExtras();
+                    bundle1.putString("small category",small_category);
+                    data.putExtras(bundle1);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     private OnCheckedChangeListener radioGroup_mentality_listener1 = new OnCheckedChangeListener() {
@@ -244,6 +265,32 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
+
+        if(selfesteem.isChecked()){
+            small_category = selfesteem.getText().toString();
+        }
+        else if (unrest.isChecked()){
+            small_category = unrest.getText().toString();
+        }
+        else if (depressed.isChecked()){
+            small_category = depressed.getText().toString();
+        }
+        else if (torpor.isChecked()){
+            small_category = torpor.getText().toString();
+        }
+        else if (ego.isChecked()){
+            small_category = ego.getText().toString();
+        }
+        else if (exist.isChecked()){
+            small_category = ego.getText().toString();
+        }
+        else if (mentality_custom_edit_text.isFocused()){
+            small_category = mentality_custom_edit_text.getText().toString();
+        }
+        else{}
+
+
+
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
