@@ -8,9 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,10 +51,19 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     Typeface typebold;
     Typeface typereg;
 
+    View view;
+    TextView text;
+    ImageView btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up0);
+
+        view = (View)findViewById(R.id.activity_list1_daily_toolbar);
+        text = (TextView)findViewById(R.id.toolbar_text);
+        text.setText("헬퍼 가입");
+        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn.setVisibility(View.INVISIBLE);
 
         context=this;
 

@@ -19,11 +19,6 @@
 
         <!--Login && Register -->
         <activity android:name=".LoginRegisterActivity.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".LoginRegisterActivity.ChoiceActivity"/>
@@ -45,9 +40,16 @@
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
 
         <!--HelperSignUpEdit-->
-        <activity android:name=".HelperSignUpActivity.helperSignUpActivityStart" />
+        <activity android:name=".HelperSignUpActivity.helperSignUpActivityStart" >
+        </activity>
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".HelperSignUpActivity.HelperSignupActivity3" />
         <activity
             android:name=".HelperSignUpActivity.HelperSignUpActivity2"
@@ -79,6 +81,9 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme" />
+
+        <activity android:name=".AskerProfileActivity">
+        </activity>
     </application>
 
 </manifest>

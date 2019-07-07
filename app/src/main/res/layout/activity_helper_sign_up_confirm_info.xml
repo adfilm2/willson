@@ -5,7 +5,7 @@
 
     <include
         android:id="@+id/activity_helper_signup_confirm_toolbar"
-        layout="@layout/toolbar_helper_sign_up_confirm"/>
+        layout="@layout/toolbar_list_helper"/>
 
     <TextView
         android:layout_width="wrap_content"

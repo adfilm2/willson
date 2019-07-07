@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/signup_background">
 
-    <include layout = "@layout/toolbar_helper_signup"/>
+    <include android:id="@+id/toolbar" layout = "@layout/toolbar_list_helper"/>
 
     <TextView
         android:layout_width="match_parent"

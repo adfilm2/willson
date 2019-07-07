@@ -4,6 +4,8 @@ package com.example.appjam_willson.HelperSignUpActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,8 @@ import com.example.appjam_willson.R;
 public class HelperSignUpActivity1 extends AppCompatActivity  {
 //다음버튼에 액티비티 2 와 연결 해야함
 
+    View view;
+    ImageView btn;
 
     public void onCreate(Bundle savedInstanceState)
     {
@@ -24,6 +28,10 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
         Button button3 = (Button) findViewById(R.id.helperSU_btn_love3) ;
         Button button4 = (Button) findViewById(R.id.helperSU_btn_love4) ;
         Button nextbtn = (Button)findViewById(R.id.HelperSU_btn_next);
+
+        view = (View)findViewById(R.id.activity_list1_daily_toolbar);
+        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn.setVisibility(View.INVISIBLE);
 
 
         button1.setOnClickListener(new Button.OnClickListener() {

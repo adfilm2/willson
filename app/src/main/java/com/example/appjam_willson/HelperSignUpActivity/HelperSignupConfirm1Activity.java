@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,10 +30,17 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
 
     LinearLayout back_btn;
 
+    View view;
+    ImageView btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up_confirm);
+
+        view = (View)findViewById(R.id.activity_helper_signup_toolbar);
+        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn.setVisibility(View.INVISIBLE);
 
         background = (LinearLayout)findViewById(R.id.background);
         background.setOnClickListener(new back_click());

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -47,10 +48,17 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     Typeface typebold;
     Typeface typereg;
 
+    View view;
+    ImageView btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up2);
+
+        view = (View)findViewById(R.id.toolbar);
+        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn.setVisibility(View.INVISIBLE);
 
         context = this;
 

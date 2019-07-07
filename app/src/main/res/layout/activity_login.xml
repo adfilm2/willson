@@ -45,6 +45,8 @@
                 android:layout_marginLeft="11.4dp"
                 android:hint="E-mail"
                 android:layout_marginRight="20dp"
+                android:fontFamily="@font/nanum_square_r"
+
                 android:textSize="13sp"
                 android:id="@+id/Login_ID"
                 android:layout_gravity="center"
@@ -79,6 +81,7 @@
                 android:id="@+id/Login_Password"
                 android:layout_marginRight="20dp"
                 android:hint="Password"
+                android:fontFamily="@font/nanum_square_r"
                 android:textSize="13sp"
                 android:inputType="textPassword"
                 android:layout_marginLeft="11.4dp"
@@ -136,11 +139,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="42.7dp"
+            android:fontFamily="@font/nanum_square_b"
             android:gravity="center"
             android:text="로그인"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:elevation="10dp"
+            android:lineSpacingExtra="13sp"
             android:background="@drawable/login_button_gradient"
             />
 
