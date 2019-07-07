@@ -3,7 +3,6 @@
     <string name="fb_login_protocol_scheme">fb356292024967997</string>
 
     <string-array name="Age_group">
-
         <item>나이를 선택해주세요.</item>
         <item>21</item>
         <item>22</item>
@@ -21,8 +20,8 @@
         <item>34</item>
         <item>35</item>
         <item>36</item>
-
     </string-array>
+
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

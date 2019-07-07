@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,8 +27,8 @@ import com.google.firebase.iid.InstanceIdResult;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class MainActivity extends AppCompatActivity{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +105,6 @@ public class MainActivity extends AppCompatActivity{
                     return;
                 }
                 String token = task.getResult().getToken();
-
                 Map<String,Object> map = new HashMap<>();
                 map.put("pushToken",token);
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);

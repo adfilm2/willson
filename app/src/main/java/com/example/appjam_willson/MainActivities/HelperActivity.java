@@ -52,8 +52,8 @@ public class HelperActivity extends AppCompatActivity{
             public void onClick(View v) {
                 changeImage(willsonImage_receive,willsonImage_chat,willsonImage_profile,willsonImage_mypage);
                 changeTextColor(willsonText_receive,willsonText_chat,willsonText_profile,willsonText_mypage);
-//                HelperFragment2 fragment = new HelperFragment2();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
+                HelperFragment fragment = new HelperFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {

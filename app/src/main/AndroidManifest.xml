@@ -14,15 +14,16 @@
 
         <!--HelperProfileEdit -->
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityIntro" android:windowSoftInputMode="adjustPan" >
+        </activity>
+
+        <!--Login && Register -->
+        <activity android:name=".LoginRegisterActivity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--Login && Register -->
-        <activity android:name=".LoginRegisterActivity.LoginActivity"/>
         <activity android:name=".LoginRegisterActivity.ChoiceActivity"/>
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"/>
         <activity android:name=".LoginRegisterActivity.RegisterActivity_helper"/>

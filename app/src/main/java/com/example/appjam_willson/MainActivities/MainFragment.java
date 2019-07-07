@@ -138,9 +138,9 @@ public class MainFragment extends Fragment {
         callWillson(myuid);
 
         //Text들의 특정 위치 색, 타입을 바꿔주는 메소드
-        changeText(main_fragment1_text,8,10,"#5252a1");
+        changeText(main_fragment1_text,7,9,"#5252a1");
         changeText(main_fragment1_textSecond,0,2,"#ffc326");
-        changeText(main_fragment1_textThird,7,9,"#5252a1");
+        changeText(main_fragment1_textThird,6,8,"#5252a1");
 
         return view;
     }
