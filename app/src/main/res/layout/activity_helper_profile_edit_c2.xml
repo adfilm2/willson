@@ -34,7 +34,7 @@ android:background="#ffffff">
 
 
     <Button
-        android:id="@+id/helperSU_btn_love1"
+        android:id="@+id/helper_editc2_1"
         android:layout_width="153dp"
         android:layout_height="49dp"
         android:layout_marginLeft="24.8dp"
@@ -52,7 +52,7 @@ android:background="#ffffff">
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/helperSU_btn_love2"
+        android:id="@+id/helper_editc2_2"
         android:layout_width="153dp"
         android:layout_height="match_parent"
         android:layout_marginRight="27dp"
@@ -78,7 +78,7 @@ android:background="#ffffff">
 
 
     <Button
-        android:id="@+id/helperSU_btn_love3"
+        android:id="@+id/helper_editc2_3"
         android:layout_width="1dp"
         android:layout_height="49dp"
         android:layout_marginLeft="24.8dp"
@@ -96,7 +96,7 @@ android:background="#ffffff">
         android:elevation="9dp"/>
 
     <Button
-        android:id="@+id/helperSU_btn_love4"
+        android:id="@+id/helper_editc2_4"
         android:layout_width="1dp"
         android:layout_height="49dp"
         android:layout_marginRight="27dp"
@@ -159,7 +159,6 @@ android:background="#ffffff">
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="직접입력"
-                style="@style/list1_edit_color"
                 android:textSize="16sp"
                 android:textColorHint="@color/white"
                 android:gravity="center"
@@ -170,7 +169,7 @@ android:background="#ffffff">
                 android:singleLine="true"
                 android:maxLength="8"
                 android:textColor="@color/lightPurple"
-                android:id="@+id/helperSU_love_edittext"
+                android:id="@+id/helper_editc2_textedit"
                 />
         </FrameLayout>
     </LinearLayout>
@@ -201,14 +200,14 @@ android:background="#ffffff">
             android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/helperSU_1_btn_next"
+            android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="46.1dp"
             android:layout_marginLeft="31.7dp"
             android:layout_marginRight="31.7dp"
             android:layout_marginBottom="32.6dp"
             android:enabled="false"
-            android:text="다음"
+            android:text="완료"
             android:textColor="@color/white"
             android:elevation="9dp"
             />

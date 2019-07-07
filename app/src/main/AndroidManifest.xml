@@ -13,18 +13,18 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <!--HelperProfileEdit -->
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityIntro" android:windowSoftInputMode="adjustPan" ></activity>
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityExp" android:windowSoftInputMode="adjustPan"  >
-        </activity>
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC2" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" >
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityIntro" android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
+        </activity>
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityExp" android:windowSoftInputMode="adjustPan"  >
+        </activity>
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC2" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" >
         </activity>
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivity0" />
 
