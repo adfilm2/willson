@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity{
         fourth.setTextColor(Color.parseColor("#9e9e9e"));
     }
 
+
+
     private void startMainView(){
 
         MainFragment fragment = new MainFragment();
