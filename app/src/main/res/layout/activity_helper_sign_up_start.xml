@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="141.1dp"
+        android:layout_height="127.2dp"
+        android:src="@drawable/helper_request_img_finishwillson"
+        android:layout_marginTop="203dp"
+        android:layout_marginBottom="19.9dp"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="헬퍼로 가입해주세요!"
+        android:textSize="21sp"
+        android:textColor="@color/dark_purple"
+        android:lineSpacingExtra="11sp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"
+        android:layout_marginBottom="18.4dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="헬퍼로 가입해서 다른 사람들의고민을 들어주세요!"
+        android:textSize="16sp"
+        android:textColor="@color/darkPurple"
+        android:lineSpacingExtra="10sp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_r"
+        android:layout_marginLeft="78.7dp"
+        android:layout_marginRight="78.7dp"
+
+
+
+        />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:background="@drawable/its_shadow"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="71dp"
+            android:background="@drawable/gradient_btn_color"
+            android:text="시작하기"
+            android:paddingTop="14.6dp"
+            android:gravity="center_horizontal"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:id="@+id/list1_course_start_btn"
+            android:elevation="9dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

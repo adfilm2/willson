@@ -174,6 +174,8 @@
     </LinearLayout>
 
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -185,6 +187,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
             <Button
                 android:id="@+id/helperSU_0_btn_next"
                 android:layout_width="match_parent"
@@ -193,18 +200,15 @@
                 android:layout_marginRight="31.7dp"
                 android:layout_marginBottom="32.6dp"
                 android:background="@drawable/listnext_btn_selector"
-                android:elevation="9dp"
                 android:enabled="false"
                 android:text="다음"
-                android:textColor="@color/white" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-
+                android:textColor="@color/white"
+                android:elevation="9dp"
+                />
         </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>
 
 
