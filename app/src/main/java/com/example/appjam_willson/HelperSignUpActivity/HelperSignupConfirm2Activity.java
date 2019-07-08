@@ -3,11 +3,15 @@ package com.example.appjam_willson.HelperSignUpActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.R;
+
+import org.w3c.dom.Text;
 
 public class HelperSignupConfirm2Activity extends AppCompatActivity {
 
@@ -15,6 +19,9 @@ public class HelperSignupConfirm2Activity extends AppCompatActivity {
 
     Button next_btn;
 
+    View view;
+    ImageView btn;
+    TextView text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +32,12 @@ public class HelperSignupConfirm2Activity extends AppCompatActivity {
 
         next_btn = (Button)findViewById(R.id.signup_info_btn_next);
         next_btn.setOnClickListener(new next_btn_listener());
+
+        view = (View)findViewById(R.id.activity_helper_signup_confirm_toolbar);
+        text = (TextView) findViewById(R.id.toolbar_text);
+        text.setText("신분증 확인");
+        btn =(ImageView)findViewById(R.id.back_btn);
+        btn.setVisibility(View.INVISIBLE);
 
     }
 

@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include android:id="@+id/signupstart" layout="@layout/toolbar_list_helper"/>
     <ImageView
         android:layout_width="141.1dp"
         android:layout_height="127.2dp"

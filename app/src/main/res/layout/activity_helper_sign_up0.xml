@@ -23,8 +23,6 @@
         />
 
 
-
-
     <LinearLayout
         android:layout_marginTop="29.6dp"
         android:layout_width="match_parent"

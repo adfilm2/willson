@@ -19,8 +19,14 @@
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityIntro"
             android:windowSoftInputMode="adjustPan" />
 
-        <!-- Login && Register -->
-        <activity android:name=".LoginRegisterActivity.LoginActivity"/>
+        <!--Login && Register -->
+        <activity android:name=".LoginRegisterActivity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".LoginRegisterActivity.ChoiceActivity"/>
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"/>
         <activity android:name=".LoginRegisterActivity.RegisterActivity_helper"/>
@@ -77,12 +83,9 @@
         <activity android:name=".FillinListActivity.ListLoadingActivity" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+            android:theme="@style/SplashTheme" />
+        <activity android:name=".AskerProfileActivity"/>
+
     </application>
 
 </manifest>

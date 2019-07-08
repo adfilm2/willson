@@ -5,7 +5,7 @@
 
     <include
         android:id="@+id/activity_helper_signup_confirm_toolbar"
-        layout="@layout/toolbar_helper_sign_up_confirm"/>
+        layout="@layout/toolbar_list_helper"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,8 +20,7 @@
         android:layout_marginTop="34.6dp"
         android:layout_marginBottom="34.9dp"
         android:textStyle="normal"
-        android:fontFamily="@font/nanum_square_b"
-        />
+        android:fontFamily="@font/nanum_square_b" />
 
     <ImageView
         android:layout_width="219dp"
@@ -30,8 +29,7 @@
         android:layout_marginRight="70dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/helper_signup_img_id"
-        android:layout_gravity="center"
-        />
+        android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
