@@ -32,6 +32,8 @@ public class HelperSignupActivity3 extends AppCompatActivity {
     View view;
     ImageView btn;
 
+    Bundle bundle3 = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +80,24 @@ public class HelperSignupActivity3 extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle3 = data.getExtras();
+                    bundle3.putString("intro",helper_info_edit.getText().toString());
+                    data.putExtras(bundle3);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 
     class signup_nextbtn_listener implements View.OnClickListener {

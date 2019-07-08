@@ -1,9 +1,11 @@
 package com.example.appjam_willson.HelperSignUpActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -32,6 +34,9 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
 
     View view;
     ImageView btn;
+
+    Bundle bundle4 = new Bundle();
+    String phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,6 +215,17 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
     class nex_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            phone = phone1.getText().toString()+phone2.getText().toString()+phone3.getText().toString();
+
+            bundle4.putString("phone",phone);
+            bundle4.putString("email",email.getText().toString());
+            if(link.getText().toString().length() >0)
+                bundle4.putString("link",link.getText().toString());
+            Intent intent = new Intent();
+            intent.putExtras(bundle4);
+            setResult(RESULT_OK, intent);
+            finish();
+
 
         }
     }

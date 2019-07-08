@@ -47,7 +47,6 @@ public class List1LoveStartActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-
                     bundle_love = data.getExtras();
                     bundle_love.putInt("category",1);
                     data.putExtras(bundle_love);

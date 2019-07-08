@@ -1,17 +1,18 @@
 package com.example.appjam_willson.HelperSignUpActivity;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC1;
-import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC2;
 import com.example.appjam_willson.R;
 // public class HelperSignUpActivity1 extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,33 +20,45 @@ import com.example.appjam_willson.R;
 public class HelperSignUpActivity1 extends AppCompatActivity  {
 //다음버튼에 액티비티 2 와 연결 해야함
 
-    View view;
-    ImageView btn;
+    int REQUEST_CODE;
+    Context context;
+    Bundle bundle1 = new Bundle();
+    String small_category;
+    EditText edit;
+
+
+
 
     public void onCreate(Bundle savedInstanceState)
     {
+
+        context = this;
+        REQUEST_CODE = ((HelperSignUpActivity1) context).getTaskId();
+
+
+        ImageView btn;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up1);
-        Button button1 = (Button) findViewById(R.id.helperSU_btn_love1) ;
-        Button button2 = (Button) findViewById(R.id.helperSU_btn_love2) ;
-        Button button3 = (Button) findViewById(R.id.helperSU_btn_love3) ;
-        Button button4 = (Button) findViewById(R.id.helperSU_btn_love4) ;
+        CheckBox button1 = (CheckBox) findViewById(R.id.helperSU_btn_love1) ;
+        CheckBox button2 = (CheckBox) findViewById(R.id.helperSU_btn_love2) ;
+        CheckBox button3 = (CheckBox) findViewById(R.id.helperSU_btn_love3) ;
+        CheckBox button4 = (CheckBox) findViewById(R.id.helperSU_btn_love4) ;
         Button nextbtn = (Button)findViewById(R.id.HelperSU_btn_next);
 
-        view = (View)findViewById(R.id.activity_list1_daily_toolbar);
         btn =(ImageView)findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
         ImageView btn_back;
 
+        edit = (EditText)findViewById(R.id.edit);
 
         btn_back = (ImageView) findViewById(R.id.back_btn);
-        btn_back.setOnClickListener(new HelperSignUpActivity1.list1_love_backbtn_listener());
+        btn_back.setOnClickListener(new backbtn_listener());
 
 
 
 
-        button1.setOnClickListener(new Button.OnClickListener() {
+        button1.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextbtn.setEnabled(true);
@@ -64,7 +77,7 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
 
 
         });
-        button2.setOnClickListener(new Button.OnClickListener() {
+        button2.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextbtn.setEnabled(true);
@@ -85,7 +98,7 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
             }
         });
 
-        button3.setOnClickListener(new Button.OnClickListener() {
+        button3.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextbtn.setEnabled(true);
@@ -104,7 +117,7 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
             }
         });
 
-        button4.setOnClickListener(new Button.OnClickListener() {
+        button4.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextbtn.setEnabled(true);
@@ -121,32 +134,61 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
             }
         });
 
-        nextbtn.setOnClickListener(new Button.OnClickListener() {
+        nextbtn.setOnClickListener(new CheckBox.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentProfileEdit = new Intent(HelperSignUpActivity1.this, HelperSignUpActivity2.class);
-                startActivity(intentProfileEdit);
+                if(button1.isChecked()){
+                    small_category = button1.getText().toString();
+                }
+                else if (button2.isChecked()){
+                    small_category = button2.getText().toString();
+                }
+                else if (button3.isChecked()){
+                    small_category = button3.getText().toString();
+                }
+                else if (button4.isChecked()){
+                    small_category = button4.getText().toString();
+                }
+                else if (edit.isFocused()){
+                    small_category = edit.getText().toString();
+                }
+                else{}
 
+
+                Intent intentProfileEdit = new Intent(context, HelperSignUpActivity2.class);
+                startActivityForResult(intentProfileEdit,REQUEST_CODE);
 
             }
 
 
         });
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
-    class list1_love_backbtn_listener implements View.OnClickListener {
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle1 = data.getExtras();
+                    bundle1.putInt("category",1);
+                    bundle1.putString("small category",small_category);
+
+                    data.putExtras(bundle1);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
+
+    class backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             finish();

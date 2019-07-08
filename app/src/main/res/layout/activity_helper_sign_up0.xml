@@ -7,8 +7,8 @@
     android:background="#ffffff">
 
     <include
-        android:id="@+id/activity_list1_daily_toolbar"
-        layout="@layout/toolbar_helper_signup"/>
+        android:id="@+id/signup0_toolbar"
+        layout="@layout/toolbar_list_helper"/>
 
 
     <TextView

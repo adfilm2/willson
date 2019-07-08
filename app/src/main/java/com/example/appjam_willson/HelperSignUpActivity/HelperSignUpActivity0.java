@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityC1;
 import com.example.appjam_willson.R;
 
@@ -52,7 +53,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     Typeface typebold;
     Typeface typereg;
 
-    View view;
+
     TextView text;
     ImageView btn;
     @Override
@@ -60,7 +61,9 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up0);
 
-        view = (View)findViewById(R.id.activity_list1_daily_toolbar);
+        context= this;
+
+
         text = (TextView)findViewById(R.id.toolbar_text);
         text.setText("헬퍼 가입");
         btn =(ImageView)findViewById(R.id.cancel_btn);
