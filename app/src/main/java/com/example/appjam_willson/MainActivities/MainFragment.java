@@ -1,6 +1,7 @@
 package com.example.appjam_willson.MainActivities;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -40,12 +41,21 @@ import java.util.List;
 
 public class MainFragment extends Fragment {
 
+    int REQUEST_CODE_LOVE = 1;
+    int REQUEST_CODE_COURSE = 2;
+    int REQUEST_CODE_MENTAL = 3;
+    int REQUEST_CODE_RELATION= 4;
+    int REQUEST_CODE_DAILY = 5;
+    int REQUEST_CODE_ETC = 6;
+
+    Context context;
 
     private StoryAdapter storyAdapter;
     private RecyclerView storyRecyclerView;
     private List<WillsonModel> willsonModels;
     private LinearLayoutManager linearLayoutManager;
     private String myuid;
+
 
     public MainFragment(){
 
@@ -74,7 +84,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1LoveStartActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_LOVE);
             }
         });
 
@@ -82,7 +92,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1CourseStartActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_COURSE);
             }
         });
 
@@ -90,7 +100,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1MentalityStartActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_MENTAL);
             }
         });
 
@@ -98,7 +108,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1RelationshipsStartActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_RELATION);
             }
         });
 
@@ -106,7 +116,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1DailyStartActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_DAILY);
             }
         });
 
@@ -114,7 +124,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), List1EtcStartActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE_ETC);
             }
         });
 
@@ -137,7 +147,7 @@ public class MainFragment extends Fragment {
         callWillson(myuid);
 
         //Text들의 특정 위치 색, 타입을 바꿔주는 메소드
-        changeText(main_fragment1_text,8,10,"#5252a1");
+        changeText(main_fragment1_text,7,9,"#5252a1");
         changeText(main_fragment1_textSecond,0,2,"#ffc326");
         changeText(main_fragment1_textThird,6,8,"#5252a1");
 

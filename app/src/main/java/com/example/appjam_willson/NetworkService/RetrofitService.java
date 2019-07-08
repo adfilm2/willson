@@ -1,5 +1,5 @@
 package com.example.appjam_willson.NetworkService;
 
-public class Retrofit {
+public class RetrofitService {
 
 }

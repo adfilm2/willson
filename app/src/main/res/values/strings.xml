@@ -21,8 +21,8 @@
         <item>34세</item>
         <item>35세</item>
         <item>36세</item>
-
     </string-array>
+
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

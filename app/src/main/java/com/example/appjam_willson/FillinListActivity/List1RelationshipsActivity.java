@@ -69,10 +69,10 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        family = (RadioButton) findViewById(R.id.list1_btn_onesidelove);
-        friend = (RadioButton) findViewById(R.id.list1_btn_somthing);
-        companion = (RadioButton) findViewById(R.id.list1_btn_conflict);
-        junior = (RadioButton) findViewById(R.id.list1_btn_saygoodbye);
+        family = (RadioButton) findViewById(R.id.list1_relationships_btn_family);
+        friend = (RadioButton) findViewById(R.id.list1_relationships_btn_friends);
+        companion = (RadioButton) findViewById(R.id.list1_relationships_btn_companion);
+        junior = (RadioButton) findViewById(R.id.list1_relationships_btn_junior);
 
         family.setTypeface(typereg);
         friend.setTypeface(typereg);

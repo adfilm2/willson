@@ -11,17 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.DataModel;
 import com.example.appjam_willson.model.WillsonModel;
 
 import java.util.List;
 
 public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1Adapter.ViewHolder> {
 
-    private List<WillsonModel> willsonModels;
+    private List<DataModel> dataModels;
     private Context context;
 
-    public HelperFragment1Adapter(List<WillsonModel> willsonModels, Context context){
-        this.willsonModels = willsonModels;
+    public HelperFragment1Adapter(List<DataModel> dataModels, Context context){
+        this.dataModels = dataModels;
         this.context = context;
     }
 
@@ -36,45 +37,44 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
 
-        //닉네임
-        if(willsonModels.get(i).getNickName() != null) {
-            viewHolder.userNickname.setText(willsonModels.get(i).getNickName());
+//        닉네임
+        if(dataModels.get(i).getData().getEmail() != null) {
+            viewHolder.userNickname.setText(dataModels.get(i).getData().getEmail());
         }
         else{
-            viewHolder.userNickname.setText(willsonModels.get(i).getUid());
+
         }
 
         //성별
-        if(willsonModels.get(i).getGender() != null) {
-            viewHolder.userNickname.setText(willsonModels.get(i).getGender());
+        if(dataModels.get(i).getData().getEmail() != null) {
+            viewHolder.userNickname.setText(dataModels.get(i).getData().getEmail());
         }
         else{
-            viewHolder.userNickname.setText(willsonModels.get(i).getUid());
         }
 
         //나이대
-        if(willsonModels.get(i).getAge() != null) {
-            viewHolder.userNickname.setText(willsonModels.get(i).getAge());
-        }
-        else{
-            viewHolder.userNickname.setText(willsonModels.get(i).getUid());
-        }
-
-        //주제
-        if(willsonModels.get(i).getAge() != null) {
-            viewHolder.userNickname.setText(willsonModels.get(i).getAge());
-        }
-        else{
-            viewHolder.userNickname.setText(willsonModels.get(i).getUid());
-        }
-
-        //고민정보
-        if(willsonModels.get(i).getUserInformation() != null) {
-            viewHolder.userNickname.setText(willsonModels.get(i).getUserInformation());
-        }
-        else{
-            viewHolder.userNickname.setText(willsonModels.get(i).getUid());
-        }
+//        if(dataModels.get(i).getAge() != null) {
+//            viewHolder.userNickname.setText(willsonModels.get(i).getAge());
+//        }
+//        else{
+//            viewHolder.userNickname.setText(willsonModels.get(i).getUid());
+//        }
+//
+//        //주제
+//        if(dataModels.get(i).getAge() != null) {
+//            viewHolder.userNickname.setText(willsonModels.get(i).getAge());
+//        }
+//        else{
+//            viewHolder.userNickname.setText(willsonModels.get(i).getUid());
+//        }
+//
+//        //고민정보
+//        if(dataModels.get(i).getUserInformation() != null) {
+//            viewHolder.userNickname.setText(willsonModels.get(i).getUserInformation());
+//        }
+//        else{
+//            viewHolder.userNickname.setText(willsonModels.get(i).getUid());
+//        }
 
         //프로필보기
         viewHolder.goProfile.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +88,7 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
 
     @Override
     public int getItemCount() {
-        return willsonModels.size();
+        return dataModels.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

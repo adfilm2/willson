@@ -26,8 +26,8 @@ import com.google.firebase.iid.InstanceIdResult;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class MainActivity extends AppCompatActivity{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity{
         final TextView text_chat=findViewById(R.id.text_chat);
         final TextView text_mypage=findViewById(R.id.text_mypage);
 
-        //MainFragment1을 자동으로 띄워줌줌
+        //MainFragment1을 자동으로 띄워줌
         startMainView();
         changeImage(image_home,image_chat,image_mypage,image_request);
         changeTextColor(text_home,text_request,text_chat,text_mypage);
@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity{
                     return;
                 }
                 String token = task.getResult().getToken();
-
                 Map<String,Object> map = new HashMap<>();
                 map.put("pushToken",token);
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);

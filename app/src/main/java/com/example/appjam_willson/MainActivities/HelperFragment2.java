@@ -43,24 +43,24 @@ public class HelperFragment2 extends Fragment {
 
             myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot item : dataSnapshot.getChildren()) {
-                    WillsonModel users = item.getValue(WillsonModel.class);
-                    String uidGet =users.getUid();
-                    if (uidGet.equals(myUid)) {
-                        roomKey = users.getRoomKey();
-                        findChatRooms(roomKey);
-                        break;
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot item : dataSnapshot.getChildren()) {
+//                    WillsonModel users = item.getValue(WillsonModel.class);
+//                    String uidGet =users.getUid();
+//                    if (uidGet.equals(myUid)) {
+//                        roomKey = users.getRoomKey();
+//                        findChatRooms(roomKey);
+//                        break;
+//                    }
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
         willson_fragment2_recyclerView = view.findViewById(R.id.helper_fragment2_recyclerview);
         willson_fragment2_recyclerView.setHasFixedSize(true);
