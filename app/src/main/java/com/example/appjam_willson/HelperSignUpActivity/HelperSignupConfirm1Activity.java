@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.R;
 
+import static com.example.appjam_willson.R.id.back_btn_layout;
+
 public class HelperSignupConfirm1Activity extends AppCompatActivity {
 
     EditText phone1;
@@ -24,6 +26,8 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
     EditText phone3;
 
     LinearLayout background;
+    int REQUEST_CODE;
+    Context context;
 
     EditText email;
     EditText link;
@@ -46,6 +50,10 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         view = (View)findViewById(R.id.activity_helper_signup_toolbar);
         btn =(ImageView)findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
+        context = this;
+
+        REQUEST_CODE = ((HelperSignupConfirm1Activity) context).getTaskId();
+
 
         background = (LinearLayout)findViewById(R.id.background);
         background.setOnClickListener(new back_click());
@@ -58,7 +66,7 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         phone2.setOnFocusChangeListener(new phone2_focus());
         phone3.setOnFocusChangeListener(new phone3_focus());
 
-        back_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
+        back_btn = (LinearLayout)findViewById(back_btn_layout);
         back_btn.setOnClickListener(new back_btn_listener());
 
         email = (EditText)findViewById(R.id.email);
@@ -147,6 +155,9 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
     class back_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }

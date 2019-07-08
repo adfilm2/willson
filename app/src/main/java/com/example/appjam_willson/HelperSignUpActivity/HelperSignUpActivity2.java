@@ -338,8 +338,10 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     class signup_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            finish();
-        }
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
+            finish();        }
     }
 
 

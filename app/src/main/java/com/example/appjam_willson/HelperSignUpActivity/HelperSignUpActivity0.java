@@ -53,6 +53,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     Typeface typebold;
     Typeface typereg;
 
+    int REQUEST_CODE;
 
     TextView text;
     ImageView btn;
@@ -77,6 +78,8 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         btn_back.setOnClickListener(new HelperSignUpActivity0.list1_love_backbtn_listener());
 
         context=this;
+
+        REQUEST_CODE = ((HelperSignUpActivity0) context).getTaskId();
 
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
@@ -122,8 +125,8 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         nextbtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentProfileEdit = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
-                startActivity(intentProfileEdit);
+                Intent intentProfileEdit = new Intent(context, HelperSignUpActivity1.class);
+                startActivityForResult(intentProfileEdit,REQUEST_CODE);
 
 
             }
@@ -134,10 +137,29 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
 
     class list1_love_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
