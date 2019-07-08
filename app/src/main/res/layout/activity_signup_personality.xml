@@ -5,7 +5,7 @@
 
     <include
         android:id="@+id/activity_signup_toolbar"
-        layout="@layout/toolbar_signup"/>
+        layout="@layout/toolbar_list_helper"/>
 
     <TextView
         android:layout_width="wrap_content"

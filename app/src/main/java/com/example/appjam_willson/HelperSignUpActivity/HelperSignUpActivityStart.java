@@ -9,13 +9,14 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.R;
 
 public class HelperSignUpActivityStart extends AppCompatActivity {
 
 
+    int REQUEST_CODE;
 
+    Context context;
     View view;
     ImageView back;
     @Override
@@ -24,6 +25,8 @@ public class HelperSignUpActivityStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up_start);
 
+        context = this;
+        REQUEST_CODE = ((HelperSignUpActivityStart) context).getTaskId();
 
 
         view = (View)findViewById(R.id.signupstart);
@@ -37,7 +40,7 @@ public class HelperSignUpActivityStart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HelperSignUpActivityStart.this, HelperSignUpActivity0.class);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST_CODE);
 
 
             }
@@ -45,6 +48,21 @@ public class HelperSignUpActivityStart extends AppCompatActivity {
 
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
     }
 }
 

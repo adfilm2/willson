@@ -17,7 +17,7 @@
             android:paddingTop="7dp"
             android:paddingBottom ="7dp"
             android:orientation="horizontal"
-            android:id="@+id/toolbar_list_btn_backbtn"
+            android:id="@+id/back_btn_layout"
             android:layout_weight="0.5">
 
             <ImageView

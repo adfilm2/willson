@@ -28,8 +28,8 @@ public class HelperSignupActivity3 extends AppCompatActivity {
     Button signup_nextbtn;
 
     LinearLayout background;
+    LinearLayout back;
 
-    View view;
     ImageView btn;
 
     Bundle bundle3 = new Bundle();
@@ -39,7 +39,6 @@ public class HelperSignupActivity3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up3);
 
-        view = (View)findViewById(R.id.toolbar);
         btn =(ImageView)findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
@@ -49,6 +48,9 @@ public class HelperSignupActivity3 extends AppCompatActivity {
 
         background = (LinearLayout) findViewById(R.id.signup_background);
         background.setOnClickListener(new signup_background_listener());
+
+        back = (LinearLayout)findViewById(R.id.back_btn_layout);
+        back.setOnClickListener(new signup_backbtn_listener());
 
         signup_nextbtn = (Button) findViewById(R.id.next_btn);
         signup_nextbtn.setOnClickListener(new signup_nextbtn_listener());
@@ -129,6 +131,14 @@ public class HelperSignupActivity3 extends AppCompatActivity {
                 helper_info_edit.setCursorVisible(true);
             }
         }
+    }
+    class signup_backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
+            finish();        }
     }
 
 

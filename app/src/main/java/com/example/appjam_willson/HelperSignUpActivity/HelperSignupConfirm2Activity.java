@@ -1,6 +1,9 @@
 package com.example.appjam_willson.HelperSignUpActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.ConditionVariable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,12 +25,16 @@ public class HelperSignupConfirm2Activity extends AppCompatActivity {
     View view;
     ImageView btn;
     TextView text;
+    Context context;
+    int REQUEST_CODE;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up_confirm_info);
 
-
+        context= this;
+        REQUEST_CODE = ((HelperSignupConfirm2Activity) context).getTaskId();
         view = (View)findViewById(R.id.toolbar);
         text = (TextView) findViewById(R.id.toolbar_text);
         text.setText("신분증 확인");
@@ -45,8 +52,10 @@ public class HelperSignupConfirm2Activity extends AppCompatActivity {
     class cancel_btn_listener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
-            //이거 하나만 지우는 건지 아니면 다 지우는 건지 모름
         }
     }
 
