@@ -2,8 +2,13 @@ package com.example.appjam_willson.NetworkService;
 
 import com.example.appjam_willson.model.CreateWorryModel;
 import com.example.appjam_willson.model.DataModel;
+import com.example.appjam_willson.model.HelperReceivedWorryListWatchResponseModel;
 import com.example.appjam_willson.model.HelperRegistModel;
 import com.example.appjam_willson.model.HelperRegistResponseModel;
+import com.example.appjam_willson.model.LoginModel;
+import com.example.appjam_willson.model.LoginResponseModel;
+import com.example.appjam_willson.model.SignupModel;
+import com.example.appjam_willson.model.SignupResponseModel;
 import com.example.appjam_willson.model.WorryCategoryListAddModel;
 import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
 
@@ -24,11 +29,22 @@ public interface RetrofitAPI {
     Call<HelperRegistResponseModel> helper_regist_post(@Header("willson-token") String token,
                                                        @Body HelperRegistModel helperRegistModel);
 
-    @POST("concern/category")
-    Call<WorryCategoryListAddResponseModel> add_category(@Header("user_session") String token,
-                                                         @Body WorryCategoryListAddModel worryCategoryListAddModel);
+    @POST("user/signup")
+    Call<SignupResponseModel> signup_response_post(@Header("user_session") String token, @Body SignupModel signupModel);
 
+    @POST("user/signin")
+    Call<LoginResponseModel> login_post(@Header("user_session") String token, @Body LoginModel loginModel);
+
+    @POST("concern/category")
+    Call<WorryCategoryListAddResponseModel> concern_category_list_post(@Header("user_session") String token, @Body WorryCategoryListAddModel worryCategoryListAddModel);
+
+
+    //헬퍼가 받은 고민리스트 보기
+    @GET("concern/list")
+    Call<HelperReceivedWorryListWatchResponseModel> helper_recived_worrylist_get();
+
+   
     @POST("concern/question")
-    Call<WorryCategoryListAddResponseModel> create_model(@Header("willson-token") String token,
+    Call<WorryCategoryListAddResponseModel> create_model_post(@Header("willson-token") String token,
                                                          @Body CreateWorryModel createWorryModel);
 }

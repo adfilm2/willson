@@ -6,6 +6,7 @@
 
     <include android:id="@+id/toolbar" layout = "@layout/toolbar_list_helper"/>
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,4 +112,5 @@
             android:textColor="#FFFFFF"
             android:textStyle="normal" />
     </RelativeLayout>
+
 </LinearLayout>
