@@ -71,22 +71,22 @@ public class List6Activity extends AppCompatActivity {
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        list6_nextbtn = (Button) findViewById(R.id.button1);
+        list6_nextbtn = findViewById(R.id.button1);
         list6_nextbtn.setOnClickListener(new list6_nextbtn_listener());
 
-        list6_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list6_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list6_cancelbtn.setOnClickListener(new list6_cancelbtn_listener());
 
-        list6_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list6_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list6_backbtn.setOnClickListener(new list6_backbtn_listener());
 
-        linear1 = (LinearLayout)findViewById(R.id.linear1);
-        linear2 = (LinearLayout)findViewById(R.id.linear2);
-        linear3 = (LinearLayout)findViewById(R.id.linear3);
+        linear1 = findViewById(R.id.linear1);
+        linear2 = findViewById(R.id.linear2);
+        linear3 = findViewById(R.id.linear3);
 
-        edit1 = (EditText)findViewById(R.id.editText1);
-        edit2 = (EditText)findViewById(R.id.editText2);
-        edit3 = (EditText)findViewById(R.id.editText3);
+        edit1 = findViewById(R.id.editText1);
+        edit2 = findViewById(R.id.editText2);
+        edit3 = findViewById(R.id.editText3);
 
         edit1.setTypeface(typereg);
         edit2.setTypeface(typereg);
@@ -98,9 +98,9 @@ public class List6Activity extends AppCompatActivity {
         edit2.setOnFocusChangeListener(new edit2_focus());
         edit3.setOnFocusChangeListener(new edit3_focus());
 
-        textViewCount = (TextView) findViewById(R.id.textViewCount);
+        textViewCount = findViewById(R.id.textViewCount);
 
-        background = (LinearLayout)findViewById(R.id.list_background);
+        background = findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
 
 

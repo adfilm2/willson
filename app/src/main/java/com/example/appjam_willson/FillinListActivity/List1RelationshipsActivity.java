@@ -69,10 +69,10 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        family = (RadioButton) findViewById(R.id.list1_relationships_btn_family);
-        friend = (RadioButton) findViewById(R.id.list1_relationships_btn_friends);
-        companion = (RadioButton) findViewById(R.id.list1_relationships_btn_companion);
-        junior = (RadioButton) findViewById(R.id.list1_relationships_btn_junior);
+        family = findViewById(R.id.list1_relationships_btn_family);
+        friend = findViewById(R.id.list1_relationships_btn_friends);
+        companion = findViewById(R.id.list1_relationships_btn_companion);
+        junior = findViewById(R.id.list1_relationships_btn_junior);
 
         family.setTypeface(typereg);
         friend.setTypeface(typereg);
@@ -84,34 +84,34 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
 
-        list1_relationships_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_relationships_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_relationships_cancelbtn.setOnClickListener(new list1_relationships_cancelbtn_listener());
 
-        list1_relationships_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_relationships_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list1_relationships_backbtn.setOnClickListener(new list1_relationships_backbtn_listener());
 
 
-        list1_relationships_radioGroup1 = (RadioGroup) findViewById(R.id.list1_relationships_radioGroup1);
+        list1_relationships_radioGroup1 = findViewById(R.id.list1_relationships_radioGroup1);
         list1_relationships_radioGroup1.clearCheck();
         list1_relationships_radioGroup1.setOnCheckedChangeListener(radioGroup_relationships_listener1);
-        list1_relationships_radioGroup2 = (RadioGroup) findViewById(R.id.list1_relationships_radioGroup2);
+        list1_relationships_radioGroup2 = findViewById(R.id.list1_relationships_radioGroup2);
         list1_relationships_radioGroup2.clearCheck();
         list1_relationships_radioGroup2.setOnCheckedChangeListener(radioGroup_relationships_listener2);
 
-        list1_relationships_nextbtn = (Button) findViewById(R.id.list1_relationships_btn_next);
+        list1_relationships_nextbtn = findViewById(R.id.list1_relationships_btn_next);
         list1_relationships_nextbtn.setOnClickListener(this);
 
-        relationships_custom_text = (LinearLayout)findViewById(R.id.list1_relationships_btn_usercustom);
+        relationships_custom_text = findViewById(R.id.list1_relationships_btn_usercustom);
         relationships_custom_text.setOnClickListener(new relationships_custom_btn_listener());
 
-        relationships_custom_edit_text = (EditText)findViewById(R.id.list1_relationships_usercustom_edittext);
+        relationships_custom_edit_text = findViewById(R.id.list1_relationships_usercustom_edittext);
         relationships_custom_edit_text.setOnClickListener(new relationships_custom_edit_Clicklistener());
         relationships_custom_edit_text.setOnKeyListener(new relationships_custom_edit_listener());
         relationships_custom_edit_text.setTypeface(typebold);
 
-        relationships_usercustom_layout = (LinearLayout)findViewById(R.id.list1_relationships_btn_usercustom_layout);
+        relationships_usercustom_layout = findViewById(R.id.list1_relationships_btn_usercustom_layout);
 
-        background = (LinearLayout)findViewById(R.id.list_background);
+        background = findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
     }
     @Override

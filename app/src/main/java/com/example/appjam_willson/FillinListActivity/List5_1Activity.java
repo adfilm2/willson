@@ -60,13 +60,13 @@ public class List5_1Activity extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list5_nextbtn = (Button) findViewById(R.id.submit) ;
+        list5_nextbtn = findViewById(R.id.submit);
         list5_nextbtn.setOnClickListener(new list5_1_nextbtn_listener());
 
-        list5_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list5_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list5_cancelbtn.setOnClickListener(new list5_1_cancelbtn_listener());
 
-        list5_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list5_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list5_backbtn.setOnClickListener(new list5_1_backbtn_listener());
     }
 
@@ -99,7 +99,7 @@ public class List5_1Activity extends AppCompatActivity {
     }
 
     public void char_check(View view){
-        Button nextbtn = (Button)findViewById(R.id.submit);
+        Button nextbtn = findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;
 
         if (check_num < 3) {

@@ -2,7 +2,6 @@ package com.example.appjam_willson.model;
 
 public class HelperRegistModel {
 
-
     public Helper_info helper;
     public Helper_Exeperience experience;
 
@@ -29,24 +28,17 @@ public class HelperRegistModel {
         this.experience = experience;
     }
 
-<<<<<<< HEAD
-    public static class Helper {
-=======
     /*getter and setter end*/
 
     public class Helper_info {
 
->>>>>>> da47e518fd0974a34744f7ebf3ffea2e4595af5f
         public String category_name;
         public String categoryList_name;
         public String title;
         public String content;
 
-<<<<<<< HEAD
-=======
         /*getter and setter start*/
 
->>>>>>> da47e518fd0974a34744f7ebf3ffea2e4595af5f
         public String getCategory_name() {
             return category_name;
         }
@@ -78,13 +70,6 @@ public class HelperRegistModel {
         public void setContent(String content) {
             this.content = content;
         }
-<<<<<<< HEAD
-    }
-
-    public static class Helper_Exeperience {
-        public String[] experience_name;
-
-=======
 
         /*getter and setter end*/
 
@@ -96,7 +81,6 @@ public class HelperRegistModel {
 
         /*getter and setter start*/
 
->>>>>>> da47e518fd0974a34744f7ebf3ffea2e4595af5f
         public String[] getExperience_name() {
             return experience_name;
         }
@@ -104,15 +88,9 @@ public class HelperRegistModel {
         public void setExperience_name(String[] experience_name) {
             this.experience_name = experience_name;
         }
-<<<<<<< HEAD
-    }
-
-}
-=======
 
         /*getter and setter end*/
 
     }
 
 }
->>>>>>> da47e518fd0974a34744f7ebf3ffea2e4595af5f

@@ -56,20 +56,20 @@ public class List4Activity extends AppCompatActivity {
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
 
-        list4_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list4_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list4_cancelbtn.setOnClickListener(new list4_cancelbtn_listener());
 
-        list4_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list4_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list4_backbtn.setOnClickListener(new list4_backbtn_listener());
 
-        list4_nextbtn = (Button) findViewById(R.id.list4_btn1);
+        list4_nextbtn = findViewById(R.id.list4_btn1);
         list4_nextbtn.setOnClickListener(new list4_nextbtn_listener());
 
-        background = (LinearLayout) findViewById(R.id.background);
+        background = findViewById(R.id.background);
         background.setOnClickListener(new background_listener());
 
-        textViewCount = (TextView) findViewById(R.id.textViewCount);
-        editTextSMS = (EditText) findViewById(R.id.list4_edittext);
+        textViewCount = findViewById(R.id.textViewCount);
+        editTextSMS = findViewById(R.id.list4_edittext);
 
         editTextSMS.addTextChangedListener(new TextWatcher() {
 

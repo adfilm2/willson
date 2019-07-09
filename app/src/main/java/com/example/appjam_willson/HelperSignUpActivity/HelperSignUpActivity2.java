@@ -56,7 +56,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up2);
 
-        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn = findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
         context = this;
@@ -70,16 +70,16 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        signup_backbtn = (ImageView)view.findViewById(R.id.back_btn);
+        signup_backbtn = findViewById(R.id.back_btn);
         signup_backbtn.setOnClickListener(new signup_backbtn_listener());
 
-        linear1 = (LinearLayout)findViewById(R.id.linear1);
-        linear2 = (LinearLayout)findViewById(R.id.linear2);
-        linear3 = (LinearLayout)findViewById(R.id.linear3);
+        linear1 = findViewById(R.id.linear1);
+        linear2 = findViewById(R.id.linear2);
+        linear3 = findViewById(R.id.linear3);
 
-        edit1 = (EditText)findViewById(R.id.editText1);
-        edit2 = (EditText)findViewById(R.id.editText2);
-        edit3 = (EditText)findViewById(R.id.editText3);
+        edit1 = findViewById(R.id.editText1);
+        edit2 = findViewById(R.id.editText2);
+        edit3 = findViewById(R.id.editText3);
 
         edit1.setTypeface(typereg);
         edit2.setTypeface(typereg);
@@ -91,15 +91,15 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
 
         edit3.setOnKeyListener(new edit_listener());
 
-        background = (LinearLayout) findViewById(R.id.signup_background);
+        background = findViewById(R.id.signup_background);
         background.setOnClickListener(new signup_background_listener());
 
-        signup_nextbtn = (Button) findViewById(R.id.next_btn);
+        signup_nextbtn = findViewById(R.id.next_btn);
         signup_nextbtn.setOnClickListener(new signup_nextbtn_listener());
 
-        textViewCount = (TextView) findViewById(R.id.textViewCount);
+        textViewCount = findViewById(R.id.textViewCount);
 
-        helper_experience = (EditText) findViewById(R.id.helper_signup_edittext);
+        helper_experience = findViewById(R.id.helper_signup_edittext);
         helper_experience.setOnFocusChangeListener(new edit_exper());
 
 

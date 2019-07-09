@@ -46,13 +46,13 @@ public class List3Activity extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list3_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list3_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list3_cancelbtn.setOnClickListener(new list3_cancelbtn_listener());
 
-        list3_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list3_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list3_backbtn.setOnClickListener(new list3_backbtn_listener());
 
-        radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
+        radioGroup = findViewById(R.id.radiogroup);
         radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(radioGroup_listener);
 

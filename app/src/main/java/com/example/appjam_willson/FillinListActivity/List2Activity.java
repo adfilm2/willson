@@ -59,13 +59,13 @@ public class List2Activity extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list2_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list2_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list2_cancelbtn.setOnClickListener(new list2_cancelbtn_listener());
 
-        list2_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list2_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list2_backbtn.setOnClickListener(new list2_backbtn_listener());
 
-        list2_nextbtn = (Button) findViewById(R.id.submit);
+        list2_nextbtn = findViewById(R.id.submit);
         list2_nextbtn.setOnClickListener(new list2_nextbtn_listener());
 
     }
@@ -100,7 +100,7 @@ public class List2Activity extends AppCompatActivity {
 
 
     public void char_check(View view){
-        Button nextbtn = (Button)findViewById(R.id.submit);
+        Button nextbtn = findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;
 
         if (check_num < 3) {
