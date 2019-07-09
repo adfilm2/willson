@@ -11,17 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appjam_willson.R;
-import com.example.appjam_willson.model.WillsonModel;
+import com.example.appjam_willson.model.HelperStoryModel;
 
 import java.util.List;
 
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> {
 
-    private List<WillsonModel> willsonModels;
+    private List<HelperStoryModel.story> willsonModels;
     private Context context;
 
-    public StoryAdapter(List<WillsonModel> willsonModels, Context context){
+    public StoryAdapter(List<HelperStoryModel.story> willsonModels, Context context){
         this.willsonModels = willsonModels;
         this.context = context;
     }
@@ -29,7 +29,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment1_profile1, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment1_main_story, viewGroup, false);
             ViewHolder vh = new ViewHolder(v);
             return vh;
     }
@@ -38,22 +38,16 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
 
         //닉네임
-        if (willsonModels.get(i).getNickName() == null) {
-            viewHolder.story_nickName.setText(willsonModels.get(i).getUid());
-        } else {
-            viewHolder.story_nickName.setText(willsonModels.get(i).getNickName());
-        }
+        viewHolder.story_nickName.setText(willsonModels.get(i).getNickname());
 
         //사진
-        if (willsonModels.get(i).getPhoto().equals("")) {
-            viewHolder.story_image.setImageResource(R.drawable.chat_img_helperprofile);
-        } else {
-            viewHolder.story_image.setImageResource(R.drawable.chat_img_helperprofile);
-        }
+        viewHolder.story_image.setImageResource(R.drawable.chat_img_helperprofile);
 
-        viewHolder.story_subject.setText(willsonModels.get(i).getAge());
-        viewHolder.story_information.setText(willsonModels.get(i).getUid());
+        //주제
+        viewHolder.story_subject.setText(willsonModels.get(i).getCategory_name());
 
+        //스토리
+        viewHolder.story_information.setText(willsonModels.get(i).getContent());
     }
 
     @Override
@@ -70,12 +64,10 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            story_subject = itemView.findViewById(R.id.fragment1_profile_1st_subject);
-            story_information = itemView.findViewById(R.id.fragment1_profile_1st_property);
-            story_nickName = itemView.findViewById(R.id.fragment1_profile_nickName);
-
-            story_image = itemView.findViewById(R.id.fragment1_profile_img);
-
+            story_subject = itemView.findViewById(R.id.fragment1_story_subject);
+            story_information = itemView.findViewById(R.id.fragment1_story_content);
+            story_nickName = itemView.findViewById(R.id.fragment1_story_nickname);
+            story_image = itemView.findViewById(R.id.fragment1_story_img);
         }
     }
 }

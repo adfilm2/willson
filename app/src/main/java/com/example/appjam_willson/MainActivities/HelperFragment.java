@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Interceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,7 +54,7 @@ public class HelperFragment extends Fragment {
         myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://reqres.in/")
+                .baseUrl("https://reqres.in/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         retrofitAPI = retrofit.create(RetrofitAPI.class);
@@ -70,6 +71,8 @@ public class HelperFragment extends Fragment {
         callusers(test);
 
         return view;
+
+
     }
 
     private void callusers(int user) {
@@ -83,7 +86,6 @@ public class HelperFragment extends Fragment {
         public void onResponse(Call<DataModel> call, Response<DataModel> response) {
             DataModel result = response.body();
             dataModels.add(result);
-
             helperFragment1Adapter.notifyDataSetChanged();
         }
 

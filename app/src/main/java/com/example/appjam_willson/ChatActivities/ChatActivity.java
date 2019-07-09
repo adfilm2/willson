@@ -1,6 +1,7 @@
 package com.example.appjam_willson.ChatActivities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,7 +69,6 @@ public class ChatActivity extends AppCompatActivity {
     private SimpleDateFormat timerFormat = new SimpleDateFormat("mm:ss");
 
     private LinearLayout linearLayout_startMsg ;
-    private RelativeLayout chat_startMsg_time;
 
     private TextView chat_timer;
 
@@ -90,29 +90,30 @@ public class ChatActivity extends AppCompatActivity {
             uid = user.getUid();
         }
 
-//        chat_timer = findViewById(R.id.chat_timer);
-//
-//
-//        TimerTask timerTask = new TimerTask() {
-//            // 1시간
-//            @Override
-//            public void run() {
-//                ChatActivity.this.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        long passTime;
-//                        newTime = new Timestamp(System.currentTimeMillis());
-//                        long passedTime = newTime.getTime()-startTime;H
-//                        passTime = totalTime - passedTime;
-//
-//                        Date date = new Date(passTime);
-//                        restTime = timerFormat.format(date);
-//                        chat_timer.setText(restTime);
-//                        Log.d("쓰레드 돌아가나 확인","쓰레드ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-//                    }
-//                });
-//            }
-//        };
+        chat_timer = findViewById(R.id.chat_timer);
+
+
+        TimerTask timerTask = new TimerTask() {
+            // 1시간
+            @Override
+            public void run() {
+                ChatActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        long passTime;
+                        newTime = new Timestamp(System.currentTimeMillis());
+                        long passedTime = newTime.getTime()-startTime;
+                        passTime = totalTime - passedTime;
+
+                        Date date = new Date(passTime);
+                        restTime = timerFormat.format(date);
+                        chat_timer.setText(restTime);
+                        Log.d("패스타임값", String.valueOf(passTime));
+                        Log.d("쓰레드 돌아가나 확인","쓰레드ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+                    }
+                });
+            }
+        };
 
         linearLayout_startMsg = findViewById(R.id.chat_startMsg);
 
@@ -167,7 +168,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
         checkChatRoom();
-//        timer.schedule(timerTask,0,300);
+        timer.schedule(timerTask,0,400);
     }
 
     void checkChatRoom() {
@@ -469,11 +470,24 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
+    public void stopTimer(){
+        if(timerTask != null){
+            timerTask.cancel(); //타이머task를 timer 큐에서 지워버린다
+            timerTask=null;
+            btnSent.setEnabled(false);
+        }
+        if(timer!=null){
+            timer.cancel(); //스케쥴task과 타이머를 취소한다.
+            timer.purge(); //task큐의 모든 task를 제거한다.
+            timer=null;
+            btnSent.setEnabled(false);
+        }
+    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-//        timerTask.cancel();
+        stopTimer();
         databaseReference.removeEventListener(valueEventListener);
         finish();
     }

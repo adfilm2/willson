@@ -3,9 +3,11 @@ package com.example.appjam_willson.HelperSignUpActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -18,6 +20,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.R;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HelperSignUpActivity2 extends AppCompatActivity {
 
@@ -248,8 +253,12 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     class signup_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(context, HelperSignupActivity3.class);
-            startActivityForResult(intent, REQUEST_CODE);
+//            Intent intent = new Intent(context, HelperSignupActivity3.class);
+//            startActivityForResult(intent, REQUEST_CODE);
+
+
+
+            Log.d("완료ㅛㅛㅛㅛㅛㅛㅛㅛㅛ","ㅁㄴㅇ");
         }
     }
 
@@ -309,6 +318,8 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
             finish();
         }
     }
+
+
 
 
 

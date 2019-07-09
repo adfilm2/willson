@@ -16,7 +16,6 @@ public class helperSignUpActivityStart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up_start);
         Button nextbtn = (Button) findViewById(R.id.h_su_start_btn);
@@ -29,11 +28,7 @@ public class helperSignUpActivityStart extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentProfileEdit = new Intent(helperSignUpActivityStart.this, HelperSignUpActivity0.class);
                 startActivity(intentProfileEdit);
-
-
             }
-
-
         });
 
     }
