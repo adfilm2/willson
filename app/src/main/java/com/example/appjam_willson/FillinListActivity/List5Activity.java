@@ -67,7 +67,7 @@ public class List5Activity extends AppCompatActivity {
 
         man.setTypeface(typereg);
         woman.setTypeface(typereg);
-        all.setTypeface(typereg);
+        all.setTypeface(typebold);
 
         list5_nextbtn = (Button) findViewById(R.id.submit) ;
         list5_nextbtn.setOnClickListener(new list5_nextbtn_listener());
@@ -159,6 +159,8 @@ public class List5Activity extends AppCompatActivity {
     public void Dialog() {
         dialog = new OneTextTwoButton_CustomDialog(List5Activity.this, resid,
                 "벌써 50%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

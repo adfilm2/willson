@@ -115,9 +115,6 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
 
         background = (LinearLayout)findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
-
-
-
     }
 
     @Override
@@ -255,7 +252,20 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(custom_edit_text);
+            if (custom_edit_text.isFocused()) {
+                String title;
+                title = custom_edit_text.getText().toString();
+                if (title.getBytes().length <= 0) {
+                    list1_nextbtn.setEnabled(false);
+                    custom_text.setVisibility(View.VISIBLE);
+                    custom_edit_text.setVisibility(View.INVISIBLE);
+                    usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                } else {
+                    list1_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(custom_edit_text);
+                custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
@@ -331,9 +341,16 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
 
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    custom_edit_text.setTextColor(backcolor);
                     hidekeyboard(custom_edit_text);
+                    String title;
+                    title = custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_nextbtn.setEnabled(false);
+                        custom_text.setVisibility(View.VISIBLE);
+                        custom_edit_text.setVisibility(View.INVISIBLE);
+                        usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
+                    custom_edit_text.setCursorVisible(false);
             }
             return false;
         }

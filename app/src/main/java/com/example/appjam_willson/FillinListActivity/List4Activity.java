@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -34,6 +35,7 @@ public class List4Activity extends AppCompatActivity {
     Context context;
 
     Bundle bundle4 = new Bundle();
+    LinearLayout background;
 
     String resName;
     String packName;
@@ -63,6 +65,8 @@ public class List4Activity extends AppCompatActivity {
         list4_nextbtn = (Button) findViewById(R.id.list4_btn1);
         list4_nextbtn.setOnClickListener(new list4_nextbtn_listener());
 
+        background = (LinearLayout) findViewById(R.id.background);
+        background.setOnClickListener(new background_listener());
 
         textViewCount = (TextView) findViewById(R.id.textViewCount);
         editTextSMS = (EditText) findViewById(R.id.list4_edittext);
@@ -70,32 +74,21 @@ public class List4Activity extends AppCompatActivity {
         editTextSMS.addTextChangedListener(new TextWatcher() {
 
             @Override
-
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
-
 
             @Override
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
                 textViewCount.setText(Integer.toString(s.toString().length()));
-
                 if (s.length() == 0 ) {
                     list4_nextbtn.setEnabled(false);
                 }
                 else list4_nextbtn.setEnabled(true);
-
             }
 
-
-
             @Override
-
             public void afterTextChanged(Editable s) {
-
             }
 
         });
@@ -119,6 +112,18 @@ public class List4Activity extends AppCompatActivity {
                     finish();
             }
         }
+    }
+
+    class background_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(editTextSMS);
+        }
+    }
+
+    private void hidekeyboard(EditText edit) {
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
 
     class list4_cancelbtn_listener implements View.OnClickListener {
@@ -148,17 +153,16 @@ public class List4Activity extends AppCompatActivity {
 
 
     public void onButtonSendClicked(View v) {
-
         Toast toast = Toast.makeText(this, editTextSMS.getText(), Toast.LENGTH_LONG);
-
         toast.show();
-
 
     }
 
     public void Dialog() {
         dialog = new OneTextTwoButton_CustomDialog(List4Activity.this, resid,
                 "벌써 40%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

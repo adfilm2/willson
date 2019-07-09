@@ -24,7 +24,6 @@ public class helperSignUpActivityStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up_start);
 
-        view = (View)findViewById(R.id.signupstart);
         back = (ImageView)findViewById(R.id.back_btn);
         back.setVisibility(View.INVISIBLE);
 

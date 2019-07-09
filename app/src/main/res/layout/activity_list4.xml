@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/background"
     android:background="#ffffff">
 
         <include
@@ -82,9 +83,10 @@
                                     android:maxLength="300"
                                     android:lineSpacingExtra="12sp"
                                     android:background="@null"
+                                    android:textCursorDrawable="@null"
                                     android:textSize="14sp"
                                     android:gravity="left"
-                                    android:hint="ex) 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. \n\n\n\n\n\n"
+                                    android:hint="ex) 연애에 있어서 다양한 고민이 복잡하게 얽혀있어 머릿속이 복잡해요. \n\n\n\n\n"
                                     android:textStyle="normal"
                                     android:fontFamily="@font/nanum_square_round_r"
                                     >
@@ -135,6 +137,8 @@
             android:textColor="#ffff"
             android:background="@drawable/listnext_btn_selector"
             android:textSize="14sp"
-            android:layout_marginBottom="32.6dp" />
+            android:layout_marginBottom="32.6dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"/>
 
 </LinearLayout>

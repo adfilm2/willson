@@ -2,6 +2,7 @@ package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -40,6 +41,9 @@ public class List5_1Activity extends AppCompatActivity {
     String helper_keyword2;
     String helper_keyword3;
 
+    Typeface typebold;
+    Typeface typereg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,9 @@ public class List5_1Activity extends AppCompatActivity {
         context = this;
 
         REQUEST_CODE = ((List5_1Activity) context).getTaskId();
+
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
 
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
@@ -98,6 +105,7 @@ public class List5_1Activity extends AppCompatActivity {
         if (check_num < 3) {
             if (!checkBox.isChecked()) {
                 checkBox.setChecked(false);
+                checkBox.setTypeface(typereg);
                 check_num -= 1;
                 if(check_num<=0) check_num=0;
 
@@ -110,6 +118,7 @@ public class List5_1Activity extends AppCompatActivity {
             } else {
                 checkBox.setChecked(true);
                 check_num += 1;
+                checkBox.setTypeface(typebold);
                 if(check_num>3) check_num =3;
 
                 for(int i = 0; i<3; i++){
@@ -125,6 +134,7 @@ public class List5_1Activity extends AppCompatActivity {
             }
             else{
                 checkBox.setChecked(false);
+                checkBox.setTypeface(typereg);
                 check_num -= 1;
 
             }
@@ -165,6 +175,8 @@ public class List5_1Activity extends AppCompatActivity {
     public void Dialog() {
         dialog = new OneTextTwoButton_CustomDialog(List5_1Activity.this, resid,
                 "벌써 60%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);

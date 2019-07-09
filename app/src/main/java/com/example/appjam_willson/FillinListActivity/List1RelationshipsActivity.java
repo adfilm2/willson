@@ -251,7 +251,21 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(relationships_custom_edit_text);
+            if(relationships_custom_edit_text.isFocused()){
+                String title;
+                title = relationships_custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    list1_relationships_nextbtn.setEnabled(false);
+                    relationships_custom_text.setVisibility(View.VISIBLE);
+                    relationships_custom_edit_text.setVisibility(View.INVISIBLE);
+                    relationships_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                }
+                else{
+                    list1_relationships_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(relationships_custom_edit_text);
+                relationships_custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
@@ -328,9 +342,16 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
 
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    relationships_custom_edit_text.setTextColor(backcolor);
                     hidekeyboard(relationships_custom_edit_text);
+                    String title;
+                    title = relationships_custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_relationships_nextbtn.setEnabled(false);
+                        relationships_custom_text.setVisibility(View.VISIBLE);
+                        relationships_custom_edit_text.setVisibility(View.INVISIBLE);
+                        relationships_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
+                    relationships_custom_edit_text.setCursorVisible(false);
             }
             return false;
         }
@@ -350,6 +371,8 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         dialog = new OneTextTwoButton_CustomDialog(List1RelationshipsActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
@@ -366,6 +389,9 @@ public class List1RelationshipsActivity extends AppCompatActivity implements OnC
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

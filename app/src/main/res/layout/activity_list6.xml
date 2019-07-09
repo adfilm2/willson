@@ -52,7 +52,7 @@
             android:textSize="19sp"
             android:textColor="@color/dark_purple"
             android:lineSpacingExtra="11sp"
-            android:text="원하는 헬퍼는 어떤 분인가요? (3/3)"
+            android:text="어떤 헬퍼와 이야기하고 싶나요? (3/3)"
             android:layout_marginLeft="21dp"
             android:layout_marginTop="54.9dp"
             android:textStyle="normal"
@@ -121,14 +121,12 @@
                     android:paddingBottom="7dp"
                     android:layout_gravity="center"
                     android:background="@color/trans"
-                    android:fontFamily="@font/nanum_square_r"
                     android:hint="키워드 입력"
                     android:singleLine="true"
                     android:textColor="@color/lightPurple"
                     android:textColorHint="@color/grey"
                     android:textCursorDrawable="@null"
-                    android:textSize="15sp"
-                    android:textStyle="normal" />
+                    android:textSize="15sp" />
 
             </FrameLayout>
 
@@ -175,9 +173,7 @@
                     android:textColor="@color/lightPurple"
                     android:textColorHint="@color/grey"
                     android:hint="키워드 입력"
-                    android:textStyle="normal"
-                    android:textCursorDrawable="@null"
-                    android:fontFamily="@font/nanum_square_r"/>
+                    android:textCursorDrawable="@null" />
 
             </FrameLayout>
 
@@ -224,9 +220,7 @@
                     android:textColor="@color/lightPurple"
                     android:textColorHint="@color/grey"
                     android:hint="키워드 입력"
-                    android:textStyle="normal"
-                    android:textCursorDrawable="@null"
-                    android:fontFamily="@font/nanum_square_r">
+                    android:textCursorDrawable="@null">
                 </EditText>
 
             </FrameLayout>
@@ -258,6 +252,8 @@
         android:background="@drawable/next_btn_darkpurple"
         android:textSize="14sp"
         android:layout_marginBottom="32.6dp"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"
         />
 
 </LinearLayout>
