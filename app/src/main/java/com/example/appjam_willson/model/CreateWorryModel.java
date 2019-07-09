@@ -5,9 +5,9 @@ import android.support.v4.app.INotificationSideChannel;
 public class CreateWorryModel {
 
     public Question question;
-    public Integer[] feeling;
-    public Integer[] personality;
-    public Integer[] experience;
+    public int[] feeling;
+    public int[] personality;
+    public int[] experience;
 
     public static class Question{
         public Integer weight;

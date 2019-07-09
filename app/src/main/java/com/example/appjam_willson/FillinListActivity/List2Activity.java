@@ -34,7 +34,7 @@ public class List2Activity extends AppCompatActivity {
 
     Bundle bundle2 = new Bundle();
 
-    String[] strings = new String[3];
+    int[] strings = new int[3];
 
     Typeface typebold;
     Typeface typereg;
@@ -79,7 +79,7 @@ public class List2Activity extends AppCompatActivity {
 //                    Log.d(">>>data의 advice >>> ","gg"+gg);
 
                     bundle2 = data.getExtras();
-                    bundle2.putStringArray("feeling",strings);
+                    bundle2.putIntArray("feeling",strings);
 
 
                     data.putExtras(bundle2);
@@ -106,8 +106,8 @@ public class List2Activity extends AppCompatActivity {
                 if(check_num<=0) check_num=0;
 
                 for(int i = 0 ; i<3 ; i++) {
-                    if (checkBox.getText().toString() == strings[i]) {
-                        strings[i] = null;
+                    if (Integer.parseInt(checkBox.getTag().toString())== strings[i]) {
+                        strings[i] = 0;
                     }
                 }
 
@@ -118,7 +118,7 @@ public class List2Activity extends AppCompatActivity {
                 if(check_num>3) check_num =3;
 
                 for(int i = 0; i<3; i++){
-                    if(strings[i]== null) strings[i] = checkBox.getText().toString();
+                    if(strings[i]== 0) strings[i] = Integer.parseInt(checkBox.getTag().toString());
                 }
 
             }

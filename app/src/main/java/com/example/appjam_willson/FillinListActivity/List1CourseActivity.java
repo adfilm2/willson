@@ -61,8 +61,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     Typeface typebold;
     Typeface typereg;
 
-    String small_category;
+
     Bundle bundle1 = new Bundle();
+    int category_listId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +126,8 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             switch (resultCode){
                 case RESULT_OK:
                     bundle1 = data.getExtras();
-                    bundle1.putString("small category",small_category);
+
+                    bundle1.putInt("category_id",category_listId);
                     data.putExtras(bundle1);
                     setResult(RESULT_OK,data);
                     finish();
@@ -206,13 +208,15 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     @SuppressLint("ResourceType")
     public void onClick(View v) {
         if(study.isChecked()){
-            small_category = study.getText().toString();
+            category_listId = 5;
         }
         else if (employment.isChecked()){
-            small_category = employment.getText().toString();
+            category_listId = 6;
+
         }
         else if (transfer.isChecked()){
-            small_category = transfer.getText().toString();
+            category_listId = 7;
+
         }
         else if (course_custom_edit_text.isFocused()){
             //통신
@@ -232,6 +236,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
                     WorryCategoryListAddResponseModel result = response.body();
                     Log.d("dlfkdlfjkdl", ">>>>>>>>>>>" + response.code());
                     Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
+                    category_listId= result.message;
 
                 }
 
@@ -241,10 +246,6 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
                     Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                 }
             });
-
-
-            small_category = course_custom_edit_text.getText().toString();
-
 
 
         }
