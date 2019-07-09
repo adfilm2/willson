@@ -55,7 +55,7 @@
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
 
         <!-- HelperSignUpEdit -->
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivityStart" />
+
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
         <activity android:name=".HelperSignUpActivity.HelperSignupActivity3" />
