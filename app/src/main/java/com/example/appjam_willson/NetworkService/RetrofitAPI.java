@@ -30,33 +30,21 @@ public interface RetrofitAPI {
                                                        @Body HelperRegistModel helperRegistModel);
 
     @POST("user/signup")
-    Call<SignupResponseModel> signup_response(@Header("user_session") String token, @Body SignupModel signupModel);
+    Call<SignupResponseModel> signup_response_post(@Header("user_session") String token, @Body SignupModel signupModel);
 
     @POST("user/signin")
     Call<LoginResponseModel> login_post(@Header("user_session") String token, @Body LoginModel loginModel);
 
     @POST("concern/category")
-    Call<WorryCategoryListAddResponseModel> concern_category_list(@Header("user_session") String token, @Body WorryCategoryListAddModel worryCategoryListAddModel);
-
-
-
-    @POST("concern/question")
-    Call<WorryCategoryListAddResponseModel> concern_question_list(@Header("user_session") String token, @Body CreateWorryModel createWorryModel);
+    Call<WorryCategoryListAddResponseModel> concern_category_list_post(@Header("user_session") String token, @Body WorryCategoryListAddModel worryCategoryListAddModel);
 
 
     //헬퍼가 받은 고민리스트 보기
     @GET("concern/list")
-    Call<HelperReceivedWorryListWatchResponseModel> helper_recived_worrylist();
+    Call<HelperReceivedWorryListWatchResponseModel> helper_recived_worrylist_get();
 
-    //헬퍼등록
-    @POST("helper/registration")
-    Call<HelperRegistModel> helper_regist(@Header("willson-token") String token, @Body HelperRegistResponseModel helperRegistResponseModel);
-
-
-
-
-
-
-
-
+   
+    @POST("concern/question")
+    Call<WorryCategoryListAddResponseModel> create_model_post(@Header("willson-token") String token,
+                                                         @Body CreateWorryModel createWorryModel);
 }

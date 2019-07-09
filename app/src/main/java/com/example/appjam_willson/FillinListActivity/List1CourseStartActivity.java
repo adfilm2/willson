@@ -3,13 +3,22 @@ package com.example.appjam_willson.FillinListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.CreateWorryModel;
+import com.example.appjam_willson.model.HelperRegistResponseModel;
+import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class List1CourseStartActivity extends AppCompatActivity {
 
@@ -30,13 +39,13 @@ public class List1CourseStartActivity extends AppCompatActivity {
 
         REQUEST_CODE = ((List1CourseStartActivity) context).getTaskId();
 
-        toolbar_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        toolbar_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
 
-        course_start_btn = (Button)findViewById(R.id.list1_course_start_btn);
+        course_start_btn = findViewById(R.id.list1_course_start_btn);
         course_start_btn.setOnClickListener(new course_start_btn_listener());
 
-        course_cancel_btn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        course_cancel_btn = findViewById(R.id.toolbar_list_btn_cancel);
         course_cancel_btn.setOnClickListener(new course_cancel_btn_listener());
     }
 
@@ -48,8 +57,41 @@ public class List1CourseStartActivity extends AppCompatActivity {
                 case RESULT_OK:
                     bundle_course = data.getExtras();
                     bundle_course.putInt("category",2);
-                    data.putExtras(bundle_course);
-                    setResult(RESULT_OK,data);
+
+                    CreateWorryModel createWorryModel = new CreateWorryModel();
+                    createWorryModel.question.weight = data.getIntExtra("importance",0);
+                    createWorryModel.question.content = data.getStringExtra("contents");
+                    createWorryModel.question.emotion = data.getIntExtra("empathy",0);
+                    createWorryModel.question.advise = data.getIntExtra("advice",0);
+                    createWorryModel.question.experience = data.getIntExtra("experience",0);
+                    createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
+                    //categoryList_idx
+                    // 아이디
+                    // createWorryModel.feeling = data.getStringArrayExtra("feeling");
+                    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
+                    Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().create_model(token, createWorryModel);
+                    call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
+                        @Override
+                        public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
+                            Log.d("test", response.isSuccessful() + "");
+                            WorryCategoryListAddResponseModel result = response.body();
+                            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>" + response.code());
+                            Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
+                            t.printStackTrace();
+                            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+                        }
+                    });
+
+
+
+
+
+
                     finish();
 
                 case RESULT_CANCELED:
