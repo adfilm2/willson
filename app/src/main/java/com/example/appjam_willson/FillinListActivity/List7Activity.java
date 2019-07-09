@@ -57,22 +57,22 @@ public class List7Activity extends AppCompatActivity {
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
 
-        list7_nextbtn = (Button) findViewById(R.id.submit);
+        list7_nextbtn = findViewById(R.id.submit);
         list7_nextbtn.setOnClickListener(new list7_nextbtn_listener());
 
-        list7_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list7_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list7_cancelbtn.setOnClickListener(new list7_cancelbtn_listener());
 
-        list7_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list7_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list7_backbtn.setOnClickListener(new list7_backbtn_listener());
 
-        view1 = (View) findViewById(R.id.list7_radioGroup1);
-        view2 = (View) findViewById(R.id.list7_radioGroup2);
-        view3 = (View) findViewById(R.id.list7_radioGroup3);
+        view1 = findViewById(R.id.list7_radioGroup1);
+        view2 = findViewById(R.id.list7_radioGroup2);
+        view3 = findViewById(R.id.list7_radioGroup3);
 
-        group1 = (RadioGroup)view1.findViewById(R.id.radiogroup);
-        group2 = (RadioGroup)view2.findViewById(R.id.radiogroup);
-        group3 = (RadioGroup)view3.findViewById(R.id.radiogroup);
+        group1 = view1.findViewById(R.id.radiogroup);
+        group2 = view2.findViewById(R.id.radiogroup);
+        group3 = view3.findViewById(R.id.radiogroup);
 
 
         group1.setOnCheckedChangeListener(new group_click1());

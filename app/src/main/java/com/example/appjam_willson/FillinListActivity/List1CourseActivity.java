@@ -68,9 +68,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        study = (RadioButton) findViewById(R.id.list1_course_btn_study);
-        employment = (RadioButton) findViewById(R.id.list1_course_btn_employment);
-        transfer = (RadioButton) findViewById(R.id.list1_course_btn_transfer);
+        study = findViewById(R.id.list1_course_btn_study);
+        employment = findViewById(R.id.list1_course_btn_employment);
+        transfer = findViewById(R.id.list1_course_btn_transfer);
 
         study.setTypeface(typereg);
         employment.setTypeface(typereg);
@@ -80,33 +80,33 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list1_course_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_course_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_course_cancelbtn.setOnClickListener(new list1_course_cancelbtn_listener());
 
-        list1_course_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_course_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list1_course_backbtn.setOnClickListener(new list1_course_backbtn_listener());
 
-        list1_course_radioGroup1 = (RadioGroup) findViewById(R.id.list1_course_radioGroup1);
+        list1_course_radioGroup1 = findViewById(R.id.list1_course_radioGroup1);
         list1_course_radioGroup1.clearCheck();
         list1_course_radioGroup1.setOnCheckedChangeListener(radioGroup_course_listener1);
-        list1_course_radioGroup2 = (RadioGroup) findViewById(R.id.list1_course_radioGroup2);
+        list1_course_radioGroup2 = findViewById(R.id.list1_course_radioGroup2);
         list1_course_radioGroup2.clearCheck();
         list1_course_radioGroup2.setOnCheckedChangeListener(radioGroup_course_listener2);
 
-        list1_course_nextbtn = (Button) findViewById(R.id.list1_course_btn_next);
+        list1_course_nextbtn = findViewById(R.id.list1_course_btn_next);
         list1_course_nextbtn.setOnClickListener(this);
 
-        course_custom_text = (LinearLayout) findViewById(R.id.list1_course_btn_usercustom);
+        course_custom_text = findViewById(R.id.list1_course_btn_usercustom);
         course_custom_text.setOnClickListener(new course_custom_btn_listener());
 
-        course_custom_edit_text = (EditText)findViewById(R.id.list1_course_usercustom_edittext);
+        course_custom_edit_text = findViewById(R.id.list1_course_usercustom_edittext);
         course_custom_edit_text.setOnClickListener(new course_custom_edit_Clicklistener());
         course_custom_edit_text.setOnKeyListener(new course_custom_edit_listener());
         course_custom_edit_text.setTypeface(typebold);
 
-        course_usercustom_layout = (LinearLayout)findViewById(R.id.list1_course_btn_usercustom_layout);
+        course_usercustom_layout = findViewById(R.id.list1_course_btn_usercustom_layout);
 
-        background = (LinearLayout)findViewById(R.id.list_background);
+        background = findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
     }
 

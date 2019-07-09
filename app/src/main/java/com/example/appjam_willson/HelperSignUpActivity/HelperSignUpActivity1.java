@@ -44,23 +44,23 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
         ImageView btn;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up1);
-        CheckBox button1 = (CheckBox) findViewById(R.id.helperSU_btn_love1) ;
-        CheckBox button2 = (CheckBox) findViewById(R.id.helperSU_btn_love2) ;
-        CheckBox button3 = (CheckBox) findViewById(R.id.helperSU_btn_love3) ;
-        CheckBox button4 = (CheckBox) findViewById(R.id.helperSU_btn_love4) ;
-        Button nextbtn = (Button)findViewById(R.id.HelperSU_btn_next);
+        CheckBox button1 = findViewById(R.id.helperSU_btn_love1);
+        CheckBox button2 = findViewById(R.id.helperSU_btn_love2);
+        CheckBox button3 = findViewById(R.id.helperSU_btn_love3);
+        CheckBox button4 = findViewById(R.id.helperSU_btn_love4);
+        Button nextbtn = findViewById(R.id.HelperSU_btn_next);
 
-        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn = findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
         ImageView btn_back;
 
-        edit = (EditText)findViewById(R.id.edit);
-        HSUtextview=(TextView)findViewById(R.id.HSUtextview);
+        edit = findViewById(R.id.edit);
+        HSUtextview= findViewById(R.id.HSUtextview);
 
-        HSU_usercustom_layout =(LinearLayout)findViewById(R.id.HSU_usercustom_layout);
+        //HSU_usercustom_layout =(LinearLayout)findViewById(R.id.HSU_usersignup_layout);
 
-        btn_back = (ImageView) findViewById(R.id.back_btn);
+        btn_back = findViewById(R.id.back_btn);
         btn_back.setOnClickListener(new backbtn_listener());
 
 
@@ -303,7 +303,7 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
             //이곳에 버튼 클릭시 일어날 일을 적습니다.
         }
     };
-};
+}
 
 
 

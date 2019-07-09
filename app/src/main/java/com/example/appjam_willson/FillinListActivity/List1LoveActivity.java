@@ -73,10 +73,10 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        onesidelove = (RadioButton) findViewById(R.id.list1_btn_onesidelove);
-        somthing = (RadioButton) findViewById(R.id.list1_btn_somthing);
-        conflict = (RadioButton) findViewById(R.id.list1_btn_conflict);
-        saygoodbye = (RadioButton) findViewById(R.id.list1_btn_saygoodbye);
+        onesidelove = findViewById(R.id.list1_btn_onesidelove);
+        somthing = findViewById(R.id.list1_btn_somthing);
+        conflict = findViewById(R.id.list1_btn_conflict);
+        saygoodbye = findViewById(R.id.list1_btn_saygoodbye);
 
         conflict.setTypeface(typereg);
         saygoodbye.setTypeface(typereg);
@@ -87,33 +87,33 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list1_love_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_love_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_love_cancelbtn.setOnClickListener(new list1_love_cancelbtn_listener());
 
-        list1_love_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_love_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list1_love_backbtn.setOnClickListener(new list1_love_backbtn_listener());
 
-        list1_radioGroup1 = (RadioGroup) findViewById(R.id.list1_radioGroup1);
+        list1_radioGroup1 = findViewById(R.id.list1_radioGroup1);
         list1_radioGroup1.clearCheck();
         list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
-        list1_radioGroup2 = (RadioGroup) findViewById(R.id.list1_radioGroup2);
+        list1_radioGroup2 = findViewById(R.id.list1_radioGroup2);
         list1_radioGroup2.clearCheck();
         list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
 
-        list1_nextbtn = (Button) findViewById(R.id.list1_btn_next);
+        list1_nextbtn = findViewById(R.id.list1_btn_next);
         list1_nextbtn.setOnClickListener(this);
 
-        custom_text = (LinearLayout)findViewById(R.id.list1_btn_usercustom);
+        custom_text = findViewById(R.id.list1_btn_usercustom);
         custom_text.setOnClickListener(new custom_btn_listener());
 
-        custom_edit_text = (EditText)findViewById(R.id.list1_usercustom_edittext);
+        custom_edit_text = findViewById(R.id.list1_usercustom_edittext);
         custom_edit_text.setOnClickListener(new custom_edit_Clicklistener());
         custom_edit_text.setOnKeyListener(new custom_edit_listener());
         custom_edit_text.setTypeface(typebold);
 
-        usercustom_layout = (LinearLayout)findViewById(R.id.list1_btn_usercustom_layout);
+        usercustom_layout = findViewById(R.id.list1_btn_usercustom_layout);
 
-        background = (LinearLayout)findViewById(R.id.list_background);
+        background = findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
     }
 

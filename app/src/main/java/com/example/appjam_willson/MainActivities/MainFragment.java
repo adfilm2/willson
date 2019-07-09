@@ -29,7 +29,6 @@ import com.example.appjam_willson.FillinListActivity.List1EtcStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
-import com.example.appjam_willson.HelperSignUpActivity.HelperSignUpActivityStart;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
 import com.google.firebase.database.DataSnapshot;

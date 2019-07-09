@@ -42,13 +42,13 @@ public class ListAgreementActivity extends AppCompatActivity {
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
 
-        agree_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        agree_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         agree_cancelbtn.setOnClickListener(new agree_cancelbtn_listener());
 
-        agree_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        agree_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         agree_backbtn.setOnClickListener(new agree_backbtn_listener());
 
-        submit_btn = (Button)findViewById(R.id.submit);
+        submit_btn = findViewById(R.id.submit);
         submit_btn.setOnClickListener((new submitbtn_listener()));
     }
 
@@ -62,9 +62,9 @@ public class ListAgreementActivity extends AppCompatActivity {
     }
 
     public void btn_check(View view) {
-        CheckBox checkBox1 = (CheckBox) findViewById(R.id.check1);
-        CheckBox checkBox2 = (CheckBox) findViewById(R.id.check2);
-        Button submit = (Button) findViewById(R.id.submit);
+        CheckBox checkBox1 = findViewById(R.id.check1);
+        CheckBox checkBox2 = findViewById(R.id.check2);
+        Button submit = findViewById(R.id.submit);
 
         if(checkBox1.isChecked() && checkBox2.isChecked()){
             submit.setEnabled(true);

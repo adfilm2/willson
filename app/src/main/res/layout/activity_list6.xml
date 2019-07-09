@@ -247,6 +247,7 @@
         android:layout_height="46.1dp"
         android:id="@+id/button1"
         android:text="다음"
+        android:enabled="false"
         android:textColor="#ffff"
         android:layout_marginHorizontal="31.7dp"
         android:background="@drawable/next_btn_darkpurple"

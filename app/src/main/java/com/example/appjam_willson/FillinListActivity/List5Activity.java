@@ -61,24 +61,24 @@ public class List5Activity extends AppCompatActivity {
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        man = (RadioButton) findViewById(R.id.man_btn);
-        woman = (RadioButton) findViewById(R.id.woman_btn);
-        all = (RadioButton) findViewById(R.id.all_btn);
+        man = findViewById(R.id.man_btn);
+        woman = findViewById(R.id.woman_btn);
+        all = findViewById(R.id.all_btn);
 
         man.setTypeface(typereg);
         woman.setTypeface(typereg);
         all.setTypeface(typebold);
 
-        list5_nextbtn = (Button) findViewById(R.id.submit) ;
+        list5_nextbtn = findViewById(R.id.submit);
         list5_nextbtn.setOnClickListener(new list5_nextbtn_listener());
 
-        list5_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list5_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list5_cancelbtn.setOnClickListener(new list5_cancelbtn_listener());
 
-        list5_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list5_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list5_backbtn.setOnClickListener(new list5_backbtn_listener());
 
-        list5_radioGroup = (RadioGroup) findViewById(R.id.list5_radiogroup);
+        list5_radioGroup = findViewById(R.id.list5_radiogroup);
         list5_radioGroup.setOnCheckedChangeListener(radioGroup_list5_listener);
     }
 
@@ -90,8 +90,8 @@ public class List5Activity extends AppCompatActivity {
                 case RESULT_OK:
                     bundle5 = data.getExtras();
 
-                    RadioGroup sex = (RadioGroup)findViewById(R.id.list5_radiogroup);
-                    RadioButton ans = (RadioButton)findViewById(sex.getCheckedRadioButtonId());
+                    RadioGroup sex = findViewById(R.id.list5_radiogroup);
+                    RadioButton ans = findViewById(sex.getCheckedRadioButtonId());
                     helper_sex = ans.getText().toString();
                     bundle5.putString("helper sex",helper_sex);
 
