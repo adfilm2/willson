@@ -93,8 +93,7 @@ public class List5Activity extends AppCompatActivity {
                     RadioGroup sex = findViewById(R.id.list5_radiogroup);
                     RadioButton ans = findViewById(sex.getCheckedRadioButtonId());
                     helper_sex = ans.getText().toString();
-                    bundle5.putString("helper sex",helper_sex);
-
+                    bundle5.putString("helper_gender",helper_sex);
                     data.putExtras(bundle5);
                     setResult(RESULT_OK,data);
                     finish();
