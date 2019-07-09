@@ -4,6 +4,6 @@ public class WorryCategoryListAddResponseModel {
 
    public String message;
    public int code;
-    public Object data;
+   public Object data;
 
 }
