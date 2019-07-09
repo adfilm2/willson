@@ -1,11 +1,13 @@
 package com.example.appjam_willson.MainActivities;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
+import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.DataModel;
+import com.example.appjam_willson.model.HelperReceivedWorryListWatchResponseModel;
 import com.example.appjam_willson.model.WillsonModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
@@ -52,12 +56,17 @@ public class HelperFragment extends Fragment {
         View view = inflater.inflate(R.layout.helper_fragment1, null);
 
         myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("https://reqres.in/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        retrofitAPI = retrofit.create(RetrofitAPI.class);
+        LinearLayout change_mode = view.findViewById(R.id.helper_fragment1_change);
+        change_mode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
 
         helper_fragment1_recyclerView = view.findViewById(R.id.helper_fragment1_recyclerview);
         helper_fragment1_recyclerView.setHasFixedSize(true);
@@ -67,7 +76,8 @@ public class HelperFragment extends Fragment {
         helperFragment1Adapter = new HelperFragment1Adapter(dataModels, getActivity());
         helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
 
-        int test = 2;
+        Call<HelperReceivedWorryListWatchResponseModel> call_worryList = RetrofitService.getInstance().getService().helper_receiveList_get(token);
+        call_worryList.enqueue(retrofitCallback);
 
         return view;
 
@@ -75,19 +85,21 @@ public class HelperFragment extends Fragment {
     }
 
 
-    private Callback<DataModel> retrofitCallback = new Callback<DataModel>() {
+    private Callback<HelperReceivedWorryListWatchResponseModel> retrofitCallback = new Callback<HelperReceivedWorryListWatchResponseModel>() {
 
         @Override
-        public void onResponse(Call<DataModel> call, Response<DataModel> response) {
-            DataModel result = response.body();
-            dataModels.add(result);
-            helperFragment1Adapter.notifyDataSetChanged();
+        public void onResponse(Call<HelperReceivedWorryListWatchResponseModel> call, Response<HelperReceivedWorryListWatchResponseModel> response) {
+            HelperReceivedWorryListWatchResponseModel result = response.body();
+            Log.d("성공ㅇㅇㅇㅇ", String.valueOf(result.getCode()));
         }
 
         @Override
-        public void onFailure(Call<DataModel> call, Throwable t) {
+        public void onFailure(Call<HelperReceivedWorryListWatchResponseModel> call, Throwable t) {
             t.printStackTrace();
+            Log.d("실패ㅐㅐㅐㅐㅐ","대실패");
         }
     };
+
+
 }
 

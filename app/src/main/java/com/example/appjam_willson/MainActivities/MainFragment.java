@@ -42,8 +42,7 @@ import me.relex.circleindicator.CircleIndicator2;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class MainFragment extends Fragment {
 
@@ -65,11 +64,6 @@ public class MainFragment extends Fragment {
     private RecyclerView reviewRecyclerView;
     private LinearLayoutManager reviewLayoutManager;
     private List<HelperStoryModel.story> reviewAdapterModels;
-
-
-    private Retrofit retrofit;
-    private RetrofitAPI retrofitAPI;
-
 
     public MainFragment(){
 
@@ -94,16 +88,11 @@ public class MainFragment extends Fragment {
 
         LinearLayout changeMode = view.findViewById(R.id.helper_fragment1_change);
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.125.216.169/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        retrofitAPI = retrofit.create(RetrofitAPI.class);
-
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
 
 
-        Call<HelperStoryModel> call_helper = retrofitAPI.helper_story_get(token);
+
+        Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(token);
         call_helper.enqueue(retrofitCallback);
 
         firstContent.setOnClickListener(new View.OnClickListener() {
@@ -219,12 +208,12 @@ public class MainFragment extends Fragment {
         @Override
         public void onResponse(Call<HelperStoryModel> call, Response<HelperStoryModel> response) {
             HelperStoryModel result = response.body();
+            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.code);
             Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result.data.size()));
             for(int i=0;i<result.data.size();i++){
                 storyAdapterModels.add(result.data.get(i));
             }
             storyAdapter.notifyDataSetChanged();
-            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.code);
         }
 
         @Override

@@ -36,6 +36,8 @@ public class LoginResponseModel {
 
     public class Data {
         String Token;
+        String email;
+        String password;
 
         /*getter and setter start*/
 

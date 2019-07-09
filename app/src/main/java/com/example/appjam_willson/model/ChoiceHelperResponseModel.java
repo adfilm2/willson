@@ -1,9 +1,17 @@
 package com.example.appjam_willson.model;
 
-public class HelperResgistResponseModel {
+public class ChoiceHelperResponseModel {
+    String message;
+    int code;
+    Object data;
 
-    public int code;
-    public Object data;
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public int getCode() {
         return code;

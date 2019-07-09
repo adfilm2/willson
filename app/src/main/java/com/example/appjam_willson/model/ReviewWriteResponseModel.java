@@ -1,10 +1,12 @@
 package com.example.appjam_willson.model;
 
-import com.google.gson.internal.ObjectConstructor;
+import java.util.List;
 
-public class HelperRegistResponseModel {
-    public int code;
-    public Object data;
+public class ReviewWriteResponseModel {
+
+    int code;
+    String message;
+    Object data;
 
     public int getCode() {
         return code;
@@ -12,6 +14,14 @@ public class HelperRegistResponseModel {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Object getData() {

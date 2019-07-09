@@ -137,7 +137,7 @@
         <RadioButton
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:text="여성"
+            android:text="여"
             android:textColor="@color/middlepurple"
             android:buttonTint="#5252A1"
             android:checked="true"
@@ -146,7 +146,7 @@
         <RadioButton
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:text="남성"
+            android:text="남"
             android:textColor="@color/middlepurple"
             android:buttonTint="#5252A1"
             android:id="@+id/Gender_man"

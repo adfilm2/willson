@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.model.HelperRegistModel;
-import com.example.appjam_willson.model.HelperRegistResponseActivity;
 import com.example.appjam_willson.model.HelperRegistResponseModel;
 
 import retrofit2.Call;
@@ -28,7 +27,6 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        btn = findViewById(R.id.test_button);
 
 /*        retrofit = new Retrofit.Builder()
                 .baseUrl("http://13.125.216.169/api/")
@@ -48,20 +46,20 @@ public class TestActivity extends AppCompatActivity {
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
 
 
-        Call<HelperRegistResponseActivity> call_helper = RetrofitService.getInstance().getService().helper_regist_post(token, helperRegistModel);
+        Call<HelperRegistResponseModel> call_helper = RetrofitService.getInstance().getService().helper_regist_post(token, helperRegistModel);
 
-        call_helper.enqueue(new Callback<HelperRegistResponseActivity>() {
+        call_helper.enqueue(new Callback<HelperRegistResponseModel>() {
             @Override
-            public void onResponse(Call<HelperRegistResponseActivity> call, Response<HelperRegistResponseActivity> response) {
+            public void onResponse(Call<HelperRegistResponseModel> call, Response<HelperRegistResponseModel> response) {
                 Log.d("test", response.isSuccessful() + "");
-                HelperRegistResponseActivity result = response.body();
+                HelperRegistResponseModel result = response.body();
                 Log.d("dlfkdlfjkdl", ">>>>>>>>>>>" + response.code());
                 Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
 
             }
 
             @Override
-            public void onFailure(Call<HelperRegistResponseActivity> call, Throwable t) {
+            public void onFailure(Call<HelperRegistResponseModel> call, Throwable t) {
                 t.printStackTrace();
                 Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
             }

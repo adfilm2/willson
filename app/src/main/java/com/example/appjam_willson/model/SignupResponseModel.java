@@ -57,7 +57,6 @@ public class SignupResponseModel {
         String email;
         String password;
         String device_token;
-        String salt;
 
         /*getter and setter start*/
 
@@ -107,14 +106,6 @@ public class SignupResponseModel {
 
         public void setDevice_token(String device_token) {
             this.device_token = device_token;
-        }
-
-        public String getSalt() {
-            return salt;
-        }
-
-        public void setSalt(String salt) {
-            this.salt = salt;
         }
 
         /*getter and setter end*/

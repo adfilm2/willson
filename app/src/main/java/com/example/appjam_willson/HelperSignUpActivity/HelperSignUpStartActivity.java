@@ -51,7 +51,6 @@ public class HelperSignUpStartActivity extends AppCompatActivity {
 
 
         });
-
     }
 
     @Override
