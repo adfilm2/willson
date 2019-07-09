@@ -3,6 +3,8 @@ package com.example.appjam_willson.FillinListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -85,7 +87,38 @@ public class List6Activity extends AppCompatActivity {
         background = (LinearLayout)findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
 
+
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+               if(edit1.length()!=0 || edit2.length()!=0|| edit3.length()!=0){
+                   list6_nextbtn.setEnabled(true);
+               }
+               else{
+                   list6_nextbtn.setEnabled(false);
+               }
+
+            }
+        };
+
+
+        edit1.addTextChangedListener(textWatcher);
+        edit2.addTextChangedListener(textWatcher);
+        edit3.addTextChangedListener(textWatcher);
+
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){

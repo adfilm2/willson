@@ -104,6 +104,10 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         helper_experience = (EditText) findViewById(R.id.helper_signup_edittext);
         helper_experience.setOnFocusChangeListener(new edit_exper());
 
+
+
+
+
         edit1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -119,6 +123,10 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(edit1.length() != 0 &&edit2.length() != 0 &&edit3.length() != 0 && helper_experience.length() != 0){
+                    signup_nextbtn.setEnabled(true);
+                }
+
             }
         });
 
@@ -137,6 +145,9 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(edit1.length() != 0 &&edit2.length() != 0 &&edit3.length() != 0 && helper_experience.length() != 0){
+                    signup_nextbtn.setEnabled(true);
+                }
             }
         });
 
@@ -155,6 +166,9 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if(edit1.length() != 0 &&edit2.length() != 0 &&edit3.length() != 0 && helper_experience.length() != 0){
+                    signup_nextbtn.setEnabled(true);
+                }
             }
         });
 
@@ -167,14 +181,14 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 textViewCount.setText(Integer.toString(s.toString().length()));
-                if (s.length() == 0 ) {
-                    signup_nextbtn.setEnabled(false);
-                }
-                else signup_nextbtn.setEnabled(true);
+
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                if(edit1.length() != 0 &&edit2.length() != 0 &&edit3.length() != 0 && helper_experience.length() != 0){
+                    signup_nextbtn.setEnabled(true);
+                }
             }
         });
     }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,7 @@ public class HelperSignUpActivityStart extends AppCompatActivity {
     Context context;
     View view;
     ImageView back;
+    LinearLayout cancel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -32,7 +34,9 @@ public class HelperSignUpActivityStart extends AppCompatActivity {
         view = (View)findViewById(R.id.signupstart);
         back = (ImageView)findViewById(R.id.back_btn);
         back.setVisibility(View.INVISIBLE);
+        cancel = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
 
+        cancel.setOnClickListener(new cancel_btn_listener());
 
         Button nextbtn = (Button)findViewById(R.id.h_su_start_btn); //버튼이름 변경
 
@@ -52,6 +56,9 @@ public class HelperSignUpActivityStart extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode,Intent data){
+
+
+
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
@@ -62,6 +69,14 @@ public class HelperSignUpActivityStart extends AppCompatActivity {
                 case RESULT_CANCELED:
                     finish();
             }
+        }
+    }
+
+    private class cancel_btn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+
         }
     }
 }

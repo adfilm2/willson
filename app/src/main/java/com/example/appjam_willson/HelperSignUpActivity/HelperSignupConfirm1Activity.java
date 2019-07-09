@@ -78,78 +78,38 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         next_btn = (Button)findViewById(R.id.confirm_btn_next);
         next_btn.setOnClickListener(new nex_btn_listener());
 
-        phone1.addTextChangedListener(new TextWatcher() {
+        TextWatcher textWatcher = new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
             }
-
             @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (s.length() == 0 || phone2.getText().toString().length() == 0 || phone1.getText().toString().length() == 0 || email.getText().toString().length() == 0) {
-                    next_btn.setEnabled(false);
-                }
-                else next_btn.setEnabled(true);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
-
-        phone2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (s.length() == 0 || phone2.getText().toString().length() == 0 || phone1.getText().toString().length() == 0 || email.getText().toString().length() == 0) {
-                    next_btn.setEnabled(false);
-                }
-                else next_btn.setEnabled(true);
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-            }
-        });
-
-        phone3.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (s.length() == 0 || phone2.getText().toString().length() == 0 || phone1.getText().toString().length() == 0 || email.getText().toString().length() == 0) {
+                if(phone1.length()!=0 || phone2.length()!=0||phone3.length()!=0 || email.length()!=0){
+                    next_btn.setEnabled(true);
+                }
+                else{
                     next_btn.setEnabled(false);
                 }
-                else next_btn.setEnabled(true);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
-
-        email.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (s.length() == 0 || phone2.getText().toString().length() == 0 || phone1.getText().toString().length() == 0 || phone3.getText().toString().length() == 0) {
-                    next_btn.setEnabled(false);
-                }
-                else next_btn.setEnabled(true);
 
             }
+        };
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
+
+        phone1.addTextChangedListener(textWatcher);
+        phone2.addTextChangedListener(textWatcher);
+        phone3.addTextChangedListener(textWatcher);
+        email.addTextChangedListener(textWatcher);
+
+
+
+
+
     }
 
     class back_btn_listener implements View.OnClickListener {
