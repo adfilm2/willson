@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,8 +20,15 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.WorryCategoryListAddModel;
+import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class List1DailyActivity extends AppCompatActivity implements OnClickListener {
 
@@ -55,7 +63,8 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     Typeface typereg;
 
     Bundle bundle1 = new Bundle();
-    String small_category;
+    int category_listId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +129,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
             switch (resultCode){
                 case RESULT_OK:
                     bundle1 = data.getExtras();
-                    bundle1.putString("small category",small_category);
+                    bundle1.putInt("category_id",category_listId);
                     data.putExtras(bundle1);
                     setResult(RESULT_OK,data);
                     finish();
@@ -208,19 +217,45 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     public void onClick(View v) {
 
         if(habit.isChecked()){
-            small_category = habit.getText().toString();
+            category_listId =18;
         }
         else if (alba.isChecked()){
-            small_category = alba.getText().toString();
+            category_listId =19;
         }
         else if (economy.isChecked()){
-            small_category = economy.getText().toString();
+            category_listId =20;
         }
         else if (trip.isChecked()){
-            small_category = trip.getText().toString();
+            category_listId =21;
         }
         else if (daily_custom_edit_text.isFocused()){
-            small_category = daily_custom_edit_text.getText().toString();
+            WorryCategoryListAddModel worryCategoryListAddModel = new WorryCategoryListAddModel();
+            worryCategoryListAddModel.category_idx = 5;
+            worryCategoryListAddModel.categoryList_name = daily_custom_edit_text.getText().toString();
+
+            String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
+
+
+            Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().concern_category_list_post(token,worryCategoryListAddModel);
+
+            call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
+                @Override
+                public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
+                    Log.d("test", response.isSuccessful() + "");
+                    WorryCategoryListAddResponseModel result = response.body();
+                    Log.d("dlfkdlfjkdl", ">>>>>>>>>>>" + response.code());
+                    Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
+                    category_listId= result.message;
+
+                }
+
+                @Override
+                public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
+                    t.printStackTrace();
+                    Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+                }
+            });
+
         }
         else{}
         Intent intent = new Intent(context, List2Activity.class);

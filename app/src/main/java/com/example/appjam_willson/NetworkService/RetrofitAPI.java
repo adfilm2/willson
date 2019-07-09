@@ -91,4 +91,8 @@ public interface RetrofitAPI {
     @PUT("concern/question")
     Call<ExitChatResponseModel> exit_chat_put(@Header("willson-token") String token,
                                               @Body ExitChatModel exitChatModel);
+
+    @POST("concern/category")
+    Call<WorryCategoryListAddResponseModel> concern_category_list_post(@Header("user_session") String token, @Body WorryCategoryListAddModel worryCategoryListAddModel);
+
 }

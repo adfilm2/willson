@@ -39,7 +39,7 @@ public class MainFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.main_fragment2,null);
 
-            myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            //myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
             fragment2_recyclerView = view.findViewById(R.id.fragment2_recyclerview);

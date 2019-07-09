@@ -34,11 +34,7 @@ public class List2Activity extends AppCompatActivity {
 
     Bundle bundle2 = new Bundle();
 
-    String[] strings = new String[3];
-
-    String feeling1;
-    String feeling2;
-    String feeling3;
+    int[] strings = new int[3];
 
     Typeface typebold;
     Typeface typereg;
@@ -83,9 +79,8 @@ public class List2Activity extends AppCompatActivity {
 //                    Log.d(">>>data의 advice >>> ","gg"+gg);
 
                     bundle2 = data.getExtras();
-                    bundle2.putString("feeling1",feeling1);
-                    bundle2.putString("feeling2",feeling2);
-                    bundle2.putString("feeling3",feeling3);
+                    bundle2.putIntArray("feeling",strings);
+
 
                     data.putExtras(bundle2);
                     setResult(RESULT_OK,data);
@@ -111,8 +106,8 @@ public class List2Activity extends AppCompatActivity {
                 if(check_num<=0) check_num=0;
 
                 for(int i = 0 ; i<3 ; i++) {
-                    if (checkBox.getText().toString() == strings[i]) {
-                        strings[i] = null;
+                    if (Integer.parseInt(checkBox.getTag().toString())== strings[i]) {
+                        strings[i] = 0;
                     }
                 }
 
@@ -123,7 +118,7 @@ public class List2Activity extends AppCompatActivity {
                 if(check_num>3) check_num =3;
 
                 for(int i = 0; i<3; i++){
-                    if(strings[i]== null) strings[i] = checkBox.getText().toString();
+                    if(strings[i]== 0) strings[i] = Integer.parseInt(checkBox.getTag().toString());
                 }
 
             }
@@ -165,9 +160,6 @@ public class List2Activity extends AppCompatActivity {
     class list2_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            feeling1 = strings[0];
-            feeling2 = strings[1];
-            feeling3 = strings[2];
 
 
             Intent intent = new Intent(context, List3Activity.class);

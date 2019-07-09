@@ -26,6 +26,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_test);
 
 /*        retrofit = new Retrofit.Builder()
@@ -66,6 +67,5 @@ public class TestActivity extends AppCompatActivity {
         });
 
     }
-
 
 }

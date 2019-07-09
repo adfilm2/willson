@@ -2,8 +2,8 @@ package com.example.appjam_willson.model;
 
 public class WorryCategoryListAddResponseModel {
 
-   String message;
-   int code;
-    public Object data;
+   public int message;
+   public int code;
+   public Object data;
 
 }
