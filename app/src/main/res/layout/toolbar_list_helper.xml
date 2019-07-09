@@ -17,13 +17,14 @@
             android:paddingTop="7dp"
             android:paddingBottom ="7dp"
             android:orientation="horizontal"
-            android:id="@+id/toolbar_list_btn_backbtn"
+            android:id="@+id/back_btn_layout"
             android:layout_weight="0.5">
 
             <ImageView
+                android:id="@+id/back_btn"
                 android:paddingLeft="20.2dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="17dp"
                 android:src="@drawable/btn_backbtn"
                 android:layout_gravity="center_horizontal" />
 
@@ -39,15 +40,16 @@
             android:layout_weight="9">
 
             <TextView
+                android:id="@+id/toolbar_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="헬퍼 가입"
                 android:lineSpacingExtra="19sp"
                 android:layout_gravity="center_horizontal"
                 android:adjustViewBounds="true"
-                android:layout_marginRight="20dp"
-                android:text="헬퍼 가입"
+                android:layout_marginLeft="10dp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
                 />
@@ -65,7 +67,14 @@
             android:layout_weight="0.5"
             android:id="@+id/toolbar_list_btn_cancel">
 
-
+            <ImageView
+                android:id="@+id/cancel_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_cancel"
+                android:layout_gravity="right"
+                android:paddingRight="15.4dp"
+                />
 
         </LinearLayout>
 

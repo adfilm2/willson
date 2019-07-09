@@ -3,7 +3,6 @@ package com.example.appjam_willson.FillinListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -58,22 +57,22 @@ public class List7Activity extends AppCompatActivity {
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
 
-        list7_nextbtn = (Button) findViewById(R.id.submit);
+        list7_nextbtn = findViewById(R.id.submit);
         list7_nextbtn.setOnClickListener(new list7_nextbtn_listener());
 
-        list7_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list7_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list7_cancelbtn.setOnClickListener(new list7_cancelbtn_listener());
 
-        list7_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list7_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list7_backbtn.setOnClickListener(new list7_backbtn_listener());
 
-        view1 = (View) findViewById(R.id.list7_radioGroup1);
-        view2 = (View) findViewById(R.id.list7_radioGroup2);
-        view3 = (View) findViewById(R.id.list7_radioGroup3);
+        view1 = findViewById(R.id.list7_radioGroup1);
+        view2 = findViewById(R.id.list7_radioGroup2);
+        view3 = findViewById(R.id.list7_radioGroup3);
 
-        group1 = (RadioGroup)view1.findViewById(R.id.radiogroup);
-        group2 = (RadioGroup)view2.findViewById(R.id.radiogroup);
-        group3 = (RadioGroup)view3.findViewById(R.id.radiogroup);
+        group1 = view1.findViewById(R.id.radiogroup);
+        group2 = view2.findViewById(R.id.radiogroup);
+        group3 = view3.findViewById(R.id.radiogroup);
 
 
         group1.setOnCheckedChangeListener(new group_click1());
@@ -113,6 +112,9 @@ public class List7Activity extends AppCompatActivity {
     class list7_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -120,17 +122,16 @@ public class List7Activity extends AppCompatActivity {
     class list7_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            /*Intent intent = new Intent(context, ListAgreementActivity.class);
-            startActivityForResult(intent, REQUEST_CODE);*/
             Intent intent = new Intent(context, ListAgreementActivity.class);
             startActivityForResult(intent, REQUEST_CODE);
-
         }
     }
 
     public void Dialog() {
         dialog = new OneTextTwoButton_CustomDialog(List7Activity.this, resid,
                 "벌써 80%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
@@ -250,4 +251,12 @@ public class List7Activity extends AppCompatActivity {
 
         }
     }
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
+
 }

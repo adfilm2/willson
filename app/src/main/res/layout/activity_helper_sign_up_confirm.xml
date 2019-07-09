@@ -6,7 +6,7 @@
 
     <include
         android:id="@+id/activity_helper_signup_toolbar"
-        layout="@layout/toolbar_helper_signup"
+        layout="@layout/toolbar_list_helper"
         />
 
     <LinearLayout

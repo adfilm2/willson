@@ -9,8 +9,7 @@
 
 
     <include android:id="@+id/toolbar_helper_profile_edit_main"
-
-        layout="@layout/toolbar_helper_profile_edit_main"/>
+        layout="@layout/toolbar_list_helper"/>
 
 
 

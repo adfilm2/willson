@@ -68,17 +68,12 @@ public class HelperFragment extends Fragment {
         helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
 
         int test = 2;
-        callusers(test);
 
         return view;
 
 
     }
 
-    private void callusers(int user) {
-        Call<DataModel> callUser = retrofitAPI.getUser(user);
-        callUser.enqueue(retrofitCallback);
-    }
 
     private Callback<DataModel> retrofitCallback = new Callback<DataModel>() {
 

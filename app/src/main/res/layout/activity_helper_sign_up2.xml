@@ -5,7 +5,7 @@
     android:id="@+id/signup_background"
     android:fitsSystemWindows="true">
 
-    <include layout="@layout/toolbar_helper_signup"/>
+    <include android:id="@+id/toolbar" layout="@layout/toolbar_list_helper"/>
 
     <LinearLayout
         android:layout_width="match_parent"

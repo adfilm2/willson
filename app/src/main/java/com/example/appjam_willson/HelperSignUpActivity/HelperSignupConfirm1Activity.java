@@ -1,18 +1,23 @@
 package com.example.appjam_willson.HelperSignUpActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.R;
+
+import static com.example.appjam_willson.R.id.back_btn_layout;
 
 public class HelperSignupConfirm1Activity extends AppCompatActivity {
 
@@ -21,6 +26,8 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
     EditText phone3;
 
     LinearLayout background;
+    int REQUEST_CODE;
+    Context context;
 
     EditText email;
     EditText link;
@@ -29,10 +36,24 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
 
     LinearLayout back_btn;
 
+    View view;
+    ImageView btn;
+
+    Bundle bundle4 = new Bundle();
+    String phone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up_confirm);
+
+        view = (View)findViewById(R.id.activity_helper_signup_toolbar);
+        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn.setVisibility(View.INVISIBLE);
+        context = this;
+
+        REQUEST_CODE = ((HelperSignupConfirm1Activity) context).getTaskId();
+
 
         background = (LinearLayout)findViewById(R.id.background);
         background.setOnClickListener(new back_click());
@@ -45,7 +66,7 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         phone2.setOnFocusChangeListener(new phone2_focus());
         phone3.setOnFocusChangeListener(new phone3_focus());
 
-        back_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
+        back_btn = (LinearLayout)findViewById(back_btn_layout);
         back_btn.setOnClickListener(new back_btn_listener());
 
         email = (EditText)findViewById(R.id.email);
@@ -57,83 +78,46 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         next_btn = (Button)findViewById(R.id.confirm_btn_next);
         next_btn.setOnClickListener(new nex_btn_listener());
 
-        phone1.addTextChangedListener(new TextWatcher() {
+        TextWatcher textWatcher = new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
             }
-
             @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (s.length() == 0 || phone2.getText().toString().length() == 0 || phone1.getText().toString().length() == 0 || email.getText().toString().length() == 0) {
-                    next_btn.setEnabled(false);
-                }
-                else next_btn.setEnabled(true);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
-
-        phone2.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (s.length() == 0 || phone2.getText().toString().length() == 0 || phone1.getText().toString().length() == 0 || email.getText().toString().length() == 0) {
-                    next_btn.setEnabled(false);
-                }
-                else next_btn.setEnabled(true);
+            public void onTextChanged(CharSequence s, int start, int before,
+                                      int count) {
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-            }
-        });
-
-        phone3.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (s.length() == 0 || phone2.getText().toString().length() == 0 || phone1.getText().toString().length() == 0 || email.getText().toString().length() == 0) {
+                if(phone1.length()!=0 || phone2.length()!=0||phone3.length()!=0 || email.length()!=0){
+                    next_btn.setEnabled(true);
+                }
+                else{
                     next_btn.setEnabled(false);
                 }
-                else next_btn.setEnabled(true);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
-
-        email.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-                if (s.length() == 0 || phone2.getText().toString().length() == 0 || phone1.getText().toString().length() == 0 || phone3.getText().toString().length() == 0) {
-                    next_btn.setEnabled(false);
-                }
-                else next_btn.setEnabled(true);
 
             }
+        };
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-            }
-        });
+
+        phone1.addTextChangedListener(textWatcher);
+        phone2.addTextChangedListener(textWatcher);
+        phone3.addTextChangedListener(textWatcher);
+        email.addTextChangedListener(textWatcher);
+
+
+
+
+
     }
 
     class back_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -202,6 +186,17 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
     class nex_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            phone = phone1.getText().toString()+phone2.getText().toString()+phone3.getText().toString();
+
+            bundle4.putString("phone",phone);
+            bundle4.putString("email",email.getText().toString());
+            if(link.getText().toString().length() >0)
+                bundle4.putString("link",link.getText().toString());
+            Intent intent = new Intent();
+            intent.putExtras(bundle4);
+            setResult(RESULT_OK, intent);
+            finish();
+
 
         }
     }

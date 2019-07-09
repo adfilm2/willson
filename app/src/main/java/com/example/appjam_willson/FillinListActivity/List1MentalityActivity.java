@@ -73,12 +73,12 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        selfesteem = (RadioButton) findViewById(R.id.list1_mentality_btn_hurt);
-        unrest = (RadioButton) findViewById(R.id.list1_mentality_btn_unrest);
-        depressed = (RadioButton) findViewById(R.id.list1_mentality_btn_depressed);
-        torpor = (RadioButton) findViewById(R.id.list1_mentality_btn_torpor);
-        ego = (RadioButton) findViewById(R.id.list1_mentality_btn_ego);
-        exist = (RadioButton) findViewById(R.id.list1_mentality_btn_exist);
+        selfesteem = findViewById(R.id.list1_mentality_btn_hurt);
+        unrest = findViewById(R.id.list1_mentality_btn_unrest);
+        depressed = findViewById(R.id.list1_mentality_btn_depressed);
+        torpor = findViewById(R.id.list1_mentality_btn_torpor);
+        ego = findViewById(R.id.list1_mentality_btn_ego);
+        exist = findViewById(R.id.list1_mentality_btn_exist);
 
         selfesteem.setTypeface(typereg);
         unrest.setTypeface(typereg);
@@ -91,36 +91,36 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list1_mentality_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_mentality_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_mentality_cancelbtn.setOnClickListener(new list1_mentality_cancelbtn_listener());
 
-        list1_mentality_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_mentality_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list1_mentality_backbtn.setOnClickListener(new list1_mentality_backbtn_listener());
 
-        list1_mentality_radioGroup1 = (RadioGroup)findViewById(R.id.list1_mentality_radioGroup1);
+        list1_mentality_radioGroup1 = findViewById(R.id.list1_mentality_radioGroup1);
         list1_mentality_radioGroup1.clearCheck();
         list1_mentality_radioGroup1.setOnCheckedChangeListener(radioGroup_mentality_listener1);
-        list1_mentality_radioGroup2 = (RadioGroup)findViewById(R.id.list1_mentality_radioGroup2);
+        list1_mentality_radioGroup2 = findViewById(R.id.list1_mentality_radioGroup2);
         list1_mentality_radioGroup2.clearCheck();
         list1_mentality_radioGroup2.setOnCheckedChangeListener(radioGroup_mentality_listener2);
-        list1_mentality_radioGroup3 = (RadioGroup)findViewById(R.id.list1_mentality_radioGroup3);
+        list1_mentality_radioGroup3 = findViewById(R.id.list1_mentality_radioGroup3);
         list1_mentality_radioGroup3.clearCheck();
         list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
 
-        list1_mentality_nextbtn = (Button) findViewById(R.id.list1_mentality_btn_next);
+        list1_mentality_nextbtn = findViewById(R.id.list1_mentality_btn_next);
         list1_mentality_nextbtn.setOnClickListener(this);
 
-        mentality_custom_text = (LinearLayout)findViewById(R.id.list1_mentality_btn_usercustom);
+        mentality_custom_text = findViewById(R.id.list1_mentality_btn_usercustom);
         mentality_custom_text.setOnClickListener(new mentality_custom_btn_listener());
 
-        mentality_custom_edit_text = (EditText)findViewById(R.id.list1_mentality_usercustom_edittext);
+        mentality_custom_edit_text = findViewById(R.id.list1_mentality_usercustom_edittext);
         mentality_custom_edit_text.setOnClickListener(new mentality_custom_edit_Clicklistener());
         mentality_custom_edit_text.setOnKeyListener(new mentality_custom_edit_listener());
         mentality_custom_edit_text.setTypeface(typebold);
 
-        mentality_usercustom_layout = (LinearLayout)findViewById(R.id.list1_mentality_btn_usercustom_layout);
+        mentality_usercustom_layout = findViewById(R.id.list1_mentality_btn_usercustom_layout);
 
-        background = (LinearLayout)findViewById(R.id.list_background);
+        background = findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
     }
 
@@ -305,6 +305,9 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     class list1_mentality_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -312,7 +315,21 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(mentality_custom_edit_text);
+            if(mentality_custom_edit_text.isFocused()){
+                String title;
+                title = mentality_custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    list1_mentality_nextbtn.setEnabled(false);
+                    mentality_custom_text.setVisibility(View.VISIBLE);
+                    mentality_custom_edit_text.setVisibility(View.INVISIBLE);
+                    mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                }
+                else{
+                    list1_mentality_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(mentality_custom_edit_text);
+                mentality_custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
@@ -383,7 +400,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
             list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
             mentality_custom_text.setVisibility(View.INVISIBLE);
             mentality_custom_edit_text.setVisibility(View.VISIBLE);
-            mentality_custom_edit_text.setCursorVisible(false);
+            mentality_custom_edit_text.setCursorVisible(true);
             int backcolor = getResources().getColor(R.color.white);
             mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             mentality_custom_edit_text.setTextColor(backcolor);
@@ -397,9 +414,16 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
 
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    mentality_custom_edit_text.setTextColor(backcolor);
                     hidekeyboard(mentality_custom_edit_text);
+                    String title;
+                    title = mentality_custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_mentality_nextbtn.setEnabled(false);
+                        mentality_custom_text.setVisibility(View.VISIBLE);
+                        mentality_custom_edit_text.setVisibility(View.INVISIBLE);
+                        mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
+                    mentality_custom_edit_text.setCursorVisible(false);
             }
             return false;
         }
@@ -419,6 +443,8 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         dialog = new OneTextTwoButton_CustomDialog(List1MentalityActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
@@ -435,6 +461,17 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
+
 }

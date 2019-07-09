@@ -2,6 +2,7 @@ package com.example.appjam_willson.FillinListActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -39,6 +40,8 @@ public class List2Activity extends AppCompatActivity {
     String feeling2;
     String feeling3;
 
+    Typeface typebold;
+    Typeface typereg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +52,20 @@ public class List2Activity extends AppCompatActivity {
 
         REQUEST_CODE = ((List2Activity) context).getTaskId();
 
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
+
         resName = "@drawable/list_img_alert_willson";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list2_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list2_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list2_cancelbtn.setOnClickListener(new list2_cancelbtn_listener());
 
-        list2_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list2_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list2_backbtn.setOnClickListener(new list2_backbtn_listener());
 
-        list2_nextbtn = (Button) findViewById(R.id.submit);
+        list2_nextbtn = findViewById(R.id.submit);
         list2_nextbtn.setOnClickListener(new list2_nextbtn_listener());
 
     }
@@ -94,12 +100,13 @@ public class List2Activity extends AppCompatActivity {
 
 
     public void char_check(View view){
-        Button nextbtn = (Button)findViewById(R.id.submit);
+        Button nextbtn = findViewById(R.id.submit);
         CheckBox checkBox = (CheckBox)view;
 
         if (check_num < 3) {
             if (!checkBox.isChecked()) {
                 checkBox.setChecked(false);
+                checkBox.setTypeface(typereg);
                 check_num -= 1;
                 if(check_num<=0) check_num=0;
 
@@ -111,6 +118,7 @@ public class List2Activity extends AppCompatActivity {
 
             } else {
                 checkBox.setChecked(true);
+                checkBox.setTypeface(typebold);
                 check_num += 1;
                 if(check_num>3) check_num =3;
 
@@ -127,6 +135,7 @@ public class List2Activity extends AppCompatActivity {
             }
             else{
                 checkBox.setChecked(false);
+                checkBox.setTypeface(typereg);
                 check_num -= 1;
 
             }
@@ -146,6 +155,9 @@ public class List2Activity extends AppCompatActivity {
     class list2_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -167,6 +179,8 @@ public class List2Activity extends AppCompatActivity {
         dialog = new OneTextTwoButton_CustomDialog(List2Activity.this, resid,
                 "벌써 20%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
@@ -176,9 +190,6 @@ public class List2Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
-            Intent intent = new Intent();
-            setResult(RESULT_CANCELED, intent);
-            finish();
         }
     };
 
@@ -191,5 +202,12 @@ public class List2Activity extends AppCompatActivity {
             finish();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 }

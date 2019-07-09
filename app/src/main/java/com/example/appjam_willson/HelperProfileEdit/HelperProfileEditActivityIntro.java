@@ -39,16 +39,24 @@
             String packName;
             int resid;
 
+            TextView text;
+            ImageView btn;
+
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_helper_profile_edit_intro);
 
                 ImageView btn_back;
-                btn_back = (ImageView) findViewById(R.id.h_pro_btn_backbtn);
+                btn_back = (ImageView) findViewById(R.id.back_btn);
                 btn_back.setOnClickListener(new HelperProfileEditActivityIntro.list1_love_backbtn_listener());
 
                 context = this;
+
+                btn = (ImageView)findViewById(R.id.back_btn);
+                btn.setVisibility(View.INVISIBLE);
+                text = (TextView)findViewById(R.id.toolbar_text);
+                text.setText("프로필 수정");
 
                 // REQUEST_CODE = ((com.example.appjam_willson.FillinListActivity.List4Activity) context).getTaskId();
 

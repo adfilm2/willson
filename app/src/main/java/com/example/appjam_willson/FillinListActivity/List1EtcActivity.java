@@ -63,7 +63,7 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        visual = (RadioButton) findViewById(R.id.list1_etc_btn_visual);
+        visual = findViewById(R.id.list1_etc_btn_visual);
         visual.setTypeface(typereg);
 
         resName = "@drawable/list_img_alert_willson";
@@ -71,29 +71,29 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
 
-        list1_etc_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_etc_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_etc_cancelbtn.setOnClickListener(new list1_etc_cancelbtn_listener());
 
-        list1_etc_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_etc_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list1_etc_backbtn.setOnClickListener(new list1_etc_backbtn_listener());
 
-        list1_etc_radiobtn = (RadioButton) findViewById(R.id.list1_etc_btn_visual);
+        list1_etc_radiobtn = findViewById(R.id.list1_etc_btn_visual);
         list1_etc_radiobtn.setOnClickListener(new list1_etc_radiobtn_listener());
 
-        list1_etc_nextbtn = (Button) findViewById(R.id.list1_etc_btn_next);
+        list1_etc_nextbtn = findViewById(R.id.list1_etc_btn_next);
         list1_etc_nextbtn.setOnClickListener(this);
 
-        etc_custom_text = (LinearLayout)findViewById(R.id.list1_etc_btn_usercustom);
+        etc_custom_text = findViewById(R.id.list1_etc_btn_usercustom);
         etc_custom_text.setOnClickListener(new etc_custom_btn_listener());
 
-        etc_custom_edit_text = (EditText)findViewById(R.id.list1_etc_usercustom_edittext);
+        etc_custom_edit_text = findViewById(R.id.list1_etc_usercustom_edittext);
         etc_custom_edit_text.setOnClickListener(new etc_custom_edit_Clicklistener());
         etc_custom_edit_text.setOnKeyListener(new etc_custom_edit_listener());
         etc_custom_edit_text.setTypeface(typebold);
 
-        etc_usercustom_layout = (LinearLayout)findViewById(R.id.list1_etc_btn_usercustom_layout);
+        etc_usercustom_layout = findViewById(R.id.list1_etc_btn_usercustom_layout);
 
-        background = (LinearLayout)findViewById(R.id.list_background);
+        background = findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
     }
 
@@ -141,6 +141,9 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     class list1_etc_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -222,9 +225,16 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
 
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    etc_custom_edit_text.setTextColor(backcolor);
                     hidekeyboard(etc_custom_edit_text);
+                    String title;
+                    title = etc_custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_etc_nextbtn.setEnabled(false);
+                        etc_custom_text.setVisibility(View.VISIBLE);
+                        etc_custom_edit_text.setVisibility(View.INVISIBLE);
+                        etc_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
+                    etc_custom_edit_text.setCursorVisible(false);
             }
             return false;
         }
@@ -243,13 +253,29 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(etc_custom_edit_text);
+            if(etc_custom_edit_text.isFocused()){
+                String title;
+                title = etc_custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    list1_etc_nextbtn.setEnabled(false);
+                    etc_custom_text.setVisibility(View.VISIBLE);
+                    etc_custom_edit_text.setVisibility(View.INVISIBLE);
+                    etc_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                }
+                else{
+                    list1_etc_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(etc_custom_edit_text);
+                etc_custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
     public void Dialog() {
         dialog = new OneTextTwoButton_CustomDialog(List1EtcActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
+
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
@@ -267,12 +293,18 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 
 
-
-
-
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 }

@@ -4,15 +4,26 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
-    private Retrofit retrofit;
-    private RetrofitAPI retrofitAPI;
 
+    private String baseURL = "http://13.125.216.169/api/";
+    private static RetrofitService ourInstance = new RetrofitService();
 
-    public void makeRetrofit(){
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.125.216.169/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        retrofitAPI = retrofit.create(RetrofitAPI.class);
+    public static RetrofitService getInstance() {
+        return ourInstance;
     }
+
+    private RetrofitService() {
+    }
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(baseURL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
+
+    RetrofitAPI service = retrofit.create(RetrofitAPI.class);
+
+    public RetrofitAPI getService() {
+        return service;
+    }
+
 }

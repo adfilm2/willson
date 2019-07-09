@@ -46,13 +46,13 @@ public class List3Activity extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list3_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list3_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list3_cancelbtn.setOnClickListener(new list3_cancelbtn_listener());
 
-        list3_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list3_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list3_backbtn.setOnClickListener(new list3_backbtn_listener());
 
-        radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
+        radioGroup = findViewById(R.id.radiogroup);
         radioGroup.clearCheck();
         radioGroup.setOnCheckedChangeListener(radioGroup_listener);
 
@@ -146,6 +146,9 @@ public class List3Activity extends AppCompatActivity {
     class list3_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -153,6 +156,8 @@ public class List3Activity extends AppCompatActivity {
     public void Dialog() {
         dialog = new OneTextTwoButton_CustomDialog(List3Activity.this, resid,
                 "벌써 30%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
+
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
@@ -176,7 +181,12 @@ public class List3Activity extends AppCompatActivity {
         }
     };
 
-
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 /*    //라디오 그룹 클릭 리스너
    RadioGroup.OnCheckedChangeListener radioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {

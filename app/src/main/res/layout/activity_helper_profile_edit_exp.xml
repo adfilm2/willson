@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/activity_list1_toolbar"
-        layout="@layout/toolbar_helper_profile"/>
+        layout="@layout/toolbar_list_helper"/>
 
 
 

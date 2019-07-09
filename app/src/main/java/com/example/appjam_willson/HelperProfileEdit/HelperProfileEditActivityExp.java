@@ -32,8 +32,10 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
     int REQUEST_CODE;
 
     EditText editTextSMS;
-
     TextView textViewCount;
+
+    TextView text;
+    ImageView btn;
 
     private OneTextTwoButton_CustomDialog dialog;
     LinearLayout list4_cancelbtn;
@@ -41,6 +43,7 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
     Button list4_nextbtn;
 
     Context context;
+
 
     String resName;
     String packName;
@@ -53,6 +56,10 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
         setContentView(R.layout.activity_helper_profile_edit_exp);
 
         context = this;
+        btn = (ImageView)findViewById(R.id.back_btn);
+        btn.setVisibility(View.INVISIBLE);
+        text = (TextView)findViewById(R.id.toolbar_text);
+        text.setText("프로필 수정");
 
        // REQUEST_CODE = ((com.example.appjam_willson.FillinListActivity.List4Activity) context).getTaskId();
 
@@ -61,7 +68,7 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
         ImageView btn_back;
-        btn_back = (ImageView) findViewById(R.id.h_pro_btn_backbtn);
+        btn_back = (ImageView) findViewById(R.id.back_btn);
         btn_back.setOnClickListener(new HelperProfileEditActivityExp.list1_love_backbtn_listener());
 
         list4_nextbtn = (Button) findViewById(R.id.helper_edit_exp_nextbtn);

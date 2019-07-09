@@ -54,8 +54,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     Typeface typereg;
 
     String small_category;
-    Bundle bundle1;
-
+    Bundle bundle1 = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +68,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        study = (RadioButton) findViewById(R.id.list1_course_btn_study);
-        employment = (RadioButton) findViewById(R.id.list1_course_btn_employment);
-        transfer = (RadioButton) findViewById(R.id.list1_course_btn_transfer);
+        study = findViewById(R.id.list1_course_btn_study);
+        employment = findViewById(R.id.list1_course_btn_employment);
+        transfer = findViewById(R.id.list1_course_btn_transfer);
 
         study.setTypeface(typereg);
         employment.setTypeface(typereg);
@@ -81,33 +80,33 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        list1_course_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_course_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_course_cancelbtn.setOnClickListener(new list1_course_cancelbtn_listener());
 
-        list1_course_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_course_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list1_course_backbtn.setOnClickListener(new list1_course_backbtn_listener());
 
-        list1_course_radioGroup1 = (RadioGroup) findViewById(R.id.list1_course_radioGroup1);
+        list1_course_radioGroup1 = findViewById(R.id.list1_course_radioGroup1);
         list1_course_radioGroup1.clearCheck();
         list1_course_radioGroup1.setOnCheckedChangeListener(radioGroup_course_listener1);
-        list1_course_radioGroup2 = (RadioGroup) findViewById(R.id.list1_course_radioGroup2);
+        list1_course_radioGroup2 = findViewById(R.id.list1_course_radioGroup2);
         list1_course_radioGroup2.clearCheck();
         list1_course_radioGroup2.setOnCheckedChangeListener(radioGroup_course_listener2);
 
-        list1_course_nextbtn = (Button) findViewById(R.id.list1_course_btn_next);
+        list1_course_nextbtn = findViewById(R.id.list1_course_btn_next);
         list1_course_nextbtn.setOnClickListener(this);
 
-        course_custom_text = (LinearLayout) findViewById(R.id.list1_course_btn_usercustom);
+        course_custom_text = findViewById(R.id.list1_course_btn_usercustom);
         course_custom_text.setOnClickListener(new course_custom_btn_listener());
 
-        course_custom_edit_text = (EditText)findViewById(R.id.list1_course_usercustom_edittext);
+        course_custom_edit_text = findViewById(R.id.list1_course_usercustom_edittext);
         course_custom_edit_text.setOnClickListener(new course_custom_edit_Clicklistener());
         course_custom_edit_text.setOnKeyListener(new course_custom_edit_listener());
         course_custom_edit_text.setTypeface(typebold);
 
-        course_usercustom_layout = (LinearLayout)findViewById(R.id.list1_course_btn_usercustom_layout);
+        course_usercustom_layout = findViewById(R.id.list1_course_btn_usercustom_layout);
 
-        background = (LinearLayout)findViewById(R.id.list_background);
+        background = findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
     }
 
@@ -212,7 +211,6 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         }
         else{}
 
-
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
@@ -227,6 +225,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     class list1_course_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -234,7 +235,21 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(course_custom_edit_text);
+            if(course_custom_edit_text.isFocused()){
+                String title;
+                title = course_custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    list1_course_nextbtn.setEnabled(false);
+                    course_custom_text.setVisibility(View.VISIBLE);
+                    course_custom_edit_text.setVisibility(View.INVISIBLE);
+                    course_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                }
+                else{
+                    list1_course_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(course_custom_edit_text);
+                course_custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
@@ -305,18 +320,24 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     class course_custom_edit_listener implements View.OnKeyListener {
         @Override
         public boolean onKey(View view, int i, KeyEvent keyEvent) {
-
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    course_custom_edit_text.setTextColor(backcolor);
+                    String title;
+                    title = course_custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_course_nextbtn.setEnabled(false);
+                        course_custom_text.setVisibility(View.VISIBLE);
+                        course_custom_edit_text.setVisibility(View.INVISIBLE);
+                        course_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
                     hidekeyboard(course_custom_edit_text);
+                    course_custom_edit_text.setCursorVisible(false);
             }
             return false;
         }
     }
 
-    private void hidekeyboard(EditText edit) {
+       private void hidekeyboard(EditText edit) {
         InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
@@ -329,6 +350,8 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     public void Dialog() {
         dialog = new OneTextTwoButton_CustomDialog(List1CourseActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
+
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
@@ -346,7 +369,18 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
+
 }
 

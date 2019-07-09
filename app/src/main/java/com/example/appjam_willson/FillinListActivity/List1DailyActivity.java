@@ -69,10 +69,10 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        habit = (RadioButton) findViewById(R.id.list1_daily_btn_habit);
-        alba = (RadioButton) findViewById(R.id.list1_daily_btn_alba);
-        economy = (RadioButton) findViewById(R.id.list1_daily_btn_economy);
-        trip = (RadioButton) findViewById(R.id.list1_daily_btn_trip);
+        habit = findViewById(R.id.list1_daily_btn_habit);
+        alba = findViewById(R.id.list1_daily_btn_alba);
+        economy = findViewById(R.id.list1_daily_btn_economy);
+        trip = findViewById(R.id.list1_daily_btn_trip);
 
         habit.setTypeface(typereg);
         alba.setTypeface(typereg);
@@ -83,34 +83,33 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-
-        list1_daily_cancelbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_cancel);
+        list1_daily_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_daily_cancelbtn.setOnClickListener(new list1_daily_cancelbtn_listener());
 
-        list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_daily_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
 
-        list1_daily_radioGroup1 = (RadioGroup) findViewById(R.id.list1_daily_radioGroup1);
+        list1_daily_radioGroup1 = findViewById(R.id.list1_daily_radioGroup1);
         list1_daily_radioGroup1.clearCheck();
         list1_daily_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
-        list1_daily_radioGroup2 = (RadioGroup) findViewById(R.id.list1_daily_radioGroup2);
+        list1_daily_radioGroup2 = findViewById(R.id.list1_daily_radioGroup2);
         list1_daily_radioGroup2.clearCheck();
         list1_daily_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
 
-        list1_daily_nextbtn = (Button) findViewById(R.id.list1_daily_btn_next);
+        list1_daily_nextbtn = findViewById(R.id.list1_daily_btn_next);
         list1_daily_nextbtn.setOnClickListener(this);
 
-        daily_custom_text = (LinearLayout)findViewById(R.id.list1_daily_btn_usercustom);
+        daily_custom_text = findViewById(R.id.list1_daily_btn_usercustom);
         daily_custom_text.setOnClickListener(new daily_custom_btn_listener());
 
-        daily_custom_edit_text = (EditText)findViewById(R.id.list1_daily_usercustom_edittext);
+        daily_custom_edit_text = findViewById(R.id.list1_daily_usercustom_edittext);
         daily_custom_edit_text.setOnClickListener(new daily_custom_edit_Clicklistener());
         daily_custom_edit_text.setOnKeyListener(new daily_custom_edit_listener());
         daily_custom_edit_text.setTypeface(typebold);
 
-        daily_usercustom_layout = (LinearLayout)findViewById(R.id.list1_daily_btn_usercustom_layout);
+        daily_usercustom_layout = findViewById(R.id.list1_daily_btn_usercustom_layout);
 
-        background = (LinearLayout)findViewById(R.id.list_background);
+        background = findViewById(R.id.list_background);
         background.setOnClickListener(new list_background_listener());
     }
 
@@ -147,6 +146,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
                 }
                 economy.setTypeface(typereg);
                 trip.setTypeface(typereg);
+
                 daily_custom_edit_text.setTypeface(typereg);
                 daily_custom_edit_text.setCursorVisible(false);
                 list1_daily_nextbtn.setEnabled(true);
@@ -182,6 +182,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
                 }
                 habit.setTypeface(typereg);
                 alba.setTypeface(typereg);
+
                 daily_custom_edit_text.setTypeface(typereg);
                 daily_custom_edit_text.setCursorVisible(false);
                 list1_daily_nextbtn.setEnabled(true);
@@ -236,6 +237,9 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     class list1_daily_backbtn_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -243,7 +247,20 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(daily_custom_edit_text);
+            if (daily_custom_edit_text.isFocused()) {
+                String title;
+                title = daily_custom_edit_text.getText().toString();
+                if (title.getBytes().length <= 0) {
+                    list1_daily_nextbtn.setEnabled(false);
+                    daily_custom_text.setVisibility(View.VISIBLE);
+                    daily_custom_edit_text.setVisibility(View.INVISIBLE);
+                    daily_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                } else {
+                    list1_daily_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(daily_custom_edit_text);
+                daily_custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
@@ -321,9 +338,16 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
 
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    daily_custom_edit_text.setTextColor(backcolor);
+                    String title;
+                    title = daily_custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_daily_nextbtn.setEnabled(false);
+                        daily_custom_text.setVisibility(View.VISIBLE);
+                        daily_custom_edit_text.setVisibility(View.INVISIBLE);
+                        daily_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
                     hidekeyboard(daily_custom_edit_text);
+                    daily_custom_edit_text.setCursorVisible(false);
             }
             return false;
         }
@@ -343,6 +367,8 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         dialog = new OneTextTwoButton_CustomDialog(List1DailyActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
@@ -359,7 +385,17 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
+
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }
 
 }

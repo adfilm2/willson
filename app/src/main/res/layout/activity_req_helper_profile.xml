@@ -18,7 +18,7 @@
 
             <include
                 android:id="@+id/toolbar_asker"
-                layout="@layout/toolbar_helper_profile"/>
+                layout="@layout/toolbar_list_helper"/>
 
             <ScrollView
                 android:layout_width="match_parent"

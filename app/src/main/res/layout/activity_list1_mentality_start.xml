@@ -28,6 +28,8 @@
         android:lineSpacingExtra="17sp"
         android:gravity="center_horizontal"
         android:text="자존감"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_r"
         />
 
     <TextView
@@ -37,7 +39,9 @@
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="13sp"
         android:gravity="center_horizontal"
-        android:text="알맞는 헬퍼를 찾기 위해 간단한\n고민 리스트를 작성해주세요! "
+        android:text="알맞는 헬퍼를 찾기 위해 간단한\n고민 리스트를 작성해주세요!"
+        android:textStyle="normal"
+        android:fontFamily="@font/nanum_square_b"
         />
 
     <LinearLayout
@@ -66,6 +70,8 @@
             android:textColor="@color/white"
             android:id="@+id/list1_mentality_start_btn"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"
             />
 
 

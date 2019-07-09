@@ -4,38 +4,35 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/activity_helper_signup_confirm_toolbar"
-        layout="@layout/toolbar_helper_sign_up_confirm"/>
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_list_helper"/>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textAlignment="center"
         android:text="본인의 신분증 확인을 위해 주민등록증\n혹은 운전면허증을 준비해주세요."
         android:textColor="@color/dark_purple"
         android:lineSpacingExtra="14sp"
         android:textSize="18sp"
-        android:layout_marginLeft="36.8dp"
-        android:layout_marginRight="41.2dp"
         android:layout_marginTop="34.6dp"
         android:layout_marginBottom="34.9dp"
         android:textStyle="normal"
-        android:fontFamily="@font/nanum_square_b"
-        />
+        android:fontFamily="@font/nanum_square_b" />
 
     <ImageView
         android:layout_width="219dp"
         android:layout_height="163dp"
-        android:layout_marginLeft="71dp"
-        android:layout_marginRight="70dp"
+        android:layout_marginHorizontal="70dp"
         android:layout_marginBottom="20dp"
         android:src="@drawable/helper_signup_img_id"
-        android:layout_gravity="center"
-        />
+        android:layout_gravity="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="31dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginBottom="22dp"
@@ -46,7 +43,7 @@
             android:layout_height="28dp"
             android:background="@drawable/circle_purple"
             android:text="1"
-            android:layout_gravity="top"
+            android:layout_gravity="center"
             android:textColor="@color/white"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="31dp"
@@ -58,10 +55,10 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="신분증을 앞면이 보이도록 놓아주세요 어두운\n바닥에 놓으면 더 인식이 잘 됩니다."
+            android:text="신분증을 앞면이 보이도록 놓아주세요.\n어두운 바닥에 놓으면 인식이 더 잘 됩니다."
             android:textColor="@color/dark_purple"
-            android:lineSpacingExtra="14sp"
-            android:textSize="18sp"
+            android:lineSpacingExtra="10sp"
+            android:textSize="14sp"
             android:layout_marginRight="31dp"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
@@ -71,6 +68,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="31dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginBottom="22dp"
@@ -81,7 +79,7 @@
             android:layout_height="28dp"
             android:background="@drawable/circle_purple"
             android:text="2"
-            android:layout_gravity="top"
+            android:layout_gravity="center"
             android:textColor="@color/white"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="31dp"
@@ -93,19 +91,19 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="가이드 영역에 맞추어 반드시 신분증 원본으로\n촬영하세요."
+            android:text="가이드 영역에 맞추어 반드시 신분증 원본으로 촬영하세요."
             android:textColor="@color/dark_purple"
-            android:lineSpacingExtra="14sp"
-            android:textSize="18sp"
+            android:lineSpacingExtra="10sp"
+            android:textSize="14sp"
             android:layout_marginRight="31dp"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
             />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="31dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_marginBottom="22dp"
@@ -128,22 +126,22 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="빛 반사에 주의하세요. 정보 확인이 어렵거나,\n훼손/ 유효하지 않은 신분증은 거절되거나\n이후 거래가 제한될수 있습니다."
+            android:text="빛 반사에 주의하세요. 정보 확인이 어렵거나, 훼손/유호하지 않은 신분증은 거절되거나 이후 거래가 제한될수 있습니다."
             android:textColor="@color/dark_purple"
-            android:lineSpacingExtra="14sp"
-            android:textSize="18sp"
+            android:lineSpacingExtra="10sp"
+            android:textSize="14sp"
             android:layout_marginRight="31dp"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
             />
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="31dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginBottom="21.3dp"
+        android:layout_marginBottom="22dp"
         >
 
         <Button
@@ -151,7 +149,7 @@
             android:layout_height="28dp"
             android:background="@drawable/circle_purple"
             android:text="4"
-            android:layout_gravity="top"
+            android:layout_gravity="center"
             android:textColor="@color/white"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="31dp"
@@ -163,15 +161,20 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="제출시 주변 영역도 포함되니 촬영시 주의해\n주세요."
+            android:text="제출시 주변 영역도 포함되니 촬영시 주의해 주세요."
             android:textColor="@color/dark_purple"
-            android:lineSpacingExtra="14sp"
-            android:textSize="18sp"
+            android:lineSpacingExtra="10sp"
+            android:textSize="14sp"
             android:layout_marginRight="31dp"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
             />
     </LinearLayout>
+
+
+
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

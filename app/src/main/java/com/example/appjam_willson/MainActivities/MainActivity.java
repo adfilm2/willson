@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity{
         final TextView text_chat=findViewById(R.id.text_chat);
         final TextView text_mypage=findViewById(R.id.text_mypage);
 
-        //MainFragment1을 자동으로 띄워줌줌
+        //MainFragment1을 자동으로 띄워줌
         startMainView();
         changeImage(image_home,image_chat,image_mypage,image_request);
         changeTextColor(text_home,text_request,text_chat,text_mypage);
