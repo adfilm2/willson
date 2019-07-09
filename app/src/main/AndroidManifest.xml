@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity"></activity>
         <activity android:name=".TestActivity"/>
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart" />
