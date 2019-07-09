@@ -2,46 +2,39 @@ package com.example.appjam_willson.model;
 
 import java.util.List;
 
-public class WorryCategoryResponseModel {
+public class WorryCategoryWatchResponseModel {
 
-    public Result result;
+   int code;
+   String message;
+   Data data;
 
-    /*getter and setter start*/
+   /*getter and setter start*/
 
-    public Result getResult() {
-        return result;
+    public int getCode() {
+        return code;
     }
 
-    public void setResult(Result result) {
-        this.result = result;
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void setData(Data data) {
+        this.data = data;
     }
 
     /*getter and setter end*/
-
-    public class Result {
-        int code;
-        Data data;
-
-        /*getter and setter start*/
-
-        public int getCode() {
-            return code;
-        }
-
-        public void setCode(int code) {
-            this.code = code;
-        }
-
-        public Data getData() {
-            return data;
-        }
-
-        public void setData(Data data) {
-            this.data = data;
-        }
-
-        /*getter and setter end*/
-    }
 
     public class Data {
         List<CategoryList> categoryList;

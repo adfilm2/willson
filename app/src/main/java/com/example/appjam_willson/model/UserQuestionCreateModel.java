@@ -1,11 +1,14 @@
 package com.example.appjam_willson.model;
 
-public class WorryQuestionCreateModel {
+public class UserQuestionCreateModel {
 
     public Question question;
     public int[] feeling;
+    //int feeling_idx
     public int[] personality;
+    //int personality_idx
     public int[] experience;
+    //int experience_idx
 
     /*getter and setter start*/
 
@@ -50,7 +53,7 @@ public class WorryQuestionCreateModel {
         int advise;
         int experience;
         enum agreement {
-            o, x
+            agree, disagree
         }
         int categoryList_idx;
         enum helper_gender {

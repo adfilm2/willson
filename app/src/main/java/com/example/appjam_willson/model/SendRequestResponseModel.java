@@ -1,10 +1,10 @@
 package com.example.appjam_willson.model;
 
-public class LoginResponseModel {
+public class SendRequestResponseModel {
 
     int code;
     String message;
-    Data data;
+    Object data;
 
     /*getter and setter start*/
 
@@ -24,30 +24,14 @@ public class LoginResponseModel {
         this.message = message;
     }
 
-    public Data getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(Object data) {
         this.data = data;
     }
 
     /*getter and setter end*/
-
-    public class Data {
-        String Token;
-
-        /*getter and setter start*/
-
-        public String getToken() {
-            return Token;
-        }
-
-        public void setToken(String token) {
-            Token = token;
-        }
-
-        /*getter and setter end*/
-    }
 
 }

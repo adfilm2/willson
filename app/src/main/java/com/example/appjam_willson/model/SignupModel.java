@@ -2,24 +2,12 @@ package com.example.appjam_willson.model;
 
 public class SignupModel {
 
-    public User user;
 
-    /*getter and setter start*/
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    /*getter and setter end*/
 
     public static class User {
 
         String nickname;
-        enum gender { 남, 여, 모두  }
+        enum gender { 남, 여 }
         int age;
         String email;
         String password;
