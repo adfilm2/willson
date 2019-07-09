@@ -225,9 +225,16 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
 
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    etc_custom_edit_text.setTextColor(backcolor);
                     hidekeyboard(etc_custom_edit_text);
+                    String title;
+                    title = etc_custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_etc_nextbtn.setEnabled(false);
+                        etc_custom_text.setVisibility(View.VISIBLE);
+                        etc_custom_edit_text.setVisibility(View.INVISIBLE);
+                        etc_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
+                    etc_custom_edit_text.setCursorVisible(false);
             }
             return false;
         }
@@ -246,13 +253,29 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(etc_custom_edit_text);
+            if(etc_custom_edit_text.isFocused()){
+                String title;
+                title = etc_custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    list1_etc_nextbtn.setEnabled(false);
+                    etc_custom_text.setVisibility(View.VISIBLE);
+                    etc_custom_edit_text.setVisibility(View.INVISIBLE);
+                    etc_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                }
+                else{
+                    list1_etc_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(etc_custom_edit_text);
+                etc_custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
     public void Dialog() {
         dialog = new OneTextTwoButton_CustomDialog(List1EtcActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
+
+        dialog.setCanceledOnTouchOutside(false);
 
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
@@ -270,6 +293,9 @@ public class List1EtcActivity extends AppCompatActivity implements OnClickListen
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

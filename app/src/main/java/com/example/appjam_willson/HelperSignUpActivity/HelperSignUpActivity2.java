@@ -48,7 +48,6 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     Typeface typebold;
     Typeface typereg;
 
-    View view;
     ImageView btn;
     Bundle bundle2 = new Bundle();
 
@@ -57,7 +56,6 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up2);
 
-        view = (View)findViewById(R.id.toolbar);
         btn =(ImageView)findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 

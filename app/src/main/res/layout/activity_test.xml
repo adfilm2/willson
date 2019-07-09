@@ -7,10 +7,9 @@
     tools:context=".TestActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="104dp" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/test_button"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,8 +54,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     Typeface typereg;
 
     String small_category;
-    Bundle bundle1;
-
+    Bundle bundle1 = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -212,7 +211,6 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         }
         else{}
 
-
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
@@ -237,7 +235,21 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(course_custom_edit_text);
+            if(course_custom_edit_text.isFocused()){
+                String title;
+                title = course_custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    list1_course_nextbtn.setEnabled(false);
+                    course_custom_text.setVisibility(View.VISIBLE);
+                    course_custom_edit_text.setVisibility(View.INVISIBLE);
+                    course_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                }
+                else{
+                    list1_course_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(course_custom_edit_text);
+                course_custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
@@ -308,12 +320,18 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
     class course_custom_edit_listener implements View.OnKeyListener {
         @Override
         public boolean onKey(View view, int i, KeyEvent keyEvent) {
-
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    course_custom_edit_text.setTextColor(backcolor);
+                    String title;
+                    title = course_custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_course_nextbtn.setEnabled(false);
+                        course_custom_text.setVisibility(View.VISIBLE);
+                        course_custom_edit_text.setVisibility(View.INVISIBLE);
+                        course_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
                     hidekeyboard(course_custom_edit_text);
+                    course_custom_edit_text.setCursorVisible(false);
             }
             return false;
         }
@@ -333,6 +351,8 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         dialog = new OneTextTwoButton_CustomDialog(List1CourseActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
@@ -349,6 +369,9 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

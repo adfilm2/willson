@@ -47,7 +47,6 @@
 
 
         <TextView
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="54.9dp"
@@ -65,7 +64,9 @@
             android:lineSpacingExtra="15sp"
             android:text="영향이 클수록 큰 숫자를 골라주세요"
             android:textColor="#616161"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"/>
 
     </LinearLayout>
     <LinearLayout

@@ -2,27 +2,22 @@ package com.example.appjam_willson.model;
 
 public class HelperRegistModel {
 
-    public Helper helper;
+
+    public Helper_info helper;
     public Helper_Exeperience experience;
 
     public HelperRegistModel() {
-        this.helper = new Helper();
+        this.helper = new Helper_info();
         this.experience = new Helper_Exeperience();
     }
 
-//    public HelperRegistModel(String title,String content,String category_name,String categoryList_name, String[] experience){
-//        this.helper.title= title;
-//        this.helper.content = content;
-//        this.helper.category_name = category_name;
-//        this.helper.categoryList_name = categoryList_name;
-//        this.experience.experience_name = experience;
-//    }
+    /*getter and setter start*/
 
-    public Helper getHelper() {
+    public Helper_info getHelper() {
         return helper;
     }
 
-    public void setHelper(Helper helper) {
+    public void setHelper(Helper_info helper) {
         this.helper = helper;
     }
 
@@ -34,12 +29,24 @@ public class HelperRegistModel {
         this.experience = experience;
     }
 
+<<<<<<< HEAD
     public static class Helper {
+=======
+    /*getter and setter end*/
+
+    public class Helper_info {
+
+>>>>>>> da47e518fd0974a34744f7ebf3ffea2e4595af5f
         public String category_name;
         public String categoryList_name;
         public String title;
         public String content;
 
+<<<<<<< HEAD
+=======
+        /*getter and setter start*/
+
+>>>>>>> da47e518fd0974a34744f7ebf3ffea2e4595af5f
         public String getCategory_name() {
             return category_name;
         }
@@ -71,11 +78,25 @@ public class HelperRegistModel {
         public void setContent(String content) {
             this.content = content;
         }
+<<<<<<< HEAD
     }
 
     public static class Helper_Exeperience {
         public String[] experience_name;
 
+=======
+
+        /*getter and setter end*/
+
+    }
+
+    public class Helper_Exeperience {
+
+        public String[] experience_name;
+
+        /*getter and setter start*/
+
+>>>>>>> da47e518fd0974a34744f7ebf3ffea2e4595af5f
         public String[] getExperience_name() {
             return experience_name;
         }
@@ -83,6 +104,15 @@ public class HelperRegistModel {
         public void setExperience_name(String[] experience_name) {
             this.experience_name = experience_name;
         }
+<<<<<<< HEAD
     }
 
 }
+=======
+
+        /*getter and setter end*/
+
+    }
+
+}
+>>>>>>> da47e518fd0974a34744f7ebf3ffea2e4595af5f

@@ -315,7 +315,21 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
     class list_background_listener implements OnClickListener {
         @Override
         public void onClick(View view) {
-            hidekeyboard(mentality_custom_edit_text);
+            if(mentality_custom_edit_text.isFocused()){
+                String title;
+                title = mentality_custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    list1_mentality_nextbtn.setEnabled(false);
+                    mentality_custom_text.setVisibility(View.VISIBLE);
+                    mentality_custom_edit_text.setVisibility(View.INVISIBLE);
+                    mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                }
+                else{
+                    list1_mentality_nextbtn.setEnabled(true);
+                }
+                hidekeyboard(mentality_custom_edit_text);
+                mentality_custom_edit_text.setCursorVisible(false);
+            }
         }
     }
 
@@ -386,7 +400,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
             list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
             mentality_custom_text.setVisibility(View.INVISIBLE);
             mentality_custom_edit_text.setVisibility(View.VISIBLE);
-            mentality_custom_edit_text.setCursorVisible(false);
+            mentality_custom_edit_text.setCursorVisible(true);
             int backcolor = getResources().getColor(R.color.white);
             mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
             mentality_custom_edit_text.setTextColor(backcolor);
@@ -400,9 +414,16 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
 
             switch (i) {
                 case KeyEvent.KEYCODE_ENTER :
-                    int backcolor = getResources().getColor(R.color.white);
-                    mentality_custom_edit_text.setTextColor(backcolor);
                     hidekeyboard(mentality_custom_edit_text);
+                    String title;
+                    title = mentality_custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        list1_mentality_nextbtn.setEnabled(false);
+                        mentality_custom_text.setVisibility(View.VISIBLE);
+                        mentality_custom_edit_text.setVisibility(View.INVISIBLE);
+                        mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
+                    mentality_custom_edit_text.setCursorVisible(false);
             }
             return false;
         }
@@ -422,6 +443,8 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         dialog = new OneTextTwoButton_CustomDialog(List1MentalityActivity.this, resid,
                 "정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!", "계속 작성하기", "그만하기", keepListener, exitListener);
 
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
@@ -438,6 +461,9 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         @Override
         public void onClick(View view) {
             dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
         }
     };
 

@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="17sp"
-                android:layout_marginLeft="21.1dp"
+                android:layout_marginLeft="21dp"
                 android:textColor="@color/dark_purple"
                 android:lineSpacingExtra="13sp"
                 android:text="공감을 얻고싶어요"
@@ -99,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:layout_marginTop="7.9dp"
                 android:layout_marginBottom="0.6dp"
                 android:textSize="16sp"
@@ -127,7 +128,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="21dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:layout_marginTop="7.6dp"
                 android:layout_marginBottom="19.6dp"
                 android:textStyle="normal"
@@ -156,15 +158,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9.8dp"
-                android:layout_marginLeft="21dp"
+                android:layout_marginTop="7.6dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:layout_marginBottom="0.4dp"
                 android:textSize="16sp"
                 android:textColor="@color/middlepurple"
                 android:lineSpacingExtra="9sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_r"
-                android:text="저와 비슷한 상황에서의 답변자분이 겪은 경험을\n듣고 싶어요"
+                android:text="저와 비슷한 상황에서의 답변자분이 겪은 경험을 듣고 싶어요"
                 />
 
             <include android:id="@+id/list7_radioGroup3" layout="@layout/radio_btn"/>
@@ -176,7 +179,6 @@
         </LinearLayout>
 
     </ScrollView>
-
         <Button
             android:id="@+id/submit"
             android:layout_width="match_parent"

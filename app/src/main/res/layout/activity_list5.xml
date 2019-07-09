@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="원하는 헬퍼는 어떤 분인가요? (1/3)"
+            android:text="어떤 헬퍼와 이야기하고 싶나요? (1/3)"
             android:textColor="@color/darkPurple"
             android:textSize="19sp"
             android:textStyle="normal"
@@ -80,7 +80,9 @@
                 android:layout_marginRight="14.4dp"
                 android:textColor="@color/text_color_selector"
                 android:checked="true"
-                android:background="@drawable/btn_selector"/>
+                android:background="@drawable/btn_selector"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"/>
 
             <RadioButton
                 android:id="@+id/woman_btn"
@@ -92,7 +94,9 @@
                 android:layout_weight="1"
                 android:textColor="@color/text_color_selector"
                 android:checked="false"
-                android:background="@drawable/btn_selector"/>
+                android:background="@drawable/btn_selector"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"/>
 
             <RadioButton
                 android:id="@+id/all_btn"
@@ -105,7 +109,9 @@
                 android:layout_weight="1"
                 android:textColor="@color/text_color_selector"
                 android:checked="true"
-                android:background="@drawable/btn_selector"/>
+                android:background="@drawable/btn_selector"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"/>
 
         </RadioGroup>
 

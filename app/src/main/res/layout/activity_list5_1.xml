@@ -73,16 +73,19 @@
         />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="22dp"
         >
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#신중한"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.73"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -91,12 +94,16 @@
             android:background="@drawable/character_btn_selector_3_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#호의적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.86"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -105,12 +112,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#경쟁심있는"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -119,6 +130,8 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
 
@@ -126,6 +139,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#절제하는"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.86"
             android:button="@color/trans"
             android:onClick="char_check"
             android:checked="false"
@@ -133,21 +148,26 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="44dp"
         >
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#열정적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -156,12 +176,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#상냥한"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.85"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -170,12 +194,16 @@
             android:background="@drawable/character_btn_selector_3_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#단호한"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.85"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -184,12 +212,16 @@
             android:background="@drawable/character_btn_selector_3_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#내향적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:button="@color/trans"
             android:onClick="char_check"
             android:checked="false"
@@ -197,21 +229,26 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="92dp"
         >
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#사교적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.86"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -220,12 +257,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#충동적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.86"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -234,12 +275,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#변덕스러운"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:button="@color/trans"
             android:onClick="char_check"
             android:checked="false"
@@ -247,21 +292,26 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="23dp"
         >
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#독립적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -270,12 +320,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#고집있는"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -284,12 +338,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#모험적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -298,12 +356,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#분석적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:button="@color/trans"
             android:onClick="char_check"
             android:checked="false"
@@ -311,21 +373,26 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="45dp"
         >
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#주저하는"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -334,12 +401,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#논리적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -348,12 +419,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#꼼꼼한"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.85"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -362,12 +437,16 @@
             android:background="@drawable/character_btn_selector_3_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#느긋한"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.85"
             android:button="@color/trans"
             android:onClick="char_check"
             android:checked="false"
@@ -375,21 +454,26 @@
             android:background="@drawable/character_btn_selector_3_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="22dp"
         >
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#완벽주의자"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -398,12 +482,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#낙천적인"
+            android:text="#긍정적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.86"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -412,12 +500,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#감성적인"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.86"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -426,12 +518,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#대담한"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.73"
             android:button="@color/trans"
             android:onClick="char_check"
             android:checked="false"
@@ -439,22 +535,27 @@
             android:background="@drawable/character_btn_selector_3_letters"
             android:layout_marginBottom="9dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginLeft="20dp"
+        android:layout_marginRight="91dp"
         >
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#우유부단한"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -463,12 +564,16 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="20dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#솔직한"
+            android:gravity="center_horizontal"
+            android:layout_weight="0.73"
             android:layout_marginRight="7dp"
             android:button="@color/trans"
             android:onClick="char_check"
@@ -477,12 +582,16 @@
             android:background="@drawable/character_btn_selector_3_letters"
             android:layout_marginBottom="20dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#이끌어가는"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:button="@color/trans"
             android:onClick="char_check"
             android:checked="false"
@@ -490,6 +599,8 @@
             android:background="@drawable/character_btn_selector_4and5_letters"
             android:layout_marginBottom="20dp"
             android:elevation="9dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
             />
 
     </LinearLayout>
@@ -511,7 +622,7 @@
             android:elevation="9dp"
             android:textSize="13sp"
             android:textStyle="normal"
-            android:fontFamily="@font/nanum_square_eb"
+            android:fontFamily="@font/nanum_square_b"
             android:textColor="#FFFFFF" />
     </RelativeLayout>
 </LinearLayout>

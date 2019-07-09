@@ -104,6 +104,8 @@ public class ListAgreementActivity extends AppCompatActivity {
         dialog = new OneTextTwoButton_CustomDialog(ListAgreementActivity.this, resid,
                 "이제 거의 다왔어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
+        dialog.setCanceledOnTouchOutside(false);
+
         dialog.setCancelable(true);
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.show();
