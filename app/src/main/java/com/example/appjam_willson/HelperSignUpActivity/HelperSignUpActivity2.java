@@ -49,6 +49,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     Typeface typereg;
 
     ImageView btn;
+    Bundle bundle2 = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        signup_backbtn = (ImageView) findViewById(R.id.h_su_btn_backbtn);
+        signup_backbtn = (ImageView)findViewById(R.id.back_btn);
         signup_backbtn.setOnClickListener(new signup_backbtn_listener());
 
         linear1 = (LinearLayout)findViewById(R.id.linear1);
@@ -176,6 +177,28 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE){
+            switch (resultCode){
+                case RESULT_OK:
+                    bundle2 = data.getExtras();
+                    bundle2.putString("content",helper_experience.getText().toString());
+                    bundle2.putString("tag1",edit1.getText().toString());
+                    bundle2.putString("tag2",edit2.getText().toString());
+                    bundle2.putString("tag3",edit3.getText().toString());
+
+                    data.putExtras(bundle2);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+                case RESULT_CANCELED:
+                    finish();
+            }
+        }
+    }
+
     class edit_exper implements View.OnFocusChangeListener {
         @Override
         public void onFocusChange(View view, boolean b) {
@@ -253,6 +276,8 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     class signup_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+
+
             Intent intent = new Intent(context, HelperSignupActivity3.class);
             startActivityForResult(intent, REQUEST_CODE);
         }
@@ -311,8 +336,10 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     class signup_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            finish();
-        }
+            Intent intent = new Intent();
+            intent.putExtra("result", "BACK");
+            setResult(REQUEST_CODE, intent);
+            finish();        }
     }
 
 

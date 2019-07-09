@@ -3,7 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include android:id="@+id/signupstart" layout="@layout/toolbar_list_helper"/>
+    <include android:id="@+id/signupstart"
+        layout="@layout/toolbar_list_helper"/>
+
     <ImageView
         android:layout_width="141.1dp"
         android:layout_height="127.2dp"
@@ -39,13 +41,7 @@
         android:fontFamily="@font/nanum_square_r"
         android:layout_marginLeft="78.7dp"
         android:layout_marginRight="78.7dp"
-
-
-
         />
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"

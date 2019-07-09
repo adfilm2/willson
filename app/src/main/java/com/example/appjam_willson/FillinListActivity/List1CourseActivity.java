@@ -337,7 +337,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
         }
     }
 
-    private void hidekeyboard(EditText edit) {
+       private void hidekeyboard(EditText edit) {
         InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
