@@ -223,7 +223,7 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
 
 
-            Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().add_category(token,worryCategoryListAddModel);
+            Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().concern_category_list_post(token,worryCategoryListAddModel);
 
             call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
                 @Override

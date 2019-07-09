@@ -69,7 +69,7 @@ public class List1CourseStartActivity extends AppCompatActivity {
                     // 아이디
                     // createWorryModel.feeling = data.getStringArrayExtra("feeling");
                     String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
-                    Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().create_model(token, createWorryModel);
+                    Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().create_model_post(token, createWorryModel);
                     call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
                         @Override
                         public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
