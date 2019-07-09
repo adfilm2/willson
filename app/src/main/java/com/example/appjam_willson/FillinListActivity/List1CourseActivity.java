@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.WorryCategoryListAddModel;
 
 public class List1CourseActivity extends AppCompatActivity implements OnClickListener {
 
@@ -207,6 +208,10 @@ public class List1CourseActivity extends AppCompatActivity implements OnClickLis
             small_category = transfer.getText().toString();
         }
         else if (course_custom_edit_text.isFocused()){
+            //통신
+            WorryCategoryListAddModel worryCategoryListAddModel = new WorryCategoryListAddModel();
+            worryCategoryListAddModel.category_idx = 2;
+            worryCategoryListAddModel.categoryList_name = course_custom_edit_text.getText().toString();
             small_category = course_custom_edit_text.getText().toString();
         }
         else{}

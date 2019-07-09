@@ -3,26 +3,29 @@ package com.example.appjam_willson.model;
 import android.support.v4.app.INotificationSideChannel;
 
 public class CreateWorryModel {
-    private Question quesition;
-    private Integer[] feeling;
-    private Integer[] personality;
-    private Integer[] experience;
 
-    public class Question{
-        String weight;
-        String content;
-        Integer emotion;
-        Integer advise;
-        Integer experience;
-        Enum agreement;
-        Integer categoryList_idx;
-        Enum helper_gender;
+    public Question question;
+    public Integer[] feeling;
+    public Integer[] personality;
+    public Integer[] experience;
 
-        public String getWeight() {
+    public static class Question{
+        public Integer weight;
+        public String content;
+        public Integer emotion;
+        public Integer advise;
+        public Integer experience;
+        public Integer categoryList_idx;
+        public Agreement agreement;
+        public Helper_gender helper_gender;
+        public enum Agreement { agree, disagree}
+        public enum Helper_gender { 남, 여, 모두 }
+
+        public Integer getWeight() {
             return weight;
         }
 
-        public void setWeight(String weight) {
+        public void setWeight(Integer weight) {
             this.weight = weight;
         }
 
@@ -58,13 +61,9 @@ public class CreateWorryModel {
             this.experience = experience;
         }
 
-        public Enum getAgreement() {
-            return agreement;
-        }
-
-        public void setAgreement(Enum agreement) {
-            this.agreement = agreement;
-        }
+//        public void setAgreement(Enum agreement) {
+//            this.agreement = agreement;
+//        }
 
         public Integer getCategoryList_idx() {
             return categoryList_idx;
@@ -74,13 +73,10 @@ public class CreateWorryModel {
             this.categoryList_idx = categoryList_idx;
         }
 
-        public Enum getHelper_gender() {
-            return helper_gender;
-        }
-
-        public void setHelper_gender(Enum helper_gender) {
-            this.helper_gender = helper_gender;
-        }
+//
+//        public void setHelper_gender(Enum helper_gender) {
+//            this.helper_gender = helper_gender;
+//        }
 
     }
 

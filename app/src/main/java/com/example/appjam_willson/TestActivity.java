@@ -27,7 +27,7 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        btn = findViewById(R.id.test_button);
+        btn = findViewById(R.id.button);
 
 /*        retrofit = new Retrofit.Builder()
                 .baseUrl("http://13.125.216.169/api/")

@@ -2,8 +2,8 @@ package com.example.appjam_willson.model;
 
 public class WorryCategoryListAddModel {
 
-    int category_idx;
-    String categoryList_name;
+    public int category_idx;
+    public String categoryList_name;
 
     /*getter and setter start*/
 

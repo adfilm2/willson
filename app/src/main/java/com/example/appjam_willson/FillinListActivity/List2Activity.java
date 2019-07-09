@@ -36,10 +36,6 @@ public class List2Activity extends AppCompatActivity {
 
     String[] strings = new String[3];
 
-    String feeling1;
-    String feeling2;
-    String feeling3;
-
     Typeface typebold;
     Typeface typereg;
 
@@ -83,9 +79,8 @@ public class List2Activity extends AppCompatActivity {
 //                    Log.d(">>>data의 advice >>> ","gg"+gg);
 
                     bundle2 = data.getExtras();
-                    bundle2.putString("feeling1",feeling1);
-                    bundle2.putString("feeling2",feeling2);
-                    bundle2.putString("feeling3",feeling3);
+                    bundle2.putStringArray("feeling",strings);
+
 
                     data.putExtras(bundle2);
                     setResult(RESULT_OK,data);
@@ -165,9 +160,6 @@ public class List2Activity extends AppCompatActivity {
     class list2_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            feeling1 = strings[0];
-            feeling2 = strings[1];
-            feeling3 = strings[2];
 
 
             Intent intent = new Intent(context, List3Activity.class);
