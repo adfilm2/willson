@@ -34,8 +34,8 @@
             >
             <ImageView
                 android:id="@+id/willsonImage_receive"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8.6dp"
                 android:background="@drawable/tab_02_request_btn"
                 />
@@ -62,8 +62,8 @@
             >
             <ImageView
                 android:id="@+id/willsonImage_chat"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8.6dp"
                 android:background="@drawable/tab_03_chat_btn"
                 />
@@ -90,10 +90,10 @@
             >
             <ImageView
                 android:id="@+id/willsonImage_profile"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8.6dp"
-                android:background="@drawable/helper_tab_03_profile"
+                android:background="@drawable/helper_tab_03_profile_btn"
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -118,8 +118,8 @@
             >
             <ImageView
                 android:id="@+id/willsonImage_mypage"
-                android:layout_width="23dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="8.6dp"
                 android:background="@drawable/tab_04_mypage_btn"
                 />

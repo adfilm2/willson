@@ -50,7 +50,7 @@ public class MainFragment2 extends Fragment {
             fragment2Adapter = new Fragment2Adapter(willsonModels, getActivity());
             fragment2_recyclerView.setAdapter(fragment2Adapter);
 
-            callWillson(myUid);
+//            callWillson(myUid);
 
             return view;
     }

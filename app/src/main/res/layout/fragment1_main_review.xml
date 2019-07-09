@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="21dp"
+    android:layout_marginRight="26.9dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fragment1_story_img"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="17.2dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:id="@+id/fragment1_review_subject"
+                android:text="진로"
+                android:fontFamily="@font/nanum_square_eb"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/light_purple"
+                android:background="@drawable/main_profiletext"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="14dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16.8dp"
+                android:id="@+id/fragment1_review_content"
+                android:text="“ 큰 기대하지 않고 진로에 대한 고민을 신청했는데\n답변자님이 정말 진지하게 전문적으로 상담해주셔서\n너무 도움이 되었습니다. 감사합니다. ”"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum_square_round_b"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/fragment1_review_userInfo"
+                android:text="- 기계과 전공으로 진로에 대해 고민 중인 릴라님-"
+                android:textSize="13sp"
+                android:textColor="@color/dark_purple"
+                android:fontFamily="@font/nanum_square_r"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,13 +1,14 @@
 package com.example.appjam_willson.NetworkService;
 
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
 
     private String baseURL = "http://13.125.216.169/api/";
-    private static RetrofitService ourInstance = new RetrofitService();
 
+    private static RetrofitService ourInstance = new RetrofitService();
     public static RetrofitService getInstance() {
         return ourInstance;
     }

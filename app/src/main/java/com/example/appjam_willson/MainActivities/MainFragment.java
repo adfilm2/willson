@@ -11,16 +11,17 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appjam_willson.FillinListActivity.List1CourseStartActivity;
@@ -29,16 +30,19 @@ import com.example.appjam_willson.FillinListActivity.List1EtcStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
-import com.example.appjam_willson.HelperSignUpActivity.HelperSignUpStartActivity;
+import com.example.appjam_willson.NetworkService.RetrofitAPI;
+import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
-import com.example.appjam_willson.model.WillsonModel;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.appjam_willson.model.HelperStoryModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator2;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class MainFragment extends Fragment {
 
@@ -53,10 +57,13 @@ public class MainFragment extends Fragment {
 
     private StoryAdapter storyAdapter;
     private RecyclerView storyRecyclerView;
-    private List<WillsonModel> willsonModels;
-    private LinearLayoutManager linearLayoutManager;
-    private String myuid;
+    private LinearLayoutManager storyLayoutManager;
+    private List<HelperStoryModel.story> storyAdapterModels;
 
+    private ReviewAdapter reviewAdapter;
+    private RecyclerView reviewRecyclerView;
+    private LinearLayoutManager reviewLayoutManager;
+    private List<HelperStoryModel.story> reviewAdapterModels;
 
     public MainFragment(){
 
@@ -75,11 +82,18 @@ public class MainFragment extends Fragment {
         TextView main_fragment1_text = view.findViewById(R.id.main_fragment1_text);
         TextView main_fragment1_textSecond = view.findViewById(R.id.main_fragment1_textSecond);
         TextView main_fragment1_textThird = view.findViewById(R.id.main_fragment1_textThird);
-        storyRecyclerView = view.findViewById(R.id.fragment1_recyclerView);
+        storyRecyclerView = view.findViewById(R.id.fragment1_rv);
+        reviewRecyclerView = view.findViewById(R.id.fragment1_rv_second);
+
 
         LinearLayout changeMode = view.findViewById(R.id.helper_fragment1_change);
 
-       /* myuid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
+
+
+
+        Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(token);
+        call_helper.enqueue(retrofitCallback);
 
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,20 +146,44 @@ public class MainFragment extends Fragment {
         changeMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity() , HelperSignUpStartActivity.class);
+                Intent intent = new Intent(getActivity() , HelperActivity.class);
                 startActivity(intent);
             }
         });
 
-        willsonModels = new ArrayList<>();
+        storyAdapterModels = new ArrayList<>();
         storyRecyclerView.setHasFixedSize(true);
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        storyRecyclerView.setLayoutManager(linearLayoutManager);
-        storyAdapter = new StoryAdapter(willsonModels,getActivity());
+        storyLayoutManager = new LinearLayoutManager(getActivity());
+        storyLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        storyRecyclerView.setLayoutManager(storyLayoutManager);
+        storyAdapter = new StoryAdapter(storyAdapterModels,getActivity());
         storyRecyclerView.setAdapter(storyAdapter);
 
-        callWillson(myuid);
+        // 스토리   리사이클러뷰의 아이템 번호를 읽은 뒤, 고정 시켜주는 기능
+        PagerSnapHelper pagerSnapHelper = new PagerSnapHelper();
+        pagerSnapHelper.attachToRecyclerView(storyRecyclerView);
+
+        // 스토리   밑에 동그라미 표시를 해주는 클래스
+        CircleIndicator2 indicator = view.findViewById(R.id.indicator);
+        indicator.attachToRecyclerView(storyRecyclerView, pagerSnapHelper);
+        storyAdapter.registerAdapterDataObserver(indicator.getAdapterDataObserver());
+
+//        reviewAdapterModels = new ArrayList<>();
+//        reviewRecyclerView.setHasFixedSize(true);
+//        reviewLayoutManager = new LinearLayoutManager(getActivity());
+//        reviewLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        reviewRecyclerView.setLayoutManager(reviewLayoutManager);
+//        reviewAdapter = new ReviewAdapter(reviewAdapterModels,getActivity());
+//        reviewRecyclerView.setAdapter(reviewAdapter);
+
+        //  리뷰   리사이클러뷰의 아이템 번호를 읽은 뒤, 고정 시켜주는 기능
+//        PagerSnapHelper pagerSnapHelper_second = new PagerSnapHelper();
+//        pagerSnapHelper_second.attachToRecyclerView(reviewRecyclerView);
+
+        //  리뷰    밑에 동그라미 표시를 해주는 클래스
+//        CircleIndicator2 indicator_second = view.findViewById(R.id.indicator_second);
+//        indicator_second.attachToRecyclerView(reviewRecyclerView, pagerSnapHelper_second);
+//        reviewAdapter.registerAdapterDataObserver(indicator_second.getAdapterDataObserver());
 
         //Text들의 특정 위치 색, 타입을 바꿔주는 메소드
         changeText(main_fragment1_text,7,9,"#5252a1");
@@ -165,29 +203,23 @@ public class MainFragment extends Fragment {
         text.setText(spannableStringBuilder_second);
     }
 
-    //추후에 맞는 값으로 변경할 예정
-    public void callWillson(final String myUid){
-        FirebaseDatabase.getInstance().getReference().child("testUsers").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                try{
-                    for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {
-                        WillsonModel users = dataSnapshot2.getValue(WillsonModel.class);
-                        if(users.getUid().equals(myUid)){
-                            continue;
-                        }
-                        willsonModels.add(users);
-                    }
-                    storyAdapter.notifyDataSetChanged();
+    private Callback<HelperStoryModel> retrofitCallback = new Callback<HelperStoryModel>() {
 
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
+        @Override
+        public void onResponse(Call<HelperStoryModel> call, Response<HelperStoryModel> response) {
+            HelperStoryModel result = response.body();
+            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.code);
+            Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result.data.size()));
+            for(int i=0;i<result.data.size();i++){
+                storyAdapterModels.add(result.data.get(i));
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            storyAdapter.notifyDataSetChanged();
+        }
 
-            }
-        });
-    }
+        @Override
+        public void onFailure(Call<HelperStoryModel> call, Throwable t) {
+            t.printStackTrace();
+            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+        }
+    };
 }

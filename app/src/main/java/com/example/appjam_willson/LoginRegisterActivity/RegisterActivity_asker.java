@@ -2,6 +2,7 @@ package com.example.appjam_willson.LoginRegisterActivity;
 
 
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,7 +22,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.SignupModel;
+import com.example.appjam_willson.model.SignupResponseModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,8 +38,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity_asker extends AppCompatActivity {
 
@@ -45,7 +54,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
     private String userNickname;
     private boolean nickNameCheck;
     private ArrayAdapter adapter;
-    private String userAge;
+    private int userAge;
     private String userGender;
 
     private FirebaseAuth mAuth;
@@ -65,6 +74,15 @@ public class RegisterActivity_asker extends AppCompatActivity {
         final TextView checkBox_text = findViewById(R.id.registerasker_checkBox_text);
 
         mAuth = FirebaseAuth.getInstance();
+
+        SignupModel signupModel = new SignupModel();
+
+//        retrofit = new Retrofit.Builder()
+//                .baseUrl("http://13.125.216.169/api/")
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//        retrofitAPI = retrofit.create(RetrofitAPI.class);
+
 
         adapter = ArrayAdapter.createFromResource(this, R.array.Age_group, android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
@@ -138,14 +156,24 @@ public class RegisterActivity_asker extends AppCompatActivity {
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String toCheckAge = ageSpinner.getSelectedItem().toString();
 
                 userEmail = idText.getText().toString();
                 userPassword = passwordText.getText().toString();
                 userNickname = nickName.getText().toString();
-                userAge = ageSpinner.getSelectedItem().toString();
+                userAge = Integer.parseInt(ageSpinner.getSelectedItem().toString());
+
+                signupModel.setAge(userAge);
+                signupModel.setDevice_token("toTest");
+                signupModel.setEmail(userEmail);
+                signupModel.setNickname(userNickname);
+                signupModel.setPassword(userPassword);
+                signupModel.setGender(userGender);
+
+                Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
 
                 if(userEmail.equals("") || userPassword.equals("") || userNickname.equals("") ||
-                        userAge.equals("나이를 선택해주세요.") || userGender.equals("")){
+                        toCheckAge.equals("나이를 선택해주세요.") || userGender.equals("")){
                     showAlert("빈 항목을 채워주세요.");
                     return ;
                 }
@@ -154,16 +182,20 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     showAlert("비밀번호를 다시 확인해주세요.");
                     return;
                 }
-                checkNickName(userNickname, new Runnable() {
-                    public void run() {
-                        if(nickNameCheck == false){
-                            showAlert("존재하는 닉네임 입니다.");
-                            Log.d("닉네임체크값",String.valueOf(nickNameCheck));
-                            return;
-                        }
-                        testRegisterUser(userEmail, userPassword);
-                    }
-                });
+                call_helper.enqueue(retrofitCallback);
+
+//                checkNickName(userNickname, new Runnable() {
+//                    public void run() {
+//                        if(nickNameCheck == false){
+//                            showAlert("존재하는 닉네임 입니다.");
+//                            Log.d("닉네임체크값",String.valueOf(nickNameCheck));
+//                            return;
+//                        }
+//                        new NetworkCall().execute(call_helper);
+//                        RegisterUser(userEmail, userPassword);
+
+//                    }
+//                });
             }
         });
 
@@ -181,6 +213,9 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 }
             }
         });
+
+
+
     }
 
     protected void showAlert(String message) {
@@ -222,7 +257,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
 
                             FirebaseUser user = mAuth.getCurrentUser();
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("users");
+                            DatabaseReference myRef = database.getReference("askerUsers");
 
                             String uid = user.getUid();
 
@@ -245,40 +280,43 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 });
     }
 
-    public void testRegisterUser(String email,String password){
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(RegisterActivity_asker.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(userEmail).build();
+    private class NetworkCall extends AsyncTask<Call, Void, SignupResponseModel> {
 
-                            task.getResult().getUser().updateProfile(userProfileChangeRequest);
+        @Override
+        protected SignupResponseModel doInBackground(Call[] params) {
+            try {
+                Call<SignupResponseModel> call = params[0];
+                Response<SignupResponseModel> response = call.execute();
+                return response.body();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
 
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("testUsers");
-
-                            String uid = user.getUid();
-
-                            Map<String, String> profile = new HashMap<>();
-                            profile.put("photo", "");
-                            profile.put("uid",uid);
-                            profile.put("nickName",userNickname);
-
-                            myRef.child(uid).setValue(profile);
-
-                            Toast.makeText(RegisterActivity_asker.this, "등록ㅊㅋㅊㅋ.",
-                                    Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                        else {
-                            Toast.makeText(RegisterActivity_asker.this, "등록된 이메일이거나 이메일 형식이 아닙니다.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+        @Override
+        protected void onPostExecute(SignupResponseModel result) {
+            SignupResponseModel signupResponseModel = new SignupResponseModel();
+            signupResponseModel = result;
+        }
     }
+
+    private Callback<SignupResponseModel> retrofitCallback = new Callback<SignupResponseModel>() {
+
+        @Override
+        public void onResponse(retrofit2.Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
+            SignupResponseModel result = response.body();
+            Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
+            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.getCode());
+        }
+
+        @Override
+        public void onFailure(Call<SignupResponseModel> call, Throwable t) {
+            t.printStackTrace();
+            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+            Log.d("서버 코드ㅡㅡㅡㅡㅡㅡ","ㅁㄴㅇㅁㄴㅇ");
+        }
+    };
 
     @Override
     protected void onStop(){

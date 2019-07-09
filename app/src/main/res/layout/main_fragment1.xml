@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -51,6 +51,7 @@
                     android:text="헬퍼전환"
                     android:textSize="11sp"
                     android:textColor="@color/dark_purple"
+                    android:fontFamily="@font/nanum_square_b"
                     />
 
             </LinearLayout>
@@ -71,6 +72,7 @@
                 android:text="당신의 고민\n매칭해보실래요?"
                 android:textSize="22sp"
                 android:textColor="@color/dark_purple"
+                android:fontFamily="@font/nanumsquare_r"
                 />
 
         </LinearLayout>
@@ -111,6 +113,7 @@
                     android:text="연애"
                     android:textSize="15sp"
                     android:textColor="@color/dark_purple"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
 
             </LinearLayout>
@@ -138,6 +141,7 @@
                     android:text="진로"
                     android:textSize="15sp"
                     android:textColor="@color/dark_purple"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
 
             </LinearLayout>
@@ -163,6 +167,7 @@
                     android:text="자존감"
                     android:textSize="15sp"
                     android:textColor="@color/dark_purple"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
 
             </LinearLayout>
@@ -202,10 +207,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="인간관계"
-                    android:textSize="15sp"
-                    android:textColor="@color/dark_purple"
                     android:gravity="center"
+                    android:text="인간관계"
+                    android:textColor="@color/dark_purple"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
 
             </LinearLayout>
@@ -234,6 +240,7 @@
                     android:text="일상"
                     android:textSize="15sp"
                     android:textColor="@color/dark_purple"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
 
             </LinearLayout>
@@ -261,6 +268,7 @@
                     android:text="기타"
                     android:textSize="15sp"
                     android:textColor="@color/dark_purple"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
 
             </LinearLayout>
@@ -274,6 +282,7 @@
             android:background="@drawable/main_img_helperstorybg"
             android:orientation="vertical"
             >
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -284,16 +293,24 @@
                 android:text="헬퍼들의\n이야기"
                 android:textColor="@color/white"
                 android:textSize="22sp"
+                android:fontFamily="@font/nanum_square_eb"
                 />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fragment1_recyclerView"
+                android:id="@+id/fragment1_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="36.4dp"
-                android:layout_marginRight="37.3dp"
-                >
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_marginRight="37.3dp"></androidx.recyclerview.widget.RecyclerView>
+
+            <me.relex.circleindicator.CircleIndicator2
+                android:id="@+id/indicator"
+                android:layout_marginTop="23.9dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                app:ci_drawable="@drawable/story_circle_active"
+                app:ci_drawable_unselected="@drawable/story_circle_nonactive"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -312,82 +329,26 @@
                 android:text="질문자들의\n후기"
                 android:textColor="@color/dark_purple"
                 android:textSize="22sp"
+                android:fontFamily="@font/nanumsquare_r"
                 />
-            <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment1_rv_second"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="21dp"
-                android:layout_marginRight="26.9dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36.4dp"
+                android:layout_marginRight="37.3dp"
                 >
+            </androidx.recyclerview.widget.RecyclerView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/fragment1_profile_img"
-                    android:layout_marginBottom="100dp"
-                    android:orientation="vertical"
-                    >
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="27dp"
-                        android:layout_marginBottom="17.2dp"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        >
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingRight="5dp"
-                            android:paddingLeft="5dp"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
-                            android:id="@+id/fragment1_review_1st_subject"
-                            android:text="진로"
-                            android:textSize="13sp"
-                            android:textStyle="bold"
-                            android:textColor="@color/light_purple"
-                            android:background="@drawable/main_profiletext"
-                            />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="14dp"
-                        >
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16.8dp"
-                            android:id="@+id/fragment1_profile_1st_property"
-                            android:text="“ 큰 기대하지 않고 진로에 대한 고민을 신청했는데
-    \n답변자님이 정말 진지하게 전문적으로 상담해주셔서
-    \n너무 도움이 되었습니다. 감사합니다. ”"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="- 기계과 전공으로 진로에 대해 고민 중인 릴라님-"
-                            android:textSize="13sp"
-                            android:textColor="@color/dark_purple"
-                            />
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
-
+            <me.relex.circleindicator.CircleIndicator2
+                android:id="@+id/indicator_second"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="23.9dp"
+                android:layout_marginBottom="100dp"
+                app:ci_drawable="@drawable/story_circle_second_active"
+                app:ci_drawable_unselected="@drawable/story_circle_second_nonactive"
+                />
         </LinearLayout>
 
     </LinearLayout>

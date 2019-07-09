@@ -1,10 +1,18 @@
 package com.example.appjam_willson.model;
 
-import com.google.gson.internal.ObjectConstructor;
+public class ExitChatResponseModel {
 
-public class HelperRegistResponseModel {
-    public int code;
-    public Object data;
+    String message;
+    int code;
+    Object data;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public int getCode() {
         return code;

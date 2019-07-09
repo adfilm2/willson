@@ -47,6 +47,10 @@ public class HelperActivity extends AppCompatActivity{
 
 //        passPushTokenToServer();
 
+        startMainView();
+        changeImage(willsonImage_receive,willsonImage_chat,willsonImage_profile,willsonImage_mypage);
+        changeTextColor(willsonText_receive,willsonText_chat,willsonText_profile,willsonText_mypage);
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,5 +123,12 @@ public class HelperActivity extends AppCompatActivity{
         third.setTextColor(Color.parseColor("#9e9e9e"));
         fourth.setTextColor(Color.parseColor("#9e9e9e"));
     }
+
+    private void startMainView(){
+
+        HelperFragment fragment = new HelperFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
+    }
+
 }
 
