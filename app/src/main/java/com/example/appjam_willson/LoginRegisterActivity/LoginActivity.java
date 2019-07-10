@@ -72,11 +72,11 @@ public class LoginActivity extends AppCompatActivity {
                 loginModel.setEmail(email);
                 loginModel.setPassword(password);
 
-                Call<LoginResponseModel> call_login = RetrofitService.getInstance().getService().user_login_post(loginModel);
-                call_login.enqueue(retrofitCallback);
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-//                LoginUser(email, password);
+//                Call<LoginResponseModel> call_login = RetrofitService.getInstance().getService().user_login_post(loginModel);
+//                call_login.enqueue(retrofitCallback);
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(intent);
+                LoginUser(email, password);
             }
         });
     }
