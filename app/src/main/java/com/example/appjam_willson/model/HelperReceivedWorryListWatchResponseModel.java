@@ -7,7 +7,6 @@ public class HelperReceivedWorryListWatchResponseModel {
     int code;
     String message;
     Data data;
-    int size;
 
     /*getter and setter start*/
 
@@ -35,45 +34,46 @@ public class HelperReceivedWorryListWatchResponseModel {
         this.data = data;
     }
 
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     /*getter and setter end*/
 
     public class Data {
-        List<Concern_Info> concerninfo;
+        List<Concern_Info> concernInfo;
+        int size;
 
         /*getter and setter start*/
 
-        public List<Concern_Info> getConcerninfo() {
-            return concerninfo;
+        public List<Concern_Info> getConcernInfo() {
+            return concernInfo;
         }
 
-        public void setConcerninfo(List<Concern_Info> concerninfo) {
-            this.concerninfo = concerninfo;
+        public void setConcernInfo(List<Concern_Info> concernInfo) {
+            this.concernInfo = concernInfo;
+        }
+
+        public int getSize() {
+            return size;
+        }
+
+        public void setSize(int size) {
+            this.size = size;
         }
 
         /*getter and setter end*/
     }
 
     public class Concern_Info {
-        User user;
+        User userInfo;
         Question_Info questionInfo;
         Category_Info categoryInfo;
 
         /*getter and setter start*/
 
-        public User getUser() {
-            return user;
+        public User getUserInfo() {
+            return userInfo;
         }
 
-        public void setUser(User user) {
-            this.user = user;
+        public void setUserInfo(User userInfo) {
+            this.userInfo = userInfo;
         }
 
         public Question_Info getQuestionInfo() {
@@ -96,18 +96,18 @@ public class HelperReceivedWorryListWatchResponseModel {
     }
 
     public class User {
-        String user_idx;
+        int user_idx;
         String nickname;
         String gender;
         String age;
 
         /*getter and setter start*/
 
-        public String getUser_idx() {
+        public int getUser_idx() {
             return user_idx;
         }
 
-        public void setUser_idx(String user_idx) {
+        public void setUser_idx(int user_idx) {
             this.user_idx = user_idx;
         }
 
@@ -141,6 +141,7 @@ public class HelperReceivedWorryListWatchResponseModel {
 
     public class Question_Info {
         String title;
+        int question_idx;
 
         /*getter and setter start*/
 
@@ -152,22 +153,30 @@ public class HelperReceivedWorryListWatchResponseModel {
             this.title = title;
         }
 
+        public int getQuestion_idx() {
+            return question_idx;
+        }
+
+        public void setQuestion_idx(int question_idx) {
+            this.question_idx = question_idx;
+        }
+
         /*getter and setter end*/
 
     }
 
     public class Category_Info {
-        int category_id;
+        int category_idx;
         String category_name;
 
         /*getter and setter start*/
 
-        public int getCategory_id() {
-            return category_id;
+        public int getCategory_idx() {
+            return category_idx;
         }
 
-        public void setCategory_id(int category_id) {
-            this.category_id = category_id;
+        public void setCategory_idx(int category_idx) {
+            this.category_idx = category_idx;
         }
 
         public String getCategory_name() {

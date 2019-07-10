@@ -18,9 +18,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity"></activity>
-        <activity android:name=".TestActivity">
-        </activity>
+        <activity android:name=".TestActivity"/>
 
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart" />
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity" />
@@ -31,12 +31,7 @@
             android:windowSoftInputMode="adjustPan" />
 
         <!-- Login && Register -->
-        <activity android:name=".LoginRegisterActivity.LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".LoginRegisterActivity.LoginActivity" />
         <activity android:name=".LoginRegisterActivity.ChoiceActivity" />
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker" />
         <activity android:name=".LoginRegisterActivity.RegisterActivity_helper" />
@@ -46,7 +41,13 @@
 
         <!-- Main -->
         <activity android:name=".MainActivities.MainActivity" />
-        <activity android:name=".MainActivities.HelperActivity" />
+        <activity android:name=".MainActivities.HelperActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
         <activity
             android:name=".HelperProfileEdit.HelperProfileEditActivityExp"
@@ -94,6 +95,19 @@
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme" />
         <activity android:name=".AskerProfileActivity" />
+
+<!--        <service android:name=".fcm.FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service android:name=".fcm.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>-->
+
     </application>
 
 </manifest>
