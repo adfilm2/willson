@@ -19,7 +19,6 @@ public class List1RelationshipsStartActivity extends AppCompatActivity {
     Button relationships_start_btn;
     LinearLayout Relationships_cancel_btn;
     Context context;
-    Bundle bundle_relation = new Bundle();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +28,13 @@ public class List1RelationshipsStartActivity extends AppCompatActivity {
 
         REQUEST_CODE = ((List1RelationshipsStartActivity) context).getTaskId();
 
-        toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
+        toolbar_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
 
-        relationships_start_btn = (Button)findViewById(R.id.list1_relationships_start_btn);
+        relationships_start_btn = findViewById(R.id.list1_relationships_start_btn);
         relationships_start_btn.setOnClickListener(new relationships_start_btn_listener());
 
-        Relationships_cancel_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_cancel);
+        Relationships_cancel_btn = findViewById(R.id.toolbar_list_btn_cancel);
         Relationships_cancel_btn.setOnClickListener(new relationships_cancel_btn_listener());
     }
 
@@ -46,9 +45,7 @@ public class List1RelationshipsStartActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle_relation = data.getExtras();
-                    bundle_relation.putInt("category",4);
-                    data.putExtras(bundle_relation);
+
                     setResult(RESULT_OK,data);
                     finish();
 

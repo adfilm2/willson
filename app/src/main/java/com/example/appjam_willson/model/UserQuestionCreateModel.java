@@ -57,7 +57,7 @@ public class UserQuestionCreateModel {
         }
         int categoryList_idx;
         enum helper_gender {
-            남, 여, 모두
+            남성, 여성, 모두
         }
 
         /*getter and setter start*/

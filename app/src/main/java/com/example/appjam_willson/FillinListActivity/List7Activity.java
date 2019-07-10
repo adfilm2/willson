@@ -3,6 +3,7 @@ package com.example.appjam_willson.FillinListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +41,7 @@ public class List7Activity extends AppCompatActivity {
 
     int empathy =1;
     int advice =1;
-    int experience=1;
+    int exp=1;
 
     Bundle bundle7 = new Bundle();
     @Override
@@ -89,9 +90,11 @@ public class List7Activity extends AppCompatActivity {
             switch (resultCode){
                 case RESULT_OK:
                     Intent intent = new Intent();
-                    bundle7.putInt("empathy",empathy);
-                    bundle7.putInt("advice",advice);
-                    bundle7.putInt("experience",experience);
+                    bundle7.putInt("empathy", empathy);
+                    bundle7.putInt("advice", advice);
+
+                    Log.d("jjj>>>>>>>>",""+exp);
+                    bundle7.putInt("experience22", exp);
                     intent.putExtras(bundle7);
                     setResult(RESULT_OK,intent);
                     finish();
@@ -227,25 +230,24 @@ public class List7Activity extends AppCompatActivity {
 
             switch (checkedId){
                 case R.id.radio_1:
-                    experience=1;
+                    exp = 1;
                     break;
 
                 case R.id.radio_2:
-                    experience = 2;
+                    exp = 2;
                     break;
 
                 case  R.id.radio_3:
-                    experience = 3;
+                    exp = 3;
                     break;
 
                 case R.id.radio_4:
-                    experience = 4;
+                    exp = 4;
                     break;
 
                 case R.id.radio_5:
-                    experience = 5;
+                    exp = 5;
                     break;
-
 
             }
 

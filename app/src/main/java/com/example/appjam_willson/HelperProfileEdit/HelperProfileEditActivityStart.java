@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.appjam_willson.R;
 
 public class HelperProfileEditActivityStart extends AppCompatActivity {
@@ -38,7 +37,6 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
                 Intent intentProfileEdit = new Intent(HelperProfileEditActivityStart.this, HelperProfileEditActivityC1.class);
                 startActivity(intentProfileEdit);
 
-
             }
 
 
@@ -49,7 +47,6 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentProfileEdit = new Intent(HelperProfileEditActivityStart.this, HelperProfileEditActivityExp.class);
                 startActivity(intentProfileEdit);
-
 
             }
 
@@ -71,7 +68,6 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentProfileEdit = new Intent(HelperProfileEditActivityStart.this, HelperProfileEditActivityIntro.class);
                 startActivity(intentProfileEdit);
-
 
             }
 

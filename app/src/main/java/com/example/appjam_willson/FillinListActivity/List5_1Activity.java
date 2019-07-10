@@ -36,7 +36,7 @@ public class List5_1Activity extends AppCompatActivity {
 
     Bundle bundle5_1 = new Bundle();
 
-    String[] strings = new String[3];
+    int[] strings = new int[3];
     String helper_keyword1;
     String helper_keyword2;
     String helper_keyword3;
@@ -83,9 +83,7 @@ public class List5_1Activity extends AppCompatActivity {
 //                    Log.d(">>>data의 advice >>> ","gg"+gg);
 
                     bundle5_1 = data.getExtras();
-                    bundle5_1.putString("helper_char1",helper_keyword1);
-                    bundle5_1.putString("helper_char2",helper_keyword2);
-                    bundle5_1.putString("helper_char3",helper_keyword3);
+                    bundle5_1.putIntArray("char",strings);
 
                     data.putExtras(bundle5_1);
                     setResult(RESULT_OK,data);
@@ -110,8 +108,8 @@ public class List5_1Activity extends AppCompatActivity {
                 if(check_num<=0) check_num=0;
 
                 for(int i = 0 ; i<3 ; i++){
-                    if(checkBox.getText().toString() == strings[i]){
-                        strings[i] = null;
+                    if(Integer.parseInt(checkBox.getTag().toString()) == strings[i]){
+                        strings[i] = 0;
                     }
                 }
 
@@ -122,9 +120,8 @@ public class List5_1Activity extends AppCompatActivity {
                 if(check_num>3) check_num =3;
 
                 for(int i = 0; i<3; i++){
-                    if(strings[i]== null) strings[i] = checkBox.getText().toString();
+                    if(strings[i]== 0) strings[i] = Integer.parseInt(checkBox.getTag().toString());
                 }
-
             }
         } else {
             if (checkBox.isChecked()) {
@@ -164,10 +161,6 @@ public class List5_1Activity extends AppCompatActivity {
     class list5_1_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            helper_keyword1 = strings[0];
-            helper_keyword2 = strings[1];
-            helper_keyword3 = strings[2];
-
             Intent intent = new Intent(context, List6Activity.class);
             startActivityForResult(intent, REQUEST_CODE);
         }

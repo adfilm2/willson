@@ -4,6 +4,7 @@ package com.example.appjam_willson.HelperProfileEdit;
 
 
 
+        import android.content.Context;
         import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,10 +22,15 @@ public class HelperProfileEditActivityC1 extends AppCompatActivity {
 
     ImageView btn_profile;
     TextView text_toolbar;
+    int REQUEST_CODE;
+    Context context;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_profile_edit_c1);
+        context = this;
+
+        REQUEST_CODE = ((HelperProfileEditActivityC1) context).getTaskId();
 
         Button button1 = findViewById(R.id.helperSU_btn_love);
         Button button2 = findViewById(R.id.helperSU_btn_dream);
@@ -181,8 +187,8 @@ public class HelperProfileEditActivityC1 extends AppCompatActivity {
         nextbtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentProfileEdit = new Intent(HelperProfileEditActivityC1.this, HelperProfileEditActivityC2.class);
-                startActivity(intentProfileEdit);
+                Intent intentProfileEdit = new Intent(context, HelperProfileEditActivityC2.class);
+                startActivityForResult(intentProfileEdit,REQUEST_CODE);
 
 
             }

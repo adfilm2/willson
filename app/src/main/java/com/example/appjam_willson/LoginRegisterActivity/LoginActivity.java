@@ -111,14 +111,14 @@ public class LoginActivity extends AppCompatActivity {
         public void onResponse(retrofit2.Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
             LoginResponseModel result = response.body();
             Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
-            Log.d("dlfkdlfjkdl", String.valueOf(result.getCode()));
+            Log.d("로그인액티비티", String.valueOf(result.getCode()));
         }
 
         @Override
         public void onFailure(Call<LoginResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
-            Log.d("서버 코드ㅡㅡㅡㅡㅡㅡ","ㅁㄴㅇㅁㄴㅇ");
+            Log.d("로그인액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+            Log.d("로그인 액티비티 서버 코드ㅡㅡㅡㅡㅡㅡ","ㅁㄴㅇㅁㄴㅇ");
         }
     };
 }

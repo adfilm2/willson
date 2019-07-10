@@ -309,16 +309,24 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
                     Log.d("test", response.isSuccessful() + "");
                     WorryCategoryListAddResponseModel result = response.body();
-                    Log.d("dlfkdlfjkdl", ">>>>>>>>>>>" + response.code());
+                    Log.d("진로", ">>>>>>>>>>>" + response.code());
                     Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
-                    category_listId= result.message;
+                    category_listId= result.data.categoryList_idx;
+
+
+                    Log.d(">>>>>ff>>> ",""+category_listId);
+                    Intent intent = new Intent(context, List2Activity.class);
+                    startActivityForResult(intent, REQUEST_CODE);
+
                 }
 
                 @Override
                 public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
                     t.printStackTrace();
-                    Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+                    Log.d(" 멘탈 액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                 }
+
+
             });
         }
         else{}

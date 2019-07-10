@@ -20,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 
+import java.util.ArrayList;
+
 public class List6Activity extends AppCompatActivity {
 
     int REQUEST_CODE;
@@ -42,9 +44,9 @@ public class List6Activity extends AppCompatActivity {
     EditText edit2;
     EditText edit3;
 
-    String helper_key1;
-    String helper_key2;
-    String helper_key3;
+
+
+    ArrayList experience = new ArrayList();
 
     Bundle bundle6 = new Bundle();
 
@@ -196,9 +198,7 @@ public class List6Activity extends AppCompatActivity {
                 case RESULT_OK:
 
                     bundle6 = data.getExtras();
-                    bundle6.putString("helper_keyword1",helper_key1);
-                    bundle6.putString("helper_keyword2",helper_key2);
-                    bundle6.putString("helper_keyword3",helper_key3);
+                    bundle6.putStringArrayList("experience",experience);
 
                     data.putExtras(bundle6);
                     setResult(RESULT_OK,data);
@@ -309,9 +309,15 @@ public class List6Activity extends AppCompatActivity {
     class list6_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            helper_key1 = edit1.getText().toString();
-            helper_key2 = edit2.getText().toString();
-            helper_key3 = edit3.getText().toString();
+            for(int i = 1; i<4;i++){
+                if(edit1.length() > 0)
+                    experience.add(edit1.getText().toString());
+                if(edit2.length() > 0)
+                    experience.add(edit2.getText().toString());
+                if(edit3.length() > 0)
+                    experience.add(edit3.getText().toString());
+
+            }
 
             Intent intent = new Intent(context, List7Activity.class);
             startActivityForResult(intent, REQUEST_CODE);
