@@ -18,6 +18,7 @@ import com.example.appjam_willson.model.LoginModel;
 import com.example.appjam_willson.model.LoginResponseModel;
 import com.example.appjam_willson.model.ReviewFixModel;
 import com.example.appjam_willson.model.ReviewListResponseModel;
+import com.example.appjam_willson.model.ReviewResponseModel;
 import com.example.appjam_willson.model.ReviewWriteModel;
 import com.example.appjam_willson.model.ReviewWriteResponseModel;
 import com.example.appjam_willson.model.SendRequestModel;
@@ -103,4 +104,6 @@ public interface RetrofitAPI {
     @GET("helper/list/{question_idx}")
     Call<AcceptHelperListWatchResponseModel> get_accept_helper(@Path ("question_idx") int question_idx);
 
+    @GET("review/story")
+    Call<ReviewResponseModel> main_review_get(@Header("willson-token") String token);
 }

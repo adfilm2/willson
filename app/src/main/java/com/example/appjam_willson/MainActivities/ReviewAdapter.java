@@ -36,14 +36,14 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
 
-//        //닉네임 및 정보
-//        viewHolder.review_userInfo.setText(willsonModels.get(i).getNickname());
-//
-//        //대화 주제
-//        viewHolder.review_content.setText(willsonModels.get(i).getCategory_name());
-//
-//        //리뷰 내용
-//        viewHolder.review_content.setText(willsonModels.get(i).getContent());
+        //닉네임 및 정보
+        viewHolder.review_userInfo.setText(willsonModels.get(i).getNickname());
+
+        //대화 주제
+        viewHolder.review_content.setText(willsonModels.get(i).getCategory_name());
+
+        //리뷰 내용
+        viewHolder.review_content.setText(willsonModels.get(i).getContent());
     }
 
     @Override
