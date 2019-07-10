@@ -1,7 +1,7 @@
 package com.example.appjam_willson.ChatActivities;
 
 import android.os.Bundle;
-import android.util.Log;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,16 +56,18 @@ public class ChatActivity extends AppCompatActivity {
     private Timestamp newTime;
     private Timer timer = new Timer();
     private String restTime;
+    private CountDownTimer countDownTimer;
 
     private String uid;
     private EditText editText;
     private Button btnSent;
     private long totalTime = 3600000;
+    private long passedTime;
 
     private long startTime;
 
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("H:mm");
-    private SimpleDateFormat timerFormat = new SimpleDateFormat("mm:ss");
+    private SimpleDateFormat timerFormat = new SimpleDateFormat("mm");
 
     private LinearLayout linearLayout_startMsg ;
 
@@ -79,6 +80,7 @@ public class ChatActivity extends AppCompatActivity {
     private WillsonModel askerUserModel;
 
     int peopleCount = 0;
+    long passTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,29 +93,7 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         chat_timer = findViewById(R.id.chat_timer);
-
-
-        TimerTask timerTask = new TimerTask() {
-            // 1시간
-            @Override
-            public void run() {
-                ChatActivity.this.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        long passTime;
-                        newTime = new Timestamp(System.currentTimeMillis());
-                        long passedTime = newTime.getTime()-startTime;
-                        passTime = totalTime - passedTime;
-
-                        Date date = new Date(passTime);
-                        restTime = timerFormat.format(date);
-                        chat_timer.setText(restTime);
-                        Log.d("패스타임값", String.valueOf(passTime));
-                        Log.d("쓰레드 돌아가나 확인","쓰레드ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-                    }
-                });
-            }
-        };
+        newTime = new Timestamp(System.currentTimeMillis());
 
         linearLayout_startMsg = findViewById(R.id.chat_startMsg);
 
@@ -168,44 +148,6 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
         checkChatRoom();
-        timer.schedule(timerTask,0,400);
-    }
-
-    void checkChatRoom() {
-        FirebaseDatabase.getInstance().getReference().child("chatRooms").orderByKey().equalTo(RoomKey).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() == null) {
-                    ChatModel newRoom = new ChatModel();
-                    newRoom.users.put(uid, true);
-                    newRoom.users.put(destinationUid, true);
-                    newRoom.chatStart.put("timeStamp",ServerValue.TIMESTAMP);
-
-                    FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).setValue(newRoom).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            checkChatRoom();
-                        }
-                    });
-                    return;
-                }
-
-                for (DataSnapshot item : dataSnapshot.getChildren()) {
-                    ChatModel chatModel = item.getValue(ChatModel.class);
-                    if (chatModel.users.containsKey(destinationUid)) {
-                        mRecyclerView.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
-                        mRecyclerView.setAdapter(new ChatAdapter());
-                    }
-                }
-
-                //Timer를 위해 처음 대화를 시작한 값을 가져옴
-                getChatStart();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 
     class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -227,56 +169,6 @@ public class ChatActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
-
-        void getMessageList(){
-
-            databaseReference = FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments");
-            valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    comments.clear();
-                    Map<String, Object> readUsersMap = new HashMap<>();
-                    for(DataSnapshot item : dataSnapshot.getChildren()){
-                        String key = item.getKey();
-                        ChatModel.Comment comment_origin = item.getValue(ChatModel.Comment.class);
-                        ChatModel.Comment comment_modify = item.getValue(ChatModel.Comment.class);
-                        comment_modify.readUser.put(uid,true);
-
-                        readUsersMap.put(key,comment_modify);
-                        comments.add(comment_origin);
-                    }
-
-                    if(comments.size() == 0){
-                        return ;
-                    }
-
-                    //누군가가 대화를 시작하면  사라지게 만듦
-                    if(linearLayout_startMsg.getVisibility() != View.GONE && comments.size() !=0){
-                        linearLayout_startMsg.setVisibility(View.GONE);
-//                        chat_startMsg_time.setVisibility(View.GONE);
-                    }
-
-                    if(!comments.get(comments.size()-1).readUser.containsKey(uid)){
-                        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments")
-                                .updateChildren(readUsersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                notifyDataSetChanged();
-                                mRecyclerView.scrollToPosition(comments.size()-1);
-                            }
-                        });
-                    }
-                    else{
-                        notifyDataSetChanged();
-                        mRecyclerView.scrollToPosition(comments.size()-1);
-                    }
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
 
                 }
             });
@@ -338,8 +230,58 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
 
+        void getMessageList(){
+
+            databaseReference = FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments");
+            valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    comments.clear();
+                    Map<String, Object> readUsersMap = new HashMap<>();
+                    for(DataSnapshot item : dataSnapshot.getChildren()){
+                        String key = item.getKey();
+                        ChatModel.Comment comment_origin = item.getValue(ChatModel.Comment.class);
+                        ChatModel.Comment comment_modify = item.getValue(ChatModel.Comment.class);
+                        comment_modify.readUser.put(uid,true);
+
+                        readUsersMap.put(key,comment_modify);
+                        comments.add(comment_origin);
+                    }
+
+                    if(comments.size() == 0){
+                        return ;
+                    }
+
+                    //누군가가 대화를 시작하면  사라지게 만듦
+                    if(linearLayout_startMsg.getVisibility() != View.GONE && comments.size() !=0){
+                        linearLayout_startMsg.setVisibility(View.GONE);
+//                        chat_startMsg_time.setVisibility(View.GONE);
+                    }
+
+                    if(!comments.get(comments.size()-1).readUser.containsKey(uid)){
+                        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments")
+                                .updateChildren(readUsersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                notifyDataSetChanged();
+                                mRecyclerView.scrollToPosition(comments.size()-1);
+                            }
+                        });
+                    }
+                    else{
+                        notifyDataSetChanged();
+                        mRecyclerView.scrollToPosition(comments.size()-1);
+                    }
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
         void setReadCounter(final int position, final TextView textView) {
-       if (peopleCount == 0) {
+            if (peopleCount == 0) {
                 FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -412,6 +354,45 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
     }
+
+
+    void checkChatRoom() {
+        FirebaseDatabase.getInstance().getReference().child("chatRooms").orderByKey().equalTo(RoomKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) {
+                    ChatModel newRoom = new ChatModel();
+                    newRoom.users.put(uid, true);
+                    newRoom.users.put(destinationUid, true);
+                    newRoom.chatStart.put("timeStamp",ServerValue.TIMESTAMP);
+
+                    FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).setValue(newRoom).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            checkChatRoom();
+                        }
+                    });
+                    return;
+                }
+
+                for (DataSnapshot item : dataSnapshot.getChildren()) {
+                    ChatModel chatModel = item.getValue(ChatModel.class);
+                    if (chatModel.users.containsKey(destinationUid)) {
+                        mRecyclerView.setLayoutManager(new LinearLayoutManager(ChatActivity.this));
+                        mRecyclerView.setAdapter(new ChatAdapter());
+                    }
+                }
+                //Timer를 위해 처음 대화를 시작한 값을 가져옴
+                getChatStart();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
     void getUserData(){
         FirebaseDatabase.getInstance().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -463,6 +444,9 @@ public class ChatActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map<String,Object> getTimeStamp = (Map <String,Object>)dataSnapshot.getValue();
                 startTime = (long) getTimeStamp.get("timeStamp");
+                passedTime = newTime.getTime()-startTime;
+                passTime = totalTime - passedTime;
+                timerStart(passTime,chat_timer);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -470,28 +454,30 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-    public void stopTimer(){
-        if(timerTask != null){
-            timerTask.cancel(); //타이머task를 timer 큐에서 지워버린다
-            timerTask=null;
-            btnSent.setEnabled(false);
-        }
-        if(timer!=null){
-            timer.cancel(); //스케쥴task과 타이머를 취소한다.
-            timer.purge(); //task큐의 모든 task를 제거한다.
-            timer=null;
-            btnSent.setEnabled(false);
-        }
+
+    void timerStart(long time, TextView timer){
+        countDownTimer = new CountDownTimer(time, 20000) {
+            @Override
+            public void onTick(long l) {
+                Date date = new Date(l);
+                String restTime = timerFormat.format(date);
+                timer.setText(restTime);
+            }
+            @Override
+            public void onFinish() {
+                btnSent.setEnabled(false);
+            }
+        };
+        countDownTimer.start();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        stopTimer();
+        countDownTimer.cancel();   //카운트다운 쓰레드 종료
         databaseReference.removeEventListener(valueEventListener);
         finish();
     }
-
 
 //    void sendFcm() {
 //        Gson gson = new Gson();

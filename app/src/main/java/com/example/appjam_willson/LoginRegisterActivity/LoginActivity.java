@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.MainActivities.MainActivity;
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
-import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.LoginModel;
 import com.example.appjam_willson.model.LoginResponseModel;
@@ -40,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
         final EditText idText=findViewById(R.id.Login_ID);
         final EditText passwordText=findViewById(R.id.Login_Password);

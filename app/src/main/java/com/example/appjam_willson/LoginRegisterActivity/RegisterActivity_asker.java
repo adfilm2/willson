@@ -77,13 +77,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
 
         SignupModel signupModel = new SignupModel();
 
-//        retrofit = new Retrofit.Builder()
-//                .baseUrl("http://13.125.216.169/api/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//        retrofitAPI = retrofit.create(RetrofitAPI.class);
-
-
         adapter = ArrayAdapter.createFromResource(this, R.array.Age_group, android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
         ageSpinner.setSelection(0);

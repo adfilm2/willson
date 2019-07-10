@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.appjam_willson">
 
-
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -13,73 +12,63 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity"></activity>
-        <activity android:name=".TestActivity"/>
-
+        <activity android:name=".HelperRequestCompleteActivity"></activity>
+        <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity" />
+        <activity android:name=".TestActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart" />
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity" />
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity" />
         <activity android:name=".ConvConfirmActivity" />
         <activity
             android:name=".HelperProfileEdit.HelperProfileEditActivityIntro"
-            android:windowSoftInputMode="adjustPan" />
-
-        <!-- Login && Register -->
+            android:windowSoftInputMode="adjustPan" /> <!-- Login && Register -->
         <activity android:name=".LoginRegisterActivity.LoginActivity" />
         <activity android:name=".LoginRegisterActivity.ChoiceActivity" />
-        <activity android:name=".LoginRegisterActivity.RegisterActivity_asker" />
-        <activity android:name=".LoginRegisterActivity.RegisterActivity_helper" />
-        <!-- Chat -->
-        <activity android:name=".ChatActivities.ChatActivity" />
-        <activity android:name=".ChatActivities.HelperChatActivity" />
-
-        <!-- Main -->
-        <activity android:name=".MainActivities.MainActivity" />
-        <activity android:name=".MainActivities.HelperActivity" >
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_asker" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_helper" /> <!-- Chat -->
+        <activity android:name=".ChatActivities.ChatActivity" />
+        <activity android:name=".ChatActivities.HelperChatActivity" /> <!-- Main -->
+        <activity android:name=".MainActivities.MainActivity" />
+        <activity android:name=".MainActivities.HelperActivity"/>
+
+
 
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
         <activity
             android:name=".HelperProfileEdit.HelperProfileEditActivityExp"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC2" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
-
-        <!-- HelperSignUpEdit -->
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" /> <!-- HelperSignUpEdit -->
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
         <activity android:name=".HelperSignUpActivity.HelperSignupActivity3" />
         <activity
             android:name=".HelperSignUpActivity.HelperSignUpActivity2"
-            android:windowSoftInputMode="adjustPan" />
-
-        <!-- list 1 start -->
+            android:windowSoftInputMode="adjustPan" /> <!-- list 1 start -->
         <activity android:name=".FillinListActivity.List1LoveStartActivity" />
         <activity android:name=".FillinListActivity.List1CourseStartActivity" />
         <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsStartActivity" />
         <activity android:name=".FillinListActivity.List1DailyStartActivity" />
-        <activity android:name=".FillinListActivity.List1EtcStartActivity" />
-
-        <!-- list 1 -->
+        <activity android:name=".FillinListActivity.List1EtcStartActivity" /> <!-- list 1 -->
         <activity android:name=".FillinListActivity.List1LoveActivity" />
         <activity android:name=".FillinListActivity.List1CourseActivity" />
         <activity android:name=".FillinListActivity.List1MentalityActivity" />
         <activity android:name=".FillinListActivity.List1RelationshipsActivity" />
         <activity android:name=".FillinListActivity.List1DailyActivity" />
-        <activity android:name=".FillinListActivity.List1EtcActivity" />
-
-        <!-- lists -->
+        <activity android:name=".FillinListActivity.List1EtcActivity" /> <!-- lists -->
         <activity android:name=".FillinListActivity.List2Activity" />
         <activity android:name=".FillinListActivity.List3Activity" />
         <activity
@@ -95,19 +84,6 @@
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme" />
         <activity android:name=".AskerProfileActivity" />
-
-<!--        <service android:name=".fcm.FirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
-
-        <service android:name=".fcm.FirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>-->
-
     </application>
 
 </manifest>

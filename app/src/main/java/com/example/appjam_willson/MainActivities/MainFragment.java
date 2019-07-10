@@ -96,10 +96,9 @@ public class MainFragment extends Fragment {
 
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
 
-
-
         Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(token);
         call_helper.enqueue(retrofitCallback);
+
 
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -259,6 +258,7 @@ public class MainFragment extends Fragment {
 
 
     //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로
+
     void changeText(TextView text,int start,int end,String color){
         SpannableStringBuilder spannableStringBuilder_second = new SpannableStringBuilder();
         String mainText_second = text.getText().toString();
@@ -273,14 +273,13 @@ public class MainFragment extends Fragment {
         @Override
         public void onResponse(Call<HelperStoryModel> call, Response<HelperStoryModel> response) {
             HelperStoryModel result = response.body();
-            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.code);
-            Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result.data.size()));
-            for(int i=0;i<result.data.size();i++){
-                storyAdapterModels.add(result.data.get(i));
-            }
-            storyAdapter.notifyDataSetChanged();
-        }
 
+            for (int i = 0; i < result.getData().size(); i++) {
+                storyAdapterModels.add(result.getData().get(i));
+//            }
+                storyAdapter.notifyDataSetChanged();
+            }
+        }
         @Override
         public void onFailure(Call<HelperStoryModel> call, Throwable t) {
             t.printStackTrace();

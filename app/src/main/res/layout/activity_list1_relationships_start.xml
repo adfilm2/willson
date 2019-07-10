@@ -39,7 +39,7 @@
         android:textColor="@color/darkPurple"
         android:lineSpacingExtra="13sp"
         android:gravity="center_horizontal"
-        android:text="알맞는 헬퍼를 찾기 위해 간단한\n고민 리스트를 작성해주세요!"
+        android:text="알맞은 헬퍼를 찾기 위해 간단한\n고민 리스트를 작성해주세요!"
         android:textStyle="normal"
         android:fontFamily="@font/nanum_square_b"
         />
