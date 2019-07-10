@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.appjam_willson.HelperSignUpActivity.HelperSignUpStartActivity;
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
@@ -62,7 +63,9 @@ public class HelperFragment extends Fragment {
         change_mode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //가입한 사용자인지 아닌지 서버에서 받아와서 다른 화면을 보여줘야함.
                 Intent intent = new Intent(getActivity(),MainActivity.class);
+                //Intent intent = new Intent(getActivity(), HelperSignUpStartActivity.class);
                 startActivity(intent);
                 getActivity().finish();
             }

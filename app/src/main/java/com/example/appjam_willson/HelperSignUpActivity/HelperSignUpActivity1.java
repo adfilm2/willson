@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.HelperRegistModel;
@@ -24,6 +25,8 @@ import com.example.appjam_willson.model.HelperRegistResponseModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 // public class HelperSignUpActivity1 extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -38,6 +41,12 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
     TextView HSUtextview;
     LinearLayout HSU_usercustom_layout;
     String title;
+
+    private Retrofit retrofit;
+    private RetrofitAPI retrofitAPI;
+
+    HelperRegistModel helperRegistModel;
+
 
 
 
@@ -264,7 +273,7 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
             switch (resultCode){
                 case RESULT_OK:
                     bundle1 = data.getExtras();
-                    bundle1.putInt("category",1);
+                    bundle1.putString("category","연애");
                     bundle1.putString("small category",small_category);
 
                     data.putExtras(bundle1);
@@ -272,19 +281,28 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
 
                     Log.d("msg","bundle test"+bundle1);
 
-                    HelperRegistModel helperRegistModel = new HelperRegistModel();
-                    helperRegistModel.helper.title = "호이이이이잉이이이이이잉ㅇ잇";
-                    helperRegistModel.helper.category_name = data.getStringExtra("small category");
-                    helperRegistModel.helper.categoryList_name = "너로 정햇따!!!!!";
-                    helperRegistModel.helper.content = "가라아아앗 피카츄우우우우우우";
 
-                    String[] tt = {"er", "er", "er"};
+/*
+                    retrofit = new Retrofit.Builder()
+                            .baseUrl("http://13.125.216.169/api/")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                    retrofitAPI = retrofit.create(RetrofitAPI.class);*/
+
+
+                    HelperRegistModel helperRegistModel = new HelperRegistModel();
+                    helperRegistModel.helper.title = data.getStringExtra("intro");
+                    //helperRegistModel.helper.category_name = "ㅋㅋㅋ";
+                    helperRegistModel.helper.category_name = data.getStringExtra("category");
+                    helperRegistModel.helper.categoryList_name =  data.getStringExtra("small category");
+                    helperRegistModel.helper.content = data.getStringExtra("content");
+
+                    String[] tt = {data.getStringExtra("tag1"), data.getStringExtra("tag2"), data.getStringExtra("tag3")};
                     helperRegistModel.experience.experience_name = tt;
 
 
 
-                    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
-
+                    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3Njc4OTcsImV4cCI6MTU3MTQwNzg5NywiaXNzIjoid2lsbHNvbiJ9.VX9-dSw1vzLO7j94UsqOnw6kA3-PeNFp8dic_jHtUt0";
 
                     Call<HelperRegistResponseModel> call_helper = RetrofitService.getInstance().getService().helper_regist_post(token, helperRegistModel);
 
@@ -294,7 +312,9 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
                             Log.d("test", response.isSuccessful() + "");
                             HelperRegistResponseModel result = response.body();
                             Log.d("response code", ">>>>>>>>>>>>>>>>>>>>>>" + response.code());
-                            Log.d("코드값", ">>>>>>>>>>>>>>>>>>>>>>" + result.code);
+                           // Log.d("코드값", ">>>>>>>>>>>>>>>>>>>>>>" + result.code);
+
+
 
                         }
 
@@ -304,6 +324,9 @@ public class HelperSignUpActivity1 extends AppCompatActivity  {
                             Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                         }
                     });
+
+
+
 
 
 
