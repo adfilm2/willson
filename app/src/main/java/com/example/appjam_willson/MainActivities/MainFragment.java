@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.FillinListActivity.List1CourseStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1DailyStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1EtcStartActivity;
@@ -243,7 +244,7 @@ public class MainFragment extends Fragment {
                             Log.d(">>response>>>>>",""+response);
                             Log.d(">> response.code", ">>>>>>>>>>>" + response.code());
                             Log.d(">> question_idx ;:::: ",">>"+result.data.question_idx);
-
+                            ApplicationFields.myQuestion_idx = result.data.question_idx;
                         }
 
                         @Override
