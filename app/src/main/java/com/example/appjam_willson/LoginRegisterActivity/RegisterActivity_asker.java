@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -63,6 +64,12 @@ public class RegisterActivity_asker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_asker);
+
+        ImageView cancel = (ImageView)findViewById(R.id.cancel_btn);
+        cancel.setVisibility(View.INVISIBLE);
+
+        TextView text = (TextView)findViewById(R.id.toolbar_text);
+        text.setText("회원가입");
 
         final EditText idText=findViewById(R.id.registerasker_email);
         final EditText passwordText=findViewById(R.id.registerasker_password);

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff">
 
     <include
         android:id="@+id/signup_toolbar"
@@ -24,7 +25,7 @@
             android:scrollbars="vertical"
             >
 
-            <LinearLayout
+            f<LinearLayout
                 android:id="@+id/id_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -39,7 +40,7 @@
                     android:textSize="15sp"
                     android:textColor="@color/middlepurple"
                     android:layout_marginBottom="2.5dp"
-                    android:testStyle="normal"
+                    android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_r"
                     />
 
@@ -61,7 +62,7 @@
                     android:text="비밀번호"
                     android:textSize="15sp"
                     android:textColor="@color/middlepurple"
-                    android:testStyle="normal"
+                    android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_r"
                     />
 
@@ -83,7 +84,7 @@
                     android:textSize="15sp"
                     android:layout_marginBottom="2.5dp"
                     android:textColor="@color/middlepurple"
-                    android:testStyle="normal"
+                    android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_r"
                     />
 
@@ -111,7 +112,7 @@
                     android:textSize="15sp"
                     android:layout_marginBottom="2.5dp"
                     android:textColor="@color/middlepurple"
-                    android:testStyle="normal"
+                    android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_r"
                     />
 
@@ -132,13 +133,14 @@
                     android:text="성별"
                     android:textSize="15sp"
                     android:textColor="@color/middlepurple"
-                    android:testStyle="normal"
+                    android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_r"
                     />
                 <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/registerasker_gender"
+                    android:layout_marginBottom="21.9dp"
                     android:orientation="horizontal"
                     >
                     <androidx.appcompat.widget.AppCompatRadioButton
@@ -149,7 +151,7 @@
                         android:buttonTint="#5252A1"
                         android:checked="true"
                         android:id="@+id/Gender_woman"
-                        android:testStyle="normal"
+                        android:textStyle="normal"
                         android:fontFamily="@font/nanum_square_r"
                         />
                     <androidx.appcompat.widget.AppCompatRadioButton
@@ -159,7 +161,7 @@
                         android:textColor="@color/lightPurple"
                         android:buttonTint="#5252A1"
                         android:id="@+id/Gender_man"
-                        android:testStyle="normal"
+                        android:textStyle="normal"
                         android:fontFamily="@font/nanum_square_r"
                         />
                 </RadioGroup>
@@ -171,7 +173,7 @@
                     android:text="나이"
                     android:textSize="15sp"
                     android:textColor="@color/middlepurple"
-                    android:testStyle="normal"
+                    android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_r"
                     />
 
@@ -210,12 +212,13 @@
                     android:text="윌슨의 이용약관 및 개인정보취급방침에 동의합니다."
                     android:textSize="11sp"
                     android:textColor="@color/grey"
-                    android:testStyle="normal"
+                    android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_b"
                     />
             </LinearLayout>
 
-            <LinearLayout
+
+           <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="37.4dp"
@@ -234,7 +237,28 @@
                     android:fontFamily="@font/nanum_square_b"
                     />
 
-            </LinearLayout>
+            </LinearLayout>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/registerasker_registerButton"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="46.1dp"
+                    android:layout_marginBottom="32.6dp"
+                    android:enabled="true"
+                    android:background="@drawable/listnext_btn_selector"
+                    android:text="다음"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_b"/>
+            </RelativeLayout>
+
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>
