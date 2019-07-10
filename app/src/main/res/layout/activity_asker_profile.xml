@@ -60,22 +60,52 @@
                                 android:id="@+id/profile_helper_id"
                                 android:textSize="17sp"/>
 
-                            <!--정보-->
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_horizontal"
                                 android:layout_marginTop="7.9dp"
-                                android:text="여성 / 20대 후반"
                                 android:layout_marginBottom="14.8dp"
-                                android:textColor="#424242"
-                                android:id="@+id/profile_helper_detail"
-                                android:textSize="13sp"/>
+                                android:orientation="horizontal"
+                                >
+                                <!--정보-->
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+
+                                    android:text="여성"
+                                    android:textColor="#424242"
+                                    android:id="@+id/profile_helper_gender"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text=" / "
+                                    android:textColor="#424242"
+                                    android:textSize="13sp"
+                                    />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="20대 후반"
+                                    android:textColor="#424242"
+                                    android:id="@+id/profile_helper_age"
+                                    android:textSize="13sp"
+                                    />
+
+                            </LinearLayout>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="심리"
+                                android:id="@+id/category_name"
                                 android:textSize="16sp"
                                 android:textColor="@color/lightPurple"
                                 android:gravity="center"
@@ -118,6 +148,7 @@
                                     android:layout_gravity="center_vertical"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
+                                    android:paddingHorizontal="8dp"
                                     android:layout_marginHorizontal="2.9dp"
                                     android:textColor="@color/lightPurple"
                                     android:text="#긍정적인"
@@ -129,6 +160,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginHorizontal="2.9dp"
+                                    android:paddingHorizontal="8dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
                                     android:textColor="@color/lightPurple"
@@ -141,6 +173,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginHorizontal="2.9dp"
+                                    android:paddingHorizontal="8dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
                                     android:textColor="@color/lightPurple"
@@ -170,16 +203,17 @@
                             android:text="당신의 연애고민은 어디에 해당하나요?" />
 
                          <TextView
-                            android:fontFamily="@font/nanum_square_round_r"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/rounded_corner_grey"
-                            android:textSize="14sp"
-                            android:layout_marginTop="9.6dp"
-                            android:textColor="@color/black"
-                            android:text="#짝사랑"
-                            android:paddingVertical="12.5dp"
-                            android:paddingHorizontal="10.6dp"/>
+                             android:fontFamily="@font/nanum_square_round_r"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:background="@drawable/rounded_corner_grey"
+                             android:textSize="14sp"
+                             android:layout_marginTop="9.6dp"
+                             android:textColor="@color/black"
+                             android:text="#짝사랑"
+                             android:id="@+id/content_list_name"
+                             android:paddingVertical="12.5dp"
+                             android:paddingHorizontal="10.6dp"/>
 
                          <TextView
                             android:fontFamily="@font/nanum_square_l"
@@ -199,6 +233,7 @@
                             android:layout_marginTop="9.6dp"
                             android:textColor="@color/black"
                             android:text="#어색한 #질투나는 #슬픈 #무기력한"
+                             android:id="@+id/question_personality"
                             android:paddingVertical="12.5dp"
                             android:paddingHorizontal="10.6dp"/>
 
@@ -229,6 +264,7 @@
                             android:layout_height="10dp"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:progressDrawable="@drawable/asker_profile_progressbar"
+                            android:id="@+id/user_weight"
                             android:max="5"
                             android:progress="3"/>
 
@@ -251,6 +287,7 @@
                             android:lineSpacingExtra="12sp"
                             android:layout_marginTop="9.6dp"
                             android:textColor="@color/black"
+                            android:id="@+id/user_content_detail"
                             android:text="배고프다... 그치만 벌써 ㅗ토요일인데 언제쯤 앱이 완성될까요 백은 또 언제하지ㅠ 할게 태산인데 "
                             android:paddingVertical="12.5dp"
                             android:paddingHorizontal="10.6dp"/>
@@ -271,6 +308,7 @@
                             android:textSize="14sp"
                             android:layout_marginTop="9.6dp"
                             android:textColor="@color/black"
+                            android:id="@+id/want_gender"
                             android:text="성별: 여자"
                             android:paddingVertical="12.5dp"
                             android:paddingHorizontal="10.6dp"/>
@@ -283,7 +321,21 @@
                             android:textSize="14sp"
                             android:layout_marginTop="9.6dp"
                             android:textColor="@color/black"
+                            android:id="@+id/want_person"
                             android:text="성격: #감성적인 #신중한"
+                            android:paddingVertical="12.5dp"
+                            android:paddingHorizontal="10.6dp"/>
+
+                        <TextView
+                            android:fontFamily="@font/nanum_square_round_r"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_corner_grey"
+                            android:textSize="14sp"
+                            android:layout_marginTop="9.6dp"
+                            android:textColor="@color/black"
+                            android:id="@+id/want_exper"
+                            android:text="경험: #이별 #다툼 #우울"
                             android:paddingVertical="12.5dp"
                             android:paddingHorizontal="10.6dp"/>
 
@@ -319,6 +371,7 @@
                             android:layout_height="10dp"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:progressDrawable="@drawable/asker_profile_progressbar"
+                            android:id="@+id/progress_emotion"
                             android:max="5"
                             android:progress="3"/>
 
@@ -345,6 +398,7 @@
                             android:layout_height="10dp"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:progressDrawable="@drawable/asker_profile_progressbar"
+                            android:id="@+id/progress_advise"
                             android:max="5"
                             android:progress="3"/>
 
@@ -371,11 +425,15 @@
                             android:layout_height="10dp"
                             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                             android:progressDrawable="@drawable/asker_profile_progressbar"
+                            android:id="@+id/progress_experience"
                             android:max="5"
                             android:progress="5"
                             android:layout_marginBottom="40dp"/>
 
-
+                        <View
+                            android:layout_marginTop="80dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
 
 
                     </LinearLayout>
