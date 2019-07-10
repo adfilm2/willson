@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.appjam_willson.R;
 
 public class HelperProfileEditActivityStart extends AppCompatActivity {
@@ -20,7 +19,6 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_profile_edit_start);
-
 
         Button button1 = findViewById(R.id.h_edit_btn1);
         Button button2 = findViewById(R.id.h_edit_btn2);
@@ -38,7 +36,6 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
                 Intent intentProfileEdit = new Intent(HelperProfileEditActivityStart.this, HelperProfileEditActivityC1.class);
                 startActivity(intentProfileEdit);
 
-
             }
 
 
@@ -49,7 +46,6 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentProfileEdit = new Intent(HelperProfileEditActivityStart.this, HelperProfileEditActivityExp.class);
                 startActivity(intentProfileEdit);
-
 
             }
 
@@ -71,7 +67,6 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentProfileEdit = new Intent(HelperProfileEditActivityStart.this, HelperProfileEditActivityIntro.class);
                 startActivity(intentProfileEdit);
-
 
             }
 

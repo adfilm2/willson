@@ -19,7 +19,6 @@ public class List1DailyStartActivity extends AppCompatActivity {
     Button daily_start_btn;
     LinearLayout daily_cancel_btn;
     Context context;
-    Bundle bundle_daily = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +29,13 @@ public class List1DailyStartActivity extends AppCompatActivity {
 
         REQUEST_CODE = ((List1DailyStartActivity) context).getTaskId();
 
-        toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
+        toolbar_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
 
-        daily_start_btn = (Button)findViewById(R.id.list1_daily_start_btn);
+        daily_start_btn = findViewById(R.id.list1_daily_start_btn);
         daily_start_btn.setOnClickListener(new daily_start_btn_listener());
 
-        daily_cancel_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_cancel);
+        daily_cancel_btn = findViewById(R.id.toolbar_list_btn_cancel);
         daily_cancel_btn.setOnClickListener(new daily_cancel_btn_listener());
     }
 
@@ -47,9 +46,7 @@ public class List1DailyStartActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle_daily = data.getExtras();
-                    bundle_daily.putInt("category",5);
-                    data.putExtras(bundle_daily);
+
                     setResult(RESULT_OK,data);
                     finish();
 

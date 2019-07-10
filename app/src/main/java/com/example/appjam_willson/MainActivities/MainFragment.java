@@ -33,7 +33,9 @@ import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActi
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.CreateWorryModel;
 import com.example.appjam_willson.model.HelperStoryModel;
+import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,9 @@ import me.relex.circleindicator.CircleIndicator2;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 
 
 public class MainFragment extends Fragment {
@@ -59,7 +64,6 @@ public class MainFragment extends Fragment {
     private RecyclerView storyRecyclerView;
     private LinearLayoutManager storyLayoutManager;
     private List<HelperStoryModel.story> storyAdapterModels;
-
     private ReviewAdapter reviewAdapter;
     private RecyclerView reviewRecyclerView;
     private LinearLayoutManager reviewLayoutManager;
@@ -192,6 +196,21 @@ public class MainFragment extends Fragment {
 
         return view;
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+            switch (resultCode){
+                case RESULT_OK:
+
+
+
+                case RESULT_CANCELED:
+
+            }
+
+    }
+
 
     //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로
     void changeText(TextView text,int start,int end,String color){

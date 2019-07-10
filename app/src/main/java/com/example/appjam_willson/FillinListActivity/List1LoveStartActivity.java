@@ -19,7 +19,6 @@ public class List1LoveStartActivity extends AppCompatActivity {
     Button love_start_btn;
     LinearLayout love_cancel_btn;
     Context context;
-    Bundle bundle_love = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +30,13 @@ public class List1LoveStartActivity extends AppCompatActivity {
         REQUEST_CODE = ((List1LoveStartActivity) context).getTaskId();
         /*Log.d("리퀘스트 아이디 아이디 아이디 아이다 아이디이이", ">>>>" + REQUEST_CODE);*/
 
-        toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
+        toolbar_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
 
-        love_start_btn = (Button)findViewById(R.id.list1_love_start_btn);
+        love_start_btn = findViewById(R.id.list1_love_start_btn);
         love_start_btn.setOnClickListener(new love_start_btn_listener());
 
-        love_cancel_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_cancel);
+        love_cancel_btn = findViewById(R.id.toolbar_list_btn_cancel);
         love_cancel_btn.setOnClickListener(new love_cancel_btn_listener());
     }
 
@@ -47,9 +46,7 @@ public class List1LoveStartActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle_love = data.getExtras();
-                    bundle_love.putInt("category",1);
-                    data.putExtras(bundle_love);
+
                     setResult(RESULT_OK,data);
                     finish();
 
