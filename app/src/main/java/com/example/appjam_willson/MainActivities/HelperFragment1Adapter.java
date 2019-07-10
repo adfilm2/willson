@@ -1,6 +1,7 @@
 package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +11,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appjam_willson.AskerProfileActivity;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.DataModel;
+import com.example.appjam_willson.model.HelperReceivedWorryListWatchResponseModel;
 import com.example.appjam_willson.model.WillsonModel;
 
 import java.util.List;
 
 public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1Adapter.ViewHolder> {
 
-    private List<DataModel> dataModels;
+    private List<HelperReceivedWorryListWatchResponseModel.Concern_Info> dataModels;
     private Context context;
 
-    public HelperFragment1Adapter(List<DataModel> dataModels, Context context){
+    public HelperFragment1Adapter(List<HelperReceivedWorryListWatchResponseModel.Concern_Info> dataModels, Context context){
         this.dataModels = dataModels;
         this.context = context;
     }
@@ -38,19 +41,19 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
 
 //        닉네임
-        if(dataModels.get(i).getData().getEmail() != null) {
-            viewHolder.userNickname.setText(dataModels.get(i).getData().getEmail());
-        }
-        else{
-
-        }
-
-        //성별
-        if(dataModels.get(i).getData().getEmail() != null) {
-            viewHolder.userNickname.setText(dataModels.get(i).getData().getEmail());
-        }
-        else{
-        }
+//        if(dataModels.get(i).getData().getEmail() != null) {
+//            viewHolder.userNickname.setText(dataModels.get(i).getData().getEmail());
+//        }
+//        else{
+//
+//        }
+//
+//        //성별
+//        if(dataModels.get(i).getData().getEmail() != null) {
+//            viewHolder.userNickname.setText(dataModels.get(i).getData().getEmail());
+//        }
+//        else{
+//        }
 
         //나이대
 //        if(dataModels.get(i).getAge() != null) {
@@ -80,8 +83,8 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
         viewHolder.goProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(v.getContext(), HelperChatActivity.class);
-//                context.startActivity(intent);
+                Intent intent = new Intent(v.getContext(), AskerProfileActivity.class);
+                context.startActivity(intent);
             }
         });
     }

@@ -15,36 +15,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
-import com.example.appjam_willson.model.DataModel;
 import com.example.appjam_willson.model.HelperReceivedWorryListWatchResponseModel;
-import com.example.appjam_willson.model.WillsonModel;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Interceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HelperFragment extends Fragment {
 
+
     private RecyclerView helper_fragment1_recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private List<DataModel> dataModels;
+    private List<HelperReceivedWorryListWatchResponseModel.Concern_Info> dataModels;
     private HelperFragment1Adapter helperFragment1Adapter;
     private String myUid;
-
-    private Retrofit retrofit;
-    private RetrofitAPI retrofitAPI;
-    private DataModel dataModel;
 
     public HelperFragment() {
 
@@ -56,9 +46,11 @@ public class HelperFragment extends Fragment {
         View view = inflater.inflate(R.layout.helper_fragment1, null);
 
         myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
+
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
 
         LinearLayout change_mode = view.findViewById(R.id.helper_fragment1_change);
+
         change_mode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +63,7 @@ public class HelperFragment extends Fragment {
         helper_fragment1_recyclerView = view.findViewById(R.id.helper_fragment1_recyclerview);
         helper_fragment1_recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
-        dataModels = new ArrayList<>();
+        dataModels = new ArrayList<HelperReceivedWorryListWatchResponseModel.Concern_Info>();
         helper_fragment1_recyclerView.setLayoutManager(layoutManager);
         helperFragment1Adapter = new HelperFragment1Adapter(dataModels, getActivity());
         helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
@@ -90,7 +82,6 @@ public class HelperFragment extends Fragment {
         @Override
         public void onResponse(Call<HelperReceivedWorryListWatchResponseModel> call, Response<HelperReceivedWorryListWatchResponseModel> response) {
             HelperReceivedWorryListWatchResponseModel result = response.body();
-            Log.d("성공ㅇㅇㅇㅇ", String.valueOf(result.getCode()));
         }
 
         @Override

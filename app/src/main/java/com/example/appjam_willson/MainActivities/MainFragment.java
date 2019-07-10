@@ -90,10 +90,9 @@ public class MainFragment extends Fragment {
 
         String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
 
-
-
         Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(token);
         call_helper.enqueue(retrofitCallback);
+
 
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -208,14 +207,13 @@ public class MainFragment extends Fragment {
         @Override
         public void onResponse(Call<HelperStoryModel> call, Response<HelperStoryModel> response) {
             HelperStoryModel result = response.body();
-            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.code);
-            Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result.data.size()));
-            for(int i=0;i<result.data.size();i++){
-                storyAdapterModels.add(result.data.get(i));
-            }
-            storyAdapter.notifyDataSetChanged();
-        }
 
+            for (int i = 0; i < result.getData().size(); i++) {
+                storyAdapterModels.add(result.getData().get(i));
+//            }
+                storyAdapter.notifyDataSetChanged();
+            }
+        }
         @Override
         public void onFailure(Call<HelperStoryModel> call, Throwable t) {
             t.printStackTrace();

@@ -37,6 +37,7 @@ public class UserProfileWatchResponseModel {
     /*getter and setter end*/
 
     public class Data {
+
         public User user;
         public List<Personality> user_personality;
         public Question question;
