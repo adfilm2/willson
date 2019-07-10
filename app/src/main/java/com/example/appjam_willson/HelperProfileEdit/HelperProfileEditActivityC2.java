@@ -1,5 +1,6 @@
         package com.example.appjam_willson.HelperProfileEdit;
 
+        import android.content.Context;
         import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,25 +20,30 @@ import com.example.appjam_willson.R;
         //다음버튼에 액티비티 2 와 연결 해야함
 
             TextView text;
+            Context context;
+            int REQUEST_CODE;
 
             public void onCreate(Bundle savedInstanceState)
             {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_helper_profile_edit_c2);
-                Button button1 = (Button) findViewById(R.id.helper_editc2_1) ;
-                Button button2 = (Button) findViewById(R.id.helper_editc2_2) ;
-                Button button3 = (Button) findViewById(R.id.helper_editc2_3) ;
-                Button button4 = (Button) findViewById(R.id.helper_editc2_4) ;
-                Button nextbtn = (Button)findViewById(R.id.btn_next);
+
+                REQUEST_CODE = ((HelperProfileEditActivityC2) context).getTaskId();
+
+                Button button1 = findViewById(R.id.helper_editc2_1);
+                Button button2 = findViewById(R.id.helper_editc2_2);
+                Button button3 = findViewById(R.id.helper_editc2_3);
+                Button button4 = findViewById(R.id.helper_editc2_4);
+                Button nextbtn = findViewById(R.id.btn_next);
 
         // Button backbtn = (Button) findViewById(R.id.btn_backbtn);
         ImageView btn_back;
 
-        btn_back = (ImageView) findViewById(R.id.back_btn);
+        btn_back = findViewById(R.id.back_btn);
         btn_back.setOnClickListener(new HelperProfileEditActivityC2.list1_love_backbtn_listener());
 
 
-                text = (TextView)findViewById(R.id.toolbar_text);
+                text = findViewById(R.id.toolbar_text);
                 text.setText("프로필 수정");
 
                 button1.setOnClickListener(new Button.OnClickListener() {
@@ -119,7 +125,7 @@ import com.example.appjam_willson.R;
             @Override
             public void onClick(View view) {
                 Intent intentProfileEdit = new Intent(HelperProfileEditActivityC2.this, HelperProfileEditActivityStart.class);
-                startActivity(intentProfileEdit);
+                startActivityForResult(intentProfileEdit,REQUEST_CODE);
 
 
             }
@@ -146,7 +152,7 @@ import com.example.appjam_willson.R;
 
 
 
-};
+}
 
 
 

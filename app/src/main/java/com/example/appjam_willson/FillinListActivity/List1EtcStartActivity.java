@@ -20,7 +20,6 @@ public class List1EtcStartActivity extends AppCompatActivity {
     Button etc_start_btn;
     LinearLayout etc_cancel_btn;
     Context context;
-    Bundle bundle_etc = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +30,13 @@ public class List1EtcStartActivity extends AppCompatActivity {
 
         REQUEST_CODE = ((List1EtcStartActivity) context).getTaskId();
 
-        toolbar_backbtn = (LinearLayout)findViewById(R.id.toolbar_list_btn_backbtn);
+        toolbar_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
 
-        etc_start_btn = (Button)findViewById(R.id.list1_etc_start_btn);
+        etc_start_btn = findViewById(R.id.list1_etc_start_btn);
         etc_start_btn.setOnClickListener(new etc_start_btn_listener());
 
-        etc_cancel_btn = (LinearLayout)findViewById(R.id.toolbar_list_btn_cancel);
+        etc_cancel_btn = findViewById(R.id.toolbar_list_btn_cancel);
         etc_cancel_btn.setOnClickListener(new etc_cancel_btn_listener());
     }
 
@@ -47,9 +46,7 @@ public class List1EtcStartActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle_etc = data.getExtras();
-                    bundle_etc.putInt("category",6);
-                    data.putExtras(bundle_etc);
+
 
                     //값 확인
 //                    Integer category = data.getIntExtra("category",0);
@@ -72,6 +69,7 @@ public class List1EtcStartActivity extends AppCompatActivity {
 //                    Log.d("keyword",">>>>>>> "+key2);
 //                    Log.d("empathy",">>>>>>> "+empathy);
 
+                    setResult(RESULT_OK,data);
                     finish();
 
                 case RESULT_CANCELED:
