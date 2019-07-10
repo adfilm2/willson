@@ -11,16 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.HelperStoryModel;
+import com.example.appjam_willson.model.MainReviewModel;
 
 import java.util.List;
 
 
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
 
-    private List<HelperStoryModel.story> willsonModels;
+    private List<MainReviewModel.ReviewData> willsonModels;
     private Context context;
 
-    public ReviewAdapter(List<HelperStoryModel.story> willsonModels, Context context){
+    public ReviewAdapter(List<MainReviewModel.ReviewData> willsonModels, Context context){
         this.willsonModels = willsonModels;
         this.context = context;
     }

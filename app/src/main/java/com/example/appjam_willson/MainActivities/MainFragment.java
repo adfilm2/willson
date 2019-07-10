@@ -31,10 +31,10 @@ import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
 import com.example.appjam_willson.HelperSignUpActivity.HelperSignUpStartActivity;
-import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.HelperStoryModel;
+import com.example.appjam_willson.model.MainReviewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,11 +60,11 @@ public class MainFragment extends Fragment {
     private RecyclerView storyRecyclerView;
     private LinearLayoutManager storyLayoutManager;
     private List<HelperStoryModel.story> storyAdapterModels;
+    private List<MainReviewModel.ReviewData> reviewAdapterModels;
 
     private ReviewAdapter reviewAdapter;
     private RecyclerView reviewRecyclerView;
     private LinearLayoutManager reviewLayoutManager;
-    private List<HelperStoryModel.story> reviewAdapterModels;
 
     public MainFragment(){
 
@@ -93,6 +93,8 @@ public class MainFragment extends Fragment {
 
         Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(token);
         call_helper.enqueue(retrofitCallback);
+        Call<MainReviewModel> call_review = RetrofitService.getInstance().getService().main_review_get(token);
+        call_review.enqueue(review_retrofitCallback);
 
 
         firstContent.setOnClickListener(new View.OnClickListener() {
@@ -170,22 +172,22 @@ public class MainFragment extends Fragment {
         indicator.attachToRecyclerView(storyRecyclerView, pagerSnapHelper);
         storyAdapter.registerAdapterDataObserver(indicator.getAdapterDataObserver());
 
-//        reviewAdapterModels = new ArrayList<>();
-//        reviewRecyclerView.setHasFixedSize(true);
-//        reviewLayoutManager = new LinearLayoutManager(getActivity());
-//        reviewLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-//        reviewRecyclerView.setLayoutManager(reviewLayoutManager);
-//        reviewAdapter = new ReviewAdapter(reviewAdapterModels,getActivity());
-//        reviewRecyclerView.setAdapter(reviewAdapter);
+        reviewAdapterModels = new ArrayList<MainReviewModel.ReviewData>();
+        reviewRecyclerView.setHasFixedSize(true);
+        reviewLayoutManager = new LinearLayoutManager(getActivity());
+        reviewLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        reviewRecyclerView.setLayoutManager(reviewLayoutManager);
+        reviewAdapter = new ReviewAdapter(reviewAdapterModels,getActivity());
+        reviewRecyclerView.setAdapter(reviewAdapter);
 
-        //  리뷰   리사이클러뷰의 아이템 번호를 읽은 뒤, 고정 시켜주는 기능
-//        PagerSnapHelper pagerSnapHelper_second = new PagerSnapHelper();
-//        pagerSnapHelper_second.attachToRecyclerView(reviewRecyclerView);
+//          리뷰   리사이클러뷰의 아이템 번호를 읽은 뒤, 고정 시켜주는 기능
+        PagerSnapHelper pagerSnapHelper_second = new PagerSnapHelper();
+        pagerSnapHelper_second.attachToRecyclerView(reviewRecyclerView);
 
-        //  리뷰    밑에 동그라미 표시를 해주는 클래스
-//        CircleIndicator2 indicator_second = view.findViewById(R.id.indicator_second);
-//        indicator_second.attachToRecyclerView(reviewRecyclerView, pagerSnapHelper_second);
-//        reviewAdapter.registerAdapterDataObserver(indicator_second.getAdapterDataObserver());
+//          리뷰    밑에 동그라미 표시를 해주는 클래스
+        CircleIndicator2 indicator_second = view.findViewById(R.id.indicator_second);
+        indicator_second.attachToRecyclerView(reviewRecyclerView, pagerSnapHelper_second);
+        reviewAdapter.registerAdapterDataObserver(indicator_second.getAdapterDataObserver());
 
         //Text들의 특정 위치 색, 타입을 바꿔주는 메소드
         changeText(main_fragment1_text,7,9,"#5252a1");
@@ -220,6 +222,25 @@ public class MainFragment extends Fragment {
         }
         @Override
         public void onFailure(Call<HelperStoryModel> call, Throwable t) {
+            t.printStackTrace();
+            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+        }
+    };
+
+    private Callback<MainReviewModel> review_retrofitCallback = new Callback<MainReviewModel>() {
+
+        @Override
+        public void onResponse(Call<MainReviewModel> call, Response<MainReviewModel> response) {
+            MainReviewModel result = response.body();
+
+            for (int i = 0; i < result.getData().size(); i++) {
+                reviewAdapterModels.add(result.getData().get(i));
+//            }
+                reviewAdapter.notifyDataSetChanged();
+            }
+        }
+        @Override
+        public void onFailure(Call<MainReviewModel> call, Throwable t) {
             t.printStackTrace();
             Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
