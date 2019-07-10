@@ -78,7 +78,6 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
         viewHolder.goProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(v.getContext(), AskerProfileActivity.class);
                 intent.putExtra("question_idx", dataModels.get(i).getQuestionInfo().getQuestion_idx());
                 context.startActivity(intent);

@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.MainActivities.HelperActivity;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.model.SendRequestModel;
 import com.example.appjam_willson.model.SendRequestResponseModel;
@@ -204,7 +203,7 @@ public class AskerProfileActivity extends AppCompatActivity {
             Log.d("코드코드받은코드", String.valueOf(result.getCode()));
 
             if(result.getCode() == 1400 ){
-                intent = new Intent(context, HelperActivity.class);
+                intent = new Intent(context, HelperRequestCompleteActivity.class);
                 /*intent.putExtra("question_idx", question_idx);*/
                 startActivity(intent);
                 finish();
