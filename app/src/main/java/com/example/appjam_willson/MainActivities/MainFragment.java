@@ -35,6 +35,7 @@ import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.CreateWorryModel;
+import com.example.appjam_willson.model.CreateWorryResponseModel;
 import com.example.appjam_willson.model.HelperStoryModel;
 import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
 
@@ -152,7 +153,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //헬퍼 가입했는지 아닌지 판단해서
-                //                Intent intent = new Intent(getActivity() , HelperActivity.class);
+                //Intent intent = new Intent(getActivity() , HelperActivity.class);
                 Intent intent = new Intent(getActivity() , HelperSignUpStartActivity.class);
                 startActivity(intent);
             }
@@ -206,6 +207,48 @@ public class MainFragment extends Fragment {
             switch (resultCode){
                 case RESULT_OK:
 
+                    CreateWorryModel createWorryModel = new CreateWorryModel();
+                    createWorryModel.feeling = data.getIntArrayExtra("feeling");
+                    createWorryModel.personality = data.getIntArrayExtra(("char"));
+                    createWorryModel.experience = data.getStringArrayListExtra("experience");
+                    createWorryModel.question.weight =data.getIntExtra("importance",0);
+                    createWorryModel.question.content = data.getStringExtra("contents");
+                    createWorryModel.question.emotion = data.getIntExtra("empathy",1);
+                    createWorryModel.question.advise = data.getIntExtra("advice",1);
+                    createWorryModel.question.experience = data.getIntExtra("experience22", 1);
+                    createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
+                    createWorryModel.question.categoryList_idx = data.getIntExtra("category_id",0);
+                    String gender = data.getStringExtra("helper_gender");
+                    switch (gender){
+                        case "여자":
+                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여성;
+                        case "남자":
+                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.남성;
+                        case "모두":
+                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.모두;
+                    }
+
+
+                    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
+                    Call<CreateWorryResponseModel> call_helper = RetrofitService.getInstance().getService().create_model_post(token, createWorryModel);
+                    call_helper.enqueue(new Callback<CreateWorryResponseModel>() {
+                        @Override
+                        public void onResponse(Call<CreateWorryResponseModel> call, Response<CreateWorryResponseModel> response) {
+                            Log.d("test", response.isSuccessful() + "");
+                            CreateWorryResponseModel result = response.body();
+                            Log.d(">>result>>>>>",""+result);
+                            Log.d(">>response>>>>>",""+response);
+                            Log.d(">> response.code", ">>>>>>>>>>>" + response.code());
+                            Log.d(">> question_idx ;:::: ",">>"+result.data.question_idx);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<CreateWorryResponseModel> call, Throwable t) {
+                            t.printStackTrace();
+                            Log.d("메인 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+                        }
+                    });
 
 
                 case RESULT_CANCELED:

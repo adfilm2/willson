@@ -3,6 +3,7 @@ package com.example.appjam_willson.NetworkService;
 import com.example.appjam_willson.model.ChoiceHelperModel;
 import com.example.appjam_willson.model.ChoiceHelperResponseModel;
 import com.example.appjam_willson.model.CreateWorryModel;
+import com.example.appjam_willson.model.CreateWorryResponseModel;
 import com.example.appjam_willson.model.ExitChatModel;
 import com.example.appjam_willson.model.ExitChatResponseModel;
 import com.example.appjam_willson.model.FeelingStatusListResponseModel;
@@ -59,8 +60,8 @@ public interface RetrofitAPI {
                                                          @Body WorryCategoryListAddModel worryCategoryListAddModel);
 
     @POST("concern/question")
-    Call<WorryCategoryListAddResponseModel> create_model_post(@Header("willson-token") String token,
-                                                         @Body CreateWorryModel createWorryModel);
+    Call<CreateWorryResponseModel> create_model_post(@Header("willson-token") String token,
+                                                     @Body CreateWorryModel createWorryModel);
 
     @GET("helper/profile/{helper_idx}")
     Call<HelperProfileWatchResponseModel> watch_helperProfile_get(@Header("willson-token") String token,

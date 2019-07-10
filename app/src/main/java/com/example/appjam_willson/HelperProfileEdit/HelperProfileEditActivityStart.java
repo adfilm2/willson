@@ -20,6 +20,7 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_profile_edit_start);
 
+
         Button button1 = findViewById(R.id.h_edit_btn1);
         Button button2 = findViewById(R.id.h_edit_btn2);
         Button button3 = findViewById(R.id.h_edit_btn3); //helperSU_btn_life helperSU_btn_etc
