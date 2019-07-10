@@ -7,7 +7,6 @@ public class HelperReceivedWorryListWatchResponseModel {
     int code;
     String message;
     Data data;
-    int size;
 
     /*getter and setter start*/
 
@@ -35,18 +34,11 @@ public class HelperReceivedWorryListWatchResponseModel {
         this.data = data;
     }
 
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     /*getter and setter end*/
 
     public class Data {
         List<Concern_Info> concernInfo;
+        int size;
 
         /*getter and setter start*/
 
@@ -57,6 +49,15 @@ public class HelperReceivedWorryListWatchResponseModel {
         public void setConcernInfo(List<Concern_Info> concernInfo) {
             this.concernInfo = concernInfo;
         }
+
+        public int getSize() {
+            return size;
+        }
+
+        public void setSize(int size) {
+            this.size = size;
+        }
+
         /*getter and setter end*/
     }
 
@@ -142,13 +143,6 @@ public class HelperReceivedWorryListWatchResponseModel {
         String title;
         int question_idx;
 
-        public int getQuestion_idx() {
-            return question_idx;
-        }
-
-        public void setQuestion_idx(int question_idx) {
-            this.question_idx = question_idx;
-        }
         /*getter and setter start*/
 
         public String getTitle() {
@@ -157,6 +151,14 @@ public class HelperReceivedWorryListWatchResponseModel {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        public int getQuestion_idx() {
+            return question_idx;
+        }
+
+        public void setQuestion_idx(int question_idx) {
+            this.question_idx = question_idx;
         }
 
         /*getter and setter end*/

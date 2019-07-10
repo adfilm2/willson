@@ -17,12 +17,14 @@ import com.example.appjam_willson.model.LoginModel;
 import com.example.appjam_willson.model.LoginResponseModel;
 import com.example.appjam_willson.model.ReviewFixModel;
 import com.example.appjam_willson.model.ReviewListResponseModel;
+import com.example.appjam_willson.model.ReviewResponseModel;
 import com.example.appjam_willson.model.ReviewWriteModel;
 import com.example.appjam_willson.model.ReviewWriteResponseModel;
 import com.example.appjam_willson.model.SendRequestModel;
 import com.example.appjam_willson.model.SendRequestResponseModel;
 import com.example.appjam_willson.model.SignupModel;
 import com.example.appjam_willson.model.SignupResponseModel;
+import com.example.appjam_willson.model.UserProfileWatchResponseModel;
 import com.example.appjam_willson.model.WorryCategoryListAddModel;
 import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
 
@@ -95,4 +97,10 @@ public interface RetrofitAPI {
     @POST("concern/category")
     Call<WorryCategoryListAddResponseModel> concern_category_list_post(@Header("willson-token") String token, @Body WorryCategoryListAddModel worryCategoryListAddModel);
 
+
+    @GET("/api/user/profile/{question_idx}")
+    Call<UserProfileWatchResponseModel> get_user_profile(@Path ("question_idx") int question_idx);
+
+    @GET("review/story")
+    Call<ReviewResponseModel> main_review_get(@Header("willson-token") String token);
 }

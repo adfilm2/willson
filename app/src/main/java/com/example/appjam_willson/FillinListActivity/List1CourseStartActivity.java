@@ -65,6 +65,16 @@ public class List1CourseStartActivity extends AppCompatActivity {
                     createWorryModel.question.advise = data.getIntExtra("advice",0);
                     createWorryModel.question.experience = data.getIntExtra("experience",0);
                     createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
+                    createWorryModel.question.categoryList_idx = data.getIntExtra("category_id",0);
+                    String gender = data.getStringExtra("helper_gender");
+                    switch (gender){
+                        case "여자":
+                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여자;
+                        case "남자":
+                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.남자;
+                        case "모두":
+                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.모두;
+                    }
                     //categoryList_idx
                     createWorryModel.feeling = data.getIntArrayExtra("feeling");
 
@@ -78,7 +88,6 @@ public class List1CourseStartActivity extends AppCompatActivity {
                             WorryCategoryListAddResponseModel result = response.body();
                             Log.d("dlfkdlfjkdl", ">>>>>>>>>>>" + response.code());
                             Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
-
                         }
 
                         @Override

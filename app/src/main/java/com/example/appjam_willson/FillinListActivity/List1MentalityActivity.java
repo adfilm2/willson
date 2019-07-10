@@ -164,6 +164,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                     unrest.setTypeface(typebold);
                     selfesteem.setTypeface(typereg);
                 }
+
                 depressed.setTypeface(typereg);
                 torpor.setTypeface(typereg);
                 ego.setTypeface(typereg);
@@ -311,7 +312,6 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                     Log.d("dlfkdlfjkdl", ">>>>>>>>>>>" + response.code());
                     Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
                     category_listId= result.message;
-
                 }
 
                 @Override

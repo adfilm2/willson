@@ -30,6 +30,7 @@ import com.example.appjam_willson.FillinListActivity.List1EtcStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
+import com.example.appjam_willson.HelperSignUpActivity.HelperSignUpStartActivity;
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
@@ -145,7 +146,9 @@ public class MainFragment extends Fragment {
         changeMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity() , HelperActivity.class);
+                //헬퍼 가입했는지 아닌지 판단해서
+                //                Intent intent = new Intent(getActivity() , HelperActivity.class);
+                Intent intent = new Intent(getActivity() , HelperSignUpStartActivity.class);
                 startActivity(intent);
             }
         });
@@ -193,6 +196,7 @@ public class MainFragment extends Fragment {
     }
 
     //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로
+
     void changeText(TextView text,int start,int end,String color){
         SpannableStringBuilder spannableStringBuilder_second = new SpannableStringBuilder();
         String mainText_second = text.getText().toString();

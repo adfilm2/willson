@@ -74,6 +74,8 @@ public class LoginActivity extends AppCompatActivity {
 
 //                Call<LoginResponseModel> call_login = RetrofitService.getInstance().getService().user_login_post(loginModel);
 //                call_login.enqueue(retrofitCallback);
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(intent);
                 LoginUser(email, password);
             }
         });
@@ -86,14 +88,18 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
                         else {
+                            // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.",
                                     Toast.LENGTH_SHORT).show();
                         }
+
+                        // ...
                     }
                 });
     }
@@ -103,8 +109,6 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onResponse(retrofit2.Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
             LoginResponseModel result = response.body();
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
             Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
             Log.d("dlfkdlfjkdl", String.valueOf(result.getCode()));
         }

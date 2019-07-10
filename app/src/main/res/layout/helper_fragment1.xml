@@ -42,12 +42,11 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="질문자전환"
-                android:textSize="11sp"
                 android:textColor="@color/dark_purple"
-                />
+                android:textSize="11sp" />
         </LinearLayout>
     </RelativeLayout>
     <LinearLayout
@@ -71,6 +70,8 @@
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:layout_marginHorizontal="20.2dp"
         >
     </androidx.recyclerview.widget.RecyclerView>
