@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,6 +57,13 @@ public class MainActivity extends AppCompatActivity{
         changeTextColor(text_home,text_request,text_chat,text_mypage);
 
         // passPushTokenToServer();
+
+        Timestamp testTimes = new Timestamp(System.currentTimeMillis());
+        if(ApplicationFields.timerStart != 0){
+
+        }
+        ApplicationFields.timerStart = testTimes.getTime();
+
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
