@@ -88,27 +88,29 @@ public class HelperFragment extends Fragment {
 
     }
 
-
     private Callback<HelperReceivedWorryListWatchResponseModel> retrofitCallback = new Callback<HelperReceivedWorryListWatchResponseModel>() {
 
         @Override
         public void onResponse(Call<HelperReceivedWorryListWatchResponseModel> call, Response<HelperReceivedWorryListWatchResponseModel> response) {
             HelperReceivedWorryListWatchResponseModel result = response.body();
 
-            Log.d("성공ㅇㅇㅇㅇ", String.valueOf(result.getCode()));
+       /*     Log.d("성공ㅇㅇㅇㅇ", String.valueOf(result.getCode()));
             Log.d("메시지ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ", result.getMessage());
             Log.d("유저 닉네임", result.getData().getConcernInfo().get(0).getUserInfo().getNickname());
-
-            if (result.getCode() == 800) {
+*/
+            if (result.getCode() == 800 && result.getData() != null) {
                 adapter_send = result.getData().getConcernInfo();
                 helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
                 helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
             }
             else {
-
+               /* HelperFragment1_null fragment = new HelperFragment1_null();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
+*/
             }
-            Log.d("리ㅣㅣㅣㅣ", String.valueOf(result.getData().getSize()));
+           /* Log.d("리ㅣㅣㅣㅣ", String.valueOf(result.getData().getSize()));
             Log.d("삽질ㄹㄹㄹㄹㄹㄹ", String.valueOf(result.getData().getConcernInfo().get(1).getUserInfo()));
+        */
         }
 
         @Override

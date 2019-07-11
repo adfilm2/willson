@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,18 +20,17 @@ public class HelperFragment2_null extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.activity_helper_request_empty_received,null);
-            Button btn = view.findViewById(R.id.helper_profile_edit_btn);
-            btn.setOnClickListener(new View.OnClickListener() {
+            View view = inflater.inflate(R.layout.main_fragment2_null,null);
+            LinearLayout linearLayout = view.findViewById(R.id.fragment2_null_goHome);
+            linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    HelperFragment3 fragment = new HelperFragment3();
+                    MainFragment fragment = new MainFragment();
                     getFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
                     getActivity().finish();
-                    //////////밑에 노란색 색깔 바꾸기
-
                 }
             });
             return view;
     }
+
 }
