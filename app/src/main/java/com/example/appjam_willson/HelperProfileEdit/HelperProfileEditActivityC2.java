@@ -13,9 +13,6 @@ import android.widget.Button;
 import com.example.appjam_willson.R;
 
 
-
-
-
         public class HelperProfileEditActivityC2 extends AppCompatActivity {
         //다음버튼에 액티비티 2 와 연결 해야함
 
@@ -25,6 +22,7 @@ import com.example.appjam_willson.R;
 
             public void onCreate(Bundle savedInstanceState)
             {
+                context = this;
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_helper_profile_edit_c2);
 
@@ -38,9 +36,20 @@ import com.example.appjam_willson.R;
 
         // Button backbtn = (Button) findViewById(R.id.btn_backbtn);
         ImageView btn_back;
+        ImageView cancel_btn;
 
         btn_back = findViewById(R.id.back_btn);
-        btn_back.setOnClickListener(new HelperProfileEditActivityC2.list1_love_backbtn_listener());
+        btn_back.setOnClickListener(new HelperProfileEditActivityC2.backbtn_listener());
+        cancel_btn  = findViewById(R.id.cancel_btn);
+        cancel_btn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("result", "cancel");
+                setResult(REQUEST_CODE, intent);
+                finish();
+            }
+        });
 
 
                 text = findViewById(R.id.toolbar_text);
@@ -139,7 +148,7 @@ import com.example.appjam_willson.R;
     }
 
 
-    class list1_love_backbtn_listener implements View.OnClickListener {
+    class backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             finish();

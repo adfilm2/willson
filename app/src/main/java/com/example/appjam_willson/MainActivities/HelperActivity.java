@@ -113,7 +113,6 @@ public class HelperActivity extends AppCompatActivity{
                 }
 
                 String token = task.getResult().getToken();
-
                 Map<String,Object> map = new HashMap<>();
                 map.put("pushToken",token);
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);
