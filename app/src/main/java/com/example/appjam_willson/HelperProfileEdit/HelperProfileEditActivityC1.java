@@ -3,14 +3,15 @@
 package com.example.appjam_willson.HelperProfileEdit;
 
 
-
-        import android.content.Context;
-        import android.content.Intent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,202 +20,172 @@ import com.example.appjam_willson.R;
 
 public class HelperProfileEditActivityC1 extends AppCompatActivity {
 
-
-    ImageView btn_profile;
-    TextView text_toolbar;
     int REQUEST_CODE;
+
+    RadioGroup radioGroup1;
+    RadioGroup radioGroup2;
+    RadioGroup radioGroup3;
+
+    Button nextbtn;
+    LinearLayout cancelbtn;
+
     Context context;
+
+    RadioButton love;
+    RadioButton course;
+    RadioButton mind;
+    RadioButton rela;
+    RadioButton daily;
+    RadioButton etc;
+
+    Typeface typebold;
+    Typeface typereg;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_profile_edit_c1);
         context = this;
 
+        context = this;
+
         REQUEST_CODE = ((HelperProfileEditActivityC1) context).getTaskId();
 
-        Button button1 = findViewById(R.id.helperSU_btn_love);
-        Button button2 = findViewById(R.id.helperSU_btn_dream);
-        Button button3 = findViewById(R.id.helperSU_btn_mind); //helperSU_btn_life helperSU_btn_etc
-        Button button4 = findViewById(R.id.helperSU_btn_relationship);
-        Button button5 = findViewById(R.id.helperSU_btn_life);
-        Button button6 = findViewById(R.id.helperSU_btn_etc);
-        Button nextbtn = findViewById(R.id.btn_next);
-        ImageView cancelbtn = findViewById(R.id.cancel_btn);
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
 
-        cancelbtn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("result", "BACK");
-                setResult(REQUEST_CODE, intent);
-                finish();
-            }
-        });
+        love = findViewById(R.id.btn_love);
+        course = findViewById(R.id.btn_course);
+        mind = findViewById(R.id.btn_mind);
+        rela = findViewById(R.id.btn_rela);
+        daily = findViewById(R.id.btn_life);
+        etc = findViewById(R.id.btn_guitar);
 
-        //Button backbtn = (Button) findViewById(R.id.btn_backbtn);
+        love.setTypeface(typereg);
+        course.setTypeface(typereg);
+        mind.setTypeface(typereg);
+        rela.setTypeface(typereg);
+        daily.setTypeface(typereg);
+        etc.setTypeface(typereg);
 
-        /*ImageView btn_back;*/
+        cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
+        cancelbtn.setOnClickListener(new cancelbtn_listener());
 
-        btn_profile = findViewById(R.id.back_btn);
-        btn_profile.setVisibility(View.INVISIBLE);
+        radioGroup1 = findViewById(R.id.radioGroup1);
+        radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
+        radioGroup2 = findViewById(R.id.radioGroup2);
+        radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
+        radioGroup3 = findViewById(R.id.radioGroup3);
+        radioGroup3.setOnCheckedChangeListener(radioGroup_listener3);
 
-        text_toolbar = findViewById(R.id.toolbar_text);
-        text_toolbar.setText("프로필 수정");
+        nextbtn = findViewById(R.id.btn_next);
+        nextbtn.setOnClickListener(new next_btn_listener());
+    }
 
-       /* btn_back = (ImageView) findViewById(R.id.back_btn);
-        btn_back.setOnClickListener(new HelperProfileEditActivityC1.list1_love_backbtn_listener());
-*/
+    private RadioGroup.OnCheckedChangeListener radioGroup_listener1 = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
 
+                if(checkedId == R.id.btn_love){
+                    love.setTypeface(typebold);
+                    course.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.btn_course){
+                    course.setTypeface(typebold);
+                    love.setTypeface(typereg);
+                }
 
+                mind.setTypeface(typereg);
+                rela.setTypeface(typereg);
+                daily.setTypeface(typereg);
+                etc.setTypeface(typereg);
 
-        button1.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 nextbtn.setEnabled(true);
-                button1.setBackgroundResource(R.drawable.helpersignupbackground);
-                button1.setTextColor(getColor(R.color.white));
-                button2.setTextColor(getColor(R.color.lightPurple));
-                button3.setTextColor(getColor(R.color.lightPurple));
-                button4.setTextColor(getColor(R.color.lightPurple));
-                button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button4.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button5.setTextColor(getColor(R.color.lightPurple));
-                button5.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button6.setTextColor(getColor(R.color.lightPurple));
-                button6.setBackgroundResource(R.drawable.helpersignup_nonchecked);
+                radioGroup2.setOnCheckedChangeListener(null);
+                radioGroup2.clearCheck();
+                radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
+                radioGroup3.setOnCheckedChangeListener(null);
+                radioGroup3.clearCheck();
+                radioGroup3.setOnCheckedChangeListener(radioGroup_listener3);
 
             }
+        }
+    };
 
+    private RadioGroup.OnCheckedChangeListener radioGroup_listener2 = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if(checkedId != -1) {
 
-        });
-        button2.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                if(checkedId == R.id.btn_mind){
+                    mind.setTypeface(typebold);
+                    rela.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.btn_rela){
+                    rela.setTypeface(typebold);
+                    mind.setTypeface(typereg);
+                }
+                love.setTypeface(typereg);
+                course.setTypeface(typereg);
+                daily.setTypeface(typereg);
+                etc.setTypeface(typereg);
+
                 nextbtn.setEnabled(true);
-                button2.setBackgroundResource(R.drawable.helpersignupbackground);
-                button2.setTextColor(getColor(R.color.white));
-                button1.setTextColor(getColor(R.color.lightPurple));
-                button3.setTextColor(getColor(R.color.lightPurple));
-                button4.setTextColor(getColor(R.color.lightPurple));
-                button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button4.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button5.setTextColor(getColor(R.color.lightPurple));
-                button5.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button6.setTextColor(getColor(R.color.lightPurple));
-                button6.setBackgroundResource(R.drawable.helpersignup_nonchecked);
+                radioGroup1.setOnCheckedChangeListener(null);
+                radioGroup1.clearCheck();
+                radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
+                radioGroup3.setOnCheckedChangeListener(null);
+                radioGroup3.clearCheck();
+                radioGroup3.setOnCheckedChangeListener(radioGroup_listener3);
 
             }
-        });
+        }
+    };
 
-        button3.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    private RadioGroup.OnCheckedChangeListener radioGroup_listener3 = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if(checkedId != -1) {
+
+                if(checkedId == R.id.btn_life){
+                    daily.setTypeface(typebold);
+                    etc.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.btn_guitar){
+                    etc.setTypeface(typebold);
+                    daily.setTypeface(typereg);
+                }
+                love.setTypeface(typereg);
+                course.setTypeface(typereg);
+                mind.setTypeface(typereg);
+                rela.setTypeface(typereg);
+
                 nextbtn.setEnabled(true);
-                button3.setBackgroundResource(R.drawable.helpersignupbackground);
-                button3.setTextColor(getColor(R.color.white));
-                button2.setTextColor(getColor(R.color.lightPurple));
-                button1.setTextColor(getColor(R.color.lightPurple));
-                button4.setTextColor(getColor(R.color.lightPurple));
-                button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button4.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button5.setTextColor(getColor(R.color.lightPurple));
-                button5.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button6.setTextColor(getColor(R.color.lightPurple));
-                button6.setBackgroundResource(R.drawable.helpersignup_nonchecked);
 
-
+                radioGroup1.setOnCheckedChangeListener(null);
+                radioGroup1.clearCheck();
+                radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
+                radioGroup2.setOnCheckedChangeListener(null);
+                radioGroup2.clearCheck();
+                radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
             }
-        });
-
-        button4.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextbtn.setEnabled(true);
-                button4.setBackgroundResource(R.drawable.helpersignupbackground);
-                button4.setTextColor(getColor(R.color.white));
-                button2.setTextColor(getColor(R.color.lightPurple));
-                button3.setTextColor(getColor(R.color.lightPurple));
-                button1.setTextColor(getColor(R.color.lightPurple));
-                button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button5.setTextColor(getColor(R.color.lightPurple));
-                button5.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button6.setTextColor(getColor(R.color.lightPurple));
-                button6.setBackgroundResource(R.drawable.helpersignup_nonchecked);
+        }
+    };
 
 
-            }
-        });
-        button5.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextbtn.setEnabled(true);
-                button5.setBackgroundResource(R.drawable.helpersignupbackground);
-                button5.setTextColor(getColor(R.color.white));
-                button2.setTextColor(getColor(R.color.lightPurple));
-                button3.setTextColor(getColor(R.color.lightPurple));
-                button4.setTextColor(getColor(R.color.lightPurple));
-                button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button4.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button1.setTextColor(getColor(R.color.lightPurple));
-                button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button6.setTextColor(getColor(R.color.lightPurple));
-                button6.setBackgroundResource(R.drawable.helpersignup_nonchecked);
+    class cancelbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
 
-
-            }
-
-
-        });
-        button6.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextbtn.setEnabled(true);
-                button6.setBackgroundResource(R.drawable.helpersignupbackground);
-                button6.setTextColor(getColor(R.color.white));
-                button2.setTextColor(getColor(R.color.lightPurple));
-                button3.setTextColor(getColor(R.color.lightPurple));
-                button4.setTextColor(getColor(R.color.lightPurple));
-                button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button4.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button5.setTextColor(getColor(R.color.lightPurple));
-                button5.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button1.setTextColor(getColor(R.color.lightPurple));
-                button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-
-
-            }
-
-
-        });
-
-        nextbtn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentProfileEdit = new Intent(context, HelperProfileEditActivityC2.class);
-                startActivityForResult(intentProfileEdit,REQUEST_CODE);
-
-
-            }
-
-
-        });
-
-     /*   backbtn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-
-
-        });*/
-
+    class next_btn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context, HelperProfileEditActivityC2.class);
+            startActivityForResult(intent, REQUEST_CODE);
+        }
     }
 
 /*

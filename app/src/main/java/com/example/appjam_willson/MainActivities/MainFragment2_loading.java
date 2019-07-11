@@ -21,12 +21,14 @@ public class MainFragment2_loading extends Fragment {
     private static final int MILLISINFUTURE = 301*1000;
     private static final int COUNT_DOWN_INTERVAL = 1000;
 
-    private int count = 300;
+    private int count = 30;
     private TextView countTxt ;
     private CountDownTimer countDownTimer;
     private TextView min, sec;
 
     ImageView loading;
+
+    int question_idx;
 
 
 
@@ -39,7 +41,7 @@ public class MainFragment2_loading extends Fragment {
             View view = inflater.inflate(R.layout.activity_find_helper_loading,null);
 
             if(getArguments() != null){
-                int question_idx = getArguments().getInt("question_idx");
+                question_idx = getArguments().getInt("question_idx");
             }
 
         //타이머
@@ -64,16 +66,22 @@ public class MainFragment2_loading extends Fragment {
                 min.setText(String.format("%02d",mins));
                 countTxt.setText(String.format("%02d",count-(mins*60)));
                 count --;
+                if(count == 0){
+                    MainFragment2 fragment = new MainFragment2();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("question_idx", question_idx);
+                    fragment.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+                }
             }
             public void onFinish() {
                 countTxt.setText("Finish .");
 
-         /*       MainFragment2_loading fragment = new MainFragment2_loading();
-                question_idx = result.data.question_idx;
-                bundle = new Bundle();
+                MainFragment2 fragment = new MainFragment2();
+                Bundle bundle = new Bundle();
                 bundle.putInt("question_idx", question_idx);
                 fragment.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();*/
+                getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
 
             }
         };

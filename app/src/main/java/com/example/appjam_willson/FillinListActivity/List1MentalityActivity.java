@@ -331,8 +331,6 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         }
         else{}
 
-
-
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }

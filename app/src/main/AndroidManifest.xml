@@ -24,6 +24,7 @@
         <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart" />
+
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity" />
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity" />
         <activity android:name=".ConvConfirmActivity" />
@@ -46,7 +47,13 @@
         <activity android:name=".ChatActivities.HelperChatActivity" />
 
         <!-- Main -->
-        <activity android:name=".MainActivities.MainActivity"/>
+        <activity android:name=".MainActivities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".MainActivities.HelperActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
@@ -54,16 +61,11 @@
             android:name=".HelperProfileEdit.HelperProfileEditActivityExp"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC2" />
+
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
 
         <!-- HelperSignUpEdit -->
-        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".HelperSignUpActivity.HelperSignUpActivity1" />
 
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
         <activity android:name=".HelperSignUpActivity.HelperSignupActivity3" />

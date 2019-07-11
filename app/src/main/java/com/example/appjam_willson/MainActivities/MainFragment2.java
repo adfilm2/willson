@@ -2,6 +2,7 @@ package com.example.appjam_willson.MainActivities;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,8 @@ public class MainFragment2 extends Fragment {
     private MainFragment2Adapter mainFragment2Adapter;
    /* private String myUid;*/
 
+    public static int question_idx;
+
     public MainFragment2(){
 
     }
@@ -35,7 +38,8 @@ public class MainFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment2,null);
         if(getArguments() != null){
-            int question_idx = getArguments().getInt("question_idx");
+            question_idx = getArguments().getInt("question_idx");
+            Log.d("question fragment2임" , ">>>>>>>>>>"+question_idx);
         }
 
         /*myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
@@ -59,7 +63,7 @@ public class MainFragment2 extends Fragment {
 
             /*callWillson(myUid);*/
 
-        int question_idx = 38;
+        /*int question_idx = 38;*/
 
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
@@ -76,12 +80,11 @@ public class MainFragment2 extends Fragment {
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
 
-            if (result.getCode() == 1000 && result.getData().getHelper() != null) {
+            if (response.code() == 200 && result.getCode() == 1000 && result.getData().getHelper() != null) {
                 accept_helper = result.getData();
                 mainFragment2Adapter = new MainFragment2Adapter(accept_helper, getActivity());
                 fragment2Recyclerview.setAdapter(mainFragment2Adapter);
             }
-
             else {
             }
         }

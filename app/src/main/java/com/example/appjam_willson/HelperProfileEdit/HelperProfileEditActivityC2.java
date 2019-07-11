@@ -17,11 +17,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.R;
-import com.example.appjam_willson.model.HelperRegistModel;
-
-import retrofit2.Retrofit;
 
 
 public class HelperProfileEditActivityC2 extends AppCompatActivity {
@@ -36,6 +32,7 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
     EditText custom_edit_text;
     LinearLayout usercustom_layout;
     LinearLayout background;
+
     LinearLayout backbtn;
 
     RadioButton oneside;
@@ -44,7 +41,6 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
     RadioButton saygoodbye;
 
     TextView title;
-
 
     Context context;
 
@@ -59,12 +55,10 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
     LinearLayout HSU_usercustom_layout;
     String title;*/
 
-    private Retrofit retrofit;
-    private RetrofitAPI retrofitAPI;
-
-    HelperRegistModel helperRegistModel;
-
     public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_helper_profile_edit_c2);
+
         context = this;
         REQUEST_CODE = ((HelperProfileEditActivityC2) context).getTaskId();
 
@@ -72,7 +66,7 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
         typereg = getResources().getFont(R.font.nanum_square_r);
 
         ImageView btn;
-        nextbtn = (Button)findViewById(R.id.HelperSU_btn_next);
+        nextbtn = (Button)findViewById(R.id.btn_next);
         nextbtn.setOnClickListener(new next_btn_listener());
 
         backbtn = (LinearLayout)findViewById(R.id.back_btn_layout);
@@ -86,9 +80,7 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
 
         radioGroup_1 = (RadioGroup)findViewById(R.id.radioGroup1);
         radioGroup_2 = (RadioGroup)findViewById(R.id.radioGroup2);
-        radioGroup_1.clearCheck();
         radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
-        radioGroup_2.clearCheck();
         radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
 
         oneside = (RadioButton)findViewById(R.id.btn_onesidelove);
@@ -113,9 +105,6 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
         custom_edit_text.setOnClickListener(new custom_edit_Clicklistener());
         custom_edit_text.setOnKeyListener(new custom_edit_listener());
         custom_edit_text.setTypeface(typebold);
-
-
-
 
     }
 
@@ -306,7 +295,7 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
     class next_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intentProfileEdit = new Intent(HelperProfileEditActivityC2.this, HelperProfileEditActivityStart.class);
+            Intent intentProfileEdit = new Intent(context, HelperProfileEditActivityStart.class);
             startActivityForResult(intentProfileEdit,REQUEST_CODE);
         }
     }
