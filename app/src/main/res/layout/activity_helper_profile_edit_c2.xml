@@ -4,7 +4,6 @@ xmlns:tools="http://schemas.android.com/tools"
 android:orientation="vertical"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-    android:id="@+id/background"
 android:background="#ffffff">
 
 <include
@@ -17,188 +16,178 @@ android:background="#ffffff">
     android:layout_height="wrap_content"
     android:layout_marginTop="57.2dp"
     android:layout_marginLeft="22dp"
-    android:layout_marginBottom="29.6dp"
-    android:textSize="21sp"
+    android:fontFamily="@font/nanum_square_b"
+    android:textSize="19sp"
     android:textColor="@color/dark_purple"
     android:lineSpacingExtra="11sp"
     android:text="세부 카테고리를 선택해주세요."
     />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <RadioGroup
-            android:id="@+id/radioGroup1"
+
+<LinearLayout
+    android:layout_marginTop="29.6dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+
+    <Button
+        android:id="@+id/helper_editc2_1"
+        android:layout_width="153dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="24.8dp"
+        android:layout_marginRight="12.5dp"
+        android:layout_marginBottom="9.2dp"
+        android:layout_weight="1"
+        android:background="@drawable/list_btns_selector"
+        android:button="@color/trans"
+        android:elevation="9dp"
+        android:gravity="center"
+        android:text="짝사랑"
+        android:fontFamily="@font/nanum_square_r"
+        android:textColor="@color/list_btns_text_selector"
+        android:textColorHighlight="@color/list_btns_text_selector"
+        android:textColorLink="@color/list_btns_text_selector"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/helper_editc2_2"
+        android:layout_width="153dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="9.2dp"
+        android:layout_weight="1"
+        android:background="@drawable/list_btns_selector"
+        android:button="@color/trans"
+        android:elevation="9dp"
+        android:gravity="center"
+        android:text="썸"
+        android:fontFamily="@font/nanum_square_r"
+        android:textColor="@color/list_btns_text_selector"
+        android:textColorHighlight="@color/list_btns_text_selector"
+        android:textColorLink="@color/list_btns_text_selector"
+        android:textSize="16sp" />
+
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+
+    <Button
+        android:id="@+id/helper_editc2_3"
+        android:layout_width="1dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="24.8dp"
+        android:layout_marginRight="12.5dp"
+        android:fontFamily="@font/nanum_square_r"
+        android:layout_weight="1"
+        android:button="@color/trans"
+        android:background="@drawable/list_btns_selector"
+        android:text="갈등"
+        android:gravity="center"
+        android:textColor="@color/list_btns_text_selector"
+        android:textColorHighlight="@color/list_btns_text_selector"
+        android:textColorLink="@color/list_btns_text_selector"
+        android:textSize="16sp"
+        android:layout_marginBottom="9.2dp"
+        android:elevation="9dp"/>
+
+    <Button
+        android:id="@+id/helper_editc2_4"
+        android:layout_width="1dp"
+        android:layout_height="49dp"
+        android:layout_marginRight="27dp"
+        android:layout_weight="1"
+        android:button="@color/trans"
+        android:fontFamily="@font/nanum_square_r"
+        android:background="@drawable/list_btns_selector"
+        android:text="이별"
+        android:gravity="center"
+        android:textColor="@color/list_btns_text_selector"
+        android:textColorHighlight="@color/list_btns_text_selector"
+        android:textColorLink="@color/list_btns_text_selector"
+        android:textSize="16sp"
+        android:layout_marginBottom="9.2dp"
+        android:elevation="9dp"/>
+
+</LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="24.8dp"
+        android:layout_marginRight="12.5dp"
+        android:background="@drawable/list_btns_selector"
+        android:id="@+id/list1_daily_btn_usercustom_layout"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        android:elevation="9dp">
+
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_gravity="center">
 
-            <RadioButton
-                android:id="@+id/btn_onesidelove"
-                android:layout_width="1dp"
-                android:layout_height="49dp"
-                android:layout_marginLeft="24.8dp"
-                android:layout_marginRight="12.5dp"
-                android:layout_weight="1"
-                android:button="@color/trans"
-                android:background="@drawable/list_btns_selector"
-                android:text="짝사랑"
-                android:gravity="center"
-                android:textColor="@color/list_btns_text_selector"
-                android:textColorHighlight="@color/list_btns_text_selector"
-                android:textColorLink="@color/list_btns_text_selector"
-                android:textSize="16sp"
-                android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"
-                />
-
-            <RadioButton
-                android:id="@+id/btn_somthing"
-                android:layout_width="1dp"
-                android:layout_height="49dp"
-                android:layout_marginRight="27dp"
-                android:layout_weight="1"
-                android:button="@color/trans"
-                android:background="@drawable/list_btns_selector"
-                android:text="썸"
-                android:gravity="center"
-                android:textColor="@color/list_btns_text_selector"
-                android:textColorHighlight="@color/list_btns_text_selector"
-                android:textColorLink="@color/list_btns_text_selector"
-                android:textSize="16sp"
-                android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"
-                />
-        </RadioGroup>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RadioGroup
-            android:id="@+id/radioGroup2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/btn_conflict"
-                android:layout_width="1dp"
-                android:layout_height="49dp"
-                android:layout_marginLeft="24.8dp"
-                android:layout_marginRight="12.5dp"
-                android:layout_weight="1"
-                android:button="@color/trans"
-                android:background="@drawable/list_btns_selector"
-                android:text="갈등"
-                android:gravity="center"
-                android:textColor="@color/list_btns_text_selector"
-                android:textColorHighlight="@color/list_btns_text_selector"
-                android:textColorLink="@color/list_btns_text_selector"
-                android:textSize="16sp"
-                android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"
-                />
-
-            <RadioButton
-                android:id="@+id/btn_saygoodbye"
-                android:layout_width="1dp"
-                android:layout_height="49dp"
-                android:layout_marginRight="27dp"
-                android:layout_weight="1"
-                android:button="@color/trans"
-                android:background="@drawable/list_btns_selector"
-                android:text="이별"
-                android:gravity="center"
-                android:textColor="@color/list_btns_text_selector"
-                android:textColorHighlight="@color/list_btns_text_selector"
-                android:textColorLink="@color/list_btns_text_selector"
-                android:textSize="16sp"
-                android:layout_marginBottom="9.2dp"
-                android:elevation="9dp"
-                />
-
-        </RadioGroup>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="1dp"
-            android:layout_height="49dp"
-            android:layout_marginLeft="24.8dp"
-            android:layout_marginRight="12.5dp"
-            android:background="@drawable/list_btns_selector"
-            android:id="@+id/btn_user_custom_layout"
-            android:layout_weight="1"
-            android:layout_marginBottom="20dp"
-            android:elevation="9dp">
-
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center">
+                android:id="@+id/list1_daily_btn_usercustom"
+                android:gravity="center">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:id="@+id/btn_usercustom"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="직접입력"
-                        android:textColor="@color/lightPurple"
-                        android:textSize="16sp"
-                        android:drawableLeft="@drawable/btn_plus"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:visibility="visible"
-                        android:textStyle="normal"
-                        android:fontFamily="@font/nanum_square_r"
-                        />
-
-                </LinearLayout>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="@style/list1_edit_color"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:freezesText="true"
-                    android:cursorVisible="true"
-                    android:visibility="invisible"
-                    android:background="@null"
-                    android:singleLine="true"
-                    android:maxLength="8"
+                    android:text="직접입력"
+                    android:fontFamily="@font/nanum_square_r"
                     android:textColor="@color/lightPurple"
-                    android:textCursorDrawable="@null"
-                    android:id="@+id/usercustom_edittext"
-                    >
-                    <requestFocus/>
-                </EditText>
+                    android:textSize="16sp"
+                    android:drawableLeft="@drawable/btn_plus"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="visible"
+                    />
 
-            </FrameLayout>
-        </LinearLayout>
+            </LinearLayout>
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_marginRight="27dp"/>
-
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="직접입력"
+                android:textSize="16sp"
+                android:fontFamily="@font/nanum_square_r"
+                android:textColorHint="@color/white"
+                android:gravity="center"
+                android:freezesText="true"
+                android:cursorVisible="false"
+                android:visibility="invisible"
+                android:background="@null"
+                android:singleLine="true"
+                android:maxLength="8"
+                android:textColor="@color/lightPurple"
+                android:id="@+id/helper_editc2_textedit"
+                />
+        </FrameLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginRight="27dp"/>
+
+</LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -206,29 +195,32 @@ android:background="#ffffff">
         android:gravity="bottom"
         android:orientation="vertical">
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btn_next"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <Button
-                    android:id="@+id/btn_next"
-                    android:layout_width="match_parent"
-                    android:layout_height="46.1dp"
-                    android:layout_marginLeft="31.7dp"
-                    android:layout_marginRight="31.7dp"
-                    android:layout_marginBottom="32.6dp"
-                    android:background="@drawable/listnext_btn_selector"
-                    android:enabled="false"
-                    android:text="완료"
-                    android:textColor="@color/white"
-                    android:elevation="9dp"
-                    />
-            </LinearLayout>
+                android:layout_height="46.1dp"
+                android:layout_marginLeft="31.7dp"
+                android:layout_marginRight="31.7dp"
+                android:layout_marginBottom="32.6dp"
+                android:background="@drawable/listnext_btn_selector"
+                android:enabled="false"
+                android:text="완료"
+                android:fontFamily="@font/nanum_square_b"
+                android:textColor="@color/white"
+                android:elevation="9dp"
+                />
+        </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>

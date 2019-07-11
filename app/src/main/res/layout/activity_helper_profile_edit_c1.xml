@@ -15,9 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="57.2dp"
-        android:layout_marginBottom="32.8dp"
         android:layout_marginLeft="22dp"
-        android:textSize="21sp"
+        android:textSize="19sp"
+        android:fontFamily="@font/nanum_square_b"
         android:textColor="@color/dark_purple"
         android:lineSpacingExtra="11sp"
         android:text="도움을 줄 카테고리를 선택해주세요."
@@ -27,22 +27,24 @@
 
 
     <LinearLayout
+        android:layout_marginTop="29.6dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/radioGroup1"
+            android:id="@+id/helperSU_radioGroup1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/btn_love"
+                android:id="@+id/helperSU_btn_love"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
-                android:layout_marginRight="12.5dp"
+                android:layout_marginRight="22dp"
+                android:fontFamily="@font/nanum_square_r"
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
@@ -56,7 +58,7 @@
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/btn_course"
+                android:id="@+id/helperSU_btn_dream"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
@@ -65,6 +67,7 @@
                 android:background="@drawable/list_btns_selector"
                 android:text="진로"
                 android:gravity="center"
+                android:fontFamily="@font/nanum_square_r"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
                 android:textColorLink="@color/list_btns_text_selector"
@@ -80,21 +83,22 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/radioGroup2"
+            android:id="@+id/helperSU_radioGroup2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/btn_mind"
+                android:id="@+id/helperSU_btn_mind"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
-                android:layout_marginRight="12.5dp"
+                android:layout_marginRight="22dp"
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
                 android:text="심리"
+                android:fontFamily="@font/nanum_square_r"
                 android:gravity="center"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
@@ -104,10 +108,11 @@
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/btn_rela"
+                android:id="@+id/helperSU_btn_relationship"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
+                android:fontFamily="@font/nanum_square_r"
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
@@ -123,24 +128,26 @@
         </RadioGroup>
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/radioGroup3"
+            android:id="@+id/helperSU_radioGroup3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/btn_life"
+                android:id="@+id/helperSU_btn_life"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
-                android:layout_marginRight="12.5dp"
+                android:layout_marginRight="22dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/nanum_square_r"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
                 android:text="일상"
@@ -149,11 +156,11 @@
                 android:textColorHighlight="@color/list_btns_text_selector"
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="9.2dp"
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/btn_guitar"
+                android:id="@+id/helperSU_btn_etc"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
@@ -161,12 +168,13 @@
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
                 android:text="기타"
+                android:fontFamily="@font/nanum_square_r"
                 android:gravity="center"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="9.2dp"
                 android:elevation="9dp"/>
 
         </RadioGroup>
@@ -198,6 +206,7 @@
                 android:layout_marginBottom="32.6dp"
                 android:background="@drawable/listnext_btn_selector"
                 android:enabled="false"
+                android:fontFamily="@font/nanum_square_b"
                 android:text="다음"
                 android:textColor="@color/white"
                 android:elevation="9dp"
