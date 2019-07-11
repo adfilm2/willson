@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -33,13 +32,11 @@ import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
 import com.example.appjam_willson.HelperSignUpActivity.HelperSignUpStartActivity;
-import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.CreateWorryModel;
 import com.example.appjam_willson.model.CreateWorryResponseModel;
 import com.example.appjam_willson.model.HelperStoryModel;
-import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -250,7 +247,7 @@ public class MainFragment extends Fragment {
 //                            Intent intent = new Intent(getActivity(),MainActivity.class);
 //                            intent.putExtra("complete","OK");
 //                            startActivity(intent);
-                            MainActivity.thirdTap();
+                           /* MainActivity.thirdTap();*/
 
 
                         }
