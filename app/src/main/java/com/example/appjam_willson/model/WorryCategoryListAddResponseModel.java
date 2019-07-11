@@ -15,6 +15,7 @@ public class WorryCategoryListAddResponseModel {
    }
 
    public class Data {
+
       public int categoryList_idx;
    }
 }
