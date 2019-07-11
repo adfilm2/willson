@@ -2,9 +2,9 @@ package com.example.appjam_willson.model;
 
 public class SignupResponseModel {
 
-    int code;
+    public int code;
     String message;
-    Data data;
+    //Data data;
 
     /*getter and setter start*/
 
@@ -24,28 +24,28 @@ public class SignupResponseModel {
         this.message = message;
     }
 
-    public Data getData() {
-        return data;
-    }
-
-    public void setData(Data data) {
-        this.data = data;
-    }
+//    public Data getData() {
+//        return data;
+//    }
+//
+//    public void setData(Data data) {
+//        this.data = data;
+//    }
 
     /*getter and setter end*/
 
     public class Data {
-        Signup_Body body;
-
-        /*getter and setter start*/
-
-        public Signup_Body getBody() {
-            return body;
-        }
-
-        public void setBody(Signup_Body body) {
-            this.body = body;
-        }
+//        Signup_Body body;
+//
+//        /*getter and setter start*/
+//
+//        public Signup_Body getBody() {
+//            return body;
+//        }
+//
+//        public void setBody(Signup_Body body) {
+//            this.body = body;
+//        }
 
         /*getter and setter end*/
     }

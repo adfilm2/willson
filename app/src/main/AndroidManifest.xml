@@ -45,7 +45,9 @@
         <activity android:name=".ChatActivities.HelperChatActivity" />
 
         <!-- Main -->
-        <activity android:name=".MainActivities.MainActivity"/>
+        <activity android:name=".MainActivities.MainActivity">
+
+        </activity>
 
         <activity android:name=".MainActivities.HelperActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
