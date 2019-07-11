@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,39 +41,55 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
 
 //        닉네임
-        if(dataModels.get(i).getUserInfo().getNickname() != null) {
+        if(dataModels.get(i).getQuestionInfo().getStatus().equals("o") && dataModels.get(i).getUserInfo().getNickname() != null) {
             viewHolder.userNickname.setText(dataModels.get(i).getUserInfo().getNickname());
         }
-        else{
+        else if(dataModels.get(i).getQuestionInfo().getStatus().equals("x") && dataModels.get(i).getUserInfo().getNickname() != null){
+            viewHolder.userNickname.setText(dataModels.get(i).getUserInfo().getNickname());
         }
 
         //성별
-        if( dataModels.get(i).getUserInfo().getGender() != null) {
+        if(dataModels.get(i).getQuestionInfo().getStatus().equals("o") && dataModels.get(i).getUserInfo().getGender() != null) {
             viewHolder.userGender.setText("(" + dataModels.get(i).getUserInfo().getGender() + " / ");
         }
-        else{
+        else if (dataModels.get(i).getQuestionInfo().getStatus().equals("x") && dataModels.get(i).getUserInfo().getGender() != null){
+            viewHolder.userGender.setText("(" + dataModels.get(i).getUserInfo().getGender() + " / ");
         }
 
         //나이대
-        if(dataModels.get(i).getUserInfo().getAge() != null) {
+        if(dataModels.get(i).getQuestionInfo().getStatus().equals("o") && dataModels.get(i).getUserInfo().getAge() != null) {
             viewHolder.userAge.setText(dataModels.get(i).getUserInfo().getAge() + ")");
         }
-        else{
+        else if(dataModels.get(i).getQuestionInfo().getStatus().equals("x") && dataModels.get(i).getUserInfo().getGender() != null){
             /*viewHolder.userNickname.setText(willsonModels.get(i).getUid());*/
+            viewHolder.userAge.setText(dataModels.get(i).getUserInfo().getAge() + ")");
         }
-
         //주제
-        if(dataModels.get(i).getCategoryInfo().getCategory_name() != null) {
+        if(dataModels.get(i).getQuestionInfo().getStatus().equals("o") && dataModels.get(i).getCategoryInfo().getCategory_name() != null) {
             viewHolder.userSubject.setText(dataModels.get(i).getCategoryInfo().getCategory_name());
+           /* viewHolder.userSubjectStroke.setBackgroundResource(R.drawable.rounded_corner_radius15);*/
         }
-        else{
-        }
+        else if (dataModels.get(i).getQuestionInfo().getStatus().equals("x") && dataModels.get(i).getCategoryInfo().getCategory_name() != null){
+            viewHolder.userSubject.setText(dataModels.get(i).getCategoryInfo().getCategory_name());
+            viewHolder.userSubject.setTextColor(viewHolder.userSubject.getResources().getColor(R.color.brownish_grey));
+            viewHolder.userSubjectStroke.setBackgroundResource(R.drawable.rounded_corner_radius15_grey);
 
+        }
         //고민정보
-        if(dataModels.get(i).getQuestionInfo().getTitle() != null) {
+        if(dataModels.get(i).getQuestionInfo().getStatus().equals("o") && dataModels.get(i).getQuestionInfo().getTitle() != null) {
             viewHolder.userInformation.setText('"' + dataModels.get(i).getQuestionInfo().getTitle() + '"');
         }
-        else{
+        else if(dataModels.get(i).getQuestionInfo().getStatus().equals("x") && dataModels.get(i).getQuestionInfo().getTitle() != null){
+            viewHolder.userInformation.setText('"' + dataModels.get(i).getQuestionInfo().getTitle() + '"');
+        }
+
+        if(dataModels.get(i).getQuestionInfo().getStatus().equals("o")){
+            viewHolder.goProfile.setEnabled(true);
+        }
+        else if(dataModels.get(i).getQuestionInfo().getStatus().equals("x")){
+            viewHolder.goProfile.setEnabled(false);
+            viewHolder.goProfile.setText("답변자의 확정을 기다리는 중입니다.");
+            viewHolder.timer.setVisibility(View.GONE);
         }
 
         //프로필보기
@@ -81,7 +99,6 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
                 Intent intent = new Intent(v.getContext(), AskerProfileActivity.class);
                 intent.putExtra("question_idx", dataModels.get(i).getQuestionInfo().getQuestion_idx());
                 context.startActivity(intent);
-
             }
 
         });
@@ -99,8 +116,10 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
         public TextView userGender;
         public TextView userAge;
         public TextView userSubject;
+        public LinearLayout userSubjectStroke;
         public TextView userInformation;
         public Button goProfile;
+        public RelativeLayout timer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -108,8 +127,10 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
             userGender = itemView.findViewById(R.id.helper_fragment1_gender);
             userAge = itemView.findViewById(R.id.helper_fragment1_age);
             userSubject = itemView.findViewById(R.id.helper_fragment1_subject);
+            userSubjectStroke = itemView.findViewById(R.id.subject_stroke);
             userInformation = itemView.findViewById(R.id.helper_fragment1_information);
             goProfile = itemView.findViewById(R.id.helper_profile_detail_btn);
+            timer = itemView.findViewById(R.id.asker_relative);
         }
     }
 }
