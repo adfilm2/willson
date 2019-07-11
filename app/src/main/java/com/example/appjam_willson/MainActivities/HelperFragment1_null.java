@@ -1,6 +1,7 @@
 package com.example.appjam_willson.MainActivities;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -35,10 +37,12 @@ public class HelperFragment1_null extends Fragment {
         TextView willsonText_profile = (TextView) getActivity().findViewById(R.id.willsonText_profile);
         TextView willsonText_mypage = (TextView) getActivity().findViewById(R.id.willsonText_mypage);
 
+        LinearLayout go_user = view.findViewById(R.id.trans_user);
+        go_user.setOnClickListener(new go_user_listener());
+
 /*        LayoutInflater inflater_tab;
         inflater_tab = getLayoutInflater();
         View view_tab = inflater_tab.inflate(R.layout.activity_helper, null);*/
-
 
         Button btn = view.findViewById(R.id.helper_profile_edit_btn);
 
@@ -72,6 +76,15 @@ public class HelperFragment1_null extends Fragment {
             }
         });
         return view;
+    }
+
+    class go_user_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getActivity(),MainActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
     }
 
     private void changeImage(ImageView first, ImageView second, ImageView third, ImageView fourth) {

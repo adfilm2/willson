@@ -184,7 +184,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 }
                 call_helper.enqueue(retrofitCallback);
 
-//                checkNickName(userNickname, new Runnable() {
+//                checkNickName(Nickname, new Runnable() {
 //                    public void run() {
 //                        if(nickNameCheck == false){
 //                            showAlert("존재하는 닉네임 입니다.");

@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="right"
+        android:id="@+id/trans_user"
         android:layout_marginTop="51.7dp"
         >
 
@@ -24,6 +25,7 @@
             android:textColor="@color/dark_purple"
             android:lineSpacingExtra="1sp"
             android:text="질문자전환"
+            android:id="@+id/trans_to_user"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:textStyle="normal"
@@ -70,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
             android:text="아직 받은 고민이 없습니다.\n헬퍼 프로필을 업그레이드 해보세요"
             android:textColor="@color/dark_purple"
             android:lineSpacingExtra="10sp"

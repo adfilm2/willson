@@ -33,8 +33,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    int question_idx;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkMatch() {
 
+        int question_idx = 38;
+
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
         accept_helper.enqueue(retrofitCallback);
@@ -163,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
             if (result.getCode() == 1000) {
                 MainFragment2 fragment = new MainFragment2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
             } else {
                 MainFragment2_null fragment = new MainFragment2_null();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
