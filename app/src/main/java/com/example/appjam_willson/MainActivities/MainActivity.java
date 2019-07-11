@@ -1,6 +1,7 @@
 package com.example.appjam_willson.MainActivities;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,15 +36,28 @@ public class MainActivity extends AppCompatActivity {
 
     int question_idx;
 
+    static ImageView image_home;
+    static ImageView image_request;
+    static ImageView image_chat;
+    static ImageView image_mypage;
+
+    static TextView text_home;
+    static TextView text_request;
+    static TextView text_chat;
+    static TextView text_mypage;
+    static Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LinearLayout button1 = findViewById(R.id.layout_home);
-        LinearLayout button2 = findViewById(R.id.layout_request);
-        LinearLayout button3 = findViewById(R.id.layout_chat);
-        LinearLayout button4 = findViewById(R.id.layout_mypage);
+        intent = getIntent();
+
+        final LinearLayout button1 = findViewById(R.id.layout_home);
+        final LinearLayout button2 = findViewById(R.id.layout_request);
+        final LinearLayout button3 = findViewById(R.id.layout_chat);
+        final LinearLayout button4 = findViewById(R.id.layout_mypage);
 
         final ImageView image_home = findViewById(R.id.Image_home);
         final ImageView image_request = findViewById(R.id.Image_request);
@@ -89,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,8 +112,11 @@ public class MainActivity extends AppCompatActivity {
 
                 MainFragment3 fragment = new MainFragment3();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
+
             }
         });
+
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,14 +146,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void changeImage(ImageView first, ImageView second, ImageView third, ImageView fourth) {
+    private static void changeImage(ImageView first, ImageView second, ImageView third, ImageView fourth) {
         first.setSelected(true);
         second.setSelected(false);
         third.setSelected(false);
         fourth.setSelected(false);
     }
 
-    private void changeTextColor(TextView first, TextView second, TextView third, TextView fourth) {
+    public static void changeTextColor(TextView first, TextView second, TextView third, TextView fourth) {
         first.setTextColor(Color.parseColor("#2f2f2f"));
         second.setTextColor(Color.parseColor("#9e9e9e"));
         third.setTextColor(Color.parseColor("#9e9e9e"));
@@ -148,7 +166,9 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
     }
 
-        public void checkMatch() {
+    public void checkMatch() {
+
+        int question_idx = 38;
 
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
@@ -165,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
             if (result.getCode() == 1000) {
                 MainFragment2 fragment = new MainFragment2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
             } else {
                 MainFragment2_null fragment = new MainFragment2_null();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
@@ -173,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(Call<AcceptHelperListWatchResponseModel> call, Throwable t) {
-
+            t.printStackTrace();
         }
     };
 }

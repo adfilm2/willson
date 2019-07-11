@@ -142,6 +142,8 @@ public class HelperReceivedWorryListWatchResponseModel {
     public class Question_Info {
         String title;
         int question_idx;
+        String create_time;
+        String status;
 
         /*getter and setter start*/
 
@@ -159,6 +161,22 @@ public class HelperReceivedWorryListWatchResponseModel {
 
         public void setQuestion_idx(int question_idx) {
             this.question_idx = question_idx;
+        }
+
+        public String getCreate_time() {
+            return create_time;
+        }
+
+        public void setCreate_time(String create_time) {
+            this.create_time = create_time;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
         }
 
         /*getter and setter end*/

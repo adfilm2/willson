@@ -3,6 +3,7 @@ package com.example.appjam_willson.PopUp;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -10,7 +11,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.appjam_willson.NetworkService.RetrofitAPI;
+import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.HelperRegistModel;
+import com.example.appjam_willson.model.HelperRegistResponseModel;
+import com.example.appjam_willson.model.ReviewWriteModel;
+import com.example.appjam_willson.model.ReviewWriteResponseModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class ChatFeedback_CustomDialog extends Dialog {
 
@@ -31,8 +43,18 @@ public class ChatFeedback_CustomDialog extends Dialog {
     private View.OnClickListener cancel_btn_listener;
     private View.OnClickListener commit_btn_listener;
 
+    private Retrofit retrofit;
+    private RetrofitAPI retrofitAPI;
+
+
+
+    ReviewWriteModel reviewWriteModel;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         WindowManager.LayoutParams window = new WindowManager.LayoutParams();
         window.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
@@ -42,19 +64,19 @@ public class ChatFeedback_CustomDialog extends Dialog {
 
         setContentView(R.layout.activity_chat_feedback_popup);
 
-        star1 = (ImageView) findViewById(R.id.feedback_star1);
-        star2 = (ImageView) findViewById(R.id.feedback_star2);
-        star3 = (ImageView) findViewById(R.id.feedback_star3);
-        star4 = (ImageView) findViewById(R.id.feedback_star4);
-        star5 = (ImageView) findViewById(R.id.feedback_star5);
+        star1 = findViewById(R.id.feedback_star1);
+        star2 = findViewById(R.id.feedback_star2);
+        star3 = findViewById(R.id.feedback_star3);
+        star4 = findViewById(R.id.feedback_star4);
+        star5 = findViewById(R.id.feedback_star5);
 
-        star_textview = (TextView) findViewById(R.id.star_num);
-        comment_textview = (TextView) findViewById(R.id.star_comment);
+        star_textview = findViewById(R.id.star_num);
+        comment_textview = findViewById(R.id.star_comment);
 
-        feedback_text = (EditText) findViewById(R.id.feedback_comment);
+        feedback_text = findViewById(R.id.feedback_comment);
 
-        cancel_btn = (ImageView) findViewById(R.id.feedback_cancel);
-        commit_btn = (ImageView) findViewById(R.id.feedback_commit);
+        cancel_btn = findViewById(R.id.feedback_cancel);
+        commit_btn = findViewById(R.id.feedback_commit);
 
         star1.setOnClickListener(new star_click());
         star2.setOnClickListener(new star_click());
@@ -62,8 +84,52 @@ public class ChatFeedback_CustomDialog extends Dialog {
         star4.setOnClickListener(new star_click());
         star5.setOnClickListener(new star_click());
 
+
+
         cancel_btn.setOnClickListener(cancel_btn_listener);
         commit_btn.setOnClickListener(commit_btn_listener);
+
+
+        /*//통신  ReviewWriteModel
+
+
+        ReviewWriteModel reviewWriteModel = new ReviewWriteModel();
+        reviewWriteModel.review.stars= "3";
+
+        //        reviewWriteModel.review.stars = data.getStringExtra("intro");
+        //helperRegistModel.helper.category_name = "ㅋㅋㅋ";
+        reviewWriteModel.review.review_content = "아아아아아아";
+        reviewWriteModel.review.helper_idx =  3;
+        reviewWriteModel.review.category_idx = 6;
+        reviewWriteModel.review.question_idx = 66;
+
+
+
+
+
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3Njc4OTcsImV4cCI6MTU3MTQwNzg5NywiaXNzIjoid2lsbHNvbiJ9.VX9-dSw1vzLO7j94UsqOnw6kA3-PeNFp8dic_jHtUt0";
+
+        Call<ReviewWriteResponseModel> call_helper = RetrofitService.getInstance().getService().write_review_post(token, reviewWriteModel);
+
+        call_helper.enqueue(new Callback<ReviewWriteResponseModel>() {
+            @Override
+            public void onResponse(Call<ReviewWriteResponseModel> call, Response<ReviewWriteResponseModel> response) {
+                Log.d("test", response.isSuccessful() + "");
+                ReviewWriteResponseModel result = response.body();
+                Log.d("response code", ">>>>>>>>>>>>>>>>>>>>>>" + response.code());
+                // Log.d("코드값", ">>>>>>>>>>>>>>>>>>>>>>" + result.code);
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ReviewWriteResponseModel> call, Throwable t) {
+                t.printStackTrace();
+                Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+            }
+        });*/
+
 
     }
 
@@ -126,7 +192,6 @@ public class ChatFeedback_CustomDialog extends Dialog {
 
     public ChatFeedback_CustomDialog(Context context, View.OnClickListener cancel_listener, View.OnClickListener commit_listener) {
         super(context);
-        
         this.cancel_btn_listener = cancel_listener;
         this.commit_btn_listener = commit_listener;
     }

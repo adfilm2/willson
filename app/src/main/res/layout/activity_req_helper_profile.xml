@@ -63,16 +63,39 @@
                                 android:textSize="17sp"/>
 
                             <!--정보-->
-                            <TextView
-                                android:layout_width="wrap_content"
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="7.9dp"
-                                android:text="여성 / 20대 후반"
-                                android:layout_marginBottom="14.8dp"
-                                android:textColor="#424242"
-                                android:id="@+id/profile_helper_detail"
-                                android:textSize="13sp"/>
+                                android:orientation="horizontal"
+                                android:gravity="center_horizontal"
+                                >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="7.9dp"
+                                    android:gravity="center_horizontal"
+                                    android:text="여성 /"
+                                    android:layout_marginBottom="14.8dp"
+                                    android:textColor="#424242"
+                                    android:id="@+id/profile_helper_gender"
+                                    android:textSize="13sp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="7.9dp"
+                                    android:text="20대 후반"
+                                    android:layout_marginBottom="14.8dp"
+                                    android:textColor="#424242"
+                                    android:id="@+id/profile_helper_age"
+                                    android:textSize="13sp"
+                                    />
+
+                            </LinearLayout>
+
 
                             <!--별점/후기-->
                             <LinearLayout
@@ -94,7 +117,7 @@
                                     android:textColor="#424242"
                                     android:gravity="bottom"
                                     android:text="5.0 "
-                                    android:id="@+id/profile_asker_cate"
+                                    android:id="@+id/profile_star"
                                     android:textSize="13sp"/>
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -102,7 +125,7 @@
                                     android:gravity="bottom"
                                     android:textColor="#424242"
                                     android:text="(6개의 후기)"
-                                    android:id="@+id/profile_helper_review_num"
+                                    android:id="@+id/review_num"
                                     android:textSize="11sp"/>
                             </LinearLayout>
 
@@ -182,6 +205,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="심리"
+                                android:id="@+id/category"
                                 android:textSize="16sp"
                                 android:textColor="@color/lightPurple"
                                 android:gravity="center"
@@ -206,6 +230,7 @@
                                     android:layout_marginHorizontal="4dp"
                                     android:lineSpacingExtra="13sp"
                                     android:textColor="@color/darkPurple"
+                                    android:id="@+id/ex1"
                                     android:text="#음악" />
 
                                 <TextView
@@ -214,6 +239,7 @@
                                     android:textSize="15sp"
                                     android:lineSpacingExtra="13sp"
                                     android:layout_marginHorizontal="4dp"
+                                    android:id="@+id/ex2"
                                     android:textColor="@color/darkPurple"
                                     android:text="#오예에에에" />
                                 <TextView
@@ -221,6 +247,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:layout_marginHorizontal="4dp"
+                                    android:id="@+id/ex3"
                                     android:textColor="@color/darkPurple"
                                     android:text="#아리가또"
                                     />

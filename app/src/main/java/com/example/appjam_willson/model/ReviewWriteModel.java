@@ -4,12 +4,21 @@ public class ReviewWriteModel {
 
     public ReviewWrite review;
 
+    public ReviewWrite getReview() {
+        return review;
+    }
+
+    public void setReview(ReviewWrite review) {
+        this.review = review;
+    }
+
+
     public static class ReviewWrite{
-        String stars;
-        String review_content;
-        int helper_idx;
-        int category_idx;
-        int question_idx;
+        public String stars;
+        public String review_content;
+        public int helper_idx;
+        public int category_idx;
+        public  int question_idx;
 
         public String getStars() {
             return stars;

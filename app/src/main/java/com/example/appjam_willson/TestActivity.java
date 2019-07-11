@@ -41,9 +41,9 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_test);
+      //  setContentView(R.layout.activity_test);
 
-        test = (TextView)findViewById(R.id.test_text);
+     //   test = (TextView)findViewById(R.id.test_text);
 
         user userd = userser;
 

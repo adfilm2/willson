@@ -28,7 +28,7 @@
                 android:text="같은 고민을 한
 \n헬퍼를 찾았어요!"
                 android:textSize="22sp"
-                android:textColor="@color/light_purple"
+                android:textColor="@color/lightPurple"
                 />
             <ImageView
                 android:layout_width="wrap_content"

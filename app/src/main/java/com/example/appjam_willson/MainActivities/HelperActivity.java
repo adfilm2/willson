@@ -11,8 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.ApplicationField.ApplicationFields;
+import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.HelperReceivedWorryListWatchResponseModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,10 @@ import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HelperActivity extends AppCompatActivity{
@@ -36,6 +41,7 @@ public class HelperActivity extends AppCompatActivity{
         LinearLayout button3=findViewById(R.id.willsonLayout_profile);
         LinearLayout button4=findViewById(R.id.willsonLayout_mypage);
 
+
         final ImageView willsonImage_receive=findViewById(R.id.willsonImage_receive);
         final ImageView willsonImage_chat=findViewById(R.id.willsonImage_chat);
         final ImageView willsonImage_profile=findViewById(R.id.willsonImage_profile);
@@ -48,7 +54,7 @@ public class HelperActivity extends AppCompatActivity{
 
 //        passPushTokenToServer();
 
-        startMainView();
+        checkMatch();
         changeImage(willsonImage_receive,willsonImage_chat,willsonImage_profile,willsonImage_mypage);
         changeTextColor(willsonText_receive,willsonText_chat,willsonText_profile,willsonText_mypage);
 
@@ -57,6 +63,8 @@ public class HelperActivity extends AppCompatActivity{
             public void onClick(View v) {
                 changeImage(willsonImage_receive,willsonImage_chat,willsonImage_profile,willsonImage_mypage);
                 changeTextColor(willsonText_receive,willsonText_chat,willsonText_profile,willsonText_mypage);
+
+                checkMatch();
                 HelperFragment fragment = new HelperFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
             }
@@ -77,7 +85,7 @@ public class HelperActivity extends AppCompatActivity{
                 changeImage(willsonImage_profile,willsonImage_chat,willsonImage_receive,willsonImage_mypage);
                 changeTextColor(willsonText_profile,willsonText_chat,willsonText_receive,willsonText_mypage);
 
-                MainFragment3 fragment = new MainFragment3();
+                HelperFragment3 fragment = new HelperFragment3();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
             }
         });
@@ -92,6 +100,7 @@ public class HelperActivity extends AppCompatActivity{
             }
         });
     }
+
     void passPushTokenToServer(){
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -125,11 +134,58 @@ public class HelperActivity extends AppCompatActivity{
         fourth.setTextColor(Color.parseColor("#9e9e9e"));
     }
 
-    private void startMainView(){
 
-        HelperFragment fragment = new HelperFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
+    public void checkMatch() {
+
+        int question_idx = 100;
+
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
+
+        Call<HelperReceivedWorryListWatchResponseModel> call_worryList = RetrofitService.getInstance().getService().helper_receiveList_get(token);
+        call_worryList.enqueue(retrofitCallback);
+
     }
+
+    private Callback<HelperReceivedWorryListWatchResponseModel> retrofitCallback = new Callback<HelperReceivedWorryListWatchResponseModel>() {
+
+        @Override
+        public void onResponse(Call<HelperReceivedWorryListWatchResponseModel> call, Response<HelperReceivedWorryListWatchResponseModel> response) {
+            HelperReceivedWorryListWatchResponseModel result = response.body();
+
+           /* Log.d("성공ㅇㅇㅇㅇ", String.valueOf(result.getCode()));
+            Log.d("메시지ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ", result.getMessage());
+            Log.d("유저 닉네임", result.getData().getConcernInfo().get(0).getUserInfo().getNickname());
+*/
+            if (result.getCode() == 800 && result.getData().getSize() != 0) {
+                /*adapter_send = result.getData().getConcernInfo();*/
+               /* helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
+                helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);*/
+                HelperFragment fragment = new HelperFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
+
+            }
+            else if(result.getData().getSize() == 0){
+                HelperFragment1_null fragment = new HelperFragment1_null();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
+            }
+           /* Log.d("리ㅣㅣㅣㅣ", String.valueOf(result.getData().getSize()));
+            Log.d("삽질ㄹㄹㄹㄹㄹㄹ", String.valueOf(result.getData().getConcernInfo().get(1).getUserInfo()));
+       */
+        }
+
+        @Override
+        public void onFailure(Call<HelperReceivedWorryListWatchResponseModel> call, Throwable t) {
+            t.printStackTrace();
+            Log.d("실패ㅐㅐㅐㅐㅐ","대실패");
+        }
+    };
+
+  /*  public void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.main_frame, fragment).commit();
+    }*/
+
 
 }
 

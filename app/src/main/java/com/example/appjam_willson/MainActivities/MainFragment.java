@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,8 +38,10 @@ import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.CreateWorryModel;
 import com.example.appjam_willson.model.CreateWorryResponseModel;
+import com.example.appjam_willson.model.HelperCheckResponseModel;
 import com.example.appjam_willson.model.HelperStoryModel;
 import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
+import com.google.android.material.theme.MaterialComponentsViewInflater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -156,6 +159,10 @@ public class MainFragment extends Fragment {
         changeMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(token);
+                user_profile.enqueue(check_retrofitCallback);
+
                 //헬퍼 가입했는지 아닌지 판단해서
                 //Intent intent = new Intent(getActivity() , HelperActivity.class);
                 Intent intent = new Intent(getActivity() , HelperActivity.class);
@@ -204,10 +211,33 @@ public class MainFragment extends Fragment {
 
         return view;
     }
+
+    private Callback<HelperCheckResponseModel> check_retrofitCallback = new Callback<HelperCheckResponseModel>() {
+        @Override
+        public void onResponse(Call<HelperCheckResponseModel> call, Response<HelperCheckResponseModel> response) {
+            HelperCheckResponseModel result = response.body();
+            if(result.data.status){
+                Intent intent = new Intent(getActivity(),HelperActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Intent intent = new Intent(getActivity() , HelperSignUpStartActivity.class);
+                startActivity(intent);
+
+            }
+
+        }
+
+        @Override
+        public void onFailure(Call<HelperCheckResponseModel> call, Throwable t) {
+                Log.d(">>>>>>헬퍼 등록 체크 실패>>>>>>>","실패래요~~~~");
+        }
+    };
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode == REQUEST_CODE_COURSE || requestCode == REQUEST_CODE_DAILY || requestCode ==REQUEST_CODE_ETC ||requestCode == REQUEST_CODE_LOVE || requestCode ==REQUEST_CODE_MENTAL ||requestCode ==REQUEST_CODE_RELATION){
             switch (resultCode){
                 case RESULT_OK:
 
@@ -245,6 +275,28 @@ public class MainFragment extends Fragment {
                             Log.d(">> response.code", ">>>>>>>>>>>" + response.code());
                             Log.d(">> question_idx ;:::: ",">>"+result.data.question_idx);
                             ApplicationFields.myQuestion_idx = result.data.question_idx;
+//                            Intent intent = new Intent(getActivity(),MainActivity.class);
+//                            intent.putExtra("complete","OK");
+//                            startActivity(intent);
+
+
+                            ImageView willsonImage_home = getActivity().findViewById(R.id.Image_home);
+                            ImageView willsonImage_chat = getActivity().findViewById(R.id.Image_chat);
+                            ImageView willsonImage_request = getActivity().findViewById(R.id.Image_request);
+                            ImageView willsonImage_mypage = getActivity().findViewById(R.id.Image_mypage);
+
+                            TextView willsonText_home = getActivity().findViewById(R.id.text_home);
+                            TextView willsonText_chat = getActivity().findViewById(R.id.text_chat);
+                            TextView willsonText_request = getActivity().findViewById(R.id.text_request);
+                            TextView willsonText_mypage = getActivity().findViewById(R.id.text_mypage);
+
+                            changeImage(willsonImage_request,willsonImage_chat,willsonImage_mypage,willsonImage_home);
+                            changeTextColor(willsonText_request,willsonText_home,willsonText_chat,willsonText_mypage);
+
+                            MainFragment2_loading fragment = new MainFragment2_loading();
+                            getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
+
                         }
 
                         @Override
@@ -258,8 +310,11 @@ public class MainFragment extends Fragment {
                 case RESULT_CANCELED:
 
             }
+        }
+
 
     }
+
 
 
     //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로
@@ -291,6 +346,21 @@ public class MainFragment extends Fragment {
             Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
+
+    private void changeImage(ImageView first, ImageView second, ImageView third, ImageView fourth) {
+        first.setSelected(true);
+        second.setSelected(false);
+        third.setSelected(false);
+        fourth.setSelected(false);
+    }
+
+    private void changeTextColor(TextView first, TextView second, TextView third, TextView fourth) {
+        first.setTextColor(Color.parseColor("#2f2f2f"));
+        second.setTextColor(Color.parseColor("#9e9e9e"));
+        third.setTextColor(Color.parseColor("#9e9e9e"));
+        fourth.setTextColor(Color.parseColor("#9e9e9e"));
+    }
+
 
 //    private Callback<MainReviewModel> review_retrofitCallback = new Callback<MainReviewModel>() {
 //
