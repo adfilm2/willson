@@ -9,16 +9,17 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
+        android:name=".ApplicationField.ApplicationFields"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".ApplicationField.ApplicationFields"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".HelperRequestCompleteActivity"></activity>
+        <activity android:name=".LoginRegisterActivity.SignUpPersonalityActivity"></activity>
+        <activity android:name=".HelperRequestCompleteActivity" />
         <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart" />
@@ -30,22 +31,19 @@
             android:windowSoftInputMode="adjustPan" /> <!-- Login && Register -->
         <activity android:name=".LoginRegisterActivity.LoginActivity" />
         <activity android:name=".LoginRegisterActivity.ChoiceActivity" />
-        <activity android:name=".LoginRegisterActivity.RegisterActivity_asker" >
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_asker">
+        </activity>
+        <activity android:name=".LoginRegisterActivity.RegisterActivity_helper" /> <!-- Chat -->
+        <activity android:name=".ChatActivities.ChatActivity" />
+        <activity android:name=".ChatActivities.HelperChatActivity" /> <!-- Main -->
+        <activity android:name=".MainActivities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LoginRegisterActivity.RegisterActivity_helper" /> <!-- Chat -->
-        <activity android:name=".ChatActivities.ChatActivity" />
-        <activity android:name=".ChatActivities.HelperChatActivity" /> <!-- Main -->
-        <activity android:name=".MainActivities.MainActivity" />
-        <activity android:name=".MainActivities.HelperActivity"/>
-
-
-
+        <activity android:name=".MainActivities.HelperActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
         <activity
             android:name=".HelperProfileEdit.HelperProfileEditActivityExp"
