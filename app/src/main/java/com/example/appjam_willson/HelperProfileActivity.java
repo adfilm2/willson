@@ -42,9 +42,11 @@ public class HelperProfileActivity extends AppCompatActivity {
     TextView exper1;
     TextView exper2;
     TextView exper3;
-
-
-
+    TextView title;
+    TextView detail;
+    TextView person1;
+    TextView person2;
+    TextView person3;
 
 
     @Override
@@ -52,28 +54,33 @@ public class HelperProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_req_helper_profile);
 
-        toolbar_textView = findViewById(R.id.toolbar_text);
+        toolbar_textView = (TextView)findViewById(R.id.toolbar_text);
         toolbar_textView.setText("헬퍼 프로필");
 
-        cancel = findViewById(R.id.cancel_btn);
+        cancel = (ImageView)findViewById(R.id.cancel_btn);
         cancel.setVisibility(View.INVISIBLE);
 
-        back = findViewById(R.id.back_btn_layout);
+        back = (LinearLayout)findViewById(R.id.back_btn_layout);
         back.setOnClickListener(new back_listener());
 
         context = this;
-        request_btn = findViewById(R.id.floating_btn_start);
+        request_btn = (Button)findViewById(R.id.floating_btn_start);
         request_btn.setOnClickListener(new select());
 
-        nick = findViewById(R.id.profile_helper_id);
-        gend = findViewById(R.id.profile_helper_gender);
-        age = findViewById(R.id.profile_helper_age);
-        cate = findViewById(R.id.category);
-        stars = findViewById(R.id.profile_star);
-        review = findViewById(R.id.review_num);
-        exper1 = findViewById(R.id.ex1);
-        exper2 = findViewById(R.id.ex2);
-        exper3 = findViewById(R.id.ex3);
+        nick = (TextView)findViewById(R.id.profile_helper_id);
+        gend = (TextView)findViewById(R.id.profile_helper_gender);
+        age = (TextView)findViewById(R.id.profile_helper_age);
+        cate = (TextView)findViewById(R.id.category);
+        stars = (TextView)findViewById(R.id.profile_star);
+        review = (TextView)findViewById(R.id.review_num);
+        exper1 = (TextView)findViewById(R.id.ex1);
+        exper2 = (TextView)findViewById(R.id.ex2);
+        exper3 = (TextView)findViewById(R.id.ex3);
+        title = (TextView)findViewById(R.id.profile_asker_info);
+        detail = (TextView)findViewById(R.id.infomation);
+        person1 = (TextView)findViewById(R.id.profile_helper_tag1);
+        person2 = (TextView)findViewById(R.id.profile_helper_tag2);
+        person3 = (TextView)findViewById(R.id.profile_helper_tag3);
 
 
         intent = getIntent();
@@ -113,7 +120,7 @@ public class HelperProfileActivity extends AppCompatActivity {
         public void onResponse(Call<HelperProfileWatchResponseModel> call, Response<HelperProfileWatchResponseModel> response) {
             HelperProfileWatchResponseModel result = response.body();
 
-            if(result.getCode() == 1100){
+            if(result.getCode() == 1100 && result.getData() != null){
                 nick.setText(result.getData().getHelper().get(0).getNickname());
                 gend.setText(result.getData().getHelper().get(0).getGender());
                 age.setText("/ " + result.getData().getHelper().get(0).getAge());
@@ -123,10 +130,14 @@ public class HelperProfileActivity extends AppCompatActivity {
                 exper1.setText(result.getData().getExperience().get(0).getExperience_name());
                 exper2.setText(result.getData().getExperience().get(1).getExperience_name());
                 exper3.setText(result.getData().getExperience().get(2).getExperience_name());
-
-
-
-
+                title.setText(result.getData().getHelper().get(0).getTitle());
+                detail.setText(result.getData().getHelper().get(0).getContent());
+                person1.setText(result.getData().getPersonality().get(0).getPersonality_name());
+                person2.setText(result.getData().getPersonality().get(1).getPersonality_name());
+                person3.setText(result.getData().getPersonality().get(2).getPersonality_name());
+            }
+            else{
+                finish();
             }
         }
 
