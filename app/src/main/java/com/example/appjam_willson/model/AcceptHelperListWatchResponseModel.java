@@ -39,7 +39,7 @@ public class AcceptHelperListWatchResponseModel {
 
     public static class Data {
         List<Accept_helper> helper;
-        List<Accept_Experience> experience;
+//        List<Accept_Experience> experience;
 
         /*getter and setter start*/
 
@@ -51,13 +51,13 @@ public class AcceptHelperListWatchResponseModel {
             this.helper = helper;
         }
 
-        public List<Accept_Experience> getExperience() {
-            return experience;
-        }
-
-        public void setExperience(List<Accept_Experience> experience) {
-            this.experience = experience;
-        }
+//        public List<Accept_Experience> getExperience() {
+//            return experience;
+//        }
+//
+//        public void setExperience(List<Accept_Experience> experience) {
+//            this.experience = experience;
+//        }
 
         /*getter and setter end*/
 
@@ -134,22 +134,22 @@ public class AcceptHelperListWatchResponseModel {
 
     }
 
-    public class Accept_Experience {
-        String experience_name;
-
-        /*getter and setter start*/
-
-        public String getExperience_name() {
-            return experience_name;
-        }
-
-        public void setExperience_name(String experience_name) {
-            this.experience_name = experience_name;
-        }
-
-        /*getter and setter end*/
-
-    }
+//    public class Accept_Experience {
+//        String experience_name;
+//
+//        /*getter and setter start*/
+//
+//        public String getExperience_name() {
+//            return experience_name;
+//        }
+//
+//        public void setExperience_name(String experience_name) {
+//            this.experience_name = experience_name;
+//        }
+//
+//        /*getter and setter end*/
+//
+//    }
 
 
 }

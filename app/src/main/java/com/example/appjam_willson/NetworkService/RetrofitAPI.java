@@ -104,7 +104,8 @@ public interface RetrofitAPI {
     Call<UserProfileWatchResponseModel> get_user_profile(@Path ("question_idx") int question_idx);
 
     @GET("helper/list/{question_idx}")
-    Call<AcceptHelperListWatchResponseModel> get_accept_helper(@Path ("question_idx") int question_idx);
+    Call<AcceptHelperListWatchResponseModel> get_accept_helper(@Header("willson-token") String token,
+                                                               @Path ("question_idx") int question_idx);
 
     @GET("review/story")
     Call<MainReviewModel> main_review_get(@Header("willson-token") String token);

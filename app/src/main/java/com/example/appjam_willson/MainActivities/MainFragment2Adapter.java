@@ -81,11 +81,11 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
         }
 
         //경험
-        if(dataModels.getExperience() != null){
-            viewHolder.exp1.setText("#" + dataModels.getExperience().get(0).getExperience_name());
-            viewHolder.exp2.setText("#" + dataModels.getExperience().get(1).getExperience_name());
-            viewHolder.exp3.setText("#" + dataModels.getExperience().get(2).getExperience_name());
-        }
+//        if(dataModels.getExperience() != null){
+//            viewHolder.exp1.setText("#" + dataModels.getExperience().get(0).getExperience_name());
+//            viewHolder.exp2.setText("#" + dataModels.getExperience().get(1).getExperience_name());
+//            viewHolder.exp3.setText("#" + dataModels.getExperience().get(2).getExperience_name());
+//        }
 
         //프로필보기
         viewHolder.goProfile.setOnClickListener(new View.OnClickListener() {

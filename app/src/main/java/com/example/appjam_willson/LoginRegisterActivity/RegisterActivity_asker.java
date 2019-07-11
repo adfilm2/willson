@@ -190,14 +190,13 @@ public class RegisterActivity_asker extends AppCompatActivity {
 
                 RadioButton gender = findViewById(genderGroup.getCheckedRadioButtonId());
                 userGender = gender.getText().toString();
-                if(userGender == "여성"){
+                if(userGender.equals("여성")){
                     signupModel.gender = SignupModel.Gender.여;
-                }else if(userGender == "남성"){
+                }else if(userGender.equals("남성")){
                     signupModel.gender = SignupModel.Gender.남;
                 }
 
-
-               signupModel.setAge(userAge);
+                signupModel.setAge(userAge);
                 signupModel.setDevice_token("toTest");
                 signupModel.setEmail(userEmail);
                 signupModel.setNickname(userNickname);

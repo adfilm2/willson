@@ -41,7 +41,7 @@ public class HelperFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.helper_fragment2,null);
 
-//            myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -51,7 +51,7 @@ public class HelperFragment2 extends Fragment {
                     String uidGet =users.getUid();
                     if (uidGet.equals(myUid)) {
                         roomKey = users.getRoomKey();
-//                        findChatRooms(roomKey);
+                        findChatRooms(roomKey);
                         break;
                     }
                 }

@@ -87,7 +87,6 @@
         <activity android:name=".FillinListActivity.List6Activity" />
         <activity android:name=".FillinListActivity.List7Activity" />
         <activity android:name=".FillinListActivity.ListAgreementActivity" />
-        <activity android:name=".FillinListActivity.ListLoadingActivity" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme" />
