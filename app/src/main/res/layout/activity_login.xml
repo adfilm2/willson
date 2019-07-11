@@ -76,22 +76,17 @@
                 />
 
             <EditText
+                android:id="@+id/Login_Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/Login_Password"
+                android:layout_gravity="center"
+                android:layout_marginLeft="11.4dp"
                 android:layout_marginRight="20dp"
-                android:hint="Password"
                 android:fontFamily="@font/nanum_square_r"
-                android:textSize="13sp"
+                android:hint="Password"
                 android:inputType="textPassword"
 
-
-
-
-
-                android:layout_marginLeft="11.4dp"
-                android:layout_gravity="center"
-                />
+                android:textSize="13sp" />
 
         </LinearLayout>
 
