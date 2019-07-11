@@ -37,7 +37,7 @@ public class AcceptHelperListWatchResponseModel {
     /*getter and setter end*/
 
 
-    public class Data {
+    public static class Data {
         List<Accept_helper> helper;
         List<Accept_Experience> experience;
 
@@ -135,15 +135,15 @@ public class AcceptHelperListWatchResponseModel {
     }
 
     public class Accept_Experience {
-        String[] experience_name;
+        String experience_name;
 
         /*getter and setter start*/
 
-        public String[] getExperience_name() {
+        public String getExperience_name() {
             return experience_name;
         }
 
-        public void setExperience_name(String[] experience_name) {
+        public void setExperience_name(String experience_name) {
             this.experience_name = experience_name;
         }
 

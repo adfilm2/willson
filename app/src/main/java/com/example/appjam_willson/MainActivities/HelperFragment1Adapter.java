@@ -61,7 +61,7 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
             viewHolder.userAge.setText(dataModels.get(i).getUserInfo().getAge() + ")");
         }
         else if(dataModels.get(i).getQuestionInfo().getStatus().equals("x") && dataModels.get(i).getUserInfo().getGender() != null){
-            /*viewHolder.userNickname.setText(willsonModels.get(i).getUid());*/
+            /*viewHolder.Nickname.setText(willsonModels.get(i).getUid());*/
             viewHolder.userAge.setText(dataModels.get(i).getUserInfo().getAge() + ")");
         }
         //주제

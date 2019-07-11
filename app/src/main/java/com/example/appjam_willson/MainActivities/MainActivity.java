@@ -64,21 +64,10 @@ public class MainActivity extends AppCompatActivity {
         final ImageView image_chat = findViewById(R.id.Image_chat);
         final ImageView image_mypage = findViewById(R.id.Image_mypage);
 
-        TextView text_home = findViewById(R.id.text_home);
-        TextView text_request = findViewById(R.id.text_request);
-        TextView text_chat = findViewById(R.id.text_chat);
-        TextView text_mypage = findViewById(R.id.text_mypage);
-
-
-//
-//        String complete = intent.getExtras().getString("complete");
-//        if (complete =="OK"){
-//            changeImage(image_request, image_home, image_mypage, image_chat);
-//            changeTextColor(text_request, text_home, text_chat, text_mypage);
-//            checkMatch();
-//        }
-//
-//
+        final TextView text_home = findViewById(R.id.text_home);
+        final TextView text_request = findViewById(R.id.text_request);
+        final TextView text_chat = findViewById(R.id.text_chat);
+        final TextView text_mypage = findViewById(R.id.text_mypage);
 
         //MainFragment1을 자동으로 띄워줌
         startMainView();
@@ -122,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
 
 
-
             }
         });
 
@@ -137,10 +125,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 
     void passPushTokenToServer() {
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -182,6 +166,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkMatch() {
 
+        int question_idx = 38;
+
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
         accept_helper.enqueue(retrofitCallback);
@@ -193,15 +179,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
-            Log.d("reponse.code >>>",""+response.code());
-            Log.d("reponse.body >>>",""+response.body());
-            Log.d("result >>>",""+result);
-            Log.d("result.code >>>",""+result.code);
-            Log.d("result.data >>>",""+result.data);
 
-            if (result.code == 1000) {
+            if (result.getCode() == 1000) {
                 MainFragment2 fragment = new MainFragment2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
             } else {
                 MainFragment2_null fragment = new MainFragment2_null();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();

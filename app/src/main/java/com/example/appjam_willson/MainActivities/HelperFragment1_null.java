@@ -39,6 +39,9 @@ public class HelperFragment1_null extends Fragment {
 
         LinearLayout change = view.findViewById(R.id.helper_toAsker);
 
+        LinearLayout go_user = view.findViewById(R.id.helper_toAsker);
+        go_user.setOnClickListener(new go_user_listener());
+
 /*        LayoutInflater inflater_tab;
         inflater_tab = getLayoutInflater();
         View view_tab = inflater_tab.inflate(R.layout.activity_helper, null);*/
@@ -82,6 +85,15 @@ public class HelperFragment1_null extends Fragment {
             }
         });
         return view;
+    }
+
+    class go_user_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getActivity(),MainActivity.class);
+            startActivity(intent);
+            getActivity().finish();
+        }
     }
 
     private void changeImage(ImageView first, ImageView second, ImageView third, ImageView fourth) {
