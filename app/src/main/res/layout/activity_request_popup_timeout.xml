@@ -37,6 +37,8 @@
             android:layout_marginTop="21.5dp"
             android:layout_marginBottom="13dp"
             android:id="@+id/request_pop_textview_large"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_b"
             />
 
         <TextView
@@ -48,7 +50,8 @@
             android:lineSpacingExtra="6sp"
             android:gravity="center_horizontal"
             android:text="아직 결정 하시지 못했다면\n5분 더 연장해보세요."
-
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"
             />
 
         <Button
@@ -60,7 +63,10 @@
             android:textColor="@color/white"
             android:background="@drawable/rounded_corner_darkblue"
             android:textSize="18sp"
-            android:elevation="8dp"/>
+            android:elevation="8dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_eb"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,6 +78,8 @@
             android:layout_marginTop="15dp"
             android:layout_marginBottom="24.1dp"
             android:id="@+id/list_pop_exitbtn"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_b"
             />
 
     </LinearLayout>

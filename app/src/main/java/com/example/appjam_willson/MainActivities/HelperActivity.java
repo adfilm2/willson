@@ -65,9 +65,8 @@ public class HelperActivity extends AppCompatActivity{
                 changeTextColor(willsonText_receive,willsonText_chat,willsonText_profile,willsonText_mypage);
 
                 checkMatch();
-                /*HelperFragment fragment = new HelperFragment();
+                HelperFragment fragment = new HelperFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
-           */
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +95,7 @@ public class HelperActivity extends AppCompatActivity{
                 changeImage(willsonImage_mypage,willsonImage_chat,willsonImage_profile,willsonImage_receive);
                 changeTextColor(willsonText_mypage,willsonText_chat,willsonText_profile,willsonText_receive);
 
-                MainFragment4 fragment = new MainFragment4();
+                HelperFragment4 fragment = new HelperFragment4();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
             }
         });
@@ -113,6 +112,7 @@ public class HelperActivity extends AppCompatActivity{
                 }
 
                 String token = task.getResult().getToken();
+
                 Map<String,Object> map = new HashMap<>();
                 map.put("pushToken",token);
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);

@@ -66,6 +66,8 @@
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     android:id="@+id/fragment2_nickName"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanumsquare_l"
                     />
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -103,6 +105,8 @@
                     android:text="여성"
                     android:textSize="14sp"
                     android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -112,6 +116,8 @@
                     android:text=" / "
                     android:textSize="14sp"
                     android:textColor="@color/black"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -121,6 +127,8 @@
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     android:layout_toRightOf="@id/fragment2_slash"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanumsquare_r"
                     />
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -136,6 +144,9 @@
                         android:id="@+id/fragment2_reviewCount"
                         android:text="(100개의 후기)"
                         android:textSize="11sp"
+                        android:textStyle="normal"
+                        android:fontFamily="@font/nanumsquare_r"
+                        android:textColor="@color/grey"
                         />
                 </LinearLayout>
             </RelativeLayout>
@@ -168,8 +179,10 @@
             android:paddingHorizontal="7dp"
             android:textColor="@color/lightPurple"
             android:text="#긍정적인"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"
             android:id="@+id/main_helper_tag1"
-            android:textSize="13sp"/>
+            android:textSize="12sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -181,8 +194,10 @@
             android:layout_marginRight="6dp"
             android:textColor="@color/lightPurple"
             android:text="#긍정적인"
-            android:id="@+id/main_helper_tag2"
-            android:textSize="13sp"/>
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"
+            android:id="@+id/main_helper_tag2"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -195,7 +210,9 @@
             android:textColor="@color/lightPurple"
             android:text="#긍정적인"
             android:id="@+id/main_helper_tag3"
-            android:textSize="13sp"/>
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"/>
 
     </LinearLayout>
 
@@ -212,6 +229,8 @@
             android:layout_marginBottom="17.2dp"
             android:id="@+id/fragment2_userInformation"
             android:text="병간호썰"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:gravity="center"
@@ -224,6 +243,8 @@
             android:textSize="14sp"
             android:textColor="@color/white"
             android:background="@drawable/register_button_gradient"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_b"
             />
     </LinearLayout>
 

@@ -64,8 +64,9 @@ public class MainFragment2 extends Fragment {
             /*callWillson(myUid);*/
 
         /*int question_idx = 38;*/
+        String token = "dddd"; // token 값 줘야ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ함ㅁㅁㅁㅁㅁㅁㅁ
 
-        Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(question_idx);
+        Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
         accept_helper.enqueue(retrofitCallback);
 

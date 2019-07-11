@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52.8dp"
         android:id="@+id/chat_topLayout"
-        android:layout_marginLeft="20.2dp"
         >
 
         <Button
@@ -17,6 +16,7 @@
             android:layout_width="11.5dp"
             android:layout_height="19.2dp"
             android:layout_alignParentStart="true"
+            android:layout_marginLeft="20.2dp"
             android:layout_centerVertical="true"
             android:background="@drawable/btn_backbtn"
             />
@@ -24,10 +24,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="63.4dp"
+            android:id="@+id/chat_topNickname"
+            android:layout_centerInParent="true"
             android:text="세인트 버나드 헬퍼님"
             android:textSize="20sp"
             android:textColor="@color/black"
-            android:layout_toRightOf="@id/chat_btn_back"
+            android:fontFamily="@font/nanum_square_b"
             />
         <ImageView
             android:layout_width="wrap_content"
@@ -44,101 +46,21 @@
             android:layout_marginRight="18.7dp"
             android:layout_centerVertical="true"
             android:id="@+id/chat_timer"
-            android:text="60:00"
+            android:text="00"
             android:textSize="13sp"
             android:textColor="@color/middlepurple"
             android:layout_alignParentEnd="true"
+            android:fontFamily="@font/nanum_square_b"
             />
 
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/chat_startMsg"
-        android:layout_below="@+id/chat_topLayout"
-        android:layout_marginTop="17dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="14dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="19.6dp"
-            android:layout_marginBottom="5.6dp"
-            android:layout_marginRight="19dp"
-            android:id="@+id/first_msg"
-            >
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:layout_gravity="center"
-                android:src="@drawable/chat_img_announcement"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="상담 대기 안내"
-                android:textColor="@color/dark_purple"
-                android:textSize="14sp"
-                android:layout_marginLeft="6.7dp"
-                android:layout_marginTop="11.5dp"
-                />
-
-        </LinearLayout>
-
-        <View style="@style/Divider2"
-            android:layout_marginLeft="13.8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginRight="19dp"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
-            android:layout_marginRight="19dp"
-            android:layout_marginBottom="7.4dp"
-            android:text="10분 이내에 상대방과의 대화가 시작되지 않을 경우, 채팅이"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="19dp"
-            android:layout_marginRight="19dp"
-            android:layout_marginBottom="7.4dp"
-            android:text="자동 종료됩니다."
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            />
-
-    </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/chat_startMsg_time"
-        android:layout_below="@+id/chat_startMsg"
-        android:layout_marginRight="17.6dp"
-        android:layout_marginTop="6.7dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="PM 3:20"
-            android:textSize="9sp"
-            android:textColor="@color/black"
-            />
     </RelativeLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chat_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/chat_topLayout"
+            android:layout_above="@id/chat_linear"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="17dp"
             >
         </androidx.recyclerview.widget.RecyclerView>

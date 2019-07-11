@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
         intent = getIntent();
 
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6zshLEiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3OTk0ODcsImV4cCI6MTU3MTQzOTQ4NywiaXNzIjoid2lsbHNvbiJ9.l2Slk87lEK8Ne_SUMiiIfsXVSuUDfa5VWaeyE3PmZIs";
+
         final LinearLayout button1 = findViewById(R.id.layout_home);
         final LinearLayout button2 = findViewById(R.id.layout_request);
         final LinearLayout button3 = findViewById(R.id.layout_chat);
@@ -97,7 +99,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 changeImage(image_request, image_home, image_mypage, image_chat);
                 changeTextColor(text_request, text_home, text_chat, text_mypage);
-                checkMatch();
+                int question_idx = 1;
+
+                Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
+                accept_helper.enqueue(retrofitCallback);
+                Log.d("버튼눌썻슴ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅡ", "버튼ㄴㄴㄴㄴㄴㄴㄴㄴㄴ");
+
+
+//                MainFragment2 fragment = new MainFragment2();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
             }
         });
 
@@ -164,11 +175,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
     }
 
-    public void checkMatch() {
+    public void checkMatch(String token) {
 
-        /*int question_idx = 38;*/
+        int question_idx = 131;
+        Log.d("리저트ㅡㅡㅡㅡㅡㅡㅡㅡ", "checkMatch에 들어왔습니다");
 
-        Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(question_idx);
+        Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
         accept_helper.enqueue(retrofitCallback);
 
@@ -179,12 +191,18 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
+            Log.d("리저트ㅡㅡㅡㅡㅡㅡㅡㅡ", String.valueOf(result.code));
 
-            if (result.getCode() == 1000) {
+            if (result.getCode() == 1000 && ApplicationFields.timerSwitch == false) {
                 MainFragment2 fragment = new MainFragment2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
 
-            } else {
+            }
+            else if(ApplicationFields.timerSwitch == true){
+                MainFragment2_loading fragment = new MainFragment2_loading();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+            }
+            else {
                 MainFragment2_null fragment = new MainFragment2_null();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }

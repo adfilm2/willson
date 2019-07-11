@@ -3,7 +3,9 @@ package com.example.appjam_willson.model;
 public class SignupModel {
 
         String nickname;
-        public Gender gender;
+        public String gender;
+//        public Gender gender;
+
         int age;
         String email;
         String password;
@@ -19,13 +21,13 @@ public class SignupModel {
         this.nickname = nickname;
     }
 
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
+//    public Gender getGender() {
+//        return gender;
+//    }
+//
+//    public void setGender(Gender gender) {
+//        this.gender = gender;
+//    }
 
     public int getAge() {
         return age;

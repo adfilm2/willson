@@ -55,16 +55,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginBottom="25.4dp"
         android:layout_marginLeft="20.2dp"
         >
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="같은 고민이 있었다면\n함께 대화해주시겠어요?"
+            android:text="같은 고민이 있었다면"
+            android:layout_marginBottom="5dp"
             android:textColor="@color/dark_purple"
             android:textSize="22sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"
             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="함께 대화해주시겠어요?"
+            android:textColor="@color/lightPurple"
+            android:textSize="22sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_eb"
+            />
+
+
 
     </LinearLayout>
 
