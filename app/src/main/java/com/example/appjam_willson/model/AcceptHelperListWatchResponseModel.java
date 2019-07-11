@@ -4,9 +4,9 @@ import java.util.List;
 
 public class AcceptHelperListWatchResponseModel {
 
-    int code;
-    String message;
-    Data data;
+    public int code;
+    public String message;
+    public Data data;
 
     /*getter and setter start*/
 

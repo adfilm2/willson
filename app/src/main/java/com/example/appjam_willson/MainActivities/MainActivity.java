@@ -193,8 +193,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
+            Log.d("reponse.code >>>",""+response.code());
+            Log.d("reponse.body >>>",""+response.body());
+            Log.d("result >>>",""+result);
+            Log.d("result.code >>>",""+result.code);
+            Log.d("result.data >>>",""+result.data);
 
-            if (result.getCode() == 1000) {
+            if (result.code == 1000) {
                 MainFragment2 fragment = new MainFragment2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             } else {
