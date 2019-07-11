@@ -90,7 +90,7 @@ public class ChatFeedback_CustomDialog extends Dialog {
         commit_btn.setOnClickListener(commit_btn_listener);
 
 
-        //통신  ReviewWriteModel
+        /*//통신  ReviewWriteModel
 
 
         ReviewWriteModel reviewWriteModel = new ReviewWriteModel();
@@ -128,7 +128,7 @@ public class ChatFeedback_CustomDialog extends Dialog {
                 t.printStackTrace();
                 Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
             }
-        });
+        });*/
 
 
     }

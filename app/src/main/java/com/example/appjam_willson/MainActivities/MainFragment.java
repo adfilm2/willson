@@ -250,7 +250,7 @@ public class MainFragment extends Fragment {
 //                            Intent intent = new Intent(getActivity(),MainActivity.class);
 //                            intent.putExtra("complete","OK");
 //                            startActivity(intent);
-                            MainActivity.thirdTap();
+                          //  MainActivity.thirdTap();
 
 
                         }
