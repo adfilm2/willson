@@ -245,7 +245,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/registerasker_registerButton"
+                    android:id="@+id/register_btn"
                     android:layout_width="match_parent"
                     android:layout_alignParentBottom="true"
                     android:layout_height="46.1dp"

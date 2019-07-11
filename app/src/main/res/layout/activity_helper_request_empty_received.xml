@@ -5,11 +5,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/helper_toAsker"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="right"
-        android:id="@+id/trans_user"
+        android:layout_gravity="right"
         android:layout_marginTop="51.7dp"
         >
 
@@ -25,6 +26,7 @@
             android:textColor="@color/dark_purple"
             android:lineSpacingExtra="1sp"
             android:text="질문자전환"
+            android:paddingRight="20dp"
             android:id="@+id/trans_to_user"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
@@ -32,9 +34,7 @@
             android:fontFamily="@font/nanum_square_b"
             />
 
-        <View
-            android:layout_width="25.8dp"
-            android:layout_height="0dp"/>
+
     </LinearLayout>
 
     <LinearLayout

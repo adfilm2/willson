@@ -39,6 +39,18 @@ public class HelperProfileEditActivityC1 extends AppCompatActivity {
         Button button5 = findViewById(R.id.helperSU_btn_life);
         Button button6 = findViewById(R.id.helperSU_btn_etc);
         Button nextbtn = findViewById(R.id.btn_next);
+        ImageView cancelbtn = findViewById(R.id.cancel_btn);
+
+        cancelbtn.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.putExtra("result", "BACK");
+                setResult(REQUEST_CODE, intent);
+                finish();
+            }
+        });
+
         //Button backbtn = (Button) findViewById(R.id.btn_backbtn);
 
         /*ImageView btn_back;*/
@@ -72,7 +84,6 @@ public class HelperProfileEditActivityC1 extends AppCompatActivity {
                 button6.setTextColor(getColor(R.color.lightPurple));
                 button6.setBackgroundResource(R.drawable.helpersignup_nonchecked);
 
-
             }
 
 
@@ -93,7 +104,6 @@ public class HelperProfileEditActivityC1 extends AppCompatActivity {
                 button5.setBackgroundResource(R.drawable.helpersignup_nonchecked);
                 button6.setTextColor(getColor(R.color.lightPurple));
                 button6.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-
 
             }
         });

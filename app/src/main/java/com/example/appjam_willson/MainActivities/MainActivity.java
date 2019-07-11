@@ -109,8 +109,11 @@ public class MainActivity extends AppCompatActivity {
 
                 MainFragment3 fragment = new MainFragment3();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
+
             }
         });
+
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

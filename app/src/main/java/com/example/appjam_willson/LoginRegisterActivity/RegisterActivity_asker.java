@@ -61,7 +61,9 @@ public class RegisterActivity_asker extends AppCompatActivity {
     private ArrayAdapter adapter;
     private int userAge;
     private String userGender;
+    RadioGroup genderGroup;
 
+    Button register_btn;
     LinearLayout background;
 
     EditText nickName;
@@ -71,7 +73,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_asker);
-
         ImageView cancel = findViewById(R.id.cancel_btn);
         cancel.setVisibility(View.INVISIBLE);
 
@@ -87,6 +88,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
         final Spinner ageSpinner = findViewById(R.id.registerasker_age);
         final TextView checkBox_text = findViewById(R.id.registerasker_checkBox_text);
 
+        register_btn = findViewById(R.id.register_btn);
 
         background = findViewById(R.id.background_id);
         background.setOnClickListener(new background_listener());
@@ -99,10 +101,8 @@ public class RegisterActivity_asker extends AppCompatActivity {
         ageSpinner.setAdapter(adapter);
         ageSpinner.setSelection(0);
 
-        RadioGroup genderGroup = findViewById(R.id.registerasker_gender);
+        genderGroup = findViewById(R.id.registerasker_gender);
 
-        int genderGroupID = genderGroup.getCheckedRadioButtonId();
-        userGender = ((RadioButton) findViewById(genderGroupID)).getText().toString();
 
         passwordText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -163,27 +163,13 @@ public class RegisterActivity_asker extends AppCompatActivity {
             }
         });
 
-        final Button completeButton = findViewById(R.id.registerasker_registerButton);
+        final Button completeButton = findViewById(R.id.register_btn);
 
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String toCheckAge = ageSpinner.getSelectedItem().toString();
-
-                Log.d("age>>>>>",""+ageSpinner.getSelectedItem().toString());
-                userEmail = idText.getText().toString();
-                userPassword = passwordText.getText().toString();
-                userNickname = nickName.getText().toString();
-                userAge = Integer.parseInt(ageSpinner.getSelectedItem().toString());
-
-                signupModel.setAge(userAge);
-                signupModel.setDevice_token("toTest");
-                signupModel.setEmail(userEmail);
-                signupModel.setNickname(userNickname);
-                signupModel.setPassword(userPassword);
-                signupModel.setGender(userGender);
-
-                Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
 
                 if(userEmail.equals("") || userPassword.equals("") || userNickname.equals("") ||
                         toCheckAge.equals("나이를 선택해주세요.") || userGender.equals("")){
@@ -195,6 +181,32 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     showAlert("비밀번호를 다시 확인해주세요.");
                     return;
                 }
+
+                Log.d("age>>>>>",""+ageSpinner.getSelectedItem().toString());
+                userEmail = idText.getText().toString();
+                userPassword = passwordText.getText().toString();
+                userNickname = nickName.getText().toString();
+                userAge = Integer.parseInt(ageSpinner.getSelectedItem().toString());
+
+                RadioButton gender = findViewById(genderGroup.getCheckedRadioButtonId());
+                userGender = gender.getText().toString();
+                if(userGender == "여성"){
+                    signupModel.gender = SignupModel.Gender.여;
+                }else if(userGender == "남성"){
+                    signupModel.gender = SignupModel.Gender.남;
+                }
+
+
+               signupModel.setAge(userAge);
+                signupModel.setDevice_token("toTest");
+                signupModel.setEmail(userEmail);
+                signupModel.setNickname(userNickname);
+                signupModel.setPassword(userPassword);
+                //signupModel.setGender();
+
+                Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
+
+
                 call_helper.enqueue(retrofitCallback);
 
 //                checkNickName(Nickname, new Runnable() {
