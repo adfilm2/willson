@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -79,6 +80,7 @@ public class List2Activity extends AppCompatActivity {
 //                    Log.d(">>>data의 advice >>> ","gg"+gg);
 
                     bundle2 = data.getExtras();
+                    Log.d("야호야호얗야호야ㅗ라어ㅏ느낀감정~~~~~!",""+strings[0]+":: "+strings[1]+":: "+strings[2]);
                     bundle2.putIntArray("feeling",strings);
 
 
@@ -118,7 +120,10 @@ public class List2Activity extends AppCompatActivity {
                 if(check_num>3) check_num =3;
 
                 for(int i = 0; i<3; i++){
-                    if(strings[i]== 0) strings[i] = Integer.parseInt(checkBox.getTag().toString());
+                    if(strings[i]== 0) {
+                        strings[i] = Integer.parseInt(checkBox.getTag().toString());
+                        break;
+                    }
                 }
 
             }
@@ -132,6 +137,11 @@ public class List2Activity extends AppCompatActivity {
                 checkBox.setChecked(false);
                 checkBox.setTypeface(typereg);
                 check_num -= 1;
+                for(int i = 0 ; i<3 ; i++) {
+                    if (Integer.parseInt(checkBox.getTag().toString())== strings[i]) {
+                        strings[i] = 0;
+                    }
+                }
 
             }
         }

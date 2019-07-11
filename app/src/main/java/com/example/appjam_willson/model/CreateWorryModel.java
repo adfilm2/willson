@@ -2,15 +2,21 @@ package com.example.appjam_willson.model;
 
 import android.support.v4.app.INotificationSideChannel;
 
+import java.util.ArrayList;
+
 public class CreateWorryModel {
 
     public Question question;
     public int[] feeling;
     public int[] personality;
-    public int[] experience;
+    public ArrayList experience;
+
+    public CreateWorryModel(){
+        this.question = new Question();
+    }
 
     public static class Question{
-        public Integer weight;
+        public int weight;
         public String content;
         public Integer emotion;
         public Integer advise;
@@ -19,7 +25,7 @@ public class CreateWorryModel {
         public Agreement agreement;
         public Helper_gender helper_gender;
         public enum Agreement { agree, disagree}
-        public enum Helper_gender { 남자, 여자, 모두 }
+        public enum Helper_gender { 남성, 여성, 모두 }
 
         public Integer getWeight() {
             return weight;

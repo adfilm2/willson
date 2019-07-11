@@ -37,6 +37,7 @@ public class UserProfileWatchResponseModel {
     /*getter and setter end*/
 
     public class Data {
+
         public User user;
         public List<Personality> user_personality;
         public Question question;
@@ -121,10 +122,12 @@ public class UserProfileWatchResponseModel {
 
     public class Question {
         public String category_name;
+        public String categoryList_name;
         public int weight;
         public String content;
         public String helper_gender;
         public int advise;
+        public int emotion;
         public int experience;
         public List<Personality> question_personality;
         public List<Feeling> question_feeling;
@@ -138,6 +141,14 @@ public class UserProfileWatchResponseModel {
 
         public void setCategory_name(String category_name) {
             this.category_name = category_name;
+        }
+
+        public String getCategoryList_name() {
+            return categoryList_name;
+        }
+
+        public void setCategoryList_name(String categoryList_name) {
+            this.categoryList_name = categoryList_name;
         }
 
         public int getWeight() {
@@ -202,6 +213,14 @@ public class UserProfileWatchResponseModel {
 
         public void setQuestion_experience(List<Experience> question_experience) {
             this.question_experience = question_experience;
+        }
+
+        public int getEmotion() {
+            return emotion;
+        }
+
+        public void setEmotion(int emotion) {
+            this.emotion = emotion;
         }
 
         /*getter and setter end*/

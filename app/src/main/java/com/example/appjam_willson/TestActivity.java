@@ -1,19 +1,16 @@
 package com.example.appjam_willson;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
-import com.example.appjam_willson.NetworkService.RetrofitService;
-import com.example.appjam_willson.model.HelperRegistModel;
-import com.example.appjam_willson.model.HelperRegistResponseModel;
+import com.google.android.gms.common.internal.service.Common;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class TestActivity extends AppCompatActivity {
@@ -23,17 +20,54 @@ public class TestActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitAPI retrofitAPI;
 
+    String cidx;
+    WebView webView;
+
+    Common comm;
+    public static Context ctx;
+
+
+    TextView test;
+
+    public class user {
+        String nick = "피카츄";
+        int id = 10;
+    }
+
+    user userser = new user();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
       //  setContentView(R.layout.activity_test);
 
-/*        retrofit = new Retrofit.Builder()
+     //   test = (TextView)findViewById(R.id.test_text);
+
+        user userd = userser;
+
+
+/*        String[] tt = {"gl", "아아오오오", "후후이이후후이이"};
+
+        String temp = "성격 : ";
+
+        for(int i = 0; i < tt.length; i++){
+            temp += "# " + tt[i] + " ";
+        }
+
+        test.setText(temp);*/
+
+        test.setText(userd.nick);
+
+       /* String refreshedToken = FirebaseInstanceId.getInstance().getToken();*/
+
+
+       /* retrofit = new Retrofit.Builder()
                 .baseUrl("http://13.125.216.169/api/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        retrofitAPI = retrofit.create(RetrofitAPI.class);*/
+        retrofitAPI = retrofit.create(RetrofitAPI.class);
 
         HelperRegistModel helperRegistModel = new HelperRegistModel();
         helperRegistModel.helper.title = "호이이이이잉이이이이이잉ㅇ잇";
@@ -56,7 +90,6 @@ public class TestActivity extends AppCompatActivity {
                 HelperRegistResponseModel result = response.body();
                 Log.d("dlfkdlfjkdl", ">>>>>>>>>>>" + response.code());
                 Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
-
             }
 
             @Override
@@ -65,7 +98,12 @@ public class TestActivity extends AppCompatActivity {
                 Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
             }
         });
+*/
+
+
+
 
     }
+
 
 }

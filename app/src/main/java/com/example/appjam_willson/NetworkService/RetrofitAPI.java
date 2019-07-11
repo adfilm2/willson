@@ -1,8 +1,10 @@
 package com.example.appjam_willson.NetworkService;
 
+import com.example.appjam_willson.model.AcceptHelperListWatchResponseModel;
 import com.example.appjam_willson.model.ChoiceHelperModel;
 import com.example.appjam_willson.model.ChoiceHelperResponseModel;
 import com.example.appjam_willson.model.CreateWorryModel;
+import com.example.appjam_willson.model.CreateWorryResponseModel;
 import com.example.appjam_willson.model.ExitChatModel;
 import com.example.appjam_willson.model.ExitChatResponseModel;
 import com.example.appjam_willson.model.FeelingStatusListResponseModel;
@@ -15,6 +17,7 @@ import com.example.appjam_willson.model.HelperRegistResponseModel;
 import com.example.appjam_willson.model.HelperStoryModel;
 import com.example.appjam_willson.model.LoginModel;
 import com.example.appjam_willson.model.LoginResponseModel;
+import com.example.appjam_willson.model.MainReviewModel;
 import com.example.appjam_willson.model.ReviewFixModel;
 import com.example.appjam_willson.model.ReviewListResponseModel;
 import com.example.appjam_willson.model.ReviewWriteModel;
@@ -23,6 +26,7 @@ import com.example.appjam_willson.model.SendRequestModel;
 import com.example.appjam_willson.model.SendRequestResponseModel;
 import com.example.appjam_willson.model.SignupModel;
 import com.example.appjam_willson.model.SignupResponseModel;
+import com.example.appjam_willson.model.UserProfileWatchResponseModel;
 import com.example.appjam_willson.model.WorryCategoryListAddModel;
 import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
 
@@ -51,15 +55,15 @@ public interface RetrofitAPI {
     Call<ReviewWriteResponseModel> user_reviewFix_post(@Path("review_idx") int idx,
                                                        @Body ReviewFixModel reviewFixModel);
     @GET("concern/list")
-    Call<HelperReceivedWorryListWatchResponseModel> helper_receiveList_get(@Header("user_session") String token);
+    Call<HelperReceivedWorryListWatchResponseModel> helper_receiveList_get(@Header("willson-token") String token);
 
     @POST("concern/category")
-    Call<WorryCategoryListAddResponseModel> add_category_post(@Header("user_session") String token,
+    Call<WorryCategoryListAddResponseModel> add_category_post(@Header("willson-token") String token,
                                                          @Body WorryCategoryListAddModel worryCategoryListAddModel);
 
     @POST("concern/question")
-    Call<WorryCategoryListAddResponseModel> create_model_post(@Header("willson-token") String token,
-                                                         @Body CreateWorryModel createWorryModel);
+    Call<CreateWorryResponseModel> create_model_post(@Header("willson-token") String token,
+                                                     @Body CreateWorryModel createWorryModel);
 
     @GET("helper/profile/{helper_idx}")
     Call<HelperProfileWatchResponseModel> watch_helperProfile_get(@Header("willson-token") String token,
@@ -74,7 +78,7 @@ public interface RetrofitAPI {
                                              @Body SendRequestModel sendRequestModel);
 
     @GET("helper/{helper_idx}/review")
-    Call<ReviewListResponseModel> show_reviewList_get(@Header("user_session") String token,
+    Call<ReviewListResponseModel> show_reviewList_get(@Header("willson-token") String token,
                                                       @Path("helper_idx") int helper_idx);
 
     @POST("review")
@@ -82,7 +86,7 @@ public interface RetrofitAPI {
                                                      @Body ReviewWriteModel reviewWriteModel);
 
     @POST("concern/personality")
-    Call<FeelingStatusListResponseModel> feeling_statusList_post(@Header("user_session")String token);
+    Call<FeelingStatusListResponseModel> feeling_statusList_post(@Header("willson-token")String token);
 
     @POST("user/selection")
     Call<ChoiceHelperResponseModel> choice_helper_post(@Header("willson-token") String token,
@@ -93,6 +97,14 @@ public interface RetrofitAPI {
                                               @Body ExitChatModel exitChatModel);
 
     @POST("concern/category")
-    Call<WorryCategoryListAddResponseModel> concern_category_list_post(@Header("user_session") String token, @Body WorryCategoryListAddModel worryCategoryListAddModel);
+    Call<WorryCategoryListAddResponseModel> concern_category_list_post(@Header("willson-token") String token, @Body WorryCategoryListAddModel worryCategoryListAddModel);
 
+    @GET("user/profile/{question_idx}")
+    Call<UserProfileWatchResponseModel> get_user_profile(@Path ("question_idx") int question_idx);
+
+    @GET("helper/list/{question_idx}")
+    Call<AcceptHelperListWatchResponseModel> get_accept_helper(@Path ("question_idx") int question_idx);
+
+    @GET("review/story")
+    Call<MainReviewModel> main_review_get(@Header("willson-token") String token);
 }

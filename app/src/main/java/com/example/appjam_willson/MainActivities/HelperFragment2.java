@@ -40,7 +40,6 @@ public class HelperFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.helper_fragment2,null);
-
             myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 //        FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {

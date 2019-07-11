@@ -64,25 +64,27 @@ public class ChatFeedback_CustomDialog extends Dialog {
 
         setContentView(R.layout.activity_chat_feedback_popup);
 
-        star1 = (ImageView) findViewById(R.id.feedback_star1);
-        star2 = (ImageView) findViewById(R.id.feedback_star2);
-        star3 = (ImageView) findViewById(R.id.feedback_star3);
-        star4 = (ImageView) findViewById(R.id.feedback_star4);
-        star5 = (ImageView) findViewById(R.id.feedback_star5);
+        star1 = findViewById(R.id.feedback_star1);
+        star2 = findViewById(R.id.feedback_star2);
+        star3 = findViewById(R.id.feedback_star3);
+        star4 = findViewById(R.id.feedback_star4);
+        star5 = findViewById(R.id.feedback_star5);
 
-        star_textview = (TextView) findViewById(R.id.star_num);
-        comment_textview = (TextView) findViewById(R.id.star_comment);
+        star_textview = findViewById(R.id.star_num);
+        comment_textview = findViewById(R.id.star_comment);
 
-        feedback_text = (EditText) findViewById(R.id.feedback_comment);
+        feedback_text = findViewById(R.id.feedback_comment);
 
-        cancel_btn = (ImageView) findViewById(R.id.feedback_cancel);
-        commit_btn = (ImageView) findViewById(R.id.feedback_commit);
+        cancel_btn = findViewById(R.id.feedback_cancel);
+        commit_btn = findViewById(R.id.feedback_commit);
 
         star1.setOnClickListener(new star_click());
         star2.setOnClickListener(new star_click());
         star3.setOnClickListener(new star_click());
         star4.setOnClickListener(new star_click());
         star5.setOnClickListener(new star_click());
+
+
 
         cancel_btn.setOnClickListener(cancel_btn_listener);
         commit_btn.setOnClickListener(commit_btn_listener);
@@ -190,7 +192,6 @@ public class ChatFeedback_CustomDialog extends Dialog {
 
     public ChatFeedback_CustomDialog(Context context, View.OnClickListener cancel_listener, View.OnClickListener commit_listener) {
         super(context);
-        
         this.cancel_btn_listener = cancel_listener;
         this.commit_btn_listener = commit_listener;
     }
