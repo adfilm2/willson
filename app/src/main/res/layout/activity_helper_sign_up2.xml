@@ -83,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/signup_totalbyte"
                     android:lineSpacingExtra="11sp"
+                    android:fontFamily="@font/nanum_square_r"
                     android:text="0" />
 
                 <TextView
@@ -91,6 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="21dp"
+                    android:fontFamily="@font/nanum_square_r"
                     android:text="/220자" />
             </RelativeLayout>
 
@@ -151,6 +153,7 @@
                     android:layout_gravity="center"
                     android:background="@color/trans"
                     android:hint="태그 입력"
+                    android:fontFamily="@font/nanum_square_r"
                     android:singleLine="true"
                     android:textCursorDrawable="@null"
                     android:textColor="@color/lightPurple"
@@ -195,6 +198,7 @@
                     android:background="@color/trans"
                     android:hint="태그 입력"
                     android:singleLine="true"
+                    android:fontFamily="@font/nanum_square_r"
                     android:textCursorDrawable="@null"
                     android:paddingBottom="7dp"
                     android:textColor="@color/lightPurple"
@@ -238,6 +242,7 @@
                     android:layout_gravity="center"
                     android:background="@color/trans"
                     android:hint="태그 입력"
+                    android:fontFamily="@font/nanum_square_r"
                     android:singleLine="true"
                     android:textCursorDrawable="@null"
                     android:paddingBottom="7dp"
@@ -281,6 +286,7 @@
                 android:background="@drawable/listnext_btn_selector"
                 android:elevation="9dp"
                 android:enabled="false"
+                android:fontFamily="@font/nanum_square_b"
                 android:text="다음"
                 android:textColor="@color/white" />
         </LinearLayout>

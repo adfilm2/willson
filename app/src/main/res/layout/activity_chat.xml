@@ -64,6 +64,7 @@
             android:layout_marginTop="17dp"
             >
         </androidx.recyclerview.widget.RecyclerView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48.9dp"
@@ -79,8 +80,9 @@
             android:layout_height="32dp"
             android:layout_centerVertical="true"
             android:hint="내용을 입력하세요."
+            android:fontFamily="@font/nanum_square_r"
             android:textSize="14sp"
-            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
             android:layout_toLeftOf="@id/chat_sendButton"
             android:layout_marginRight="17.3dp"
             android:layout_marginLeft="20.2dp"

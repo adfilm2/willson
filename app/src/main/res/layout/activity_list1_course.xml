@@ -92,6 +92,7 @@
                 android:textColorHighlight="@color/list_btns_text_selector"
                 android:textColorLink="@color/list_btns_text_selector"
                 android:textSize="16sp"
+                android:fontFamily="@font/nanum_square_r"
                 android:layout_marginBottom="9.2dp"
                 android:elevation="9dp" />
 
@@ -104,6 +105,7 @@
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
                 android:text="취업"
+                android:fontFamily="@font/nanum_square_r"
                 android:gravity="center"
                 android:textColor="@color/list_btns_text_selector"
                 android:textColorHighlight="@color/list_btns_text_selector"

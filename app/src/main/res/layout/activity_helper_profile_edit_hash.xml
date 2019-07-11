@@ -181,6 +181,7 @@
         android:text="완료"
         android:textColor="#ffff"
         android:layout_marginHorizontal="31.7dp"
+        android:fontFamily="@font/nanum_square_b"
         android:background="@drawable/next_btn_darkpurple"
         android:textSize="14sp"
         android:layout_marginBottom="32.6dp"

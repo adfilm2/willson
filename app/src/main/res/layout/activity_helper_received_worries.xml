@@ -77,7 +77,7 @@
                 android:textSize="22sp"
                 android:lineSpacingExtra="9sp"
                 android:text="같은 고민이 있었다면"
-                android:layout_marginBottom="11dp"
+                android:layout_marginBottom="5dp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_r"
                 android:textColor="@color/darkPurple"
