@@ -71,6 +71,7 @@ public class AcceptHelperListWatchResponseModel {
         String content;
         String stars;
         String review_count;
+        int helper_idx;
 
         /*getter and setter start*/
 
@@ -130,20 +131,28 @@ public class AcceptHelperListWatchResponseModel {
             this.review_count = review_count;
         }
 
+        public int getHelper_idx() {
+            return helper_idx;
+        }
+
+        public void setHelper_idx(int helper_idx) {
+            this.helper_idx = helper_idx;
+        }
+
         /*getter and setter end*/
 
     }
 
     public class Accept_Experience {
-        String experience_name;
+        String[] experience_name;
 
         /*getter and setter start*/
 
-        public String getExperience_name() {
+        public String[] getExperience_name() {
             return experience_name;
         }
 
-        public void setExperience_name(String experience_name) {
+        public void setExperience_name(String[] experience_name) {
             this.experience_name = experience_name;
         }
 

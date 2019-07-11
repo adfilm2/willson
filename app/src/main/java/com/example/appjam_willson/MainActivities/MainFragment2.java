@@ -33,8 +33,10 @@ public class MainFragment2 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.main_fragment2,null);
+        if(getArguments() != null){
+            int question_idx = getArguments().getInt("question_idx");
+        }
 
         /*myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
 

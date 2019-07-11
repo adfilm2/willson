@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -39,6 +38,10 @@ public class MainFragment2_loading extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.activity_find_helper_loading,null);
 
+            if(getArguments() != null){
+                int question_idx = getArguments().getInt("question_idx");
+            }
+
         //타이머
         countTxt = view.findViewById(R.id.count_txt);
         min = view.findViewById(R.id.min_txt);
@@ -64,6 +67,14 @@ public class MainFragment2_loading extends Fragment {
             }
             public void onFinish() {
                 countTxt.setText("Finish .");
+
+         /*       MainFragment2_loading fragment = new MainFragment2_loading();
+                question_idx = result.data.question_idx;
+                bundle = new Bundle();
+                bundle.putInt("question_idx", question_idx);
+                fragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();*/
+
             }
         };
     }

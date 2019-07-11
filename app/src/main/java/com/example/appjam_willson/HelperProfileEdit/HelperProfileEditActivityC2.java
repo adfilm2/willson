@@ -1,152 +1,315 @@
-        package com.example.appjam_willson.HelperProfileEdit;
+package com.example.appjam_willson.HelperProfileEdit;
 
-        import android.content.Context;
-        import android.content.Intent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-        import android.widget.ImageView;
-        import android.widget.TextView;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.HelperRegistModel;
+
+import retrofit2.Retrofit;
 
 
-        public class HelperProfileEditActivityC2 extends AppCompatActivity {
-        //다음버튼에 액티비티 2 와 연결 해야함
+public class HelperProfileEditActivityC2 extends AppCompatActivity {
+    //다음버튼에 액티비티 2 와 연결 해야함
 
-            TextView text;
-            Context context;
-            int REQUEST_CODE;
+    int REQUEST_CODE;
 
-            public void onCreate(Bundle savedInstanceState)
-            {
-                context = this;
-                super.onCreate(savedInstanceState);
-                setContentView(R.layout.activity_helper_profile_edit_c2);
+    RadioGroup radioGroup_1;
+    RadioGroup radioGroup_2;
+    Button nextbtn;
+    LinearLayout custom_text;
+    EditText custom_edit_text;
+    LinearLayout usercustom_layout;
+    LinearLayout background;
+    LinearLayout backbtn;
 
-                REQUEST_CODE = ((HelperProfileEditActivityC2) context).getTaskId();
+    RadioButton oneside;
+    RadioButton some;
+    RadioButton conflict;
+    RadioButton saygoodbye;
 
-                Button button1 = findViewById(R.id.helper_editc2_1);
-                Button button2 = findViewById(R.id.helper_editc2_2);
-                Button button3 = findViewById(R.id.helper_editc2_3);
-                Button button4 = findViewById(R.id.helper_editc2_4);
-                Button nextbtn = findViewById(R.id.btn_next);
-
-        // Button backbtn = (Button) findViewById(R.id.btn_backbtn);
-        ImageView btn_back;
-        ImageView cancel_btn;
-
-        btn_back = findViewById(R.id.back_btn);
-        btn_back.setOnClickListener(new HelperProfileEditActivityC2.backbtn_listener());
-        cancel_btn  = findViewById(R.id.cancel_btn);
-        cancel_btn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("result", "cancel");
-                setResult(REQUEST_CODE, intent);
-                finish();
-            }
-        });
+    TextView title;
 
 
-                text = findViewById(R.id.toolbar_text);
-                text.setText("프로필 수정");
+    Context context;
 
-                button1.setOnClickListener(new Button.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        nextbtn.setEnabled(true);
-                        button1.setBackgroundResource(R.drawable.helpersignupbackground);
-                        button1.setTextColor(getColor(R.color.white));
-                        button2.setTextColor(getColor(R.color.lightPurple));
-                        button3.setTextColor(getColor(R.color.lightPurple));
-                        button4.setTextColor(getColor(R.color.lightPurple));
-                        button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                        button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                        button4.setBackgroundResource(R.drawable.helpersignup_nonchecked);
+    Bundle bundle1 = new Bundle();
 
+    Typeface typebold;
+    Typeface typereg;
 
-                    }
+    String small_category;
+   /* EditText edit;
+    TextView HSUtextview;
+    LinearLayout HSU_usercustom_layout;
+    String title;*/
 
+    private Retrofit retrofit;
+    private RetrofitAPI retrofitAPI;
 
+    HelperRegistModel helperRegistModel;
 
-        });
-        button2.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextbtn.setEnabled(true);
-                button2.setBackgroundResource(R.drawable.helpersignupbackground);
-                button2.setTextColor(getColor(R.color.white));
-                button1.setTextColor(getColor(R.color.lightPurple));
-                button3.setTextColor(getColor(R.color.lightPurple));
-                button4.setTextColor(getColor(R.color.lightPurple));
-                button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button4.setBackgroundResource(R.drawable.helpersignup_nonchecked);
+    public void onCreate(Bundle savedInstanceState) {
+        context = this;
+        REQUEST_CODE = ((HelperProfileEditActivityC2) context).getTaskId();
 
+        typebold = getResources().getFont(R.font.nanum_square_b);
+        typereg = getResources().getFont(R.font.nanum_square_r);
 
+        ImageView btn;
+        nextbtn = (Button)findViewById(R.id.HelperSU_btn_next);
+        nextbtn.setOnClickListener(new next_btn_listener());
 
+        backbtn = (LinearLayout)findViewById(R.id.back_btn_layout);
+        backbtn.setOnClickListener(new backbtn_listener());
 
+        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn.setVisibility(View.INVISIBLE);
 
+        title = (TextView)findViewById(R.id.toolbar_text);
+        title.setText("프로필 수정");
 
-                    }
-                });
+        radioGroup_1 = (RadioGroup)findViewById(R.id.radioGroup1);
+        radioGroup_2 = (RadioGroup)findViewById(R.id.radioGroup2);
+        radioGroup_1.clearCheck();
+        radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
+        radioGroup_2.clearCheck();
+        radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
 
-                button3.setOnClickListener(new Button.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        nextbtn.setEnabled(true);
-                        button3.setBackgroundResource(R.drawable.helpersignupbackground);
-                        button3.setTextColor(getColor(R.color.white));
-                        button2.setTextColor(getColor(R.color.lightPurple));
-                        button1.setTextColor(getColor(R.color.lightPurple));
-                        button4.setTextColor(getColor(R.color.lightPurple));
-                        button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                        button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                        button4.setBackgroundResource(R.drawable.helpersignup_nonchecked);
+        oneside = (RadioButton)findViewById(R.id.btn_onesidelove);
+        some = (RadioButton)findViewById(R.id.btn_somthing);
+        conflict = (RadioButton)findViewById(R.id.btn_conflict);
+        saygoodbye = (RadioButton)findViewById(R.id.btn_saygoodbye);
 
+        oneside.setTypeface(typereg);
+        some.setTypeface(typereg);
+        conflict.setTypeface(typereg);
+        saygoodbye.setTypeface(typereg);
 
+        custom_text = findViewById(R.id.btn_usercustom);
+        custom_text.setOnClickListener(new custom_btn_listener());
 
+        usercustom_layout = findViewById(R.id.btn_user_custom_layout);
 
-                    }
-                });
+        background = findViewById(R.id.background);
+        background.setOnClickListener(new background_listener());
 
-        button4.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextbtn.setEnabled(true);
-                button4.setBackgroundResource(R.drawable.helpersignupbackground);
-                button4.setTextColor(getColor(R.color.white));
-                button2.setTextColor(getColor(R.color.lightPurple));
-                button3.setTextColor(getColor(R.color.lightPurple));
-                button1.setTextColor(getColor(R.color.lightPurple));
-                button1.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button2.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-                button3.setBackgroundResource(R.drawable.helpersignup_nonchecked);
-            }
-        });
-
-
-        nextbtn.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentProfileEdit = new Intent(HelperProfileEditActivityC2.this, HelperProfileEditActivityStart.class);
-                startActivityForResult(intentProfileEdit,REQUEST_CODE);
-
-
-            }
-
-
-        });
+        custom_edit_text = findViewById(R.id.usercustom_edittext);
+        custom_edit_text.setOnClickListener(new custom_edit_Clicklistener());
+        custom_edit_text.setOnKeyListener(new custom_edit_listener());
+        custom_edit_text.setTypeface(typebold);
 
 
 
 
     }
 
+    private RadioGroup.OnCheckedChangeListener radioGroup_listener1 = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if (checkedId != -1) {
+
+                if(checkedId == R.id.btn_onesidelove){
+                    oneside.setTypeface(typebold);
+                    some.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.btn_somthing){
+                    some.setTypeface(typebold);
+                    oneside.setTypeface(typereg);
+                }
+                conflict.setTypeface(typereg);
+                saygoodbye.setTypeface(typereg);
+                custom_edit_text.setTypeface(typereg);
+                custom_edit_text.setCursorVisible(false);
+                nextbtn.setEnabled(true);
+                hidekeyboard(custom_edit_text);
+                radioGroup_2.setOnCheckedChangeListener(null);
+                radioGroup_2.clearCheck();
+                radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
+                usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                int backcolor = getResources().getColor(R.color.lightPurple);
+                custom_edit_text.setTextColor(backcolor);
+                String title;
+                title = custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    custom_text.setVisibility(View.VISIBLE);
+                    custom_edit_text.setVisibility(View.INVISIBLE);
+                }
+            }
+        }
+    };
+
+    private RadioGroup.OnCheckedChangeListener radioGroup_listener2 = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            if(checkedId != -1) {
+                nextbtn.setEnabled(true);
+                hidekeyboard(custom_edit_text);
+                if(checkedId == R.id.btn_conflict){
+                    conflict.setTypeface(typebold);
+                    saygoodbye.setTypeface(typereg);
+                }
+                else if(checkedId == R.id.btn_saygoodbye){
+                    saygoodbye.setTypeface(typebold);
+                    conflict.setTypeface(typereg);
+                }
+                oneside.setTypeface(typereg);
+                some.setTypeface(typereg);
+                custom_edit_text.setTypeface(typereg);
+                custom_edit_text.setCursorVisible(false);
+                radioGroup_1.setOnCheckedChangeListener(null);
+                radioGroup_1.clearCheck();
+                radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
+                usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                int backcolor = getResources().getColor(R.color.lightPurple);
+                custom_edit_text.setTextColor(backcolor);
+                String title;
+                title = custom_edit_text.getText().toString();
+                if(title.getBytes().length <= 0) {
+                    custom_text.setVisibility(View.VISIBLE);
+                    custom_edit_text.setVisibility(View.INVISIBLE);
+                }
+            }
+        }
+    };
+
+    class background_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            if (custom_edit_text.isFocused()) {
+                String title;
+                title = custom_edit_text.getText().toString();
+                if (title.getBytes().length <= 0) {
+                    nextbtn.setEnabled(false);
+                    custom_text.setVisibility(View.VISIBLE);
+                    custom_edit_text.setVisibility(View.INVISIBLE);
+                    usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                } else {
+                    nextbtn.setEnabled(true);
+                }
+                hidekeyboard(custom_edit_text);
+                custom_edit_text.setCursorVisible(false);
+            }
+        }
+    }
+
+    class custom_btn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String title;
+            title = custom_edit_text.getText().toString();
+            if(title.getBytes().length <= 0) {
+                nextbtn.setEnabled(false);
+                custom_text.setVisibility(View.VISIBLE);
+                custom_edit_text.setVisibility(View.INVISIBLE);
+            }
+            conflict.setTypeface(typereg);
+            saygoodbye.setTypeface(typereg);
+            oneside.setTypeface(typereg);
+            some.setTypeface(typereg);
+            custom_edit_text.setTypeface(typebold);
+            radioGroup_1.setOnCheckedChangeListener(null);
+            radioGroup_1.clearCheck();
+            radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
+            radioGroup_2.setOnCheckedChangeListener(null);
+            radioGroup_2.clearCheck();
+            radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
+            custom_text.setVisibility(View.INVISIBLE);
+            custom_edit_text.setVisibility(View.VISIBLE);
+            custom_edit_text.setCursorVisible(true);
+            custom_edit_text.requestFocus();
+            showkeyboard(custom_edit_text);
+            int backcolor = getResources().getColor(R.color.white);
+            usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
+            custom_edit_text.setTextColor(backcolor);
+        }
+    }
+
+    class custom_edit_Clicklistener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            String title;
+            title = custom_edit_text.getText().toString();
+            if(title.getBytes().length <= 0) {
+                nextbtn.setEnabled(false);
+                custom_text.setVisibility(View.VISIBLE);
+                custom_edit_text.setVisibility(View.INVISIBLE);
+            }
+            else{
+                nextbtn.setEnabled(true);
+            }
+            conflict.setTypeface(typereg);
+            saygoodbye.setTypeface(typereg);
+            oneside.setTypeface(typereg);
+            some.setTypeface(typereg);
+            custom_edit_text.setTypeface(typebold);
+            radioGroup_1.setOnCheckedChangeListener(null);
+            radioGroup_1.clearCheck();
+            radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
+            radioGroup_2.setOnCheckedChangeListener(null);
+            radioGroup_2.clearCheck();
+            radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
+            custom_text.setVisibility(View.INVISIBLE);
+            custom_edit_text.setVisibility(View.VISIBLE);
+            custom_edit_text.setCursorVisible(true);
+            int backcolor = getResources().getColor(R.color.white);
+            usercustom_layout.setBackgroundResource(R.drawable.list_btns_selected);
+            custom_edit_text.setTextColor(backcolor);
+        }
+    }
+
+    class custom_edit_listener implements View.OnKeyListener {
+        @Override
+        public boolean onKey(View view, int i, KeyEvent keyEvent) {
+            switch (i) {
+                case KeyEvent.KEYCODE_ENTER :
+                    hidekeyboard(custom_edit_text);
+                    String title;
+                    title = custom_edit_text.getText().toString();
+                    if(title.getBytes().length <= 0) {
+                        nextbtn.setEnabled(false);
+                        custom_text.setVisibility(View.VISIBLE);
+                        custom_edit_text.setVisibility(View.INVISIBLE);
+                        usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
+                    }
+                    custom_edit_text.setCursorVisible(false);
+            }
+            return false;
+        }
+    }
+
+    private void hidekeyboard(EditText edit) {
+        InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+    }
+
+    private void showkeyboard(EditText edit){
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+    }
+
+    class next_btn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intentProfileEdit = new Intent(HelperProfileEditActivityC2.this, HelperProfileEditActivityStart.class);
+            startActivityForResult(intentProfileEdit,REQUEST_CODE);
+        }
+    }
 
     class backbtn_listener implements View.OnClickListener {
         @Override

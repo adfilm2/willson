@@ -19,16 +19,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/asker_relative"
-                android:layout_marginTop="18.2dp"
-                >
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="18.2dp"
+                    android:id="@+id/timer_linear"
                     android:gravity="center"
                     >
                     <LinearLayout
@@ -60,18 +55,6 @@
                             />
                     </LinearLayout>
                 </LinearLayout>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/btn_cancle"
-                    android:id="@+id/helper_fragment1_cancle"
-                    android:layout_marginRight="15.4dp"
-                    android:layout_alignParentEnd="true"
-                    />
-
-            </RelativeLayout>
 
 <!--            <LinearLayout
                 android:layout_width="match_parent"

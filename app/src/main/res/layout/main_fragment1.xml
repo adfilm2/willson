@@ -120,7 +120,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="23.9dp"
 
@@ -132,7 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:layout_marginBottom="21.1dp"
+                    android:layout_marginBottom="24.9dp"
                     android:src="@drawable/main_img_category_02_job"
                     />
                 <TextView
@@ -218,7 +218,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="23.9dp"
                 android:id="@+id/fragment1_fifthContent"
@@ -230,7 +230,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:layout_marginBottom="21.1dp"
+                    android:layout_marginBottom="23dp"
                     android:src="@drawable/main_img_category_05_daily"
                     />
 
@@ -258,7 +258,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:layout_marginBottom="21.1dp"
+                    android:layout_marginBottom="23dp"
                     android:src="@drawable/main_img_category_06_etc"
                     />
 

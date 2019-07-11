@@ -73,6 +73,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_asker);
+
         ImageView cancel = findViewById(R.id.cancel_btn);
         cancel.setVisibility(View.INVISIBLE);
 

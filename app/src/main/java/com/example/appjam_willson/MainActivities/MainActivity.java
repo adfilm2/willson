@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkMatch() {
 
-        int question_idx = 38;
+        /*int question_idx = 38;*/
 
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(question_idx);
         //여기 윗줄에 question_idx값 안넣어줌

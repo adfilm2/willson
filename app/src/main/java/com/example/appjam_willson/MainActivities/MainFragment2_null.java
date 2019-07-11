@@ -20,7 +20,11 @@ public class MainFragment2_null extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.main_fragment2_null,null);
+        View view = inflater.inflate(R.layout.main_fragment2_null,null);
+        if(getArguments() != null){
+            int question_idx = getArguments().getInt("question_idx");
+        }
+
             LinearLayout linearLayout = view.findViewById(R.id.fragment2_null_goHome);
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

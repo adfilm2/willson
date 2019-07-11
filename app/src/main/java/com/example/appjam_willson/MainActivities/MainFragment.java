@@ -33,15 +33,12 @@ import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
 import com.example.appjam_willson.HelperSignUpActivity.HelperSignUpStartActivity;
-import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.CreateWorryModel;
 import com.example.appjam_willson.model.CreateWorryResponseModel;
 import com.example.appjam_willson.model.HelperCheckResponseModel;
 import com.example.appjam_willson.model.HelperStoryModel;
-import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
-import com.google.android.material.theme.MaterialComponentsViewInflater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,6 +73,9 @@ public class MainFragment extends Fragment {
     private RecyclerView reviewRecyclerView;
     private LinearLayoutManager reviewLayoutManager;
     private List<HelperStoryModel.story> reviewAdapterModels;
+
+    int question_idx;
+    Bundle bundle;
 
     public MainFragment(){
 
@@ -289,7 +289,12 @@ public class MainFragment extends Fragment {
                             changeImage(willsonImage_request,willsonImage_chat,willsonImage_mypage,willsonImage_home);
                             changeTextColor(willsonText_request,willsonText_home,willsonText_chat,willsonText_mypage);
 
+
                             MainFragment2_loading fragment = new MainFragment2_loading();
+                            question_idx = result.data.question_idx;
+                            bundle = new Bundle();
+                            bundle.putInt("question_idx", question_idx);
+                            fragment.setArguments(bundle);
                             getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
 
 
