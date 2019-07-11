@@ -2,6 +2,7 @@ package com.example.appjam_willson.ChatActivities;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,10 +53,7 @@ public class ChatActivity extends AppCompatActivity {
     private String destinationUid;
     private String RoomKey;
 
-    private TimerTask timerTask;
     private Timestamp newTime;
-    private Timer timer = new Timer();
-    private String restTime;
     private CountDownTimer countDownTimer;
 
     private String uid;
@@ -66,10 +64,8 @@ public class ChatActivity extends AppCompatActivity {
 
     private long startTime;
 
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("H:mm");
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
     private SimpleDateFormat timerFormat = new SimpleDateFormat("mm");
-
-    private LinearLayout linearLayout_startMsg ;
 
     private TextView chat_timer;
 
@@ -148,12 +144,13 @@ public class ChatActivity extends AppCompatActivity {
         checkChatRoom();
     }
 
+
     class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         List<ChatModel.Comment> comments;
-        ChatModel.Comment start;
         private static final int TYPE_ONE = 1;
         private static final int TYPE_TWO = 2;
+        private static final int TYPE_THREE = 3;
 
         public ChatAdapter() {
 
@@ -179,11 +176,17 @@ public class ChatActivity extends AppCompatActivity {
         @Override
         public int getItemViewType(int position){
             ChatModel.Comment item = comments.get(position);
-            if(item.uid != null){
+            if(item.type == 1){
+                return TYPE_ONE;
+            }
+            else if(item.type == 2 ){
                 return TYPE_TWO;
             }
+            else if(item.type == 3 ){
+                return TYPE_THREE;
+            }
             else{
-                return TYPE_ONE;
+                return -1;
             }
         }
 
@@ -197,21 +200,28 @@ public class ChatActivity extends AppCompatActivity {
                 View view_start = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_start, parent, false);
                 return new StartMsgViewHolder(view_start);
             }
-            else {
+            else if(viewType == TYPE_THREE) {
                 View view_end = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_end, parent, false);
                 return new EndMsgViewHolder(view_end);
+            }
+
+            else {
+//                View view_end = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_end, parent, false);
+//                return new EndMsgViewHolder(view_end);
+                throw new RuntimeException("this type is not One or Two");
             }
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            long unixTime = (long) comments.get(position).timeStamp;
-            Date date = new Date(unixTime);
-            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
-            String time = simpleDateFormat.format(date);
 
             switch (holder.getItemViewType()){
                 case TYPE_ONE:
+                    long unixTime = (long) comments.get(position).timeStamp;
+                    Date date = new Date(unixTime);
+                    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+                    String time = simpleDateFormat.format(date);
+
                     MessageViewHolder messageViewHolder = ((MessageViewHolder)holder);
                     //내가 보낸거
                     if(comments.get(position).uid.equals(uid)) {
@@ -249,12 +259,30 @@ public class ChatActivity extends AppCompatActivity {
 
                         setReadCounter(position,messageViewHolder.textView_readCounter_right);
                         messageViewHolder.textView_timeStamp_left.setText(time);
-
                     }
-                case TYPE_TWO :
-                    StartMsgViewHolder startMsgViewHolder = ((StartMsgViewHolder)holder);
-                    startMsgViewHolder.chat_start_msg.setText(time);
-                    startMsgViewHolder.chat_start_msg_second.setText(time);
+                    break;
+                case TYPE_TWO:
+
+                    Date startDate = new Date(startTime);
+                    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+                    String getTime = simpleDateFormat.format(startDate);
+
+                    StartMsgViewHolder startMsgViewHolder = (StartMsgViewHolder)holder ;
+                    startMsgViewHolder.chat_start_msg.setText(getTime);
+                    startMsgViewHolder.chat_start_msg_second.setText(getTime);
+                    break;
+                case TYPE_THREE :
+
+                    EndMsgViewHolder endMsgViewHolder = (EndMsgViewHolder) holder;
+                    endMsgViewHolder.reviewLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -265,7 +293,7 @@ public class ChatActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     comments.clear();
-                    comments.add(start);
+                    comments.add(new ChatModel.Comment(2));
                     Map<String, Object> readUsersMap = new HashMap<>();
                     for(DataSnapshot item : dataSnapshot.getChildren()){
                         String key = item.getKey();
@@ -346,7 +374,7 @@ public class ChatActivity extends AppCompatActivity {
             public TextView chat_start_msg;
             public TextView chat_start_msg_second;
 
-            public StartMsgViewHolder(@NonNull View itemView) {
+            public StartMsgViewHolder(View itemView) {
                 super(itemView);
                 chat_start_msg = itemView.findViewById(R.id.chat_startMsg_time);
                 chat_start_msg_second = itemView.findViewById(R.id.chat_startMsg_time_second);
@@ -355,7 +383,8 @@ public class ChatActivity extends AppCompatActivity {
         private class EndMsgViewHolder extends RecyclerView.ViewHolder{
 
             public LinearLayout reviewLayout;
-            public EndMsgViewHolder(@NonNull View itemView) {
+
+            public EndMsgViewHolder(View itemView) {
                 super(itemView);
                 reviewLayout = itemView.findViewById(R.id.endMsg_review);
             }
@@ -459,6 +488,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     void makeUserData(){
+
         Map<String, String> willsonProfile = new HashMap<>();
         willsonProfile.put("photo", "");
         willsonProfile.put("uid", destinationUid);
@@ -508,6 +538,7 @@ public class ChatActivity extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
+
                 btnSent.setEnabled(false);
             }
         };

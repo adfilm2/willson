@@ -66,7 +66,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/chat_startMsg_time"
         android:layout_marginTop="6.7dp"
         >
         <TextView
@@ -75,6 +74,7 @@
             android:layout_alignParentEnd="true"
             android:text="PM 3:20"
             android:textSize="9sp"
+            android:id="@+id/chat_startMsg_time"
             android:fontFamily="@font/nanum_square_b"
             android:textColor="@color/black"
             />
@@ -155,13 +155,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/chat_startMsg_time_second"
         android:layout_marginTop="6.7dp"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:id="@+id/chat_startMsg_time_second"
             android:text="PM 3:20"
             android:textSize="9sp"
             android:fontFamily="@font/nanum_square_b"

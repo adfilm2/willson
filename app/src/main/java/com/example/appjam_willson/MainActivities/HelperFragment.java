@@ -98,9 +98,9 @@ public class HelperFragment extends Fragment {
 //            Log.d("메시지ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ", result.getMessage());
 //            Log.d("유저 닉네임", result.getData().getConcernInfo().get(0).getUserInfo().getNickname());
 
-            adapter_send = result.getData().getConcernInfo();
-            helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
-            helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
+//            adapter_send = result.getData().getConcernInfo();
+//            helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
+//            helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
 
 //            Log.d("리ㅣㅣㅣㅣ", String.valueOf(result.getData().getSize()));
 //            Log.d("삽질ㄹㄹㄹㄹㄹㄹ", String.valueOf(result.getData().getConcernInfo().get(1).getUserInfo()));
