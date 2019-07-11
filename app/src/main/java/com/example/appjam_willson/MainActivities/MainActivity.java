@@ -19,10 +19,7 @@ import com.example.appjam_willson.model.AcceptHelperListWatchResponseModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
@@ -149,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
     }
 
-        public void checkMatch() {
+    public void checkMatch() {
 
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
@@ -174,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onFailure(Call<AcceptHelperListWatchResponseModel> call, Throwable t) {
-
+            t.printStackTrace();
         }
     };
 }
