@@ -18,14 +18,14 @@ import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 public class test2Activity extends AppCompatActivity {
 
 
-    private OneTextTwoButton_CustomDialog dialog;
+    private ChatFeedback_CustomDialog dialog;
     Button btn01;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_test4);
+       setContentView(R.layout.activity_test4);
 
         findViewById(R.id.btn01).setOnClickListener(mClickListener);
 
@@ -45,20 +45,54 @@ public class test2Activity extends AppCompatActivity {
 
     Button.OnClickListener mClickListener = new View.OnClickListener() {
         public void onClick(View v) {
-            //이곳에 버튼 클릭시 일어날 일을 적습니다.
+//            dialog.setCanceledOnTouchOutside(false);
 
-          //  dialog = new OneTextTwoButton_CustomDialog(test2Activity.this, resid,
-               //     "벌써 20%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
-
-            dialog.setCanceledOnTouchOutside(false);
-
-            dialog.setCancelable(true);
-            dialog.getWindow().setGravity(Gravity.CENTER);
+          //  dialog.setCancelable(true);
+          //  dialog.getWindow().setGravity(Gravity.CENTER);
+            dialog = new ChatFeedback_CustomDialog(test2Activity.this, cancel_listener, commit_listener);
             dialog.show();
 
 
         }
     };
+
+
+
+    public void Dialog() {
+        dialog = new ChatFeedback_CustomDialog(test2Activity.this, cancel_listener, commit_listener);
+        //dialog.setCanceledOnTouchOutside(false);
+       // dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener cancel_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
+
+    private View.OnClickListener commit_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();
+        }
+    };
+
+    /*public void onBackPressed(){
+        Intent intent = new Intent();
+        intent.putExtra("result", "BACK");
+        setResult(REQUEST_CODE, intent);
+        finish();
+    }*/
+
+
+
+
 }
 
 
