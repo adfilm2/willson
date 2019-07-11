@@ -1,6 +1,8 @@
 package com.example.appjam_willson.LoginRegisterActivity;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,11 +10,13 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -58,6 +62,9 @@ public class RegisterActivity_asker extends AppCompatActivity {
     private int userAge;
     private String userGender;
 
+    LinearLayout background;
+
+    EditText nickName;
     private FirebaseAuth mAuth;
 
     @Override
@@ -65,20 +72,24 @@ public class RegisterActivity_asker extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_asker);
 
-        ImageView cancel = (ImageView)findViewById(R.id.cancel_btn);
+        ImageView cancel = findViewById(R.id.cancel_btn);
         cancel.setVisibility(View.INVISIBLE);
 
-        TextView text = (TextView)findViewById(R.id.toolbar_text);
+        TextView text = findViewById(R.id.toolbar_text);
         text.setText("회원가입");
 
         final EditText idText=findViewById(R.id.registerasker_email);
         final EditText passwordText=findViewById(R.id.registerasker_password);
         final EditText passwordConfirm = findViewById(R.id.registerasker_passwordConfirm);
         final TextView ConfirmMsg_password = findViewById(R.id.registerasker_passwordConfirm_Msg);
-        final EditText nickName = findViewById(R.id.registerasker_nickName);
+        nickName = findViewById(R.id.registerasker_nickName);
         final CheckBox checkBox = findViewById(R.id.registerasker_checkBox);
         final Spinner ageSpinner = findViewById(R.id.registerasker_age);
         final TextView checkBox_text = findViewById(R.id.registerasker_checkBox_text);
+
+
+        background = findViewById(R.id.background_id);
+        background.setOnClickListener(new background_listener());
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -153,11 +164,13 @@ public class RegisterActivity_asker extends AppCompatActivity {
         });
 
         final Button completeButton = findViewById(R.id.registerasker_registerButton);
+
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String toCheckAge = ageSpinner.getSelectedItem().toString();
 
+                Log.d("age>>>>>",""+ageSpinner.getSelectedItem().toString());
                 userEmail = idText.getText().toString();
                 userPassword = passwordText.getText().toString();
                 userNickname = nickName.getText().toString();
@@ -230,12 +243,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("users").orderByChild("nickName").equalTo(NickName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue() == null){
-                    nickNameCheck = true;
-                }
-                else{
-                    nickNameCheck = false;
-                }
+                nickNameCheck = dataSnapshot.getValue() == null;
                 RegisterActivity_asker.this.runOnUiThread(callback);
             }
             @Override
@@ -307,15 +315,17 @@ public class RegisterActivity_asker extends AppCompatActivity {
         public void onResponse(retrofit2.Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
             SignupResponseModel result = response.body();
             Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
-            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.getCode());
+//            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.getCode());
+            Intent intent = new Intent(RegisterActivity_asker.this, SignUpPersonalityActivity.class);
+            startActivity(intent);
+
+
         }
 
         @Override
         public void onFailure(Call<SignupResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
-            Log.d("서버 코드ㅡㅡㅡㅡㅡㅡ","ㅁㄴㅇㅁㄴㅇ");
-        }
+            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>"); }
     };
 
     @Override
@@ -327,4 +337,20 @@ public class RegisterActivity_asker extends AppCompatActivity {
             dialog = null;
         }
     }
+
+    private void hidekeyboard(EditText edit) {
+        InputMethodManager input = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+    }
+
+    class background_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            hidekeyboard(nickName);
+
+        }
+    }
+
+
+
 }

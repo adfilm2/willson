@@ -18,7 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".LoginRegisterActivity.SignUpPersonalityActivity"></activity>
+        <activity android:name=".HelperRequestCompleteActivity"></activity>
+        <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart" />
+        <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity" />
+        <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity" />
+        <activity android:name=".ConvConfirmActivity" />
 
         <activity android:name=".HelperProfileActivity">
             <intent-filter>
@@ -28,18 +35,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".HelperRequestCompleteActivity" />
-        <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity" />
-        <activity android:name=".TestActivity" />
-        <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart" />
-        <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity" />
-        <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity" />
-        <activity android:name=".ConvConfirmActivity" />
         <activity
             android:name=".HelperProfileEdit.HelperProfileEditActivityIntro"
-            android:windowSoftInputMode="adjustPan" />
-
-        <!-- Login && Register -->
+            android:windowSoftInputMode="adjustPan" /> <!-- Login && Register -->
         <activity android:name=".LoginRegisterActivity.LoginActivity" />
         <activity android:name=".LoginRegisterActivity.ChoiceActivity" />
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker" />

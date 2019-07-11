@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -208,6 +209,7 @@ public class MainFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode == REQUEST_CODE_COURSE || requestCode == REQUEST_CODE_DAILY || requestCode ==REQUEST_CODE_ETC ||requestCode == REQUEST_CODE_LOVE || requestCode ==REQUEST_CODE_MENTAL ||requestCode ==REQUEST_CODE_RELATION){
             switch (resultCode){
                 case RESULT_OK:
 
@@ -245,6 +247,12 @@ public class MainFragment extends Fragment {
                             Log.d(">> response.code", ">>>>>>>>>>>" + response.code());
                             Log.d(">> question_idx ;:::: ",">>"+result.data.question_idx);
                             ApplicationFields.myQuestion_idx = result.data.question_idx;
+//                            Intent intent = new Intent(getActivity(),MainActivity.class);
+//                            intent.putExtra("complete","OK");
+//                            startActivity(intent);
+                            MainActivity.thirdTap();
+
+
                         }
 
                         @Override
@@ -258,8 +266,11 @@ public class MainFragment extends Fragment {
                 case RESULT_CANCELED:
 
             }
+        }
+
 
     }
+
 
 
     //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로

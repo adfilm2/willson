@@ -23,13 +23,14 @@
             android:orientation="vertical"
             android:background="@color/white"
             android:scrollbars="vertical"
+            android:id="@+id/background_id"
             >
 
             f<LinearLayout
                 android:id="@+id/id_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="25.9dp"
                 android:orientation="vertical"
                 >
 
@@ -249,11 +250,12 @@
                     android:layout_alignParentBottom="true"
                     android:layout_height="46.1dp"
                     android:layout_marginBottom="32.6dp"
-                    android:enabled="true"
+                    android:enabled="false"
                     android:background="@drawable/listnext_btn_selector"
                     android:text="다음"
                     android:textColor="#FFFFFF"
                     android:textStyle="normal"
+
                     android:fontFamily="@font/nanum_square_b"/>
             </RelativeLayout>
 
