@@ -78,7 +78,7 @@ public interface RetrofitAPI {
                                                       @Path("helper_idx") int helper_idx);
 
     @POST("review")
-    Call<ReviewWriteResponseModel> write_review_post(@Header("user_session") String token,
+    Call<ReviewWriteResponseModel> write_review_post(@Header("willson-token") String token,
                                                      @Body ReviewWriteModel reviewWriteModel);
 
     @POST("concern/personality")
