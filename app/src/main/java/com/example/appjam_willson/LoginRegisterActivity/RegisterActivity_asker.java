@@ -202,7 +202,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 signupModel.setEmail(userEmail);
                 signupModel.setNickname(userNickname);
                 signupModel.setPassword(userPassword);
-                signupModel.setGender();
+                //signupModel.setGender();
 
                 Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
 
