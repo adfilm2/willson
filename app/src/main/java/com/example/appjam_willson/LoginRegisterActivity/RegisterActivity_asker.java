@@ -206,9 +206,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 
     protected void showAlert(String message) {
@@ -273,41 +270,16 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 });
     }
 
-    private class NetworkCall extends AsyncTask<Call, Void, SignupResponseModel> {
-
-        @Override
-        protected SignupResponseModel doInBackground(Call[] params) {
-            try {
-                Call<SignupResponseModel> call = params[0];
-                Response<SignupResponseModel> response = call.execute();
-                return response.body();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(SignupResponseModel result) {
-            SignupResponseModel signupResponseModel = new SignupResponseModel();
-            signupResponseModel = result;
-        }
-    }
-
     private Callback<SignupResponseModel> retrofitCallback = new Callback<SignupResponseModel>() {
 
         @Override
         public void onResponse(retrofit2.Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
             SignupResponseModel result = response.body();
-            Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
-            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.getCode());
         }
 
         @Override
         public void onFailure(Call<SignupResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
-            Log.d("서버 코드ㅡㅡㅡㅡㅡㅡ","ㅁㄴㅇㅁㄴㅇ");
         }
     };
 

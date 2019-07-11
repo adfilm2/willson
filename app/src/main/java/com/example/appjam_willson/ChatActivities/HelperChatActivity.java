@@ -74,7 +74,6 @@ public class HelperChatActivity extends AppCompatActivity {
             uid = user.getUid();
         }
 
-        linearLayout_startMsg = findViewById(R.id.chat_startMsg);
         chat_startMsg_time = findViewById(R.id.chat_startMsg_time);
 
         destinationUid = getIntent().getStringExtra("destinationUid");
