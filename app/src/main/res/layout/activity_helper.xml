@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/willsonText_chat"
-                android:text="보낸 요청"
+                android:text="채팅"
                 android:textColor="@color/grey"
                 android:textSize="12sp"
                 android:gravity="center"

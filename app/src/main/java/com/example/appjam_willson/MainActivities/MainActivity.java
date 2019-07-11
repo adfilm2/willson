@@ -115,14 +115,12 @@ public class MainActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                changeImage(image_chat, image_home, image_mypage, image_request);
-//                changeTextColor(text_chat, text_home, text_request, text_mypage);
-//
-//                MainFragment3 fragment = new MainFragment3();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-                thirdTap();
+                changeImage(image_chat, image_home, image_mypage, image_request);
+                changeTextColor(text_chat, text_home, text_request, text_mypage);
+
                 MainFragment3 fragment = new MainFragment3();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
 
 
             }
@@ -140,10 +138,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static void thirdTap(){
-        changeImage(image_chat, image_home, image_mypage, image_request);
-        changeTextColor(text_chat, text_home, text_request, text_mypage);
-    }
+
 
 
 

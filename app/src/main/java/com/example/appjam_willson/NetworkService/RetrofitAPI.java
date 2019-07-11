@@ -8,6 +8,7 @@ import com.example.appjam_willson.model.CreateWorryResponseModel;
 import com.example.appjam_willson.model.ExitChatModel;
 import com.example.appjam_willson.model.ExitChatResponseModel;
 import com.example.appjam_willson.model.FeelingStatusListResponseModel;
+import com.example.appjam_willson.model.HelperCheckResponseModel;
 import com.example.appjam_willson.model.HelperProfileEditModel;
 import com.example.appjam_willson.model.HelperProfileEditResponseModel;
 import com.example.appjam_willson.model.HelperProfileWatchResponseModel;
@@ -107,4 +108,7 @@ public interface RetrofitAPI {
 
     @GET("review/story")
     Call<MainReviewModel> main_review_get(@Header("willson-token") String token);
+
+    @GET("helper/check")
+    Call<HelperCheckResponseModel> helper_exist_check_get(@Header("willson-token") String token);
 }

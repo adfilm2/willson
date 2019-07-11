@@ -1,6 +1,7 @@
 package com.example.appjam_willson.MainActivities;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -35,10 +37,11 @@ public class HelperFragment1_null extends Fragment {
         TextView willsonText_profile = getActivity().findViewById(R.id.willsonText_profile);
         TextView willsonText_mypage = getActivity().findViewById(R.id.willsonText_mypage);
 
+        LinearLayout change = view.findViewById(R.id.helper_toAsker);
+
 /*        LayoutInflater inflater_tab;
         inflater_tab = getLayoutInflater();
         View view_tab = inflater_tab.inflate(R.layout.activity_helper, null);*/
-
 
         Button btn = view.findViewById(R.id.helper_profile_edit_btn);
 
@@ -53,12 +56,19 @@ public class HelperFragment1_null extends Fragment {
         final TextView willsonText_mypage= view_tab.findViewById(R.id.willsonText_mypage);*/
 
 
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 /*                willsonImage_profile.setImageResource(R.drawable.helper_tab_03_profile_active);
                 willsonImage_receive.setImageResource(R.drawable.tab_02_request_nonactive);
-
                 willsonText_profile.setTextColor(Color.parseColor("#2f2f2f"));
                 willsonText_receive.setTextColor(Color.parseColor("#9e9e9e"));*/
 
