@@ -261,6 +261,7 @@
                                 android:textSize="14sp"
                                 android:layout_marginTop="12.8dp"
                                 android:layout_marginBottom="9.4dp"
+                                android:id="@+id/infomation"
                                 android:text="gkr학창시절 어저구저WJrn sjansk저는 부모님의 반ㅇ대에 붖딪셯.....\n\n\n\n아이이아그랫다\n\n\nrmfoTek그랬답니다."
                                 android:padding="14.4dp"/>
 

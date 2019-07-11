@@ -80,6 +80,7 @@ public class HelperProfileWatchResponseModel {
         String content;
         String stars;
         String review_count;
+        String title;
 
         /*getter and setter start*/
 
@@ -137,6 +138,14 @@ public class HelperProfileWatchResponseModel {
 
         public void setReview_count(String review_count) {
             this.review_count = review_count;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         /*getter and setter end*/

@@ -2,6 +2,7 @@ package com.example.appjam_willson.ChatActivities;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,10 +53,7 @@ public class ChatActivity extends AppCompatActivity {
     private String destinationUid;
     private String RoomKey;
 
-    private TimerTask timerTask;
     private Timestamp newTime;
-    private Timer timer = new Timer();
-    private String restTime;
     private CountDownTimer countDownTimer;
 
     private String uid;
@@ -66,10 +64,8 @@ public class ChatActivity extends AppCompatActivity {
 
     private long startTime;
 
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("H:mm");
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
     private SimpleDateFormat timerFormat = new SimpleDateFormat("mm");
-
-    private LinearLayout linearLayout_startMsg ;
 
     private TextView chat_timer;
 
@@ -94,8 +90,6 @@ public class ChatActivity extends AppCompatActivity {
 
         chat_timer = findViewById(R.id.chat_timer);
         newTime = new Timestamp(System.currentTimeMillis());
-
-        linearLayout_startMsg = findViewById(R.id.chat_startMsg);
 
         destinationUid = getIntent().getStringExtra("destinationUid");
 
@@ -150,11 +144,16 @@ public class ChatActivity extends AppCompatActivity {
         checkChatRoom();
     }
 
+
     class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         List<ChatModel.Comment> comments;
+        private static final int TYPE_ONE = 1;
+        private static final int TYPE_TWO = 2;
+        private static final int TYPE_THREE = 3;
 
         public ChatAdapter() {
+
             comments = new ArrayList<>();
 
             //UserData를 먼저 생성해준다.
@@ -175,58 +174,115 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview,parent,false);
+        public int getItemViewType(int position){
+            ChatModel.Comment item = comments.get(position);
+            if(item.type == 1){
+                return TYPE_ONE;
+            }
+            else if(item.type == 2 ){
+                return TYPE_TWO;
+            }
+            else if(item.type == 3 ){
+                return TYPE_THREE;
+            }
+            else{
+                return -1;
+            }
+        }
 
-            return new MessageViewHolder(view);
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            if(viewType == TYPE_ONE) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview, parent, false);
+                return new MessageViewHolder(view);
+            }
+            else if(viewType == TYPE_TWO) {
+                View view_start = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_start, parent, false);
+                return new StartMsgViewHolder(view_start);
+            }
+            else if(viewType == TYPE_THREE) {
+                View view_end = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_end, parent, false);
+                return new EndMsgViewHolder(view_end);
+            }
+
+            else {
+//                View view_end = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_end, parent, false);
+//                return new EndMsgViewHolder(view_end);
+                throw new RuntimeException("this type is not One or Two");
+            }
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            MessageViewHolder messageViewHolder = ((MessageViewHolder)holder);
 
-            long unixTime = (long) comments.get(position).timeStamp;
-            Date date = new Date(unixTime);
-            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
-            String time = simpleDateFormat.format(date);
+            switch (holder.getItemViewType()){
+                case TYPE_ONE:
+                    long unixTime = (long) comments.get(position).timeStamp;
+                    Date date = new Date(unixTime);
+                    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+                    String time = simpleDateFormat.format(date);
 
-            //내가 보낸거
-            if(comments.get(position).uid.equals(uid)) {
+                    MessageViewHolder messageViewHolder = ((MessageViewHolder)holder);
+                    //내가 보낸거
+                    if(comments.get(position).uid.equals(uid)) {
 
-                messageViewHolder.textView_another_msg.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_my_msg.setText(comments.get(position).message);
-                messageViewHolder.textView_my_msg.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_another_msg.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_my_msg.setText(comments.get(position).message);
+                        messageViewHolder.textView_my_msg.setVisibility(View.VISIBLE);
 
-                messageViewHolder.imageView_profile.setVisibility(View.INVISIBLE);
+                        messageViewHolder.imageView_profile.setVisibility(View.INVISIBLE);
 
-                messageViewHolder.textView_readCounter_right.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_readCounter_left.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_readCounter_right.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_readCounter_left.setVisibility(View.VISIBLE);
 
-                messageViewHolder.textView_timeStamp_left.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_timeStamp_right.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_timeStamp_left.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_timeStamp_right.setVisibility(View.VISIBLE);
 
-                setReadCounter(position,messageViewHolder.textView_readCounter_left);
-                messageViewHolder.textView_timeStamp_right.setText(time);
-            }
+                        setReadCounter(position,messageViewHolder.textView_readCounter_left);
+                        messageViewHolder.textView_timeStamp_right.setText(time);
+                    }
 
-            //상대방이 보낸거
-            else{
+                    //상대방이 보낸거
+                    else{
 
-                messageViewHolder.textView_another_msg.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_another_msg.setText(comments.get(position).message);
-                messageViewHolder.textView_my_msg.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_another_msg.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_another_msg.setText(comments.get(position).message);
+                        messageViewHolder.textView_my_msg.setVisibility(View.INVISIBLE);
 
-                messageViewHolder.imageView_profile.setVisibility(View.VISIBLE);
+                        messageViewHolder.imageView_profile.setVisibility(View.VISIBLE);
 
-                messageViewHolder.textView_readCounter_right.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_readCounter_left.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_readCounter_right.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_readCounter_left.setVisibility(View.INVISIBLE);
 
-                messageViewHolder.textView_timeStamp_left.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_timeStamp_right.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_timeStamp_left.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_timeStamp_right.setVisibility(View.INVISIBLE);
 
-                setReadCounter(position,messageViewHolder.textView_readCounter_right);
-                messageViewHolder.textView_timeStamp_left.setText(time);
+                        setReadCounter(position,messageViewHolder.textView_readCounter_right);
+                        messageViewHolder.textView_timeStamp_left.setText(time);
+                    }
+                    break;
+                case TYPE_TWO:
 
+                    Date startDate = new Date(startTime);
+                    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+                    String getTime = simpleDateFormat.format(startDate);
+
+                    StartMsgViewHolder startMsgViewHolder = (StartMsgViewHolder)holder ;
+                    startMsgViewHolder.chat_start_msg.setText(getTime);
+                    startMsgViewHolder.chat_start_msg_second.setText(getTime);
+                    break;
+                case TYPE_THREE :
+
+                    EndMsgViewHolder endMsgViewHolder = (EndMsgViewHolder) holder;
+                    endMsgViewHolder.reviewLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -237,6 +293,7 @@ public class ChatActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     comments.clear();
+                    comments.add(new ChatModel.Comment(2));
                     Map<String, Object> readUsersMap = new HashMap<>();
                     for(DataSnapshot item : dataSnapshot.getChildren()){
                         String key = item.getKey();
@@ -250,12 +307,6 @@ public class ChatActivity extends AppCompatActivity {
 
                     if(comments.size() == 0){
                         return ;
-                    }
-
-                    //누군가가 대화를 시작하면  사라지게 만듦
-                    if(linearLayout_startMsg.getVisibility() != View.GONE && comments.size() !=0){
-                        linearLayout_startMsg.setVisibility(View.GONE);
-//                        chat_startMsg_time.setVisibility(View.GONE);
                     }
 
                     if(!comments.get(comments.size()-1).readUser.containsKey(uid)){
@@ -316,6 +367,27 @@ public class ChatActivity extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return comments.size();
+        }
+
+        private class StartMsgViewHolder extends RecyclerView.ViewHolder{
+
+            public TextView chat_start_msg;
+            public TextView chat_start_msg_second;
+
+            public StartMsgViewHolder(View itemView) {
+                super(itemView);
+                chat_start_msg = itemView.findViewById(R.id.chat_startMsg_time);
+                chat_start_msg_second = itemView.findViewById(R.id.chat_startMsg_time_second);
+            }
+        }
+        private class EndMsgViewHolder extends RecyclerView.ViewHolder{
+
+            public LinearLayout reviewLayout;
+
+            public EndMsgViewHolder(View itemView) {
+                super(itemView);
+                reviewLayout = itemView.findViewById(R.id.endMsg_review);
+            }
         }
 
         private class MessageViewHolder extends RecyclerView.ViewHolder {
@@ -416,6 +488,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     void makeUserData(){
+
         Map<String, String> willsonProfile = new HashMap<>();
         willsonProfile.put("photo", "");
         willsonProfile.put("uid", destinationUid);

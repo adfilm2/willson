@@ -11,6 +11,16 @@ public class ChatModel {
 
     public static class Comment {
 
+        public Comment(){
+
+        }
+
+        public Comment(int type){
+            this.type = type;
+        }
+
+        public int type=1;
+
         public String uid;
         public String message;
         public Object timeStamp;

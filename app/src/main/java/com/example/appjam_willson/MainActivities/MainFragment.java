@@ -163,6 +163,10 @@ public class MainFragment extends Fragment {
                 Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(token);
                 user_profile.enqueue(check_retrofitCallback);
 
+                //헬퍼 가입했는지 아닌지 판단해서
+                //Intent intent = new Intent(getActivity() , HelperActivity.class);
+                Intent intent = new Intent(getActivity() , HelperActivity.class);
+                startActivity(intent);
             }
         });
 

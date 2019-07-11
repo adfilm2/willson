@@ -40,26 +40,27 @@ public class HelperFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.helper_fragment2,null);
+
             myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-//        FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot item : dataSnapshot.getChildren()) {
-//                    WillsonModel users = item.getValue(WillsonModel.class);
-//                    String uidGet =users.getUid();
-//                    if (uidGet.equals(myUid)) {
-//                        roomKey = users.getRoomKey();
-//                        findChatRooms(roomKey);
-//                        break;
-//                    }
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot item : dataSnapshot.getChildren()) {
+                    WillsonModel users = item.getValue(WillsonModel.class);
+                    String uidGet =users.getUid();
+                    if (uidGet.equals(myUid)) {
+                        roomKey = users.getRoomKey();
+                        findChatRooms(roomKey);
+                        break;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         willson_fragment2_recyclerView = view.findViewById(R.id.helper_fragment2_recyclerview);
         willson_fragment2_recyclerView.setHasFixedSize(true);
@@ -68,7 +69,6 @@ public class HelperFragment2 extends Fragment {
         willsonModels = new ArrayList<>();
         helperFragment2Adapter = new HelperFragment2Adapter(willsonModels, getActivity());
         willson_fragment2_recyclerView.setAdapter(helperFragment2Adapter);
-
 
         return view;
     }

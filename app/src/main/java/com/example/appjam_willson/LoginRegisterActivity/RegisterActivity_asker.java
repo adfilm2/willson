@@ -261,6 +261,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -344,6 +345,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
             }
 
         }
+
         @Override
         public void onFailure(Call<SignupResponseModel> call, Throwable t) {
             t.printStackTrace();

@@ -13,14 +13,13 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="34.6dp"
+        android:layout_height="wrap_content"
         android:id="@+id/chat_liearlayout"
         >
         <ImageView
             android:id="@+id/chat_Image"
             android:layout_width="34.6dp"
             android:layout_height="34.6dp"
-            android:layout_marginLeft="15.4dp"
             android:layout_marginRight="6.7dp"
             android:src="@drawable/chat_img_helperprofile"
             />
@@ -78,7 +77,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="17.5dp"
             >
             <LinearLayout
                 android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.example.appjam_willson.ChatActivities;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,21 +50,32 @@ public class HelperChatActivity extends AppCompatActivity {
     private String destinationUid;
     private String RoomKey;
 
+
+    private Timestamp newTime;
+    private CountDownTimer countDownTimer;
+
+
     private String uid;
     private EditText editText;
     private Button btnSent;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd H:mm");
+    private long totalTime = 3600000;
+    private long passedTime;
+
+    private long startTime;
+
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+    private SimpleDateFormat timerFormat = new SimpleDateFormat("mm");
+
+    private TextView chat_timer;
 
     private DatabaseReference databaseReference;
     private ValueEventListener valueEventListener;
-
-    private LinearLayout linearLayout_startMsg ;
-    private RelativeLayout chat_startMsg_time;
 
     private WillsonModel destinationUserModel;
     private WillsonModel askerUserModel;
 
     int peopleCount = 0;
+    long passTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +87,9 @@ public class HelperChatActivity extends AppCompatActivity {
             uid = user.getUid();
         }
 
-        linearLayout_startMsg = findViewById(R.id.chat_startMsg);
-        chat_startMsg_time = findViewById(R.id.chat_startMsg_time);
+        chat_timer = findViewById(R.id.chat_timer);
+        newTime = new Timestamp(System.currentTimeMillis());
+
 
         destinationUid = getIntent().getStringExtra("destinationUid");
 
@@ -83,6 +97,8 @@ public class HelperChatActivity extends AppCompatActivity {
         getUserData();
 
         RoomKey = (uid+destinationUid);
+
+        sendRoomkey( destinationUid , uid , RoomKey);
 
         Button finishButton = findViewById(R.id.chat_btn_back);
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +151,7 @@ public class HelperChatActivity extends AppCompatActivity {
                     ChatModel newRoom = new ChatModel();
                     newRoom.users.put(uid, true);
                     newRoom.users.put(destinationUid, true);
+                    newRoom.chatStart.put("timeStamp",ServerValue.TIMESTAMP);
 
                     FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).setValue(newRoom).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -152,6 +169,10 @@ public class HelperChatActivity extends AppCompatActivity {
                         mRecyclerView.setAdapter(new ChatAdapter());
                     }
                 }
+
+                //채팅을 처음 시작한 시간을 가져옴.
+                getChatStart();
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -163,6 +184,10 @@ public class HelperChatActivity extends AppCompatActivity {
     class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         List<ChatModel.Comment> comments;
+        private static final int TYPE_ONE = 1;
+        private static final int TYPE_TWO = 2;
+        private static final int TYPE_THREE = 3;
+
 
         public ChatAdapter() {
 
@@ -170,6 +195,8 @@ public class HelperChatActivity extends AppCompatActivity {
 
             //UserData를 먼저 생성해준다.
             //destinationUid를 참고하여 users 목록에서 data를 받은 후에 destinationUserModel에 데이터를 넣어준다.
+
+            makeUserData();
             FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -191,6 +218,7 @@ public class HelperChatActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     comments.clear();
+                    comments.add(new ChatModel.Comment(2));    // 안내 문구를 넣어준다.
                     Map<String, Object> readUsersMap = new HashMap<>();
                     for(DataSnapshot item : dataSnapshot.getChildren()){
                         String key = item.getKey();
@@ -207,10 +235,6 @@ public class HelperChatActivity extends AppCompatActivity {
                     }
 
                     //누군가가 대화를 시작하면  사라지게 만듦
-                    if(linearLayout_startMsg.getVisibility() != View.GONE && comments.size() !=0){
-                        linearLayout_startMsg.setVisibility(View.GONE);
-                        chat_startMsg_time.setVisibility(View.GONE);
-                    }
 
                     if(!comments.get(comments.size()-1).readUser.containsKey(uid)){
 
@@ -236,65 +260,114 @@ public class HelperChatActivity extends AppCompatActivity {
         }
 
         @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview,parent,false);
+        public int getItemViewType(int position){
+            ChatModel.Comment item = comments.get(position);
+            if(item.type == 1){
+                return TYPE_ONE;
+            }
+            else if(item.type == 2 ){
+                return TYPE_TWO;
+            }
+            else if(item.type == 3 ){
+                return TYPE_THREE;
+            }
+            else{
+                return -1;
+            }
+        }
 
-            return new MessageViewHolder(view);
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            if(viewType == TYPE_ONE) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview, parent, false);
+                return new MessageViewHolder(view);
+            }
+            else if(viewType == TYPE_TWO) {
+                View view_start = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_start, parent, false);
+                return new StartMsgViewHolder(view_start);
+            }
+            else if(viewType == TYPE_THREE) {
+                View view_end = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_end, parent, false);
+                return new EndMsgViewHolder(view_end);
+            }
+
+            else {
+//                View view_end = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_end, parent, false);
+//                return new EndMsgViewHolder(view_end);
+                throw new RuntimeException("this type is not One or Two");
+            }
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            MessageViewHolder messageViewHolder = ((MessageViewHolder)holder);
+            switch (holder.getItemViewType()){
+                case TYPE_ONE:
+                    long unixTime = (long) comments.get(position).timeStamp;
+                    Date date = new Date(unixTime);
+                    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+                    String time = simpleDateFormat.format(date);
 
-            long unixTime = (long) comments.get(position).timeStamp;
-            Date date = new Date(unixTime);
-            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
-            String time = simpleDateFormat.format(date);
+                    MessageViewHolder messageViewHolder = ((MessageViewHolder)holder);
+                    //내가 보낸거
+                    if(comments.get(position).uid.equals(uid)) {
 
-            //내가 보낸거
-            if(comments.get(position).uid.equals(uid)) {
+                        messageViewHolder.textView_another_msg.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_my_msg.setText(comments.get(position).message);
+                        messageViewHolder.textView_my_msg.setVisibility(View.VISIBLE);
 
-                messageViewHolder.textView_another_msg.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_my_msg.setText(comments.get(position).message);
-                messageViewHolder.textView_my_msg.setVisibility(View.VISIBLE);
+                        messageViewHolder.imageView_profile.setVisibility(View.INVISIBLE);
 
+                        messageViewHolder.textView_readCounter_right.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_readCounter_left.setVisibility(View.VISIBLE);
 
-                messageViewHolder.imageView_profile.setVisibility(View.INVISIBLE);
-//                messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
+                        messageViewHolder.textView_timeStamp_left.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_timeStamp_right.setVisibility(View.VISIBLE);
 
-                messageViewHolder.textView_readCounter_right.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_readCounter_left.setVisibility(View.VISIBLE);
+                        setReadCounter(position,messageViewHolder.textView_readCounter_left);
+                        messageViewHolder.textView_timeStamp_right.setText(time);
+                    }
 
-                messageViewHolder.textView_timeStamp_left.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_timeStamp_right.setVisibility(View.VISIBLE);
+                    //상대방이 보낸거
+                    else{
 
-                setReadCounter(position,messageViewHolder.textView_readCounter_left);
-                messageViewHolder.textView_timeStamp_right.setText(time);
-            }
+                        messageViewHolder.textView_another_msg.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_another_msg.setText(comments.get(position).message);
+                        messageViewHolder.textView_my_msg.setVisibility(View.INVISIBLE);
 
-            //상대방이 보낸거
-            else{
-//                Picasso.get().load(destinationUserModel.getPhoto())
-//                        .fit()
-//                        .centerInside()
-//                        .into(messageViewHolder.imageView_profile);
+                        messageViewHolder.imageView_profile.setVisibility(View.VISIBLE);
 
-                messageViewHolder.textView_another_msg.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_another_msg.setText(comments.get(position).message);
-                messageViewHolder.textView_my_msg.setVisibility(View.INVISIBLE);
+                        messageViewHolder.textView_readCounter_right.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_readCounter_left.setVisibility(View.INVISIBLE);
 
-                messageViewHolder.imageView_profile.setVisibility(View.VISIBLE);
-//                messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
+                        messageViewHolder.textView_timeStamp_left.setVisibility(View.VISIBLE);
+                        messageViewHolder.textView_timeStamp_right.setVisibility(View.INVISIBLE);
 
-                messageViewHolder.textView_readCounter_right.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_readCounter_left.setVisibility(View.INVISIBLE);
+                        setReadCounter(position,messageViewHolder.textView_readCounter_right);
+                        messageViewHolder.textView_timeStamp_left.setText(time);
+                    }
+                    break;
+                case TYPE_TWO:
 
-                messageViewHolder.textView_timeStamp_left.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_timeStamp_right.setVisibility(View.VISIBLE);
+                    Date startDate = new Date(startTime);
+                    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+                    String getTime = simpleDateFormat.format(startDate);
 
-                setReadCounter(position,messageViewHolder.textView_readCounter_right);
-                messageViewHolder.textView_timeStamp_left.setText(time);
+                    StartMsgViewHolder startMsgViewHolder = (StartMsgViewHolder)holder ;
+                    startMsgViewHolder.chat_start_msg.setText(getTime);
+                    startMsgViewHolder.chat_start_msg_second.setText(getTime);
+                    break;
+                case TYPE_THREE :
 
+                    EndMsgViewHolder endMsgViewHolder = (EndMsgViewHolder) holder;
+                    endMsgViewHolder.reviewLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                        }
+                    });
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -335,13 +408,33 @@ public class HelperChatActivity extends AppCompatActivity {
             return comments.size();
         }
 
+        private class StartMsgViewHolder extends RecyclerView.ViewHolder{
+
+            public TextView chat_start_msg;
+            public TextView chat_start_msg_second;
+
+            public StartMsgViewHolder(View itemView) {
+                super(itemView);
+                chat_start_msg = itemView.findViewById(R.id.chat_startMsg_time);
+                chat_start_msg_second = itemView.findViewById(R.id.chat_startMsg_time_second);
+            }
+        }
+        private class EndMsgViewHolder extends RecyclerView.ViewHolder{
+
+            public LinearLayout reviewLayout;
+
+            public EndMsgViewHolder(View itemView) {
+                super(itemView);
+                reviewLayout = itemView.findViewById(R.id.endMsg_review);
+            }
+        }
+
+
         private class MessageViewHolder extends RecyclerView.ViewHolder {
 
             public TextView textView_another_msg;
             public TextView textView_my_msg;
             public ImageView imageView_profile;
-
-            public LinearLayout linearLayout_main;
 
             public TextView textView_timeStamp_left;
             public TextView textView_timeStamp_right;
@@ -356,8 +449,6 @@ public class HelperChatActivity extends AppCompatActivity {
 
                 imageView_profile = view.findViewById(R.id.chat_Image);
 
-                linearLayout_main = view.findViewById(R.id.chat_layoutMain);
-
                 textView_timeStamp_left = view.findViewById(R.id.chat_timeStamp_left);
                 textView_timeStamp_right = view.findViewById(R.id.chat_timeStamp_right);
 
@@ -366,6 +457,24 @@ public class HelperChatActivity extends AppCompatActivity {
             }
         }
     }
+
+    void makeUserData(){
+
+        Map<String, String> willsonProfile = new HashMap<>();
+        willsonProfile.put("photo", "");
+        willsonProfile.put("uid", destinationUid);
+        willsonProfile.put("nickName",destinationUserModel.getNickName());
+
+        Map<String, String> askerProfile = new HashMap<>();
+        askerProfile.put("photo", "");
+        askerProfile.put("uid", uid);
+        askerProfile.put("nickName",askerUserModel.getNickName() );
+
+        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("willsonUser").setValue(willsonProfile);
+        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("askerUser").setValue(askerProfile);
+
+    }
+
     void getUserData(){
         FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -387,9 +496,52 @@ public class HelperChatActivity extends AppCompatActivity {
         });
     }
 
+    void sendRoomkey(String willsonUser,String askerUser, String roomKey){
+        Map<String, Object> setRoomKey = new HashMap<>();
+        setRoomKey.put("roomKey", roomKey);
+        FirebaseDatabase.getInstance().getReference("willsonUsers").child(willsonUser).updateChildren(setRoomKey);
+        FirebaseDatabase.getInstance().getReference("users").child(askerUser).updateChildren(setRoomKey);
+    }
+
+    void getChatStart(){
+        FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("chatStart").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Map<String,Object> getTimeStamp = (Map <String,Object>)dataSnapshot.getValue();
+                startTime = (long) getTimeStamp.get("timeStamp");
+                passedTime = newTime.getTime()-startTime;
+                passTime = totalTime - passedTime;
+                timerStart(passTime,chat_timer);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    void timerStart(long time, TextView timer){
+        countDownTimer = new CountDownTimer(time, 20000) {
+            @Override
+            public void onTick(long l) {
+                Date date = new Date(l);
+                String restTime = timerFormat.format(date);
+                timer.setText(restTime);
+            }
+            @Override
+            public void onFinish() {
+                btnSent.setEnabled(false);
+            }
+        };
+        countDownTimer.start();
+    }
+
+
+
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        super.onBackPressed();
+
         databaseReference.removeEventListener(valueEventListener);
         finish();
     }

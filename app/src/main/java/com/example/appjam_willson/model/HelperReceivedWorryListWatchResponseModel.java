@@ -143,7 +143,7 @@ public class HelperReceivedWorryListWatchResponseModel {
         String title;
         int question_idx;
         String create_time;
-        String status;
+        String selected;
 
         /*getter and setter start*/
 
@@ -171,12 +171,12 @@ public class HelperReceivedWorryListWatchResponseModel {
             this.create_time = create_time;
         }
 
-        public String getStatus() {
-            return status;
+        public String getSelected() {
+            return selected;
         }
 
-        public void setStatus(String status) {
-            this.status = status;
+        public void setSelected(String selected) {
+            this.selected = selected;
         }
 
         /*getter and setter end*/

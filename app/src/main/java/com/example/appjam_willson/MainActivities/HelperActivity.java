@@ -65,9 +65,8 @@ public class HelperActivity extends AppCompatActivity{
                 changeTextColor(willsonText_receive,willsonText_chat,willsonText_profile,willsonText_mypage);
 
                 checkMatch();
-                /*HelperFragment fragment = new HelperFragment();
+                HelperFragment fragment = new HelperFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
-           */
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -96,7 +95,7 @@ public class HelperActivity extends AppCompatActivity{
                 changeImage(willsonImage_mypage,willsonImage_chat,willsonImage_profile,willsonImage_receive);
                 changeTextColor(willsonText_mypage,willsonText_chat,willsonText_profile,willsonText_receive);
 
-                MainFragment4 fragment = new MainFragment4();
+                HelperFragment4 fragment = new HelperFragment4();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
             }
         });
@@ -113,6 +112,7 @@ public class HelperActivity extends AppCompatActivity{
                 }
 
                 String token = task.getResult().getToken();
+
                 Map<String,Object> map = new HashMap<>();
                 map.put("pushToken",token);
                 FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);
@@ -137,9 +137,10 @@ public class HelperActivity extends AppCompatActivity{
 
     public void checkMatch() {
 
-        int question_idx = 100;
+        /*int question_idx = 100*/;
 
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
+      String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
+
 
         Call<HelperReceivedWorryListWatchResponseModel> call_worryList = RetrofitService.getInstance().getService().helper_receiveList_get(token);
         call_worryList.enqueue(retrofitCallback);
@@ -152,10 +153,13 @@ public class HelperActivity extends AppCompatActivity{
         public void onResponse(Call<HelperReceivedWorryListWatchResponseModel> call, Response<HelperReceivedWorryListWatchResponseModel> response) {
             HelperReceivedWorryListWatchResponseModel result = response.body();
 
-           /* Log.d("성공ㅇㅇㅇㅇ", String.valueOf(result.getCode()));
+            Log.d("성공ㅇㅇㅇㅇㅇㅇㅇㅇㅇHelperActivity", String.valueOf(result.getCode()));
+            Log.d("ㅇㅇㅇHelperActivity상태값", result.getData().getConcernInfo().get(0).getQuestionInfo().getSelected());
             Log.d("메시지ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ", result.getMessage());
-            Log.d("유저 닉네임", result.getData().getConcernInfo().get(0).getUserInfo().getNickname());
-*/
+//            Log.d("유저 닉네임", result.getData().getConcernInfo().get(0).getUserInfo().getNickname());
+
+            Log.d("sizesizesizesizesize", String.valueOf(result.getData().getSize()));
+
             if (result.getCode() == 800 && result.getData().getSize() != 0) {
                 /*adapter_send = result.getData().getConcernInfo();*/
                /* helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
