@@ -83,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 changeImage(image_request, image_home, image_mypage, image_chat);
                 changeTextColor(text_request, text_home, text_chat, text_mypage);
-                checkMatch();
+//                checkMatch();
+                MainFragment2 fragment = new MainFragment2();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {

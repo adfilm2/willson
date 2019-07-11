@@ -35,11 +35,6 @@ public class HelperFragment extends Fragment {
    /* private List<HelperReceivedWorryListWatchResponseModel> userModel;*/
     private List<HelperReceivedWorryListWatchResponseModel.Concern_Info> adapter_send;
     private HelperFragment1Adapter helperFragment1Adapter;
-    private String myUid;
-
-    private Retrofit retrofit;
-    private RetrofitAPI retrofitAPI;
-    private DataModel dataModel;
 
     public HelperFragment() {
 

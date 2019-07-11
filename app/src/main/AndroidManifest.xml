@@ -29,6 +29,10 @@
             android:name=".HelperProfileEdit.HelperProfileEditActivityIntro"
             android:windowSoftInputMode="adjustPan" /> <!-- Login && Register -->
         <activity android:name=".LoginRegisterActivity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".LoginRegisterActivity.ChoiceActivity" />
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker" >
@@ -39,10 +43,6 @@
         <activity android:name=".ChatActivities.HelperChatActivity" /> <!-- Main -->
         <activity android:name=".MainActivities.MainActivity" />
         <activity android:name=".MainActivities.HelperActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />

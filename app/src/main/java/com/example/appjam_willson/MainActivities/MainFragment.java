@@ -158,7 +158,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
                 //헬퍼 가입했는지 아닌지 판단해서
                 //Intent intent = new Intent(getActivity() , HelperActivity.class);
-                Intent intent = new Intent(getActivity() , HelperSignUpStartActivity.class);
+                Intent intent = new Intent(getActivity() , HelperActivity.class);
                 startActivity(intent);
             }
         });

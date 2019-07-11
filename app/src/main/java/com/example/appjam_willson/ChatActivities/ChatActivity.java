@@ -538,7 +538,6 @@ public class ChatActivity extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
-
                 btnSent.setEnabled(false);
             }
         };
