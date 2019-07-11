@@ -275,6 +275,7 @@ public class MainFragment extends Fragment {
 //                            intent.putExtra("complete","OK");
 //                            startActivity(intent);
 
+
                             ImageView willsonImage_home = getActivity().findViewById(R.id.Image_home);
                             ImageView willsonImage_chat = getActivity().findViewById(R.id.Image_chat);
                             ImageView willsonImage_request = getActivity().findViewById(R.id.Image_request);
