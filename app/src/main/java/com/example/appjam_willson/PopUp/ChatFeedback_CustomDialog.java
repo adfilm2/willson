@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
@@ -106,11 +107,7 @@ public class ChatFeedback_CustomDialog extends Dialog {
         reviewWriteModel.review.category_idx = 6;
         reviewWriteModel.review.question_idx = 66;
 
-
-
-
-
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3Njc4OTcsImV4cCI6MTU3MTQwNzg5NywiaXNzIjoid2lsbHNvbiJ9.VX9-dSw1vzLO7j94UsqOnw6kA3-PeNFp8dic_jHtUt0";
+        String token = ApplicationFields.userToken;
 
         Call<ReviewWriteResponseModel> call_helper = RetrofitService.getInstance().getService().write_review_post(token, reviewWriteModel);
 

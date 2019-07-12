@@ -18,6 +18,7 @@ public class ConvConfirmActivity extends AppCompatActivity {
 
     Button start;
 
+    String destinationUid;
     Context context;
     Intent intent;
 
@@ -27,6 +28,9 @@ public class ConvConfirmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_conv_confirm);
 
         context = this;
+
+        destinationUid = getIntent().getStringExtra("destinationUid");
+
 
         start = (Button)findViewById(R.id.button2);
         start.setOnClickListener(new start_btn_listener());
@@ -39,6 +43,7 @@ public class ConvConfirmActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             intent = new Intent(context, ChatActivity.class);
+            intent.putExtra("destinationUid",destinationUid);
             startActivity(intent);
             finish();
         }

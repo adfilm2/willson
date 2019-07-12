@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.HelperReceivedWorryListWatchResponseModel;
@@ -136,8 +137,7 @@ public class HelperActivity extends AppCompatActivity{
 
     public void checkMatch() {
 
-      String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
-
+        String token = ApplicationFields.userToken;
         Call<HelperReceivedWorryListWatchResponseModel> call_worryList = RetrofitService.getInstance().getService().helper_receiveList_get(token);
         call_worryList.enqueue(retrofitCallback);
 

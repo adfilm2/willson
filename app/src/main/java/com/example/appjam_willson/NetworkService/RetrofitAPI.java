@@ -101,7 +101,8 @@ public interface RetrofitAPI {
     Call<WorryCategoryListAddResponseModel> concern_category_list_post(@Header("willson-token") String token, @Body WorryCategoryListAddModel worryCategoryListAddModel);
 
     @GET("user/profile/{question_idx}")
-    Call<UserProfileWatchResponseModel> get_user_profile(@Path ("question_idx") int question_idx);
+    Call<UserProfileWatchResponseModel> get_user_profile(@Header("willson-token") String token,
+                                                         @Path ("question_idx") int question_idx);
 
     @GET("helper/list/{question_idx}")
     Call<AcceptHelperListWatchResponseModel> get_accept_helper(@Header("willson-token") String token,

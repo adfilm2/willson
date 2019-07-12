@@ -36,7 +36,7 @@ public class HelperProfileActivity extends AppCompatActivity {
 
     Intent intent;
     int helper_idx;
-    int question_idx;
+    int question_idx = ApplicationFields.myQuestion_idx;
 
     TextView nick;
     TextView gend;
@@ -98,8 +98,7 @@ public class HelperProfileActivity extends AppCompatActivity {
         intent = getIntent();
         helper_idx = intent.getIntExtra("helper_idx", 0);
 
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
-
+        String token = ApplicationFields.userToken;
         Call<HelperProfileWatchResponseModel> helper_profile = RetrofitService.getInstance().getService().watch_helperProfile_get(token, helper_idx);
         helper_profile.enqueue(retrofitCallback);
 
@@ -113,7 +112,7 @@ public class HelperProfileActivity extends AppCompatActivity {
 
             /*int question_idx = 38;
             int helper_idx = 1;*/
-            String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
+            String token = ApplicationFields.userToken;
 
 
             ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
@@ -122,8 +121,6 @@ public class HelperProfileActivity extends AppCompatActivity {
 
             choiceHelperModel.setStatus("doing");
 
-            Log.d("qesution_idxidxidx_헬퍼 결정", String.valueOf(question_idx));
-            Log.d("helper_idxidxidx_헬퍼 결정!!!!!!!", String.valueOf(helper_idx));
             Call<ChoiceHelperResponseModel> send_request = RetrofitService.getInstance().getService().choice_helper_post(token, choiceHelperModel);
             send_request.enqueue(retrofit_Callback);
 
@@ -205,7 +202,7 @@ public class HelperProfileActivity extends AppCompatActivity {
             if(response.code() == 200 && result.getCode() == 2100){
                 ApplicationFields.matching_idx = result.getData().getMatching_idx();
                 intent = new Intent(context, ConvConfirmActivity.class);
-                /*intent.putExtra("question_idx", question_idx);*/
+                intent.putExtra("destinationUid",helper_uid);
                 startActivity(intent);
                 finish();
             }

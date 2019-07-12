@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.TwoTextOneButton_CustomDialog;
 import com.example.appjam_willson.model.SendRequestModel;
@@ -103,23 +104,11 @@ public class AskerProfileActivity extends AppCompatActivity {
 
         intent = getIntent();
         helper_idx = intent.getIntExtra("helper_idx", 0);
-        question_idx = intent.getIntExtra("question_idx", 0);
+        question_idx = ApplicationFields.myQuestion_idx;
 
+        token = ApplicationFields.userToken;
 
-        /*token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
-*///그전 token
-
-        Log.d("이거는 프로필 볼때 idx", String.valueOf(question_idx));
-
-       /* token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
-*///그전 token
-
-      /*  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
-*///그전 token
-
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
-
-        Call<UserProfileWatchResponseModel> user_profile = RetrofitService.getInstance().getService().get_user_profile(question_idx);
+        Call<UserProfileWatchResponseModel> user_profile = RetrofitService.getInstance().getService().get_user_profile(token, question_idx);
         user_profile.enqueue(retrofitCallback);
 
     }
@@ -173,7 +162,6 @@ public class AskerProfileActivity extends AppCompatActivity {
                 Emotion.setProgress(result.getData().getQuestion().getEmotion());
                 Advice.setProgress(result.getData().getQuestion().getAdvise());
                 Experience.setProgress(result.getData().getQuestion().getExperience());
-
             }
         }
 

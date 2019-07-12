@@ -216,8 +216,6 @@ public class List7Activity extends AppCompatActivity {
                 case R.id.radio_5:
                     advice = 5;
                     break;
-
-
             }
 
         }

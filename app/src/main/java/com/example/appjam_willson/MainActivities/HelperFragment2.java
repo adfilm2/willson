@@ -42,7 +42,7 @@ public class HelperFragment2 extends Fragment {
 
             myUid = ApplicationFields.uid;
 
-            FirebaseDatabase.getInstance().getReference().child("helperUsers").addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.getValue() != null) {

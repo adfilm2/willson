@@ -101,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 changeImage(image_request, image_home, image_mypage, image_chat);
                 changeTextColor(text_request, text_home, text_chat, text_mypage);
-                int question_idx = 2;
-                String testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
-                Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(testToken,question_idx);
+                String token = ApplicationFields.userToken;
+                question_idx = ApplicationFields.myQuestion_idx;
+                Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
                 accept_helper.enqueue(retrofitCallback);
             }
         });

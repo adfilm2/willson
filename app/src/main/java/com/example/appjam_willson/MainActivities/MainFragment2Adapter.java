@@ -125,7 +125,6 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
                 Intent intent = new Intent(v.getContext(), HelperProfileActivity.class);
                 intent.putExtra("helper_idx", helper_idx);
                 intent.putExtra("question_idx", question_idx);
-                Log.d("메인 프래그 먼트 헬퍼 question_idx", String.valueOf(question_idx));
                 context.startActivity(intent);
             }
         });

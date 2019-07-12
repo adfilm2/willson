@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.HelperReceivedWorryListWatchResponseModel;
@@ -38,8 +39,7 @@ public class HelperFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.helper_fragment1, null);
 
-       String token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
-
+        String token = ApplicationFields.userToken;
         LinearLayout change_mode = view.findViewById(R.id.helper_fragment1_change);
 
         change_mode.setOnClickListener(new View.OnClickListener() {

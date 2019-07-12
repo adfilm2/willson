@@ -20,6 +20,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
@@ -233,8 +234,7 @@ public class List1DailyActivity extends AppCompatActivity implements OnClickList
             worryCategoryListAddModel.category_idx = 5;
             worryCategoryListAddModel.categoryList_name = daily_custom_edit_text.getText().toString();
 
-            String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
-
+            String token = ApplicationFields.userToken;
 
             Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().concern_category_list_post(token,worryCategoryListAddModel);
 

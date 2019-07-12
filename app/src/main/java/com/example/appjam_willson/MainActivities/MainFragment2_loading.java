@@ -67,9 +67,8 @@ public class MainFragment2_loading extends Fragment {
 
     public void countDownStart(long time){
 
-        countDownTimer = new CountDownTimer(time, COUNT_DOWN_INTERVAL) {
+        countDownTimer = new CountDownTimer(40000, COUNT_DOWN_INTERVAL) {
             public void onTick(long millisUntilFinished) {
-
 
                 ApplicationFields.timerSwitch = true;
                 Date date = new Date(millisUntilFinished);
@@ -81,11 +80,9 @@ public class MainFragment2_loading extends Fragment {
                 countTxt.setText("완료 !");
                 ApplicationFields.timerStart = 0;
 
-                /*int question_idx = 1;*/
+                question_idx = ApplicationFields.myQuestion_idx;
 
-                question_idx = getArguments().getInt("question_idx");
-
-                String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6zshLEiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3OTk0ODcsImV4cCI6MTU3MTQzOTQ4NywiaXNzIjoid2lsbHNvbiJ9.l2Slk87lEK8Ne_SUMiiIfsXVSuUDfa5VWaeyE3PmZIs";
+                String token = ApplicationFields.userToken;
                 Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
                 accept_helper.enqueue(retrofitCallback);
             }
