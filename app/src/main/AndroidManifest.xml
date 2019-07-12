@@ -29,8 +29,7 @@
         <activity android:name=".HelperProfileActivity" />
         <activity
             android:name=".HelperProfileEdit.HelperProfileEditActivityIntro"
-            android:windowSoftInputMode="adjustPan" />
-
+            android:windowSoftInputMode="adjustPan" /> <!-- Login && Register -->
         <!-- Login && Register -->
         <activity android:name=".LoginRegisterActivity.LoginActivity">
             <intent-filter>
@@ -40,7 +39,6 @@
             </intent-filter>
         </activity>
 
-
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"
             android:windowSoftInputMode="adjustPan"/>
 
@@ -48,11 +46,8 @@
 
         <!-- Chat -->
         <activity android:name=".ChatActivities.ChatActivity" />
-        <activity android:name=".ChatActivities.HelperChatActivity" />
-
-
-        <!-- Main -->
-        <activity android:name=".MainActivities.MainActivity" />
+        <activity android:name=".ChatActivities.HelperChatActivity" /> <!-- Main -->
+        <activity android:name=".MainActivities.MainActivity"/>
 
         <activity android:name=".MainActivities.HelperActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
@@ -71,13 +66,13 @@
         <activity android:name=".HelperSignUpActivity.HelperSignUp1_C_Activity" />
         <activity android:name=".HelperSignUpActivity.HelperSignUp1_R_Activity" />
 
+
+
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
         <activity android:name=".HelperSignUpActivity.HelperSignupActivity3" />
         <activity
             android:name=".HelperSignUpActivity.HelperSignUpActivity2"
-            android:windowSoftInputMode="adjustPan" />
-
-        <!-- list 1 start -->
+            android:windowSoftInputMode="adjustPan" /> <!-- list 1 start -->
         <activity android:name=".FillinListActivity.List1LoveStartActivity" />
         <activity android:name=".FillinListActivity.List1CourseStartActivity" />
         <activity android:name=".FillinListActivity.List1MentalityStartActivity" />
@@ -106,8 +101,7 @@
         <activity android:name=".FillinListActivity.ListAgreementActivity" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"/>
-
+            android:theme="@style/SplashTheme" />
         <activity android:name=".AskerProfileActivity" />
     </application>
 

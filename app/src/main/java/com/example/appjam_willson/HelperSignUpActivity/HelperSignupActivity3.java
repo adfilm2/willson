@@ -31,34 +31,36 @@ public class HelperSignupActivity3 extends AppCompatActivity {
     LinearLayout back;
 
     ImageView btn;
+    String text = "";
 
     Bundle bundle3 = new Bundle();
+    Bundle sibal = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up3);
 
-        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn = findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
         context = this;
 
         REQUEST_CODE = ((HelperSignupActivity3) context).getTaskId();
 
-        background = (LinearLayout) findViewById(R.id.signup_background);
+        background = findViewById(R.id.signup_background);
         background.setOnClickListener(new signup_background_listener());
 
-        back = (LinearLayout)findViewById(R.id.back_btn_layout);
+        back = findViewById(R.id.back_btn_layout);
         back.setOnClickListener(new signup_backbtn_listener());
 
-        signup_nextbtn = (Button) findViewById(R.id.next_btn);
+        signup_nextbtn = findViewById(R.id.next_btn);
         signup_nextbtn.setOnClickListener(new signup_nextbtn_listener());
 
-        helper_info_edit = (EditText) findViewById(R.id.helper_intro);
+        helper_info_edit = findViewById(R.id.helper_intro);
         helper_info_edit.setOnFocusChangeListener(new info_focus());
 
-        textCount = (TextView) findViewById(R.id.textViewCount);
+        textCount = findViewById(R.id.textViewCount);
 
         helper_info_edit.addTextChangedListener(new TextWatcher() {
 
@@ -90,9 +92,9 @@ public class HelperSignupActivity3 extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle3 = data.getExtras();
-                    bundle3.putString("intro",helper_info_edit.getText().toString());
-                    data.putExtras(bundle3);
+
+//                    data.putString("intro",text);
+//                    data.putExtras(sibal);
                     setResult(RESULT_OK,data);
                     finish();
 
@@ -105,6 +107,7 @@ public class HelperSignupActivity3 extends AppCompatActivity {
     class signup_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            text = helper_info_edit.getText().toString();
             Intent intent = new Intent(context, HelperSignupConfirm1Activity.class);
             startActivityForResult(intent, REQUEST_CODE);
         }

@@ -193,16 +193,12 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         input.hideSoftInputFromWindow(edit.getWindowToken(), 0);
     }
 
+
     class nex_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            phone = phone1.getText().toString()+phone2.getText().toString()+phone3.getText().toString();
-            bundle4.putString("phone",phone);
-            bundle4.putString("email",email.getText().toString());
-            if(link.getText().toString().length() >0)
-                bundle4.putString("link",link.getText().toString());
+
             Intent intent = new Intent();
-            intent.putExtras(bundle4);
             setResult(RESULT_OK, intent);
             finish();
 

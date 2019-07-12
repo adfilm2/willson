@@ -28,6 +28,8 @@
 
             TextView textViewCount;
 
+            LinearLayout cancelbtn;
+
             private OneTextTwoButton_CustomDialog dialog;
             LinearLayout list4_cancelbtn;
             LinearLayout list4_backbtn;
@@ -52,6 +54,9 @@
                 btn_back.setOnClickListener(new HelperProfileEditActivityIntro.list1_love_backbtn_listener());
 
                 context = this;
+                cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
+                cancelbtn.setOnClickListener(new HelperProfileEditActivityIntro.cancelbtn_listener());
+
 
                 btn = (ImageView)findViewById(R.id.back_btn);
                 btn.setVisibility(View.INVISIBLE);
@@ -118,6 +123,18 @@
                     startActivity(intentProfileEdit);
                 }
             }
+
+
+
+            class cancelbtn_listener implements View.OnClickListener {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            }
+
+
+
 
         }
 

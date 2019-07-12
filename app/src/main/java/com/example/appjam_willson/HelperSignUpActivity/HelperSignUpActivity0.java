@@ -51,6 +51,8 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     String packName;
     int resid;
 
+    HelperRegistModel helperRegistModel = new HelperRegistModel();
+
 
     RadioButton btn1;
     RadioButton btn2;
@@ -61,6 +63,7 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
     Typeface typebold;
     Typeface typereg;
+    Bundle bundle = new Bundle();
 
     int REQUEST_CODE;
     int category;
@@ -131,37 +134,9 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
             @Override
             public void onClick(View view) {
 
-                switch (nowCheck){
-                    case "연애":
-                        category = 1;
-                        Intent intent1 = new Intent(context, HelperSignUp1_L_Activity.class);
-                        startActivityForResult(intent1,REQUEST_CODE);
-
-                    case "진로":
-                        category = 2;
-                        Intent intent2 = new Intent(context, HelperSignUp1_C_Activity.class);
-                        startActivityForResult(intent2, REQUEST_CODE);
-
-                    case "자존감":
-                        category = 3;
-                        Intent intent3 = new Intent(context, HelperSignUp1_M_Activity.class);
-                        startActivityForResult(intent3,REQUEST_CODE);
-                    case "인간관계":
-                        category = 4;
-                        Intent intent4 = new Intent(context, HelperSignUp1_R_Activity.class);
-                        startActivityForResult(intent4,REQUEST_CODE);
-                    case "일상":
-                        category = 5;
-                        Intent intent5 = new Intent(context, HelperSignUp1_D_Activity.class);
-                        startActivityForResult(intent5,REQUEST_CODE);
-                    case "기타":
-                        category = 6;
-                        Intent intent6 = new Intent(context, HelperSignUp1_E_Activity.class);
-                        startActivityForResult(intent6,REQUEST_CODE);
-
-
-                }
-
+                category = 1;
+                Intent intent1 = new Intent(context, HelperSignUp1_L_Activity.class);
+                startActivityForResult(intent1,REQUEST_CODE);
 
 
             }
@@ -173,25 +148,28 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,Intent data){
+    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE){
-            switch (resultCode){
+
+        if (requestCode == REQUEST_CODE) {
+
+
+            switch (resultCode) {
                 case RESULT_OK:
-                    Bundle bundle = new Bundle();
+
+                    String[] str ={"namead","alkjdfk","dafa"};
+
                     bundle = data.getExtras();
-                    HelperRegistModel helperRegistModel = new HelperRegistModel();
-                    helperRegistModel.helper.category_idx = category;
-                    helperRegistModel.helper.title = bundle.getString("intro");
-                    helperRegistModel.helper.categoryList_idx = bundle.getInt("category_id");
-                    helperRegistModel.helper.content = bundle.getString("content");
-                    helperRegistModel.experience.experience_name = bundle.getStringArray("tags");
+                    helperRegistModel.helper.title = "gkgk";
+                    helperRegistModel.helper.categoryList_idx = 3;
+                    helperRegistModel.helper.content="ajdkljads";
+                    helperRegistModel.experience.experience_name = str;
 
-                    Call<HelperRegistResponseModel> call_helper = RetrofitService.getInstance().getService().helper_regist_post(ApplicationFields.userToken,helperRegistModel);
+                    Call<HelperRegistResponseModel> call_helper = RetrofitService.getInstance().getService().helper_regist_post(ApplicationFields.userToken, helperRegistModel);
                     call_helper.enqueue(retrofitCallback_helperReg);
-
                     setResult(RESULT_OK,data);
-                    finish();
+
+
 
                 case RESULT_CANCELED:
                     finish();
@@ -199,12 +177,13 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         }
     }
 
+
     private Callback<HelperRegistResponseModel> retrofitCallback_helperReg = new Callback<HelperRegistResponseModel>() {
 
         @Override
         public void onResponse(Call<HelperRegistResponseModel> call, Response<HelperRegistResponseModel> response) {
             HelperRegistResponseModel result = response.body();
-            ApplicationFields.myHelper_idx = result.data.helper_idx;
+//            ApplicationFields.myHelper_idx = result.data.helper_idx;
 
 
         }

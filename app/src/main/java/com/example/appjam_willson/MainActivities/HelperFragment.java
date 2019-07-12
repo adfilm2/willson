@@ -1,12 +1,14 @@
 package com.example.appjam_willson.MainActivities;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -31,6 +33,8 @@ public class HelperFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private List<HelperReceivedWorryListWatchResponseModel.Concern_Info> adapter_send;
     private HelperFragment1Adapter helperFragment1Adapter;
+
+    Context context;
 
     public HelperFragment() {
     }
@@ -70,15 +74,15 @@ public class HelperFragment extends Fragment {
         public void onResponse(Call<HelperReceivedWorryListWatchResponseModel> call, Response<HelperReceivedWorryListWatchResponseModel> response) {
             HelperReceivedWorryListWatchResponseModel result = response.body();
 
-            if (result.getCode() == 800 && result.getData() != null) {
+            if (response.code() == 200 && result.getCode() == 800 && result.getData() != null) {
                 adapter_send = result.getData().getConcernInfo();
                 helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
                 helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
             }
             else {
-
+                Toast.makeText(context, "GET_USER_QUESTION_LIST_ERROR", Toast.LENGTH_SHORT).show();
+                return;
             }
-
         }
 
         @Override

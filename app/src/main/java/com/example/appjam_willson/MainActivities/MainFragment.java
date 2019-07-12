@@ -84,6 +84,7 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.main_fragment1,null);
         LinearLayout firstContent = view.findViewById(R.id.fragment1_firstContent);
         LinearLayout secondContent = view.findViewById(R.id.fragment1_secondContent);
@@ -254,22 +255,22 @@ public class MainFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == REQUEST_CODE_COURSE || requestCode == REQUEST_CODE_DAILY || requestCode ==REQUEST_CODE_ETC ||requestCode == REQUEST_CODE_LOVE || requestCode ==REQUEST_CODE_MENTAL ||requestCode ==REQUEST_CODE_RELATION){
-            switch (resultCode) {
+            switch (resultCode){
                 case RESULT_OK:
 
                     CreateWorryModel createWorryModel = new CreateWorryModel();
                     createWorryModel.feeling = data.getIntArrayExtra("feeling");
                     createWorryModel.personality = data.getIntArrayExtra(("char"));
                     createWorryModel.experience = data.getStringArrayListExtra("experience");
-                    createWorryModel.question.weight = data.getIntExtra("importance", 0);
+                    createWorryModel.question.weight =data.getIntExtra("importance",0);
                     createWorryModel.question.content = data.getStringExtra("contents");
-                    createWorryModel.question.emotion = data.getIntExtra("empathy", 1);
-                    createWorryModel.question.advise = data.getIntExtra("advice", 1);
+                    createWorryModel.question.emotion = data.getIntExtra("empathy",1);
+                    createWorryModel.question.advise = data.getIntExtra("advice",1);
                     createWorryModel.question.experience = data.getIntExtra("experience22", 1);
                     createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
-                    createWorryModel.question.categoryList_idx = data.getIntExtra("category_id", 0);
+                    createWorryModel.question.categoryList_idx = data.getIntExtra("category_id",0);
                     String gender = data.getStringExtra("helper_gender");
-                    switch (gender) {
+                    switch (gender){
                         case "여자":
                             createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여성;
                         case "남자":
@@ -311,12 +312,16 @@ public class MainFragment extends Fragment {
                             fragment.setArguments(bundle);
                             getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
                         }
+
                         @Override
                         public void onFailure(Call<CreateWorryResponseModel> call, Throwable t) {
                             t.printStackTrace();
                         }
                     });
+
+
                 case RESULT_CANCELED:
+
             }
         }
         else if(requestCode == REQUEST){
