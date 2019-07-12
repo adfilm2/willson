@@ -42,7 +42,7 @@ public class MainFragment2 extends Fragment {
 //            Log.d("question fragment2임" , ">>>>>>>>>>"+question_idx);
 //        }
 
-        
+
 
         /*myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
 
