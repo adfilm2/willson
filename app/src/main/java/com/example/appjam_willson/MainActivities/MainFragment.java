@@ -3,8 +3,8 @@ package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -85,6 +85,7 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.main_fragment1,null);
         LinearLayout firstContent = view.findViewById(R.id.fragment1_firstContent);
         LinearLayout secondContent = view.findViewById(R.id.fragment1_secondContent);
@@ -331,6 +332,10 @@ public class MainFragment extends Fragment {
 
             }
         }
+        else if(requestCode == REQUEST){
+            Intent intent = new Intent(getActivity(),HelperActivity.class);
+            startActivity(intent);
+        }
 
 
     }
@@ -352,6 +357,10 @@ public class MainFragment extends Fragment {
             startActivity(intent);
         }
     };
+
+
+
+
 
     private View.OnClickListener exitListener = new View.OnClickListener() {
         @Override

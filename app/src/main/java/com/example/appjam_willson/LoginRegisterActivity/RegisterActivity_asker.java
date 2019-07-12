@@ -185,6 +185,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 userNickname = nickName.getText().toString();
                 RadioButton gender = findViewById(genderGroup.getCheckedRadioButtonId());
                 userGender = gender.getText().toString();
+                userAge = Integer.parseInt(toCheckAge);
 
                 if(userEmail.equals("") || userPassword.equals("") || userNickname.equals("") ||
                         toCheckAge.equals("나이를 선택해주세요.") || userGender.equals("")){
@@ -196,6 +197,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     showAlert("비밀번호를 다시 확인해주세요.");
                     return;
                 }
+
 
 
 
