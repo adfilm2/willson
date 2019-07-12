@@ -106,8 +106,10 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
             if(response.code() == 200 && result.code == 200){
                 ApplicationFields.userToken = result.data.Token;
-
+                ApplicationFields.uid = result.data.userInfo.uid;
                 Log.d(">>>>> token값 ",">>>>>"+ApplicationFields.userToken);
+                Log.d(">>>>> 유아이디값 ",">>>>>"+ApplicationFields.uid);
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }

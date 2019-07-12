@@ -4,7 +4,6 @@ package com.example.appjam_willson.MainActivities;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -85,7 +84,6 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.main_fragment1,null);
         LinearLayout firstContent = view.findViewById(R.id.fragment1_firstContent);
         LinearLayout secondContent = view.findViewById(R.id.fragment1_secondContent);
@@ -325,6 +323,12 @@ public class MainFragment extends Fragment {
                 case RESULT_CANCELED:
             }
         }
+        else if(requestCode == REQUEST){
+            Intent intent = new Intent(getActivity(),HelperActivity.class);
+            startActivity(intent);
+        }
+
+
     }
 
     public void Dialog() {
@@ -344,6 +348,10 @@ public class MainFragment extends Fragment {
             startActivity(intent);
         }
     };
+
+
+
+
 
     private View.OnClickListener exitListener = new View.OnClickListener() {
         @Override
@@ -372,6 +380,7 @@ public class MainFragment extends Fragment {
         @Override
         public void onFailure(Call<HelperStoryModel> call, Throwable t) {
             t.printStackTrace();
+            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
 

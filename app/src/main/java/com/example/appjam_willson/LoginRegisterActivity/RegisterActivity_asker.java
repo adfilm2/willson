@@ -185,6 +185,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 userNickname = nickName.getText().toString();
                 RadioButton gender = findViewById(genderGroup.getCheckedRadioButtonId());
                 userGender = gender.getText().toString();
+                userAge = Integer.parseInt(toCheckAge);
 
                 if(userEmail.equals("") || userPassword.equals("") || userNickname.equals("") ||
                         toCheckAge.equals("나이를 선택해주세요.") || userGender.equals("")){
@@ -196,6 +197,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     showAlert("비밀번호를 다시 확인해주세요.");
                     return;
                 }
+
 
 
 
@@ -350,14 +352,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
             if(response.code() == 200 && result.code ==100) {
                 showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
 
-//                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//                Map<String, String> profile = new HashMap<>();
-//                profile.put("photo", "");
-//                profile.put("uid",uid);
-//                profile.put("nickName",userNickname);
-//                myRef.child(userNickname).setValue(profile);
-//                myRef.child(uid).setValue(profile);
-                
                 Intent intent = new Intent(RegisterActivity_asker.this, LoginActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"가입이 완료되었습니다! 로그인 화면으로 돌아갑니다 ><",Toast.LENGTH_SHORT).show();

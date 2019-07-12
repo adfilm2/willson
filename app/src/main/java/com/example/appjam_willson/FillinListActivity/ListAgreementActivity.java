@@ -98,6 +98,7 @@ public class ListAgreementActivity extends AppCompatActivity {
         public void onClick(View view) {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             ApplicationFields.timerStart = timestamp.getTime();
+            ApplicationFields.matchingStack = true;
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
             finish();

@@ -21,14 +21,25 @@ import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.SignupModel;
 import com.example.appjam_willson.model.SignupResponseModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+
 public class SignUpPersonalityActivity extends AppCompatActivity {
 
     Context context;
+
+    private String user_uid = FirebaseAuth.getInstance().getUid();
+    private Map<String, String> profile = new HashMap<>();
 
 
     private AlertDialog dialog;
@@ -45,7 +56,8 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
     String packName;
     int resid;
 
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Users");
 
     Intent intent;
     int[] strings = new int[3];
@@ -61,7 +73,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
         context = this;
 
         intent = getIntent();
-
 
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
@@ -179,7 +190,21 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
             signupModel.password = intent.getStringExtra("password");
             signupModel.email = intent.getStringExtra("email");
             signupModel.device_token = "token";
-            signupModel.personality = strings;
+            signupModel.personality_idx = strings;
+            signupModel.uid = user_uid;
+
+            profile.put("photo", "");
+            profile.put("uid",user_uid);
+            profile.put("nickName",signupModel.nickname);
+
+            Log.d("gender",">>>>>  "+signupModel.gender);
+            Log.d("age",">>>>>  "+signupModel.age);
+            Log.d("nickname",">>>>>  "+signupModel.nickname);
+            Log.d("password",">>>>>  "+signupModel.password);
+            Log.d("email",">>>>>  "+signupModel.email);
+            Log.d("personality",">>>>> 0 "+strings[0]);
+            Log.d("personality",">>>>> 1 "+strings[1]);
+            Log.d("personality",">>>>> 2 "+strings[2]);
 
 
 
@@ -227,6 +252,9 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
                     showAlert("이메일 또는 닉네임이 중복되었습니다 :(\n다시 작성해주세요!");
                 }
                 if (response.code() == 200 && result.code == 100) {
+
+                    myRef.child(user_uid).setValue(profile);
+
                     showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
                     Intent intent = new Intent(context, LoginActivity.class);
                     startActivity(intent);

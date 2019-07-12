@@ -9,7 +9,8 @@ public class SignupModel {
         public String email;
         public String password;
         public String device_token;
-        public int[] personality;
+        public String uid;
+        public int[] personality_idx;
 
     public String getNickname() {
         return nickname;
@@ -60,10 +61,10 @@ public class SignupModel {
     }
 
     public int[] getPersonality() {
-        return personality;
+        return personality_idx;
     }
 
     public void setPersonality(int[] personality) {
-        this.personality = personality;
+        this.personality_idx = personality;
     }
 }
