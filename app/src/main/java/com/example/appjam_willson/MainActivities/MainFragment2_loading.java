@@ -34,7 +34,12 @@ public class MainFragment2_loading extends Fragment {
     private SimpleDateFormat timerFormat = new SimpleDateFormat("m:ss");
     private TextView countTxt ;
     private CountDownTimer countDownTimer;
-    private ImageView loading;
+
+    ImageView loading;
+
+    Bundle bundle;
+    int question_idx;
+
 
     public MainFragment2_loading(){
 
@@ -65,6 +70,7 @@ public class MainFragment2_loading extends Fragment {
         countDownTimer = new CountDownTimer(time, COUNT_DOWN_INTERVAL) {
             public void onTick(long millisUntilFinished) {
 
+
                 ApplicationFields.timerSwitch = true;
                 Date date = new Date(millisUntilFinished);
                 String restTime = timerFormat.format(date);
@@ -75,7 +81,10 @@ public class MainFragment2_loading extends Fragment {
                 countTxt.setText("완료 !");
                 ApplicationFields.timerStart = 0;
 
-                int question_idx = 1;
+                /*int question_idx = 1;*/
+
+                question_idx = getArguments().getInt("question_idx");
+
                 String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6zshLEiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3OTk0ODcsImV4cCI6MTU3MTQzOTQ4NywiaXNzIjoid2lsbHNvbiJ9.l2Slk87lEK8Ne_SUMiiIfsXVSuUDfa5VWaeyE3PmZIs";
                 Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
                 accept_helper.enqueue(retrofitCallback);
@@ -91,9 +100,13 @@ public class MainFragment2_loading extends Fragment {
 
             if (result.getCode() == 1000 && result.data.getHelper_list().size() != 0) {
                 MainFragment2 fragment = new MainFragment2();
+                bundle = new Bundle();
+                bundle.putInt("question_idx", question_idx);
+                fragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }
             else {
+                //이거 널 띄우고 팝업 띄워야 함ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
                 MainFragment2_null fragment = new MainFragment2_null();
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }

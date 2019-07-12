@@ -2,6 +2,7 @@ package com.example.appjam_willson.MainActivities;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.AcceptHelperListWatchResponseModel;
@@ -28,6 +30,8 @@ public class MainFragment2 extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private List<AcceptHelperListWatchResponseModel.Helper_list> accept_helper;
     private MainFragment2Adapter mainFragment2Adapter;
+    int question_idx;
+    Bundle bundle;
 
     public MainFragment2(){
 
@@ -36,22 +40,34 @@ public class MainFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment2,null);
+//        if(getArguments() != null){
+//            question_idx = 2;
+//            Log.d("question fragment2임" , ">>>>>>>>>>"+question_idx);
+//        }
+        if(getArguments() == null) {
+            MainFragment2_null fragment = new MainFragment2_null();
+            getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+        }
+        else {
+            question_idx = getArguments().getInt("question_idx");
+            String token = ApplicationFields.uid;
 
-        fragment2Recyclerview = view.findViewById(R.id.fragment2_recyclerview);
-        fragment2Recyclerview.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getActivity());
-        accept_helper = new ArrayList<>();
-        fragment2Recyclerview.setLayoutManager(layoutManager);
+            fragment2Recyclerview = view.findViewById(R.id.fragment2_recyclerview);
+            fragment2Recyclerview.setHasFixedSize(true);
+            layoutManager = new LinearLayoutManager(getActivity());
+            accept_helper = new ArrayList<>();
+            fragment2Recyclerview.setLayoutManager(layoutManager);
 
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
+            /*callWillson(myUid);*/
+            /*int question_idx = 38;*/
+            /*int question_idx = 2;*/
+            Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
+            //여기 윗줄에 question_idx값 안넣어줌
+            accept_helper.enqueue(retrofitCallback);
+        }
 
-        int question_idx = 2;
-        Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
-        //여기 윗줄에 question_idx값 안넣어줌
-        accept_helper.enqueue(retrofitCallback);
+        return view;
 
-
-            return view;
     }
 
 
@@ -63,10 +79,11 @@ public class MainFragment2 extends Fragment {
 
             if (response.code() == 200 && result.getCode() == 1000 && result.getData().getHelper_list().size() != 0) {
                 accept_helper = result.getData().getHelper_list();
-                mainFragment2Adapter = new MainFragment2Adapter(accept_helper, getActivity());
+                mainFragment2Adapter = new MainFragment2Adapter(accept_helper, getActivity(), question_idx);
                 fragment2Recyclerview.setAdapter(mainFragment2Adapter);
             }
             else {
+
             }
             mainFragment2Adapter.notifyDataSetChanged();
         }

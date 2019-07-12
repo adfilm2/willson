@@ -3,7 +3,6 @@ package com.example.appjam_willson.MainActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,14 +28,11 @@ public class HelperFragment extends Fragment {
 
     private RecyclerView helper_fragment1_recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-   /* private List<HelperReceivedWorryListWatchResponseModel> userModel;*/
     private List<HelperReceivedWorryListWatchResponseModel.Concern_Info> adapter_send;
     private HelperFragment1Adapter helperFragment1Adapter;
 
     public HelperFragment() {
-
     }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -65,8 +61,6 @@ public class HelperFragment extends Fragment {
         call_worryList.enqueue(retrofitCallback);
 
         return view;
-
-
     }
 
 

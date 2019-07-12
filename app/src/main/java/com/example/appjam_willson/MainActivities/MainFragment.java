@@ -189,9 +189,6 @@ public class MainFragment extends Fragment {
                 Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(ApplicationFields.userToken);
                 user_profile.enqueue(check_retrofitCallback);
 
-                //헬퍼 가입했는지 아닌지 판단해서
-                Intent intent = new Intent(getActivity() , HelperActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -250,7 +247,6 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onFailure(Call<HelperCheckResponseModel> call, Throwable t) {
-
         }
     };
     @Override
@@ -304,8 +300,9 @@ public class MainFragment extends Fragment {
                             TextView willsonText_request = getActivity().findViewById(R.id.text_request);
                             TextView willsonText_mypage = getActivity().findViewById(R.id.text_mypage);
 
-                            changeImage(willsonImage_request, willsonImage_chat, willsonImage_mypage, willsonImage_home);
-                            changeTextColor(willsonText_request, willsonText_home, willsonText_chat, willsonText_mypage);
+                            changeImage(willsonImage_request,willsonImage_chat,willsonImage_mypage,willsonImage_home);
+                            changeTextColor(willsonText_request,willsonText_home,willsonText_chat,willsonText_mypage);
+
 
                             MainFragment2_loading fragment = new MainFragment2_loading();
                             question_idx = result.data.question_idx;
@@ -379,7 +376,6 @@ public class MainFragment extends Fragment {
         @Override
         public void onFailure(Call<HelperStoryModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
 
@@ -406,6 +402,7 @@ public class MainFragment extends Fragment {
 
             for (int i = 0; i < result.getData().size(); i++) {
                 reviewAdapterModels.add(result.getData().get(i));
+//            }
                 reviewAdapter.notifyDataSetChanged();
             }
         }

@@ -3,7 +3,7 @@ package com.example.appjam_willson.model;
 public class ChoiceHelperModel {
     int helper_idx;
     int question_idx;
-    String status;
+    String status = "doing";
 
     public int getHelper_idx() {
         return helper_idx;

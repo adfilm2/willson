@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.TwoTextOneButton_CustomDialog;
 import com.example.appjam_willson.model.ChoiceHelperModel;
@@ -118,6 +119,9 @@ public class HelperProfileActivity extends AppCompatActivity {
             ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
             choiceHelperModel.setQuestion_idx(question_idx);
             choiceHelperModel.setHelper_idx(helper_idx);
+
+            choiceHelperModel.setStatus("doing");
+
             Log.d("qesution_idxidxidx_헬퍼 결정", String.valueOf(question_idx));
             Log.d("helper_idxidxidx_헬퍼 결정!!!!!!!", String.valueOf(helper_idx));
             Call<ChoiceHelperResponseModel> send_request = RetrofitService.getInstance().getService().choice_helper_post(token, choiceHelperModel);
@@ -150,29 +154,30 @@ public class HelperProfileActivity extends AppCompatActivity {
 
                 helper_uid = result.getData().getHelper_uid().get(0).getUid();   // 헬퍼 uid
 
+
                if(result.getData().getExperience().get(0).getExperience_name() != null){
-                   exper1.setText(result.getData().getExperience().get(0).getExperience_name());
+                   exper1.setText("#" + result.getData().getExperience().get(0).getExperience_name());
                }
                else {
                    exper1.setVisibility(View.GONE);
                }
                 if(result.getData().getExperience().get(1).getExperience_name() != null){
-                    exper2.setText(result.getData().getExperience().get(0).getExperience_name());
+                    exper2.setText("#" + result.getData().getExperience().get(0).getExperience_name());
                 }
                 else {
                     exper2.setVisibility(View.GONE);
                 }
                 if(result.getData().getExperience().get(2).getExperience_name() != null){
-                    exper3.setText(result.getData().getExperience().get(0).getExperience_name());
+                    exper3.setText("#" + result.getData().getExperience().get(0).getExperience_name());
                 }
                 else {
                     exper3.setVisibility(View.GONE);
                 }
-                title.setText(result.getData().getHelper().get(0).getTitle());
+                title.setText('"' + result.getData().getHelper().get(0).getTitle() + '"');
                 detail.setText(result.getData().getHelper().get(0).getContent());
-                person1.setText(result.getData().getPersonality().get(0).getPersonality_name());
-                person2.setText(result.getData().getPersonality().get(1).getPersonality_name());
-                person3.setText(result.getData().getPersonality().get(2).getPersonality_name());
+                person1.setText("#" + result.getData().getPersonality().get(0).getPersonality_name());
+                person2.setText("#" + result.getData().getPersonality().get(1).getPersonality_name());
+                person3.setText("#" + result.getData().getPersonality().get(2).getPersonality_name());
             }
             else{
                 finish();
@@ -197,12 +202,10 @@ public class HelperProfileActivity extends AppCompatActivity {
         public void onResponse(Call<ChoiceHelperResponseModel> call, Response<ChoiceHelperResponseModel> response) {
             ChoiceHelperResponseModel result = response.body();
 
-            Log.d("코드코드받은코드", String.valueOf(result.getCode()));
-
             if(response.code() == 200 && result.getCode() == 2100){
+                ApplicationFields.matching_idx = result.getData().getMatching_idx();
                 intent = new Intent(context, ConvConfirmActivity.class);
                 /*intent.putExtra("question_idx", question_idx);*/
-                intent.putExtra("helper_idx",helper_idx);
                 startActivity(intent);
                 finish();
             }
@@ -214,14 +217,11 @@ public class HelperProfileActivity extends AppCompatActivity {
                 return;
             }
 
-            Log.d("이거는 response코드값", ">>>>>>>>>>>" + response.code());
-            Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.getCode());
         }
 
         @Override
         public void onFailure(Call<ChoiceHelperResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
 

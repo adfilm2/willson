@@ -73,6 +73,9 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
         btn_back = (ImageView) findViewById(R.id.back_btn);
         btn_back.setOnClickListener(new HelperProfileEditActivityExp.list1_love_backbtn_listener());
 
+        cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
+        cancelbtn.setOnClickListener(new HelperProfileEditActivityExp.cancelbtn_listener());
+
         list4_nextbtn = (Button) findViewById(R.id.helper_edit_exp_nextbtn);
         list4_nextbtn.setOnClickListener(new helper_edit_exp_nextbtn_listener());
 
@@ -130,6 +133,16 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
         }
     }
 
+    class cancelbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
+
 }
+
+
 
 

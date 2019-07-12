@@ -14,13 +14,15 @@ public class ApplicationFields extends Application {
     public static String user_nickname;
     public static String device_token;
 
+    public static long timerStart = 0;
+
+    public static int myQuestion_idx = 0;
+    public static int myHelper_idx = 0;
+    public static int matching_idx;
+
     //타이머 관련
-    public static long timerStart;
     public static boolean timerSwitch = false;
     public static boolean matchingStack = false;
-
-    public static int myHelper_idx = 0;
-    public static int myQuestion_idx = 0;
 
     //mainfragment2_null 탭바 색
     public static ImageView home;

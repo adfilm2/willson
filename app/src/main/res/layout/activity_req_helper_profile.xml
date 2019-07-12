@@ -122,6 +122,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginRight="4dp"
                                     android:textColor="#424242"
                                     android:gravity="bottom"
                                     android:text="5.0 "
@@ -174,6 +175,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
+                                    android:paddingHorizontal="7dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
                                     android:layout_marginHorizontal="2.9dp"
@@ -190,6 +192,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginHorizontal="2.9dp"
+                                    android:paddingHorizontal="7dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
                                     android:textColor="@color/lightPurple"
@@ -205,6 +208,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_vertical"
                                     android:layout_marginHorizontal="2.9dp"
+                                    android:paddingHorizontal="7dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
                                     android:textColor="@color/lightPurple"
@@ -380,7 +384,7 @@
             android:paddingHorizontal="20dp"
             android:textSize="18sp"
             android:textStyle="normal"
-            android:fontFamily="@font/nanumsquare_round_eb"
+            android:fontFamily="@font/nanumsquare_eb"
             />
     </RelativeLayout>
 
