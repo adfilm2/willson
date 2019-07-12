@@ -107,8 +107,9 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
                 default:
                     break;
             }
-        }else {
-            Log.d("없음ㅁㅁㅁㅁㅁㅁㅁㅁㅁ","헬퍼가 경험이 없슴");
+        }else
+            {
+            Log.d("ERROR","EXEPERIENCE ERROR");
         }
 
         //프로필보기

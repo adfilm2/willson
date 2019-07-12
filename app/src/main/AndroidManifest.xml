@@ -18,6 +18,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".testetestetsetsetwtstetsetsetsets">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".LoginRegisterActivity.SignUpPersonalityActivity" />
         <activity android:name=".HelperRequestCompleteActivity" />
@@ -38,8 +45,7 @@
         <activity android:name=".LoginRegisterActivity.RegisterActivity_helper" /> <!-- Chat -->
         <activity android:name=".ChatActivities.ChatActivity" />
         <activity android:name=".ChatActivities.HelperChatActivity" /> <!-- Main -->
-        <activity android:name=".MainActivities.MainActivity"/>
-
+        <activity android:name=".MainActivities.MainActivity" />
         <activity android:name=".MainActivities.HelperActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
         <activity
@@ -77,13 +83,7 @@
         <activity android:name=".FillinListActivity.ListAgreementActivity" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/SplashTheme"/>
 
         <activity android:name=".AskerProfileActivity" />
     </application>

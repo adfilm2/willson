@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.TwoTextOneButton_CustomDialog;
 import com.example.appjam_willson.model.ChoiceHelperModel;
@@ -112,9 +113,18 @@ public class HelperProfileActivity extends AppCompatActivity {
             int helper_idx = 1;*/
             String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
 
-              ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
+            ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
             choiceHelperModel.setQuestion_idx(question_idx);
             choiceHelperModel.setHelper_idx(helper_idx);
+
+
+
+
+            choiceHelperModel.setStatus("doing");
+
+
+
+
             Log.d("qesution_idxidxidx_헬퍼 결정", String.valueOf(question_idx));
             Log.d("helper_idxidxidx_헬퍼 결정!!!!!!!", String.valueOf(helper_idx));
             Call<ChoiceHelperResponseModel> send_request = RetrofitService.getInstance().getService().choice_helper_post(token, choiceHelperModel);
@@ -194,6 +204,7 @@ public class HelperProfileActivity extends AppCompatActivity {
             Log.d("코드코드받은코드", String.valueOf(result.getCode()));
 
             if(response.code() == 200 && result.getCode() == 2100){
+                ApplicationFields.matching_idx = result.getData().getMatching_idx();
                 intent = new Intent(context, ConvConfirmActivity.class);
                 /*intent.putExtra("question_idx", question_idx);*/
                 startActivity(intent);
