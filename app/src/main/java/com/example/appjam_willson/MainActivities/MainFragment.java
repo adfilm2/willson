@@ -220,7 +220,7 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onFailure(Call<HelperCheckResponseModel> call, Throwable t) {
-                Log.d(">>>>>>헬퍼 등록 체크 실패>>>>>>>","실패래요~~~~");
+
         }
     };
     @Override
@@ -228,22 +228,22 @@ public class MainFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == REQUEST_CODE_COURSE || requestCode == REQUEST_CODE_DAILY || requestCode ==REQUEST_CODE_ETC ||requestCode == REQUEST_CODE_LOVE || requestCode ==REQUEST_CODE_MENTAL ||requestCode ==REQUEST_CODE_RELATION){
-            switch (resultCode){
+            switch (resultCode) {
                 case RESULT_OK:
 
                     CreateWorryModel createWorryModel = new CreateWorryModel();
                     createWorryModel.feeling = data.getIntArrayExtra("feeling");
                     createWorryModel.personality = data.getIntArrayExtra(("char"));
                     createWorryModel.experience = data.getStringArrayListExtra("experience");
-                    createWorryModel.question.weight =data.getIntExtra("importance",0);
+                    createWorryModel.question.weight = data.getIntExtra("importance", 0);
                     createWorryModel.question.content = data.getStringExtra("contents");
-                    createWorryModel.question.emotion = data.getIntExtra("empathy",1);
-                    createWorryModel.question.advise = data.getIntExtra("advice",1);
+                    createWorryModel.question.emotion = data.getIntExtra("empathy", 1);
+                    createWorryModel.question.advise = data.getIntExtra("advice", 1);
                     createWorryModel.question.experience = data.getIntExtra("experience22", 1);
                     createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
-                    createWorryModel.question.categoryList_idx = data.getIntExtra("category_id",0);
+                    createWorryModel.question.categoryList_idx = data.getIntExtra("category_id", 0);
                     String gender = data.getStringExtra("helper_gender");
-                    switch (gender){
+                    switch (gender) {
                         case "여자":
                             createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여성;
                         case "남자":
@@ -257,12 +257,7 @@ public class MainFragment extends Fragment {
                     call_helper.enqueue(new Callback<CreateWorryResponseModel>() {
                         @Override
                         public void onResponse(Call<CreateWorryResponseModel> call, Response<CreateWorryResponseModel> response) {
-                            Log.d("test", response.isSuccessful() + "");
                             CreateWorryResponseModel result = response.body();
-                            Log.d(">>result>>>>>",""+result);
-                            Log.d(">>response>>>>>",""+response);
-                            Log.d(">> response.code", ">>>>>>>>>>>" + response.code());
-                            Log.d(">> question_idx ;:::: ",">>"+result.data.question_idx);
                             ApplicationFields.myQuestion_idx = result.data.question_idx;
 //                            Intent intent = new Intent(getActivity(),MainActivity.class);
 //                            intent.putExtra("complete","OK");
@@ -279,9 +274,8 @@ public class MainFragment extends Fragment {
                             TextView willsonText_request = getActivity().findViewById(R.id.text_request);
                             TextView willsonText_mypage = getActivity().findViewById(R.id.text_mypage);
 
-                            changeImage(willsonImage_request,willsonImage_chat,willsonImage_mypage,willsonImage_home);
-                            changeTextColor(willsonText_request,willsonText_home,willsonText_chat,willsonText_mypage);
-
+                            changeImage(willsonImage_request, willsonImage_chat, willsonImage_mypage, willsonImage_home);
+                            changeTextColor(willsonText_request, willsonText_home, willsonText_chat, willsonText_mypage);
 
                             MainFragment2_loading fragment = new MainFragment2_loading();
                             question_idx = result.data.question_idx;
@@ -290,27 +284,16 @@ public class MainFragment extends Fragment {
                             fragment.setArguments(bundle);
                             getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
                         }
-
                         @Override
                         public void onFailure(Call<CreateWorryResponseModel> call, Throwable t) {
                             t.printStackTrace();
                             Log.d("메인 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                         }
                     });
-
-
                 case RESULT_CANCELED:
-
             }
         }
-
-
     }
-
-
-
-    //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로
-
     private Callback<HelperStoryModel> retrofitCallback = new Callback<HelperStoryModel>() {
 
         @Override
@@ -326,7 +309,6 @@ public class MainFragment extends Fragment {
         @Override
         public void onFailure(Call<HelperStoryModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
 

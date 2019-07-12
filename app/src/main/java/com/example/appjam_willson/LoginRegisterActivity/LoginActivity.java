@@ -67,11 +67,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = idText.getText().toString();
                 String password = passwordText.getText().toString();
+                LoginUser(email, password);
                 loginModel.setEmail(email);
                 loginModel.setPassword(password);
 
                 Call<LoginResponseModel> call_helper = RetrofitService.getInstance().getService().user_login_post(loginModel);
-                call_helper.enqueue(retrofitCallback);
+//                call_helper.enqueue(retrofitCallback);
 
 //                Call<LoginResponseModel> call_login = RetrofitService.getInstance().getService().user_login_post(loginModel);
 //                call_login.enqueue(retrofitCallback);
@@ -90,27 +91,27 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-//    public void LoginUser(String email, String password){
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                            startActivity(intent);
-//                        }
-//                        else {
-//                            // If sign in fails, display a message to the user.
-//                            Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.",
-//                                    Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                        // ...
-//                    }
-//                });
-//    }
+    public void LoginUser(String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
+    }
 
     private Callback<LoginResponseModel> retrofitCallback = new Callback<LoginResponseModel>() {
 

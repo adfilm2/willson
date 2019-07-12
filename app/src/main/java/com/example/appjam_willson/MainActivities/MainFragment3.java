@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,7 +43,7 @@ public class MainFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment3, null);
 
-        myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        myUid = ApplicationFields.uid;
 
         FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

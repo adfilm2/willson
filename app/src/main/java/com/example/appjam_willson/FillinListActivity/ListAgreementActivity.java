@@ -11,8 +11,11 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
+
+import java.sql.Timestamp;
 
 public class ListAgreementActivity extends AppCompatActivity {
 
@@ -93,10 +96,11 @@ public class ListAgreementActivity extends AppCompatActivity {
     class submitbtn_listener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            ApplicationFields.timerStart = timestamp.getTime();
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
             finish();
-
         }
     }
 
