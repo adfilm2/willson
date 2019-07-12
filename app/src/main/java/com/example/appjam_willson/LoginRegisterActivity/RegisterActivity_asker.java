@@ -353,8 +353,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
 //                profile.put("nickName",userNickname);
 //                myRef.child(userNickname).setValue(profile);
 //                myRef.child(uid).setValue(profile);
-
-
+                
                 Intent intent = new Intent(RegisterActivity_asker.this, LoginActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"가입이 완료되었습니다! 로그인 화면으로 돌아갑니다 ><",Toast.LENGTH_SHORT).show();

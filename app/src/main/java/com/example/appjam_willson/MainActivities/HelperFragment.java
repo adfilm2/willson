@@ -42,17 +42,6 @@ public class HelperFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.helper_fragment1, null);
 
-/*        myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
-
-       /* String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
-*///그전에 쓴 token
-
-       /*String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
-*///전에 쓴 token
-
-        /*String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
-*/// 전
-
        String token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
 
         LinearLayout change_mode = view.findViewById(R.id.helper_fragment1_change);
@@ -87,29 +76,20 @@ public class HelperFragment extends Fragment {
         public void onResponse(Call<HelperReceivedWorryListWatchResponseModel> call, Response<HelperReceivedWorryListWatchResponseModel> response) {
             HelperReceivedWorryListWatchResponseModel result = response.body();
 
-            Log.d("성공ㅇㅇㅇㅇ", String.valueOf(result.getCode()));
-            Log.d("메시지ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ", result.getMessage());
-            Log.d("유저 닉네임", result.getData().getConcernInfo().get(0).getUserInfo().getNickname());
-
             if (result.getCode() == 800 && result.getData() != null) {
                 adapter_send = result.getData().getConcernInfo();
                 helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
                 helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
             }
             else {
-               /* HelperFragment1_null fragment = new HelperFragment1_null();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
-*/
+
             }
-           /* Log.d("리ㅣㅣㅣㅣ", String.valueOf(result.getData().getSize()));
-            Log.d("삽질ㄹㄹㄹㄹㄹㄹ", String.valueOf(result.getData().getConcernInfo().get(1).getUserInfo()));
-        */
+
         }
 
         @Override
         public void onFailure(Call<HelperReceivedWorryListWatchResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실패ㅐㅐㅐㅐㅐ","대실패");
         }
     };
 
