@@ -40,7 +40,7 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
 
-//        닉네임
+        //닉네임
         if(dataModels.get(i).getQuestionInfo().getSelected().equals("N") && dataModels.get(i).getUserInfo().getNickname() != null) {
             viewHolder.userNickname.setText(dataModels.get(i).getUserInfo().getNickname());
         }
@@ -98,7 +98,6 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AskerProfileActivity.class);
-                Log.d("idx보냄", String.valueOf(dataModels.get(i).getQuestionInfo().getQuestion_idx()));
                 intent.putExtra("question_idx", dataModels.get(i).getQuestionInfo().getQuestion_idx());
                 context.startActivity(intent);
             }

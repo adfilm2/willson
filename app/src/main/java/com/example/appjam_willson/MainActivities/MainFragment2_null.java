@@ -31,7 +31,7 @@ public class MainFragment2_null extends Fragment {
                 public void onClick(View v) {
                     MainFragment fragment = new MainFragment();
                     getFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
-                    getActivity().finish();
+                    /*getActivity().finish();*/
                 }
             });
             return view;

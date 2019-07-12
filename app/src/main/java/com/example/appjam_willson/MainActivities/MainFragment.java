@@ -291,7 +291,7 @@ public class MainFragment extends Fragment {
                             Log.d(">>result>>>>>",""+result);
                             Log.d(">>response>>>>>",""+response);
                             Log.d(">> response.code", ">>>>>>>>>>>" + response.code());
-                            Log.d(">> question_idx ;:::: ",">>"+result.data.question_idx);
+                            Log.d(">> question_idx ;:::: ",">>"+ result.data.question_idx);
                             ApplicationFields.myQuestion_idx = result.data.question_idx;
 //                            Intent intent = new Intent(getActivity(),MainActivity.class);
 //                            intent.putExtra("complete","OK");
@@ -316,6 +316,7 @@ public class MainFragment extends Fragment {
                             question_idx = result.data.question_idx;
                             bundle = new Bundle();
                             bundle.putInt("question_idx", question_idx);
+                            Log.d("qesution_idxidxidx_처음에 question_idx임", String.valueOf(question_idx));
                             fragment.setArguments(bundle);
                             getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
                         }
