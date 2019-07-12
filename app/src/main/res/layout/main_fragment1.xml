@@ -321,7 +321,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/main_img_helperstorybg"
+            android:background="@drawable/main_bgphoto"
             android:orientation="vertical"
             >
 

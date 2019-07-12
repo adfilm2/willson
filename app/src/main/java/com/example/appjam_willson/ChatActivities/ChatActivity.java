@@ -268,7 +268,7 @@ public class ChatActivity extends AppCompatActivity {
                     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
                     String getTime = simpleDateFormat.format(startDate);
 
-                    StartMsgViewHolder startMsgViewHolder = (StartMsgViewHolder)holder ;
+                    StartMsgViewHolder startMsgViewHolder = (StartMsgViewHolder)holder;
                     startMsgViewHolder.chat_start_msg.setText(getTime);
                     startMsgViewHolder.chat_start_msg_second.setText(getTime);
                     break;
