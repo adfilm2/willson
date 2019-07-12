@@ -91,7 +91,7 @@ public class ChatFeedback_CustomDialog extends Dialog {
 
 
 
-/*
+
 
         //통신  ReviewWriteModel
 
@@ -133,7 +133,7 @@ public class ChatFeedback_CustomDialog extends Dialog {
             }
         });
 
-*/
+
 
     }
 

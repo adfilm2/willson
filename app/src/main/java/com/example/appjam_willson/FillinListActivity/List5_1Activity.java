@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -82,12 +83,44 @@ public class List5_1Activity extends AppCompatActivity {
 //                    Log.d(">>>data의 keyword1 >>> ",checks);
 //                    Log.d(">>>data의 advice >>> ","gg"+gg);
 
+
+                    //
+
                     bundle5_1 = data.getExtras();
+                    bundle5_1.putIntArray("char",strings);
+                    Log.d(">>>data의 advice >>> ","gg:"+bundle5_1);
+
+                    data.putExtras(bundle5_1);
+                    Log.d(">>>data의 advice >>> ","data:"+data);
+                    setResult(RESULT_OK,data);
+                    finish();
+
+
+                    ///
+
+                   /* bundle2 = data.getExtras();
+                    Log.d("야호야호얗야호야ㅗ라어ㅏ느낀감정~~~~~!",""+strings[0]+":: "+strings[1]+":: "+strings[2]);
+                    bundle2.putIntArray("feeling",strings);
+
+
+                    data.putExtras(bundle2);
+                    setResult(RESULT_OK,data);
+                    finish();*/
+
+
+
+
+
+                    ///
+
+                 /* 원래코드
+
+                 bundle5_1 = data.getExtras();
                     bundle5_1.putIntArray("char",strings);
 
                     data.putExtras(bundle5_1);
                     setResult(RESULT_OK,data);
-                    finish();
+                    finish();*/
 
 
                 case RESULT_CANCELED:
@@ -95,6 +128,10 @@ public class List5_1Activity extends AppCompatActivity {
             }
         }
     }
+
+
+
+
 
     public void char_check(View view){
         Button nextbtn = findViewById(R.id.submit);
@@ -121,6 +158,8 @@ public class List5_1Activity extends AppCompatActivity {
 
                 for(int i = 0; i<3; i++){
                     if(strings[i]== 0) strings[i] = Integer.parseInt(checkBox.getTag().toString());
+                    //break;
+
                 }
             }
         } else {
@@ -140,6 +179,7 @@ public class List5_1Activity extends AppCompatActivity {
         if(check_num == 3) nextbtn.setEnabled(true);
         else nextbtn.setEnabled(false);
     }
+
 
     class list5_1_cancelbtn_listener implements View.OnClickListener {
         @Override
