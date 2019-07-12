@@ -42,25 +42,11 @@ public class MainFragment2 extends Fragment {
 //            Log.d("question fragment2임" , ">>>>>>>>>>"+question_idx);
 //        }
 
-
-
-        /*myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
-
         fragment2Recyclerview = view.findViewById(R.id.fragment2_recyclerview);
         fragment2Recyclerview.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         accept_helper = new ArrayList<>();
         fragment2Recyclerview.setLayoutManager(layoutManager);
-
-
-/*            fragment2Recyclerview = view.findViewById(R.id.fragment2_recyclerview);
-            fragment2Recyclerview.setHasFixedSize(true);
-            layoutManager = new LinearLayoutManager(getActivity());
-            fragment2Recyclerview.setLayoutManager(layoutManager);
-            dataModels = new ArrayList<>();
-            fragment2Adapter = new Fragment2Adapter(dataModels, getActivity());
-            fragment2Recyclerview.setAdapter(fragment2Adapter);*/
-           /* helper_fragment1_recyclerView.setLayoutManager(layoutManager);*/
 
             /*callWillson(myUid);*/
 
