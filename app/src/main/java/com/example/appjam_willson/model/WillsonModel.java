@@ -4,13 +4,7 @@ public class WillsonModel {
     public String age;
     public String gender;
     public String email;
-    public String userStyle;
     public String nickName;
-    public String userComment;
-    public String userScore;
-    public String userInformation;
-    public int userImage;
-    public String userProfile;
     public String uid;
     public String photo;
     public String roomKey;
@@ -72,14 +66,6 @@ public class WillsonModel {
         this.email = email;
     }
 
-    public String getUserStyle() {
-        return userStyle;
-    }
-
-    public void setUserStyle(String userStyle) {
-        this.userStyle = userStyle;
-    }
-
     public String getNickName() {
         return nickName;
     }
@@ -88,43 +74,4 @@ public class WillsonModel {
         this.nickName = nickName;
     }
 
-    public String getUserComment() {
-        return userComment;
-    }
-
-    public void setUserComment(String userComment) {
-        this.userComment = userComment;
-    }
-
-    public String getUserScore() {
-        return userScore;
-    }
-
-    public void setUserScore(String userScore) {
-        this.userScore = userScore;
-    }
-
-    public String getUserInformation() {
-        return userInformation;
-    }
-
-    public void setUserInformation(String userInformation) {
-        this.userInformation = userInformation;
-    }
-
-    public int getUserImage() {
-        return userImage;
-    }
-
-    public void setUserImage(int userImage) {
-        this.userImage = userImage;
-    }
-
-    public String getUserProfile() {
-        return userProfile;
-    }
-
-    public void setUserProfile(String userProfile) {
-        this.userProfile = userProfile;
-    }
 }

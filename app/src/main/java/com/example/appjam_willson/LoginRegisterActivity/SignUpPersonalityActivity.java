@@ -1,5 +1,6 @@
 package com.example.appjam_willson.LoginRegisterActivity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,14 +22,28 @@ import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.SignupModel;
 import com.example.appjam_willson.model.SignupResponseModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
+
 public class SignUpPersonalityActivity extends AppCompatActivity {
 
     Context context;
+
+    private String user_uid = FirebaseAuth.getInstance().getUid();
+    private Map<String, String> profile = new HashMap<>();
 
 
     private AlertDialog dialog;
@@ -45,7 +60,8 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
     String packName;
     int resid;
 
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("Users");
 
     Intent intent;
     int[] strings = new int[3];
@@ -62,7 +78,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
@@ -78,9 +93,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
 
         list5_backbtn = findViewById(R.id.back_btn_layout);
         list5_backbtn.setOnClickListener(new list5_1_backbtn_listener());
-
-
-
 
     }
     public void char_check(View view){
@@ -180,18 +192,11 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
             signupModel.email = intent.getStringExtra("email");
             signupModel.device_token = "token";
             signupModel.personality_idx = strings;
+            signupModel.uid = user_uid;
 
-            Log.d("gender",">>>>>  "+signupModel.gender);
-            Log.d("age",">>>>>  "+signupModel.age);
-            Log.d("nickname",">>>>>  "+signupModel.nickname);
-            Log.d("password",">>>>>  "+signupModel.password);
-            Log.d("email",">>>>>  "+signupModel.email);
-            Log.d("personality",">>>>> 0 "+strings[0]);
-            Log.d("personality",">>>>> 1 "+strings[1]);
-            Log.d("personality",">>>>> 2 "+strings[2]);
-
-
-
+            profile.put("photo", "");
+            profile.put("uid",user_uid);
+            profile.put("nickName",signupModel.nickname);
 
             Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
             call_helper.enqueue(retrofitCallback);
@@ -226,16 +231,15 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
         public void onResponse(retrofit2.Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
             SignupResponseModel result = response.body();
 
-            Log.d(">>>>response code>>>",""+response.code());
-            Log.d(">>>>reult code>>>",""+result.code);
-
-
             if(response.code() == 200){
 
                 if (result.code == 101) {
                     showAlert("이메일 또는 닉네임이 중복되었습니다 :(\n다시 작성해주세요!");
                 }
                 if (response.code() == 200 && result.code == 100) {
+
+                    myRef.child(user_uid).setValue(profile);
+
                     showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
                     Intent intent = new Intent(context, LoginActivity.class);
                     startActivity(intent);
@@ -258,9 +262,25 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialog.cancel();
-
                     }
                 }).create();
         dialog.show();
     }
+
+
+
+//    protected void checkNickName(String NickName, final Runnable callback){
+//
+//        FirebaseDatabase.getInstance().getReference().child("users").orderByChild("nickName").equalTo(NickName).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                nickNameCheck = dataSnapshot.getValue() == null;
+//                SignUpPersonalityActivity.this.runOnUiThread(callback);
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 }

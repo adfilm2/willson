@@ -40,7 +40,15 @@ public class HelperProfileWatchResponseModel {
         List<Helper_profile> helper;
         List<Experience_profile> experience;
         List<Personality_profile> personality;
+        List<Helper_uid> helper_uid;
 
+        public List<Helper_uid> getHelper_uid() {
+            return helper_uid;
+        }
+
+        public void setHelper_uid(List<Helper_uid> helper_uid) {
+            this.helper_uid = helper_uid;
+        }
         /*getter and setter start*/
 
         public List<Helper_profile> getHelper() {
@@ -185,6 +193,17 @@ public class HelperProfileWatchResponseModel {
 
         /*getter and setter end*/
 
+    }
+    public class Helper_uid{
+        String uid;
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
     }
 
 }

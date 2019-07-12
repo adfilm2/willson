@@ -178,7 +178,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 String toCheckAge = ageSpinner.getSelectedItem().toString();
                 userEmail = idText.getText().toString();
                 userPassword = passwordText.getText().toString();
@@ -198,11 +197,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     return;
                 }
 
-
-
-
-
-
                 bundle.putString("nickname",userNickname);
                 bundle.putString("email",userEmail);
                 bundle.putInt("age",userAge);
@@ -212,9 +206,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),SignUpPersonalityActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
-
-
-
 
             }
         });
@@ -232,9 +223,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 
     protected void showAlert(String message) {
@@ -244,146 +232,10 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialog.cancel();
-
                     }
                 })
                 .create();
         dialog.show();
-    }
-    protected void alertNext(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity_asker.this);
-        dialog = builder.setMessage(message)
-                .setNegativeButton("확인", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.cancel();
-
-                    }
-                }).create();
-        dialog.show();
-    }
-
-    protected void checkNickName(String NickName, final Runnable callback){
-        NickName = userNickname;
-        FirebaseDatabase.getInstance().getReference().child("users").orderByChild("nickName").equalTo(NickName).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nickNameCheck = dataSnapshot.getValue() == null;
-                RegisterActivity_asker.this.runOnUiThread(callback);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    public void RegisterUser(String email,String password){
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(RegisterActivity_asker.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(userEmail).build();
-
-                            task.getResult().getUser().updateProfile(userProfileChangeRequest);
-
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("askerUsers");
-
-                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                            Map<String, String> profile = new HashMap<>();
-                            profile.put("photo", "");
-                            profile.put("uid",uid);
-                            profile.put("nickName",userNickname);
-
-                            myRef.child(uid).setValue(profile);
-
-                            Toast.makeText(RegisterActivity_asker.this, "등록ㅊㅋㅊㅋ.",
-                                    Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                        else {
-                            Toast.makeText(RegisterActivity_asker.this, "등록된 이메일이거나 이메일 형식이 아닙니다.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
-    private class NetworkCall extends AsyncTask<Call, Void, SignupResponseModel> {
-
-        @Override
-        protected SignupResponseModel doInBackground(Call[] params) {
-            try {
-                Call<SignupResponseModel> call = params[0];
-                Response<SignupResponseModel> response = call.execute();
-                return response.body();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(SignupResponseModel result) {
-            SignupResponseModel signupResponseModel = new SignupResponseModel();
-            signupResponseModel = result;
-        }
-    }
-
-    private Callback<SignupResponseModel> retrofitCallback = new Callback<SignupResponseModel>() {
-
-        @Override
-        public void onResponse(retrofit2.Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
-            SignupResponseModel result = response.body();
-//            Log.d("result>>>>", String.valueOf(result));
-            Log.d("리젌트~!!~~", ">>>>>>>>>>>"+result);
-            Log.d("response.code>>",""+response.code());
-            Log.d("result.code",""+result.getCode());
-//            Log.d("repose......","코드"+response.code()+"메세지"+response.message()+"bady"+result.getData()
-//            +"result.data닉네임 ?>>>"+result.getData().getBody().getNickname());
-
-            if(result.code == 101){
-                showAlert("이메일 또는 닉네임이 중복되었습니다 :(\n다시 작성해주세요!");
-            }
-            if(response.code() == 200 && result.code ==100) {
-                showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
-
-//                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//                Map<String, String> profile = new HashMap<>();
-//                profile.put("photo", "");
-//                profile.put("uid",uid);
-//                profile.put("nickName",userNickname);
-//                myRef.child(userNickname).setValue(profile);
-//                myRef.child(uid).setValue(profile);
-
-
-                Intent intent = new Intent(RegisterActivity_asker.this, LoginActivity.class);
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(),"가입이 완료되었습니다! 로그인 화면으로 돌아갑니다 ><",Toast.LENGTH_SHORT).show();
-            }
-
-        }
-
-        @Override
-        public void onFailure(Call<SignupResponseModel> call, Throwable t) {
-            t.printStackTrace();
-
-        }
-    };
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        if(dialog!=null)
-        {
-            dialog.dismiss();
-            dialog = null;
-
-        }
     }
 
     private void hidekeyboard(EditText edit) {
@@ -395,10 +247,44 @@ public class RegisterActivity_asker extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             hidekeyboard(nickName);
-
         }
     }
 
+    public void RegisterUser(String email,String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(RegisterActivity_asker.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(userEmail).build();
+                            task.getResult().getUser().updateProfile(userProfileChangeRequest);
 
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("askerUsers");
+                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+                            Map<String, String> profile = new HashMap<>();
+                            profile.put("photo", "");
+                            profile.put("uid",uid);
+                            profile.put("nickName",userNickname);
+
+                            myRef.child(uid).setValue(profile);
+                        }
+                        else {
+                        }
+                    }
+                });
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if(dialog!=null)
+        {
+            dialog.dismiss();
+            dialog = null;
+
+        }
+    }
 }

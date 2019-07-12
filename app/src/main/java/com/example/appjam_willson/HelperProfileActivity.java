@@ -53,6 +53,8 @@ public class HelperProfileActivity extends AppCompatActivity {
     TextView person2;
     TextView person3;
 
+    private String helper_uid;
+
     TwoTextOneButton_CustomDialog dialog;
 
 
@@ -113,6 +115,7 @@ public class HelperProfileActivity extends AppCompatActivity {
             int helper_idx = 1;*/
             String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
 
+
             ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
             choiceHelperModel.setQuestion_idx(question_idx);
             choiceHelperModel.setHelper_idx(helper_idx);
@@ -148,6 +151,9 @@ public class HelperProfileActivity extends AppCompatActivity {
                 cate.setText(result.getData().getHelper().get(0).getCategory_name());
                 stars.setText(result.getData().getHelper().get(0).getStars() + ".0");
                 review.setText(result.getData().getHelper().get(0).getReview_count() + "개의 후기");
+
+                helper_uid = result.getData().getHelper_uid().get(0).getUid();   // 헬퍼 uid
+
 
                if(result.getData().getExperience().get(0).getExperience_name() != null){
                    exper1.setText("#" + result.getData().getExperience().get(0).getExperience_name());
@@ -196,8 +202,6 @@ public class HelperProfileActivity extends AppCompatActivity {
         public void onResponse(Call<ChoiceHelperResponseModel> call, Response<ChoiceHelperResponseModel> response) {
             ChoiceHelperResponseModel result = response.body();
 
-            Log.d("코드코드받은코드", String.valueOf(result.getCode()));
-
             if(response.code() == 200 && result.getCode() == 2100){
                 ApplicationFields.matching_idx = result.getData().getMatching_idx();
                 intent = new Intent(context, ConvConfirmActivity.class);
@@ -213,14 +217,11 @@ public class HelperProfileActivity extends AppCompatActivity {
                 return;
             }
 
-            Log.d("이거는 response코드값", ">>>>>>>>>>>" + response.code());
-            Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.getCode());
         }
 
         @Override
         public void onFailure(Call<ChoiceHelperResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
 

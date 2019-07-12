@@ -36,9 +36,15 @@ public class LoginResponseModel {
 
     public class Data {
         public String Token;
-        String email;
-        String password;
+        public user_Info userInfo;
 
+        public user_Info getUserInfo() {
+            return userInfo;
+        }
+
+        public void setUserInfo(user_Info userInfo) {
+            this.userInfo = userInfo;
+        }
         /*getter and setter start*/
 
         public String getToken() {
@@ -48,8 +54,66 @@ public class LoginResponseModel {
         public void setToken(String token) {
             Token = token;
         }
-
         /*getter and setter end*/
+
+        public class user_Info{
+            public String user_idx;
+            public String nickname;
+            public String gender;
+            public int age;
+            public String uid;
+
+            public String getUser_idx() {
+                return user_idx;
+            }
+
+            public void setUser_idx(String user_idx) {
+                this.user_idx = user_idx;
+            }
+
+            public String getNickname() {
+                return nickname;
+            }
+
+            public void setNickname(String nickname) {
+                this.nickname = nickname;
+            }
+
+            public String getGender() {
+                return gender;
+            }
+
+            public void setGender(String gender) {
+                this.gender = gender;
+            }
+
+            public int getAge() {
+                return age;
+            }
+
+            public void setAge(int age) {
+                this.age = age;
+            }
+
+            public String getUid() {
+                return uid;
+            }
+
+            public void setUid(String uid) {
+                this.uid = uid;
+            }
+
+            public String getDevice_token() {
+                return device_token;
+            }
+
+            public void setDevice_token(String device_token) {
+                this.device_token = device_token;
+            }
+
+            public String device_token;
+        }
+
     }
 
 }

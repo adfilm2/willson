@@ -26,9 +26,6 @@ import retrofit2.Retrofit;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
-    private RetrofitAPI retrofitAPI;
-    private Retrofit retrofit;
     private LoginModel loginModel = new LoginModel();
 
     @Override
@@ -39,9 +36,6 @@ public class LoginActivity extends AppCompatActivity {
 
         EditText idText=findViewById(R.id.Login_ID);
         EditText passwordText=findViewById(R.id.Login_Password);
-
-        mAuth = FirebaseAuth.getInstance();
-
 
         Button registerButton = findViewById(R.id.Email_register);
         Button emailLoginButton = findViewById(R.id.Email_login);
@@ -110,19 +104,12 @@ public class LoginActivity extends AppCompatActivity {
         public void onResponse(retrofit2.Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
             LoginResponseModel result = response.body();
             Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
-       /*     Log.d("로그인액티비티", String.valueOf(result.getCode()));*/
             if(response.code() == 200 && result.code == 200){
                 ApplicationFields.userToken = result.data.Token;
-               /* SaveSharedPreference.setUserToken(LoginActivity.this, result.data.Token);*/
-        /*        SharedPreferences UserToken = getSharedPreferences("UserToken", MODE_PRIVATE);
-                SharedPreferences.Editor editor = UserToken.edit();
-                editor.putString("UserToken", ApplicationFields.userToken);
-                editor.commit();*/
-
-              /*  Log.d("usertoken_loginloginlogin", ">>>>>>>>>>>>." + UserToken.getString("UserToken", ""));
-*/
-
+                ApplicationFields.uid = result.data.userInfo.uid;
                 Log.d(">>>>> token값 ",">>>>>"+ApplicationFields.userToken);
+                Log.d(">>>>> 유아이디값 ",">>>>>"+ApplicationFields.uid);
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -135,8 +122,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onFailure(Call<LoginResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("로그인액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
-            Log.d("로그인 액티비티 서버 코드ㅡㅡㅡㅡㅡㅡ","ㅁㄴㅇㅁㄴㅇ");
+
         }
     };
 }
