@@ -32,8 +32,6 @@ android:background="#ffffff">
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-
-
         <RadioButton
             android:id="@+id/btn_onesidelove"
             android:layout_width="153dp"
@@ -130,7 +128,7 @@ android:background="#ffffff">
             android:layout_marginLeft="24.8dp"
             android:layout_marginRight="12.5dp"
             android:background="@drawable/list_btns_selector"
-            android:id="@+id/btn_usercustom_layout"
+            android:id="@+id/btn_usercustom_layout_l"
             android:layout_weight="1"
             android:layout_marginBottom="20dp"
             android:elevation="9dp">
@@ -153,6 +151,7 @@ android:background="#ffffff">
                         android:fontFamily="@font/nanum_square_r"
                         android:textColor="@color/lightPurple"
                         android:textSize="16sp"
+                        android:id="@+id/text_view"
                         android:drawableLeft="@drawable/btn_plus"
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"

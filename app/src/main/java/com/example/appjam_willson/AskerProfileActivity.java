@@ -4,16 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.NetworkService.RetrofitService;
+import com.example.appjam_willson.PopUp.TwoTextOneButton_CustomDialog;
 import com.example.appjam_willson.model.SendRequestModel;
 import com.example.appjam_willson.model.SendRequestResponseModel;
 import com.example.appjam_willson.model.UserProfileWatchResponseModel;
@@ -52,6 +55,8 @@ public class AskerProfileActivity extends AppCompatActivity {
     ProgressBar Advice;
     ProgressBar Experience;
     ImageView image;
+
+    TwoTextOneButton_CustomDialog dialog;
 
     int question_idx;
     int helper_idx;
@@ -219,7 +224,11 @@ public class AskerProfileActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-            else {
+            else if(response.code() == 200 && result.getCode() == 1404){
+                Dialog();
+            }
+            else{
+                Toast.makeText(context, "HELPER_SELECTION_ERROR", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -231,6 +240,24 @@ public class AskerProfileActivity extends AppCompatActivity {
         public void onFailure(Call<SendRequestResponseModel> call, Throwable t) {
             t.printStackTrace();
             Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+        }
+    };
+
+    public void Dialog() {
+        dialog = new TwoTextOneButton_CustomDialog(AskerProfileActivity.this,
+                "지금은 요청할 수 없어요", "대화를 진행 중인 경우에는\n다른 질문자에게 중복 요청이 불가능합니다", "확인", keepListener);
+
+        dialog.setCanceledOnTouchOutside(false);
+
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener keepListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
         }
     };
 

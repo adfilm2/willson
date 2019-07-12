@@ -93,10 +93,13 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
             switch (exp.length) {
                 case 1:
                     viewHolder.exp1.setText("#" + exp[0]);
+                    viewHolder.exp2.setVisibility(View.GONE);
+                    viewHolder.exp3.setVisibility(View.GONE);
                     break;
                 case 2:
                     viewHolder.exp1.setText("#" + exp[0]);
                     viewHolder.exp2.setText("#" + exp[1]);
+                    viewHolder.exp3.setVisibility(View.GONE);
                     break;
                 case 3:
                     viewHolder.exp1.setText("#" + exp[0]);

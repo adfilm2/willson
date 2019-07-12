@@ -33,9 +33,7 @@
             android:name=".HelperProfileEdit.HelperProfileEditActivityIntro"
             android:windowSoftInputMode="adjustPan" /> <!-- Login && Register -->
         <!-- Login && Register -->
-        <activity android:name=".LoginRegisterActivity.LoginActivity">
-
-        </activity>
+        <activity android:name=".LoginRegisterActivity.LoginActivity"/>
 
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"
             android:windowSoftInputMode="adjustPan"/>
@@ -47,17 +45,16 @@
         <activity android:name=".ChatActivities.HelperChatActivity" />
 
         <!-- Main -->
-       <activity android:name=".MainActivities.MainActivity">
-           <intent-filter>
-               <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivities.MainActivity"/>
 
-               <category android:name="android.intent.category.LAUNCHER" />
-           </intent-filter>
+        <activity android:name=".MainActivities.HelperActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-       </activity>
-
-        <activity android:name=".MainActivities.HelperActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
         <activity
             android:name=".HelperProfileEdit.HelperProfileEditActivityExp"
