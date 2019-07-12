@@ -39,6 +39,8 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
     View view;
     ImageView btn;
 
+    LinearLayout picture;
+
     Bundle bundle4 = new Bundle();
     String phone;
 
@@ -47,35 +49,36 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up_confirm);
 
-        view = (View)findViewById(R.id.activity_helper_signup_toolbar);
-        btn =(ImageView)findViewById(R.id.cancel_btn);
+        view = findViewById(R.id.activity_helper_signup_toolbar);
+        btn = findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
         context = this;
 
         REQUEST_CODE = ((HelperSignupConfirm1Activity) context).getTaskId();
 
+        picture = findViewById(R.id.picture);
 
-        background = (LinearLayout)findViewById(R.id.background);
+        background = findViewById(R.id.background);
         background.setOnClickListener(new back_click());
 
-        phone1 = (EditText)findViewById(R.id.phone_num_1);
-        phone2 = (EditText)findViewById(R.id.phone_num_2);
-        phone3 = (EditText)findViewById(R.id.phone_num_3);
+        phone1 = findViewById(R.id.phone_num_1);
+        phone2 = findViewById(R.id.phone_num_2);
+        phone3 = findViewById(R.id.phone_num_3);
 
         phone1.setOnFocusChangeListener(new phone1_focus());
         phone2.setOnFocusChangeListener(new phone2_focus());
         phone3.setOnFocusChangeListener(new phone3_focus());
 
-        back_btn = (LinearLayout)findViewById(back_btn_layout);
+        back_btn = findViewById(back_btn_layout);
         back_btn.setOnClickListener(new back_btn_listener());
 
-        email = (EditText)findViewById(R.id.email);
-        link = (EditText)findViewById(R.id.link);
+        email = findViewById(R.id.email);
+        link = findViewById(R.id.link);
 
         email.setOnFocusChangeListener(new email_focus());
         link.setOnFocusChangeListener(new link_focus());
 
-        next_btn = (Button)findViewById(R.id.confirm_btn_next);
+        next_btn = findViewById(R.id.confirm_btn_next);
         next_btn.setOnClickListener(new nex_btn_listener());
 
         TextWatcher textWatcher = new TextWatcher() {
@@ -100,6 +103,13 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
             }
         };
 
+        picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HelperSignupConfirm2Activity.class);
+                startActivity(intent);
+            }
+        });
 
         phone1.addTextChangedListener(textWatcher);
         phone2.addTextChangedListener(textWatcher);
@@ -187,7 +197,6 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             phone = phone1.getText().toString()+phone2.getText().toString()+phone3.getText().toString();
-
             bundle4.putString("phone",phone);
             bundle4.putString("email",email.getText().toString());
             if(link.getText().toString().length() >0)

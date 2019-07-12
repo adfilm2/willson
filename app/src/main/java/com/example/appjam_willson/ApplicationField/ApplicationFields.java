@@ -15,6 +15,7 @@ public class ApplicationFields extends Application {
     public static long timerStart;
     public static boolean timerSwitch = false;
 
+    public static int myHelper_idx = 0;
     public static int myQuestion_idx = 0;
 
 

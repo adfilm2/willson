@@ -23,7 +23,7 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
 
 
         ImageView btn_back;
-        btn_back = (ImageView) findViewById(R.id.back_btn);
+        btn_back = findViewById(R.id.back_btn);
         btn_back.setOnClickListener(new HelperProfileEditActivityStart.backbtn_listener());
 
 

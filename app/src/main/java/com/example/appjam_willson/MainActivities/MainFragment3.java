@@ -45,16 +45,18 @@ public class MainFragment3 extends Fragment {
 
         myUid = ApplicationFields.uid;
 
-        FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("askerUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot item : dataSnapshot.getChildren()) {
-                    WillsonModel users = item.getValue(WillsonModel.class);
-                    String uidGet =users.getUid();
-                    if (uidGet.equals(myUid)) {
-                        roomKey = users.getRoomKey();
-                        findChatRooms(roomKey);
-                        break;
+                if(dataSnapshot.getValue() != null) {
+                    for (DataSnapshot item : dataSnapshot.getChildren()) {
+                        WillsonModel users = item.getValue(WillsonModel.class);
+                        String uidGet = users.getUid();
+                        if (uidGet.equals(myUid)) {
+                            roomKey = users.getRoomKey();
+                            findChatRooms(roomKey);
+                            break;
+                        }
                     }
                 }
             }

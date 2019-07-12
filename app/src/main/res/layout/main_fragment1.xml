@@ -48,7 +48,7 @@
                     android:gravity="center"
                     android:layout_marginVertical="10dp"
                     android:layout_marginRight="20dp"
-                    android:text="헬퍼전환 "
+                    android:text="헬퍼 전환 "
                     android:textSize="12sp"
                     android:textColor="@color/dark_purple"
                     android:fontFamily="@font/nanum_square_b"

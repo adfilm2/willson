@@ -68,37 +68,37 @@ public class AskerProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asker_profile);
 
-        toolbar_textView = (TextView)findViewById(R.id.toolbar_text);
+        toolbar_textView = findViewById(R.id.toolbar_text);
         toolbar_textView.setText("프로필");
 
-        cancel = (ImageView)findViewById(R.id.cancel_btn);
+        cancel = findViewById(R.id.cancel_btn);
         cancel.setVisibility(View.INVISIBLE);
 
-        back = (LinearLayout)findViewById(R.id.back_btn_layout);
+        back = findViewById(R.id.back_btn_layout);
         back.setOnClickListener(new set_back_listener());
 
-        Nickname = (TextView)findViewById(R.id.profile_helper_id);
-        Gender = (TextView)findViewById(R.id.profile_helper_gender);
-        Age = (TextView)findViewById(R.id.profile_helper_age);
-        Person1 = (TextView)findViewById(R.id.profile_helper_tag1);
-        Person2 = (TextView)findViewById(R.id.profile_helper_tag2);
-        Person3 = (TextView)findViewById(R.id.profile_helper_tag3);
-        Category_L = (TextView)findViewById(R.id.category_name);
-        Content_L = (TextView)findViewById(R.id.profile_asker_info);
-        Category = (TextView)findViewById(R.id.content_list_name);
-        Question_person = (TextView)findViewById(R.id.question_personality);
-        Weight = (ProgressBar)findViewById(R.id.user_weight);
-        Content = (TextView)findViewById(R.id.user_content_detail);
-        Want_gender = (TextView)findViewById(R.id.want_gender);
-        Want_person = (TextView)findViewById(R.id.want_person);
-        Want_exper = (TextView)findViewById(R.id.want_exper);
-        Emotion = (ProgressBar)findViewById(R.id.progress_emotion);
-        Advice = (ProgressBar)findViewById(R.id.progress_advise);
-        Experience = (ProgressBar)findViewById(R.id.progress_experience);
-        image = (ImageView)findViewById(R.id.profile_helper_img);
+        Nickname = findViewById(R.id.profile_helper_id);
+        Gender = findViewById(R.id.profile_helper_gender);
+        Age = findViewById(R.id.profile_helper_age);
+        Person1 = findViewById(R.id.profile_helper_tag1);
+        Person2 = findViewById(R.id.profile_helper_tag2);
+        Person3 = findViewById(R.id.profile_helper_tag3);
+        Category_L = findViewById(R.id.category_name);
+        Content_L = findViewById(R.id.profile_asker_info);
+        Category = findViewById(R.id.content_list_name);
+        Question_person = findViewById(R.id.question_personality);
+        Weight = findViewById(R.id.user_weight);
+        Content = findViewById(R.id.user_content_detail);
+        Want_gender = findViewById(R.id.want_gender);
+        Want_person = findViewById(R.id.want_person);
+        Want_exper = findViewById(R.id.want_exper);
+        Emotion = findViewById(R.id.progress_emotion);
+        Advice = findViewById(R.id.progress_advise);
+        Experience = findViewById(R.id.progress_experience);
+        image = findViewById(R.id.profile_helper_img);
 
         context = this;
-        request_btn = (Button)findViewById(R.id.floating_btn_request);
+        request_btn = findViewById(R.id.floating_btn_request);
         request_btn.setOnClickListener(new request_conversation());
 
         intent = getIntent();
@@ -260,6 +260,5 @@ public class AskerProfileActivity extends AppCompatActivity {
             dialog.dismiss();
         }
     };
-
 
 }

@@ -74,6 +74,8 @@ public class RegisterActivity_asker extends AppCompatActivity {
 
     EditText nickName;
     private FirebaseAuth mAuth;
+    Bundle bundle = new Bundle();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +104,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        SignupModel signupModel = new SignupModel();
+
 
         adapter = ArrayAdapter.createFromResource(this, R.array.Age_group, android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
@@ -176,6 +178,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 String toCheckAge = ageSpinner.getSelectedItem().toString();
                 userEmail = idText.getText().toString();
                 userPassword = passwordText.getText().toString();
@@ -194,20 +197,21 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     return;
                 }
 
-                userAge = Integer.parseInt(ageSpinner.getSelectedItem().toString());
-                signupModel.gender = userGender;
 
 
 
-                signupModel.setAge(userAge);
-                signupModel.setDevice_token("toTest");
-                signupModel.setEmail(userEmail);
-                signupModel.setNickname(userNickname);
-                signupModel.setPassword(userPassword);
+
+                bundle.putString("nickname",userNickname);
+                bundle.putString("email",userEmail);
+                bundle.putInt("age",userAge);
+                bundle.putString("password",userPassword);
+                bundle.putString("gender",userGender);
+
+                Intent intent = new Intent(getApplicationContext(),SignUpPersonalityActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
 
 
-                Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
-                call_helper.enqueue(retrofitCallback);
 
 
             }

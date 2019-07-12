@@ -26,9 +26,7 @@ public class MainFragment4 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-
         View view = inflater.inflate(R.layout.main_fragment4,null);
-
         setting = view.findViewById(R.id.fragment4_setting);
         setting.setOnClickListener(new setting_click());
         return view;
@@ -36,7 +34,6 @@ public class MainFragment4 extends Fragment {
 
 
     private class setting_click implements View.OnClickListener {
-
 
         @Override
         public void onClick(View view) {
