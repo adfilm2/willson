@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
-                android:text="질문자전환 "
+                android:text="질문자 전환 "
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
                 android:textColor="@color/dark_purple"

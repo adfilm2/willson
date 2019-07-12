@@ -97,7 +97,7 @@
                 android:layout_weight="1"
                 android:button="@color/trans"
                 android:background="@drawable/list_btns_selector"
-                android:text="심리"
+                android:text="자존감"
                 android:fontFamily="@font/nanum_square_r"
                 android:gravity="center"
                 android:textColor="@color/list_btns_text_selector"
