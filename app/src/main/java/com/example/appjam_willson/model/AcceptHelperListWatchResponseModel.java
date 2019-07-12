@@ -38,16 +38,16 @@ public class AcceptHelperListWatchResponseModel {
 
 
     public static class Data {
-        List<Accept_helper> helper;
+        Accept_helper helper;
         String[] experience;
 
         /*getter and setter start*/
 
-        public List<Accept_helper> getHelper() {
+        public Accept_helper getHelper() {
             return helper;
         }
 
-        public void setHelper(List<Accept_helper> helper) {
+        public void setHelper(Accept_helper helper) {
             this.helper = helper;
         }
 
@@ -58,7 +58,6 @@ public class AcceptHelperListWatchResponseModel {
         public void setExperience(String[] experience) {
             this.experience = experience;
         }
-
         /*getter and setter end*/
 
     }
@@ -147,9 +146,11 @@ public class AcceptHelperListWatchResponseModel {
         public void setHelper_idx(int helper_idx) {
             this.helper_idx = helper_idx;
         }
-
         /*getter and setter end*/
 
     }
+
+
+
 
 }

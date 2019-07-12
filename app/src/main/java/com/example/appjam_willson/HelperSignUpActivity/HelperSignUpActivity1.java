@@ -91,13 +91,13 @@ public class HelperSignUpActivity1 extends AppCompatActivity {
         btn.setVisibility(View.INVISIBLE);
 
         radioGroup_1 = (RadioGroup)findViewById(R.id.radioGroup1);
-        radioGroup_2 = (RadioGroup)findViewById(R.id.radioGroup2);
+        radioGroup_2 = (RadioGroup)findViewById(R.id.radioGroup2); // 이거는 activity_helper_profile_edit_c1 xml에 있는 것들     현재 activity는 helper_sign_up
         radioGroup_1.clearCheck();
         radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
         radioGroup_2.clearCheck();
         radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
 
-        oneside = (RadioButton)findViewById(R.id.btn_onesidelove);
+        oneside = (RadioButton)findViewById(R.id.btn_onesidelove);    // 이거는 activity_helper_sign_up1 xml에 있는게 맞긴한데 타입이 checkBox
         some = (RadioButton)findViewById(R.id.btn_somthing);
         conflict = (RadioButton)findViewById(R.id.btn_conflict);
         saygoodbye = (RadioButton)findViewById(R.id.btn_saygoodbye);
