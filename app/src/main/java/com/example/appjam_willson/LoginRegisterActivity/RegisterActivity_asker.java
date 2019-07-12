@@ -28,9 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
-import com.example.appjam_willson.model.SignupModel;
 import com.example.appjam_willson.model.SignupResponseModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -72,6 +70,8 @@ public class RegisterActivity_asker extends AppCompatActivity {
     Button register_btn;
     LinearLayout background;
 
+    LinearLayout back_btn;
+
     EditText nickName;
     private FirebaseAuth mAuth;
     Bundle bundle = new Bundle();
@@ -98,6 +98,14 @@ public class RegisterActivity_asker extends AppCompatActivity {
         final TextView checkBox_text = findViewById(R.id.registerasker_checkBox_text);
 
         register_btn = findViewById(R.id.register_btn);
+
+        back_btn = findViewById(R.id.back_btn_layout);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         background = findViewById(R.id.background_id);
         background.setOnClickListener(new background_listener());

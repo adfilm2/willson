@@ -3,7 +3,6 @@ package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
