@@ -160,8 +160,10 @@ public class AskerProfileActivity extends AppCompatActivity {
                 }
                 Want_person.setText(temp);
                 temp = "경험 : ";
-                for(int i = 0; i < result.getData().getQuestion().getQuestion_experience().size(); i++){
-                    temp += "#" + result.getData().getQuestion().getQuestion_experience().get(i).getExperience_name();
+                for(int i = 0; i < result.getData().getQuestion().getQuestion_experience().size(); i++) {
+                    if (result.getData().getQuestion().getQuestion_experience().get(i).getExperience_name() != null) {
+                        temp += "#" + result.getData().getQuestion().getQuestion_experience().get(i).getExperience_name();
+                    }
                 }
                 Emotion.setProgress(result.getData().getQuestion().getEmotion());
                 Advice.setProgress(result.getData().getQuestion().getAdvise());
