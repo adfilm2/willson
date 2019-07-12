@@ -63,6 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="닉네임님"
+                    android:paddingBottom="3dp"
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     android:id="@+id/fragment2_nickName"
@@ -163,8 +164,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="55.8dp"
-        android:layout_marginRight="55.8dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:layout_marginBottom="13.4dp">

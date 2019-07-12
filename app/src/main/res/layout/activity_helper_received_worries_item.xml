@@ -165,7 +165,7 @@
                         android:textColor="@color/black"
                         android:id="@+id/helper_fragment1_gender"
                         android:textStyle="normal"
-                        android:fontFamily="@font/nanum_square_r"
+                        android:fontFamily="@font/nanum_square_round_r"
                         />
 
                     <TextView
@@ -177,7 +177,7 @@
                         android:textColor="@color/black"
                         android:id="@+id/helper_fragment1_age"
                         android:textStyle="normal"
-                        android:fontFamily="@font/nanum_square_r"
+                        android:fontFamily="@font/nanum_square_round_r"
                         />
 
 
@@ -236,9 +236,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:gravity="center"
                 android:lineSpacingExtra="7sp"
                 android:id="@+id/helper_fragment1_information"
-                android:text='“단짝 친구의 남동생을 좋아하고 있어요. 아무에\n게도 말 못하고 혼자 끙끙 앓고 있는데 제가 느…“'
+                android:text='“단짝 친구의 남동생을 좋아하고 있어요. 아무에게도 말 못하고 혼자 끙끙 앓고 있는데 제가 느…“'
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:maxLines="2"
@@ -246,7 +247,7 @@
                 android:layout_marginLeft="14.4dp"
                 android:layout_marginRight="14.4dp"
                 android:textStyle="normal"
-                android:fontFamily="@font/nanum_square_b"
+                android:fontFamily="@font/nanum_square_round_b"
                 />
 
             <Button
