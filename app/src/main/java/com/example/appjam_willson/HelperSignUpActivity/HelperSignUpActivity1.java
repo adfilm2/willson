@@ -107,7 +107,7 @@ public class HelperSignUpActivity1 extends AppCompatActivity {
         conflict.setTypeface(typereg);
         saygoodbye.setTypeface(typereg);
 
-        custom_text = findViewById(R.id.btn_usercustom);
+        custom_text = findViewById(R.id.btn_user_custom_layout);
         custom_text.setOnClickListener(new custom_btn_listener());
 
         usercustom_layout = findViewById(R.id.btn_user_custom_layout);
