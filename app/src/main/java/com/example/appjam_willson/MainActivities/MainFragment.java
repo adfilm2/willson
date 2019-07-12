@@ -6,12 +6,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +29,9 @@ import com.example.appjam_willson.FillinListActivity.List1LoveStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1MentalityStartActivity;
 import com.example.appjam_willson.FillinListActivity.List1RelationshipsStartActivity;
 import com.example.appjam_willson.HelperSignUpActivity.HelperSignUpStartActivity;
+import com.example.appjam_willson.LoginRegisterActivity.LoginActivity;
 import com.example.appjam_willson.NetworkService.RetrofitService;
+import com.example.appjam_willson.PopUp.MainFragment_CustomDialog;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.CreateWorryModel;
 import com.example.appjam_willson.model.CreateWorryResponseModel;
@@ -76,6 +74,8 @@ public class MainFragment extends Fragment {
     private LinearLayoutManager reviewLayoutManager;
     private List<MainReviewModel.ReviewData> reviewAdapterModels;
 
+    private MainFragment_CustomDialog dialog;
+
     int question_idx;
     Bundle bundle;
 
@@ -85,7 +85,6 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.main_fragment1,null);
         LinearLayout firstContent = view.findViewById(R.id.fragment1_firstContent);
         LinearLayout secondContent = view.findViewById(R.id.fragment1_secondContent);
@@ -108,48 +107,79 @@ public class MainFragment extends Fragment {
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), List1LoveStartActivity.class);
-                startActivityForResult(intent, REQUEST_CODE_LOVE);
+
+                if(ApplicationFields.userToken != null) {
+                    Intent intent = new Intent(getActivity(), List1LoveStartActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE_LOVE);
+                }
+                else {
+                    Dialog();
+                }
             }
         });
 
         secondContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), List1CourseStartActivity.class);
-                startActivityForResult(intent, REQUEST_CODE_COURSE);
+                if(ApplicationFields.userToken != null) {
+                    Intent intent = new Intent(getActivity(), List1CourseStartActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE_COURSE);
+                }
+                else {
+                    Dialog();
+                }
             }
         });
 
         thirdContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), List1MentalityStartActivity.class);
-                startActivityForResult(intent, REQUEST_CODE_MENTAL);
+                if(ApplicationFields.userToken != null) {
+                    Intent intent = new Intent(getActivity(), List1MentalityStartActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE_MENTAL);
+                }
+                else{
+                    Dialog();
+                }
             }
         });
 
         fourthContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), List1RelationshipsStartActivity.class);
-                startActivityForResult(intent, REQUEST_CODE_RELATION);
+                if(ApplicationFields.userToken != null) {
+                    Intent intent = new Intent(getActivity(), List1RelationshipsStartActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE_RELATION);
+                }
+                else{
+                    Dialog();
+                }
             }
         });
 
         fifthContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), List1DailyStartActivity.class);
-                startActivityForResult(intent, REQUEST_CODE_DAILY);
+                if(ApplicationFields.userToken != null) {
+                    Intent intent = new Intent(getActivity(), List1DailyStartActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE_DAILY);
+                }
+                else{
+                    Dialog();
+                }
             }
         });
 
         sixthContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), List1EtcStartActivity.class);
-                startActivityForResult(intent, REQUEST_CODE_ETC);
+                if(ApplicationFields.userToken != null) {
+                    Intent intent = new Intent(getActivity(), List1EtcStartActivity.class);
+                    startActivityForResult(intent, REQUEST_CODE_ETC);
+                }
+                else{
+                    Dialog();
+                }
             }
         });
 
@@ -301,15 +331,37 @@ public class MainFragment extends Fragment {
 
             }
         }
-        else if(requestCode == REQUEST){
-            Intent intent = new Intent(getActivity(),HelperActivity.class);
-            startActivity(intent);
-        }
 
 
     }
 
+    public void Dialog() {
+        dialog = new MainFragment_CustomDialog(getContext(),
+                "로그인 후 이용하실 수 있어요!", "로그인 하러가기", "그만하기", keepListener, exitListener);
 
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener keepListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener exitListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+          /*  Intent intent = new Intent();
+            setResult(RESULT_CANCELED, intent);
+            finish();*/
+        }
+    };
 
     //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로
 

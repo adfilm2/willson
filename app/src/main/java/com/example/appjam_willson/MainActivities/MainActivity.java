@@ -35,6 +35,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     int question_idx;
+    String token;
 
     static ImageView image_home;
     static ImageView image_request;
@@ -51,9 +52,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+/*
+        if(SaveSharedPreference.getUserToken(MainActivity.this) != null) {
+            ApplicationFields.userToken = SaveSharedPreference.getUserToken(MainActivity.this);
+        }
+
+        *//*SaveSharedPreference.clearUserToken(MainActivity.this);*//*
+        Log.d("usertoken", ">>>>>>>>>>>>." + ApplicationFields.userToken);
+        Log.d("usertoken_sharedddddd", ">>>>>>>>>>>." + SaveSharedPreference.getUserToken(MainActivity.this));
+
+        */
+
+  /*      if(ApplicationFields.userToken == null){
+            ApplicationFields.userToken = getSharedPreferences("UserToken", MODE_PRIVATE);
+            load();
+        }
+
+        if(saveLoginData) {
+            ApplicationFields.userToken = UserToken;
+        }
+*/
+
+        Log.d("usertoken_applicationfields", ">>>>>>>>>>>>." + ApplicationFields.userToken);
+
+
+        token = ApplicationFields.userToken;
 
         intent = getIntent();
+/*
 
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6zshLEiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3OTk0ODcsImV4cCI6MTU3MTQzOTQ4NywiaXNzIjoid2lsbHNvbiJ9.l2Slk87lEK8Ne_SUMiiIfsXVSuUDfa5VWaeyE3PmZIs";
+*/
 
         final LinearLayout button1 = findViewById(R.id.layout_home);
         final LinearLayout button2 = findViewById(R.id.layout_request);

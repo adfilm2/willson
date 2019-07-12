@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="188.6dp"
         android:layout_marginTop="34.4dp"
-        android:background="@drawable/fragment1_profile_box">
+        android:layout_marginHorizontal="37.3dp"
+        android:background="@drawable/fragment1_profile_box"
+        >
 
     </RelativeLayout>
     <ImageView
@@ -28,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="9.6dp"
+        android:layout_marginHorizontal="37.3dp"
         android:layout_below="@+id/fragment1_story_img"
         android:orientation="vertical"
         >
@@ -71,8 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="20.1dp"
-            android:layout_marginRight="20.1dp"
+            android:layout_marginHorizontal="20.1dp"
             >
             <TextView
                 android:layout_width="match_parent"

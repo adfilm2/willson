@@ -5,8 +5,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="21dp"
-    android:layout_marginRight="26.9dp"
     >
 
     <LinearLayout
@@ -14,6 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/fragment1_story_img"
         android:orientation="vertical"
+        android:layout_marginHorizontal="37.3dp"
+        android:background="@drawable/background_white_radius5"
+        android:elevation="2dp"
         >
 
 
@@ -24,6 +25,7 @@
             android:layout_marginBottom="17.2dp"
             android:orientation="horizontal"
             android:gravity="center"
+            android:layout_marginHorizontal="14dp"
             >
             <TextView
                 android:layout_width="wrap_content"
@@ -48,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="14dp"
+            android:layout_marginHorizontal="14dp"
             >
             <TextView
                 android:layout_width="match_parent"
@@ -63,10 +65,15 @@
                 android:gravity="center"
                 />
 
+            <View style="@style/Divider2"
+                android:layout_marginBottom="9dp"
+                />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_marginBottom="22dp"
                 android:id="@+id/fragment1_review_userInfo"
                 android:text="- 기계과 전공으로 진로에 대해 고민 중인 릴라님-"
                 android:textSize="13sp"

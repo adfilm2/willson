@@ -37,6 +37,8 @@ public class HelperProfileEditActivityExp extends AppCompatActivity {
     TextView text;
     ImageView btn;
 
+    LinearLayout cancelbtn;
+
     private OneTextTwoButton_CustomDialog dialog;
     LinearLayout list4_cancelbtn;
     LinearLayout list4_backbtn;

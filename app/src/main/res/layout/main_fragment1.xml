@@ -371,8 +371,7 @@
                 android:id="@+id/fragment1_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="36.4dp"
-                android:layout_marginRight="37.3dp">
+                >
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -422,8 +421,6 @@
                 android:id="@+id/fragment1_rv_second"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="36.4dp"
-                android:layout_marginRight="37.3dp"
                 >
             </androidx.recyclerview.widget.RecyclerView>
 

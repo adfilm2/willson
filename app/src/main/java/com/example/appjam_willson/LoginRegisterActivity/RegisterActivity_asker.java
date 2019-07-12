@@ -62,6 +62,11 @@ public class RegisterActivity_asker extends AppCompatActivity {
     private ArrayAdapter adapter;
     private int userAge;
     private String userGender;
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference("askerUsers");
+
+
     RadioGroup genderGroup;
 
     Button register_btn;
@@ -218,7 +223,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 if(checkBox.isChecked()){
                     completeButton.setEnabled(true);
                     checkBox_text.setTextColor(Color.parseColor("#37376d"));
-
                 }
                 else{
                     completeButton.setEnabled(false);
@@ -286,7 +290,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
                             DatabaseReference myRef = database.getReference("askerUsers");
 
-                            String uid = user.getUid();
+                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
                             Map<String, String> profile = new HashMap<>();
                             profile.put("photo", "");
@@ -345,6 +349,16 @@ public class RegisterActivity_asker extends AppCompatActivity {
             }
             if(response.code() == 200 && result.code ==100) {
                 showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
+
+//                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+//                Map<String, String> profile = new HashMap<>();
+//                profile.put("photo", "");
+//                profile.put("uid",uid);
+//                profile.put("nickName",userNickname);
+//                myRef.child(userNickname).setValue(profile);
+//                myRef.child(uid).setValue(profile);
+
+
                 Intent intent = new Intent(RegisterActivity_asker.this, LoginActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"가입이 완료되었습니다! 로그인 화면으로 돌아갑니다 ><",Toast.LENGTH_SHORT).show();

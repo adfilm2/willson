@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/rounded_corner"
     android:orientation="vertical"
-    android:layout_width="341.11dp"
+    android:layout_width="310.1dp"
     android:layout_height="wrap_content"
     >
 
@@ -23,8 +23,9 @@
                 android:layout_width="91dp"
                 android:layout_height="80dp"
                 android:id="@+id/list_pop_image"
-                android:layout_gravity="center"
-                android:src="@drawable/list_img_alert_willson"/>
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:src="@drawable/chat_img_finishwillson"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,7 +44,7 @@
                 />
 
             <Button
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="183dp"
                 android:layout_height="38dp"
                 android:id="@+id/list_pop_keepbtn"
@@ -53,6 +54,7 @@
                 android:textSize="16sp"
                 android:elevation="8dp"
                 android:textStyle="normal"
+                android:gravity="center"
                 android:fontFamily="@font/nanum_square_eb"/>
 
             <TextView
@@ -62,6 +64,7 @@
                 android:textColor="@color/brownish_grey"
                 android:layout_gravity="center"
                 android:text="그만하기"
+                android:gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20.7dp"
                 android:id="@+id/list_pop_exitbtn"

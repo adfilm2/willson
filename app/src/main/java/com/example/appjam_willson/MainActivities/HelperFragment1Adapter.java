@@ -61,7 +61,6 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
             viewHolder.userAge.setText(dataModels.get(i).getUserInfo().getAge() + ")");
         }
         else if(dataModels.get(i).getQuestionInfo().getSelected().equals("Y") && dataModels.get(i).getUserInfo().getGender() != null){
-            /*viewHolder.Nickname.setText(willsonModels.get(i).getUid());*/
             viewHolder.userAge.setText(dataModels.get(i).getUserInfo().getAge() + ")");
         }
         //주제
@@ -85,6 +84,8 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
 
         if(dataModels.get(i).getQuestionInfo().getSelected().equals("N")){
             viewHolder.goProfile.setEnabled(true);
+            viewHolder.goProfile.setText("프로필 보기");
+            viewHolder.timer.setVisibility(View.VISIBLE);
         }
         else if(dataModels.get(i).getQuestionInfo().getSelected().equals("Y")){
             viewHolder.goProfile.setEnabled(false);
