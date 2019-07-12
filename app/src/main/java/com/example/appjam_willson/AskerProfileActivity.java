@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.TwoTextOneButton_CustomDialog;
 import com.example.appjam_willson.model.SendRequestModel;
@@ -117,7 +118,10 @@ public class AskerProfileActivity extends AppCompatActivity {
       /*  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
 *///그전 token
 
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
+        /*token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
+*/
+
+        token = ApplicationFields.userToken;
 
         Call<UserProfileWatchResponseModel> user_profile = RetrofitService.getInstance().getService().get_user_profile(question_idx);
         user_profile.enqueue(retrofitCallback);
@@ -129,10 +133,11 @@ public class AskerProfileActivity extends AppCompatActivity {
         public void onResponse(Call<UserProfileWatchResponseModel> call, Response<UserProfileWatchResponseModel> response) {
             UserProfileWatchResponseModel result = response.body();
 
-            if(result.getCode() == 300){
+            if(response.code() == 200 && result.getCode() == 300 && result.getData().getUser() != null){
 
                 Nickname.setText(result.getData().getUser().getNickname());
                 Log.d("이거 유저 닉네임", result.getData().getUser().getNickname());
+
                 if(result.getData().getUser().getGender().equals("여성")){
                     image.setImageResource(R.drawable.helper_img_profile_woman);
                 }
@@ -175,6 +180,10 @@ public class AskerProfileActivity extends AppCompatActivity {
                 Experience.setProgress(result.getData().getQuestion().getExperience());
 
             }
+            else{
+
+            }
+
         }
 
         @Override
