@@ -68,7 +68,6 @@ public class MainFragment extends Fragment {
     private RecyclerView storyRecyclerView;
     private LinearLayoutManager storyLayoutManager;
     private List<HelperStoryModel.story> storyAdapterModels;
-//    private List<MainReviewModel.ReviewData> reviewAdapterModels;
 
     private ReviewAdapter reviewAdapter;
     private RecyclerView reviewRecyclerView;
@@ -287,7 +286,6 @@ public class MainFragment extends Fragment {
                         @Override
                         public void onFailure(Call<CreateWorryResponseModel> call, Throwable t) {
                             t.printStackTrace();
-                            Log.d("메인 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                         }
                     });
                 case RESULT_CANCELED:
@@ -335,14 +333,12 @@ public class MainFragment extends Fragment {
 
             for (int i = 0; i < result.getData().size(); i++) {
                 reviewAdapterModels.add(result.getData().get(i));
-//            }
                 reviewAdapter.notifyDataSetChanged();
             }
         }
         @Override
         public void onFailure(Call<MainReviewModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
 }

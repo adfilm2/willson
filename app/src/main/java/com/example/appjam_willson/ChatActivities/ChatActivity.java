@@ -209,8 +209,6 @@ public class ChatActivity extends AppCompatActivity {
             }
 
             else {
-//                View view_end = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_end, parent, false);
-//                return new EndMsgViewHolder(view_end);
                 throw new RuntimeException("this type is not One or Two");
             }
         }
