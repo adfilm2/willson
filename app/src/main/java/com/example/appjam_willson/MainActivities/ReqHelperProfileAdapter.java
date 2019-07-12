@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -98,7 +98,7 @@ public class ReqHelperProfileAdapter extends RecyclerView.Adapter<ReqHelperProfi
         public TextView userAge;
         public TextView userSubject;
         public TextView userInformation;
-        public LinearLayout goProfile;
+        public Button goProfile;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -107,7 +107,7 @@ public class ReqHelperProfileAdapter extends RecyclerView.Adapter<ReqHelperProfi
             userAge = itemView.findViewById(R.id.helper_fragment1_age);
             userSubject = itemView.findViewById(R.id.helper_fragment1_subject);
             userInformation = itemView.findViewById(R.id.helper_fragment1_information);
-            goProfile = itemView.findViewById(R.id.helper_fragment1_profile);
+            goProfile = itemView.findViewById(R.id.helper_profile_detail_btn);
         }
     }
 }

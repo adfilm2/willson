@@ -34,8 +34,8 @@ android:background="#ffffff">
 
 
 
-    <Button
-        android:id="@+id/helper_editc2_1"
+    <RadioButton
+        android:id="@+id/btn_onesidelove"
         android:layout_width="153dp"
         android:layout_height="49dp"
         android:layout_marginLeft="24.8dp"
@@ -53,8 +53,8 @@ android:background="#ffffff">
         android:textColorLink="@color/list_btns_text_selector"
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/helper_editc2_2"
+    <RadioButton
+        android:id="@+id/btn_somthing"
         android:layout_width="153dp"
         android:layout_height="match_parent"
         android:layout_marginRight="27dp"
@@ -80,8 +80,8 @@ android:background="#ffffff">
 
 
 
-    <Button
-        android:id="@+id/helper_editc2_3"
+    <RadioButton
+        android:id="@+id/btn_conflict"
         android:layout_width="1dp"
         android:layout_height="49dp"
         android:layout_marginLeft="24.8dp"
@@ -99,8 +99,8 @@ android:background="#ffffff">
         android:layout_marginBottom="9.2dp"
         android:elevation="9dp"/>
 
-    <Button
-        android:id="@+id/helper_editc2_4"
+    <RadioButton
+        android:id="@+id/btn_saygoodbye"
         android:layout_width="1dp"
         android:layout_height="49dp"
         android:layout_marginRight="27dp"
@@ -130,7 +130,7 @@ android:background="#ffffff">
         android:layout_marginLeft="24.8dp"
         android:layout_marginRight="12.5dp"
         android:background="@drawable/list_btns_selector"
-        android:id="@+id/list1_daily_btn_usercustom_layout"
+        android:id="@+id/btn_usercustom_layout"
         android:layout_weight="1"
         android:layout_marginBottom="20dp"
         android:elevation="9dp">
@@ -143,7 +143,7 @@ android:background="#ffffff">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/list1_daily_btn_usercustom"
+                android:id="@+id/btn_user_custom_layout"
                 android:gravity="center">
 
                 <TextView
@@ -176,7 +176,7 @@ android:background="#ffffff">
                 android:singleLine="true"
                 android:maxLength="8"
                 android:textColor="@color/lightPurple"
-                android:id="@+id/helper_editc2_textedit"
+                android:id="@+id/usercustom_edittext"
                 />
         </FrameLayout>
     </LinearLayout>
