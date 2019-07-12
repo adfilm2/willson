@@ -1,6 +1,7 @@
 package com.example.appjam_willson.MainActivities;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.R;
 
 public class MainFragment2_null extends Fragment {
@@ -21,20 +23,21 @@ public class MainFragment2_null extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment2_null,null);
-        if(getArguments() != null){
-            int question_idx = getArguments().getInt("question_idx");
-        }
 
-            LinearLayout linearLayout = view.findViewById(R.id.fragment2_null_goHome);
-            linearLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MainFragment fragment = new MainFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
-                    /*getActivity().finish();*/
-                }
-            });
-            return view;
+        LinearLayout linearLayout = view.findViewById(R.id.fragment2_null_goHome);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ApplicationFields.home.setSelected(true);
+                ApplicationFields.request.setSelected(false);
+                ApplicationFields.hometxt.setTextColor(Color.parseColor("#2f2f2f"));
+                ApplicationFields.requesttxt.setTextColor(Color.parseColor("#9e9e9e"));
+
+                MainFragment fragment = new MainFragment();
+                getFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
+            }
+        });
+        return view;
     }
 
 }

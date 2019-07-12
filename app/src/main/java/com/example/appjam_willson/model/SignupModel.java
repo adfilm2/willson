@@ -9,6 +9,7 @@ public class SignupModel {
         public String email;
         public String password;
         public String device_token;
+        public String uid;
         public int[] personality_idx;
 
     public String getNickname() {
