@@ -20,13 +20,13 @@ import java.util.List;
 
 public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adapter.ViewHolder> {
 
-    private List<AcceptHelperListWatchResponseModel.Data> dataModels;
+    private List<AcceptHelperListWatchResponseModel.Helper_list> dataModels;
     private Context context;
 
     int helper_idx;
     int question_idx;
 
-    public MainFragment2Adapter(List<AcceptHelperListWatchResponseModel.Data> dataModels, Context context){
+    public MainFragment2Adapter(List<AcceptHelperListWatchResponseModel.Helper_list> dataModels, Context context){
         this.dataModels = dataModels;
         this.context = context;
     }
@@ -41,8 +41,9 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
-        question_idx = MainFragment2.question_idx;
-        Log.d("question 2어댑터임" , ">>>>>>>>>>"+question_idx);
+
+        String[] category_list = {"연애","진로","자존감","인간관계","일상","기타"};
+
 //        닉네임
         if(dataModels.get(i).getHelper().getNickname() != null) {
             viewHolder.Nickname.setText(dataModels.get(i).getHelper().getNickname());
@@ -65,12 +66,9 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
 
         }
         //주제
-        if(dataModels.get(i).getHelper().getCategory_name() != null) {
-            viewHolder.Subject.setText(dataModels.get(i).getHelper().getCategory_name());
-           /* viewHolder.userSubjectStroke.setBackgroundResource(R.drawable.rounded_corner_radius15);*/
-        }
-        else {
-        }
+        int categoryNum = dataModels.get(i).getHelper().getCategory_idx();
+        viewHolder.Subject.setText(category_list[categoryNum]);
+
         //경험정보
         if(dataModels.get(i).getHelper().getContent() != null) {
             viewHolder.Information.setText('"' + dataModels.get(i).getHelper().getContent() + '"');
@@ -88,23 +86,23 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
         }
 
         //경험
-        if(dataModels.get(i).getExperience().length != 0) {
-            String[] exp = dataModels.get(i).getExperience();
-            switch (exp.length) {
+        if(dataModels.get(i).getExperience().size() != 0) {
+            List<String> exp = dataModels.get(i).getExperience();
+            switch (exp.size()) {
                 case 1:
-                    viewHolder.exp1.setText("#" + exp[0]);
+                    viewHolder.exp1.setText("#" + exp.get(0));
                     viewHolder.exp2.setVisibility(View.GONE);
                     viewHolder.exp3.setVisibility(View.GONE);
                     break;
                 case 2:
-                    viewHolder.exp1.setText("#" + exp[0]);
-                    viewHolder.exp2.setText("#" + exp[1]);
+                    viewHolder.exp1.setText("#" + exp.get(0));
+                    viewHolder.exp2.setText("#" + exp.get(1));
                     viewHolder.exp3.setVisibility(View.GONE);
                     break;
                 case 3:
-                    viewHolder.exp1.setText("#" + exp[0]);
-                    viewHolder.exp2.setText("#" + exp[1]);
-                    viewHolder.exp3.setText("#" + exp[2]);
+                    viewHolder.exp1.setText("#" + exp.get(0));
+                    viewHolder.exp2.setText("#" + exp.get(1));
+                    viewHolder.exp3.setText("#" + exp.get(2));
                     break;
                 default:
                     break;
@@ -117,8 +115,8 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
         viewHolder.goProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*int helper_idx = dataModels.getHelper();*/
 
+                /*int helper_idx = dataModels.getHelper();*/
                 /*int helper_idx = 1;*/
                 helper_idx = dataModels.get(i).getHelper().getHelper_idx();
                 Intent intent = new Intent(v.getContext(), HelperProfileActivity.class);
@@ -126,7 +124,6 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
                 intent.putExtra("question_idx", question_idx);
                 context.startActivity(intent);
             }
-
         });
     }
 
