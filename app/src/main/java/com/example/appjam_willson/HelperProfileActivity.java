@@ -107,13 +107,21 @@ public class HelperProfileActivity extends AppCompatActivity {
             int helper_idx = 1;*/
             String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
 
-            ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
+              ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
+            choiceHelperModel.setQuestion_idx(question_idx);
+            choiceHelperModel.setHelper_idx(helper_idx);
+            Log.d("qesution_idxidxidx_헬퍼 결정", String.valueOf(question_idx));
+            Log.d("helper_idxidxidx_헬퍼 결정!!!!!!!", String.valueOf(helper_idx));
+            Call<ChoiceHelperResponseModel> send_request = RetrofitService.getInstance().getService().choice_helper_post(token, choiceHelperModel);
+            send_request.enqueue(retrofit_Callback);
+
+            /*ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
             choiceHelperModel.setQuestion_idx(question_idx);
             Log.d("qesution_idxidxidx", String.valueOf(question_idx));
             choiceHelperModel.setHelper_idx(helper_idx);
 
             Call<ChoiceHelperResponseModel> send_request = RetrofitService.getInstance().getService().choice_helper_post(token, choiceHelperModel);
-            send_request.enqueue(retrofit_Callback);
+            send_request.enqueue(retrofit_Callback);*/
 
         }
     }
