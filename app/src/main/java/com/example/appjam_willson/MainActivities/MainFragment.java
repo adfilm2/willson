@@ -104,7 +104,6 @@ public class MainFragment extends Fragment {
         Call<MainReviewModel> call_review = RetrofitService.getInstance().getService().main_review_get(ApplicationFields.userToken);
         call_review.enqueue(review_retrofitCallback);
 
-
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
