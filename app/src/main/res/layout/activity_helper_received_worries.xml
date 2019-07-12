@@ -4,69 +4,72 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content">
 
-    <ImageView
-        android:layout_height="27.8dp"
-        android:layout_width="82.3dp"
-        android:src="@drawable/img_logo"
-        android:layout_marginTop="46dp"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right|bottom"
+        android:layout_marginTop="44.6dp"
+        android:layout_marginBottom="135.4dp"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="right|bottom"
+            android:id="@+id/helper_change_btn">
+
+            <ImageView
+                android:layout_width="17.2dp"
+                android:layout_height="17.2dp"
+                android:src="@drawable/btn_switch"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="@color/dark_purple"
+                android:lineSpacingExtra="1sp"
+                android:text="질문자전환"
+                android:layout_gravity="center_vertical"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
+                />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="15.8dp"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right|bottom"
-            android:layout_marginTop="44.6dp"
-            android:layout_marginBottom="135.4dp"
-            >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="right|bottom"
-                android:id="@+id/helper_change_btn">
-
-                <ImageView
-                    android:layout_width="17.2dp"
-                    android:layout_height="17.2dp"
-                    android:src="@drawable/btn_switch"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11sp"
-                    android:textColor="@color/dark_purple"
-                    android:lineSpacingExtra="1sp"
-                    android:text="질문자전환"
-                    android:layout_gravity="center_vertical"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/nanum_square_b"
-                    />
-
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="match_parent"
-                    />
-            </LinearLayout>
-
-            <View
-                android:layout_width="15.8dp"
-                android:layout_height="match_parent"
-                />
-
-        </LinearLayout>
+        <ImageView
+            android:layout_height="37dp"
+            android:layout_width="108dp"
+            android:src="@drawable/img_logo"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="46dp"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="42.9dp"
             android:orientation="vertical"
             android:layout_marginLeft="20.2dp"
             >

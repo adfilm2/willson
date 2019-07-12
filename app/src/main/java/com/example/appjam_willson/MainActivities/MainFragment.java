@@ -91,9 +91,9 @@ public class MainFragment extends Fragment {
         LinearLayout fourthContent = view.findViewById(R.id.fragment1_fourthContent);
         LinearLayout fifthContent = view.findViewById(R.id.fragment1_fifthContent);
         LinearLayout sixthContent = view.findViewById(R.id.fragment1_sixthContent);
-        TextView main_fragment1_text = view.findViewById(R.id.main_fragment1_text);
+ /*       TextView main_fragment1_text = view.findViewById(R.id.main_fragment1_text);
         TextView main_fragment1_textSecond = view.findViewById(R.id.main_fragment1_textSecond);
-        TextView main_fragment1_textThird = view.findViewById(R.id.main_fragment1_textThird);
+        TextView main_fragment1_textThird = view.findViewById(R.id.main_fragment1_textThird);*/
         storyRecyclerView = view.findViewById(R.id.fragment1_rv);
         reviewRecyclerView = view.findViewById(R.id.fragment1_rv_second);
 
@@ -205,9 +205,9 @@ public class MainFragment extends Fragment {
 //        reviewAdapter.registerAdapterDataObserver(indicator_second.getAdapterDataObserver());
 
         //Text들의 특정 위치 색, 타입을 바꿔주는 메소드
-        changeText(main_fragment1_text,7,9,"#5252a1");
+/*        changeText(main_fragment1_text,7,9,"#5252a1");
         changeText(main_fragment1_textSecond,0,2,"#ffc326");
-        changeText(main_fragment1_textThird,6,8,"#5252a1");
+        changeText(main_fragment1_textThird,6,8,"#5252a1");*/
 
         return view;
     }

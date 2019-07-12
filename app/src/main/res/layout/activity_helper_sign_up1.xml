@@ -35,7 +35,7 @@
 
 
         <CheckBox
-            android:id="@+id/helperSU_btn_love1"
+            android:id="@+id/btn_onesidelove"
             android:layout_width="153dp"
             android:layout_height="49dp"
             android:layout_marginLeft="24.8dp"
@@ -54,7 +54,7 @@
             android:textSize="16sp" />
 
         <CheckBox
-            android:id="@+id/helperSU_btn_love2"
+            android:id="@+id/btn_somthing"
             android:layout_width="153dp"
             android:fontFamily="@font/nanum_square_r"
             android:layout_height="match_parent"
@@ -81,7 +81,7 @@
 
 
         <CheckBox
-            android:id="@+id/helperSU_btn_love3"
+            android:id="@+id/btn_conflict"
             android:layout_width="1dp"
             android:layout_height="49dp"
             android:fontFamily="@font/nanum_square_r"
@@ -100,7 +100,7 @@
             android:elevation="9dp"/>
 
         <CheckBox
-            android:id="@+id/helperSU_btn_love4"
+            android:id="@+id/btn_saygoodbye"
             android:layout_width="1dp"
             android:layout_height="49dp"
             android:layout_marginRight="27dp"
@@ -134,7 +134,7 @@
             android:layout_marginLeft="24.8dp"
             android:layout_marginRight="12.5dp"
             android:background="@drawable/list_btns_selector"
-            android:id="@+id/HSU_usercustom_layout"
+            android:id="@+id/usercustom_layout"
             android:layout_weight="1"
             android:layout_marginBottom="20dp"
             android:elevation="9dp">
@@ -147,7 +147,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/list1_daily_btn_usercustom"
+                    android:id="@+id/btn_usercustom"
                     android:gravity="center">
 
                     <TextView

@@ -33,13 +33,13 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/helperSU_radioGroup1"
+            android:id="@+id/radioGroup1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/helperSU_btn_love"
+                android:id="@+id/btn_love"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
@@ -58,7 +58,7 @@
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/helperSU_btn_dream"
+                android:id="@+id/btn_course"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
@@ -83,13 +83,13 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/helperSU_radioGroup2"
+            android:id="@+id/radioGroup2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/helperSU_btn_mind"
+                android:id="@+id/btn_mind"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
@@ -108,7 +108,7 @@
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/helperSU_btn_relationship"
+                android:id="@+id/btn_rela"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
@@ -135,13 +135,13 @@
         android:orientation="vertical">
 
         <RadioGroup
-            android:id="@+id/helperSU_radioGroup3"
+            android:id="@+id/radioGroup3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/helperSU_btn_life"
+                android:id="@+id/btn_life"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginLeft="24.8dp"
@@ -160,7 +160,7 @@
                 android:elevation="9dp"/>
 
             <RadioButton
-                android:id="@+id/helperSU_btn_etc"
+                android:id="@+id/btn_guitar"
                 android:layout_width="1dp"
                 android:layout_height="49dp"
                 android:layout_marginRight="27dp"
