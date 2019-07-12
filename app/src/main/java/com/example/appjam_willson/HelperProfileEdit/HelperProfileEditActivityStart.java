@@ -22,6 +22,11 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
         setContentView(R.layout.activity_helper_profile_edit_start);
 
 
+        ImageView btn_back;
+        btn_back = (ImageView) findViewById(R.id.back_btn);
+        btn_back.setOnClickListener(new HelperProfileEditActivityStart.backbtn_listener());
+
+
         Button button1 = findViewById(R.id.h_edit_btn1);
         Button button2 = findViewById(R.id.h_edit_btn2);
         Button button3 = findViewById(R.id.h_edit_btn3); //helperSU_btn_life helperSU_btn_etc
@@ -76,6 +81,14 @@ public class HelperProfileEditActivityStart extends AppCompatActivity {
         });
 
 
+    }
+
+
+    class backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
     }
 
 }
