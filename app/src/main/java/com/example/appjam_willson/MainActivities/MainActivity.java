@@ -32,6 +32,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.appjam_willson.ApplicationField.ApplicationFields.myQuestion_idx;
+
 public class MainActivity extends AppCompatActivity {
 
     int question_idx;
@@ -101,9 +103,15 @@ public class MainActivity extends AppCompatActivity {
                 changeTextColor(text_request, text_home, text_chat, text_mypage);
                 /*int question_idx = 1;*/
 
-                Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
+                if(myQuestion_idx != 0){
+                    checkMatch(token);
+                }
+
+                checkMatch(token);
+
+              /*  Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
                 accept_helper.enqueue(retrofitCallback);
-                Log.d("버튼눌썻슴ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅡ", "버튼ㄴㄴㄴㄴㄴㄴㄴㄴㄴ");
+                Log.d("버튼눌썻슴ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅡ", "버튼ㄴㄴㄴㄴㄴㄴㄴㄴㄴ");*/
 
 
 //                MainFragment2 fragment = new MainFragment2();

@@ -6,7 +6,7 @@ public class AcceptHelperListWatchResponseModel {
 
     public int code;
     public String message;
-    public Data data;
+    public List<Data> data;
 
     /*getter and setter start*/
 
@@ -26,11 +26,11 @@ public class AcceptHelperListWatchResponseModel {
         this.message = message;
     }
 
-    public Data getData() {
+    public List<Data> getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(List<Data> data) {
         this.data = data;
     }
 
@@ -39,7 +39,7 @@ public class AcceptHelperListWatchResponseModel {
 
     public static class Data {
         List<Accept_helper> helper;
-        List<Accept_Experience> experience;
+        String[] experience;
 
         /*getter and setter start*/
 
@@ -51,11 +51,11 @@ public class AcceptHelperListWatchResponseModel {
             this.helper = helper;
         }
 
-        public List<Accept_Experience> getExperience() {
+        public String[] getExperience() {
             return experience;
         }
 
-        public void setExperience(List<Accept_Experience> experience) {
+        public void setExperience(String[] experience) {
             this.experience = experience;
         }
 
@@ -68,6 +68,7 @@ public class AcceptHelperListWatchResponseModel {
         String gender;
         String age;
         String category_name;
+        String title;
         String content;
         String stars;
         String review_count;
@@ -107,6 +108,14 @@ public class AcceptHelperListWatchResponseModel {
             this.category_name = category_name;
         }
 
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
         public String getContent() {
             return content;
         }
@@ -142,23 +151,5 @@ public class AcceptHelperListWatchResponseModel {
         /*getter and setter end*/
 
     }
-
-    public class Accept_Experience {
-        String[] experience_name;
-
-        /*getter and setter start*/
-
-        public String[] getExperience_name() {
-            return experience_name;
-        }
-
-        public void setExperience_name(String[] experience_name) {
-            this.experience_name = experience_name;
-        }
-
-        /*getter and setter end*/
-
-    }
-
 
 }

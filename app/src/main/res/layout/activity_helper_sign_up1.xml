@@ -34,7 +34,7 @@
 
 
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/btn_onesidelove"
             android:layout_width="153dp"
             android:layout_height="49dp"
@@ -53,10 +53,9 @@
             android:textColorLink="@color/list_btns_text_selector"
             android:textSize="16sp" />
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/btn_somthing"
             android:layout_width="153dp"
-            android:fontFamily="@font/nanum_square_r"
             android:layout_height="match_parent"
             android:layout_marginRight="27dp"
             android:layout_marginBottom="9.2dp"
@@ -66,6 +65,7 @@
             android:elevation="9dp"
             android:gravity="center"
             android:text="썸"
+            android:fontFamily="@font/nanum_square_r"
             android:textColor="@color/list_btns_text_selector"
             android:textColorHighlight="@color/list_btns_text_selector"
             android:textColorLink="@color/list_btns_text_selector"
@@ -80,13 +80,13 @@
 
 
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/btn_conflict"
             android:layout_width="1dp"
             android:layout_height="49dp"
-            android:fontFamily="@font/nanum_square_r"
             android:layout_marginLeft="24.8dp"
             android:layout_marginRight="12.5dp"
+            android:fontFamily="@font/nanum_square_r"
             android:layout_weight="1"
             android:button="@color/trans"
             android:background="@drawable/list_btns_selector"
@@ -99,14 +99,14 @@
             android:layout_marginBottom="9.2dp"
             android:elevation="9dp"/>
 
-        <CheckBox
+        <RadioButton
             android:id="@+id/btn_saygoodbye"
             android:layout_width="1dp"
             android:layout_height="49dp"
             android:layout_marginRight="27dp"
             android:layout_weight="1"
-            android:fontFamily="@font/nanum_square_r"
             android:button="@color/trans"
+            android:fontFamily="@font/nanum_square_r"
             android:background="@drawable/list_btns_selector"
             android:text="이별"
             android:gravity="center"
@@ -120,10 +120,6 @@
     </LinearLayout>
 
 
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -134,7 +130,7 @@
             android:layout_marginLeft="24.8dp"
             android:layout_marginRight="12.5dp"
             android:background="@drawable/list_btns_selector"
-            android:id="@+id/usercustom_layout"
+            android:id="@+id/btn_usercustom_layout"
             android:layout_weight="1"
             android:layout_marginBottom="20dp"
             android:elevation="9dp">
@@ -147,7 +143,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/btn_usercustom"
+                    android:id="@+id/btn_user_custom_layout"
                     android:gravity="center">
 
                     <TextView
@@ -161,7 +157,6 @@
                         android:gravity="center"
                         android:layout_gravity="center_horizontal"
                         android:visibility="visible"
-                        android:id="@+id/HSUtextview"
                         />
 
                 </LinearLayout>
@@ -169,22 +164,20 @@
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    style="@style/list1_edit_color"
+                    android:hint="직접입력"
                     android:textSize="16sp"
+                    android:fontFamily="@font/nanum_square_r"
+                    android:textColorHint="@color/white"
                     android:gravity="center"
                     android:freezesText="true"
-                    android:fontFamily="@font/nanum_square_r"
-                    android:cursorVisible="true"
+                    android:cursorVisible="false"
                     android:visibility="invisible"
                     android:background="@null"
                     android:singleLine="true"
                     android:maxLength="8"
                     android:textColor="@color/lightPurple"
-                    android:textCursorDrawable="@null"
-                    android:id="@+id/edit"
-                    >
-                    <requestFocus/>
-                </EditText>
+                    android:id="@+id/usercustom_edittext"
+                    />
             </FrameLayout>
         </LinearLayout>
 
@@ -195,7 +188,6 @@
             android:layout_marginRight="27dp"/>
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
