@@ -272,6 +272,7 @@ public class MainFragment extends Fragment {
                     createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
                     createWorryModel.question.categoryList_idx = data.getIntExtra("category_id",0);
                     String gender = data.getStringExtra("helper_gender");
+
                     switch (gender){
                         case "여자":
                             createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여성;
@@ -281,8 +282,10 @@ public class MainFragment extends Fragment {
                             createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.모두;
                     }
 
+                    Log.d(">>>>>>고민생성",">>>>  "+createWorryModel.question.helper_gender);
 
                     Call<CreateWorryResponseModel> call_helper = RetrofitService.getInstance().getService().create_model_post(ApplicationFields.userToken, createWorryModel);
+
                     call_helper.enqueue(new Callback<CreateWorryResponseModel>() {
                         @Override
                         public void onResponse(Call<CreateWorryResponseModel> call, Response<CreateWorryResponseModel> response) {

@@ -10,13 +10,13 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.MainActivities.HelperActivity;
 import com.example.appjam_willson.R;
 
 public class HelperSignUpStartActivity extends AppCompatActivity {
 
 
     int REQUEST_CODE;
-
     Context context;
     View view;
     ImageView back;
@@ -63,7 +63,8 @@ public class HelperSignUpStartActivity extends AppCompatActivity {
                 case RESULT_OK:
 
                     setResult(RESULT_OK,data);
-                    finish();
+                    Intent intent = new Intent(context, HelperActivity.class);
+                    startActivity(intent);
 
                 case RESULT_CANCELED:
                     finish();

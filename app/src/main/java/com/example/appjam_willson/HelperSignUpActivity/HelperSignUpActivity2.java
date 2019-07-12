@@ -192,10 +192,9 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
             switch (resultCode){
                 case RESULT_OK:
                     bundle2 = data.getExtras();
-                    bundle2.putString("content",helper_experience.getText().toString());
-                    bundle2.putStringArray("tags",tags);
-
-                    data.putExtras(bundle2);
+//                    bundle2.putString("content",helper_experience.getText().toString());
+//                    bundle2.putStringArray("tags",tags);
+//                    data.putExtras(bundle2);
                     setResult(RESULT_OK,data);
                     finish();
 

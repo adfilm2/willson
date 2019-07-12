@@ -21,6 +21,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.FillinListActivity.List2Activity;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
@@ -132,9 +133,9 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle1 = data.getExtras();
-                    bundle1.putInt("category_id",category_listId);
-                    data.putExtras(bundle1);
+//                    bundle1 = data.getExtras();
+//                    bundle1.putInt("category_id",category_listId);
+//                    data.putExtras(bundle1);
                     setResult(RESULT_OK,data);
                     finish();
 
@@ -221,7 +222,6 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
 
         if(onesidelove.isChecked()){
             category_listId = 1;
-
         }
         else if (somthing.isChecked()){
             category_listId = 2;
@@ -236,10 +236,9 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
             worryCategoryListAddModel.category_idx = 1;
             worryCategoryListAddModel.categoryList_name = custom_edit_text.getText().toString();
 
-            String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
 
 
-            Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().concern_category_list_post(token,worryCategoryListAddModel);
+            Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().concern_category_list_post(ApplicationFields.userToken,worryCategoryListAddModel);
 
             call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
                 @Override
@@ -251,7 +250,7 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
                     category_listId= result.data.categoryList_idx;
 
 
-                    Log.d(">>>>>ff>>> ",""+category_listId);
+                    Log.d(">>>>>카테고리리스트 추가>>> ",""+category_listId);
 
                     Intent intent = new Intent(context,HelperSignUpActivity2.class);
                     startActivityForResult(intent, REQUEST_CODE);
