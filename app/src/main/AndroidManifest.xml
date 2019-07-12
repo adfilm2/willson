@@ -45,7 +45,9 @@
         <activity android:name=".ChatActivities.HelperChatActivity" />
 
         <!-- Main -->
-        <activity android:name=".MainActivities.MainActivity">
+        <activity android:name=".MainActivities.MainActivity"/>
+
+        <activity android:name=".MainActivities.HelperActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,7 +55,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivities.HelperActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
         <activity
             android:name=".HelperProfileEdit.HelperProfileEditActivityExp"

@@ -41,8 +41,9 @@
             android:textColor="@color/black"
             android:lineSpacingExtra="6sp"
             android:gravity="center_horizontal"
-            android:text="다른 헬퍼와 만나보시겠어요?"
+            android:text="해당 헬퍼님은 다른 고민자와 매칭되었습니다.\n다른 헬퍼님의 프로필을 보러가볼까요?"
             android:textStyle="normal"
+            android:id="@+id/request_pop_textview_small"
             android:fontFamily="@font/nanumsquare_r"
             />
 
