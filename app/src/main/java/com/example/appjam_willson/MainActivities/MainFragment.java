@@ -60,6 +60,7 @@ public class MainFragment extends Fragment {
     int REQUEST_CODE_RELATION= 4;
     int REQUEST_CODE_DAILY = 5;
     int REQUEST_CODE_ETC = 6;
+    int REQUEST = 0;
 
     Context context;
 
@@ -163,10 +164,6 @@ public class MainFragment extends Fragment {
                 Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(token);
                 user_profile.enqueue(check_retrofitCallback);
 
-                //헬퍼 가입했는지 아닌지 판단해서
-                //Intent intent = new Intent(getActivity() , HelperActivity.class);
-                Intent intent = new Intent(getActivity() , HelperActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -222,7 +219,7 @@ public class MainFragment extends Fragment {
             }
             else{
                 Intent intent = new Intent(getActivity() , HelperSignUpStartActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST);
 
             }
 
@@ -315,6 +312,10 @@ public class MainFragment extends Fragment {
                 case RESULT_CANCELED:
 
             }
+        }
+        else if(requestCode == REQUEST){
+            Intent intent = new Intent(getActivity(),HelperActivity.class);
+            startActivity(intent);
         }
 
 

@@ -30,27 +30,25 @@ public class HelperRegistModel {
 
     public class Helper_info {
 
-        public String category_name;
-        public String categoryList_name;
+        public int category_idx;
+        public int categoryList_idx;
         public String title;
         public String content;
 
-        /*getter and setter start*/
-
-        public String getCategory_name() {
-            return category_name;
+        public int getCategory_idx() {
+            return category_idx;
         }
 
-        public void setCategory_name(String category_name) {
-            this.category_name = category_name;
+        public void setCategory_idx(int category_idx) {
+            this.category_idx = category_idx;
         }
 
-        public String getCategoryList_name() {
-            return categoryList_name;
+        public int getCategoryList_idx() {
+            return categoryList_idx;
         }
 
-        public void setCategoryList_name(String categoryList_name) {
-            this.categoryList_name = categoryList_name;
+        public void setCategoryList_idx(int categoryList_idx) {
+            this.categoryList_idx = categoryList_idx;
         }
 
         public String getTitle() {

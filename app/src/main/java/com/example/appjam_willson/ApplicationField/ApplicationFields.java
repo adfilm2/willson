@@ -9,6 +9,7 @@ public class ApplicationFields extends Application {
     public static long fiveMin = 300000;
     public static long oneHour = 3600000;
     public static int myQuestion_idx = 0;
+    public static int myHelper_idx = 0;
 
 
     public static boolean timerSwitch = false;

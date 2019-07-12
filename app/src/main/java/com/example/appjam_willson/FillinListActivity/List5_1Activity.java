@@ -120,7 +120,10 @@ public class List5_1Activity extends AppCompatActivity {
                 if(check_num>3) check_num =3;
 
                 for(int i = 0; i<3; i++){
-                    if(strings[i]== 0) strings[i] = Integer.parseInt(checkBox.getTag().toString());
+                    if(strings[i]== 0) {
+                        strings[i] = Integer.parseInt(checkBox.getTag().toString());
+                        break;
+                    }
                 }
             }
         } else {
@@ -133,6 +136,11 @@ public class List5_1Activity extends AppCompatActivity {
                 checkBox.setChecked(false);
                 checkBox.setTypeface(typereg);
                 check_num -= 1;
+                for(int i = 0 ; i<3 ; i++) {
+                    if (Integer.parseInt(checkBox.getTag().toString())== strings[i]) {
+                        strings[i] = 0;
+                    }
+                }
 
             }
         }

@@ -61,6 +61,7 @@ public class HelperSignUpStartActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
+
                     setResult(RESULT_OK,data);
                     finish();
 

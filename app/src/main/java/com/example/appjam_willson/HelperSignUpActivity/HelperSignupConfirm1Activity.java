@@ -197,7 +197,6 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             phone = phone1.getText().toString()+phone2.getText().toString()+phone3.getText().toString();
-
             bundle4.putString("phone",phone);
             bundle4.putString("email",email.getText().toString());
             if(link.getText().toString().length() >0)
