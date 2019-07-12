@@ -5,13 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -105,12 +99,10 @@ public class MainFragment extends Fragment {
 
         LinearLayout changeMode = view.findViewById(R.id.helper_fragment1_change);
 
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
-
-        Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(token);
+        Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(ApplicationFields.userToken);
         call_helper.enqueue(retrofitCallback);
-//        Call<MainReviewModel> call_review = RetrofitService.getInstance().getService().main_review_get(token);
-//        call_review.enqueue(review_retrofitCallback);
+        Call<MainReviewModel> call_review = RetrofitService.getInstance().getService().main_review_get(ApplicationFields.userToken);
+        call_review.enqueue(review_retrofitCallback);
 
 
         firstContent.setOnClickListener(new View.OnClickListener() {
@@ -196,7 +188,7 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(token);
+                Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(ApplicationFields.userToken);
                 user_profile.enqueue(check_retrofitCallback);
 
                 //헬퍼 가입했는지 아닌지 판단해서
@@ -239,11 +231,6 @@ public class MainFragment extends Fragment {
         CircleIndicator2 indicator_second = view.findViewById(R.id.indicator_second);
         indicator_second.attachToRecyclerView(reviewRecyclerView, pagerSnapHelper_second);
         reviewAdapter.registerAdapterDataObserver(indicator_second.getAdapterDataObserver());
-
-        //Text들의 특정 위치 색, 타입을 바꿔주는 메소드
-//        changeText(main_fragment1_text,7,9,"#5252a1");
-//        changeText(main_fragment1_textSecond,0,2,"#ffc326");
-//        changeText(main_fragment1_textThird,6,8,"#5252a1");
 
         return view;
     }
@@ -297,8 +284,7 @@ public class MainFragment extends Fragment {
                     }
 
 
-                    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
-                    Call<CreateWorryResponseModel> call_helper = RetrofitService.getInstance().getService().create_model_post(token, createWorryModel);
+                    Call<CreateWorryResponseModel> call_helper = RetrofitService.getInstance().getService().create_model_post(ApplicationFields.userToken, createWorryModel);
                     call_helper.enqueue(new Callback<CreateWorryResponseModel>() {
                         @Override
                         public void onResponse(Call<CreateWorryResponseModel> call, Response<CreateWorryResponseModel> response) {
@@ -381,15 +367,6 @@ public class MainFragment extends Fragment {
     };
 
     //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로
-
-    void changeText(TextView text,int start,int end,String color){
-        SpannableStringBuilder spannableStringBuilder_second = new SpannableStringBuilder();
-        String mainText_second = text.getText().toString();
-        spannableStringBuilder_second.append(mainText_second);
-        spannableStringBuilder_second.setSpan(new StyleSpan(Typeface.BOLD),start,end,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableStringBuilder_second.setSpan(new ForegroundColorSpan(Color.parseColor(color)),start,end,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        text.setText(spannableStringBuilder_second);
-    }
 
     private Callback<HelperStoryModel> retrofitCallback = new Callback<HelperStoryModel>() {
 

@@ -110,8 +110,8 @@ public class LoginActivity extends AppCompatActivity {
         public void onResponse(retrofit2.Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
             LoginResponseModel result = response.body();
             Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
-            Log.d("로그인액티비티", String.valueOf(result.getCode()));
-            if(response.code()==200&& result.code ==200){
+       /*     Log.d("로그인액티비티", String.valueOf(result.getCode()));*/
+            if(response.code() == 200 && result.code == 200){
                 ApplicationFields.userToken = result.data.Token;
                /* SaveSharedPreference.setUserToken(LoginActivity.this, result.data.Token);*/
         /*        SharedPreferences UserToken = getSharedPreferences("UserToken", MODE_PRIVATE);

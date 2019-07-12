@@ -236,7 +236,8 @@ public class RegisterActivity_asker extends AppCompatActivity {
                         dialog.cancel();
 
                     }
-                }).create();
+                })
+                .create();
         dialog.show();
     }
     protected void alertNext(String message) {
@@ -339,7 +340,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 showAlert("이메일 또는 닉네임이 중복되었습니다 :(\n다시 작성해주세요!");
             }
             if(response.code() == 200 && result.code ==100) {
-//                showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
+                showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
                 Intent intent = new Intent(RegisterActivity_asker.this, LoginActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"가입이 완료되었습니다! 로그인 화면으로 돌아갑니다 ><",Toast.LENGTH_SHORT).show();

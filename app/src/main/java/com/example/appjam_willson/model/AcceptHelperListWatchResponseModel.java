@@ -6,7 +6,7 @@ public class AcceptHelperListWatchResponseModel {
 
     public int code;
     public String message;
-    public List<Data> data;
+    public Data data;
 
     /*getter and setter start*/
 
@@ -26,22 +26,36 @@ public class AcceptHelperListWatchResponseModel {
         this.message = message;
     }
 
-    public List<Data> getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(List<Data> data) {
+    public void setData(Data data) {
         this.data = data;
     }
+
 
     /*getter and setter end*/
 
 
     public static class Data {
-        Accept_helper helper;
-        String[] experience;
+        List<Helper_list> helper_list;
 
         /*getter and setter start*/
+
+        public List<Helper_list> getHelper_list() {
+            return helper_list;
+        }
+
+        public void setHelper_list(List<Helper_list> helper_list) {
+            this.helper_list = helper_list;
+        }
+    }
+        /*getter and setter end*/
+
+    public class Helper_list {
+        Accept_helper helper;
+        List<String> experience;
 
         public Accept_helper getHelper() {
             return helper;
@@ -51,22 +65,21 @@ public class AcceptHelperListWatchResponseModel {
             this.helper = helper;
         }
 
-        public String[] getExperience() {
+        public List<String> getExperience() {
             return experience;
         }
 
-        public void setExperience(String[] experience) {
+        public void setExperience(List<String> experience) {
             this.experience = experience;
         }
-        /*getter and setter end*/
-
     }
 
     public class Accept_helper {
         String nickname;
         String gender;
         String age;
-        String category_name;
+        int category_idx;
+        int categoryList_idx;
         String title;
         String content;
         String stars;
@@ -99,12 +112,20 @@ public class AcceptHelperListWatchResponseModel {
             this.age = age;
         }
 
-        public String getCategory_name() {
-            return category_name;
+        public int getCategory_idx() {
+            return category_idx;
         }
 
-        public void setCategory_name(String category_name) {
-            this.category_name = category_name;
+        public void setCategory_idx(int category_idx) {
+            this.category_idx = category_idx;
+        }
+
+        public int getCategoryList_idx() {
+            return categoryList_idx;
+        }
+
+        public void setCategoryList_idx(int categoryList_idx) {
+            this.categoryList_idx = categoryList_idx;
         }
 
         public String getTitle() {
@@ -149,8 +170,5 @@ public class AcceptHelperListWatchResponseModel {
         /*getter and setter end*/
 
     }
-
-
-
-
 }
+

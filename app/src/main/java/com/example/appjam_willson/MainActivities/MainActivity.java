@@ -32,8 +32,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.appjam_willson.ApplicationField.ApplicationFields.myQuestion_idx;
-
 public class MainActivity extends AppCompatActivity {
 
     int question_idx;
@@ -129,17 +127,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 changeImage(image_request, image_home, image_mypage, image_chat);
                 changeTextColor(text_request, text_home, text_chat, text_mypage);
-                /*int question_idx = 1;*/
-
-                if(myQuestion_idx != 0 && token != null){
-                    checkMatch(token);
-                }
-
-                checkMatch(token);
-
-              /*  Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
+                int question_idx = 2;
+                String testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
+                Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(testToken,question_idx);
                 accept_helper.enqueue(retrofitCallback);
-                Log.d("버튼눌썻슴ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅡ", "버튼ㄴㄴㄴㄴㄴㄴㄴㄴㄴ");*/
+
+//                checkMatch(testToken);
+
 
 
 //                MainFragment2 fragment = new MainFragment2();
@@ -190,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private static void changeImage(ImageView first, ImageView second, ImageView third, ImageView fourth) {
         first.setSelected(true);
         second.setSelected(false);
@@ -213,12 +206,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkMatch(String token) {
-
-        int question_idx = 131;
+        int question_idx = 2;
         Log.d("리저트ㅡㅡㅡㅡㅡㅡㅡㅡ", "checkMatch에 들어왔습니다");
-
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
-        //여기 윗줄에 question_idx값 안넣어줌
         accept_helper.enqueue(retrofitCallback);
 
     }
@@ -228,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
+            Log.d("콜백ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ", String.valueOf(response.code()));
             Log.d("리저트ㅡㅡㅡㅡㅡㅡㅡㅡ", String.valueOf(result.code));
 
             if (result.getCode() == 1000 && ApplicationFields.timerSwitch == false) {

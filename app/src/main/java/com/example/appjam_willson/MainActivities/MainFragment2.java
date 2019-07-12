@@ -27,10 +27,8 @@ public class MainFragment2 extends Fragment {
 
     private RecyclerView fragment2Recyclerview;
     private RecyclerView.LayoutManager layoutManager;
-    private List<AcceptHelperListWatchResponseModel.Data> accept_helper;
+    private List<AcceptHelperListWatchResponseModel.Helper_list> accept_helper;
     private MainFragment2Adapter mainFragment2Adapter;
-
-    public static int question_idx;
 
     public MainFragment2(){
 
@@ -39,10 +37,12 @@ public class MainFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment2,null);
-        if(getArguments() != null){
-            question_idx = getArguments().getInt("question_idx");
-            Log.d("question fragment2임" , ">>>>>>>>>>"+question_idx);
-        }
+//        if(getArguments() != null){
+//            question_idx = 2;
+//            Log.d("question fragment2임" , ">>>>>>>>>>"+question_idx);
+//        }
+
+
 
         /*myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
 
@@ -50,7 +50,6 @@ public class MainFragment2 extends Fragment {
         fragment2Recyclerview.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         accept_helper = new ArrayList<>();
-        mainFragment2Adapter = new MainFragment2Adapter(accept_helper, getActivity());
         fragment2Recyclerview.setLayoutManager(layoutManager);
 
 
@@ -66,8 +65,9 @@ public class MainFragment2 extends Fragment {
             /*callWillson(myUid);*/
 
         /*int question_idx = 38;*/
-        String token = "dddd"; // token 값 줘야ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ함ㅁㅁㅁㅁㅁㅁㅁ
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
 
+        int question_idx = 2;
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
         accept_helper.enqueue(retrofitCallback);
@@ -83,13 +83,17 @@ public class MainFragment2 extends Fragment {
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
 
-            if (response.code() == 200 && result.getCode() == 1000 && result.getData().get(0).getHelper() != null) {
-                accept_helper = result.getData();
+            Log.d("사이즈ㅡㅡㅡ", String.valueOf(result.data.getHelper_list().size()));
+            Log.d("헬퍼 닉네임",result.data.getHelper_list().get(0).getHelper().getNickname());
+
+            if (response.code() == 200 && result.getCode() == 1000 && result.getData().getHelper_list().size() != 0) {
+                accept_helper = result.getData().getHelper_list();
                 mainFragment2Adapter = new MainFragment2Adapter(accept_helper, getActivity());
                 fragment2Recyclerview.setAdapter(mainFragment2Adapter);
             }
             else {
             }
+            mainFragment2Adapter.notifyDataSetChanged();
         }
 
         @Override
