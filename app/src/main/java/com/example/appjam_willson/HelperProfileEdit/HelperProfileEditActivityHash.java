@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Button;
 
@@ -15,6 +16,7 @@ public class HelperProfileEditActivityHash extends AppCompatActivity {
 
     TextView text;
     ImageView btn;
+    LinearLayout cancelbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class HelperProfileEditActivityHash extends AppCompatActivity {
         btn.setVisibility(View.INVISIBLE);
         text = (TextView)findViewById(R.id.toolbar_text);
         text.setText("프로필 수정");
+        cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
+        cancelbtn.setOnClickListener(new HelperProfileEditActivityHash.cancelbtn_listener());
+
 
 
 
@@ -54,6 +59,14 @@ public class HelperProfileEditActivityHash extends AppCompatActivity {
             finish();
         }
     }
+
+    class cancelbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
 
 
 
