@@ -18,6 +18,7 @@ import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.AcceptHelperListWatchResponseModel;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -36,6 +37,8 @@ public class MainFragment2_loading extends Fragment {
 
     ImageView loading;
 
+    Bundle bundle;
+    int question_idx;
 
 
     public MainFragment2_loading(){
@@ -46,21 +49,25 @@ public class MainFragment2_loading extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.activity_find_helper_loading,null);
 
-        //타이머
-        countTxt = view.findViewById(R.id.count_txt);
-        countDownTimer();
-        countDownTimer.start();
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            long thisTime = timestamp.getTime();
+            long restTime = 300000 - (thisTime-ApplicationFields.timerStart);   //5분에서 지난 시간을 빼줌
 
-        loading = view.findViewById(R.id.loading_moving_willson);
+            //타이머
+            countTxt = view.findViewById(R.id.count_txt);
+            countDownStart(restTime);
+            countDownTimer.start();
 
-        Glide.with(this).load(R.drawable.request_searching_wilson).into(loading);
+            loading = view.findViewById(R.id.loading_moving_willson);
 
-        return view;
+            Glide.with(this).load(R.drawable.request_searching_wilson).into(loading);
+
+            return view;
     }
 
-    public void countDownTimer(){
+    public void countDownStart(long time){
 
-        countDownTimer = new CountDownTimer(ApplicationFields.fiveMin, COUNT_DOWN_INTERVAL) {
+        countDownTimer = new CountDownTimer(time, COUNT_DOWN_INTERVAL) {
             public void onTick(long millisUntilFinished) {
 
 
@@ -72,9 +79,12 @@ public class MainFragment2_loading extends Fragment {
             public void onFinish() {
                 ApplicationFields.timerSwitch = false;
                 countTxt.setText("완료 !");
-                ApplicationFields.fiveMin = 300000;
+                ApplicationFields.timerStart = 0;
 
-                int question_idx = 1;
+                /*int question_idx = 1;*/
+
+                question_idx = getArguments().getInt("question_idx");
+
                 String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6zshLEiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3OTk0ODcsImV4cCI6MTU3MTQzOTQ4NywiaXNzIjoid2lsbHNvbiJ9.l2Slk87lEK8Ne_SUMiiIfsXVSuUDfa5VWaeyE3PmZIs";
                 Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
                 accept_helper.enqueue(retrofitCallback);
@@ -90,9 +100,13 @@ public class MainFragment2_loading extends Fragment {
 
             if (result.getCode() == 1000 && result.data.getHelper_list().size() != 0) {
                 MainFragment2 fragment = new MainFragment2();
+                bundle = new Bundle();
+                bundle.putInt("question_idx", question_idx);
+                fragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }
             else {
+                //이거 널 띄우고 팝업 띄워야 함ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
                 MainFragment2_null fragment = new MainFragment2_null();
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }
@@ -106,12 +120,10 @@ public class MainFragment2_loading extends Fragment {
 
 
 
-//    @Override
-//    public void onBackPressed() {
-//        super.onBackPressed();
-//        countDownTimer.cancel();   //카운트다운 쓰레드 종료
-//        databaseReference.removeEventListener(valueEventListener);
-//        finish();
-//    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        countDownTimer.cancel();   //카운트다운 쓰레드 종료
+    }
 }
 

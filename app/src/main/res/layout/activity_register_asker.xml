@@ -76,7 +76,6 @@
                     android:inputType="textPassword"
                     android:id="@+id/registerasker_password"
                     android:textStyle="normal"
-                    android:fontFamily="@font/nanum_square_r"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -101,7 +100,6 @@
                     android:inputType="textPassword"
                     android:id="@+id/registerasker_passwordConfirm"
                     android:textStyle="normal"
-                    android:fontFamily="@font/nanum_square_r"
                     />
                 <TextView
                     android:id="@+id/registerasker_passwordConfirm_Msg"

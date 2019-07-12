@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,24 +43,27 @@ public class MainFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment3, null);
 
-        myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        myUid = ApplicationFields.uid;
 
-        FirebaseDatabase.getInstance().getReference().child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("askerUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot item : dataSnapshot.getChildren()) {
-                    WillsonModel users = item.getValue(WillsonModel.class);
-                    String uidGet =users.getUid();
-                    if (uidGet.equals(myUid)) {
-                        roomKey = users.getRoomKey();
-                        findChatRooms(roomKey);
-                        break;
+                if(dataSnapshot.getValue() != null) {
+                    for (DataSnapshot item : dataSnapshot.getChildren()) {
+                        WillsonModel users = item.getValue(WillsonModel.class);
+                        String uidGet = users.getUid();
+                        if (uidGet.equals(myUid)) {
+                            roomKey = users.getRoomKey();
+                            findChatRooms(roomKey);
+                            break;
+                        }
                     }
+                }else{
+                    return ;
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
@@ -81,10 +85,8 @@ public class MainFragment3 extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
                     if (dataSnapshot.getValue() == null) {
-                        Log.d("데이터가 없어요", "데이터가ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
                     }
                     WillsonModel users = dataSnapshot.getValue(WillsonModel.class);
-                    Log.d("데이터 찾았다ㅏㅏㅏㅏㅏㅏ", users.getUid());
                     willsonModels.add(users);
                     fragment3Adapter.notifyDataSetChanged();
 

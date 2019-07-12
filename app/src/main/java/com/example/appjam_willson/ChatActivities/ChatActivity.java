@@ -1,8 +1,10 @@
 package com.example.appjam_willson.ChatActivities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appjam_willson.PopUp.ChatFeedback_CustomDialog;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.ChatModel;
 import com.example.appjam_willson.model.WillsonModel;
@@ -46,6 +49,8 @@ import java.util.TimerTask;
 
 
 public class ChatActivity extends AppCompatActivity {
+
+    private ChatFeedback_CustomDialog dialog;
 
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -209,8 +214,6 @@ public class ChatActivity extends AppCompatActivity {
             }
 
             else {
-//                View view_end = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_recyclerview_end, parent, false);
-//                return new EndMsgViewHolder(view_end);
                 throw new RuntimeException("this type is not One or Two");
             }
         }
@@ -270,7 +273,7 @@ public class ChatActivity extends AppCompatActivity {
                     simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
                     String getTime = simpleDateFormat.format(startDate);
 
-                    StartMsgViewHolder startMsgViewHolder = (StartMsgViewHolder)holder ;
+                    StartMsgViewHolder startMsgViewHolder = (StartMsgViewHolder)holder;
                     startMsgViewHolder.chat_start_msg.setText(getTime);
                     startMsgViewHolder.chat_start_msg_second.setText(getTime);
                     break;
@@ -280,6 +283,7 @@ public class ChatActivity extends AppCompatActivity {
                     endMsgViewHolder.reviewLayout.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            Dialog();
 
                         }
                     });
@@ -288,6 +292,37 @@ public class ChatActivity extends AppCompatActivity {
                     break;
             }
         }
+
+        public void Dialog() {
+            dialog = new ChatFeedback_CustomDialog(ChatActivity.this, cancel_listener, commit_listener);
+            //dialog.setCanceledOnTouchOutside(false);
+            // dialog.setCancelable(true);
+            dialog.getWindow().setGravity(Gravity.CENTER);
+            dialog.show();
+        }
+
+        private View.OnClickListener cancel_listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        };
+
+        private View.OnClickListener commit_listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                Intent intent = new Intent();
+                setResult(RESULT_CANCELED, intent);
+                finish();
+            }
+        };
+
+
+
+
+
+
 
         void getMessageList(){
 

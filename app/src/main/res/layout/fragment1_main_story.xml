@@ -5,6 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/mainFrame"
     >
 
 
@@ -16,12 +17,10 @@
         android:layout_marginHorizontal="37.3dp"
         android:background="@drawable/fragment1_profile_box"
         >
-
     </RelativeLayout>
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/fragment1_story_img"
         android:src="@drawable/main_img_helperprofile"

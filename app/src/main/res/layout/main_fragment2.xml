@@ -7,117 +7,111 @@
     android:background="@color/white"
     >
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52.8dp"
-        android:layout_marginBottom="23dp"
-        android:orientation="vertical"
         >
 
-
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:layout_marginLeft="21.1dp"
+            android:layout_marginTop="52.8dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="21.1dp"
-                android:orientation="vertical"
-                >
+                android:layout_marginTop="15.4dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15.4dp"
-                    android:orientation="horizontal"
-                    >
+                    android:fontFamily="@font/nanum_square_eb"
+                    android:text="같은 고민"
+                    android:textColor="@color/lightPurple"
+                    android:textSize="22sp"
+                    android:textStyle="normal" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="같은 고민"
-                        android:textSize="22sp"
-                        android:textColor="@color/lightPurple"
-                        android:textStyle="normal"
-                        android:fontFamily="@font/nanum_square_eb"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="31.4dp"
-                        android:text="을 한"
-                        android:textSize="22sp"
-                        android:textColor="@color/lightPurple"
-                        android:textStyle="normal"
-                        android:fontFamily="@font/nanum_square_r"
-                        />
-
-                </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="31.4dp"
-                    android:text="헬퍼를 찾았어요!"
-                    android:textSize="22sp"
-                    android:textColor="@color/lightPurple"
-                    android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_r"
-                    />
+                    android:text="을 한"
+                    android:textColor="@color/lightPurple"
+                    android:textSize="22sp"
+                    android:textStyle="normal" />
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="31.4dp"
+                android:fontFamily="@font/nanum_square_r"
+                android:text="헬퍼를 찾았어요!"
+                android:textColor="@color/lightPurple"
+                android:textSize="22sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52.8dp"
+            android:orientation="vertical"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="right|bottom"
                 android:layout_marginLeft="21.1dp"
-                >
+                android:gravity="right"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="46.1dp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/request_img_willson"
-                    />
+                    android:layout_gravity="right"
+                    android:src="@drawable/request_img_willson" />
             </LinearLayout>
 
         </LinearLayout>
 
+    </FrameLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21.1dp"
+        android:layout_marginRight="19.2dp"
+        android:orientation="horizontal"
+        android:background="@drawable/edittext_radius20"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6.7dp"
+            android:layout_marginBottom="8.7dp"
+            android:layout_marginLeft="17.3dp"
+            android:text="시간 내에 헬퍼를 선택하세요!"
+            android:textSize="13sp"
+            android:textColor="@color/dark_purple"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
+            />
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="21.1dp"
-            android:layout_marginRight="19.2dp"
-            android:orientation="horizontal"
-            android:background="@drawable/edittext_radius20"
+            android:id="@+id/timer_layout"
+            android:layout_gravity="center"
+            android:layout_marginRight="22.3dp"
             >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6.7dp"
-                android:layout_marginBottom="8.7dp"
-                android:layout_marginLeft="17.3dp"
-                android:text="시간 내에 헬퍼를 선택하세요!"
-                android:textSize="13sp"
-                android:textColor="@color/dark_purple"
-                android:textStyle="normal"
-                android:fontFamily="@font/nanum_square_r"
-                />
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/timer_layout"
-                android:layout_gravity="center"
-                android:layout_marginRight="22.3dp"
-                >
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,21 +120,21 @@
                 android:layout_toLeftOf="@+id/fragment2_timer"
                 android:layout_centerVertical="true"
                 />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/fragment2_timer"
-                    android:layout_marginLeft="6.7dp"
-                    android:layout_alignParentEnd="true"
-                    android:text="4:59"
-                    android:textColor="@color/middlepurple"
-                    android:textSize="15sp"
-                    android:textStyle="normal"
-                    android:fontFamily="@font/nanum_square_b"
-                    />
-            </RelativeLayout>
-        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fragment2_timer"
+                android:layout_marginLeft="6.7dp"
+                android:layout_alignParentEnd="true"
+                android:text="4:59"
+                android:textColor="@color/middlepurple"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_b"
+                />
+        </RelativeLayout>
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment2_recyclerview"
         android:scrollbars="vertical"
@@ -149,4 +143,5 @@
         >
 
     </androidx.recyclerview.widget.RecyclerView>
+
 </LinearLayout>

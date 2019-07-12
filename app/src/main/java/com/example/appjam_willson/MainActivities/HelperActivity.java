@@ -41,7 +41,6 @@ public class HelperActivity extends AppCompatActivity{
         LinearLayout button3=findViewById(R.id.willsonLayout_profile);
         LinearLayout button4=findViewById(R.id.willsonLayout_mypage);
 
-
         final ImageView willsonImage_receive=findViewById(R.id.willsonImage_receive);
         final ImageView willsonImage_chat=findViewById(R.id.willsonImage_chat);
         final ImageView willsonImage_profile=findViewById(R.id.willsonImage_profile);
@@ -137,10 +136,7 @@ public class HelperActivity extends AppCompatActivity{
 
     public void checkMatch() {
 
-        /*int question_idx = 100*/;
-
       String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
-
 
         Call<HelperReceivedWorryListWatchResponseModel> call_worryList = RetrofitService.getInstance().getService().helper_receiveList_get(token);
         call_worryList.enqueue(retrofitCallback);
@@ -153,18 +149,7 @@ public class HelperActivity extends AppCompatActivity{
         public void onResponse(Call<HelperReceivedWorryListWatchResponseModel> call, Response<HelperReceivedWorryListWatchResponseModel> response) {
             HelperReceivedWorryListWatchResponseModel result = response.body();
 
-            Log.d("성공ㅇㅇㅇㅇㅇㅇㅇㅇㅇHelperActivity", String.valueOf(result.getCode()));
-            Log.d("ㅇㅇㅇHelperActivity상태값", result.getData().getConcernInfo().get(0).getQuestionInfo().getSelected());
-            Log.d("메시지ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ", result.getMessage());
-//            Log.d("유저 닉네임", result.getData().getConcernInfo().get(0).getUserInfo().getNickname());
-
-            Log.d("sizesizesizesizesize", String.valueOf(result.getData().getSize()));
-            Log.d("useridxuseridxuseridx", String.valueOf(result.getData().getConcernInfo().get(0).getUserInfo().getUser_idx()));
-
             if (result.getCode() == 800 && result.getData().getSize() != 0) {
-                /*adapter_send = result.getData().getConcernInfo();*/
-               /* helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
-                helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);*/
                 HelperFragment fragment = new HelperFragment();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
 
@@ -173,9 +158,6 @@ public class HelperActivity extends AppCompatActivity{
                 HelperFragment1_null fragment = new HelperFragment1_null();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame,fragment).commit();
             }
-           /* Log.d("리ㅣㅣㅣㅣ", String.valueOf(result.getData().getSize()));
-            Log.d("삽질ㄹㄹㄹㄹㄹㄹ", String.valueOf(result.getData().getConcernInfo().get(1).getUserInfo()));
-       */
         }
 
         @Override

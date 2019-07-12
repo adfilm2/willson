@@ -23,7 +23,7 @@
         android:lineSpacingExtra="14sp"
         android:textSize="18sp"
         android:layout_marginLeft="22.1dp"
-        android:layout_marginBottom="18.1dp"
+        android:layout_marginBottom="13dp"
         android:textStyle="normal"
         android:fontFamily="@font/nanum_square_b"
         />
@@ -83,8 +83,8 @@
         android:lineSpacingExtra="12sp"
         android:textSize="18sp"
         android:layout_marginLeft="22.1dp"
-        android:layout_marginTop="42.6dp"
-        android:layout_marginBottom="18.7dp"
+        android:layout_marginTop="32.6dp"
+        android:layout_marginBottom="13dp"
         android:textStyle="normal"
         android:fontFamily="@font/nanum_square_b"
         />
@@ -187,8 +187,8 @@
         android:lineSpacingExtra="12sp"
         android:textSize="18sp"
         android:layout_marginLeft="22.1dp"
-        android:layout_marginTop="44.8dp"
-        android:layout_marginBottom="18.5dp"
+        android:layout_marginTop="34.8dp"
+        android:layout_marginBottom="13dp"
         android:textStyle="normal"
         android:fontFamily="@font/nanum_square_b"
         />
@@ -198,7 +198,7 @@
         android:layout_height="38.4dp"
         android:layout_marginLeft="21.1dp"
         android:layout_marginRight="23dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/rounded_corner_radius5"
         android:orientation="horizontal">
 
@@ -240,7 +240,7 @@
         android:lineSpacingExtra="12sp"
         android:textSize="18sp"
         android:layout_marginLeft="22.1dp"
-        android:layout_marginBottom="18.3dp"
+        android:layout_marginBottom="13dp"
         android:textStyle="normal"
         android:fontFamily="@font/nanum_square_b"
         />

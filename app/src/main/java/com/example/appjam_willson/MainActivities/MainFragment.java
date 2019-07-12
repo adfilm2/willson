@@ -3,7 +3,6 @@ package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -249,7 +248,6 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onFailure(Call<HelperCheckResponseModel> call, Throwable t) {
-                Log.d(">>>>>>헬퍼 등록 체크 실패>>>>>>>","실패래요~~~~");
         }
     };
     @Override
@@ -272,7 +270,6 @@ public class MainFragment extends Fragment {
                     createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
                     createWorryModel.question.categoryList_idx = data.getIntExtra("category_id",0);
                     String gender = data.getStringExtra("helper_gender");
-
                     switch (gender){
                         case "여자":
                             createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여성;
@@ -282,19 +279,12 @@ public class MainFragment extends Fragment {
                             createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.모두;
                     }
 
-                    Log.d(">>>>>>고민생성",">>>>  "+createWorryModel.question.helper_gender);
 
                     Call<CreateWorryResponseModel> call_helper = RetrofitService.getInstance().getService().create_model_post(ApplicationFields.userToken, createWorryModel);
-
                     call_helper.enqueue(new Callback<CreateWorryResponseModel>() {
                         @Override
                         public void onResponse(Call<CreateWorryResponseModel> call, Response<CreateWorryResponseModel> response) {
-                            Log.d("test", response.isSuccessful() + "");
                             CreateWorryResponseModel result = response.body();
-                            Log.d(">>result>>>>>",""+result);
-                            Log.d(">>response>>>>>",""+response);
-                            Log.d(">> response.code", ">>>>>>>>>>>" + response.code());
-                            Log.d(">> question_idx ;:::: ",">>"+result.data.question_idx);
                             ApplicationFields.myQuestion_idx = result.data.question_idx;
 //                            Intent intent = new Intent(getActivity(),MainActivity.class);
 //                            intent.putExtra("complete","OK");
@@ -326,7 +316,6 @@ public class MainFragment extends Fragment {
                         @Override
                         public void onFailure(Call<CreateWorryResponseModel> call, Throwable t) {
                             t.printStackTrace();
-                            Log.d("메인 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                         }
                     });
 
@@ -392,7 +381,6 @@ public class MainFragment extends Fragment {
         @Override
         public void onFailure(Call<HelperStoryModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
 
@@ -426,7 +414,6 @@ public class MainFragment extends Fragment {
         @Override
         public void onFailure(Call<MainReviewModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
 }

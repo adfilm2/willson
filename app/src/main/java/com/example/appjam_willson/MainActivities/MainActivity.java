@@ -52,37 +52,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
-        if(SaveSharedPreference.getUserToken(MainActivity.this) != null) {
-            ApplicationFields.userToken = SaveSharedPreference.getUserToken(MainActivity.this);
-        }
-
-        *//*SaveSharedPreference.clearUserToken(MainActivity.this);*//*
-        Log.d("usertoken", ">>>>>>>>>>>>." + ApplicationFields.userToken);
-        Log.d("usertoken_sharedddddd", ">>>>>>>>>>>." + SaveSharedPreference.getUserToken(MainActivity.this));
-
-        */
-
-  /*      if(ApplicationFields.userToken == null){
-            ApplicationFields.userToken = getSharedPreferences("UserToken", MODE_PRIVATE);
-            load();
-        }
-
-        if(saveLoginData) {
-            ApplicationFields.userToken = UserToken;
-        }
-*/
-
-        Log.d("usertoken_applicationfields", ">>>>>>>>>>>>." + ApplicationFields.userToken);
-
 
         token = ApplicationFields.userToken;
-
         intent = getIntent();
-/*
-
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6zshLEiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3OTk0ODcsImV4cCI6MTU3MTQzOTQ4NywiaXNzIjoid2lsbHNvbiJ9.l2Slk87lEK8Ne_SUMiiIfsXVSuUDfa5VWaeyE3PmZIs";
-*/
 
         final LinearLayout button1 = findViewById(R.id.layout_home);
         final LinearLayout button2 = findViewById(R.id.layout_request);
@@ -90,12 +62,16 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayout button4 = findViewById(R.id.layout_mypage);
 
         final ImageView image_home = findViewById(R.id.Image_home);
+        ApplicationFields.home = findViewById(R.id.Image_home);
         final ImageView image_request = findViewById(R.id.Image_request);
+        ApplicationFields.request =findViewById(R.id.Image_request);
         final ImageView image_chat = findViewById(R.id.Image_chat);
         final ImageView image_mypage = findViewById(R.id.Image_mypage);
 
         final TextView text_home = findViewById(R.id.text_home);
+        ApplicationFields.hometxt = findViewById(R.id.text_home);
         final TextView text_request = findViewById(R.id.text_request);
+        ApplicationFields.requesttxt = findViewById(R.id.text_request);
         final TextView text_chat = findViewById(R.id.text_chat);
         final TextView text_mypage = findViewById(R.id.text_mypage);
 
@@ -103,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
         startMainView();
         changeImage(image_home, image_chat, image_mypage, image_request);
         changeTextColor(text_home, text_request, text_chat, text_mypage);
-
-        // passPushTokenToServer();
 
         Timestamp testTimes = new Timestamp(System.currentTimeMillis());
         if(ApplicationFields.timerStart != 0){
@@ -131,14 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 String testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
                 Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(testToken,question_idx);
                 accept_helper.enqueue(retrofitCallback);
-
-//                checkMatch(testToken);
-
-
-
-//                MainFragment2 fragment = new MainFragment2();
-//                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-
             }
         });
 
@@ -200,17 +166,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void startMainView() {
-
         MainFragment fragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-    }
-
-    public void checkMatch(String token) {
-        int question_idx = 2;
-        Log.d("리저트ㅡㅡㅡㅡㅡㅡㅡㅡ", "checkMatch에 들어왔습니다");
-        Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
-        accept_helper.enqueue(retrofitCallback);
-
     }
 
     private Callback<AcceptHelperListWatchResponseModel> retrofitCallback = new Callback<AcceptHelperListWatchResponseModel>() {
@@ -218,13 +175,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
-            Log.d("콜백ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ", String.valueOf(response.code()));
-            Log.d("리저트ㅡㅡㅡㅡㅡㅡㅡㅡ", String.valueOf(result.code));
 
-            if (result.getCode() == 1000 && ApplicationFields.timerSwitch == false) {
+            if (result.getCode() == 1000 && ApplicationFields.timerSwitch == false && ApplicationFields.matchingStack == true) {
                 MainFragment2 fragment = new MainFragment2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-
             }
             else if(ApplicationFields.timerSwitch == true){
                 MainFragment2_loading fragment = new MainFragment2_loading();

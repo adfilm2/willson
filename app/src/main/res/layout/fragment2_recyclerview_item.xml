@@ -7,6 +7,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:layout_marginBottom="19.2dp"
+    android:layout_marginTop="23dp"
     android:background="@drawable/background_white_radius5"
     android:elevation="3dp"
     >
@@ -236,7 +237,7 @@
             />
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="33.6dp"
             android:id="@+id/fragment2_checkProfile"
             android:text="프로필 보기"
             android:textSize="14sp"
