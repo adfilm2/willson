@@ -108,11 +108,6 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         btn5.setTypeface(typereg);
         btn6.setTypeface(typereg);
 
-        resName = "@drawable/list_img_alert_willson";
-        packName = this.getPackageName();
-        resid = getResources().getIdentifier(resName, "drawable", packName);
-
-
 
 
       //  list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);

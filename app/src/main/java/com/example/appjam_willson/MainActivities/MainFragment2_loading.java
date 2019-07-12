@@ -63,6 +63,7 @@ public class MainFragment2_loading extends Fragment {
         countDownTimer = new CountDownTimer(ApplicationFields.fiveMin, COUNT_DOWN_INTERVAL) {
             public void onTick(long millisUntilFinished) {
 
+
                 ApplicationFields.timerSwitch = true;
                 Date date = new Date(millisUntilFinished);
                 String restTime = timerFormat.format(date);
@@ -87,7 +88,7 @@ public class MainFragment2_loading extends Fragment {
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
 
-            if (result.getCode() == 1000 && result.getData().getHelper() != null) {
+            if (result.getCode() == 1000 && result.data.getHelper_list().size() != 0) {
                 MainFragment2 fragment = new MainFragment2();
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }

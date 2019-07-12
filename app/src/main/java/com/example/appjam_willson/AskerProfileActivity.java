@@ -4,16 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.NetworkService.RetrofitService;
+import com.example.appjam_willson.PopUp.TwoTextOneButton_CustomDialog;
 import com.example.appjam_willson.model.SendRequestModel;
 import com.example.appjam_willson.model.SendRequestResponseModel;
 import com.example.appjam_willson.model.UserProfileWatchResponseModel;
@@ -53,6 +56,8 @@ public class AskerProfileActivity extends AppCompatActivity {
     ProgressBar Experience;
     ImageView image;
 
+    TwoTextOneButton_CustomDialog dialog;
+
     int question_idx;
     int helper_idx;
     String token;
@@ -63,37 +68,37 @@ public class AskerProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_asker_profile);
 
-        toolbar_textView = (TextView)findViewById(R.id.toolbar_text);
+        toolbar_textView = findViewById(R.id.toolbar_text);
         toolbar_textView.setText("프로필");
 
-        cancel = (ImageView)findViewById(R.id.cancel_btn);
+        cancel = findViewById(R.id.cancel_btn);
         cancel.setVisibility(View.INVISIBLE);
 
-        back = (LinearLayout)findViewById(R.id.back_btn_layout);
+        back = findViewById(R.id.back_btn_layout);
         back.setOnClickListener(new set_back_listener());
 
-        Nickname = (TextView)findViewById(R.id.profile_helper_id);
-        Gender = (TextView)findViewById(R.id.profile_helper_gender);
-        Age = (TextView)findViewById(R.id.profile_helper_age);
-        Person1 = (TextView)findViewById(R.id.profile_helper_tag1);
-        Person2 = (TextView)findViewById(R.id.profile_helper_tag2);
-        Person3 = (TextView)findViewById(R.id.profile_helper_tag3);
-        Category_L = (TextView)findViewById(R.id.category_name);
-        Content_L = (TextView)findViewById(R.id.profile_asker_info);
-        Category = (TextView)findViewById(R.id.content_list_name);
-        Question_person = (TextView)findViewById(R.id.question_personality);
-        Weight = (ProgressBar)findViewById(R.id.user_weight);
-        Content = (TextView)findViewById(R.id.user_content_detail);
-        Want_gender = (TextView)findViewById(R.id.want_gender);
-        Want_person = (TextView)findViewById(R.id.want_person);
-        Want_exper = (TextView)findViewById(R.id.want_exper);
-        Emotion = (ProgressBar)findViewById(R.id.progress_emotion);
-        Advice = (ProgressBar)findViewById(R.id.progress_advise);
-        Experience = (ProgressBar)findViewById(R.id.progress_experience);
-        image = (ImageView)findViewById(R.id.profile_helper_img);
+        Nickname = findViewById(R.id.profile_helper_id);
+        Gender = findViewById(R.id.profile_helper_gender);
+        Age = findViewById(R.id.profile_helper_age);
+        Person1 = findViewById(R.id.profile_helper_tag1);
+        Person2 = findViewById(R.id.profile_helper_tag2);
+        Person3 = findViewById(R.id.profile_helper_tag3);
+        Category_L = findViewById(R.id.category_name);
+        Content_L = findViewById(R.id.profile_asker_info);
+        Category = findViewById(R.id.content_list_name);
+        Question_person = findViewById(R.id.question_personality);
+        Weight = findViewById(R.id.user_weight);
+        Content = findViewById(R.id.user_content_detail);
+        Want_gender = findViewById(R.id.want_gender);
+        Want_person = findViewById(R.id.want_person);
+        Want_exper = findViewById(R.id.want_exper);
+        Emotion = findViewById(R.id.progress_emotion);
+        Advice = findViewById(R.id.progress_advise);
+        Experience = findViewById(R.id.progress_experience);
+        image = findViewById(R.id.profile_helper_img);
 
         context = this;
-        request_btn = (Button)findViewById(R.id.floating_btn_request);
+        request_btn = findViewById(R.id.floating_btn_request);
         request_btn.setOnClickListener(new request_conversation());
 
         intent = getIntent();
@@ -219,7 +224,11 @@ public class AskerProfileActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-            else {
+            else if(response.code() == 200 && result.getCode() == 1404){
+                Dialog();
+            }
+            else{
+                Toast.makeText(context, "HELPER_SELECTION_ERROR", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -231,6 +240,24 @@ public class AskerProfileActivity extends AppCompatActivity {
         public void onFailure(Call<SendRequestResponseModel> call, Throwable t) {
             t.printStackTrace();
             Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+        }
+    };
+
+    public void Dialog() {
+        dialog = new TwoTextOneButton_CustomDialog(AskerProfileActivity.this,
+                "지금은 요청할 수 없어요", "대화를 진행 중인 경우에는\n다른 질문자에게 중복 요청이 불가능합니다", "확인", keepListener);
+
+        dialog.setCanceledOnTouchOutside(false);
+
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener keepListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
         }
     };
 

@@ -78,6 +78,9 @@ public class ChatActivity extends AppCompatActivity {
     int peopleCount = 0;
     long passTime;
 
+    //채팅이 종료 되었을 때의 comment list길이
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -447,6 +450,7 @@ public class ChatActivity extends AppCompatActivity {
                     return;
                 }
 
+
                 for (DataSnapshot item : dataSnapshot.getChildren()) {
                     ChatModel chatModel = item.getValue(ChatModel.class);
                     if (chatModel.users.containsKey(destinationUid)) {
@@ -466,7 +470,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     void getUserData(){
-        FirebaseDatabase.getInstance().getReference().child("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 askerUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -490,12 +494,10 @@ public class ChatActivity extends AppCompatActivity {
     void makeUserData(){
 
         Map<String, String> willsonProfile = new HashMap<>();
-        willsonProfile.put("photo", "");
         willsonProfile.put("uid", destinationUid);
         willsonProfile.put("nickName",destinationUserModel.getNickName());
 
         Map<String, String> askerProfile = new HashMap<>();
-        askerProfile.put("photo", "");
         askerProfile.put("uid", uid);
         askerProfile.put("nickName",askerUserModel.getNickName() );
 
@@ -507,6 +509,7 @@ public class ChatActivity extends AppCompatActivity {
     void sendRoomkey(String willsonUser,String askerUser, String roomKey){
         Map<String, Object> setRoomKey = new HashMap<>();
         setRoomKey.put("roomKey", roomKey);
+
         FirebaseDatabase.getInstance().getReference("willsonUsers").child(willsonUser).updateChildren(setRoomKey);
         FirebaseDatabase.getInstance().getReference("users").child(askerUser).updateChildren(setRoomKey);
     }
@@ -539,6 +542,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 btnSent.setEnabled(false);
+
             }
         };
         countDownTimer.start();

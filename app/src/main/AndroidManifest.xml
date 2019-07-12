@@ -21,19 +21,11 @@
 
         <activity android:name=".LoginRegisterActivity.SignUpPersonalityActivity"></activity>
         <activity android:name=".HelperRequestCompleteActivity"></activity>
-        <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity">
-
-        </activity>
+        <activity android:name=".HelperSignUpActivity.HelperSignUpStartActivity" />
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityStart" />
 
         <activity android:name=".HelperSignUpActivity.HelperSignupConfirm2Activity" />
-        <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".HelperSignUpActivity.HelperSignupConfirm1Activity" />
         <activity android:name=".ConvConfirmActivity" />
 
         <activity android:name=".HelperProfileActivity"/>
@@ -41,7 +33,13 @@
             android:name=".HelperProfileEdit.HelperProfileEditActivityIntro"
             android:windowSoftInputMode="adjustPan" /> <!-- Login && Register -->
         <!-- Login && Register -->
-        <activity android:name=".LoginRegisterActivity.LoginActivity"/>
+        <activity android:name=".LoginRegisterActivity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".LoginRegisterActivity.RegisterActivity_asker"
             android:windowSoftInputMode="adjustPan"/>
@@ -54,6 +52,7 @@
 
         <!-- Main -->
         <activity android:name=".MainActivities.MainActivity">
+
         </activity>
 
         <activity android:name=".MainActivities.HelperActivity" />
@@ -66,6 +65,14 @@
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityC1" />
 
         <!-- HelperSignUpEdit -->
+        <activity android:name=".HelperSignUpActivity.HelperSignUp1_L_Activity" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUp1_M_Activity" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUp1_D_Activity" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUp1_E_Activity" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUp1_C_Activity" />
+        <activity android:name=".HelperSignUpActivity.HelperSignUp1_R_Activity" />
+
+
 
         <activity android:name=".HelperSignUpActivity.HelperSignUpActivity0" />
         <activity android:name=".HelperSignUpActivity.HelperSignupActivity3" />

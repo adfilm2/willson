@@ -69,6 +69,8 @@ public class RegisterActivity_asker extends AppCompatActivity {
 
     EditText nickName;
     private FirebaseAuth mAuth;
+    Bundle bundle = new Bundle();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +99,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        SignupModel signupModel = new SignupModel();
+
 
         adapter = ArrayAdapter.createFromResource(this, R.array.Age_group, android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
@@ -171,6 +173,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 String toCheckAge = ageSpinner.getSelectedItem().toString();
                 userEmail = idText.getText().toString();
                 userPassword = passwordText.getText().toString();
@@ -189,20 +192,21 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     return;
                 }
 
-                userAge = Integer.parseInt(ageSpinner.getSelectedItem().toString());
-                signupModel.gender = userGender;
 
 
 
-                signupModel.setAge(userAge);
-                signupModel.setDevice_token("toTest");
-                signupModel.setEmail(userEmail);
-                signupModel.setNickname(userNickname);
-                signupModel.setPassword(userPassword);
+
+                bundle.putString("nickname",userNickname);
+                bundle.putString("email",userEmail);
+                bundle.putInt("age",userAge);
+                bundle.putString("password",userPassword);
+                bundle.putString("gender",userGender);
+
+                Intent intent = new Intent(getApplicationContext(),SignUpPersonalityActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
 
 
-                Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
-                call_helper.enqueue(retrofitCallback);
 
 
             }
@@ -236,7 +240,8 @@ public class RegisterActivity_asker extends AppCompatActivity {
                         dialog.cancel();
 
                     }
-                }).create();
+                })
+                .create();
         dialog.show();
     }
     protected void alertNext(String message) {
@@ -339,7 +344,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 showAlert("이메일 또는 닉네임이 중복되었습니다 :(\n다시 작성해주세요!");
             }
             if(response.code() == 200 && result.code ==100) {
-//                showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
+                showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
                 Intent intent = new Intent(RegisterActivity_asker.this, LoginActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"가입이 완료되었습니다! 로그인 화면으로 돌아갑니다 ><",Toast.LENGTH_SHORT).show();

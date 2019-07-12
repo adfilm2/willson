@@ -16,15 +16,17 @@ import com.example.appjam_willson.HelperProfileActivity;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.AcceptHelperListWatchResponseModel;
 
+import java.util.List;
+
 public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adapter.ViewHolder> {
 
-    private AcceptHelperListWatchResponseModel.Data dataModels;
+    private List<AcceptHelperListWatchResponseModel.Helper_list> dataModels;
     private Context context;
 
     int helper_idx;
     int question_idx;
 
-    public MainFragment2Adapter(AcceptHelperListWatchResponseModel.Data dataModels, Context context){
+    public MainFragment2Adapter(List<AcceptHelperListWatchResponseModel.Helper_list> dataModels, Context context){
         this.dataModels = dataModels;
         this.context = context;
     }
@@ -39,95 +41,95 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
-        question_idx = MainFragment2.question_idx;
-        Log.d("question 2어댑터임" , ">>>>>>>>>>"+question_idx);
+
+        String[] category_list = {"연애","진로","자존감","인간관계","일상","기타"};
+
 //        닉네임
-        if(dataModels.getHelper().get(i).getNickname() != null) {
-            viewHolder.Nickname.setText(dataModels.getHelper().get(i).getNickname());
+        if(dataModels.get(i).getHelper().getNickname() != null) {
+            viewHolder.Nickname.setText(dataModels.get(i).getHelper().getNickname());
         }
         else {
         }
 
         //성별
-        if(dataModels.getHelper().get(i).getGender() != null) {
-            viewHolder.Gender.setText("(" + dataModels.getHelper().get(i).getGender() + " / ");
+        if(dataModels.get(i).getHelper().getGender() != null) {
+            viewHolder.Gender.setText("(" + dataModels.get(i).getHelper().getGender() + " / ");
         }
         else{
         }
 
         //나이대
-        if(dataModels.getHelper().get(i).getAge() != null) {
-            viewHolder.Age.setText(dataModels.getHelper().get(i).getAge() + ")");
+        if(dataModels.get(i).getHelper().getAge() != null) {
+            viewHolder.Age.setText(dataModels.get(i).getHelper().getAge() + ")");
         }
         else{
 
         }
         //주제
-        if(dataModels.getHelper().get(i).getCategory_name() != null) {
-            viewHolder.Subject.setText(dataModels.getHelper().get(i).getCategory_name());
-           /* viewHolder.userSubjectStroke.setBackgroundResource(R.drawable.rounded_corner_radius15);*/
-        }
-        else {
-        }
+        int categoryNum = dataModels.get(i).getHelper().getCategory_idx();
+        viewHolder.Subject.setText(category_list[categoryNum]);
+
         //경험정보
-        if(dataModels.getHelper().get(i).getContent() != null) {
-            viewHolder.Information.setText('"' + dataModels.getHelper().get(i).getContent() + '"');
+        if(dataModels.get(i).getHelper().getContent() != null) {
+            viewHolder.Information.setText('"' + dataModels.get(i).getHelper().getContent() + '"');
         }
         else {
         }
         //별점
-        if(dataModels.getHelper().get(i).getStars() != null){
-            viewHolder.Star.setText(dataModels.getHelper().get(i).getStars() + ".0");
+        if(dataModels.get(i).getHelper().getStars() != null){
+            viewHolder.Star.setText(dataModels.get(i).getHelper().getStars() + ".0");
         }
 
         //후기 개수
-        if(dataModels.getHelper().get(i).getReview_count() != null){
-            viewHolder.Review.setText("("+dataModels.getHelper().get(i).getReview_count()+"개의 후기)");
+        if(dataModels.get(i).getHelper().getReview_count() != null){
+            viewHolder.Review.setText("("+dataModels.get(i).getHelper().getReview_count()+"개의 후기)");
         }
 
         //경험
-        if(dataModels.getExperience() != null){
-            if(dataModels.getExperience().get(0).getExperience_name() != null){
-                viewHolder.exp1.setText("#" + dataModels.getExperience().get(0).getExperience_name());
+        if(dataModels.get(i).getExperience().size() != 0) {
+            List<String> exp = dataModels.get(i).getExperience();
+            switch (exp.size()) {
+                case 1:
+                    viewHolder.exp1.setText("#" + exp.get(0));
+                    viewHolder.exp2.setVisibility(View.GONE);
+                    viewHolder.exp3.setVisibility(View.GONE);
+                    break;
+                case 2:
+                    viewHolder.exp1.setText("#" + exp.get(0));
+                    viewHolder.exp2.setText("#" + exp.get(1));
+                    viewHolder.exp3.setVisibility(View.GONE);
+                    break;
+                case 3:
+                    viewHolder.exp1.setText("#" + exp.get(0));
+                    viewHolder.exp2.setText("#" + exp.get(1));
+                    viewHolder.exp3.setText("#" + exp.get(2));
+                    break;
+                default:
+                    break;
             }
-            else if(dataModels.getExperience().get(0).getExperience_name() == null){
-                viewHolder.exp1.setVisibility(View.GONE);
-            }
-            else if(dataModels.getExperience().get(1).getExperience_name() != null){
-                viewHolder.exp2.setText("#" + dataModels.getExperience().get(1).getExperience_name());
-            }
-            else if (dataModels.getExperience().get(1).getExperience_name() == null){
-                viewHolder.exp2.setVisibility(View.GONE);
-            }
-            else if(dataModels.getExperience().get(2).getExperience_name() != null)
-            {
-                viewHolder.exp3.setText("#" + dataModels.getExperience().get(2).getExperience_name());
-            } else if (dataModels.getExperience().get(2).getExperience_name() == null) {
-                viewHolder.exp3.setVisibility(View.GONE);
-            }
-
+        }else {
+            Log.d("없음ㅁㅁㅁㅁㅁㅁㅁㅁㅁ","헬퍼가 경험이 없슴");
         }
 
         //프로필보기
         viewHolder.goProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*int helper_idx = dataModels.getHelper();*/
 
+                /*int helper_idx = dataModels.getHelper();*/
                 /*int helper_idx = 1;*/
-                helper_idx = dataModels.getHelper().get(i).getHelper_idx();
+                helper_idx = dataModels.get(i).getHelper().getHelper_idx();
                 Intent intent = new Intent(v.getContext(), HelperProfileActivity.class);
                 intent.putExtra("helper_idx", helper_idx);
                 intent.putExtra("question_idx", question_idx);
                 context.startActivity(intent);
             }
-
         });
     }
 
     @Override
     public int getItemCount() {
-        return dataModels.getHelper().size();
+        return dataModels.size();
     }
 
 

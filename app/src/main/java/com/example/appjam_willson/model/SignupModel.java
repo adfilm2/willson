@@ -2,16 +2,14 @@ package com.example.appjam_willson.model;
 
 public class SignupModel {
 
-        String nickname;
+        public String nickname;
         public String gender;
 //        public Gender gender;
-
-        int age;
-        String email;
-        String password;
-        String device_token;
-
-        public enum Gender { 남,여 }
+        public int age;
+        public String email;
+        public String password;
+        public String device_token;
+        public int[] personality;
 
     public String getNickname() {
         return nickname;
@@ -21,13 +19,13 @@ public class SignupModel {
         this.nickname = nickname;
     }
 
-//    public Gender getGender() {
-//        return gender;
-//    }
-//
-//    public void setGender(Gender gender) {
-//        this.gender = gender;
-//    }
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public int getAge() {
         return age;
@@ -59,5 +57,13 @@ public class SignupModel {
 
     public void setDevice_token(String device_token) {
         this.device_token = device_token;
+    }
+
+    public int[] getPersonality() {
+        return personality;
+    }
+
+    public void setPersonality(int[] personality) {
+        this.personality = personality;
     }
 }

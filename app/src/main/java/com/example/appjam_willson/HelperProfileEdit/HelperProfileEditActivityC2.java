@@ -66,37 +66,37 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
         typereg = getResources().getFont(R.font.nanum_square_r);
 
         ImageView btn;
-        nextbtn = (Button)findViewById(R.id.btn_next);
+        nextbtn = findViewById(R.id.btn_next);
         nextbtn.setOnClickListener(new next_btn_listener());
 
-        backbtn = (LinearLayout)findViewById(R.id.back_btn_layout);
+        backbtn = findViewById(R.id.back_btn_layout);
         backbtn.setOnClickListener(new backbtn_listener());
 
-        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn = findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
-        title = (TextView)findViewById(R.id.toolbar_text);
+        title = findViewById(R.id.toolbar_text);
         title.setText("프로필 수정");
 
-        radioGroup_1 = (RadioGroup)findViewById(R.id.radioGroup1);
-        radioGroup_2 = (RadioGroup)findViewById(R.id.radioGroup2);
+        radioGroup_1 = findViewById(R.id.radioGroup1);
+        radioGroup_2 = findViewById(R.id.radioGroup2);
         radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
         radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
 
-        oneside = (RadioButton)findViewById(R.id.btn_onesidelove);
-        some = (RadioButton)findViewById(R.id.btn_somthing);
-        conflict = (RadioButton)findViewById(R.id.btn_conflict);
-        saygoodbye = (RadioButton)findViewById(R.id.btn_saygoodbye);
+        oneside = findViewById(R.id.btn_onesidelove);
+        some = findViewById(R.id.btn_somthing);
+        conflict = findViewById(R.id.btn_conflict);
+        saygoodbye = findViewById(R.id.btn_saygoodbye);
 
         oneside.setTypeface(typereg);
         some.setTypeface(typereg);
         conflict.setTypeface(typereg);
         saygoodbye.setTypeface(typereg);
 
-        custom_text = findViewById(R.id.btn_usercustom);
+        custom_text = findViewById(R.id.btn_user_custom_layout);
         custom_text.setOnClickListener(new custom_btn_listener());
 
-        usercustom_layout = findViewById(R.id.btn_user_custom_layout);
+        usercustom_layout = findViewById(R.id.btn_usercustom_layout_l);
 
         background = findViewById(R.id.background);
         background.setOnClickListener(new background_listener());
