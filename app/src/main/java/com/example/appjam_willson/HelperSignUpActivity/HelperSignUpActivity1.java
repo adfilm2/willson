@@ -23,6 +23,8 @@ import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.HelperRegistModel;
 import com.example.appjam_willson.model.HelperRegistResponseModel;
+import com.example.appjam_willson.model.WorryCategoryListAddModel;
+import com.example.appjam_willson.model.WorryCategoryListAddResponseModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,7 +60,7 @@ public class HelperSignUpActivity1 extends AppCompatActivity {
     Typeface typebold;
     Typeface typereg;
 
-    String small_category;
+    int small_category;
    /* EditText edit;
     TextView HSUtextview;
     LinearLayout HSU_usercustom_layout;
@@ -81,26 +83,26 @@ public class HelperSignUpActivity1 extends AppCompatActivity {
         typereg = getResources().getFont(R.font.nanum_square_r);
 
         ImageView btn;
-        nextbtn = (Button)findViewById(R.id.HelperSU_btn_next);
+        nextbtn = findViewById(R.id.HelperSU_btn_next);
         nextbtn.setOnClickListener(new next_btn_listener());
 
-        backbtn = (LinearLayout)findViewById(R.id.back_btn_layout);
+        backbtn = findViewById(R.id.back_btn_layout);
         backbtn.setOnClickListener(new backbtn_listener());
 
-        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn = findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
-        radioGroup_1 = (RadioGroup)findViewById(R.id.radioGroup1);
-        radioGroup_2 = (RadioGroup)findViewById(R.id.radioGroup2);
+        radioGroup_1 = findViewById(R.id.radioGroup1);
+        radioGroup_2 = findViewById(R.id.radioGroup2);
         radioGroup_1.clearCheck();
         radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
         radioGroup_2.clearCheck();
         radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
 
-        oneside = (RadioButton)findViewById(R.id.btn_onesidelove);
-        some = (RadioButton)findViewById(R.id.btn_somthing);
-        conflict = (RadioButton)findViewById(R.id.btn_conflict);
-        saygoodbye = (RadioButton)findViewById(R.id.btn_saygoodbye);
+        oneside = findViewById(R.id.btn_onesidelove);
+        some = findViewById(R.id.btn_somthing);
+        conflict = findViewById(R.id.btn_conflict);
+        saygoodbye = findViewById(R.id.btn_saygoodbye);
 
         oneside.setTypeface(typereg);
         some.setTypeface(typereg);
@@ -290,19 +292,55 @@ public class HelperSignUpActivity1 extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             if(oneside.isChecked()){
-                small_category = oneside.getText().toString();
+                small_category = 1;
             }
             else if (some.isChecked()){
-                small_category = some.getText().toString();
+                small_category = 2;
             }
             else if (conflict.isChecked()){
-                small_category = conflict.getText().toString();
+                small_category = 3;
             }
             else if (saygoodbye.isChecked()){
-                small_category = saygoodbye.getText().toString();
+                small_category = 4;
             }
             else if (custom_edit_text.isFocused()){
-                small_category = custom_edit_text.getText().toString();
+                //통신
+                WorryCategoryListAddModel worryCategoryListAddModel = new WorryCategoryListAddModel();
+                worryCategoryListAddModel.category_idx = 2;
+                worryCategoryListAddModel.categoryList_name = custom_edit_text.getText().toString();
+
+                String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
+
+
+                Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().concern_category_list_post(token,worryCategoryListAddModel);
+
+                call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
+                    @Override
+                    public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
+                        Log.d("test", response.isSuccessful() + "");
+                        WorryCategoryListAddResponseModel result = response.body();
+                        Log.d("진로", ">>>>>>>>>>>" + response.code());
+                        Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
+                        small_category= result.data.categoryList_idx;
+
+
+                        Log.d(">>>>>리스트 아이디 ",""+small_category);
+                        Intent intent = new Intent(context, HelperSignUpActivity2.class);
+                        startActivityForResult(intent, REQUEST_CODE);
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
+                        t.printStackTrace();
+                        Log.d(" 진로 액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
+                    }
+
+
+                });
+
+
+
             }
             else{}
 
@@ -513,7 +551,7 @@ public class HelperSignUpActivity1 extends AppCompatActivity {
                 case RESULT_OK:
                     bundle1 = data.getExtras();
                     bundle1.putString("category","연애");
-                    bundle1.putString("small category",small_category);
+                    bundle1.putInt("small category",small_category);
 
                     data.putExtras(bundle1);
                     setResult(RESULT_OK,data);
