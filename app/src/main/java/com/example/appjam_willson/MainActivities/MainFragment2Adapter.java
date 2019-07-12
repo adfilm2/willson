@@ -26,9 +26,10 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
     int helper_idx;
     int question_idx;
 
-    public MainFragment2Adapter(List<AcceptHelperListWatchResponseModel.Helper_list> dataModels, Context context){
+    public MainFragment2Adapter(List<AcceptHelperListWatchResponseModel.Helper_list> dataModels, Context context, int ques_idx){
         this.dataModels = dataModels;
         this.context = context;
+        this.question_idx = ques_idx;
     }
 
     @NonNull
@@ -36,6 +37,7 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.fragment2_recyclerview_item, viewGroup, false);
         ViewHolder vh = new ViewHolder(v);
+
         return vh;
     }
 
@@ -53,7 +55,7 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
 
         //성별
         if(dataModels.get(i).getHelper().getGender() != null) {
-            viewHolder.Gender.setText("(" + dataModels.get(i).getHelper().getGender() + " / ");
+            viewHolder.Gender.setText("(" + dataModels.get(i).getHelper().getGender());
         }
         else{
         }
@@ -123,6 +125,7 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
                 Intent intent = new Intent(v.getContext(), HelperProfileActivity.class);
                 intent.putExtra("helper_idx", helper_idx);
                 intent.putExtra("question_idx", question_idx);
+                Log.d("메인 프래그 먼트 헬퍼 question_idx", String.valueOf(question_idx));
                 context.startActivity(intent);
             }
         });

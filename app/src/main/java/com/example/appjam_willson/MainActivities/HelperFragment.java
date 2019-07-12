@@ -75,6 +75,10 @@ public class HelperFragment extends Fragment {
                 helperFragment1Adapter = new HelperFragment1Adapter(adapter_send, getActivity());
                 helper_fragment1_recyclerView.setAdapter(helperFragment1Adapter);
             }
+            else {
+
+            }
+
         }
 
         @Override

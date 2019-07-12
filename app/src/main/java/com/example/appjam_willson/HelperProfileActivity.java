@@ -117,13 +117,7 @@ public class HelperProfileActivity extends AppCompatActivity {
             choiceHelperModel.setQuestion_idx(question_idx);
             choiceHelperModel.setHelper_idx(helper_idx);
 
-
-
-
             choiceHelperModel.setStatus("doing");
-
-
-
 
             Log.d("qesution_idxidxidx_헬퍼 결정", String.valueOf(question_idx));
             Log.d("helper_idxidxidx_헬퍼 결정!!!!!!!", String.valueOf(helper_idx));
@@ -154,29 +148,30 @@ public class HelperProfileActivity extends AppCompatActivity {
                 cate.setText(result.getData().getHelper().get(0).getCategory_name());
                 stars.setText(result.getData().getHelper().get(0).getStars() + ".0");
                 review.setText(result.getData().getHelper().get(0).getReview_count() + "개의 후기");
+
                if(result.getData().getExperience().get(0).getExperience_name() != null){
-                   exper1.setText(result.getData().getExperience().get(0).getExperience_name());
+                   exper1.setText("#" + result.getData().getExperience().get(0).getExperience_name());
                }
                else {
                    exper1.setVisibility(View.GONE);
                }
                 if(result.getData().getExperience().get(1).getExperience_name() != null){
-                    exper2.setText(result.getData().getExperience().get(0).getExperience_name());
+                    exper2.setText("#" + result.getData().getExperience().get(0).getExperience_name());
                 }
                 else {
                     exper2.setVisibility(View.GONE);
                 }
                 if(result.getData().getExperience().get(2).getExperience_name() != null){
-                    exper3.setText(result.getData().getExperience().get(0).getExperience_name());
+                    exper3.setText("#" + result.getData().getExperience().get(0).getExperience_name());
                 }
                 else {
                     exper3.setVisibility(View.GONE);
                 }
-                title.setText(result.getData().getHelper().get(0).getTitle());
+                title.setText('"' + result.getData().getHelper().get(0).getTitle() + '"');
                 detail.setText(result.getData().getHelper().get(0).getContent());
-                person1.setText(result.getData().getPersonality().get(0).getPersonality_name());
-                person2.setText(result.getData().getPersonality().get(1).getPersonality_name());
-                person3.setText(result.getData().getPersonality().get(2).getPersonality_name());
+                person1.setText("#" + result.getData().getPersonality().get(0).getPersonality_name());
+                person2.setText("#" + result.getData().getPersonality().get(1).getPersonality_name());
+                person3.setText("#" + result.getData().getPersonality().get(2).getPersonality_name());
             }
             else{
                 finish();
