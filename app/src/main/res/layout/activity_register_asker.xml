@@ -73,6 +73,8 @@
                     android:hint="6자리 이상 숫자, 문자 조합"
                     android:inputType="textPassword"
                     android:id="@+id/registerasker_password"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_r"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -95,6 +97,8 @@
                     android:hint="비밀번호를 한번 더 입력해주세요"
                     android:inputType="textPassword"
                     android:id="@+id/registerasker_passwordConfirm"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_r"
                     />
                 <TextView
                     android:id="@+id/registerasker_passwordConfirm_Msg"
@@ -102,6 +106,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:layout_marginBottom="10dp"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_r"
                     />
 
                 <TextView
@@ -125,6 +131,8 @@
                     android:background="@drawable/login_edittext_grey"
                     android:hint="8자이내의 닉네임을 입력해주세요."
                     android:id="@+id/registerasker_nickName"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_r"
                     />
                 <TextView
                     android:layout_width="match_parent"
@@ -143,11 +151,11 @@
                     android:layout_marginBottom="19dp"
                     android:orientation="horizontal"
                     >
-                    <androidx.appcompat.widget.AppCompatRadioButton
+                    <RadioButton
                         android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:text="여성"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textColor="@color/lightPurple"
                         android:buttonTint="#5252A1"
                         android:checked="true"
@@ -155,11 +163,11 @@
                         android:textStyle="normal"
                         android:fontFamily="@font/nanum_square_r"
                         />
-                    <androidx.appcompat.widget.AppCompatRadioButton
+                    <RadioButton
                         android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:text="남성"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         android:textColor="@color/lightPurple"
                         android:buttonTint="#5252A1"
                         android:id="@+id/Gender_man"
@@ -184,11 +192,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="38.8dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:background="@drawable/register_spinner"
                     android:dropDownVerticalOffset="9.6dp"
                     android:popupBackground="@drawable/register_spinner"
                     android:dropDownHeight="50dp"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/nanum_square_r"
                     />
                 <!--android:paddingLeft="10.6dp"-->
             </LinearLayout>
@@ -253,9 +263,9 @@
                     android:enabled="false"
                     android:background="@drawable/listnext_btn_selector"
                     android:text="다음"
+                    android:textSize="14sp"
                     android:textColor="#FFFFFF"
                     android:textStyle="normal"
-
                     android:fontFamily="@font/nanum_square_b"/>
             </RelativeLayout>
 

@@ -2,6 +2,7 @@ package com.example.appjam_willson.LoginRegisterActivity;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -73,6 +74,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_asker);
+
         ImageView cancel = findViewById(R.id.cancel_btn);
         cancel.setVisibility(View.INVISIBLE);
 
@@ -170,6 +172,11 @@ public class RegisterActivity_asker extends AppCompatActivity {
             public void onClick(View v) {
 
                 String toCheckAge = ageSpinner.getSelectedItem().toString();
+                userEmail = idText.getText().toString();
+                userPassword = passwordText.getText().toString();
+                userNickname = nickName.getText().toString();
+                RadioButton gender = findViewById(genderGroup.getCheckedRadioButtonId());
+                userGender = gender.getText().toString();
 
                 if(userEmail.equals("") || userPassword.equals("") || userNickname.equals("") ||
                         toCheckAge.equals("나이를 선택해주세요.") || userGender.equals("")){
@@ -182,44 +189,22 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     return;
                 }
 
-                Log.d("age>>>>>",""+ageSpinner.getSelectedItem().toString());
-                userEmail = idText.getText().toString();
-                userPassword = passwordText.getText().toString();
-                userNickname = nickName.getText().toString();
                 userAge = Integer.parseInt(ageSpinner.getSelectedItem().toString());
+                signupModel.gender = userGender;
 
-                RadioButton gender = findViewById(genderGroup.getCheckedRadioButtonId());
-                userGender = gender.getText().toString();
-                if(userGender.equals("여성")){
-                    signupModel.gender = SignupModel.Gender.여;
-                }else if(userGender.equals("남성")){
-                    signupModel.gender = SignupModel.Gender.남;
-                }
+
 
                 signupModel.setAge(userAge);
                 signupModel.setDevice_token("toTest");
                 signupModel.setEmail(userEmail);
                 signupModel.setNickname(userNickname);
                 signupModel.setPassword(userPassword);
-                //signupModel.setGender();
+
 
                 Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
-
-
                 call_helper.enqueue(retrofitCallback);
 
-//                checkNickName(Nickname, new Runnable() {
-//                    public void run() {
-//                        if(nickNameCheck == false){
-//                            showAlert("존재하는 닉네임 입니다.");
-//                            Log.d("닉네임체크값",String.valueOf(nickNameCheck));
-//                            return;
-//                        }
-//                        new NetworkCall().execute(call_helper);
-//                        RegisterUser(userEmail, userPassword);
 
-//                    }
-//                });
             }
         });
 
@@ -245,7 +230,25 @@ public class RegisterActivity_asker extends AppCompatActivity {
     protected void showAlert(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity_asker.this);
         dialog = builder.setMessage(message)
-                .setNegativeButton("확인", null).create();
+                .setNegativeButton("확인", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.cancel();
+
+                    }
+                }).create();
+        dialog.show();
+    }
+    protected void alertNext(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity_asker.this);
+        dialog = builder.setMessage(message)
+                .setNegativeButton("확인", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialog.cancel();
+
+                    }
+                }).create();
         dialog.show();
     }
 
@@ -254,12 +257,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference().child("users").orderByChild("nickName").equalTo(NickName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue() == null){
-                    nickNameCheck = true;
-                }
-                else{
-                    nickNameCheck = false;
-                }
+                nickNameCheck = dataSnapshot.getValue() == null;
                 RegisterActivity_asker.this.runOnUiThread(callback);
             }
             @Override
@@ -304,23 +302,56 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 });
     }
 
+    private class NetworkCall extends AsyncTask<Call, Void, SignupResponseModel> {
+
+        @Override
+        protected SignupResponseModel doInBackground(Call[] params) {
+            try {
+                Call<SignupResponseModel> call = params[0];
+                Response<SignupResponseModel> response = call.execute();
+                return response.body();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(SignupResponseModel result) {
+            SignupResponseModel signupResponseModel = new SignupResponseModel();
+            signupResponseModel = result;
+        }
+    }
+
     private Callback<SignupResponseModel> retrofitCallback = new Callback<SignupResponseModel>() {
 
         @Override
         public void onResponse(retrofit2.Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
             SignupResponseModel result = response.body();
-            Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
-//            Log.d("dlfkdlfjkdl", ">>>>>>>>>>>"+result.getCode());
-            Intent intent = new Intent(RegisterActivity_asker.this, SignUpPersonalityActivity.class);
-            startActivity(intent);
+//            Log.d("result>>>>", String.valueOf(result));
+            Log.d("리젌트~!!~~", ">>>>>>>>>>>"+result);
+            Log.d("response.code>>",""+response.code());
+            Log.d("result.code",""+result.getCode());
+//            Log.d("repose......","코드"+response.code()+"메세지"+response.message()+"bady"+result.getData()
+//            +"result.data닉네임 ?>>>"+result.getData().getBody().getNickname());
 
+            if(result.code == 101){
+                showAlert("이메일 또는 닉네임이 중복되었습니다 :(\n다시 작성해주세요!");
+            }
+            if(response.code() == 200 && result.code ==100) {
+//                showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
+                Intent intent = new Intent(RegisterActivity_asker.this, LoginActivity.class);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(),"가입이 완료되었습니다! 로그인 화면으로 돌아갑니다 ><",Toast.LENGTH_SHORT).show();
+            }
 
         }
 
         @Override
         public void onFailure(Call<SignupResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>"); }
+
+        }
     };
 
     @Override
@@ -330,6 +361,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
         {
             dialog.dismiss();
             dialog = null;
+
         }
     }
 

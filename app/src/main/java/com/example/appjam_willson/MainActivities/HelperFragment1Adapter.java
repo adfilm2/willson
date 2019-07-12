@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -121,7 +120,7 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
         public LinearLayout userSubjectStroke;
         public TextView userInformation;
         public Button goProfile;
-        public RelativeLayout timer;
+        public LinearLayout timer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -132,7 +131,7 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
             userSubjectStroke = itemView.findViewById(R.id.subject_stroke);
             userInformation = itemView.findViewById(R.id.helper_fragment1_information);
             goProfile = itemView.findViewById(R.id.helper_profile_detail_btn);
-            timer = itemView.findViewById(R.id.asker_relative);
+            timer = itemView.findViewById(R.id.timer_linear);
         }
     }
 }

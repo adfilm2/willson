@@ -2,9 +2,9 @@ package com.example.appjam_willson.model;
 
 public class LoginResponseModel {
 
-    int code;
-    String message;
-    Data data;
+    public int code;
+    public String message;
+    public Data data;
 
     /*getter and setter start*/
 
@@ -35,7 +35,7 @@ public class LoginResponseModel {
     /*getter and setter end*/
 
     public class Data {
-        String Token;
+        public String Token;
         String email;
         String password;
 

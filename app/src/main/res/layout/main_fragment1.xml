@@ -48,8 +48,8 @@
                     android:gravity="center"
                     android:layout_marginVertical="10dp"
                     android:layout_marginRight="20dp"
-                    android:text="헬퍼전환"
-                    android:textSize="11sp"
+                    android:text="헬퍼전환 "
+                    android:textSize="12sp"
                     android:textColor="@color/dark_purple"
                     android:fontFamily="@font/nanum_square_b"
                     />
@@ -64,16 +64,58 @@
             android:id="@+id/main_textLayout"
             android:layout_marginLeft="20.1dp"
             >
-            <TextView
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="61.6dp"
-                android:id="@+id/main_fragment1_text"
-                android:text="당신의 고민\n매칭해보실래요?"
+                android:orientation="vertical"
+                >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/main_fragment1_text1"
+                android:text="당신의 고민"
                 android:textSize="22sp"
                 android:textColor="@color/dark_purple"
+                android:textStyle="normal"
                 android:fontFamily="@font/nanumsquare_r"
                 />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="61.6dp"
+                        android:id="@+id/main_fragment1_text2"
+                        android:text="매칭"
+                        android:textSize="22sp"
+                        android:textColor="@color/lightPurple"
+                        android:textStyle="normal"
+                        android:fontFamily="@font/nanumsquare_eb"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="61.6dp"
+                        android:id="@+id/main_fragment1_text3"
+                        android:text="해보실래요?"
+                        android:textSize="22sp"
+                        android:textColor="@color/dark_purple"
+                        android:textStyle="normal"
+                        android:fontFamily="@font/nanumsquare_r"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -120,7 +162,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="23.9dp"
 
@@ -132,7 +174,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:layout_marginBottom="21.1dp"
+                    android:layout_marginBottom="24.9dp"
                     android:src="@drawable/main_img_category_02_job"
                     />
                 <TextView
@@ -218,7 +260,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="23.9dp"
                 android:id="@+id/fragment1_fifthContent"
@@ -230,7 +272,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:layout_marginBottom="21.1dp"
+                    android:layout_marginBottom="23dp"
                     android:src="@drawable/main_img_category_05_daily"
                     />
 
@@ -258,7 +300,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:layout_marginBottom="21.1dp"
+                    android:layout_marginBottom="23dp"
                     android:src="@drawable/main_img_category_06_etc"
                     />
 
@@ -283,17 +325,46 @@
             android:orientation="vertical"
             >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20.1dp"
+                    android:layout_marginTop="30.6dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/main_fragment1_textSecond_1"
+                    android:text="헬퍼"
+                    android:textColor="@color/yellow"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/nanum_square_eb"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30.6dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/main_fragment1_textSecond_2"
+                    android:text="들의"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:fontFamily="@font/nanum_square_r"
+                    />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20.1dp"
-                android:layout_marginTop="30.6dp"
-                android:layout_marginBottom="2.2dp"
-                android:id="@+id/main_fragment1_textSecond"
-                android:text="헬퍼들의\n이야기"
+                android:id="@+id/main_fragment1_textSecond_3"
+                android:text="이야기"
                 android:textColor="@color/white"
                 android:textSize="22sp"
-                android:fontFamily="@font/nanum_square_eb"
+                android:fontFamily="@font/nanum_square_r"
                 />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -320,17 +391,31 @@
             android:orientation="vertical"
             >
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20.1dp"
-                android:layout_marginTop="30.6dp"
-                android:layout_marginBottom="33.8dp"
-                android:id="@+id/main_fragment1_textThird"
-                android:text="질문자들의\n후기"
+                android:layout_marginTop="34.5dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/main_fragment1_textThird_1"
+                android:text="질문자들의"
                 android:textColor="@color/dark_purple"
                 android:textSize="22sp"
                 android:fontFamily="@font/nanumsquare_r"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.1dp"
+                android:layout_marginBottom="33.8dp"
+                android:id="@+id/main_fragment1_textThird_2"
+                android:text="후기"
+                android:textColor="@color/lightPurple"
+                android:textSize="22sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_eb"
+                />
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/fragment1_rv_second"
                 android:layout_width="match_parent"

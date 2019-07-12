@@ -39,7 +39,7 @@ public class AcceptHelperListWatchResponseModel {
 
     public static class Data {
         List<Accept_helper> helper;
-//        List<Accept_Experience> experience;
+        List<Accept_Experience> experience;
 
         /*getter and setter start*/
 
@@ -51,13 +51,13 @@ public class AcceptHelperListWatchResponseModel {
             this.helper = helper;
         }
 
-//        public List<Accept_Experience> getExperience() {
-//            return experience;
-//        }
-//
-//        public void setExperience(List<Accept_Experience> experience) {
-//            this.experience = experience;
-//        }
+        public List<Accept_Experience> getExperience() {
+            return experience;
+        }
+
+        public void setExperience(List<Accept_Experience> experience) {
+            this.experience = experience;
+        }
 
         /*getter and setter end*/
 
@@ -71,6 +71,7 @@ public class AcceptHelperListWatchResponseModel {
         String content;
         String stars;
         String review_count;
+        int helper_idx;
 
         /*getter and setter start*/
 
@@ -130,26 +131,34 @@ public class AcceptHelperListWatchResponseModel {
             this.review_count = review_count;
         }
 
+        public int getHelper_idx() {
+            return helper_idx;
+        }
+
+        public void setHelper_idx(int helper_idx) {
+            this.helper_idx = helper_idx;
+        }
+
         /*getter and setter end*/
 
     }
 
-//    public class Accept_Experience {
-//        String experience_name;
-//
-//        /*getter and setter start*/
-//
-//        public String getExperience_name() {
-//            return experience_name;
-//        }
-//
-//        public void setExperience_name(String experience_name) {
-//            this.experience_name = experience_name;
-//        }
-//
-//        /*getter and setter end*/
-//
-//    }
+    public class Accept_Experience {
+        String[] experience_name;
+
+        /*getter and setter start*/
+
+        public String[] getExperience_name() {
+            return experience_name;
+        }
+
+        public void setExperience_name(String[] experience_name) {
+            this.experience_name = experience_name;
+        }
+
+        /*getter and setter end*/
+
+    }
 
 
 }

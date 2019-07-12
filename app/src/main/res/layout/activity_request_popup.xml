@@ -37,6 +37,8 @@
             android:layout_marginTop="21.5dp"
             android:layout_marginBottom="11dp"
             android:id="@+id/request_pop_textview_large"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_b"
             />
 
         <TextView
@@ -48,7 +50,8 @@
             android:lineSpacingExtra="6sp"
             android:gravity="center_horizontal"
             android:text="많은 헬퍼들이 활동하는\n저녁 7-8시에 다시 요청해보세요."
-
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"
             />
 
         <Button
@@ -61,7 +64,10 @@
             android:textColor="@color/white"
             android:background="@drawable/rounded_corner_darkblue"
             android:textSize="18sp"
-            android:elevation="8dp"/>
+            android:elevation="8dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_eb"
+            />
 
     </LinearLayout>
 </LinearLayout>

@@ -13,8 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.MainActivities.MainActivity;
 import com.example.appjam_willson.NetworkService.RetrofitAPI;
+import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.LoginModel;
 import com.example.appjam_willson.model.LoginResponseModel;
@@ -43,20 +45,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-
-        final EditText idText=findViewById(R.id.Login_ID);
-        final EditText passwordText=findViewById(R.id.Login_Password);
+        EditText idText=findViewById(R.id.Login_ID);
+        EditText passwordText=findViewById(R.id.Login_Password);
 
         mAuth = FirebaseAuth.getInstance();
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://13.125.216.169/api/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        retrofitAPI = retrofit.create(RetrofitAPI.class);
 
-
-        final Button registerButton = findViewById(R.id.Email_register);
+        Button registerButton = findViewById(R.id.Email_register);
         Button emailLoginButton = findViewById(R.id.Email_login);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -75,11 +70,14 @@ public class LoginActivity extends AppCompatActivity {
                 loginModel.setEmail(email);
                 loginModel.setPassword(password);
 
+                Call<LoginResponseModel> call_helper = RetrofitService.getInstance().getService().user_login_post(loginModel);
+                call_helper.enqueue(retrofitCallback);
+
 //                Call<LoginResponseModel> call_login = RetrofitService.getInstance().getService().user_login_post(loginModel);
 //                call_login.enqueue(retrofitCallback);
 //                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //                startActivity(intent);
-                LoginUser(email, password);
+
             }
         });
 
@@ -92,27 +90,27 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    public void LoginUser(String email, String password){
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        }
-                        else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                        // ...
-                    }
-                });
-    }
+//    public void LoginUser(String email, String password){
+//        mAuth.signInWithEmailAndPassword(email, password)
+//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                            startActivity(intent);
+//                        }
+//                        else {
+//                            // If sign in fails, display a message to the user.
+//                            Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                        // ...
+//                    }
+//                });
+//    }
 
     private Callback<LoginResponseModel> retrofitCallback = new Callback<LoginResponseModel>() {
 
@@ -121,6 +119,16 @@ public class LoginActivity extends AppCompatActivity {
             LoginResponseModel result = response.body();
             Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
             Log.d("로그인액티비티", String.valueOf(result.getCode()));
+            if(response.code()==200&& result.code ==200){
+                ApplicationFields.userToken = result.data.Token;
+                Log.d(">>>>> token값 ",">>>>>"+ApplicationFields.userToken);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
         @Override

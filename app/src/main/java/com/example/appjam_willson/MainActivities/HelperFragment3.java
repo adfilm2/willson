@@ -35,8 +35,11 @@ public class HelperFragment3 extends Fragment {
         Button button4 = view.findViewById(R.id.h_edit_btn4);
 
         ImageView btn;
+        ImageView back;
         TextView text;
 
+        back = view.findViewById(R.id.back_btn);
+        back.setVisibility(View.INVISIBLE);
         btn = view.findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
         text = view.findViewById(R.id.toolbar_text);

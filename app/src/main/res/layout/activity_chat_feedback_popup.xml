@@ -152,7 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/star_comment"
-                android:text="별로에요 "
+                android:text="별로예요 "
                 android:layout_marginLeft="5.3dp"
                 android:textSize="12sp"
                 android:textColor="@color/black"

@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
         changeTextColor(text_home, text_request, text_chat, text_mypage);
 
         // passPushTokenToServer();
+
+        Timestamp testTimes = new Timestamp(System.currentTimeMillis());
+        if(ApplicationFields.timerStart != 0){
+
+        }
+        ApplicationFields.timerStart = testTimes.getTime();
 
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void startMainView() {
+
         MainFragment fragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
     }

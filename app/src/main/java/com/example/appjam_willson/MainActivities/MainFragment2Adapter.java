@@ -2,6 +2,7 @@ package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appjam_willson.AskerProfileActivity;
+import com.example.appjam_willson.HelperProfileActivity;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.AcceptHelperListWatchResponseModel;
 
@@ -19,6 +20,9 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
 
     private AcceptHelperListWatchResponseModel.Data dataModels;
     private Context context;
+
+    int helper_idx;
+    int question_idx;
 
     public MainFragment2Adapter(AcceptHelperListWatchResponseModel.Data dataModels, Context context){
         this.dataModels = dataModels;
@@ -35,7 +39,8 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
-
+        question_idx = MainFragment2.question_idx;
+        Log.d("question 2어댑터임" , ">>>>>>>>>>"+question_idx);
 //        닉네임
         if(dataModels.getHelper().get(i).getNickname() != null) {
             viewHolder.Nickname.setText(dataModels.getHelper().get(i).getNickname());
@@ -81,11 +86,27 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
         }
 
         //경험
-//        if(dataModels.getExperience() != null){
-//            viewHolder.exp1.setText("#" + dataModels.getExperience().get(0).getExperience_name());
-//            viewHolder.exp2.setText("#" + dataModels.getExperience().get(1).getExperience_name());
-//            viewHolder.exp3.setText("#" + dataModels.getExperience().get(2).getExperience_name());
-//        }
+        if(dataModels.getExperience() != null){
+            if(dataModels.getExperience().get(0).getExperience_name() != null){
+                viewHolder.exp1.setText("#" + dataModels.getExperience().get(0).getExperience_name());
+            }
+            else if(dataModels.getExperience().get(0).getExperience_name() == null){
+                viewHolder.exp1.setVisibility(View.GONE);
+            }
+            else if(dataModels.getExperience().get(1).getExperience_name() != null){
+                viewHolder.exp2.setText("#" + dataModels.getExperience().get(1).getExperience_name());
+            }
+            else if (dataModels.getExperience().get(1).getExperience_name() == null){
+                viewHolder.exp2.setVisibility(View.GONE);
+            }
+            else if(dataModels.getExperience().get(2).getExperience_name() != null)
+            {
+                viewHolder.exp3.setText("#" + dataModels.getExperience().get(2).getExperience_name());
+            } else if (dataModels.getExperience().get(2).getExperience_name() == null) {
+                viewHolder.exp3.setVisibility(View.GONE);
+            }
+
+        }
 
         //프로필보기
         viewHolder.goProfile.setOnClickListener(new View.OnClickListener() {
@@ -93,10 +114,11 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
             public void onClick(View v) {
                 /*int helper_idx = dataModels.getHelper();*/
 
-                int helper_idx = 1;
-
-                Intent intent = new Intent(v.getContext(), AskerProfileActivity.class);
+                /*int helper_idx = 1;*/
+                helper_idx = dataModels.getHelper().get(i).getHelper_idx();
+                Intent intent = new Intent(v.getContext(), HelperProfileActivity.class);
                 intent.putExtra("helper_idx", helper_idx);
+                intent.putExtra("question_idx", question_idx);
                 context.startActivity(intent);
             }
 

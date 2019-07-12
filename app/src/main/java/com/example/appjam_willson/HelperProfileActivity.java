@@ -32,6 +32,7 @@ public class HelperProfileActivity extends AppCompatActivity {
 
     Intent intent;
     int helper_idx;
+    int question_idx;
 
     TextView nick;
     TextView gend;
@@ -53,6 +54,9 @@ public class HelperProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_req_helper_profile);
+
+        intent = getIntent();
+        helper_idx = intent.getIntExtra("helper_idx", 0);
 
         toolbar_textView = (TextView)findViewById(R.id.toolbar_text);
         toolbar_textView.setText("헬퍼 프로필");
@@ -99,8 +103,8 @@ public class HelperProfileActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent;
 
-            int question_idx = 38;
-            int helper_idx = 1;
+            /*int question_idx = 38;
+            int helper_idx = 1;*/
             String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
 
             ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
@@ -127,9 +131,24 @@ public class HelperProfileActivity extends AppCompatActivity {
                 cate.setText(result.getData().getHelper().get(0).getCategory_name());
                 stars.setText(result.getData().getHelper().get(0).getStars() + ".0");
                 review.setText(result.getData().getHelper().get(0).getReview_count() + "개의 후기");
-                exper1.setText(result.getData().getExperience().get(0).getExperience_name());
-                exper2.setText(result.getData().getExperience().get(1).getExperience_name());
-                exper3.setText(result.getData().getExperience().get(2).getExperience_name());
+               if(result.getData().getExperience().get(0).getExperience_name() != null){
+                   exper1.setText(result.getData().getExperience().get(0).getExperience_name());
+               }
+               else {
+                   exper1.setVisibility(View.GONE);
+               }
+                if(result.getData().getExperience().get(1).getExperience_name() != null){
+                    exper2.setText(result.getData().getExperience().get(0).getExperience_name());
+                }
+                else {
+                    exper2.setVisibility(View.GONE);
+                }
+                if(result.getData().getExperience().get(2).getExperience_name() != null){
+                    exper3.setText(result.getData().getExperience().get(0).getExperience_name());
+                }
+                else {
+                    exper3.setVisibility(View.GONE);
+                }
                 title.setText(result.getData().getHelper().get(0).getTitle());
                 detail.setText(result.getData().getHelper().get(0).getContent());
                 person1.setText(result.getData().getPersonality().get(0).getPersonality_name());

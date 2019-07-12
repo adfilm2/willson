@@ -60,7 +60,10 @@
                                 android:lineSpacingExtra="9sp"
                                 android:textColor="#424242"
                                 android:id="@+id/profile_helper_id"
-                                android:textSize="17sp"/>
+                                android:textSize="17sp"
+                                android:textStyle="normal"
+                                android:fontFamily="@font/nanumsquare_l"
+                                />
 
                             <!--정보-->
 
@@ -80,7 +83,10 @@
                                     android:layout_marginBottom="14.8dp"
                                     android:textColor="#424242"
                                     android:id="@+id/profile_helper_gender"
-                                    android:textSize="13sp"/>
+                                    android:textSize="13sp"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_r"
+                                    />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -92,6 +98,8 @@
                                     android:textColor="#424242"
                                     android:id="@+id/profile_helper_age"
                                     android:textSize="13sp"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_r"
                                     />
 
                             </LinearLayout>
@@ -118,6 +126,8 @@
                                     android:gravity="bottom"
                                     android:text="5.0 "
                                     android:id="@+id/profile_star"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_eb"
                                     android:textSize="13sp"/>
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -125,6 +135,8 @@
                                     android:gravity="bottom"
                                     android:textColor="#424242"
                                     android:text="(6개의 후기)"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_r"
                                     android:id="@+id/review_num"
                                     android:textSize="11sp"/>
                             </LinearLayout>
@@ -144,7 +156,9 @@
                                 android:gravity="center"
                                 android:text='" 20대에 억단위를 벌어본 경험, 3년간 투병생활,\n20년간 어머니를 병간호한 경험이 있어요. "'
                                 android:id="@+id/profile_asker_info"
-                                android:textSize="17dp"/>
+                                android:textSize="17dp"
+                                android:textStyle="normal"
+                                android:fontFamily="@font/nanumsquare_round_b"/>
 
                             <!--해시태그-->
                             <LinearLayout
@@ -166,7 +180,10 @@
                                     android:textColor="@color/lightPurple"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag1"
-                                    android:textSize="13sp"/>
+                                    android:textSize="13sp"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_r"
+                                    />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -178,7 +195,10 @@
                                     android:textColor="@color/lightPurple"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag2"
-                                    android:textSize="13sp"/>
+                                    android:textSize="13sp"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_r"
+                                    />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -190,7 +210,10 @@
                                     android:textColor="@color/lightPurple"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag3"
-                                    android:textSize="13sp"/>
+                                    android:textSize="13sp"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_r"
+                                    />
 
                             </LinearLayout>
 
@@ -214,6 +237,8 @@
                                 android:paddingVertical="5.8dp"
                                 android:elevation="5dp"
                                 android:background="@drawable/round_view"
+                                android:textStyle="normal"
+                                android:fontFamily="@font/nanumsquare_eb"
                                 android:layout_gravity="center"/>
 
                             <LinearLayout
@@ -231,7 +256,9 @@
                                     android:lineSpacingExtra="13sp"
                                     android:textColor="@color/darkPurple"
                                     android:id="@+id/ex1"
-                                    android:text="#음악" />
+                                    android:text="#음악"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_eb"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -241,7 +268,9 @@
                                     android:layout_marginHorizontal="4dp"
                                     android:id="@+id/ex2"
                                     android:textColor="@color/darkPurple"
-                                    android:text="#오예에에에" />
+                                    android:text="#오예에에에"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_eb"/>
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -250,6 +279,8 @@
                                     android:id="@+id/ex3"
                                     android:textColor="@color/darkPurple"
                                     android:text="#아리가또"
+                                    android:textStyle="normal"
+                                    android:fontFamily="@font/nanumsquare_eb"
                                     />
 
                             </LinearLayout>
@@ -262,8 +293,12 @@
                                 android:layout_marginTop="12.8dp"
                                 android:layout_marginBottom="9.4dp"
                                 android:id="@+id/infomation"
+                                android:lineSpacingExtra="12sp"
                                 android:text="gkr학창시절 어저구저WJrn sjansk저는 부모님의 반ㅇ대에 붖딪셯.....\n\n\n\n아이이아그랫다\n\n\nrmfoTek그랬답니다."
-                                android:padding="14.4dp"/>
+                                android:padding="14.4dp"
+                                android:textStyle="normal"
+                                android:fontFamily="@font/nanumsquare_round_r"
+                                />
 
                         </LinearLayout>
 
@@ -275,16 +310,40 @@
                         android:background="@color/bgcolor"
                         android:orientation="vertical">
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/darkPurple"
-                            android:background="@drawable/rounded_corner_grey"
-                            android:layout_marginLeft="19.2dp"
-                            android:textSize="21sp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="21.2dp"
-                            android:text="다른 고민자들의 후기" />
+                            android:orientation="horizontal"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/darkPurple"
+                                android:background="@drawable/rounded_corner_grey"
+                                android:layout_marginLeft="19.2dp"
+                                android:textSize="21sp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="21.2dp"
+                                android:text="다른 고민자들의"
+                                android:textStyle="normal"
+                                android:fontFamily="@font/nanumsquare_round_r"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/darkPurple"
+                                android:background="@drawable/rounded_corner_grey"
+                                android:textSize="21sp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="21.2dp"
+                                android:text="후기"
+                                android:textStyle="normal"
+                                android:fontFamily="@font/nanumsquare_round_eb"
+                                />
+
+                        </LinearLayout>
 
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -313,12 +372,16 @@
             android:id="@+id/floating_btn_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="대화 시작하기"
+            android:text="헬퍼 결정하기"
             android:elevation="15dp"
             android:textColor="@color/white"
             android:layout_marginBottom="50dp"
             android:background="@drawable/rounded_corner_darkblue"
-            android:paddingHorizontal="20dp" />
+            android:paddingHorizontal="20dp"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_round_eb"
+            />
     </RelativeLayout>
 
 </FrameLayout>

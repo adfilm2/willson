@@ -28,7 +28,7 @@ public class ReqHelperProfileAdapter extends RecyclerView.Adapter<ReqHelperProfi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.helper_fragment1_rv_item, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_helper_received_worries_item, viewGroup, false);
             ViewHolder vh = new ViewHolder(v);
             return vh;
     }

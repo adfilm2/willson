@@ -2,6 +2,7 @@ package com.example.appjam_willson.MainActivities;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,14 +28,19 @@ public class MainFragment2 extends Fragment {
     private MainFragment2Adapter mainFragment2Adapter;
    /* private String myUid;*/
 
+    public static int question_idx;
+
     public MainFragment2(){
 
     }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.main_fragment2,null);
+        if(getArguments() != null){
+            question_idx = getArguments().getInt("question_idx");
+            Log.d("question fragment2임" , ">>>>>>>>>>"+question_idx);
+        }
 
         /*myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();*/
 
@@ -57,8 +63,8 @@ public class MainFragment2 extends Fragment {
 
             /*callWillson(myUid);*/
 
-        int question_idx = 1;
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6zshLEiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3OTk0ODcsImV4cCI6MTU3MTQzOTQ4NywiaXNzIjoid2lsbHNvbiJ9.l2Slk87lEK8Ne_SUMiiIfsXVSuUDfa5VWaeyE3PmZIs";
+        /*int question_idx = 38;*/
+        String token = "dddd"; // token 값 줘야ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ함ㅁㅁㅁㅁㅁㅁㅁ
 
         Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
         //여기 윗줄에 question_idx값 안넣어줌
@@ -75,12 +81,11 @@ public class MainFragment2 extends Fragment {
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
 
-            if (result.getCode() == 1000 && result.getData().getHelper() != null) {
+            if (response.code() == 200 && result.getCode() == 1000 && result.getData().getHelper() != null) {
                 accept_helper = result.getData();
                 mainFragment2Adapter = new MainFragment2Adapter(accept_helper, getActivity());
                 fragment2Recyclerview.setAdapter(mainFragment2Adapter);
             }
-
             else {
             }
         }

@@ -36,6 +36,8 @@
                 android:text="연남동 전윤한님"
                 android:textColor="@color/dark_purple"
                 android:textSize="14sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_b"
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -43,6 +45,9 @@
                 android:id="@+id/fragment3_chatMessage"
                 android:text="메시지"
                 android:gravity="start"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_r"
                 />
         </LinearLayout>
 
@@ -55,6 +60,8 @@
             android:textColor="@color/grey"
             android:textSize="9sp"
             android:layout_marginRight="19.1dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"
             />
         <ImageView
             android:layout_width="wrap_content"

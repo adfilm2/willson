@@ -14,10 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appjam_willson.NetworkService.RetrofitAPI;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
-import com.example.appjam_willson.model.DataModel;
 import com.example.appjam_willson.model.HelperReceivedWorryListWatchResponseModel;
 
 import java.util.ArrayList;
@@ -26,7 +24,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class HelperFragment extends Fragment {
 

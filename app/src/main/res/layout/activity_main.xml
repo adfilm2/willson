@@ -50,6 +50,8 @@
                 android:textColor="@color/grey"
                 android:textSize="12sp"
                 android:gravity="center"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_r"
                 />
             </LinearLayout>
 
@@ -79,6 +81,8 @@
                 android:textColor="@color/grey"
                 android:textSize="12sp"
                 android:gravity="center"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_r"
                 />
            </LinearLayout>
         <LinearLayout
@@ -107,6 +111,8 @@
                 android:text="채팅"
                 android:textColor="@color/grey"
                 android:textSize="12sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_r"
                 />
 
     </LinearLayout>
@@ -137,6 +143,8 @@
                 android:textSize="12sp"
                 android:textColor="@color/grey"
                 android:gravity="center"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanum_square_r"
                 />
         </LinearLayout>
     </LinearLayout>

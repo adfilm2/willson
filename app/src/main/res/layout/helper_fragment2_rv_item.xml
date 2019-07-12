@@ -31,6 +31,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/willson_fragment2_chatTitle"
                 android:text="방 이름"
+                android:textColor="@color/darkPurple"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_b"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -39,6 +43,9 @@
                 android:layout_below="@+id/willson_fragment2_chatTitle"
                 android:text="메시지"
                 android:layout_marginTop="10sp"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:fontFamily="@font/nanumsquare_r"
                 />
         </LinearLayout>
 
@@ -48,6 +55,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="날짜"
+            android:textSize="9sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"
             />
 
     </RelativeLayout>

@@ -14,8 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.NetworkService.RetrofitService;
-import com.example.appjam_willson.model.SendRequestModel;
-import com.example.appjam_willson.model.SendRequestResponseModel;
+import com.example.appjam_willson.model.ChoiceHelperModel;
+import com.example.appjam_willson.model.ChoiceHelperResponseModel;
 import com.example.appjam_willson.model.UserProfileWatchResponseModel;
 
 import retrofit2.Call;
@@ -54,6 +54,7 @@ public class AskerProfileActivity extends AppCompatActivity {
     ImageView image;
 
     int question_idx;
+    int helper_idx;
     String token;
 
     @Override
@@ -96,7 +97,9 @@ public class AskerProfileActivity extends AppCompatActivity {
         request_btn.setOnClickListener(new request_conversation());
 
         intent = getIntent();
+        helper_idx = intent.getIntExtra("helper_idx", 0);
         question_idx = intent.getIntExtra("question_idx", 0);
+
 
         /*token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6Nywibmlja25hbWUiOiJhIiwiZ2VuZGVyIjoi7JesIiwiYWdlIjozNSwidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNTkxNDE4LCJleHAiOjE1NzEyMzE0MTgsImlzcyI6IndpbGxzb24ifQ.8ZxnOA11-BUSyHqKj5piY1VMFxkua8Cy3BcZ5hCyBME";
 *///그전 token
@@ -185,20 +188,20 @@ public class AskerProfileActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent;
 
-            SendRequestModel sendRequestModel = new SendRequestModel();
-            sendRequestModel.setQuestion_idx(question_idx);
-            Log.d("qesution_idxidxidx", String.valueOf(question_idx));
-
-            Call<SendRequestResponseModel> send_request = RetrofitService.getInstance().getService().send_request_post(token, sendRequestModel);
+            ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
+            choiceHelperModel.setQuestion_idx(question_idx);
+            choiceHelperModel.setHelper_idx(helper_idx);
+            Log.d("qesution_idxidxidx_헬퍼 결정", String.valueOf(question_idx));
+            Log.d("helper_idxidxidx_헬퍼 결정!!!!!!!", String.valueOf(helper_idx));
+            Call<ChoiceHelperResponseModel> send_request = RetrofitService.getInstance().getService().choice_helper_post(token, choiceHelperModel);
             send_request.enqueue(retrofit_Callback);
-
         }
     }
 
-    private Callback<SendRequestResponseModel> retrofit_Callback = new Callback<SendRequestResponseModel>() {
+    private Callback<ChoiceHelperResponseModel> retrofit_Callback = new Callback<ChoiceHelperResponseModel>() {
         @Override
-        public void onResponse(Call<SendRequestResponseModel> call, Response<SendRequestResponseModel> response) {
-            SendRequestResponseModel result = response.body();
+        public void onResponse(Call<ChoiceHelperResponseModel> call, Response<ChoiceHelperResponseModel> response) {
+            ChoiceHelperResponseModel result = response.body();
 
             Log.d("코드코드받은코드", String.valueOf(result.getCode()));
 
@@ -217,7 +220,7 @@ public class AskerProfileActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onFailure(Call<SendRequestResponseModel> call, Throwable t) {
+        public void onFailure(Call<ChoiceHelperResponseModel> call, Throwable t) {
             t.printStackTrace();
             Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }

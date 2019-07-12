@@ -29,6 +29,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="13dp"
             android:id="@+id/request_pop_textview_large"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_b"
             />
 
         <TextView
@@ -40,7 +42,8 @@
             android:lineSpacingExtra="6sp"
             android:gravity="center_horizontal"
             android:text="다른 헬퍼와 만나보시겠어요?"
-
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_r"
             />
 
         <Button
@@ -52,8 +55,10 @@
             android:text="확인"
             android:textColor="@color/white"
             android:background="@drawable/rounded_corner_darkblue"
-            android:textSize="18sp"
-            android:elevation="8dp"/>
+            android:textSize="16sp"
+            android:elevation="8dp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_eb"/>
 
     </LinearLayout>
 </LinearLayout>
