@@ -58,11 +58,12 @@ public class MainFragment3 extends Fragment {
                             break;
                         }
                     }
+                }else{
+                    return ;
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
@@ -84,10 +85,8 @@ public class MainFragment3 extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
                     if (dataSnapshot.getValue() == null) {
-                        Log.d("데이터가 없어요", "데이터가ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
                     }
                     WillsonModel users = dataSnapshot.getValue(WillsonModel.class);
-                    Log.d("데이터 찾았다ㅏㅏㅏㅏㅏㅏ", users.getUid());
                     willsonModels.add(users);
                     fragment3Adapter.notifyDataSetChanged();
 

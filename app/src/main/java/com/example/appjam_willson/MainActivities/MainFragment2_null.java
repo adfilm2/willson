@@ -28,8 +28,8 @@ public class MainFragment2_null extends Fragment {
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ApplicationFields.home.setImageResource(R.drawable.tab_01_home_active);
-                ApplicationFields.request.setImageResource(R.drawable.tab_02_request_nonactive);
+                ApplicationFields.home.setSelected(true);
+                ApplicationFields.request.setSelected(false);
                 ApplicationFields.hometxt.setTextColor(Color.parseColor("#2f2f2f"));
                 ApplicationFields.requesttxt.setTextColor(Color.parseColor("#9e9e9e"));
 

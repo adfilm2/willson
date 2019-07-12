@@ -2,7 +2,6 @@ package com.example.appjam_willson.MainActivities;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appjam_willson.ApplicationField.ApplicationFields;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.WillsonModel;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -47,14 +45,18 @@ public class HelperFragment2 extends Fragment {
             FirebaseDatabase.getInstance().getReference().child("helperUsers").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot item : dataSnapshot.getChildren()) {
-                        WillsonModel users = item.getValue(WillsonModel.class);
-                        String uidGet =users.getUid();
-                        if (uidGet.equals(myUid)) {
-                            roomKey = users.getRoomKey();
-                            findChatRooms(roomKey);
-                            break;
+                    if(dataSnapshot.getValue() != null) {
+                        for (DataSnapshot item : dataSnapshot.getChildren()) {
+                            WillsonModel users = item.getValue(WillsonModel.class);
+                            String uidGet = users.getUid();
+                            if (uidGet.equals(myUid)) {
+                                roomKey = users.getRoomKey();
+                                findChatRooms(roomKey);
+                                break;
+                            }
                         }
+                    }else{
+                        return ;
                     }
                 }
                 @Override
@@ -89,7 +91,6 @@ public class HelperFragment2 extends Fragment {
                         e.printStackTrace();
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                     return ;

@@ -1,7 +1,6 @@
 package com.example.appjam_willson.MainActivities;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,13 +11,11 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityExp;
 import com.example.appjam_willson.HelperProfileEdit.HelperProfileEditActivityStart;
 import com.example.appjam_willson.R;
 
 public class MainFragment4 extends Fragment {
     LinearLayout setting;
-    Context context;
 
     public MainFragment4(){
     }
@@ -34,7 +31,6 @@ public class MainFragment4 extends Fragment {
 
 
     private class setting_click implements View.OnClickListener {
-
         @Override
         public void onClick(View view) {
             Intent intentProfileEdit = new Intent(view.getContext(), HelperProfileEditActivityStart.class);

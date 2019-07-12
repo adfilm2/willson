@@ -80,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
         changeImage(image_home, image_chat, image_mypage, image_request);
         changeTextColor(text_home, text_request, text_chat, text_mypage);
 
-        // passPushTokenToServer();
-
         Timestamp testTimes = new Timestamp(System.currentTimeMillis());
         if(ApplicationFields.timerStart != 0){
 
@@ -107,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
                 String testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
                 Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(testToken,question_idx);
                 accept_helper.enqueue(retrofitCallback);
-
             }
         });
 
@@ -169,16 +166,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void startMainView() {
-
         MainFragment fragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-    }
-
-    public void checkMatch(String token) {
-        int question_idx = 2;
-        Log.d("리저트ㅡㅡㅡㅡㅡㅡㅡㅡ", "checkMatch에 들어왔습니다");
-        Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
-        accept_helper.enqueue(retrofitCallback);
     }
 
     private Callback<AcceptHelperListWatchResponseModel> retrofitCallback = new Callback<AcceptHelperListWatchResponseModel>() {
@@ -186,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
+
             if (result.getCode() == 1000 && ApplicationFields.timerSwitch == false && ApplicationFields.matchingStack == true) {
                 MainFragment2 fragment = new MainFragment2();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();

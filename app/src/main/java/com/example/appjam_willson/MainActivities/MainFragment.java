@@ -190,7 +190,6 @@ public class MainFragment extends Fragment {
                 user_profile.enqueue(check_retrofitCallback);
 
                 //헬퍼 가입했는지 아닌지 판단해서
-                //Intent intent = new Intent(getActivity() , HelperActivity.class);
                 Intent intent = new Intent(getActivity() , HelperActivity.class);
                 startActivity(intent);
             }

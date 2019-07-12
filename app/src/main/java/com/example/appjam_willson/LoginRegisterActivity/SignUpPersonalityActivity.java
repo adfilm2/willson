@@ -1,5 +1,6 @@
 package com.example.appjam_willson.LoginRegisterActivity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,8 +23,11 @@ import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.SignupModel;
 import com.example.appjam_willson.model.SignupResponseModel;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -89,9 +93,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
 
         list5_backbtn = findViewById(R.id.back_btn_layout);
         list5_backbtn.setOnClickListener(new list5_1_backbtn_listener());
-
-
-
 
     }
     public void char_check(View view){
@@ -197,18 +198,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
             profile.put("uid",user_uid);
             profile.put("nickName",signupModel.nickname);
 
-            Log.d("gender",">>>>>  "+signupModel.gender);
-            Log.d("age",">>>>>  "+signupModel.age);
-            Log.d("nickname",">>>>>  "+signupModel.nickname);
-            Log.d("password",">>>>>  "+signupModel.password);
-            Log.d("email",">>>>>  "+signupModel.email);
-            Log.d("personality",">>>>> 0 "+strings[0]);
-            Log.d("personality",">>>>> 1 "+strings[1]);
-            Log.d("personality",">>>>> 2 "+strings[2]);
-
-
-
-
             Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
             call_helper.enqueue(retrofitCallback);
         }
@@ -242,10 +231,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
         public void onResponse(retrofit2.Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
             SignupResponseModel result = response.body();
 
-            Log.d(">>>>response code>>>",""+response.code());
-            Log.d(">>>>reult code>>>",""+result.code);
-
-
             if(response.code() == 200){
 
                 if (result.code == 101) {
@@ -277,9 +262,25 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialog.cancel();
-
                     }
                 }).create();
         dialog.show();
     }
+
+
+
+//    protected void checkNickName(String NickName, final Runnable callback){
+//
+//        FirebaseDatabase.getInstance().getReference().child("users").orderByChild("nickName").equalTo(NickName).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                nickNameCheck = dataSnapshot.getValue() == null;
+//                SignUpPersonalityActivity.this.runOnUiThread(callback);
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 }
