@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 changeImage(image_request, image_home, image_mypage, image_chat);
                 changeTextColor(text_request, text_home, text_chat, text_mypage);
-                int question_idx = 1;
+                /*int question_idx = 1;*/
 
                 Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
                 accept_helper.enqueue(retrofitCallback);

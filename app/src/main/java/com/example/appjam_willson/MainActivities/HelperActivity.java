@@ -159,6 +159,7 @@ public class HelperActivity extends AppCompatActivity{
 //            Log.d("유저 닉네임", result.getData().getConcernInfo().get(0).getUserInfo().getNickname());
 
             Log.d("sizesizesizesizesize", String.valueOf(result.getData().getSize()));
+            Log.d("useridxuseridxuseridx", String.valueOf(result.getData().getConcernInfo().get(0).getUserInfo().getUser_idx()));
 
             if (result.getCode() == 800 && result.getData().getSize() != 0) {
                 /*adapter_send = result.getData().getConcernInfo();*/

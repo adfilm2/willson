@@ -14,8 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.NetworkService.RetrofitService;
-import com.example.appjam_willson.model.ChoiceHelperModel;
-import com.example.appjam_willson.model.ChoiceHelperResponseModel;
+import com.example.appjam_willson.model.SendRequestModel;
+import com.example.appjam_willson.model.SendRequestResponseModel;
 import com.example.appjam_willson.model.UserProfileWatchResponseModel;
 
 import retrofit2.Call;
@@ -112,7 +112,7 @@ public class AskerProfileActivity extends AppCompatActivity {
       /*  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
 *///그전 token
 
-        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTAsIm5pY2tuYW1lIjoibmlja25hbWUiLCJnZW5kZXIiOiLsl6wiLCJhZ2UiOjIzLCJ1c2VyX2xldmVsIjowLCJpYXQiOjE1NjI3ODEyNTQsImV4cCI6MTU3MTQyMTI1NCwiaXNzIjoid2lsbHNvbiJ9.R86ritC1vJ6gX2QVLNfaEp6aF8JDYwdtGPzPNzPqmcU";
+        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NTksIm5pY2tuYW1lIjoi7J2066aE7J2066aEIiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyODU3MDU3LCJleHAiOjE1NzE0OTcwNTcsImlzcyI6IndpbGxzb24ifQ.j8sNiLFIXRsZ-CZORN6zuG9IZAS8rQ7m_i0FyRr6LQY";
 
         Call<UserProfileWatchResponseModel> user_profile = RetrofitService.getInstance().getService().get_user_profile(question_idx);
         user_profile.enqueue(retrofitCallback);
@@ -188,24 +188,30 @@ public class AskerProfileActivity extends AppCompatActivity {
         public void onClick(View view) {
             Intent intent;
 
-            ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
+            SendRequestModel sendRequestModel = new SendRequestModel();
+            sendRequestModel.setQuestion_idx(question_idx);
+            Log.d("요청을 보낸다아아앗", String.valueOf(question_idx));
+            Call<SendRequestResponseModel> send_request = RetrofitService.getInstance().getService().send_request_post(token, sendRequestModel);
+            send_request.enqueue(retrofit_Callback);
+
+           /* ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
             choiceHelperModel.setQuestion_idx(question_idx);
             choiceHelperModel.setHelper_idx(helper_idx);
             Log.d("qesution_idxidxidx_헬퍼 결정", String.valueOf(question_idx));
             Log.d("helper_idxidxidx_헬퍼 결정!!!!!!!", String.valueOf(helper_idx));
             Call<ChoiceHelperResponseModel> send_request = RetrofitService.getInstance().getService().choice_helper_post(token, choiceHelperModel);
-            send_request.enqueue(retrofit_Callback);
+            send_request.enqueue(retrofit_Callback);*/
         }
     }
 
-    private Callback<ChoiceHelperResponseModel> retrofit_Callback = new Callback<ChoiceHelperResponseModel>() {
+    private Callback<SendRequestResponseModel> retrofit_Callback = new Callback<SendRequestResponseModel>() {
         @Override
-        public void onResponse(Call<ChoiceHelperResponseModel> call, Response<ChoiceHelperResponseModel> response) {
-            ChoiceHelperResponseModel result = response.body();
+        public void onResponse(Call<SendRequestResponseModel> call, Response<SendRequestResponseModel> response) {
+            SendRequestResponseModel result = response.body();
 
             Log.d("코드코드받은코드", String.valueOf(result.getCode()));
 
-            if(result.getCode() == 1400 ){
+            if(response.code() == 200 && result.getCode() == 1400 ){
                 intent = new Intent(context, HelperRequestCompleteActivity.class);
                 /*intent.putExtra("question_idx", question_idx);*/
                 startActivity(intent);
@@ -220,7 +226,7 @@ public class AskerProfileActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onFailure(Call<ChoiceHelperResponseModel> call, Throwable t) {
+        public void onFailure(Call<SendRequestResponseModel> call, Throwable t) {
             t.printStackTrace();
             Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
