@@ -49,6 +49,9 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
     Typeface typebold;
     Typeface typereg;
 
+
+    LinearLayout cancelbtn;
+
     String small_category;
    /* EditText edit;
     TextView HSUtextview;
@@ -105,6 +108,10 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
         custom_edit_text.setOnClickListener(new custom_edit_Clicklistener());
         custom_edit_text.setOnKeyListener(new custom_edit_listener());
         custom_edit_text.setTypeface(typebold);
+
+
+        cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
+        cancelbtn.setOnClickListener(new HelperProfileEditActivityC2.cancelbtn_listener());
 
     }
 
@@ -301,6 +308,13 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
     }
 
     class backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
+    class cancelbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             finish();
