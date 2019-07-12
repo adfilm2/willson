@@ -179,7 +179,16 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
             signupModel.password = intent.getStringExtra("password");
             signupModel.email = intent.getStringExtra("email");
             signupModel.device_token = "token";
-            signupModel.personality = strings;
+            signupModel.personality_idx = strings;
+
+            Log.d("gender",">>>>>  "+signupModel.gender);
+            Log.d("age",">>>>>  "+signupModel.age);
+            Log.d("nickname",">>>>>  "+signupModel.nickname);
+            Log.d("password",">>>>>  "+signupModel.password);
+            Log.d("email",">>>>>  "+signupModel.email);
+            Log.d("personality",">>>>> 0 "+strings[0]);
+            Log.d("personality",">>>>> 1 "+strings[1]);
+            Log.d("personality",">>>>> 2 "+strings[2]);
 
 
 
