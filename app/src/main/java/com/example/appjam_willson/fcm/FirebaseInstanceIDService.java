@@ -3,9 +3,8 @@ package com.example.appjam_willson.fcm;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 
-public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
+public class FirebaseInstanceIDService extends FirebaseMessagingService {
 
     private static final String TAG = "FirebaseIDService";
 

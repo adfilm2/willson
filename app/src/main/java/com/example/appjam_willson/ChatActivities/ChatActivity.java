@@ -78,6 +78,9 @@ public class ChatActivity extends AppCompatActivity {
     int peopleCount = 0;
     long passTime;
 
+    //채팅이 종료 되었을 때의 comment list길이
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -539,6 +542,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 btnSent.setEnabled(false);
+
             }
         };
         countDownTimer.start();
