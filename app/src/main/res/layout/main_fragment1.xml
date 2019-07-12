@@ -372,7 +372,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="36.4dp"
-                android:layout_marginRight="37.3dp"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_marginRight="37.3dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
             <me.relex.circleindicator.CircleIndicator2
                 android:id="@+id/indicator"
