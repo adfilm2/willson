@@ -55,6 +55,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
 
     View view;
     ImageView btn;
+    String[] tags = new String[3];
     Bundle bundle2 = new Bundle();
 
     @Override
@@ -62,8 +63,8 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_helper_sign_up2);
 
-        view = (View)findViewById(R.id.toolbar);
-        btn =(ImageView)findViewById(R.id.cancel_btn);
+        view = findViewById(R.id.toolbar);
+        btn = findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
         context = this;
@@ -77,16 +78,16 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
-        signup_backbtn = (ImageView)view.findViewById(R.id.back_btn);
+        signup_backbtn = view.findViewById(R.id.back_btn);
         signup_backbtn.setOnClickListener(new signup_backbtn_listener());
 
-        linear1 = (LinearLayout)findViewById(R.id.linear1);
-        linear2 = (LinearLayout)findViewById(R.id.linear2);
-        linear3 = (LinearLayout)findViewById(R.id.linear3);
+        linear1 = findViewById(R.id.linear1);
+        linear2 = findViewById(R.id.linear2);
+        linear3 = findViewById(R.id.linear3);
 
-        edit1 = (EditText)findViewById(R.id.editText1);
-        edit2 = (EditText)findViewById(R.id.editText2);
-        edit3 = (EditText)findViewById(R.id.editText3);
+        edit1 = findViewById(R.id.editText1);
+        edit2 = findViewById(R.id.editText2);
+        edit3 = findViewById(R.id.editText3);
 
         edit1.setTypeface(typereg);
         edit2.setTypeface(typereg);
@@ -98,15 +99,15 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
 
         edit3.setOnKeyListener(new edit_listener());
 
-        background = (LinearLayout) findViewById(R.id.signup_background);
+        background = findViewById(R.id.signup_background);
         background.setOnClickListener(new signup_background_listener());
 
-        signup_nextbtn = (Button) findViewById(R.id.next_btn);
+        signup_nextbtn = findViewById(R.id.next_btn);
         signup_nextbtn.setOnClickListener(new signup_nextbtn_listener());
 
-        textViewCount = (TextView) findViewById(R.id.textViewCount);
+        textViewCount = findViewById(R.id.textViewCount);
 
-        helper_experience = (EditText) findViewById(R.id.helper_signup_edittext);
+        helper_experience = findViewById(R.id.helper_signup_edittext);
         helper_experience.setOnFocusChangeListener(new edit_exper());
 
         edit1.addTextChangedListener(new TextWatcher() {
@@ -192,9 +193,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
                 case RESULT_OK:
                     bundle2 = data.getExtras();
                     bundle2.putString("content",helper_experience.getText().toString());
-                    bundle2.putString("tag1",edit1.getText().toString());
-                    bundle2.putString("tag2",edit2.getText().toString());
-                    bundle2.putString("tag3",edit3.getText().toString());
+                    bundle2.putStringArray("tags",tags);
 
                     data.putExtras(bundle2);
                     setResult(RESULT_OK,data);
@@ -284,7 +283,9 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
-
+            tags[0] = edit1.getText().toString();
+            tags[1] = edit2.getText().toString();
+            tags[2] = edit3.getText().toString();
 
             Intent intent = new Intent(context, HelperSignupActivity3.class);
             startActivityForResult(intent, REQUEST_CODE);

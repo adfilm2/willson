@@ -3,8 +3,8 @@ package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -53,14 +53,13 @@ import static android.app.Activity.RESULT_OK;
 
 public class MainFragment extends Fragment {
 
-    SharedPreferences UserToken;
-
     int REQUEST_CODE_LOVE = 1;
     int REQUEST_CODE_COURSE = 2;
     int REQUEST_CODE_MENTAL = 3;
     int REQUEST_CODE_RELATION= 4;
     int REQUEST_CODE_DAILY = 5;
     int REQUEST_CODE_ETC = 6;
+    int REQUEST = 0;
 
     Context context;
 
@@ -87,7 +86,6 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment1,null);
-
         LinearLayout firstContent = view.findViewById(R.id.fragment1_firstContent);
         LinearLayout secondContent = view.findViewById(R.id.fragment1_secondContent);
         LinearLayout thirdContent = view.findViewById(R.id.fragment1_thirdContent);
@@ -97,12 +95,14 @@ public class MainFragment extends Fragment {
         storyRecyclerView = view.findViewById(R.id.fragment1_rv);
         reviewRecyclerView = view.findViewById(R.id.fragment1_rv_second);
 
+
         LinearLayout changeMode = view.findViewById(R.id.helper_fragment1_change);
 
         Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(ApplicationFields.userToken);
         call_helper.enqueue(retrofitCallback);
         Call<MainReviewModel> call_review = RetrofitService.getInstance().getService().main_review_get(ApplicationFields.userToken);
         call_review.enqueue(review_retrofitCallback);
+
 
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,10 +190,6 @@ public class MainFragment extends Fragment {
                 Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(ApplicationFields.userToken);
                 user_profile.enqueue(check_retrofitCallback);
 
-                //헬퍼 가입했는지 아닌지 판단해서
-                //Intent intent = new Intent(getActivity() , HelperActivity.class);
-                Intent intent = new Intent(getActivity() , HelperActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -244,8 +240,10 @@ public class MainFragment extends Fragment {
             }
             else{
                 Intent intent = new Intent(getActivity() , HelperSignUpStartActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,REQUEST);
+
             }
+
         }
 
         @Override

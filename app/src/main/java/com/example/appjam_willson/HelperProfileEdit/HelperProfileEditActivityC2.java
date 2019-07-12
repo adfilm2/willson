@@ -49,6 +49,9 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
     Typeface typebold;
     Typeface typereg;
 
+
+    LinearLayout cancelbtn;
+
     String small_category;
    /* EditText edit;
     TextView HSUtextview;
@@ -66,27 +69,27 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
         typereg = getResources().getFont(R.font.nanum_square_r);
 
         ImageView btn;
-        nextbtn = (Button)findViewById(R.id.btn_next);
+        nextbtn = findViewById(R.id.btn_next);
         nextbtn.setOnClickListener(new next_btn_listener());
 
-        backbtn = (LinearLayout)findViewById(R.id.back_btn_layout);
+        backbtn = findViewById(R.id.back_btn_layout);
         backbtn.setOnClickListener(new backbtn_listener());
 
-        btn =(ImageView)findViewById(R.id.cancel_btn);
+        btn = findViewById(R.id.cancel_btn);
         btn.setVisibility(View.INVISIBLE);
 
-        title = (TextView)findViewById(R.id.toolbar_text);
+        title = findViewById(R.id.toolbar_text);
         title.setText("프로필 수정");
 
-        radioGroup_1 = (RadioGroup)findViewById(R.id.radioGroup1);
-        radioGroup_2 = (RadioGroup)findViewById(R.id.radioGroup2);
+        radioGroup_1 = findViewById(R.id.radioGroup1);
+        radioGroup_2 = findViewById(R.id.radioGroup2);
         radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
         radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
 
-        oneside = (RadioButton)findViewById(R.id.btn_onesidelove);
-        some = (RadioButton)findViewById(R.id.btn_somthing);
-        conflict = (RadioButton)findViewById(R.id.btn_conflict);
-        saygoodbye = (RadioButton)findViewById(R.id.btn_saygoodbye);
+        oneside = findViewById(R.id.btn_onesidelove);
+        some = findViewById(R.id.btn_somthing);
+        conflict = findViewById(R.id.btn_conflict);
+        saygoodbye = findViewById(R.id.btn_saygoodbye);
 
         oneside.setTypeface(typereg);
         some.setTypeface(typereg);
@@ -105,6 +108,10 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
         custom_edit_text.setOnClickListener(new custom_edit_Clicklistener());
         custom_edit_text.setOnKeyListener(new custom_edit_listener());
         custom_edit_text.setTypeface(typebold);
+
+
+        cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
+        cancelbtn.setOnClickListener(new HelperProfileEditActivityC2.cancelbtn_listener());
 
     }
 
@@ -301,6 +308,13 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
     }
 
     class backbtn_listener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            finish();
+        }
+    }
+
+    class cancelbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
             finish();

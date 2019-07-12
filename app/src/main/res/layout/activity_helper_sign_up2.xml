@@ -28,7 +28,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45.6dp"
+            android:layout_marginTop="45dp"
             android:fontFamily="@font/nanum_square_b"
             android:text="구체적으로 경험을 서술해주세요."
             android:textColor="@color/darkPurple"
@@ -38,9 +38,9 @@
         <RelativeLayout
             android:id="@+id/signup_linear"
             android:layout_width="match_parent"
-            android:layout_height="244.8dp"
+            android:layout_height="220dp"
             android:layout_gravity="center"
-            android:layout_marginTop="28.6dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/rounded_corner_radius5"
             android:orientation="vertical">
 
@@ -59,7 +59,7 @@
                     android:background="@null"
                     android:fontFamily="@font/nanum_square_round_r"
                     android:gravity="left"
-                    android:hint="ex) 어려서부터 저는... \n\n\n\n\n\n"
+                    android:hint="ex) 어려서부터 저는...\n\n\n\n\n"
                     android:lineSpacingExtra="12sp"
                     android:maxLength="220"
                     android:textColor="@color/black"
@@ -102,7 +102,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30.6dp"
+            android:layout_marginTop="29dp"
             android:fontFamily="@font/nanum_square_b"
             android:text="자신을 나타내는 해시태그를 추가해보세요."
             android:textColor="@color/darkPurple"
