@@ -184,9 +184,9 @@ public class HelperChatActivity extends AppCompatActivity {
     class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         List<ChatModel.Comment> comments;
-        private static final int TYPE_ONE = 1;
-        private static final int TYPE_TWO = 2;
-        private static final int TYPE_THREE = 3;
+        private static final int TYPE_ONE = 1;   // 유저들의 채팅
+        private static final int TYPE_TWO = 2;   // 첫 안내 문구
+        private static final int TYPE_THREE = 3; // 종료 문구 예정
 
 
         public ChatAdapter() {

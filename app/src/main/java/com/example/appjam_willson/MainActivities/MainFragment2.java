@@ -16,6 +16,9 @@ import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.AcceptHelperListWatchResponseModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,9 +27,8 @@ public class MainFragment2 extends Fragment {
 
     private RecyclerView fragment2Recyclerview;
     private RecyclerView.LayoutManager layoutManager;
-    private AcceptHelperListWatchResponseModel.Data accept_helper;
+    private List<AcceptHelperListWatchResponseModel.Data> accept_helper;
     private MainFragment2Adapter mainFragment2Adapter;
-   /* private String myUid;*/
 
     public static int question_idx;
 
@@ -47,7 +49,7 @@ public class MainFragment2 extends Fragment {
         fragment2Recyclerview = view.findViewById(R.id.fragment2_recyclerview);
         fragment2Recyclerview.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
-        accept_helper = new AcceptHelperListWatchResponseModel.Data();
+        accept_helper = new ArrayList<>();
         mainFragment2Adapter = new MainFragment2Adapter(accept_helper, getActivity());
         fragment2Recyclerview.setLayoutManager(layoutManager);
 
@@ -81,7 +83,7 @@ public class MainFragment2 extends Fragment {
         public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
             AcceptHelperListWatchResponseModel result = response.body();
 
-            if (response.code() == 200 && result.getCode() == 1000 && result.getData().getHelper() != null) {
+            if (response.code() == 200 && result.getCode() == 1000 && result.getData().get(0).getHelper() != null) {
                 accept_helper = result.getData();
                 mainFragment2Adapter = new MainFragment2Adapter(accept_helper, getActivity());
                 fragment2Recyclerview.setAdapter(mainFragment2Adapter);
