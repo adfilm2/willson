@@ -91,7 +91,6 @@ public class MainFragment2_loading extends Fragment {
                 MainFragment2 fragment = new MainFragment2();
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }
-
             else {
                 MainFragment2_null fragment = new MainFragment2_null();
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();

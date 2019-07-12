@@ -4,15 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.NetworkService.RetrofitService;
+import com.example.appjam_willson.PopUp.TwoTextOneButton_CustomDialog;
 import com.example.appjam_willson.model.ChoiceHelperModel;
 import com.example.appjam_willson.model.ChoiceHelperResponseModel;
 import com.example.appjam_willson.model.HelperProfileWatchResponseModel;
@@ -48,6 +51,8 @@ public class HelperProfileActivity extends AppCompatActivity {
     TextView person1;
     TextView person2;
     TextView person3;
+
+    TwoTextOneButton_CustomDialog dialog;
 
 
     @Override
@@ -188,13 +193,17 @@ public class HelperProfileActivity extends AppCompatActivity {
 
             Log.d("코드코드받은코드", String.valueOf(result.getCode()));
 
-            if(result.getCode() == 2100 ){
+            if(response.code() == 200 && result.getCode() == 2100){
                 intent = new Intent(context, ConvConfirmActivity.class);
                 /*intent.putExtra("question_idx", question_idx);*/
                 startActivity(intent);
                 finish();
             }
-            else {
+            else if(response.code() == 200 && result.getCode() == 2103){
+                Dialog();
+            }
+            else{
+                Toast.makeText(context, "USER_SELECTION_ERROR", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -209,5 +218,22 @@ public class HelperProfileActivity extends AppCompatActivity {
         }
     };
 
+    public void Dialog() {
+        dialog = new TwoTextOneButton_CustomDialog(HelperProfileActivity.this,
+                "앗! 이미 매칭된 헬퍼입니다", "해당 헬퍼님은 다른 고민자와 매칭되었습니다.\n다른 헬퍼님의 프로필을 보러가볼까요?", "확인", keepListener);
+
+        dialog.setCanceledOnTouchOutside(false);
+
+        dialog.setCancelable(true);
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.show();
+    }
+
+    private View.OnClickListener keepListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    };
 
 }

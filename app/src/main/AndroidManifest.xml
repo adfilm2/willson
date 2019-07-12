@@ -45,15 +45,15 @@
         <activity android:name=".ChatActivities.HelperChatActivity" />
 
         <!-- Main -->
-        <activity android:name=".MainActivities.MainActivity"/>
-
-        <activity android:name=".MainActivities.HelperActivity" >
+        <activity android:name=".MainActivities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivities.HelperActivity" />
 
         <activity android:name=".HelperProfileEdit.HelperProfileEditActivityHash" />
         <activity
