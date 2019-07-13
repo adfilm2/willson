@@ -476,7 +476,7 @@ public class HelperChatActivity extends AppCompatActivity {
     }
 
     void getUserData(){
-        FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("willsonUsers").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 askerUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -500,7 +500,7 @@ public class HelperChatActivity extends AppCompatActivity {
         Map<String, Object> setRoomKey = new HashMap<>();
         setRoomKey.put("roomKey", roomKey);
         FirebaseDatabase.getInstance().getReference("willsonUsers").child(willsonUser).updateChildren(setRoomKey);
-        FirebaseDatabase.getInstance().getReference("users").child(askerUser).updateChildren(setRoomKey);
+        FirebaseDatabase.getInstance().getReference("willsonUsers").child(askerUser).updateChildren(setRoomKey);
     }
 
     void getChatStart(){

@@ -505,7 +505,7 @@ public class ChatActivity extends AppCompatActivity {
 
 
     void getUserData(){
-        FirebaseDatabase.getInstance().getReference("users").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("willsonUsers").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 askerUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -546,7 +546,7 @@ public class ChatActivity extends AppCompatActivity {
         setRoomKey.put("roomKey", roomKey);
 
         FirebaseDatabase.getInstance().getReference("willsonUsers").child(willsonUser).updateChildren(setRoomKey);
-        FirebaseDatabase.getInstance().getReference("users").child(askerUser).updateChildren(setRoomKey);
+        FirebaseDatabase.getInstance().getReference("willsonUsers").child(askerUser).updateChildren(setRoomKey);
     }
 
     void getChatStart(){

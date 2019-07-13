@@ -22,7 +22,12 @@ import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.SignupModel;
 import com.example.appjam_willson.model.SignupResponseModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,7 +47,7 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
 
     Context context;
 
-    private String user_uid = FirebaseAuth.getInstance().getUid();
+    private String user_uid ;
     private Map<String, String> profile = new HashMap<>();
 
 
@@ -56,16 +61,22 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
 
     Button list5_nextbtn;
 
+    String useremail;
+    String password;
+    String userNickname;
+    SignupModel signupModel = new SignupModel();
+
+
     String resName;
     String packName;
     int resid;
 
+    private FirebaseAuth mAuth;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Users");
 
     Intent intent;
     int[] strings = new int[3];
-
 
     Typeface typebold;
     Typeface typereg;
@@ -74,6 +85,8 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_personality);
 
+
+        mAuth = FirebaseAuth.getInstance();
         context = this;
 
         intent = getIntent();
@@ -86,7 +99,28 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
         list5_nextbtn = findViewById(R.id.submit);
-        list5_nextbtn.setOnClickListener(new list5_1_nextbtn_listener());
+        list5_nextbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                signupModel.gender = intent.getStringExtra("gender");
+                signupModel.age = intent.getIntExtra("age",0);
+                signupModel.nickname = intent.getStringExtra("nickname");
+                signupModel.password = intent.getStringExtra("password");
+                signupModel.email = intent.getStringExtra("email");
+                signupModel.device_token = "token";
+                signupModel.personality_idx = strings;
+
+                userNickname = signupModel.nickname;
+                useremail = signupModel.email;
+                password = signupModel.password;
+
+
+
+                RegisterUser(useremail,password);
+
+            }
+        });
 
         list5_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list5_cancelbtn.setOnClickListener(new list5_1_cancelbtn_listener());
@@ -177,32 +211,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
         }
     }
 
-    class list5_1_nextbtn_listener implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
-
-
-
-            //통신
-            SignupModel signupModel = new SignupModel();
-            signupModel.gender = intent.getStringExtra("gender");
-            signupModel.age = intent.getIntExtra("age",0);
-            signupModel.nickname = intent.getStringExtra("nickname");
-            signupModel.password = intent.getStringExtra("password");
-            signupModel.email = intent.getStringExtra("email");
-            signupModel.device_token = "token";
-            signupModel.personality_idx = strings;
-            signupModel.uid = user_uid;
-
-            profile.put("photo", "");
-            profile.put("uid",user_uid);
-            profile.put("nickName",signupModel.nickname);
-
-            Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
-            call_helper.enqueue(retrofitCallback);
-        }
-    }
-
 
     private View.OnClickListener keepListener = new View.OnClickListener() {
         @Override
@@ -237,13 +245,8 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
                     showAlert("이메일 또는 닉네임이 중복되었습니다 :(\n다시 작성해주세요!");
                 }
                 if (response.code() == 200 && result.code == 100) {
-
-                    myRef.child(user_uid).setValue(profile);
-
                     showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
-                    Intent intent = new Intent(context, LoginActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "가입이 완료되었습니다! 로그인 화면으로 돌아갑니다 ><", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
@@ -254,6 +257,43 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
 
         }
     };
+    public void RegisterUser(String email,String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(SignUpPersonalityActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(useremail).build();
+
+                            task.getResult().getUser().updateProfile(userProfileChangeRequest);
+
+
+                            user_uid = mAuth.getCurrentUser().getUid();
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            DatabaseReference myRef = database.getReference("willsonUsers");
+                            signupModel.uid = user_uid;
+                            Call<SignupResponseModel> call_helper = RetrofitService.getInstance().getService().user_signup_post(signupModel);
+                            call_helper.enqueue(retrofitCallback);
+                            profile.put("photo", "");
+                            profile.put("uid",user_uid);
+                            profile.put("nickName",userNickname);
+
+                            myRef.child(user_uid).setValue(profile);
+                            Intent intent = new Intent(context, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                            Toast.makeText(SignUpPersonalityActivity.this, "회원가입을 축하드립니다.",
+                                    Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(SignUpPersonalityActivity.this, "등록된 이메일이거나 이메일 형식이 아닙니다.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
 
     protected void showAlert(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);

@@ -78,12 +78,10 @@ public class HelperFragment2 extends Fragment {
 
         //Database에서 본인(헬퍼역할)이 속해있는 채팅방을 불러옴
         public void findChatRooms(String setRoomKey) {
-            FirebaseDatabase.getInstance().getReference().child("chatRooms").child(setRoomKey).child("askerUser").addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("chatRooms").child(setRoomKey).child("willsonUser").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     try {
-                        if (dataSnapshot.getValue() == null) {
-                        }
                         WillsonModel users = dataSnapshot.getValue(WillsonModel.class);
                         willsonModels.add(users);
                         helperFragment2Adapter.notifyDataSetChanged();

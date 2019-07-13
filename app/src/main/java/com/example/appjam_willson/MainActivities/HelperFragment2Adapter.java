@@ -51,6 +51,9 @@ public class HelperFragment2Adapter extends RecyclerView.Adapter<HelperFragment2
         if(willsonModels.get(i).getPhoto().equals("")) {
             viewHolder.userImage.setImageResource(R.drawable.chat_img_helperprofile);
         }
+        else{
+            viewHolder.userImage.setImageResource(R.drawable.chat_img_helperprofile);
+        }
 
         //채팅시작
         viewHolder.chatStart.setOnClickListener(new View.OnClickListener() {

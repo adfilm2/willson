@@ -45,7 +45,7 @@ public class MainFragment3 extends Fragment {
 
         myUid = ApplicationFields.uid;
 
-        FirebaseDatabase.getInstance().getReference().child("askerUsers").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.getValue() != null) {
@@ -80,7 +80,7 @@ public class MainFragment3 extends Fragment {
 
     //Database에서 본인(질문자 역할)이 속해있는 채팅방을 불러옴
     public void findChatRooms(String setRoomKey) {
-        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(setRoomKey).child("willsonUser").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(setRoomKey).child("askerUser").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
