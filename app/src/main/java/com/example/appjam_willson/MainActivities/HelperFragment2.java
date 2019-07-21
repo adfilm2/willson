@@ -42,7 +42,7 @@ public class HelperFragment2 extends Fragment {
 
             myUid = ApplicationFields.uid;
 
-            FirebaseDatabase.getInstance().getReference().child("willsonUsers").addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference("helperUsers").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.getValue() != null) {
@@ -78,15 +78,20 @@ public class HelperFragment2 extends Fragment {
 
         //Database에서 본인(헬퍼역할)이 속해있는 채팅방을 불러옴
         public void findChatRooms(String setRoomKey) {
-            FirebaseDatabase.getInstance().getReference().child("chatRooms").child(setRoomKey).child("willsonUser").addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference("chatRooms").child(setRoomKey).child("helperUser").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    try {
-                        WillsonModel users = dataSnapshot.getValue(WillsonModel.class);
-                        willsonModels.add(users);
-                        helperFragment2Adapter.notifyDataSetChanged();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if(dataSnapshot.getChildren() != null) {
+                        try {
+                            WillsonModel users = dataSnapshot.getValue(WillsonModel.class);
+                            willsonModels.add(users);
+                            helperFragment2Adapter.notifyDataSetChanged();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else{
+                        return ;
                     }
                 }
                 @Override

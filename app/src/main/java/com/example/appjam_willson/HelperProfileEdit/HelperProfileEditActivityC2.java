@@ -138,7 +138,7 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
                 radioGroup_2.clearCheck();
                 radioGroup_2.setOnCheckedChangeListener(radioGroup_listener2);
                 usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = custom_edit_text.getText().toString();
@@ -172,7 +172,7 @@ public class HelperProfileEditActivityC2 extends AppCompatActivity {
                 radioGroup_1.clearCheck();
                 radioGroup_1.setOnCheckedChangeListener(radioGroup_listener1);
                 usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = custom_edit_text.getText().toString();

@@ -31,10 +31,9 @@ public class HelperSignupActivity3 extends AppCompatActivity {
     LinearLayout back;
 
     ImageView btn;
-    String text = "";
+    String text;
 
-    Bundle bundle3 = new Bundle();
-    Bundle sibal = new Bundle();
+    Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,16 +73,15 @@ public class HelperSignupActivity3 extends AppCompatActivity {
                 if (s.length() == 0 ) {
                     signup_nextbtn.setEnabled(false);
                 }
-                else signup_nextbtn.setEnabled(true);
+                else {
+                    signup_nextbtn.setEnabled(true);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
             }
         });
-
-
-
     }
 
     @Override
@@ -92,12 +90,10 @@ public class HelperSignupActivity3 extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-
-//                    data.putString("intro",text);
-//                    data.putExtras(sibal);
+                    bundle.putString("title",helper_info_edit.getText().toString());
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
-
                 case RESULT_CANCELED:
                     finish();
             }
@@ -107,7 +103,6 @@ public class HelperSignupActivity3 extends AppCompatActivity {
     class signup_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            text = helper_info_edit.getText().toString();
             Intent intent = new Intent(context, HelperSignupConfirm1Activity.class);
             startActivityForResult(intent, REQUEST_CODE);
         }
@@ -141,8 +136,7 @@ public class HelperSignupActivity3 extends AppCompatActivity {
             Intent intent = new Intent();
             intent.putExtra("result", "BACK");
             setResult(REQUEST_CODE, intent);
-            finish();        }
+            finish();
+        }
     }
-
-
 }

@@ -97,7 +97,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
         ego.setTypeface(typereg);
         exist.setTypeface(typereg);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -141,7 +141,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
             switch (resultCode){
                 case RESULT_OK:
                     bundle1 = data.getExtras();
-                    bundle1.putInt("category_id",category_listId);
+                    bundle1.putInt("categoryList_idx",category_listId);
                     data.putExtras(bundle1);
                     setResult(RESULT_OK,data);
                     finish();
@@ -181,7 +181,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 list1_mentality_radioGroup3.clearCheck();
                 list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
                 mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 mentality_custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = mentality_custom_edit_text.getText().toString();
@@ -221,7 +221,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 list1_mentality_radioGroup3.clearCheck();
                 list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
                 mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 mentality_custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = mentality_custom_edit_text.getText().toString();
@@ -261,7 +261,7 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
                 list1_mentality_radioGroup2.clearCheck();
                 list1_mentality_radioGroup2.setOnCheckedChangeListener(radioGroup_mentality_listener2);
                 mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 mentality_custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = mentality_custom_edit_text.getText().toString();
@@ -307,23 +307,14 @@ public class List1MentalityActivity extends AppCompatActivity implements OnClick
             call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
                 @Override
                 public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
-                    Log.d("test", response.isSuccessful() + "");
                     WorryCategoryListAddResponseModel result = response.body();
-                    Log.d("진로", ">>>>>>>>>>>" + response.code());
-                    Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
                     category_listId= result.data.categoryList_idx;
-
-
-                    Log.d(">>>>>ff>>> ",""+category_listId);
-                    Intent intent = new Intent(context, List2Activity.class);
-                    startActivityForResult(intent, REQUEST_CODE);
 
                 }
 
                 @Override
                 public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
                     t.printStackTrace();
-                    Log.d(" 멘탈 액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                 }
 
 

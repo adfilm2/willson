@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,7 +71,7 @@ public class HelperChatActivity extends AppCompatActivity {
     private ValueEventListener valueEventListener;
 
     private WillsonModel destinationUserModel;
-    private WillsonModel askerUserModel;
+    private WillsonModel helperModel;
 
     int peopleCount = 0;
     long passTime;
@@ -89,7 +88,6 @@ public class HelperChatActivity extends AppCompatActivity {
 
         chat_timer = findViewById(R.id.chat_timer);
         newTime = new Timestamp(System.currentTimeMillis());
-
 
         destinationUid = getIntent().getStringExtra("destinationUid");
 
@@ -130,7 +128,7 @@ public class HelperChatActivity extends AppCompatActivity {
                     comment.message = text;
                     comment.timeStamp = ServerValue.TIMESTAMP;
 
-                    FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             //            sendFcm(); Fcm 보내는 부분
@@ -144,7 +142,7 @@ public class HelperChatActivity extends AppCompatActivity {
     }
 
     void checkChatRoom() {
-        FirebaseDatabase.getInstance().getReference().child("chatRooms").orderByKey().equalTo(RoomKey).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("chatRooms").orderByKey().equalTo(RoomKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() == null) {
@@ -153,7 +151,7 @@ public class HelperChatActivity extends AppCompatActivity {
                     newRoom.users.put(destinationUid, true);
                     newRoom.chatStart.put("timeStamp",ServerValue.TIMESTAMP);
 
-                    FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).setValue(newRoom).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).setValue(newRoom).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             checkChatRoom();
@@ -197,7 +195,7 @@ public class HelperChatActivity extends AppCompatActivity {
             //destinationUid를 참고하여 users 목록에서 data를 받은 후에 destinationUserModel에 데이터를 넣어준다.
 
             makeUserData();
-            FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference("willsonUsers").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -213,7 +211,7 @@ public class HelperChatActivity extends AppCompatActivity {
 
         void getMessageList(){
 
-            databaseReference = FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments");
+            databaseReference = FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("comments");
             valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -238,7 +236,7 @@ public class HelperChatActivity extends AppCompatActivity {
 
                     if(!comments.get(comments.size()-1).readUser.containsKey(uid)){
 
-                        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments")
+                        FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("comments")
                                 .updateChildren(readUsersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -373,7 +371,7 @@ public class HelperChatActivity extends AppCompatActivity {
 
         void setReadCounter(final int position, final TextView textView) {
             if (peopleCount == 0) {
-                FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         Map<String, Boolean> users = (Map<String, Boolean>) dataSnapshot.getValue();
@@ -460,32 +458,32 @@ public class HelperChatActivity extends AppCompatActivity {
 
     void makeUserData(){
 
-        Map<String, String> willsonProfile = new HashMap<>();
-        willsonProfile.put("photo", "");
-        willsonProfile.put("uid", destinationUid);
-        willsonProfile.put("nickName",destinationUserModel.getNickName());
+        Map<String, String> helperProfile = new HashMap<>();
+        helperProfile.put("photo", "");
+        helperProfile.put("uid", uid);
+        helperProfile.put("nickName",helperModel.getNickName());
 
         Map<String, String> askerProfile = new HashMap<>();
         askerProfile.put("photo", "");
-        askerProfile.put("uid", uid);
-        askerProfile.put("nickName",askerUserModel.getNickName() );
+        askerProfile.put("uid", destinationUid);
+        askerProfile.put("nickName", destinationUserModel.getNickName() );
 
-        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("willsonUser").setValue(willsonProfile);
-        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("askerUser").setValue(askerProfile);
+        FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("helperUser").setValue(helperProfile);
+        FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("askerUser").setValue(askerProfile);
 
     }
 
     void getUserData(){
-        FirebaseDatabase.getInstance().getReference().child("willsonUsers").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("helperUsers").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                askerUserModel= dataSnapshot.getValue(WillsonModel.class);
+                helperModel = dataSnapshot.getValue(WillsonModel.class);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        FirebaseDatabase.getInstance().getReference().child("willsonUsers").child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("willsonUsers").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -496,10 +494,10 @@ public class HelperChatActivity extends AppCompatActivity {
         });
     }
 
-    void sendRoomkey(String willsonUser,String askerUser, String roomKey){
+    void sendRoomkey(String helperUser,String askerUser, String roomKey){
         Map<String, Object> setRoomKey = new HashMap<>();
         setRoomKey.put("roomKey", roomKey);
-        FirebaseDatabase.getInstance().getReference("willsonUsers").child(willsonUser).updateChildren(setRoomKey);
+        FirebaseDatabase.getInstance().getReference("helperUsers").child(helperUser).updateChildren(setRoomKey);
         FirebaseDatabase.getInstance().getReference("willsonUsers").child(askerUser).updateChildren(setRoomKey);
     }
 
@@ -521,7 +519,7 @@ public class HelperChatActivity extends AppCompatActivity {
     }
 
     void timerStart(long time, TextView timer){
-        countDownTimer = new CountDownTimer(time, 20000) {
+        countDownTimer = new CountDownTimer(time, 30000) {
             @Override
             public void onTick(long l) {
                 Date date = new Date(l);

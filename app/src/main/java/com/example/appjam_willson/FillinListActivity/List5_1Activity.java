@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +34,7 @@ public class List5_1Activity extends AppCompatActivity {
     String packName;
     int resid;
 
-    Bundle bundle5_1 = new Bundle();
+    Bundle bundle = new Bundle();
 
     int[] strings = new int[3];
 
@@ -55,7 +54,7 @@ public class List5_1Activity extends AppCompatActivity {
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -75,16 +74,10 @@ public class List5_1Activity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-//                    Bundle checkcheck = data.getExtras();
-//                    String checks = data.getStringExtra("keyword1");
-//                    Integer gg = data.getIntExtra("advice",0);
-//                    Log.d(">>>data의 keyword1 >>> ",checks);
-//                    Log.d(">>>data의 advice >>> ","gg"+gg);
 
-                    bundle5_1 = data.getExtras();
-                    bundle5_1.putIntArray("char",strings);
-
-                    data.putExtras(bundle5_1);
+                    bundle = data.getExtras();
+                    bundle.putIntArray("char",strings);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 

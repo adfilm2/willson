@@ -34,7 +34,7 @@ public class List4Activity extends AppCompatActivity {
 
     Context context;
 
-    Bundle bundle4 = new Bundle();
+    Bundle bundle = new Bundle();
     LinearLayout background;
 
     String resName;
@@ -51,7 +51,7 @@ public class List4Activity extends AppCompatActivity {
 
         REQUEST_CODE = ((List4Activity) context).getTaskId();
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -101,10 +101,10 @@ public class List4Activity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle4 = data.getExtras();
-                    bundle4.putString("contents", editTextSMS.getText().toString());
 
-                    data.putExtras(bundle4);
+                    bundle = data.getExtras();
+                    bundle.putString("contents", editTextSMS.getText().toString());
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 

@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15sp"
-            android:textColor="@color/darkPurple"
+            android:textColor="@color/darkBlue"
             android:lineSpacingExtra="21sp"
             android:gravity="center_horizontal"
             android:text="70%"
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="19sp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:lineSpacingExtra="11sp"
             android:text="어떤 헬퍼와 이야기하고 싶나요? (3/3)"
             android:layout_marginLeft="21dp"
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:lineSpacingExtra="13sp"
             android:text="이런 경험을 가진 헬퍼를 원해요"
             android:layout_marginTop="37.3dp"
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:layout_marginLeft="10.4dp"
                 android:layout_marginRight="8.4dp"
                 android:text="#"
@@ -123,10 +123,11 @@
                     android:background="@color/trans"
                     android:hint="키워드 입력"
                     android:singleLine="true"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textColorHint="@color/grey"
                     android:textCursorDrawable="@null"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    />
 
             </FrameLayout>
 
@@ -146,7 +147,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:layout_marginLeft="10.4dp"
                 android:layout_marginRight="8.4dp"
                 android:gravity="center_vertical"
@@ -170,7 +171,7 @@
                     android:singleLine="true"
                     android:background="@color/trans"
                     android:textSize="15sp"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textColorHint="@color/grey"
                     android:hint="키워드 입력"
                     android:textCursorDrawable="@null" />
@@ -193,7 +194,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:layout_marginLeft="10.4dp"
                 android:layout_marginRight="8.4dp"
                 android:gravity="center_vertical"
@@ -217,7 +218,7 @@
                     android:singleLine="true"
                     android:background="@color/trans"
                     android:textSize="15sp"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textColorHint="@color/grey"
                     android:hint="키워드 입력"
                     android:textCursorDrawable="@null">

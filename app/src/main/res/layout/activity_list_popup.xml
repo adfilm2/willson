@@ -25,13 +25,14 @@
                 android:id="@+id/list_pop_image"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center_horizontal"
-                android:src="@drawable/chat_img_finishwillson"/>
+                android:src="@drawable/request_couldnt_find"
+                />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:lineSpacingExtra="10sp"
                 android:gravity="center_horizontal"
                 android:text="정말 그만두시겠어요?\n아직 하나도 작성하시지 않으셨어요!"

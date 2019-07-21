@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.ApplicationField.ApplicationFields;
@@ -17,7 +18,11 @@ import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.R;
 import com.example.appjam_willson.model.LoginModel;
 import com.example.appjam_willson.model.LoginResponseModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,12 +32,14 @@ import retrofit2.Retrofit;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginModel loginModel = new LoginModel();
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mAuth = FirebaseAuth.getInstance();
 
         EditText idText=findViewById(R.id.Login_ID);
         EditText passwordText=findViewById(R.id.Login_Password);
@@ -53,16 +60,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = idText.getText().toString();
                 String password = passwordText.getText().toString();
+
                 loginModel.setEmail(email);
                 loginModel.setPassword(password);
 
-                Call<LoginResponseModel> call_helper = RetrofitService.getInstance().getService().user_login_post(loginModel);
-                call_helper.enqueue(retrofitCallback);
-
-//                Call<LoginResponseModel> call_login = RetrofitService.getInstance().getService().user_login_post(loginModel);
-//                call_login.enqueue(retrofitCallback);
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                startActivity(intent);
+                LoginUser(email,password);
 
             }
         });
@@ -76,47 +78,42 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-//    public void LoginUser(String email, String password){
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            FirebaseUser user = mAuth.getCurrentUser();
+    public void LoginUser(String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Call<LoginResponseModel> call_helper = RetrofitService.getInstance().getService().user_login_post(loginModel);
+                            call_helper.enqueue(retrofitCallback);
 //                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //                            startActivity(intent);
-//                        }
-//                        else {
-//                            // If sign in fails, display a message to the user.
-//                            Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.",
-//                                    Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                        // ...
-//                    }
-//                });
-//    }
+                        }
+                        else {
+                            Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
+    }
 
     private Callback<LoginResponseModel> retrofitCallback = new Callback<LoginResponseModel>() {
 
         @Override
         public void onResponse(retrofit2.Call<LoginResponseModel> call, Response<LoginResponseModel> response) {
             LoginResponseModel result = response.body();
-            Log.d("리저트ㅡㅡㅡㅡ 값", String.valueOf(result));
-            if(response.code() == 200 && result.code == 200){
+            if(response.isSuccessful()){
                 ApplicationFields.userToken = result.data.Token;
                 ApplicationFields.uid = result.data.userInfo.uid;
-                Log.d(">>>>> token값 ",">>>>>"+ApplicationFields.userToken);
-                Log.d(">>>>> 유아이디값 ",">>>>>"+ApplicationFields.uid);
-
+                ApplicationFields.user_nickname = result.data.userInfo.nickname;
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
             else{
-                Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                return ;
             }
-
         }
 
         @Override

@@ -48,7 +48,7 @@
             android:id="@+id/chat_timer"
             android:text="00"
             android:textSize="13sp"
-            android:textColor="@color/middlepurple"
+            android:textColor="@color/middleBlue"
             android:layout_alignParentEnd="true"
             android:fontFamily="@font/nanum_square_b"
             />

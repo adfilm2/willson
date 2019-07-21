@@ -44,15 +44,11 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
 
     String nowCheck;
 
-
     Context context;
 
     String resName;
     String packName;
     int resid;
-
-    HelperRegistModel helperRegistModel = new HelperRegistModel();
-
 
     RadioButton btn1;
     RadioButton btn2;
@@ -65,8 +61,8 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     Typeface typereg;
     Bundle bundle = new Bundle();
 
+    int category_idx;
     int REQUEST_CODE;
-    int category;
 
     TextView text;
     ImageView btn;
@@ -111,11 +107,6 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         btn5.setTypeface(typereg);
         btn6.setTypeface(typereg);
 
-
-
-      //  list1_daily_backbtn = (LinearLayout) findViewById(R.id.toolbar_list_btn_backbtn);
-        //  list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
-
         helperSU_radioGroup1 = findViewById(R.id.helperSU_radioGroup1);
         helperSU_radioGroup1.clearCheck();
         helperSU_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
@@ -129,22 +120,43 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         helperSU_0_btn_next = findViewById(R.id.helperSU_0_btn_next);
         helperSU_0_btn_next.setOnClickListener(this);
 
-
         nextbtn.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                category = 1;
-                Intent intent1 = new Intent(context, HelperSignUp1_L_Activity.class);
-                startActivityForResult(intent1,REQUEST_CODE);
-
-
+                switch (nowCheck){
+                    case "연애":
+                        Intent intent1 = new Intent(context, HelperSignUp1_L_Activity.class);
+                        category_idx = 1;
+                        startActivityForResult(intent1,REQUEST_CODE);
+                        break;
+                    case "진로":
+                        Intent intent2 = new Intent(context, HelperSignUp1_C_Activity.class);
+                        category_idx = 2;
+                        startActivityForResult(intent2,REQUEST_CODE);
+                        break;
+                    case "자존감":
+                        Intent intent3 = new Intent(context, HelperSignUp1_M_Activity.class);
+                        category_idx = 3;
+                        startActivityForResult(intent3,REQUEST_CODE);
+                        break;
+                    case "인간관계":
+                        Intent intent4 = new Intent(context, HelperSignUp1_R_Activity.class);
+                        category_idx = 4;
+                        startActivityForResult(intent4,REQUEST_CODE);
+                        break;
+                    case "일상":
+                        Intent intent5 = new Intent(context, HelperSignUp1_L_Activity.class);
+                        category_idx = 5;
+                        startActivityForResult(intent5,REQUEST_CODE);
+                        break;
+                    case "기타":
+                        Intent intent6 = new Intent(context, HelperSignUp1_E_Activity.class);
+                        category_idx = 5;
+                        startActivityForResult(intent6,REQUEST_CODE);
+                        break;
+                }
             }
-
-
         });
-
-
     }
 
     @Override
@@ -152,24 +164,13 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_CODE) {
-
-
             switch (resultCode) {
                 case RESULT_OK:
-
-                    String[] str ={"namead","alkjdfk","dafa"};
-
                     bundle = data.getExtras();
-                    helperRegistModel.helper.title = "gkgk";
-                    helperRegistModel.helper.categoryList_idx = 3;
-                    helperRegistModel.helper.content="ajdkljads";
-                    helperRegistModel.experience.experience_name = str;
-
-                    Call<HelperRegistResponseModel> call_helper = RetrofitService.getInstance().getService().helper_regist_post(ApplicationFields.userToken, helperRegistModel);
-                    call_helper.enqueue(retrofitCallback_helperReg);
+                    bundle.putInt("category_idx",category_idx);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
-
-
+                    finish();
 
                 case RESULT_CANCELED:
                     finish();
@@ -183,17 +184,18 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
         @Override
         public void onResponse(Call<HelperRegistResponseModel> call, Response<HelperRegistResponseModel> response) {
             HelperRegistResponseModel result = response.body();
-//            ApplicationFields.myHelper_idx = result.data.helper_idx;
+            if(response.isSuccessful()){
 
-
+            }
+            else{
+                return ;
+            }
         }
         @Override
         public void onFailure(Call<HelperRegistResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
         }
     };
-
 
     class list1_love_backbtn_listener implements View.OnClickListener {
         @Override
@@ -240,22 +242,6 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
                 helperSU_radioGroup3.setOnCheckedChangeListener(null);
                 helperSU_radioGroup3.clearCheck();
                 helperSU_radioGroup3.setOnCheckedChangeListener(radioGroup_daily_listener3);
-
-
-                /*
-                 list1_mentality_nextbtn.setEnabled(true);
-                hidekeyboard(mentality_custom_edit_text);
-                list1_mentality_radioGroup2.setOnCheckedChangeListener(null);
-                list1_mentality_radioGroup2.clearCheck();
-                list1_mentality_radioGroup2.setOnCheckedChangeListener(radioGroup_mentality_listener2);
-                list1_mentality_radioGroup3.setOnCheckedChangeListener(null);
-                list1_mentality_radioGroup3.clearCheck();
-                list1_mentality_radioGroup3.setOnCheckedChangeListener(radioGroup_mentality_listener3);
-                mentality_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-
-
-
-                 */
             }
         }
     };
@@ -338,19 +324,6 @@ public class HelperSignUpActivity0 extends AppCompatActivity implements View.OnC
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
-        //if (v.getId() == R.id.helperSU_0_btn_next) {
-   //         //선택된 View가 R.id.button1와 같은 ID를 가지고 있다면 해당 로직 실행
-    //        Intent intentSU = new Intent(HelperSignUpActivity0.this, HelperSignUpActivity1.class);
-      /*      startActivity(intentSU);
-        }
-*/
-
-
-
-
-
-
-
 
         class daily_custom_btn_listener implements View.OnClickListener {
             @Override

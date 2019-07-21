@@ -34,9 +34,10 @@ public class List5Activity extends AppCompatActivity {
     String packName;
     int resid;
 
-    Bundle bundle5 = new Bundle();
+    Bundle bundle = new Bundle();
 
-    String helper_sex;
+    int genderId;
+    String genderCheck= "남";
 
     RadioButton man;
     RadioButton woman;
@@ -54,7 +55,7 @@ public class List5Activity extends AppCompatActivity {
 
         REQUEST_CODE = ((List5Activity) context).getTaskId();
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -88,13 +89,10 @@ public class List5Activity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle5 = data.getExtras();
 
-                    RadioGroup sex = findViewById(R.id.list5_radiogroup);
-                    RadioButton ans = findViewById(sex.getCheckedRadioButtonId());
-                    helper_sex = ans.getText().toString();
-                    bundle5.putString("helper_gender",helper_sex);
-                    data.putExtras(bundle5);
+                    bundle = data.getExtras();
+                    bundle.putString("helper_gender", genderCheck);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 
@@ -107,28 +105,32 @@ public class List5Activity extends AppCompatActivity {
     private RadioGroup.OnCheckedChangeListener radioGroup_list5_listener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            if (checkedId != -1) {
+            if(checkedId == R.id.man_btn){
+                man.setTypeface(typebold);
+                woman.setTypeface(typereg);
+                all.setTypeface(typereg);
 
-                if(checkedId == R.id.man_btn){
-                    man.setTypeface(typebold);
-                    woman.setTypeface(typereg);
-                    all.setTypeface(typereg);
-                }
-                else if(checkedId == R.id.woman_btn){
-                    woman.setTypeface(typebold);
-                    man.setTypeface(typereg);
-                    all.setTypeface(typereg);
-                }
-                else {
-                    man.setTypeface(typereg);
-                    woman.setTypeface(typereg);
-                    all.setTypeface(typebold);
-                }
+                genderId = group.getCheckedRadioButtonId();
+                genderCheck = ((RadioButton) findViewById(genderId)).getText().toString();
+            }
+            else if(checkedId == R.id.woman_btn){
+                woman.setTypeface(typebold);
+                man.setTypeface(typereg);
+                all.setTypeface(typereg);
+
+                genderId = group.getCheckedRadioButtonId();
+                genderCheck = ((RadioButton) findViewById(genderId)).getText().toString();
+            }
+            else {
+                man.setTypeface(typereg);
+                woman.setTypeface(typereg);
+                all.setTypeface(typebold);
+
+                genderId = group.getCheckedRadioButtonId();
+                genderCheck = ((RadioButton) findViewById(genderId)).getText().toString();
             }
         }
     };
-
-
 
     class list5_cancelbtn_listener implements View.OnClickListener {
         @Override
@@ -189,5 +191,4 @@ public class List5Activity extends AppCompatActivity {
         setResult(REQUEST_CODE, intent);
         finish();
     }
-
 }

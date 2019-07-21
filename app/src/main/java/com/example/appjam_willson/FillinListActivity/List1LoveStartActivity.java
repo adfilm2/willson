@@ -10,15 +10,19 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.R;
+import com.example.appjam_willson.model.CreateWorryModel;
 
 public class List1LoveStartActivity extends AppCompatActivity {
 
     int REQUEST_CODE;
 
+    Bundle bundle = new Bundle();
     LinearLayout toolbar_backbtn;
     Button love_start_btn;
     LinearLayout love_cancel_btn;
     Context context;
+    CreateWorryModel createWorryModel = new CreateWorryModel();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +32,6 @@ public class List1LoveStartActivity extends AppCompatActivity {
         context = this;
 
         REQUEST_CODE = ((List1LoveStartActivity) context).getTaskId();
-        /*Log.d("리퀘스트 아이디 아이디 아이디 아이다 아이디이이", ">>>>" + REQUEST_CODE);*/
 
         toolbar_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
         toolbar_backbtn.setVisibility(View.INVISIBLE);
@@ -46,7 +49,9 @@ public class List1LoveStartActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-
+                    bundle = data.getExtras();
+                    bundle.putInt("category_idx",1);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 
@@ -60,8 +65,6 @@ public class List1LoveStartActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             Intent intent = new Intent(context, List1LoveActivity.class);
-            /*startActivity(intent);*/
-            /*startActivityForResult(intent,1000);*/
             startActivityForResult(intent, REQUEST_CODE);
         }
     }

@@ -42,7 +42,8 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
     LinearLayout picture;
 
     Bundle bundle4 = new Bundle();
-    String phone;
+    String userPhone;
+    String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,13 +94,12 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if(phone1.length()!=0 || phone2.length()!=0||phone3.length()!=0 || email.length()!=0){
+                if((phone1.length() != 0 && phone2.length() != 0 && phone3.length() != 0) && email.length() != 0) {
                     next_btn.setEnabled(true);
                 }
                 else{
                     next_btn.setEnabled(false);
                 }
-
             }
         };
 
@@ -115,10 +115,6 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
         phone2.addTextChangedListener(textWatcher);
         phone3.addTextChangedListener(textWatcher);
         email.addTextChangedListener(textWatcher);
-
-
-
-
 
     }
 
@@ -197,12 +193,9 @@ public class HelperSignupConfirm1Activity extends AppCompatActivity {
     class nex_btn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
             finish();
-
-
         }
     }
 

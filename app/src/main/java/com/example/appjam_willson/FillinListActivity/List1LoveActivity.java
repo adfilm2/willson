@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -92,7 +91,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
         onesidelove.setTypeface(typereg);
         somthing.setTypeface(typereg);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -133,7 +132,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             switch (resultCode){
                 case RESULT_OK:
                     bundle1 = data.getExtras();
-                    bundle1.putInt("category_id",category_listId);
+                    bundle1.putInt("categoryList_idx",category_listId);
                     data.putExtras(bundle1);
                     setResult(RESULT_OK,data);
                     finish();
@@ -168,7 +167,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
                 list1_radioGroup2.clearCheck();
                 list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
                 usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = custom_edit_text.getText().toString();
@@ -203,7 +202,7 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
                 list1_radioGroup1.clearCheck();
                 list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
                 usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = custom_edit_text.getText().toString();
@@ -227,9 +226,11 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             category_listId = 2;
         }
         else if (conflict.isChecked()){
-            category_listId = 3;        }
+            category_listId = 3;
+        }
         else if (saygoodbye.isChecked()){
-            category_listId = 4;        }
+            category_listId = 4;
+        }
         else if (custom_edit_text.isFocused()){
 
             WorryCategoryListAddModel worryCategoryListAddModel = new WorryCategoryListAddModel();
@@ -244,30 +245,23 @@ public class List1LoveActivity extends AppCompatActivity implements OnClickListe
             call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
                 @Override
                 public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
-                    Log.d("test", response.isSuccessful() + "");
-                    WorryCategoryListAddResponseModel result = response.body();
-                    Log.d("진로", ">>>>>>>>>>>" + response.code());
-                    Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
-                    category_listId= result.data.categoryList_idx;
-
-
-                    Log.d(">>>>>ff>>> ",""+category_listId);
-                    Intent intent = new Intent(context, List2Activity.class);
-                    startActivityForResult(intent, REQUEST_CODE);
-
+                    if(response.isSuccessful()) {
+                        WorryCategoryListAddResponseModel result = response.body();
+                        category_listId = result.data.categoryList_idx;
+                    }
+                    else {
+                        return ;
+                    }
                 }
 
                 @Override
                 public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
                     t.printStackTrace();
-                    Log.d(" 사랑 액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                 }
 
 
             });
         }
-        else{}
-
 
         Intent intent = new Intent(context, List2Activity.class);
         startActivityForResult(intent, REQUEST_CODE);

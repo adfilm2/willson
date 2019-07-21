@@ -10,9 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -66,7 +64,6 @@ public class MainFragment extends Fragment {
     private RecyclerView storyRecyclerView;
     private LinearLayoutManager storyLayoutManager;
     private List<HelperStoryModel.story> storyAdapterModels;
-//    private List<MainReviewModel.ReviewData> reviewAdapterModels;
 
     private ReviewAdapter reviewAdapter;
     private RecyclerView reviewRecyclerView;
@@ -95,14 +92,12 @@ public class MainFragment extends Fragment {
         storyRecyclerView = view.findViewById(R.id.fragment1_rv);
         reviewRecyclerView = view.findViewById(R.id.fragment1_rv_second);
 
-
         LinearLayout changeMode = view.findViewById(R.id.helper_fragment1_change);
 
         Call<HelperStoryModel> call_helper = RetrofitService.getInstance().getService().helper_story_get(ApplicationFields.userToken);
-        call_helper.enqueue(retrofitCallback);
+        call_helper.enqueue(story_retrofitCallback);
         Call<MainReviewModel> call_review = RetrofitService.getInstance().getService().main_review_get(ApplicationFields.userToken);
         call_review.enqueue(review_retrofitCallback);
-
 
         firstContent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,10 +181,13 @@ public class MainFragment extends Fragment {
         changeMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(ApplicationFields.userToken);
-                user_profile.enqueue(check_retrofitCallback);
-
+                if(ApplicationFields.userToken != null) {
+                    Call<HelperCheckResponseModel> user_profile = RetrofitService.getInstance().getService().helper_exist_check_get(ApplicationFields.userToken);
+                    user_profile.enqueue(check_retrofitCallback);
+                }
+                else{
+                    Dialog();
+                }
             }
         });
 
@@ -241,9 +239,7 @@ public class MainFragment extends Fragment {
             else{
                 Intent intent = new Intent(getActivity() , HelperSignUpStartActivity.class);
                 startActivityForResult(intent,REQUEST);
-
             }
-
         }
 
         @Override
@@ -268,13 +264,13 @@ public class MainFragment extends Fragment {
                     createWorryModel.question.advise = data.getIntExtra("advice",1);
                     createWorryModel.question.experience = data.getIntExtra("experience22", 1);
                     createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
-                    createWorryModel.question.categoryList_idx = data.getIntExtra("category_id",0);
+                    createWorryModel.question.categoryList_idx = data.getIntExtra("categoryList_idx",0);
                     String gender = data.getStringExtra("helper_gender");
                     switch (gender){
-                        case "여자":
-                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여성;
-                        case "남자":
-                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.남성;
+                        case "여":
+                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여;
+                        case "남":
+                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.남;
                         case "모두":
                             createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.모두;
                     }
@@ -286,30 +282,9 @@ public class MainFragment extends Fragment {
                         public void onResponse(Call<CreateWorryResponseModel> call, Response<CreateWorryResponseModel> response) {
                             CreateWorryResponseModel result = response.body();
                             ApplicationFields.myQuestion_idx = result.data.question_idx;
-//                            Intent intent = new Intent(getActivity(),MainActivity.class);
-//                            intent.putExtra("complete","OK");
-//                            startActivity(intent);
-
-
-                            ImageView willsonImage_home = getActivity().findViewById(R.id.Image_home);
-                            ImageView willsonImage_chat = getActivity().findViewById(R.id.Image_chat);
-                            ImageView willsonImage_request = getActivity().findViewById(R.id.Image_request);
-                            ImageView willsonImage_mypage = getActivity().findViewById(R.id.Image_mypage);
-
-                            TextView willsonText_home = getActivity().findViewById(R.id.text_home);
-                            TextView willsonText_chat = getActivity().findViewById(R.id.text_chat);
-                            TextView willsonText_request = getActivity().findViewById(R.id.text_request);
-                            TextView willsonText_mypage = getActivity().findViewById(R.id.text_mypage);
-
-                            changeImage(willsonImage_request,willsonImage_chat,willsonImage_mypage,willsonImage_home);
-                            changeTextColor(willsonText_request,willsonText_home,willsonText_chat,willsonText_mypage);
-
+                            Log.d("퀘스천값",ApplicationFields.myQuestion_idx+"");
 
                             MainFragment2_loading fragment = new MainFragment2_loading();
-                            question_idx = result.data.question_idx;
-                            bundle = new Bundle();
-                            bundle.putInt("question_idx", question_idx);
-                            fragment.setArguments(bundle);
                             getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
                         }
 
@@ -319,17 +294,10 @@ public class MainFragment extends Fragment {
                         }
                     });
 
-
                 case RESULT_CANCELED:
 
             }
         }
-        else if(requestCode == REQUEST){
-            Intent intent = new Intent(getActivity(),HelperActivity.class);
-            startActivity(intent);
-        }
-
-
     }
 
     public void Dialog() {
@@ -347,34 +315,24 @@ public class MainFragment extends Fragment {
             dialog.dismiss();
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
+            getActivity().finish();
         }
     };
-
-
-
-
 
     private View.OnClickListener exitListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             dialog.dismiss();
-          /*  Intent intent = new Intent();
-            setResult(RESULT_CANCELED, intent);
-            finish();*/
         }
     };
 
-    //text뷰의 start포인트부터 end포인트까지 색을 바꿔줌 color값으로
-
-    private Callback<HelperStoryModel> retrofitCallback = new Callback<HelperStoryModel>() {
+    private Callback<HelperStoryModel> story_retrofitCallback = new Callback<HelperStoryModel>() {
 
         @Override
         public void onResponse(Call<HelperStoryModel> call, Response<HelperStoryModel> response) {
             HelperStoryModel result = response.body();
-
             for (int i = 0; i < result.getData().size(); i++) {
                 storyAdapterModels.add(result.getData().get(i));
-//            }
                 storyAdapter.notifyDataSetChanged();
             }
         }
@@ -384,21 +342,6 @@ public class MainFragment extends Fragment {
         }
     };
 
-    private void changeImage(ImageView first, ImageView second, ImageView third, ImageView fourth) {
-        first.setSelected(true);
-        second.setSelected(false);
-        third.setSelected(false);
-        fourth.setSelected(false);
-    }
-
-    private void changeTextColor(TextView first, TextView second, TextView third, TextView fourth) {
-        first.setTextColor(Color.parseColor("#2f2f2f"));
-        second.setTextColor(Color.parseColor("#9e9e9e"));
-        third.setTextColor(Color.parseColor("#9e9e9e"));
-        fourth.setTextColor(Color.parseColor("#9e9e9e"));
-    }
-
-
     private Callback<MainReviewModel> review_retrofitCallback = new Callback<MainReviewModel>() {
 
         @Override
@@ -407,7 +350,6 @@ public class MainFragment extends Fragment {
 
             for (int i = 0; i < result.getData().size(); i++) {
                 reviewAdapterModels.add(result.getData().get(i));
-//            }
                 reviewAdapter.notifyDataSetChanged();
             }
         }

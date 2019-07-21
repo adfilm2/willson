@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:text="본인의 신분증 확인을 위해 주민등록증\n혹은 운전면허증을 준비해주세요."
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:lineSpacingExtra="14sp"
         android:textSize="18sp"
         android:layout_marginTop="34.6dp"
@@ -21,13 +21,35 @@
         android:textStyle="normal"
         android:fontFamily="@font/nanum_square_b" />
 
-    <ImageView
+    <LinearLayout
         android:layout_width="219dp"
-        android:layout_height="163dp"
-        android:layout_marginHorizontal="70dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/helper_signup_img_id"
-        android:layout_gravity="center" />
+        android:layout_height="120dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+        <ImageView
+            android:layout_width="39.4dp"
+            android:layout_height="31.7dp"
+            android:src="@drawable/helper_signup_btn_camera"
+            android:layout_gravity="center"
+            android:layout_marginTop="16.3dp"
+            android:layout_marginBottom="10.4dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="@color/grey"
+            android:lineSpacingExtra="22sp"
+            android:layout_marginBottom="17.9dp"
+            android:layout_gravity="center_horizontal"
+            android:text="본인의 신분증 사진을 올려주세요!"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_r"
+
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="신분증을 앞면이 보이도록 놓아주세요.\n어두운 바닥에 놓으면 인식이 더 잘 됩니다."
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:lineSpacingExtra="10sp"
             android:textSize="14sp"
             android:layout_marginRight="31dp"
@@ -92,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="가이드 영역에 맞추어 반드시 신분증 원본으로 촬영하세요."
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:lineSpacingExtra="10sp"
             android:textSize="14sp"
             android:layout_marginRight="31dp"
@@ -127,7 +149,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="빛 반사에 주의하세요. 정보 확인이 어렵거나, 훼손/유호하지 않은 신분증은 거절되거나 이후 거래가 제한될수 있습니다."
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:lineSpacingExtra="10sp"
             android:textSize="14sp"
             android:layout_marginRight="31dp"
@@ -162,7 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="제출시 주변 영역도 포함되니 촬영시 주의해 주세요."
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:lineSpacingExtra="10sp"
             android:textSize="14sp"
             android:layout_marginRight="31dp"

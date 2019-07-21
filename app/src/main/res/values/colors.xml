@@ -12,24 +12,24 @@
 
     <color name="button_left">#6262ac</color>
     <color name="button_right">#49499d</color>
-    <color name="light_purple">#5252a1</color>
+    <color name="light_blue">#083fba</color>
     <color name="willsoncolor_basic">#4f4f9f</color>
 
     <color name="colorAccent">#2c2c4d</color>
     <color name="starAccent">#FFE650</color>
     <color name="colorNormal">#C8C8C8</color>
-    <color name="darkPurple">#2c2c4d</color>
-    <color name="lightPurple">#5252a1</color>
+    <color name="darkBlue">#121f59</color>
+    <color name="lightBlue">#083fba</color>
     <color name="black">#2f2f2f</color>
-    <color name="dark_purple">#2c2c4d</color>
+    <color name="dark_blue">#121f59</color>
 
     <color name="trans">#00ff0000</color>
     <color name="buttonLeft">#6262ac</color>
     <color name="buttonRignt">#49499d</color>
     <color name="grey">#9e9e9e</color>
-    <color name="middlePurple">#37376d</color>
-    <color name="middlepurple">#37376d</color>
-    <color name="yellow">#ffc326</color>
+    <color name="middleblue">#142d84</color>
+    <color name="middleBlue">#142d84</color>
+    <color name="yellow">#f2c933</color>
     <color name="bgcolor">#f8f8f8</color>
 
     <color name="brownishGrey">#616161</color>

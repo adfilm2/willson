@@ -119,8 +119,7 @@ public class MainFragment2Adapter extends RecyclerView.Adapter<MainFragment2Adap
             @Override
             public void onClick(View v) {
 
-                /*int helper_idx = dataModels.getHelper();*/
-                /*int helper_idx = 1;*/
+
                 helper_idx = dataModels.get(i).getHelper().getHelper_idx();
                 Intent intent = new Intent(v.getContext(), HelperProfileActivity.class);
                 intent.putExtra("helper_idx", helper_idx);

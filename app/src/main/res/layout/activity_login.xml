@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="81dp"
-        android:src="@drawable/login_logo"/>
+        />
 
 
     <LinearLayout
@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:text="아이디 찾기"
-            android:textColor="@color/willsoncolor_basic"
+            android:textColor="@color/light_blue"
             android:textSize="11sp"
             android:fontFamily="@font/nanum_square_r"
             />
@@ -119,19 +119,19 @@
             android:layout_height="wrap_content"
             android:text="  |  "
             android:layout_gravity="bottom"
-            android:textColor="#4f4f9f"
+            android:textColor="@color/light_blue"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
             />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:text="비밀번호 찾기"
-            android:textColor="@color/willsoncolor_basic"
-            android:textSize="11sp"
             android:fontFamily="@font/nanum_square_r"
-            />
+            android:text="비밀번호 찾기"
+            android:textColor="@color/light_blue"
+            android:textSize="11sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -183,7 +183,7 @@
                 android:text="SNS계정으로 로그인"
                 android:layout_weight="1"
                 android:textSize="11sp"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:gravity="center"
                 android:fontFamily="@font/nanum_square_b"
                 />
@@ -219,7 +219,7 @@
                     android:text="페이스북"
                     android:textSize="11sp"
                     android:layout_gravity="center"
-                    android:textColor="@color/dark_purple"
+                    android:textColor="@color/dark_blue"
                     android:layout_marginTop="9.5dp"
                     android:fontFamily="@font/nanum_square_b"
                     />
@@ -243,7 +243,7 @@
                     android:text="카카오톡"
                     android:textSize="11sp"
                     android:layout_gravity="center"
-                    android:textColor="@color/dark_purple"
+                    android:textColor="@color/dark_blue"
                     android:layout_marginTop="9.5dp"
                     android:fontFamily="@font/nanum_square_b"
                     />
@@ -267,7 +267,7 @@
             android:fontFamily="@font/nanum_square_r"
             android:gravity="center"
             android:text="윌슨이 처음이신가요? 회원가입부터 시작하세요!"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:textSize="11sp" />
         <Button
             android:id="@+id/Email_register"
@@ -279,7 +279,7 @@
             android:fontFamily="@font/nanum_square_b"
             android:background="@drawable/login_button_grey"
             android:textSize="15sp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:layout_marginHorizontal="40dp"
             android:layout_marginBottom="53.6dp"
             />

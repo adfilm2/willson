@@ -48,8 +48,11 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
     Context context;
 
     private String user_uid ;
+    private String useremail;
+    private String password;
+    private String userNickname;
+    private SignupModel signupModel = new SignupModel();
     private Map<String, String> profile = new HashMap<>();
-
 
     private AlertDialog dialog;
     public int check_num = 0;
@@ -61,11 +64,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
 
     Button list5_nextbtn;
 
-    String useremail;
-    String password;
-    String userNickname;
-    SignupModel signupModel = new SignupModel();
-
 
     String resName;
     String packName;
@@ -73,52 +71,42 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Users");
+    DatabaseReference myRef = database.getReference("askerUsers");
 
     Intent intent;
     int[] strings = new int[3];
 
     Typeface typebold;
     Typeface typereg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_personality);
-
 
         mAuth = FirebaseAuth.getInstance();
         context = this;
 
         intent = getIntent();
 
-        typebold = getResources().getFont(R.font.nanum_square_b);
-        typereg = getResources().getFont(R.font.nanum_square_r);
+        signupModel.gender = intent.getStringExtra("gender");
+        signupModel.age = intent.getIntExtra("age",0);
+        signupModel.nickname = intent.getStringExtra("nickname");
+        signupModel.password = intent.getStringExtra("password");
+        signupModel.email = intent.getStringExtra("email");
+        signupModel.device_token = "token";
+        signupModel.personality_idx = strings;
 
-        resName = "@drawable/list_img_alert_willson";
-        packName = this.getPackageName();
-        resid = getResources().getIdentifier(resName, "drawable", packName);
+        userNickname = signupModel.nickname;
+        useremail = signupModel.email;
+        password = signupModel.password;
 
         list5_nextbtn = findViewById(R.id.submit);
         list5_nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                signupModel.gender = intent.getStringExtra("gender");
-                signupModel.age = intent.getIntExtra("age",0);
-                signupModel.nickname = intent.getStringExtra("nickname");
-                signupModel.password = intent.getStringExtra("password");
-                signupModel.email = intent.getStringExtra("email");
-                signupModel.device_token = "token";
-                signupModel.personality_idx = strings;
-
-                userNickname = signupModel.nickname;
-                useremail = signupModel.email;
-                password = signupModel.password;
-
-
-
+                Log.d("눌렀습니다","눌렀습니다");
                 RegisterUser(useremail,password);
-
             }
         });
 
@@ -193,7 +181,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
                     "벌써 60%나 진행했어요!\n그래도 그만 작성하시겠어요?", "계속 작성하기", "그만하기", keepListener, exitListener);
 
             this_dialog.setCanceledOnTouchOutside(false);
-
             this_dialog.setCancelable(true);
             this_dialog.getWindow().setGravity(Gravity.CENTER);
             this_dialog.show();
@@ -204,9 +191,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
     class list5_1_backbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-//            Intent intent = new Intent();
-//            intent.putExtra("result", "BACK");
-//            setResult(REQUEST_CODE, intent);
             finish();
         }
     }
@@ -238,18 +222,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
         @Override
         public void onResponse(retrofit2.Call<SignupResponseModel> call, Response<SignupResponseModel> response) {
             SignupResponseModel result = response.body();
-
-            if(response.code() == 200){
-
-                if (result.code == 101) {
-                    showAlert("이메일 또는 닉네임이 중복되었습니다 :(\n다시 작성해주세요!");
-                }
-                if (response.code() == 200 && result.code == 100) {
-                    showAlert("가입이 완료되었습니다!\n로그인 화면으로 넘어갑니다 :)");
-
-                }
-            }
-
         }
 
         @Override
@@ -266,7 +238,6 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
                             UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(useremail).build();
 
                             task.getResult().getUser().updateProfile(userProfileChangeRequest);
-
 
                             user_uid = mAuth.getCurrentUser().getUid();
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -286,6 +257,7 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                             finish();
                         }
+
                         else {
                             Toast.makeText(SignUpPersonalityActivity.this, "등록된 이메일이거나 이메일 형식이 아닙니다.",
                                     Toast.LENGTH_SHORT).show();
@@ -293,34 +265,4 @@ public class SignUpPersonalityActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
-    protected void showAlert(String message) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        dialog = builder.setMessage(message)
-                .setNegativeButton("확인", new DialogInterface.OnClickListener(){
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialog.cancel();
-                    }
-                }).create();
-        dialog.show();
-    }
-
-
-
-//    protected void checkNickName(String NickName, final Runnable callback){
-//
-//        FirebaseDatabase.getInstance().getReference().child("users").orderByChild("nickName").equalTo(NickName).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                nickNameCheck = dataSnapshot.getValue() == null;
-//                SignUpPersonalityActivity.this.runOnUiThread(callback);
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
 }

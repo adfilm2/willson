@@ -43,7 +43,7 @@ public class OneTextTwoButton_CustomDialog extends Dialog {
         keep_btn = (Button) findViewById(R.id.list_pop_keepbtn);
         exit_btn = (TextView) findViewById(R.id.list_pop_exitbtn);
 
-        wilson_image.setImageResource(image_id);
+        wilson_image.setImageResource(R.drawable.request_couldnt_find);
         alart_textview.setText(alart_text);
         keep_btn.setText(keep_btn_text);
         exit_btn.setText(exit_btn_text);

@@ -32,7 +32,7 @@
             android:layout_marginBottom="19.1dp"
             android:text="아직 요청중인 매칭이 없습니다.\n고민 리스트를 먼저 작성해보세요!"
             android:textSize="18sp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_b"
             />

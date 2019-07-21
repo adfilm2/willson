@@ -139,7 +139,7 @@ public class ChatActivity extends AppCompatActivity {
                     comment.message = text;
                     comment.timeStamp = ServerValue.TIMESTAMP;
 
-                    FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             //            sendFcm(); Fcm 보내는 부분
@@ -167,7 +167,7 @@ public class ChatActivity extends AppCompatActivity {
             //UserData를 먼저 생성해준다.
             //destinationUid를 참고하여 users 목록에서 data를 받은 후에 destinationUserModel에 데이터를 넣어준다.
             makeUserData();
-            FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference("helperUsers").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -515,7 +515,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
-        FirebaseDatabase.getInstance().getReference().child("willsonUsers").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("helperUsers").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 destinationUserModel= dataSnapshot.getValue(WillsonModel.class);
@@ -536,16 +536,16 @@ public class ChatActivity extends AppCompatActivity {
         askerProfile.put("uid", uid);
         askerProfile.put("nickName",askerUserModel.getNickName() );
 
-        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("willsonUser").setValue(willsonProfile);
-        FirebaseDatabase.getInstance().getReference().child("chatRooms").child(RoomKey).child("askerUser").setValue(askerProfile);
+        FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("helperUser").setValue(willsonProfile);
+        FirebaseDatabase.getInstance().getReference("chatRooms").child(RoomKey).child("askerUser").setValue(askerProfile);
 
     }
 
-    void sendRoomkey(String willsonUser,String askerUser, String roomKey){
+    void sendRoomkey(String helperUser,String askerUser, String roomKey){
         Map<String, Object> setRoomKey = new HashMap<>();
         setRoomKey.put("roomKey", roomKey);
 
-        FirebaseDatabase.getInstance().getReference("willsonUsers").child(willsonUser).updateChildren(setRoomKey);
+        FirebaseDatabase.getInstance().getReference("helperUsers").child(helperUser).updateChildren(setRoomKey);
         FirebaseDatabase.getInstance().getReference("willsonUsers").child(askerUser).updateChildren(setRoomKey);
     }
 

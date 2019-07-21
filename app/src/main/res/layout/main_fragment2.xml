@@ -5,9 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
+    android:layout_marginLeft="21.1dp"
+    android:layout_marginRight="19.2dp"
     >
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -15,44 +17,46 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="21.1dp"
             android:layout_marginTop="52.8dp"
-            android:orientation="vertical">
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical"
+            >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15.4dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_square_eb"
                     android:text="같은 고민"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textSize="22sp"
                     android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="31.4dp"
                     android:fontFamily="@font/nanum_square_r"
                     android:text="을 한"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textSize="22sp"
                     android:textStyle="normal" />
 
             </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="31.4dp"
                 android:fontFamily="@font/nanum_square_r"
                 android:text="헬퍼를 찾았어요!"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:textSize="22sp"
                 android:textStyle="normal" />
 
@@ -68,28 +72,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="21.1dp"
                 android:gravity="right"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="100dp"
+                    android:layout_height="80dp"
                     android:layout_marginRight="46.1dp"
+                    android:src="@drawable/request_find_helper"
                     android:adjustViewBounds="true"
                     android:layout_gravity="right"
-                    android:src="@drawable/request_img_willson" />
+                    />
             </LinearLayout>
 
         </LinearLayout>
 
-    </FrameLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="21.1dp"
-        android:layout_marginRight="19.2dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal"
         android:background="@drawable/edittext_radius20"
         >
@@ -101,7 +104,7 @@
             android:layout_marginLeft="17.3dp"
             android:text="시간 내에 헬퍼를 선택하세요!"
             android:textSize="13sp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
             />
@@ -126,8 +129,8 @@
                 android:id="@+id/fragment2_timer"
                 android:layout_marginLeft="6.7dp"
                 android:layout_alignParentEnd="true"
-                android:text="4:59"
-                android:textColor="@color/middlepurple"
+                android:text="5:00"
+                android:textColor="@color/middleBlue"
                 android:textSize="15sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"

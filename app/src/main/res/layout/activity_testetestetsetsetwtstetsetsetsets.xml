@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanum_square_eb"
                     android:text="같은 고민"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textSize="22sp"
                     android:textStyle="normal" />
 
@@ -40,7 +40,7 @@
                     android:layout_marginRight="31.4dp"
                     android:fontFamily="@font/nanum_square_r"
                     android:text="을 한"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textSize="22sp"
                     android:textStyle="normal" />
 
@@ -52,7 +52,7 @@
                 android:layout_marginRight="31.4dp"
                 android:fontFamily="@font/nanum_square_r"
                 android:text="헬퍼를 찾았어요!"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:textSize="22sp"
                 android:textStyle="normal" />
 
@@ -101,7 +101,7 @@
                 android:layout_marginLeft="17.3dp"
                 android:text="시간 내에 헬퍼를 선택하세요!"
                 android:textSize="13sp"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_r"
                 />
@@ -127,7 +127,7 @@
                     android:layout_marginLeft="6.7dp"
                     android:layout_alignParentEnd="true"
                     android:text="4:59"
-                    android:textColor="@color/middlepurple"
+                    android:textColor="@color/middleBlue"
                     android:textSize="15sp"
                     android:textStyle="normal"
                     android:fontFamily="@font/nanum_square_b"

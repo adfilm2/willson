@@ -112,14 +112,18 @@ public class RegisterActivity_asker extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
         adapter = ArrayAdapter.createFromResource(this, R.array.Age_group, android.R.layout.simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
         ageSpinner.setSelection(0);
 
         genderGroup = findViewById(R.id.registerasker_gender);
-
+        genderGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int i) {
+                RadioButton genderButton = findViewById(i);
+                userGender = genderButton.getText().toString();
+            }
+        });
 
         passwordText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -192,7 +196,7 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 userNickname = nickName.getText().toString();
                 RadioButton gender = findViewById(genderGroup.getCheckedRadioButtonId());
                 userGender = gender.getText().toString();
-                userAge = Integer.parseInt(toCheckAge);
+                userAge = Integer.parseInt(ageSpinner.getSelectedItem().toString());
 
                 if(userEmail.equals("") || userPassword.equals("") || userNickname.equals("") ||
                         toCheckAge.equals("나이를 선택해주세요.") || userGender.equals("")){
@@ -211,10 +215,24 @@ public class RegisterActivity_asker extends AppCompatActivity {
                 bundle.putString("password",userPassword);
                 bundle.putString("gender",userGender);
 
-                Intent intent = new Intent(getApplicationContext(),SignUpPersonalityActivity.class);
+                Intent intent = new Intent(RegisterActivity_asker.this,SignUpPersonalityActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                finish();
 
+//                checkNickName(userNickname, new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        if(nickNameCheck == false){
+//                            showAlert("존재하는 닉네임 입니다.");
+//                            Log.d("닉네임체크값",String.valueOf(nickNameCheck));
+//                            return;
+//                        }
+//                        Intent intent = new Intent(getApplicationContext(),SignUpPersonalityActivity.class);
+//                        intent.putExtras(bundle);
+//                        startActivity(intent);
+//                    }
+//                });
             }
         });
 
@@ -229,6 +247,25 @@ public class RegisterActivity_asker extends AppCompatActivity {
                     completeButton.setEnabled(false);
                     checkBox_text.setTextColor(Color.parseColor("#bdbdbd"));
                 }
+            }
+        });
+    }
+
+    protected void checkNickName(String NickName, final Runnable callback){
+
+        FirebaseDatabase.getInstance().getReference("willsonUsers").orderByChild("nickName").equalTo(NickName).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() == null){
+                    nickNameCheck = true;
+                }
+                else{
+                    nickNameCheck = false;
+                }
+                RegisterActivity_asker.this.runOnUiThread(callback);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
     }
@@ -256,33 +293,6 @@ public class RegisterActivity_asker extends AppCompatActivity {
         public void onClick(View view) {
             hidekeyboard(nickName);
         }
-    }
-
-    public void RegisterUser(String email,String password){
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(RegisterActivity_asker.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(userEmail).build();
-                            task.getResult().getUser().updateProfile(userProfileChangeRequest);
-
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference myRef = database.getReference("askerUsers");
-                            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                            Map<String, String> profile = new HashMap<>();
-                            profile.put("photo", "");
-                            profile.put("uid",uid);
-                            profile.put("nickName",userNickname);
-
-                            myRef.child(uid).setValue(profile);
-                        }
-                        else {
-                        }
-                    }
-                });
     }
 
     @Override

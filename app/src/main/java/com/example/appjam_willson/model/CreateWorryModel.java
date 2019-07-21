@@ -25,7 +25,7 @@ public class CreateWorryModel {
         public Agreement agreement;
         public Helper_gender helper_gender;
         public enum Agreement { agree, disagree}
-        public enum Helper_gender { 남성, 여성, 모두 }
+        public enum Helper_gender { 남, 여, 모두 }
 
         public Integer getWeight() {
             return weight;

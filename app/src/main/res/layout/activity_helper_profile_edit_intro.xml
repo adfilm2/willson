@@ -26,7 +26,7 @@
             android:textSize="19sp"
             android:layout_marginTop="54.3dp"
             android:layout_marginLeft="21dp"
-            android:textColor="@color/darkPurple"
+            android:textColor="@color/darkBlue"
             android:lineSpacingExtra="10sp"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_b"

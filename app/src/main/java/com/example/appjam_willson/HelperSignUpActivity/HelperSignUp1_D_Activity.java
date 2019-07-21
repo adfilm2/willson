@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -21,7 +20,6 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.ApplicationField.ApplicationFields;
-import com.example.appjam_willson.FillinListActivity.List2Activity;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
@@ -64,14 +62,14 @@ public class HelperSignUp1_D_Activity extends AppCompatActivity implements OnCli
     Typeface typebold;
     Typeface typereg;
 
-    Bundle bundle1 = new Bundle();
+    Bundle bundle = new Bundle();
     int category_listId;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list1_daily);
+        setContentView(R.layout.activity_helper_daily);
 
         context = this;
 
@@ -90,14 +88,14 @@ public class HelperSignUp1_D_Activity extends AppCompatActivity implements OnCli
         economy.setTypeface(typereg);
         trip.setTypeface(typereg);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
         list1_daily_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_daily_cancelbtn.setOnClickListener(new list1_daily_cancelbtn_listener());
 
-        list1_daily_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_daily_backbtn = findViewById(R.id.back_btn_layout);
         list1_daily_backbtn.setOnClickListener(new list1_daily_backbtn_listener());
 
         list1_daily_radioGroup1 = findViewById(R.id.list1_daily_radioGroup1);
@@ -130,9 +128,9 @@ public class HelperSignUp1_D_Activity extends AppCompatActivity implements OnCli
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle1 = data.getExtras();
-                    bundle1.putInt("category_id",category_listId);
-                    data.putExtras(bundle1);
+                    bundle = data.getExtras();
+                    bundle.putInt("categoryList_idx",category_listId);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 
@@ -166,7 +164,7 @@ public class HelperSignUp1_D_Activity extends AppCompatActivity implements OnCli
                 list1_daily_radioGroup2.clearCheck();
                 list1_daily_radioGroup2.setOnCheckedChangeListener(radioGroup_daily_listener2);
                 daily_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 daily_custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = daily_custom_edit_text.getText().toString();
@@ -202,7 +200,7 @@ public class HelperSignUp1_D_Activity extends AppCompatActivity implements OnCli
                 list1_daily_radioGroup1.clearCheck();
                 list1_daily_radioGroup1.setOnCheckedChangeListener(radioGroup_daily_listener1);
                 daily_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 daily_custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = daily_custom_edit_text.getText().toString();
@@ -220,15 +218,23 @@ public class HelperSignUp1_D_Activity extends AppCompatActivity implements OnCli
 
         if(habit.isChecked()){
             category_listId =18;
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
         else if (alba.isChecked()){
             category_listId =19;
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
         else if (economy.isChecked()){
             category_listId =20;
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
         else if (trip.isChecked()){
             category_listId =21;
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
         else if (daily_custom_edit_text.isFocused()){
             WorryCategoryListAddModel worryCategoryListAddModel = new WorryCategoryListAddModel();
@@ -242,32 +248,18 @@ public class HelperSignUp1_D_Activity extends AppCompatActivity implements OnCli
             call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
                 @Override
                 public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
-                    Log.d("test", response.isSuccessful() + "");
                     WorryCategoryListAddResponseModel result = response.body();
-                    Log.d("진로", ">>>>>>>>>>>" + response.code());
-                    Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
                     category_listId= result.data.categoryList_idx;
-
-
-                    Log.d(">>>>>ff>>> ",""+category_listId);
                     Intent intent = new Intent(context,HelperSignUpActivity2.class);
                     startActivityForResult(intent, REQUEST_CODE);
-
                 }
 
                 @Override
                 public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
                     t.printStackTrace();
-                    Log.d(" 일상 액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                 }
-
-
             });
-
         }
-        else{}
-        Intent intent = new Intent(context,HelperSignUpActivity2.class);
-        startActivityForResult(intent, REQUEST_CODE);
     }
 
     class list1_daily_cancelbtn_listener implements OnClickListener {

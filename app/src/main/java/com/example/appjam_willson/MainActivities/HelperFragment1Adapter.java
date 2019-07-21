@@ -2,7 +2,6 @@ package com.example.appjam_willson.MainActivities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +65,7 @@ public class HelperFragment1Adapter extends RecyclerView.Adapter<HelperFragment1
         //주제
         if(dataModels.get(i).getQuestionInfo().getSelected().equals("N") && dataModels.get(i).getCategoryInfo().getCategory_name() != null) {
             viewHolder.userSubject.setText(dataModels.get(i).getCategoryInfo().getCategory_name());
-            viewHolder.userSubject.setTextColor(viewHolder.userSubject.getResources().getColor(R.color.lightPurple));
+            viewHolder.userSubject.setTextColor(viewHolder.userSubject.getResources().getColor(R.color.lightBlue));
             viewHolder.userSubjectStroke.setBackgroundResource(R.drawable.rounded_corner_radius15);
         }
         else if (dataModels.get(i).getQuestionInfo().getSelected().equals("Y") && dataModels.get(i).getCategoryInfo().getCategory_name() != null){

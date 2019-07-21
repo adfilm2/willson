@@ -20,6 +20,8 @@ public class List1DailyStartActivity extends AppCompatActivity {
     LinearLayout daily_cancel_btn;
     Context context;
 
+    Bundle bundle = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,9 @@ public class List1DailyStartActivity extends AppCompatActivity {
             switch (resultCode){
                 case RESULT_OK:
 
+                    bundle = data.getExtras();
+                    bundle.putInt("category_idx",5);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 

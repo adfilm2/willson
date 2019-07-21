@@ -37,7 +37,7 @@ public class MainFragment_CustomDialog extends Dialog {
 
         setContentView(R.layout.activity_list_popup);
 
-        wilson_image = (ImageView) findViewById(R.id.list_pop_image);
+//        wilson_image = (ImageView) findViewById(R.id.list_pop_image);
         alart_textview = (TextView) findViewById(R.id.list_pop_textview);
         keep_btn = (Button) findViewById(R.id.list_pop_keepbtn);
         exit_btn = (TextView) findViewById(R.id.list_pop_exitbtn);

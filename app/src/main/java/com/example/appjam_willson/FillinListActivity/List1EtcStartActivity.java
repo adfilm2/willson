@@ -21,6 +21,8 @@ public class List1EtcStartActivity extends AppCompatActivity {
     LinearLayout etc_cancel_btn;
     Context context;
 
+    Bundle bundle = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,28 +49,9 @@ public class List1EtcStartActivity extends AppCompatActivity {
             switch (resultCode){
                 case RESULT_OK:
 
-
-                    //값 확인
-//                    Integer category = data.getIntExtra("category",0);
-//                    String small = data.getStringExtra("small category");
-//                    String feeling = data.getStringExtra("feeling2");
-//                    Integer importance = data.getIntExtra("importance",0);
-//                    String contents = data.getStringExtra("contents");
-//                    String sex = data.getStringExtra("helper sex");
-//                    String char2 = data.getStringExtra("helper_char2");
-//                    String key2 = data.getStringExtra("helper_keyword2");
-//                    Integer empathy = data.getIntExtra("empathy",0);
-//
-//                    Log.d("category",">>>>>>> "+category);
-//                    Log.d("small",">>>>>>> "+small);
-//                    Log.d("feeling2",">>>>>>> "+feeling);
-//                    Log.d("importance",">>>>>>> "+importance);
-//                    Log.d("contents",">>>>>>> "+contents);
-//                    Log.d("sex",">>>>>>> "+sex);
-//                    Log.d("character",">>>>>>> "+char2);
-//                    Log.d("keyword",">>>>>>> "+key2);
-//                    Log.d("empathy",">>>>>>> "+empathy);
-
+                    bundle = data.getExtras();
+                    bundle.putInt("category_idx",6);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 

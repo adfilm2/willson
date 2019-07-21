@@ -103,8 +103,7 @@ public class AskerProfileActivity extends AppCompatActivity {
         request_btn.setOnClickListener(new request_conversation());
 
         intent = getIntent();
-        helper_idx = intent.getIntExtra("helper_idx", 0);
-        question_idx = ApplicationFields.myQuestion_idx;
+        question_idx = intent.getIntExtra("question_idx",0);
 
         token = ApplicationFields.userToken;
 
@@ -181,21 +180,12 @@ public class AskerProfileActivity extends AppCompatActivity {
     private class request_conversation implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent;
 
             SendRequestModel sendRequestModel = new SendRequestModel();
             sendRequestModel.setQuestion_idx(question_idx);
-            Log.d("요청을 보낸다아아앗", String.valueOf(question_idx));
             Call<SendRequestResponseModel> send_request = RetrofitService.getInstance().getService().send_request_post(token, sendRequestModel);
             send_request.enqueue(retrofit_Callback);
 
-           /* ChoiceHelperModel choiceHelperModel = new ChoiceHelperModel();
-            choiceHelperModel.setQuestion_idx(question_idx);
-            choiceHelperModel.setHelper_idx(helper_idx);
-            Log.d("qesution_idxidxidx_헬퍼 결정", String.valueOf(question_idx));
-            Log.d("helper_idxidxidx_헬퍼 결정!!!!!!!", String.valueOf(helper_idx));
-            Call<ChoiceHelperResponseModel> send_request = RetrofitService.getInstance().getService().choice_helper_post(token, choiceHelperModel);
-            send_request.enqueue(retrofit_Callback);*/
         }
     }
 
@@ -204,11 +194,8 @@ public class AskerProfileActivity extends AppCompatActivity {
         public void onResponse(Call<SendRequestResponseModel> call, Response<SendRequestResponseModel> response) {
             SendRequestResponseModel result = response.body();
 
-            Log.d("코드코드받은코드", String.valueOf(result.getCode()));
-
             if(response.code() == 200 && result.getCode() == 1400 ){
                 intent = new Intent(context, HelperRequestCompleteActivity.class);
-                /*intent.putExtra("question_idx", question_idx);*/
                 startActivity(intent);
                 finish();
             }
@@ -219,9 +206,6 @@ public class AskerProfileActivity extends AppCompatActivity {
                 Toast.makeText(context, "HELPER_SELECTION_ERROR", Toast.LENGTH_SHORT).show();
                 return;
             }
-
-            Log.d("이거는 response코드값", ">>>>>>>>>>>" + response.code());
-            Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.getCode());
         }
 
         @Override

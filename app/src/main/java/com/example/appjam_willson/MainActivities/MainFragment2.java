@@ -41,11 +41,8 @@ public class MainFragment2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main_fragment2,null);
 
-        if(getArguments() == null) {
-            MainFragment2_null fragment = new MainFragment2_null();
-            getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-        }
-        else {
+
+
             question_idx = ApplicationFields.myQuestion_idx;
             String token = ApplicationFields.userToken;
 
@@ -57,10 +54,8 @@ public class MainFragment2 extends Fragment {
 
 
             Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
-            Log.d("퀘스천ㄴㄴㄴㄴㄴㄴㄴㄴ", String.valueOf(question_idx));
             //여기 윗줄에 question_idx값 안넣어줌
             accept_helper.enqueue(retrofitCallback);
-        }
 
         return view;
 
@@ -79,6 +74,7 @@ public class MainFragment2 extends Fragment {
                 fragment2Recyclerview.setAdapter(mainFragment2Adapter);
             }
             else {
+                return ;
             }
         }
 

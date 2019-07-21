@@ -7,7 +7,7 @@ android:shape="rectangle" >
     android:topLeftRadius="22dp"
     android:topRightRadius="22dp" />
     <gradient
-        android:startColor="#6262ac"
-        android:endColor="#49499d"
+        android:startColor="#083fba"
+        android:endColor="#142d84"
         android:angle="0"/>
 </shape>

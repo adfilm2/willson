@@ -17,7 +17,7 @@ public class ApplicationFields extends Application {
     public static long timerStart = 0;
 
     public static int myQuestion_idx = 0;
-    public static int myHelper_idx = 0;
+    public static int myHelper_idx;
     public static int matching_idx;
 
     //타이머 관련

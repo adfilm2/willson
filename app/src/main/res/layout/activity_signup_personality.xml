@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="93.9dp"
-        android:textColor="@color/darkPurple"
+        android:textColor="@color/darkBlue"
         android:textSize="18sp"
         android:text="해당되는 성격을 선택해주세요!"
         android:textStyle="normal"

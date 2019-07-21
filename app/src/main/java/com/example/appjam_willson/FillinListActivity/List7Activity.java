@@ -53,7 +53,7 @@ public class List7Activity extends AppCompatActivity {
 
         REQUEST_CODE = ((List7Activity) context).getTaskId();
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -90,10 +90,9 @@ public class List7Activity extends AppCompatActivity {
             switch (resultCode){
                 case RESULT_OK:
                     Intent intent = new Intent();
+
                     bundle7.putInt("empathy", empathy);
                     bundle7.putInt("advice", advice);
-
-                    Log.d("jjj>>>>>>>>",""+exp);
                     bundle7.putInt("experience22", exp);
                     intent.putExtras(bundle7);
                     setResult(RESULT_OK,intent);
@@ -160,7 +159,6 @@ public class List7Activity extends AppCompatActivity {
 
 
     private class group_click1 implements RadioGroup.OnCheckedChangeListener {
-
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
 

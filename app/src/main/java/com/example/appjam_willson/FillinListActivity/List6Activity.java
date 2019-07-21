@@ -48,7 +48,7 @@ public class List6Activity extends AppCompatActivity {
 
     ArrayList experience = new ArrayList();
 
-    Bundle bundle6 = new Bundle();
+    Bundle bundle = new Bundle();
 
     String resName;
     String packName;
@@ -66,7 +66,7 @@ public class List6Activity extends AppCompatActivity {
 
         REQUEST_CODE = ((List6Activity) context).getTaskId();
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -197,10 +197,9 @@ public class List6Activity extends AppCompatActivity {
             switch (resultCode){
                 case RESULT_OK:
 
-                    bundle6 = data.getExtras();
-                    bundle6.putStringArrayList("experience",experience);
-
-                    data.putExtras(bundle6);
+                    bundle = data.getExtras();
+                    bundle.putStringArrayList("experience",experience);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 
@@ -309,15 +308,13 @@ public class List6Activity extends AppCompatActivity {
     class list6_nextbtn_listener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            for(int i = 1; i<4;i++){
+
                 if(edit1.length() > 0)
                     experience.add(edit1.getText().toString());
                 if(edit2.length() > 0)
                     experience.add(edit2.getText().toString());
                 if(edit3.length() > 0)
                     experience.add(edit3.getText().toString());
-
-            }
 
             Intent intent = new Intent(context, List7Activity.class);
             startActivityForResult(intent, REQUEST_CODE);

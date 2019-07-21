@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:lineSpacingExtra="10sp"
             android:gravity="center_horizontal"
             android:text="앗! 이미 매칭된 헬퍼입니다"

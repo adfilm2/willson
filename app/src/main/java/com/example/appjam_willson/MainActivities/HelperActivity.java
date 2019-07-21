@@ -52,8 +52,6 @@ public class HelperActivity extends AppCompatActivity{
         final TextView willsonText_profile=findViewById(R.id.willsonText_profile);
         final TextView willsonText_mypage=findViewById(R.id.willsonText_mypage);
 
-//        passPushTokenToServer();
-
         checkMatch();
         changeImage(willsonImage_receive,willsonImage_chat,willsonImage_profile,willsonImage_mypage);
         changeTextColor(willsonText_receive,willsonText_chat,willsonText_profile,willsonText_mypage);
@@ -134,13 +132,10 @@ public class HelperActivity extends AppCompatActivity{
         fourth.setTextColor(Color.parseColor("#9e9e9e"));
     }
 
-
     public void checkMatch() {
-
         String token = ApplicationFields.userToken;
         Call<HelperReceivedWorryListWatchResponseModel> call_worryList = RetrofitService.getInstance().getService().helper_receiveList_get(token);
         call_worryList.enqueue(retrofitCallback);
-
     }
 
     private Callback<HelperReceivedWorryListWatchResponseModel> retrofitCallback = new Callback<HelperReceivedWorryListWatchResponseModel>() {
@@ -163,16 +158,7 @@ public class HelperActivity extends AppCompatActivity{
         @Override
         public void onFailure(Call<HelperReceivedWorryListWatchResponseModel> call, Throwable t) {
             t.printStackTrace();
-            Log.d("실패ㅐㅐㅐㅐㅐ","대실패");
         }
     };
-
-  /*  public void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.main_frame, fragment).commit();
-    }*/
-
-
 }
 

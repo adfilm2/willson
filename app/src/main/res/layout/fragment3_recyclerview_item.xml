@@ -34,7 +34,7 @@
                 android:id="@+id/fragment3_chatTitle"
                 android:layout_marginBottom="11.1dp"
                 android:text="연남동 전윤한님"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanumsquare_b"

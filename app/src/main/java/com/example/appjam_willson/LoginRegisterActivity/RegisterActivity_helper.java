@@ -69,7 +69,6 @@ public class RegisterActivity_helper extends AppCompatActivity {
         ageSpinner.setSelection(0);
 
         RadioGroup genderGroup = findViewById(R.id.registerwillson_gender);
-
         int genderGroupID = genderGroup.getCheckedRadioButtonId();
         userGender = ((RadioButton) findViewById(genderGroupID)).getText().toString();
 

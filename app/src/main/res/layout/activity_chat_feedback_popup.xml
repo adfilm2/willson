@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:textSize="12sp"
-                android:textColor="@color/darkPurple"
+                android:textColor="@color/darkBlue"
                 android:id="@+id/star_num"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanumsquare_r"

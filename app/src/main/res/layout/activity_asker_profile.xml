@@ -110,7 +110,7 @@
                                 android:fontFamily="@font/nanum_square_eb"
                                 android:id="@+id/category_name"
                                 android:textSize="16sp"
-                                android:textColor="@color/lightPurple"
+                                android:textColor="@color/lightBlue"
                                 android:gravity="center"
                                 android:paddingHorizontal="11dp"
                                 android:paddingVertical="5.8dp"
@@ -155,7 +155,7 @@
                                     android:paddingVertical="4.5dp"
                                     android:paddingHorizontal="8dp"
                                     android:layout_marginHorizontal="2.9dp"
-                                    android:textColor="@color/lightPurple"
+                                    android:textColor="@color/lightBlue"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag1"
                                     android:textSize="13sp"/>
@@ -169,7 +169,7 @@
                                     android:paddingHorizontal="8dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
-                                    android:textColor="@color/lightPurple"
+                                    android:textColor="@color/lightBlue"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag2"
                                     android:textSize="13sp"/>
@@ -183,7 +183,7 @@
                                     android:paddingHorizontal="8dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
-                                    android:textColor="@color/lightPurple"
+                                    android:textColor="@color/lightBlue"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag3"
                                     android:textSize="13sp"/>

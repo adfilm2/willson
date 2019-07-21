@@ -19,7 +19,7 @@ public class ReqHelperProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_req_helper_profile);
 
-        context = this;
+        context = ReqHelperProfileActivity.this;
 
         start_btn = (Button) findViewById(R.id.floating_btn_start);
         start_btn.setOnClickListener(new start_conversation());

@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/willson_fragment2_chatTitle"
                 android:text="방 이름"
-                android:textColor="@color/darkPurple"
+                android:textColor="@color/darkBlue"
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanumsquare_b"

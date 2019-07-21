@@ -31,7 +31,7 @@
             android:layout_marginTop="45dp"
             android:fontFamily="@font/nanum_square_b"
             android:text="구체적으로 경험을 서술해주세요."
-            android:textColor="@color/darkPurple"
+            android:textColor="@color/darkBlue"
             android:textSize="19sp"
             android:textStyle="normal" />
 
@@ -105,7 +105,7 @@
             android:layout_marginTop="29dp"
             android:fontFamily="@font/nanum_square_b"
             android:text="자신을 나타내는 해시태그를 추가해보세요."
-            android:textColor="@color/darkPurple"
+            android:textColor="@color/darkBlue"
             android:textSize="18sp"
             android:textStyle="normal" />
 
@@ -135,7 +135,7 @@
                 android:layout_marginLeft="10.4dp"
                 android:layout_marginRight="8.4dp"
                 android:text="#"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"/>
@@ -156,7 +156,7 @@
                     android:fontFamily="@font/nanum_square_r"
                     android:singleLine="true"
                     android:textCursorDrawable="@null"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textColorHint="@color/grey"
                     android:textSize="15sp" />
 
@@ -180,7 +180,7 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center_vertical"
                 android:text="#"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"/>
@@ -201,7 +201,7 @@
                     android:fontFamily="@font/nanum_square_r"
                     android:textCursorDrawable="@null"
                     android:paddingBottom="7dp"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textColorHint="@color/grey"
                     android:textSize="15sp" />
 
@@ -225,7 +225,7 @@
                 android:layout_marginLeft="10.4dp"
                 android:layout_marginRight="8.4dp"
                 android:text="#"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"/>
@@ -246,7 +246,7 @@
                     android:singleLine="true"
                     android:textCursorDrawable="@null"
                     android:paddingBottom="7dp"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:textColorHint="@color/grey"
                     android:textSize="15sp" />
 

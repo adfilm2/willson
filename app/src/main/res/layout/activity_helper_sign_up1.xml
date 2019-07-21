@@ -18,7 +18,7 @@
         android:layout_marginLeft="22dp"
         android:textSize="19sp"
         android:fontFamily="@font/nanum_square_b"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:lineSpacingExtra="11sp"
         android:text="세부 카테고리를 선택해주세요."
         />
@@ -151,7 +151,7 @@
                         android:layout_height="match_parent"
                         android:text="직접입력"
                         android:fontFamily="@font/nanum_square_r"
-                        android:textColor="@color/lightPurple"
+                        android:textColor="@color/lightBlue"
                         android:textSize="16sp"
                         android:drawableLeft="@drawable/btn_plus"
                         android:gravity="center"
@@ -175,7 +175,7 @@
                     android:background="@null"
                     android:singleLine="true"
                     android:maxLength="8"
-                    android:textColor="@color/lightPurple"
+                    android:textColor="@color/lightBlue"
                     android:id="@+id/usercustom_edittext"
                     />
             </FrameLayout>

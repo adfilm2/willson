@@ -41,7 +41,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         viewHolder.review_userInfo.setText(willsonModels.get(i).getNickname());
 
         //대화 주제
-        viewHolder.review_content.setText(willsonModels.get(i).getCategory_name());
+        viewHolder.review_subject.setText(willsonModels.get(i).getCategory_name());
 
         //리뷰 내용
         viewHolder.review_content.setText(willsonModels.get(i).getContent());

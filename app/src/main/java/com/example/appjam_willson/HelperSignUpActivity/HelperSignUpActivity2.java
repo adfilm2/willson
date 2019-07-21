@@ -56,7 +56,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
     View view;
     ImageView btn;
     String[] tags = new String[3];
-    Bundle bundle2 = new Bundle();
+    Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,7 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -191,10 +191,10 @@ public class HelperSignUpActivity2 extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle2 = data.getExtras();
-//                    bundle2.putString("content",helper_experience.getText().toString());
-//                    bundle2.putStringArray("tags",tags);
-//                    data.putExtras(bundle2);
+                    bundle = data.getExtras();
+                    bundle.putString("content",helper_experience.getText().toString());
+                    bundle.putStringArray("experience_name",tags);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 

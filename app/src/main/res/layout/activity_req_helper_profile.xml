@@ -48,7 +48,7 @@
                                 android:layout_height="60dp"
                                 android:layout_gravity="center"
                                 android:id="@+id/profile_helper_img"
-                                android:src="@drawable/request_profile_img_helperprofile"/>
+                                android:src="@drawable/conv_profile"/>
 
                             <!--닉네임-->
                             <TextView
@@ -179,7 +179,7 @@
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
                                     android:layout_marginHorizontal="2.9dp"
-                                    android:textColor="@color/lightPurple"
+                                    android:textColor="@color/lightBlue"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag1"
                                     android:textSize="13sp"
@@ -195,7 +195,7 @@
                                     android:paddingHorizontal="7dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
-                                    android:textColor="@color/lightPurple"
+                                    android:textColor="@color/lightBlue"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag2"
                                     android:textSize="13sp"
@@ -211,7 +211,7 @@
                                     android:paddingHorizontal="7dp"
                                     android:background="@drawable/character_btn_selector_4and5_letters"
                                     android:paddingVertical="4.5dp"
-                                    android:textColor="@color/lightPurple"
+                                    android:textColor="@color/lightBlue"
                                     android:text="#긍정적인"
                                     android:id="@+id/profile_helper_tag3"
                                     android:textSize="13sp"
@@ -234,7 +234,7 @@
                                 android:text="심리"
                                 android:id="@+id/category"
                                 android:textSize="16sp"
-                                android:textColor="@color/lightPurple"
+                                android:textColor="@color/lightBlue"
                                 android:gravity="center"
                                 android:layout_marginTop="20.2dp"
                                 android:paddingHorizontal="11dp"
@@ -258,7 +258,7 @@
                                     android:textSize="15sp"
                                     android:layout_marginHorizontal="4dp"
                                     android:lineSpacingExtra="13sp"
-                                    android:textColor="@color/darkPurple"
+                                    android:textColor="@color/darkBlue"
                                     android:id="@+id/ex1"
                                     android:text="#음악"
                                     android:textStyle="normal"
@@ -271,7 +271,7 @@
                                     android:lineSpacingExtra="13sp"
                                     android:layout_marginHorizontal="4dp"
                                     android:id="@+id/ex2"
-                                    android:textColor="@color/darkPurple"
+                                    android:textColor="@color/darkBlue"
                                     android:text="#오예에에에"
                                     android:textStyle="normal"
                                     android:fontFamily="@font/nanumsquare_eb"/>
@@ -281,7 +281,7 @@
                                     android:textSize="15sp"
                                     android:layout_marginHorizontal="4dp"
                                     android:id="@+id/ex3"
-                                    android:textColor="@color/darkPurple"
+                                    android:textColor="@color/darkBlue"
                                     android:text="#아리가또"
                                     android:textStyle="normal"
                                     android:fontFamily="@font/nanumsquare_eb"
@@ -323,7 +323,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/darkPurple"
+                                android:textColor="@color/darkBlue"
                                 android:background="@drawable/rounded_corner_grey"
                                 android:layout_marginLeft="19.2dp"
                                 android:textSize="21sp"
@@ -337,7 +337,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/darkPurple"
+                                android:textColor="@color/darkBlue"
                                 android:background="@drawable/rounded_corner_grey"
                                 android:textSize="21sp"
                                 android:layout_marginTop="15dp"

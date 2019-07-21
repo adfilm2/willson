@@ -17,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/img_logo"
             android:layout_centerHorizontal="true"
             />
 
@@ -48,7 +47,7 @@
                 android:text="질문자 전환 "
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:textSize="12sp" />
         </LinearLayout>
     </RelativeLayout>
@@ -65,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="같은 고민이 있었다면"
             android:layout_marginBottom="5dp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:textSize="22sp"
             android:textStyle="normal"
             android:fontFamily="@font/nanumsquare_r"
@@ -75,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="함께 대화해주시겠어요?"
-            android:textColor="@color/lightPurple"
+            android:textColor="@color/lightBlue"
             android:textSize="22sp"
             android:textStyle="normal"
             android:fontFamily="@font/nanumsquare_eb"

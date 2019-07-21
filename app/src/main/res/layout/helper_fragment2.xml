@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="51.8dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:text="대화하기"
+            android:gravity="center"
+            android:textSize="19sp"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="현재 진행 중인 대화"
+            android:layout_marginLeft="18.2dp"
+            android:layout_marginBottom="16.2dp"
+            android:textColor="@color/dark_blue"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/nanum_square_b"
+            />
+        <View style="@style/Divider2"
+            android:layout_marginBottom="20dp">
+        </View>
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginLeft="18.2dp"
         android:id="@+id/helper_fragment2_recyclerview"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
@@ -17,4 +50,4 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>

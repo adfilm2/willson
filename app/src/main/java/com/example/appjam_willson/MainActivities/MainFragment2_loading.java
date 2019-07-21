@@ -1,8 +1,10 @@
 package com.example.appjam_willson.MainActivities;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,23 +53,28 @@ public class MainFragment2_loading extends Fragment {
 
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             long thisTime = timestamp.getTime();
-            long restTime = 300000 - (thisTime-ApplicationFields.timerStart);   //5분에서 지난 시간을 빼줌
+            long restTime = 600000 - (thisTime-ApplicationFields.timerStart);   //5분에서 지난 시간을 빼줌
+
+            ApplicationFields.home.setSelected(false);
+            ApplicationFields.request.setSelected(true);
+            ApplicationFields.requesttxt.setTextColor(Color.parseColor("#2f2f2f"));
+            ApplicationFields.hometxt.setTextColor(Color.parseColor("#9e9e9e"));
+
 
             //타이머
             countTxt = view.findViewById(R.id.count_txt);
             countDownStart(restTime);
             countDownTimer.start();
 
-            loading = view.findViewById(R.id.loading_moving_willson);
-
-            Glide.with(this).load(R.drawable.request_searching_wilson).into(loading);
+//            loading = view.findViewById(R.id.loading_moving_willson);
+//            Glide.with(this).load(R.drawable.request_searching_wilson).into(loading);
 
             return view;
     }
 
     public void countDownStart(long time){
 
-        countDownTimer = new CountDownTimer(40000, COUNT_DOWN_INTERVAL) {
+        countDownTimer = new CountDownTimer(time, COUNT_DOWN_INTERVAL) {
             public void onTick(long millisUntilFinished) {
 
                 ApplicationFields.timerSwitch = true;
@@ -83,8 +90,11 @@ public class MainFragment2_loading extends Fragment {
                 question_idx = ApplicationFields.myQuestion_idx;
 
                 String token = ApplicationFields.userToken;
-                Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
-                accept_helper.enqueue(retrofitCallback);
+
+                MainFragment2 fragment = new MainFragment2();
+                getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+//                Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token, question_idx);
+//                accept_helper.enqueue(retrofitCallback);
             }
         };
     }
@@ -97,13 +107,9 @@ public class MainFragment2_loading extends Fragment {
 
             if (result.getCode() == 1000 && result.data.getHelper_list().size() != 0) {
                 MainFragment2 fragment = new MainFragment2();
-                bundle = new Bundle();
-                bundle.putInt("question_idx", question_idx);
-                fragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }
             else {
-                //이거 널 띄우고 팝업 띄워야 함ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
                 MainFragment2_null fragment = new MainFragment2_null();
                 getFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }

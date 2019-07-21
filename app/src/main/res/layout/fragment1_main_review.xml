@@ -39,7 +39,7 @@
                 android:fontFamily="@font/nanum_square_eb"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                android:textColor="@color/light_purple"
+                android:textColor="@color/light_blue"
                 android:background="@drawable/main_profiletext"
                 />
 
@@ -77,7 +77,7 @@
                 android:id="@+id/fragment1_review_userInfo"
                 android:text="- 기계과 전공으로 진로에 대해 고민 중인 릴라님-"
                 android:textSize="13sp"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:fontFamily="@font/nanum_square_r"
                 />
 

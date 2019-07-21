@@ -34,7 +34,7 @@ public class List3Activity extends AppCompatActivity {
     String packName;
     int resid;
 
-    Bundle bundle3 = new Bundle();
+    Bundle bundle = new Bundle();
     int importance;
 
     @Override
@@ -42,7 +42,7 @@ public class List3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list3);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -67,7 +67,6 @@ public class List3Activity extends AppCompatActivity {
 
                 RadioButton checkedId = findViewById(radioGroup.getCheckedRadioButtonId());
 
-
                 switch (checkedId.getId()){
                     case R.id.radio_1:
                         importance = 1;
@@ -86,26 +85,12 @@ public class List3Activity extends AppCompatActivity {
                         break;
 
                 }
-                //intent 객체생성
+
                 Intent intent = new Intent(context, List4Activity.class);
-                //Activity 실행메소드
                 startActivityForResult(intent, REQUEST_CODE);
 
             }
         });
-
-
-
-
-        //라디오 버튼 설정
-        //r_btn1 = (RadioButton) findViewById(R.id.r_btn1);
-        //r_btn2 = (RadioButton) findViewById(R.id.r_btn2);
-        //r_btn1.setOnClickListener(radioButtonClickListener);
-        //r_btn2.setOnClickListener(radioButtonClickListener);
-
-        //라디오 그룹 설정
-//        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-//        radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
     }
 
     @Override
@@ -114,9 +99,10 @@ public class List3Activity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle3 = data.getExtras();
-                    bundle3.putInt("importance",importance);
-                    data.putExtras(bundle3);
+
+                    bundle = data.getExtras();
+                    bundle.putInt("importance",importance);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 

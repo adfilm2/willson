@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -22,7 +21,6 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.ApplicationField.ApplicationFields;
-import com.example.appjam_willson.FillinListActivity.List2Activity;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
@@ -66,7 +64,7 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
     Typeface typebold;
     Typeface typereg;
 
-    Bundle bundle1 = new Bundle();
+    Bundle bundle = new Bundle();
     int category_listId;
 
 
@@ -74,7 +72,7 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list1_love);
+        setContentView(R.layout.activity_helper_love);
 
         context = this;
 
@@ -93,14 +91,14 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
         onesidelove.setTypeface(typereg);
         somthing.setTypeface(typereg);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
         list1_love_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_love_cancelbtn.setOnClickListener(new list1_love_cancelbtn_listener());
 
-        list1_love_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_love_backbtn = findViewById(R.id.back_btn_layout);
         list1_love_backbtn.setOnClickListener(new list1_love_backbtn_listener());
 
         list1_radioGroup1 = findViewById(R.id.list1_radioGroup1);
@@ -133,9 +131,9 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle1 = data.getExtras();
-                    bundle1.putInt("category_id",category_listId);
-                    data.putExtras(bundle1);
+                    bundle = data.getExtras();
+                    bundle.putInt("categoryList_idx",category_listId);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 
@@ -169,7 +167,7 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
                 list1_radioGroup2.clearCheck();
                 list1_radioGroup2.setOnCheckedChangeListener(radioGroup_listener2);
                 usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = custom_edit_text.getText().toString();
@@ -204,7 +202,7 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
                 list1_radioGroup1.clearCheck();
                 list1_radioGroup1.setOnCheckedChangeListener(radioGroup_listener1);
                 usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = custom_edit_text.getText().toString();
@@ -222,36 +220,36 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
 
         if(onesidelove.isChecked()){
             category_listId = 1;
-
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
         else if (somthing.isChecked()){
             category_listId = 2;
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
+            startActivityForResult(intent, REQUEST_CODE);
         }
         else if (conflict.isChecked()){
-            category_listId = 3;        }
+            category_listId = 3;
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
+            startActivityForResult(intent, REQUEST_CODE);
+        }
         else if (saygoodbye.isChecked()){
-            category_listId = 4;        }
+            category_listId = 4;
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
+            startActivityForResult(intent, REQUEST_CODE);
+        }
         else if (custom_edit_text.isFocused()){
-
             WorryCategoryListAddModel worryCategoryListAddModel = new WorryCategoryListAddModel();
             worryCategoryListAddModel.category_idx = 1;
             worryCategoryListAddModel.categoryList_name = custom_edit_text.getText().toString();
 
             String token = ApplicationFields.userToken;
-
             Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().concern_category_list_post(token,worryCategoryListAddModel);
-
             call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
                 @Override
                 public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
-                    Log.d("test", response.isSuccessful() + "");
                     WorryCategoryListAddResponseModel result = response.body();
-                    Log.d("진로", ">>>>>>>>>>>" + response.code());
-                    Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
                     category_listId= result.data.categoryList_idx;
-
-
-                    Log.d(">>>>>ff>>> ",""+category_listId);
 
                     Intent intent = new Intent(context,HelperSignUpActivity2.class);
                     startActivityForResult(intent, REQUEST_CODE);
@@ -261,16 +259,9 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
                 @Override
                 public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
                     t.printStackTrace();
-                    Log.d(" 사랑 액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                 }
-
-
             });
         }
-        else{}
-
-        Intent intent = new Intent(context,HelperSignUpActivity2.class);
-        startActivityForResult(intent, REQUEST_CODE);
     }
 
     class list1_love_cancelbtn_listener implements OnClickListener {
@@ -396,6 +387,28 @@ public class HelperSignUp1_L_Activity extends AppCompatActivity implements OnCli
             return false;
         }
     }
+
+    private Callback<WorryCategoryListAddResponseModel> retrofitCallback = new Callback<WorryCategoryListAddResponseModel>() {
+
+        @Override
+        public void onResponse(retrofit2.Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
+            WorryCategoryListAddResponseModel result = response.body();
+            if(response.isSuccessful()){
+                category_listId= result.data.categoryList_idx;
+                Intent intent = new Intent(context,HelperSignUpActivity2.class);
+                startActivityForResult(intent, REQUEST_CODE);
+            }
+            else{
+            }
+
+        }
+
+        @Override
+        public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
+            t.printStackTrace();
+
+        }
+    };
 
     private void hidekeyboard(EditText edit) {
         InputMethodManager input = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

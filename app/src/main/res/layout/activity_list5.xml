@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="@color/darkPurple"
+        android:textColor="@color/darkBlue"
         android:lineSpacingExtra="21sp"
         android:gravity="center_horizontal"
         android:text="50%"
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="어떤 헬퍼와 이야기하고 싶나요? (1/3)"
-            android:textColor="@color/darkPurple"
+            android:textColor="@color/darkBlue"
             android:textSize="19sp"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_b"/>
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="37.3dp"
             android:layout_marginBottom="19dp"
-            android:textColor="@color/darkPurple"
+            android:textColor="@color/darkBlue"
             android:textSize="17sp"
             android:text="성별"
             android:textStyle="normal"
@@ -67,7 +67,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="fill_horizontal"
-            android:id="@+id/list5_radiogroup">
+            android:id="@+id/list5_radiogroup"
+            >
 
             <RadioButton
                 android:id="@+id/man_btn"
@@ -75,13 +76,13 @@
                 android:layout_height="34.6dp"
                 android:button="@color/trans"
                 android:textAlignment="center"
-                android:text="남자"
+                android:text="남"
+                android:checked="true"
                 android:layout_weight="1"
                 android:layout_marginRight="14.4dp"
                 android:textColor="@color/text_color_selector"
-                android:checked="true"
-                android:background="@drawable/btn_selector"
                 android:textStyle="normal"
+                android:background="@drawable/btn_selector"
                 android:fontFamily="@font/nanum_square_b"/>
 
             <RadioButton
@@ -90,12 +91,11 @@
                 android:layout_height="34.6dp"
                 android:button="@color/trans"
                 android:textAlignment="center"
-                android:text="여자"
+                android:text="여"
                 android:layout_weight="1"
                 android:textColor="@color/text_color_selector"
-                android:checked="false"
-                android:background="@drawable/btn_selector"
                 android:textStyle="normal"
+                android:background="@drawable/btn_selector"
                 android:fontFamily="@font/nanum_square_b"/>
 
             <RadioButton
@@ -108,9 +108,9 @@
                 android:layout_marginLeft="14.4dp"
                 android:layout_weight="1"
                 android:textColor="@color/text_color_selector"
-                android:checked="true"
-                android:background="@drawable/btn_selector"
+                android:checked="false"
                 android:textStyle="normal"
+                android:background="@drawable/btn_selector"
                 android:fontFamily="@font/nanum_square_b"/>
 
         </RadioGroup>

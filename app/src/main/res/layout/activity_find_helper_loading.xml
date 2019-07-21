@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:textSize="21sp"
             android:lineSpacingExtra="11sp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:layout_marginTop="105.3dp"
             android:textAlignment="center"
             android:text="당신을 도와줄 헬퍼들을\n모으는 중이에요!"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="5:00"
                 android:textSize="14sp"
-                android:textColor="@color/middlepurple"
+                android:textColor="@color/middleBlue"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
                 />
@@ -69,10 +69,11 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/loading_moving_willson"
         android:layout_width="137.94dp"
         android:layout_height="121dp"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/loading_moving_willson"
+        android:src="@drawable/helper_lookfor"
         />
 
     <TextView
@@ -80,7 +81,7 @@
         android:layout_height="wrap_content"
         android:lineSpacingExtra="10sp"
         android:textSize="16sp"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:layout_gravity="center"
         android:layout_marginTop="23.5dp"
         android:textAlignment="center"

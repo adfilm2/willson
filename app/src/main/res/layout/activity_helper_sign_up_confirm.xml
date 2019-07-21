@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="신분증 확인"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:lineSpacingExtra="14sp"
         android:textSize="18sp"
         android:layout_marginLeft="22.1dp"
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="핸드폰 번호를 작성해주세요"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:lineSpacingExtra="12sp"
         android:textSize="18sp"
         android:layout_marginLeft="22.1dp"
@@ -110,7 +110,7 @@
             android:lineSpacingExtra="24sp"
             android:textCursorDrawable="@null"
             android:textColorHint="#bdbdbd"
-            android:textColor="@color/lightPurple"
+            android:textColor="@color/lightBlue"
             android:gravity="center"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
@@ -121,7 +121,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="1dp"
-            android:background="@color/lightPurple"
+            android:background="@color/lightBlue"
             android:layout_gravity="center"
             android:layout_weight="0.35"
             android:layout_marginLeft="3.8dp"
@@ -142,7 +142,7 @@
             android:digits="1234567890"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
-            android:textColor="@color/lightPurple"
+            android:textColor="@color/lightBlue"
             android:id="@+id/phone_num_2"
             android:inputType="number"
             />
@@ -150,7 +150,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="1dp"
-            android:background="@color/lightPurple"
+            android:background="@color/lightBlue"
             android:layout_gravity="center"
             android:layout_weight="0.35"
             android:layout_marginLeft="3.8dp"
@@ -172,7 +172,7 @@
             android:background="@drawable/rounded_corner_radius5"
             android:textStyle="normal"
             android:fontFamily="@font/nanum_square_r"
-            android:textColor="@color/lightPurple"
+            android:textColor="@color/lightBlue"
             android:id="@+id/phone_num_3"
             android:inputType="number"
             />
@@ -183,7 +183,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="소속 이메일을 작성해주세요"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:lineSpacingExtra="12sp"
         android:textSize="18sp"
         android:layout_marginLeft="22.1dp"
@@ -222,7 +222,7 @@
                 android:textColorHint="#bdbdbd"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_r"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:inputType="textUri"
                 />
 
@@ -236,7 +236,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="경험과 관련된 링크를 써주세요 (선택사항)"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:lineSpacingExtra="12sp"
         android:textSize="18sp"
         android:layout_marginLeft="22.1dp"
@@ -273,7 +273,7 @@
                 android:textColorHint="#bdbdbd"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_r"
-                android:textColor="@color/lightPurple"
+                android:textColor="@color/lightBlue"
                 android:inputType="textUri"
                 />
 

@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="141.1dp"
         android:layout_height="127.2dp"
-        android:src="@drawable/helper_request_img_finishwillson"
+        android:src="@drawable/helper_request_finish"
         android:layout_marginTop="203dp"
         android:layout_marginBottom="19.9dp"
         android:layout_gravity="center_horizontal"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="요청이 완료되었습니다!"
         android:textSize="21sp"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:lineSpacingExtra="11sp"
         android:layout_gravity="center_horizontal"
         android:textStyle="normal"
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="15분 내에 응답이 없을 경우,\n자동으로 취소됩니다."
         android:textSize="16sp"
-        android:textColor="@color/darkPurple"
+        android:textColor="@color/darkBlue"
         android:lineSpacingExtra="10sp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
@@ -49,11 +49,6 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_weight="1"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="6dp"
-            android:background="@drawable/its_shadow"/>
 
         <Button
             android:layout_width="match_parent"

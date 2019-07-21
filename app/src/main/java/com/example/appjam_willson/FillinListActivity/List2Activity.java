@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +32,7 @@ public class List2Activity extends AppCompatActivity {
     String packName;
     int resid;
 
-    Bundle bundle2 = new Bundle();
+    Bundle bundle = new Bundle();
 
     int[] strings = new int[3];
 
@@ -52,7 +51,7 @@ public class List2Activity extends AppCompatActivity {
         typebold = getResources().getFont(R.font.nanum_square_b);
         typereg = getResources().getFont(R.font.nanum_square_r);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -73,21 +72,12 @@ public class List2Activity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-//                    Bundle checkcheck = data.getExtras();
-//                    String checks = data.getStringExtra("keyword1");
-//                    Integer gg = data.getIntExtra("advice",0);
-//                    Log.d(">>>data의 keyword1 >>> ",checks);
-//                    Log.d(">>>data의 advice >>> ","gg"+gg);
 
-                    bundle2 = data.getExtras();
-                    Log.d("야호야호얗야호야ㅗ라어ㅏ느낀감정~~~~~!",""+strings[0]+":: "+strings[1]+":: "+strings[2]);
-                    bundle2.putIntArray("feeling",strings);
-
-
-                    data.putExtras(bundle2);
+                    bundle = data.getExtras();
+                    bundle.putIntArray("feeling",strings);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
-
 
                 case RESULT_CANCELED:
                     finish();

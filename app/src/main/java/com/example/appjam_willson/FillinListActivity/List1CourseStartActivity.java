@@ -29,6 +29,8 @@ public class List1CourseStartActivity extends AppCompatActivity {
     LinearLayout course_cancel_btn;
     Context context;
 
+    Bundle bundle = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,53 +56,11 @@ public class List1CourseStartActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
+                    bundle = data.getExtras();
+                    bundle.putInt("category_idx",2);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
-//
-//                    CreateWorryModel createWorryModel = new CreateWorryModel();
-//                    createWorryModel.feeling = data.getIntArrayExtra("feeling");
-//                    createWorryModel.personality = data.getIntArrayExtra(("char"));
-//                    createWorryModel.experience = data.getStringArrayListExtra("experience");
-//                    createWorryModel.question.weight =data.getIntExtra("importance",0);
-//                    createWorryModel.question.content = data.getStringExtra("contents");
-//                    createWorryModel.question.emotion = data.getIntExtra("empathy",1);
-//                    createWorryModel.question.advise = data.getIntExtra("advice",1);
-//                    createWorryModel.question.experience = data.getIntExtra("experience22", 1);
-//                    createWorryModel.question.agreement = CreateWorryModel.Question.Agreement.agree;
-//                    createWorryModel.question.categoryList_idx = data.getIntExtra("category_id",0);
-//                    String gender = data.getStringExtra("helper_gender");
-//                    switch (gender){
-//                        case "여자":
-//                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.여성;
-//                        case "남자":
-//                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.남성;
-//                        case "모두":
-//                            createWorryModel.question.helper_gender = CreateWorryModel.Question.Helper_gender.모두;
-//                    }
-//
-//
-//                    String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkeCI6NDYsIm5pY2tuYW1lIjoi64uJ64S0IiwiZ2VuZGVyIjoiIiwiYWdlIjoyMywidXNlcl9sZXZlbCI6MCwiaWF0IjoxNTYyNzU0NTE3LCJleHAiOjE1NzEzOTQ1MTcsImlzcyI6IndpbGxzb24ifQ.8QFtG_wNveh114Fs6NDxcsvMhRocHhKhkYTJjqCFYnc";
-//                    Call<WorryCategoryListAddResponseModel> call_helper = RetrofitService.getInstance().getService().create_model_post(token, createWorryModel);
-//                    call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
-//                        @Override
-//                        public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
-//                            Log.d("test", response.isSuccessful() + "");
-//                            WorryCategoryListAddResponseModel result = response.body();
-//                            Log.d(">>result>>>>>",""+result);
-//                            Log.d(">>response>>>>>",""+response);
-//                            Log.d(">> response.code", ">>>>>>>>>>>" + response.code());
-////                            Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.getCode());
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
-//                            t.printStackTrace();
-//                            Log.d("메인 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
-//                        }
-//                    });
-
-
-
                 case RESULT_CANCELED:
                     finish();
             }

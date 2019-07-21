@@ -9,6 +9,15 @@ public class WillsonModel {
     public String photo;
     public String roomKey;
     public String pushToken;
+    public String helper_idx;
+
+    public String getHelper_idx() {
+        return helper_idx;
+    }
+
+    public void setHelper_idx(String helper_idx) {
+        this.helper_idx = helper_idx;
+    }
 
     public String getPushToken() {
         return pushToken;

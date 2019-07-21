@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -21,7 +20,6 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appjam_willson.ApplicationField.ApplicationFields;
-import com.example.appjam_willson.FillinListActivity.List2Activity;
 import com.example.appjam_willson.NetworkService.RetrofitService;
 import com.example.appjam_willson.PopUp.OneTextTwoButton_CustomDialog;
 import com.example.appjam_willson.R;
@@ -64,13 +62,13 @@ public class HelperSignUp1_C_Activity extends AppCompatActivity implements OnCli
     Typeface typereg;
 
 
-    Bundle bundle1 = new Bundle();
+    Bundle bundle = new Bundle();
     int category_listId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list1_course);
+        setContentView(R.layout.activity_helper_course);
 
         context = this;
 
@@ -87,14 +85,14 @@ public class HelperSignUp1_C_Activity extends AppCompatActivity implements OnCli
         employment.setTypeface(typereg);
         transfer.setTypeface(typereg);
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
         list1_course_cancelbtn = findViewById(R.id.toolbar_list_btn_cancel);
         list1_course_cancelbtn.setOnClickListener(new list1_course_cancelbtn_listener());
 
-        list1_course_backbtn = findViewById(R.id.toolbar_list_btn_backbtn);
+        list1_course_backbtn = findViewById(R.id.back_btn_layout);
         list1_course_backbtn.setOnClickListener(new list1_course_backbtn_listener());
 
         list1_course_radioGroup1 = findViewById(R.id.list1_course_radioGroup1);
@@ -127,10 +125,9 @@ public class HelperSignUp1_C_Activity extends AppCompatActivity implements OnCli
         if(requestCode == REQUEST_CODE){
             switch (resultCode){
                 case RESULT_OK:
-                    bundle1 = data.getExtras();
-
-                    bundle1.putInt("category_id",category_listId);
-                    data.putExtras(bundle1);
+                    bundle = data.getExtras();
+                    bundle.putInt("categoryList_idx",category_listId);
+                    data.putExtras(bundle);
                     setResult(RESULT_OK,data);
                     finish();
 
@@ -162,7 +159,7 @@ public class HelperSignUp1_C_Activity extends AppCompatActivity implements OnCli
                 list1_course_radioGroup2.clearCheck();
                 list1_course_radioGroup2.setOnCheckedChangeListener(radioGroup_course_listener2);
                 course_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 course_custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = course_custom_edit_text.getText().toString();
@@ -195,7 +192,7 @@ public class HelperSignUp1_C_Activity extends AppCompatActivity implements OnCli
                 list1_course_radioGroup1.clearCheck();
                 list1_course_radioGroup1.setOnCheckedChangeListener(radioGroup_course_listener1);
                 course_usercustom_layout.setBackgroundResource(R.drawable.list_btns_selector);
-                int backcolor = getResources().getColor(R.color.lightPurple);
+                int backcolor = getResources().getColor(R.color.lightBlue);
                 course_custom_edit_text.setTextColor(backcolor);
                 String title;
                 title = course_custom_edit_text.getText().toString();
@@ -211,18 +208,18 @@ public class HelperSignUp1_C_Activity extends AppCompatActivity implements OnCli
     public void onClick(View v) {
         if(study.isChecked()){
             category_listId = 5;
-            Intent intent = new Intent(context, List2Activity.class);
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
             startActivityForResult(intent, REQUEST_CODE);
         }
         else if (employment.isChecked()){
             category_listId = 6;
-            Intent intent = new Intent(context, List2Activity.class);
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
             startActivityForResult(intent, REQUEST_CODE);
 
         }
         else if (transfer.isChecked()){
             category_listId = 7;
-            Intent intent = new Intent(context, List2Activity.class);
+            Intent intent = new Intent(context,HelperSignUpActivity2.class);
             startActivityForResult(intent, REQUEST_CODE);
 
         }
@@ -239,15 +236,9 @@ public class HelperSignUp1_C_Activity extends AppCompatActivity implements OnCli
             call_helper.enqueue(new Callback<WorryCategoryListAddResponseModel>() {
                 @Override
                 public void onResponse(Call<WorryCategoryListAddResponseModel> call, Response<WorryCategoryListAddResponseModel> response) {
-                    Log.d("test", response.isSuccessful() + "");
                     WorryCategoryListAddResponseModel result = response.body();
-                    Log.d("진로", ">>>>>>>>>>>" + response.code());
-                    Log.d("이거는 서버에서 코드값", ">>>>>>>>>>>" + result.code);
+
                     category_listId= result.data.categoryList_idx;
-
-
-                    Log.d(">>>>>리스트 아이디 ",""+category_listId);
-
                     Intent intent = new Intent(context,HelperSignUpActivity2.class);
                     startActivityForResult(intent, REQUEST_CODE);
 
@@ -256,18 +247,11 @@ public class HelperSignUp1_C_Activity extends AppCompatActivity implements OnCli
                 @Override
                 public void onFailure(Call<WorryCategoryListAddResponseModel> call, Throwable t) {
                     t.printStackTrace();
-                    Log.d(" 진로 액티비티 실ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ패", ">>>>>>>>>>>");
                 }
 
 
             });
-
-
         }
-        else{}
-
-        Intent intent = new Intent(context,HelperSignUpActivity2.class);
-        startActivityForResult(intent, REQUEST_CODE);
 
     }
 

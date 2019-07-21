@@ -40,7 +40,7 @@ public class ListAgreementActivity extends AppCompatActivity {
 
         REQUEST_CODE = ((ListAgreementActivity) context).getTaskId();
 
-        resName = "@drawable/list_img_alert_willson";
+        resName = "@drawable/request_couldnt_find";
         packName = this.getPackageName();
         resid = getResources().getIdentifier(resName, "drawable", packName);
 
@@ -99,6 +99,8 @@ public class ListAgreementActivity extends AppCompatActivity {
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
             ApplicationFields.timerStart = timestamp.getTime();
             ApplicationFields.matchingStack = true;
+            ApplicationFields.timerSwitch = true;
+
             Intent intent = new Intent();
             setResult(RESULT_OK, intent);
             finish();

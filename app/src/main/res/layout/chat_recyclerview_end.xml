@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:text="상담이 종료되었습니다!"
             android:textSize="16sp"
-            android:textColor="@color/dark_purple"
+            android:textColor="@color/dark_blue"
             android:gravity="center"
             android:layout_marginTop="28dp"
             android:layout_marginBottom="19dp"

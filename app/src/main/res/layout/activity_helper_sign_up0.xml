@@ -18,7 +18,7 @@
         android:layout_marginLeft="22dp"
         android:textSize="19sp"
         android:fontFamily="@font/nanum_square_b"
-        android:textColor="@color/dark_purple"
+        android:textColor="@color/dark_blue"
         android:lineSpacingExtra="11sp"
         android:text="도움을 줄 카테고리를 선택해주세요."
         />

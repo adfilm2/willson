@@ -41,7 +41,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder> 
         viewHolder.story_nickName.setText(willsonModels.get(i).getNickname());
 
         //사진
-        viewHolder.story_image.setImageResource(R.drawable.chat_img_helperprofile);
+        viewHolder.story_image.setImageResource(R.drawable.conv_profile);
 
         //주제
         viewHolder.story_subject.setText(willsonModels.get(i).getCategory_name());

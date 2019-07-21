@@ -44,7 +44,7 @@
                 android:id="@+id/frament4_userNickname"
                 android:text="김윌슨 님"
                 android:textSize="15sp"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:layout_marginBottom="3.2dp"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_b"
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:text="후기관리"
                 android:textSize="13sp"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_r"
                 />
@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="매칭내역"
                 android:textSize="13sp"
-                android:textColor="@color/dark_purple"
+                android:textColor="@color/dark_blue"
                 android:textStyle="normal"
                 android:fontFamily="@font/nanum_square_r"
                 />

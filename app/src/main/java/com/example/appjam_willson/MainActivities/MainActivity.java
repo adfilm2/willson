@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        question_idx = ApplicationFields.myQuestion_idx;
         token = ApplicationFields.userToken;
         intent = getIntent();
 
@@ -96,15 +97,27 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
             }
         });
+
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changeImage(image_request, image_home, image_mypage, image_chat);
                 changeTextColor(text_request, text_home, text_chat, text_mypage);
-                String token = ApplicationFields.userToken;
-                question_idx = ApplicationFields.myQuestion_idx;
-                Call<AcceptHelperListWatchResponseModel> accept_helper = RetrofitService.getInstance().getService().get_accept_helper(token,question_idx);
-                accept_helper.enqueue(retrofitCallback);
+
+                if(ApplicationFields.myQuestion_idx == 0 ){
+                    MainFragment2_null fragment = new MainFragment2_null();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+                }
+                else if(ApplicationFields.myQuestion_idx != 0 && ApplicationFields.timerSwitch == false && ApplicationFields.matchingStack == true){
+                    MainFragment2 fragment = new MainFragment2();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+                }
+                else if(ApplicationFields.timerSwitch == true){
+                    MainFragment2_loading fragment = new MainFragment2_loading();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
+                } else{
+                    return ;
+                }
             }
         });
 
@@ -116,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
 
                 MainFragment3 fragment = new MainFragment3();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-
-
             }
         });
 
@@ -126,11 +137,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 changeImage(image_mypage, image_home, image_chat, image_request);
                 changeTextColor(text_mypage, text_home, text_chat, text_request);
+
                 MainFragment4 fragment = new MainFragment4();
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-
             }
         });
+
     }
 
     void passPushTokenToServer() {
@@ -169,31 +181,5 @@ public class MainActivity extends AppCompatActivity {
         MainFragment fragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
     }
-
-    private Callback<AcceptHelperListWatchResponseModel> retrofitCallback = new Callback<AcceptHelperListWatchResponseModel>() {
-
-        @Override
-        public void onResponse(Call<AcceptHelperListWatchResponseModel> call, Response<AcceptHelperListWatchResponseModel> response) {
-            AcceptHelperListWatchResponseModel result = response.body();
-
-            if (result.getCode() == 1000 && ApplicationFields.timerSwitch == false && ApplicationFields.matchingStack == true) {
-                MainFragment2 fragment = new MainFragment2();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-            }
-            else if(ApplicationFields.timerSwitch == true){
-                MainFragment2_loading fragment = new MainFragment2_loading();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-            }
-            else {
-                MainFragment2_null fragment = new MainFragment2_null();
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, fragment).commit();
-            }
-        }
-
-        @Override
-        public void onFailure(Call<AcceptHelperListWatchResponseModel> call, Throwable t) {
-            t.printStackTrace();
-        }
-    };
 }
 

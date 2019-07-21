@@ -19,13 +19,13 @@
 
         <shape android:shape="rectangle">
             <solid
-                android:color="@color/lightPurple"/>
+                android:color="@color/lightBlue"/>
             <corners
                 android:radius="5dp"
                 />
             <gradient
-                android:startColor="@color/buttonLeft"
-                android:endColor="@color/buttonRignt"
+                android:startColor="#083fba"
+                android:endColor="#142d84"
                 android:angle="0"/>
         </shape>
         </item>

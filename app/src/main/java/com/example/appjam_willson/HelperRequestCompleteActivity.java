@@ -34,7 +34,6 @@ public class HelperRequestCompleteActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             intent = new Intent(context, HelperActivity.class);
-            /*intent.putExtra("question_idx", question_idx);*/
             startActivity(intent);
             finish();
         }
